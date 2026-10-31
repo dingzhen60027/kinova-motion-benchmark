@@ -1,0 +1,6185 @@
+{
+  "schema_version": 1,
+  "run_dir": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/smoke_v3_fixed",
+  "planned_jobs": 20,
+  "complete": true,
+  "finished_jobs": 20,
+  "status_counts": {
+    "frontend_failed": 8,
+    "invalid_endpoint": 4,
+    "success_validated_numerical": 8
+  },
+  "run_manifest_sha256": "12e9a9f1d885feb572d569fdaaaed70ea307426c01b1d3fab9ad8a33b7b0342c",
+  "main_denominator": "All numerically legal planned jobs, including failures, timeouts and pending jobs. Invalid inputs are separately counted.",
+  "uncertainty": "Scene-level cluster bootstrap. All open_control IDs share one physical-world cluster. Seed repetitions are not independent environments.",
+  "numerical_validation": "Finite collision sampling, not a continuous safety certificate.",
+  "timing_definition": "cold_e2e is external process wall time including initialization and validation; warm_query is the recorded already-initialized online query. Offline roadmaps are listed once separately; missing durations remain null.",
+  "gpu_memory_definition": "Sampled process memory, not an exact allocator peak. Polling may miss short peaks.",
+  "offline_roadmaps": [
+    {
+      "roadmap_id": "kinova7-full-n6000-s0",
+      "metadata_path": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/roadmaps/n6000_s000/metadata.json",
+      "metadata_sha256": "5833a74e6bf8ef521934696443ad4fdb09231c485911b95b6cc6a947dcd9206e",
+      "offline_seconds": 43.22702578594908,
+      "timing": {
+        "add_nodes_seconds": 0.012570169288665056,
+        "collision_map_seconds": 2.9573405808769166,
+        "graph_seconds": 11.523743224795908,
+        "pose_map_seconds": 0.2256293618120253,
+        "sampling_seconds": 0.17141775600612164
+      },
+      "actual_nodes": 5981,
+      "native_map_bytes": 3781181
+    }
+  ],
+  "unresolved_offline_roadmap_ids": [],
+  "groups": [
+    {
+      "method": "EI_ZO",
+      "objective": "minimum_distance",
+      "family": "all",
+      "planned_jobs": 10,
+      "legal_input_jobs": 8,
+      "invalid_input_jobs": 2,
+      "pending_jobs": 0,
+      "status_counts": {
+        "frontend_failed": 4,
+        "invalid_endpoint": 2,
+        "success_validated_numerical": 4
+      },
+      "unconditional_success": {
+        "estimate": 0.5,
+        "numerator": 4.0,
+        "denominator": 8.0,
+        "independent_scene_clusters": 4,
+        "ci95": [
+          0.0,
+          1.0
+        ],
+        "bootstrap_seed": 45827,
+        "bootstrap_replicates": 2000,
+        "method": "scene-level cluster bootstrap; resample scene clusters with all paired jobs intact"
+      },
+      "conditional_on_drm_success": {
+        "estimate": 1.0,
+        "numerator": 4.0,
+        "denominator": 4.0,
+        "independent_scene_clusters": 2,
+        "ci95": [
+          1.0,
+          1.0
+        ],
+        "bootstrap_seed": 45827,
+        "bootstrap_replicates": 2000,
+        "method": "scene-level cluster bootstrap; resample scene clusters with all paired jobs intact"
+      },
+      "drm_status_unknown_jobs": 0,
+      "timing_and_memory": {
+        "cold_e2e_seconds": {
+          "all_finished": {
+            "count": 10,
+            "mean": 0.9370606250595301,
+            "p50": 0.9831116935238242,
+            "p90": 1.5126441583503039,
+            "p95": 1.5131874550832436,
+            "min": 0.21536029782146215,
+            "max": 1.5137307518161833
+          },
+          "success": {
+            "count": 4,
+            "mean": 1.247262587537989,
+            "p50": 1.2975575949531049,
+            "p90": 1.5133685539942234,
+            "p95": 1.5135496529052035,
+            "min": 0.880204408429563,
+            "max": 1.5137307518161833
+          },
+          "failure": {
+            "count": 6,
+            "mean": 0.7302593167405576,
+            "p50": 0.8832983684260398,
+            "p90": 1.0910495859570801,
+            "p95": 1.096667265985161,
+            "min": 0.21536029782146215,
+            "max": 1.102284946013242
+          }
+        },
+        "warm_query_seconds": {
+          "all_finished": {
+            "count": 8,
+            "mean": 0.300509293389041,
+            "p50": 0.2417635426390916,
+            "p90": 0.6943407870363444,
+            "p95": 0.7081383355660363,
+            "min": 0.012892247177660465,
+            "max": 0.7219358840957284
+          },
+          "success": {
+            "count": 4,
+            "mean": 0.4381330538308248,
+            "p50": 0.4332119165919721,
+            "p90": 0.710109413927421,
+            "p95": 0.7160226490115746,
+            "min": 0.16417249804362655,
+            "max": 0.7219358840957284
+          },
+          "failure": {
+            "count": 4,
+            "mean": 0.16288553294725716,
+            "p50": 0.15827458747662604,
+            "p90": 0.31535576744936406,
+            "p95": 0.31872823855374005,
+            "min": 0.012892247177660465,
+            "max": 0.3221007096581161
+          }
+        },
+        "sampled_gpu_peak_mib": {
+          "all_finished": {
+            "count": 8,
+            "mean": 2304.75,
+            "p50": 2306.0,
+            "p90": 4420.0,
+            "p95": 4420.0,
+            "min": 188.0,
+            "max": 4420.0
+          },
+          "success": {
+            "count": 4,
+            "mean": 4420.0,
+            "p50": 4420.0,
+            "p90": 4420.0,
+            "p95": 4420.0,
+            "min": 4420.0,
+            "max": 4420.0
+          },
+          "failure": {
+            "count": 4,
+            "mean": 189.5,
+            "p50": 189.0,
+            "p90": 191.4,
+            "p95": 191.7,
+            "min": 188.0,
+            "max": 192.0
+          }
+        }
+      },
+      "metrics": {
+        "regions": {
+          "all_finished": {
+            "count": 4,
+            "mean": 1.5,
+            "p50": 1.5,
+            "p90": 2.0,
+            "p95": 2.0,
+            "min": 1.0,
+            "max": 2.0
+          },
+          "success": {
+            "count": 4,
+            "mean": 1.5,
+            "p50": 1.5,
+            "p90": 2.0,
+            "p95": 2.0,
+            "min": 1.0,
+            "max": 2.0
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "facets": {
+          "all_finished": {
+            "count": 4,
+            "mean": 57.5,
+            "p50": 57.5,
+            "p90": 72.4,
+            "p95": 72.7,
+            "min": 42.0,
+            "max": 73.0
+          },
+          "success": {
+            "count": 4,
+            "mean": 57.5,
+            "p50": 57.5,
+            "p90": 72.4,
+            "p95": 72.7,
+            "min": 42.0,
+            "max": 73.0
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "recovery_attempts": {
+          "all_finished": {
+            "count": 4,
+            "mean": 0.0,
+            "p50": 0.0,
+            "p90": 0.0,
+            "p95": 0.0,
+            "min": 0.0,
+            "max": 0.0
+          },
+          "success": {
+            "count": 4,
+            "mean": 0.0,
+            "p50": 0.0,
+            "p90": 0.0,
+            "p95": 0.0,
+            "min": 0.0,
+            "max": 0.0
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "normalized_path_length": {
+          "all_finished": {
+            "count": 4,
+            "mean": 0.9755753067987424,
+            "p50": 0.9901014221221236,
+            "p90": 1.074152593045847,
+            "p95": 1.09001174429902,
+            "min": 0.8162274873985293,
+            "max": 1.1058708955521932
+          },
+          "success": {
+            "count": 4,
+            "mean": 0.9755753067987424,
+            "p50": 0.9901014221221236,
+            "p90": 1.074152593045847,
+            "p95": 1.09001174429902,
+            "min": 0.8162274873985293,
+            "max": 1.1058708955521932
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "minimum_sampled_clearance_m": {
+          "all_finished": {
+            "count": 4,
+            "mean": 0.014088059631001069,
+            "p50": 0.016356715964553674,
+            "p90": 0.019025026584333436,
+            "p95": 0.019025026584333436,
+            "min": 0.004613780010563483,
+            "max": 0.019025026584333436
+          },
+          "success": {
+            "count": 4,
+            "mean": 0.014088059631001069,
+            "p50": 0.016356715964553674,
+            "p90": 0.019025026584333436,
+            "p95": 0.019025026584333436,
+            "min": 0.004613780010563483,
+            "max": 0.019025026584333436
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        }
+      },
+      "metrics_note": "Finite recorded values only, stratified by final status. Missing or unexecuted stages are not zero-filled; each statistic includes its observed count. Failure metrics describe saved candidates, not valid solutions.",
+      "stage_timing": {
+        "cold_e2e_seconds": {
+          "all_finished": {
+            "count": 10,
+            "mean": 0.591693161521107,
+            "p50": 0.6061762615572661,
+            "p90": 1.1263521553948521,
+            "p95": 1.136452848697081,
+            "min": 0.0034626778215169907,
+            "max": 1.1465535419993103
+          },
+          "success": {
+            "count": 4,
+            "mean": 0.870753405499272,
+            "p50": 0.8670114339329302,
+            "p90": 1.1398197464644908,
+            "p95": 1.1431866442319005,
+            "min": 0.6024372121319175,
+            "max": 1.1465535419993103
+          },
+          "failure": {
+            "count": 6,
+            "mean": 0.4056529988689969,
+            "p50": 0.4573023726698011,
+            "p90": 0.7557452784385532,
+            "p95": 0.7622821462573484,
+            "min": 0.0034626778215169907,
+            "max": 0.7688190140761435
+          }
+        },
+        "collision_recovery_seconds": {
+          "all_finished": {
+            "count": 4,
+            "mean": 0.0,
+            "p50": 0.0,
+            "p90": 0.0,
+            "p95": 0.0,
+            "min": 0.0,
+            "max": 0.0
+          },
+          "success": {
+            "count": 4,
+            "mean": 0.0,
+            "p50": 0.0,
+            "p90": 0.0,
+            "p95": 0.0,
+            "min": 0.0,
+            "max": 0.0
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "drm_path_seconds": {
+          "all_finished": {
+            "count": 6,
+            "mean": 0.11104009424646695,
+            "p50": 0.016868330538272858,
+            "p90": 0.30827806680463254,
+            "p95": 0.31382760929409415,
+            "min": 0.007886148989200592,
+            "max": 0.31937715178355575
+          },
+          "success": {
+            "count": 4,
+            "mean": 0.01242110796738416,
+            "p50": 0.010941253043711185,
+            "p90": 0.018087309040129187,
+            "p95": 0.019001542916521428,
+            "min": 0.007886148989200592,
+            "max": 0.019915776792913675
+          },
+          "failure": {
+            "count": 2,
+            "mean": 0.30827806680463254,
+            "p50": 0.30827806680463254,
+            "p90": 0.3171573347877711,
+            "p95": 0.3182672432856634,
+            "min": 0.29717898182570934,
+            "max": 0.31937715178355575
+          }
+        },
+        "eizo_inflation_seconds": {
+          "all_finished": {
+            "count": 4,
+            "mean": 0.05953459395095706,
+            "p50": 0.0598235591314733,
+            "p90": 0.08497738526202739,
+            "p95": 0.08791361197363584,
+            "min": 0.027641418855637312,
+            "max": 0.09084983868524432
+          },
+          "success": {
+            "count": 4,
+            "mean": 0.05953459395095706,
+            "p50": 0.0598235591314733,
+            "p90": 0.08497738526202739,
+            "p95": 0.08791361197363584,
+            "min": 0.027641418855637312,
+            "max": 0.09084983868524432
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "gpu_initialization_warmup_seconds": {
+          "all_finished": {
+            "count": 8,
+            "mean": 0.12428483174880967,
+            "p50": 0.12485528108663857,
+            "p90": 0.13819548808969556,
+            "p95": 0.14718808953184634,
+            "min": 0.10881115728989244,
+            "max": 0.15618069097399712
+          },
+          "success": {
+            "count": 4,
+            "mean": 0.11787553643807769,
+            "p50": 0.11869919812306762,
+            "p90": 0.12496232739649712,
+            "p95": 0.12504261212889106,
+            "min": 0.10898085264489055,
+            "max": 0.12512289686128497
+          },
+          "failure": {
+            "count": 4,
+            "mean": 0.13069412705954164,
+            "p50": 0.1288923299871385,
+            "p90": 0.14847274688072504,
+            "p95": 0.15232671892736105,
+            "min": 0.10881115728989244,
+            "max": 0.15618069097399712
+          }
+        },
+        "model_setup_seconds": {
+          "all_finished": {
+            "count": 8,
+            "mean": 0.014435643213801086,
+            "p50": 0.01441155793145299,
+            "p90": 0.014588326355442405,
+            "p95": 0.0146195798413828,
+            "min": 0.014299256727099419,
+            "max": 0.014650833327323198
+          },
+          "success": {
+            "count": 4,
+            "mean": 0.014475583215244114,
+            "p50": 0.0144555673468858,
+            "p90": 0.014624044625088572,
+            "p95": 0.014637438976205886,
+            "min": 0.014340364839881659,
+            "max": 0.014650833327323198
+          },
+          "failure": {
+            "count": 4,
+            "mean": 0.014395703212358057,
+            "p50": 0.01441155793145299,
+            "p90": 0.014453463442623615,
+            "p95": 0.014456951851025223,
+            "min": 0.014299256727099419,
+            "max": 0.014460440259426832
+          }
+        },
+        "online_collision_map_seconds": {
+          "all_finished": {
+            "count": 8,
+            "mean": 0.0017794225714169443,
+            "p50": 0.0018816781230270863,
+            "p90": 0.00332335433922708,
+            "p95": 0.003328165062703192,
+            "min": 1.684296876192093e-05,
+            "max": 0.003332975786179304
+          },
+          "success": {
+            "count": 4,
+            "mean": 0.0011044327402487397,
+            "p50": 0.001091718440875411,
+            "p90": 0.0022020299453288316,
+            "p95": 0.002209740527905524,
+            "min": 1.684296876192093e-05,
+            "max": 0.002217451110482216
+          },
+          "failure": {
+            "count": 4,
+            "mean": 0.002454412402585149,
+            "p50": 0.002458269940689206,
+            "p90": 0.0033288523089140655,
+            "p95": 0.003330914047546685,
+            "min": 0.0015681339427828789,
+            "max": 0.003332975786179304
+          }
+        },
+        "roadmap_load_seconds": {
+          "all_finished": {
+            "count": 8,
+            "mean": 0.01222684612730518,
+            "p50": 0.012251351028680801,
+            "p90": 0.01244634436443448,
+            "p95": 0.012543562799692154,
+            "min": 0.011943154036998749,
+            "max": 0.012640781234949827
+          },
+          "success": {
+            "count": 4,
+            "mean": 0.012153374846093357,
+            "p50": 0.01214997167699039,
+            "p90": 0.012259588250890375,
+            "p95": 0.012261989596299826,
+            "min": 0.012049165088683367,
+            "max": 0.01226439094170928
+          },
+          "failure": {
+            "count": 4,
+            "mean": 0.012300317408517003,
+            "p50": 0.012308667181059718,
+            "p90": 0.012557451147586107,
+            "p95": 0.012599116191267967,
+            "min": 0.011943154036998749,
+            "max": 0.012640781234949827
+          }
+        },
+        "trajectory_optimization_seconds": {
+          "all_finished": {
+            "count": 4,
+            "mean": 0.0005677072331309319,
+            "p50": 0.0005472733173519373,
+            "p90": 0.0007452771067619324,
+            "p95": 0.0007600622251629829,
+            "min": 0.0004014349542558193,
+            "max": 0.0007748473435640335
+          },
+          "success": {
+            "count": 4,
+            "mean": 0.0005677072331309319,
+            "p50": 0.0005472733173519373,
+            "p90": 0.0007452771067619324,
+            "p95": 0.0007600622251629829,
+            "min": 0.0004014349542558193,
+            "max": 0.0007748473435640335
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "validation_seconds": {
+          "all_finished": {
+            "count": 4,
+            "mean": 0.3593866404844448,
+            "p50": 0.36325947591103613,
+            "p90": 0.6012005169410258,
+            "p95": 0.6050371535355226,
+            "min": 0.10215381998568773,
+            "max": 0.6088737901300192
+          },
+          "success": {
+            "count": 4,
+            "mean": 0.3593866404844448,
+            "p50": 0.36325947591103613,
+            "p90": 0.6012005169410258,
+            "p95": 0.6050371535355226,
+            "min": 0.10215381998568773,
+            "max": 0.6088737901300192
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "warm_query_seconds": {
+          "all_finished": {
+            "count": 8,
+            "mean": 0.300509293389041,
+            "p50": 0.2417635426390916,
+            "p90": 0.6943407870363444,
+            "p95": 0.7081383355660363,
+            "min": 0.012892247177660465,
+            "max": 0.7219358840957284
+          },
+          "success": {
+            "count": 4,
+            "mean": 0.4381330538308248,
+            "p50": 0.4332119165919721,
+            "p90": 0.710109413927421,
+            "p95": 0.7160226490115746,
+            "min": 0.16417249804362655,
+            "max": 0.7219358840957284
+          },
+          "failure": {
+            "count": 4,
+            "mean": 0.16288553294725716,
+            "p50": 0.15827458747662604,
+            "p90": 0.31535576744936406,
+            "p95": 0.31872823855374005,
+            "min": 0.012892247177660465,
+            "max": 0.3221007096581161
+          }
+        }
+      },
+      "success_cost": {
+        "count": 4,
+        "mean": 5.605083670214356,
+        "p50": 5.957740067335598,
+        "p90": 6.196892770526662,
+        "p95": 6.24809796694134,
+        "min": 4.205551382830208,
+        "max": 6.299303163356017
+      },
+      "success_cost_note": "Descriptive only. Compare methods using paired common-success costs below; unequal success subsets are not rankings."
+    },
+    {
+      "method": "EI_ZO",
+      "objective": "minimum_distance",
+      "family": "bottleneck",
+      "planned_jobs": 2,
+      "legal_input_jobs": 2,
+      "invalid_input_jobs": 0,
+      "pending_jobs": 0,
+      "status_counts": {
+        "success_validated_numerical": 2
+      },
+      "unconditional_success": {
+        "estimate": 1.0,
+        "numerator": 2.0,
+        "denominator": 2.0,
+        "independent_scene_clusters": 1,
+        "ci95": null,
+        "bootstrap_seed": 45827,
+        "bootstrap_replicates": 2000,
+        "method": "scene-level cluster bootstrap; resample scene clusters with all paired jobs intact",
+        "limitation": "Fewer than two independent scene clusters; no confidence interval reported."
+      },
+      "conditional_on_drm_success": {
+        "estimate": 1.0,
+        "numerator": 2.0,
+        "denominator": 2.0,
+        "independent_scene_clusters": 1,
+        "ci95": null,
+        "bootstrap_seed": 45827,
+        "bootstrap_replicates": 2000,
+        "method": "scene-level cluster bootstrap; resample scene clusters with all paired jobs intact",
+        "limitation": "Fewer than two independent scene clusters; no confidence interval reported."
+      },
+      "drm_status_unknown_jobs": 0,
+      "timing_and_memory": {
+        "cold_e2e_seconds": {
+          "all_finished": {
+            "count": 2,
+            "mean": 1.5131270887795836,
+            "p50": 1.5131270887795836,
+            "p90": 1.5136100192088633,
+            "p95": 1.5136703855125233,
+            "min": 1.5125234257429838,
+            "max": 1.5137307518161833
+          },
+          "success": {
+            "count": 2,
+            "mean": 1.5131270887795836,
+            "p50": 1.5131270887795836,
+            "p90": 1.5136100192088633,
+            "p95": 1.5136703855125233,
+            "min": 1.5125234257429838,
+            "max": 1.5137307518161833
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "warm_query_seconds": {
+          "all_finished": {
+            "count": 2,
+            "mean": 0.7022251004818827,
+            "p50": 0.7022251004818827,
+            "p90": 0.7179937273729593,
+            "p95": 0.7199648057343438,
+            "min": 0.682514316868037,
+            "max": 0.7219358840957284
+          },
+          "success": {
+            "count": 2,
+            "mean": 0.7022251004818827,
+            "p50": 0.7022251004818827,
+            "p90": 0.7179937273729593,
+            "p95": 0.7199648057343438,
+            "min": 0.682514316868037,
+            "max": 0.7219358840957284
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "sampled_gpu_peak_mib": {
+          "all_finished": {
+            "count": 2,
+            "mean": 4420.0,
+            "p50": 4420.0,
+            "p90": 4420.0,
+            "p95": 4420.0,
+            "min": 4420.0,
+            "max": 4420.0
+          },
+          "success": {
+            "count": 2,
+            "mean": 4420.0,
+            "p50": 4420.0,
+            "p90": 4420.0,
+            "p95": 4420.0,
+            "min": 4420.0,
+            "max": 4420.0
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        }
+      },
+      "metrics": {
+        "regions": {
+          "all_finished": {
+            "count": 2,
+            "mean": 1.5,
+            "p50": 1.5,
+            "p90": 1.9,
+            "p95": 1.95,
+            "min": 1.0,
+            "max": 2.0
+          },
+          "success": {
+            "count": 2,
+            "mean": 1.5,
+            "p50": 1.5,
+            "p90": 1.9,
+            "p95": 1.95,
+            "min": 1.0,
+            "max": 2.0
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "facets": {
+          "all_finished": {
+            "count": 2,
+            "mean": 57.5,
+            "p50": 57.5,
+            "p90": 68.3,
+            "p95": 69.65,
+            "min": 44.0,
+            "max": 71.0
+          },
+          "success": {
+            "count": 2,
+            "mean": 57.5,
+            "p50": 57.5,
+            "p90": 68.3,
+            "p95": 69.65,
+            "min": 44.0,
+            "max": 71.0
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "recovery_attempts": {
+          "all_finished": {
+            "count": 2,
+            "mean": 0.0,
+            "p50": 0.0,
+            "p90": 0.0,
+            "p95": 0.0,
+            "min": 0.0,
+            "max": 0.0
+          },
+          "success": {
+            "count": 2,
+            "mean": 0.0,
+            "p50": 0.0,
+            "p90": 0.0,
+            "p95": 0.0,
+            "min": 0.0,
+            "max": 0.0
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "normalized_path_length": {
+          "all_finished": {
+            "count": 2,
+            "mean": 1.0429652596327004,
+            "p50": 1.0429652596327004,
+            "p90": 1.0932897683682947,
+            "p95": 1.099580331960244,
+            "min": 0.9800596237132074,
+            "max": 1.1058708955521932
+          },
+          "success": {
+            "count": 2,
+            "mean": 1.0429652596327004,
+            "p50": 1.0429652596327004,
+            "p90": 1.0932897683682947,
+            "p95": 1.099580331960244,
+            "min": 0.9800596237132074,
+            "max": 1.1058708955521932
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "minimum_sampled_clearance_m": {
+          "all_finished": {
+            "count": 2,
+            "mean": 0.019025026584333436,
+            "p50": 0.019025026584333436,
+            "p90": 0.019025026584333436,
+            "p95": 0.019025026584333436,
+            "min": 0.019025026584333433,
+            "max": 0.019025026584333436
+          },
+          "success": {
+            "count": 2,
+            "mean": 0.019025026584333436,
+            "p50": 0.019025026584333436,
+            "p90": 0.019025026584333436,
+            "p95": 0.019025026584333436,
+            "min": 0.019025026584333433,
+            "max": 0.019025026584333436
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        }
+      },
+      "metrics_note": "Finite recorded values only, stratified by final status. Missing or unexecuted stages are not zero-filled; each statistic includes its observed count. Failure metrics describe saved candidates, not valid solutions.",
+      "stage_timing": {
+        "cold_e2e_seconds": {
+          "all_finished": {
+            "count": 2,
+            "mean": 1.135330549441278,
+            "p50": 1.135330549441278,
+            "p90": 1.1443089434877038,
+            "p95": 1.145431242743507,
+            "min": 1.1241075568832457,
+            "max": 1.1465535419993103
+          },
+          "success": {
+            "count": 2,
+            "mean": 1.135330549441278,
+            "p50": 1.135330549441278,
+            "p90": 1.1443089434877038,
+            "p95": 1.145431242743507,
+            "min": 1.1241075568832457,
+            "max": 1.1465535419993103
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "collision_recovery_seconds": {
+          "all_finished": {
+            "count": 2,
+            "mean": 0.0,
+            "p50": 0.0,
+            "p90": 0.0,
+            "p95": 0.0,
+            "min": 0.0,
+            "max": 0.0
+          },
+          "success": {
+            "count": 2,
+            "mean": 0.0,
+            "p50": 0.0,
+            "p90": 0.0,
+            "p95": 0.0,
+            "min": 0.0,
+            "max": 0.0
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "drm_path_seconds": {
+          "all_finished": {
+            "count": 2,
+            "mean": 0.016868330538272858,
+            "p50": 0.016868330538272858,
+            "p90": 0.01930628754198551,
+            "p95": 0.019611032167449593,
+            "min": 0.01382088428363204,
+            "max": 0.019915776792913675
+          },
+          "success": {
+            "count": 2,
+            "mean": 0.016868330538272858,
+            "p50": 0.016868330538272858,
+            "p90": 0.01930628754198551,
+            "p95": 0.019611032167449593,
+            "min": 0.01382088428363204,
+            "max": 0.019915776792913675
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "eizo_inflation_seconds": {
+          "all_finished": {
+            "count": 2,
+            "mean": 0.08106241631321609,
+            "p50": 0.08106241631321609,
+            "p90": 0.08889235421083867,
+            "p95": 0.0898710964480415,
+            "min": 0.07127499394118786,
+            "max": 0.09084983868524432
+          },
+          "success": {
+            "count": 2,
+            "mean": 0.08106241631321609,
+            "p50": 0.08106241631321609,
+            "p90": 0.08889235421083867,
+            "p95": 0.0898710964480415,
+            "min": 0.07127499394118786,
+            "max": 0.09084983868524432
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "gpu_initialization_warmup_seconds": {
+          "all_finished": {
+            "count": 2,
+            "mean": 0.11705187475308776,
+            "p50": 0.11705187475308776,
+            "p90": 0.12350869243964553,
+            "p95": 0.12431579465046524,
+            "min": 0.10898085264489055,
+            "max": 0.12512289686128497
+          },
+          "success": {
+            "count": 2,
+            "mean": 0.11705187475308776,
+            "p50": 0.11705187475308776,
+            "p90": 0.12350869243964553,
+            "p95": 0.12431579465046524,
+            "min": 0.10898085264489055,
+            "max": 0.12512289686128497
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "model_setup_seconds": {
+          "all_finished": {
+            "count": 2,
+            "mean": 0.0144555673468858,
+            "p50": 0.0144555673468858,
+            "p90": 0.014540343591943384,
+            "p95": 0.014550940622575581,
+            "min": 0.014349597040563822,
+            "max": 0.014561537653207779
+          },
+          "success": {
+            "count": 2,
+            "mean": 0.0144555673468858,
+            "p50": 0.0144555673468858,
+            "p90": 0.014540343591943384,
+            "p95": 0.014550940622575581,
+            "min": 0.014349597040563822,
+            "max": 0.014561537653207779
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "online_collision_map_seconds": {
+          "all_finished": {
+            "count": 2,
+            "mean": 0.002191749168559909,
+            "p50": 0.002191749168559909,
+            "p90": 0.0022123107220977543,
+            "p95": 0.002214880916289985,
+            "min": 0.002166047226637602,
+            "max": 0.002217451110482216
+          },
+          "success": {
+            "count": 2,
+            "mean": 0.002191749168559909,
+            "p50": 0.002191749168559909,
+            "p90": 0.0022123107220977543,
+            "p95": 0.002214880916289985,
+            "min": 0.002166047226637602,
+            "max": 0.002217451110482216
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "roadmap_load_seconds": {
+          "all_finished": {
+            "count": 2,
+            "mean": 0.01214997167699039,
+            "p50": 0.01214997167699039,
+            "p90": 0.01222869991324842,
+            "p95": 0.012238540942780674,
+            "min": 0.012051561381667852,
+            "max": 0.012248381972312927
+          },
+          "success": {
+            "count": 2,
+            "mean": 0.01214997167699039,
+            "p50": 0.01214997167699039,
+            "p90": 0.01222869991324842,
+            "p95": 0.012238540942780674,
+            "min": 0.012051561381667852,
+            "max": 0.012248381972312927
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "trajectory_optimization_seconds": {
+          "all_finished": {
+            "count": 2,
+            "mean": 0.0005881411489099264,
+            "p50": 0.0005881411489099264,
+            "p90": 0.0007375061046332121,
+            "p95": 0.0007561767240986228,
+            "min": 0.0004014349542558193,
+            "max": 0.0007748473435640335
+          },
+          "success": {
+            "count": 2,
+            "mean": 0.0005881411489099264,
+            "p50": 0.0005881411489099264,
+            "p90": 0.0007375061046332121,
+            "p95": 0.0007561767240986228,
+            "min": 0.0004014349542558193,
+            "max": 0.0007748473435640335
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "validation_seconds": {
+          "all_finished": {
+            "count": 2,
+            "mean": 0.596085001481697,
+            "p50": 0.596085001481697,
+            "p90": 0.6063160324003547,
+            "p95": 0.6075949112651869,
+            "min": 0.5832962128333747,
+            "max": 0.6088737901300192
+          },
+          "success": {
+            "count": 2,
+            "mean": 0.596085001481697,
+            "p50": 0.596085001481697,
+            "p90": 0.6063160324003547,
+            "p95": 0.6075949112651869,
+            "min": 0.5832962128333747,
+            "max": 0.6088737901300192
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "warm_query_seconds": {
+          "all_finished": {
+            "count": 2,
+            "mean": 0.7022251004818827,
+            "p50": 0.7022251004818827,
+            "p90": 0.7179937273729593,
+            "p95": 0.7199648057343438,
+            "min": 0.682514316868037,
+            "max": 0.7219358840957284
+          },
+          "success": {
+            "count": 2,
+            "mean": 0.7022251004818827,
+            "p50": 0.7022251004818827,
+            "p90": 0.7179937273729593,
+            "p95": 0.7199648057343438,
+            "min": 0.682514316868037,
+            "max": 0.7219358840957284
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        }
+      },
+      "success_cost": {
+        "count": 2,
+        "mean": 6.128424055384523,
+        "p50": 6.128424055384523,
+        "p90": 6.265127341761718,
+        "p95": 6.282215252558867,
+        "min": 5.9575449474130275,
+        "max": 6.299303163356017
+      },
+      "success_cost_note": "Descriptive only. Compare methods using paired common-success costs below; unequal success subsets are not rankings."
+    },
+    {
+      "method": "EI_ZO",
+      "objective": "minimum_distance",
+      "family": "dense_clutter",
+      "planned_jobs": 2,
+      "legal_input_jobs": 0,
+      "invalid_input_jobs": 2,
+      "pending_jobs": 0,
+      "status_counts": {
+        "invalid_endpoint": 2
+      },
+      "unconditional_success": {
+        "estimate": null,
+        "numerator": 0.0,
+        "denominator": 0.0,
+        "independent_scene_clusters": 0,
+        "ci95": null,
+        "bootstrap_seed": 45827,
+        "bootstrap_replicates": 2000,
+        "method": "scene-level cluster bootstrap; resample scene clusters with all paired jobs intact",
+        "limitation": "Fewer than two independent scene clusters; no confidence interval reported."
+      },
+      "conditional_on_drm_success": {
+        "estimate": null,
+        "numerator": 0.0,
+        "denominator": 0.0,
+        "independent_scene_clusters": 0,
+        "ci95": null,
+        "bootstrap_seed": 45827,
+        "bootstrap_replicates": 2000,
+        "method": "scene-level cluster bootstrap; resample scene clusters with all paired jobs intact",
+        "limitation": "Fewer than two independent scene clusters; no confidence interval reported."
+      },
+      "drm_status_unknown_jobs": 0,
+      "timing_and_memory": {
+        "cold_e2e_seconds": {
+          "all_finished": {
+            "count": 2,
+            "mean": 0.2164299958385527,
+            "p50": 0.2164299958385527,
+            "p90": 0.21728575425222516,
+            "p95": 0.21739272405393423,
+            "min": 0.21536029782146215,
+            "max": 0.21749969385564327
+          },
+          "success": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "failure": {
+            "count": 2,
+            "mean": 0.2164299958385527,
+            "p50": 0.2164299958385527,
+            "p90": 0.21728575425222516,
+            "p95": 0.21739272405393423,
+            "min": 0.21536029782146215,
+            "max": 0.21749969385564327
+          }
+        },
+        "warm_query_seconds": {
+          "all_finished": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "success": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "sampled_gpu_peak_mib": {
+          "all_finished": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "success": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        }
+      },
+      "metrics": {
+        "regions": {
+          "all_finished": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "success": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "facets": {
+          "all_finished": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "success": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "recovery_attempts": {
+          "all_finished": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "success": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "normalized_path_length": {
+          "all_finished": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "success": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "minimum_sampled_clearance_m": {
+          "all_finished": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "success": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        }
+      },
+      "metrics_note": "Finite recorded values only, stratified by final status. Missing or unexecuted stages are not zero-filled; each statistic includes its observed count. Failure metrics describe saved candidates, not valid solutions.",
+      "stage_timing": {
+        "cold_e2e_seconds": {
+          "all_finished": {
+            "count": 2,
+            "mean": 0.003911345498636365,
+            "p50": 0.003911345498636365,
+            "p90": 0.004270279640331864,
+            "p95": 0.004315146408043802,
+            "min": 0.0034626778215169907,
+            "max": 0.004360013175755739
+          },
+          "success": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "failure": {
+            "count": 2,
+            "mean": 0.003911345498636365,
+            "p50": 0.003911345498636365,
+            "p90": 0.004270279640331864,
+            "p95": 0.004315146408043802,
+            "min": 0.0034626778215169907,
+            "max": 0.004360013175755739
+          }
+        }
+      },
+      "success_cost": {
+        "count": 0,
+        "mean": null,
+        "p50": null,
+        "p90": null,
+        "p95": null,
+        "min": null,
+        "max": null
+      },
+      "success_cost_note": "Descriptive only. Compare methods using paired common-success costs below; unequal success subsets are not rankings."
+    },
+    {
+      "method": "EI_ZO",
+      "objective": "minimum_distance",
+      "family": "open_control",
+      "planned_jobs": 2,
+      "legal_input_jobs": 2,
+      "invalid_input_jobs": 0,
+      "pending_jobs": 0,
+      "status_counts": {
+        "success_validated_numerical": 2
+      },
+      "unconditional_success": {
+        "estimate": 1.0,
+        "numerator": 2.0,
+        "denominator": 2.0,
+        "independent_scene_clusters": 1,
+        "ci95": null,
+        "bootstrap_seed": 45827,
+        "bootstrap_replicates": 2000,
+        "method": "scene-level cluster bootstrap; resample scene clusters with all paired jobs intact",
+        "limitation": "Fewer than two independent scene clusters; no confidence interval reported."
+      },
+      "conditional_on_drm_success": {
+        "estimate": 1.0,
+        "numerator": 2.0,
+        "denominator": 2.0,
+        "independent_scene_clusters": 1,
+        "ci95": null,
+        "bootstrap_seed": 45827,
+        "bootstrap_replicates": 2000,
+        "method": "scene-level cluster bootstrap; resample scene clusters with all paired jobs intact",
+        "limitation": "Fewer than two independent scene clusters; no confidence interval reported."
+      },
+      "drm_status_unknown_jobs": 0,
+      "timing_and_memory": {
+        "cold_e2e_seconds": {
+          "all_finished": {
+            "count": 2,
+            "mean": 0.9813980862963945,
+            "p50": 0.9813980862963945,
+            "p90": 1.0623530285898597,
+            "p95": 1.0724723963765428,
+            "min": 0.880204408429563,
+            "max": 1.082591764163226
+          },
+          "success": {
+            "count": 2,
+            "mean": 0.9813980862963945,
+            "p50": 0.9813980862963945,
+            "p90": 1.0623530285898597,
+            "p95": 1.0724723963765428,
+            "min": 0.880204408429563,
+            "max": 1.082591764163226
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "warm_query_seconds": {
+          "all_finished": {
+            "count": 2,
+            "mean": 0.1740410071797669,
+            "p50": 0.1740410071797669,
+            "p90": 0.18193581448867918,
+            "p95": 0.1829226654022932,
+            "min": 0.16417249804362655,
+            "max": 0.18390951631590724
+          },
+          "success": {
+            "count": 2,
+            "mean": 0.1740410071797669,
+            "p50": 0.1740410071797669,
+            "p90": 0.18193581448867918,
+            "p95": 0.1829226654022932,
+            "min": 0.16417249804362655,
+            "max": 0.18390951631590724
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "sampled_gpu_peak_mib": {
+          "all_finished": {
+            "count": 2,
+            "mean": 4420.0,
+            "p50": 4420.0,
+            "p90": 4420.0,
+            "p95": 4420.0,
+            "min": 4420.0,
+            "max": 4420.0
+          },
+          "success": {
+            "count": 2,
+            "mean": 4420.0,
+            "p50": 4420.0,
+            "p90": 4420.0,
+            "p95": 4420.0,
+            "min": 4420.0,
+            "max": 4420.0
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        }
+      },
+      "metrics": {
+        "regions": {
+          "all_finished": {
+            "count": 2,
+            "mean": 1.5,
+            "p50": 1.5,
+            "p90": 1.9,
+            "p95": 1.95,
+            "min": 1.0,
+            "max": 2.0
+          },
+          "success": {
+            "count": 2,
+            "mean": 1.5,
+            "p50": 1.5,
+            "p90": 1.9,
+            "p95": 1.95,
+            "min": 1.0,
+            "max": 2.0
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "facets": {
+          "all_finished": {
+            "count": 2,
+            "mean": 57.5,
+            "p50": 57.5,
+            "p90": 69.9,
+            "p95": 71.45,
+            "min": 42.0,
+            "max": 73.0
+          },
+          "success": {
+            "count": 2,
+            "mean": 57.5,
+            "p50": 57.5,
+            "p90": 69.9,
+            "p95": 71.45,
+            "min": 42.0,
+            "max": 73.0
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "recovery_attempts": {
+          "all_finished": {
+            "count": 2,
+            "mean": 0.0,
+            "p50": 0.0,
+            "p90": 0.0,
+            "p95": 0.0,
+            "min": 0.0,
+            "max": 0.0
+          },
+          "success": {
+            "count": 2,
+            "mean": 0.0,
+            "p50": 0.0,
+            "p90": 0.0,
+            "p95": 0.0,
+            "min": 0.0,
+            "max": 0.0
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "normalized_path_length": {
+          "all_finished": {
+            "count": 2,
+            "mean": 0.9081853539647845,
+            "p50": 0.9081853539647845,
+            "p90": 0.9817516472177886,
+            "p95": 0.9909474338744141,
+            "min": 0.8162274873985293,
+            "max": 1.0001432205310397
+          },
+          "success": {
+            "count": 2,
+            "mean": 0.9081853539647845,
+            "p50": 0.9081853539647845,
+            "p90": 0.9817516472177886,
+            "p95": 0.9909474338744141,
+            "min": 0.8162274873985293,
+            "max": 1.0001432205310397
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "minimum_sampled_clearance_m": {
+          "all_finished": {
+            "count": 2,
+            "mean": 0.0091510926776687,
+            "p50": 0.0091510926776687,
+            "p90": 0.012780942811352876,
+            "p95": 0.013234674078063396,
+            "min": 0.004613780010563483,
+            "max": 0.013688405344773918
+          },
+          "success": {
+            "count": 2,
+            "mean": 0.0091510926776687,
+            "p50": 0.0091510926776687,
+            "p90": 0.012780942811352876,
+            "p95": 0.013234674078063396,
+            "min": 0.004613780010563483,
+            "max": 0.013688405344773918
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        }
+      },
+      "metrics_note": "Finite recorded values only, stratified by final status. Missing or unexecuted stages are not zero-filled; each statistic includes its observed count. Failure metrics describe saved candidates, not valid solutions.",
+      "stage_timing": {
+        "cold_e2e_seconds": {
+          "all_finished": {
+            "count": 2,
+            "mean": 0.6061762615572661,
+            "p50": 0.6061762615572661,
+            "p90": 0.609167501097545,
+            "p95": 0.6095414060400799,
+            "min": 0.6024372121319175,
+            "max": 0.6099153109826148
+          },
+          "success": {
+            "count": 2,
+            "mean": 0.6061762615572661,
+            "p50": 0.6061762615572661,
+            "p90": 0.609167501097545,
+            "p95": 0.6095414060400799,
+            "min": 0.6024372121319175,
+            "max": 0.6099153109826148
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "collision_recovery_seconds": {
+          "all_finished": {
+            "count": 2,
+            "mean": 0.0,
+            "p50": 0.0,
+            "p90": 0.0,
+            "p95": 0.0,
+            "min": 0.0,
+            "max": 0.0
+          },
+          "success": {
+            "count": 2,
+            "mean": 0.0,
+            "p50": 0.0,
+            "p90": 0.0,
+            "p95": 0.0,
+            "min": 0.0,
+            "max": 0.0
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "drm_path_seconds": {
+          "all_finished": {
+            "count": 2,
+            "mean": 0.007973885396495461,
+            "p50": 0.007973885396495461,
+            "p90": 0.008044074522331357,
+            "p95": 0.008052848163060844,
+            "min": 0.007886148989200592,
+            "max": 0.008061621803790331
+          },
+          "success": {
+            "count": 2,
+            "mean": 0.007973885396495461,
+            "p50": 0.007973885396495461,
+            "p90": 0.008044074522331357,
+            "p95": 0.008052848163060844,
+            "min": 0.007886148989200592,
+            "max": 0.008061621803790331
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "eizo_inflation_seconds": {
+          "all_finished": {
+            "count": 2,
+            "mean": 0.03800677158869803,
+            "p50": 0.03800677158869803,
+            "p90": 0.046299053775146606,
+            "p95": 0.04733558904845268,
+            "min": 0.027641418855637312,
+            "max": 0.04837212432175875
+          },
+          "success": {
+            "count": 2,
+            "mean": 0.03800677158869803,
+            "p50": 0.03800677158869803,
+            "p90": 0.046299053775146606,
+            "p95": 0.04733558904845268,
+            "min": 0.027641418855637312,
+            "max": 0.04837212432175875
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "gpu_initialization_warmup_seconds": {
+          "all_finished": {
+            "count": 2,
+            "mean": 0.11869919812306762,
+            "p50": 0.11869919812306762,
+            "p90": 0.12340997187420726,
+            "p95": 0.12399881859309972,
+            "min": 0.11281073093414307,
+            "max": 0.12458766531199217
+          },
+          "success": {
+            "count": 2,
+            "mean": 0.11869919812306762,
+            "p50": 0.11869919812306762,
+            "p90": 0.12340997187420726,
+            "p95": 0.12399881859309972,
+            "min": 0.11281073093414307,
+            "max": 0.12458766531199217
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "model_setup_seconds": {
+          "all_finished": {
+            "count": 2,
+            "mean": 0.014495599083602428,
+            "p50": 0.014495599083602428,
+            "p90": 0.014619786478579044,
+            "p95": 0.014635309902951121,
+            "min": 0.014340364839881659,
+            "max": 0.014650833327323198
+          },
+          "success": {
+            "count": 2,
+            "mean": 0.014495599083602428,
+            "p50": 0.014495599083602428,
+            "p90": 0.014619786478579044,
+            "p95": 0.014635309902951121,
+            "min": 0.014340364839881659,
+            "max": 0.014650833327323198
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "online_collision_map_seconds": {
+          "all_finished": {
+            "count": 2,
+            "mean": 1.7116311937570572e-05,
+            "p50": 1.7116311937570572e-05,
+            "p90": 1.7334986478090286e-05,
+            "p95": 1.7362320795655252e-05,
+            "min": 1.684296876192093e-05,
+            "max": 1.7389655113220215e-05
+          },
+          "success": {
+            "count": 2,
+            "mean": 1.7116311937570572e-05,
+            "p50": 1.7116311937570572e-05,
+            "p90": 1.7334986478090286e-05,
+            "p95": 1.7362320795655252e-05,
+            "min": 1.684296876192093e-05,
+            "max": 1.7389655113220215e-05
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "roadmap_load_seconds": {
+          "all_finished": {
+            "count": 2,
+            "mean": 0.012156778015196323,
+            "p50": 0.012156778015196323,
+            "p90": 0.01224286835640669,
+            "p95": 0.012253629649057985,
+            "min": 0.012049165088683367,
+            "max": 0.01226439094170928
+          },
+          "success": {
+            "count": 2,
+            "mean": 0.012156778015196323,
+            "p50": 0.012156778015196323,
+            "p90": 0.01224286835640669,
+            "p95": 0.012253629649057985,
+            "min": 0.012049165088683367,
+            "max": 0.01226439094170928
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "trajectory_optimization_seconds": {
+          "all_finished": {
+            "count": 2,
+            "mean": 0.0005472733173519373,
+            "p50": 0.0005472733173519373,
+            "p90": 0.0006504785735160113,
+            "p95": 0.0006633792305365205,
+            "min": 0.00041826674714684486,
+            "max": 0.0006762798875570297
+          },
+          "success": {
+            "count": 2,
+            "mean": 0.0005472733173519373,
+            "p50": 0.0005472733173519373,
+            "p90": 0.0006504785735160113,
+            "p95": 0.0006633792305365205,
+            "min": 0.00041826674714684486,
+            "max": 0.0006762798875570297
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "validation_seconds": {
+          "all_finished": {
+            "count": 2,
+            "mean": 0.12268827948719263,
+            "p50": 0.12268827948719263,
+            "p90": 0.13911584708839655,
+            "p95": 0.14116929303854703,
+            "min": 0.10215381998568773,
+            "max": 0.14322273898869753
+          },
+          "success": {
+            "count": 2,
+            "mean": 0.12268827948719263,
+            "p50": 0.12268827948719263,
+            "p90": 0.13911584708839655,
+            "p95": 0.14116929303854703,
+            "min": 0.10215381998568773,
+            "max": 0.14322273898869753
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "warm_query_seconds": {
+          "all_finished": {
+            "count": 2,
+            "mean": 0.1740410071797669,
+            "p50": 0.1740410071797669,
+            "p90": 0.18193581448867918,
+            "p95": 0.1829226654022932,
+            "min": 0.16417249804362655,
+            "max": 0.18390951631590724
+          },
+          "success": {
+            "count": 2,
+            "mean": 0.1740410071797669,
+            "p50": 0.1740410071797669,
+            "p90": 0.18193581448867918,
+            "p95": 0.1829226654022932,
+            "min": 0.16417249804362655,
+            "max": 0.18390951631590724
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        }
+      },
+      "success_cost": {
+        "count": 2,
+        "mean": 5.081743285044189,
+        "p50": 5.081743285044189,
+        "p90": 5.782696806815373,
+        "p95": 5.870315997036771,
+        "min": 4.205551382830208,
+        "max": 5.957935187258169
+      },
+      "success_cost_note": "Descriptive only. Compare methods using paired common-success costs below; unequal success subsets are not rankings."
+    },
+    {
+      "method": "EI_ZO",
+      "objective": "minimum_distance",
+      "family": "route_choice",
+      "planned_jobs": 2,
+      "legal_input_jobs": 2,
+      "invalid_input_jobs": 0,
+      "pending_jobs": 0,
+      "status_counts": {
+        "frontend_failed": 2
+      },
+      "unconditional_success": {
+        "estimate": 0.0,
+        "numerator": 0.0,
+        "denominator": 2.0,
+        "independent_scene_clusters": 1,
+        "ci95": null,
+        "bootstrap_seed": 45827,
+        "bootstrap_replicates": 2000,
+        "method": "scene-level cluster bootstrap; resample scene clusters with all paired jobs intact",
+        "limitation": "Fewer than two independent scene clusters; no confidence interval reported."
+      },
+      "conditional_on_drm_success": {
+        "estimate": null,
+        "numerator": 0.0,
+        "denominator": 0.0,
+        "independent_scene_clusters": 0,
+        "ci95": null,
+        "bootstrap_seed": 45827,
+        "bootstrap_replicates": 2000,
+        "method": "scene-level cluster bootstrap; resample scene clusters with all paired jobs intact",
+        "limitation": "Fewer than two independent scene clusters; no confidence interval reported."
+      },
+      "drm_status_unknown_jobs": 0,
+      "timing_and_memory": {
+        "cold_e2e_seconds": {
+          "all_finished": {
+            "count": 2,
+            "mean": 0.8832983684260398,
+            "p50": 0.8832983684260398,
+            "p90": 0.8857870026025921,
+            "p95": 0.8860980818746611,
+            "min": 0.8801875757053494,
+            "max": 0.8864091611467302
+          },
+          "success": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "failure": {
+            "count": 2,
+            "mean": 0.8832983684260398,
+            "p50": 0.8832983684260398,
+            "p90": 0.8857870026025921,
+            "p95": 0.8860980818746611,
+            "min": 0.8801875757053494,
+            "max": 0.8864091611467302
+          }
+        },
+        "warm_query_seconds": {
+          "all_finished": {
+            "count": 2,
+            "mean": 0.01491192658431828,
+            "p50": 0.01491192658431828,
+            "p90": 0.01652767010964453,
+            "p95": 0.016729638050310313,
+            "min": 0.012892247177660465,
+            "max": 0.016931605990976095
+          },
+          "success": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "failure": {
+            "count": 2,
+            "mean": 0.01491192658431828,
+            "p50": 0.01491192658431828,
+            "p90": 0.01652767010964453,
+            "p95": 0.016729638050310313,
+            "min": 0.012892247177660465,
+            "max": 0.016931605990976095
+          }
+        },
+        "sampled_gpu_peak_mib": {
+          "all_finished": {
+            "count": 2,
+            "mean": 188.0,
+            "p50": 188.0,
+            "p90": 188.0,
+            "p95": 188.0,
+            "min": 188.0,
+            "max": 188.0
+          },
+          "success": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "failure": {
+            "count": 2,
+            "mean": 188.0,
+            "p50": 188.0,
+            "p90": 188.0,
+            "p95": 188.0,
+            "min": 188.0,
+            "max": 188.0
+          }
+        }
+      },
+      "metrics": {
+        "regions": {
+          "all_finished": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "success": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "facets": {
+          "all_finished": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "success": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "recovery_attempts": {
+          "all_finished": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "success": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "normalized_path_length": {
+          "all_finished": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "success": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "minimum_sampled_clearance_m": {
+          "all_finished": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "success": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        }
+      },
+      "metrics_note": "Finite recorded values only, stratified by final status. Missing or unexecuted stages are not zero-filled; each statistic includes its observed count. Failure metrics describe saved candidates, not valid solutions.",
+      "stage_timing": {
+        "cold_e2e_seconds": {
+          "all_finished": {
+            "count": 2,
+            "mean": 0.4573023726698011,
+            "p50": 0.4573023726698011,
+            "p90": 0.4583698577713221,
+            "p95": 0.45850329340901225,
+            "min": 0.45596801629289985,
+            "max": 0.4586367290467024
+          },
+          "success": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "failure": {
+            "count": 2,
+            "mean": 0.4573023726698011,
+            "p50": 0.4573023726698011,
+            "p90": 0.4583698577713221,
+            "p95": 0.45850329340901225,
+            "min": 0.45596801629289985,
+            "max": 0.4586367290467024
+          }
+        },
+        "gpu_initialization_warmup_seconds": {
+          "all_finished": {
+            "count": 2,
+            "mean": 0.1288923299871385,
+            "p50": 0.1288923299871385,
+            "p90": 0.1301685011945665,
+            "p95": 0.13032802259549497,
+            "min": 0.12729711597785354,
+            "max": 0.13048754399642348
+          },
+          "success": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "failure": {
+            "count": 2,
+            "mean": 0.1288923299871385,
+            "p50": 0.1288923299871385,
+            "p90": 0.1301685011945665,
+            "p95": 0.13032802259549497,
+            "min": 0.12729711597785354,
+            "max": 0.13048754399642348
+          }
+        },
+        "model_setup_seconds": {
+          "all_finished": {
+            "count": 2,
+            "mean": 0.01444881223142147,
+            "p50": 0.01444881223142147,
+            "p90": 0.01445811465382576,
+            "p95": 0.014459277456626295,
+            "min": 0.014437184203416109,
+            "max": 0.014460440259426832
+          },
+          "success": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "failure": {
+            "count": 2,
+            "mean": 0.01444881223142147,
+            "p50": 0.01444881223142147,
+            "p90": 0.01445811465382576,
+            "p95": 0.014459277456626295,
+            "min": 0.014437184203416109,
+            "max": 0.014460440259426832
+          }
+        },
+        "online_collision_map_seconds": {
+          "all_finished": {
+            "count": 2,
+            "mean": 0.003326103324070573,
+            "p50": 0.003326103324070573,
+            "p90": 0.0033316012937575578,
+            "p95": 0.003332288539968431,
+            "min": 0.0033192308619618416,
+            "max": 0.003332975786179304
+          },
+          "success": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "failure": {
+            "count": 2,
+            "mean": 0.003326103324070573,
+            "p50": 0.003326103324070573,
+            "p90": 0.0033316012937575578,
+            "p95": 0.003332288539968431,
+            "min": 0.0033192308619618416,
+            "max": 0.003332975786179304
+          }
+        },
+        "roadmap_load_seconds": {
+          "all_finished": {
+            "count": 2,
+            "mean": 0.012308667181059718,
+            "p50": 0.012308667181059718,
+            "p90": 0.012352144857868553,
+            "p95": 0.012357579567469657,
+            "min": 0.012254320085048676,
+            "max": 0.01236301427707076
+          },
+          "success": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "failure": {
+            "count": 2,
+            "mean": 0.012308667181059718,
+            "p50": 0.012308667181059718,
+            "p90": 0.012352144857868553,
+            "p95": 0.012357579567469657,
+            "min": 0.012254320085048676,
+            "max": 0.01236301427707076
+          }
+        },
+        "warm_query_seconds": {
+          "all_finished": {
+            "count": 2,
+            "mean": 0.01491192658431828,
+            "p50": 0.01491192658431828,
+            "p90": 0.01652767010964453,
+            "p95": 0.016729638050310313,
+            "min": 0.012892247177660465,
+            "max": 0.016931605990976095
+          },
+          "success": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "failure": {
+            "count": 2,
+            "mean": 0.01491192658431828,
+            "p50": 0.01491192658431828,
+            "p90": 0.01652767010964453,
+            "p95": 0.016729638050310313,
+            "min": 0.012892247177660465,
+            "max": 0.016931605990976095
+          }
+        }
+      },
+      "success_cost": {
+        "count": 0,
+        "mean": null,
+        "p50": null,
+        "p90": null,
+        "p95": null,
+        "min": null,
+        "max": null
+      },
+      "success_cost_note": "Descriptive only. Compare methods using paired common-success costs below; unequal success subsets are not rankings."
+    },
+    {
+      "method": "EI_ZO",
+      "objective": "minimum_distance",
+      "family": "sparse_clutter",
+      "planned_jobs": 2,
+      "legal_input_jobs": 2,
+      "invalid_input_jobs": 0,
+      "pending_jobs": 0,
+      "status_counts": {
+        "frontend_failed": 2
+      },
+      "unconditional_success": {
+        "estimate": 0.0,
+        "numerator": 0.0,
+        "denominator": 2.0,
+        "independent_scene_clusters": 1,
+        "ci95": null,
+        "bootstrap_seed": 45827,
+        "bootstrap_replicates": 2000,
+        "method": "scene-level cluster bootstrap; resample scene clusters with all paired jobs intact",
+        "limitation": "Fewer than two independent scene clusters; no confidence interval reported."
+      },
+      "conditional_on_drm_success": {
+        "estimate": null,
+        "numerator": 0.0,
+        "denominator": 0.0,
+        "independent_scene_clusters": 0,
+        "ci95": null,
+        "bootstrap_seed": 45827,
+        "bootstrap_replicates": 2000,
+        "method": "scene-level cluster bootstrap; resample scene clusters with all paired jobs intact",
+        "limitation": "Fewer than two independent scene clusters; no confidence interval reported."
+      },
+      "drm_status_unknown_jobs": 0,
+      "timing_and_memory": {
+        "cold_e2e_seconds": {
+          "all_finished": {
+            "count": 2,
+            "mean": 1.0910495859570801,
+            "p50": 1.0910495859570801,
+            "p90": 1.1000378740020096,
+            "p95": 1.101161410007626,
+            "min": 1.0798142259009182,
+            "max": 1.102284946013242
+          },
+          "success": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "failure": {
+            "count": 2,
+            "mean": 1.0910495859570801,
+            "p50": 1.0910495859570801,
+            "p90": 1.1000378740020096,
+            "p95": 1.101161410007626,
+            "min": 1.0798142259009182,
+            "max": 1.102284946013242
+          }
+        },
+        "warm_query_seconds": {
+          "all_finished": {
+            "count": 2,
+            "mean": 0.31085913931019604,
+            "p50": 0.31085913931019604,
+            "p90": 0.31985239558853207,
+            "p95": 0.3209765526233241,
+            "min": 0.299617568962276,
+            "max": 0.3221007096581161
+          },
+          "success": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "failure": {
+            "count": 2,
+            "mean": 0.31085913931019604,
+            "p50": 0.31085913931019604,
+            "p90": 0.31985239558853207,
+            "p95": 0.3209765526233241,
+            "min": 0.299617568962276,
+            "max": 0.3221007096581161
+          }
+        },
+        "sampled_gpu_peak_mib": {
+          "all_finished": {
+            "count": 2,
+            "mean": 191.0,
+            "p50": 191.0,
+            "p90": 191.8,
+            "p95": 191.9,
+            "min": 190.0,
+            "max": 192.0
+          },
+          "success": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "failure": {
+            "count": 2,
+            "mean": 191.0,
+            "p50": 191.0,
+            "p90": 191.8,
+            "p95": 191.9,
+            "min": 190.0,
+            "max": 192.0
+          }
+        }
+      },
+      "metrics": {
+        "regions": {
+          "all_finished": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "success": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "facets": {
+          "all_finished": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "success": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "recovery_attempts": {
+          "all_finished": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "success": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "normalized_path_length": {
+          "all_finished": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "success": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "minimum_sampled_clearance_m": {
+          "all_finished": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "success": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        }
+      },
+      "metrics_note": "Finite recorded values only, stratified by final status. Missing or unexecuted stages are not zero-filled; each statistic includes its observed count. Failure metrics describe saved candidates, not valid solutions.",
+      "stage_timing": {
+        "cold_e2e_seconds": {
+          "all_finished": {
+            "count": 2,
+            "mean": 0.7557452784385532,
+            "p50": 0.7557452784385532,
+            "p90": 0.7662042669486254,
+            "p95": 0.7675116405123845,
+            "min": 0.7426715428009629,
+            "max": 0.7688190140761435
+          },
+          "success": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "failure": {
+            "count": 2,
+            "mean": 0.7557452784385532,
+            "p50": 0.7557452784385532,
+            "p90": 0.7662042669486254,
+            "p95": 0.7675116405123845,
+            "min": 0.7426715428009629,
+            "max": 0.7688190140761435
+          }
+        },
+        "drm_path_seconds": {
+          "all_finished": {
+            "count": 2,
+            "mean": 0.30827806680463254,
+            "p50": 0.30827806680463254,
+            "p90": 0.3171573347877711,
+            "p95": 0.3182672432856634,
+            "min": 0.29717898182570934,
+            "max": 0.31937715178355575
+          },
+          "success": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "failure": {
+            "count": 2,
+            "mean": 0.30827806680463254,
+            "p50": 0.30827806680463254,
+            "p90": 0.3171573347877711,
+            "p95": 0.3182672432856634,
+            "min": 0.29717898182570934,
+            "max": 0.31937715178355575
+          }
+        },
+        "gpu_initialization_warmup_seconds": {
+          "all_finished": {
+            "count": 2,
+            "mean": 0.13249592413194478,
+            "p50": 0.13249592413194478,
+            "p90": 0.15144373760558666,
+            "p95": 0.1538122142897919,
+            "min": 0.10881115728989244,
+            "max": 0.15618069097399712
+          },
+          "success": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "failure": {
+            "count": 2,
+            "mean": 0.13249592413194478,
+            "p50": 0.13249592413194478,
+            "p90": 0.15144373760558666,
+            "p95": 0.1538122142897919,
+            "min": 0.10881115728989244,
+            "max": 0.15618069097399712
+          }
+        },
+        "model_setup_seconds": {
+          "all_finished": {
+            "count": 2,
+            "mean": 0.014342594193294644,
+            "p50": 0.014342594193294644,
+            "p90": 0.014377264166250825,
+            "p95": 0.014381597912870348,
+            "min": 0.014299256727099419,
+            "max": 0.01438593165948987
+          },
+          "success": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "failure": {
+            "count": 2,
+            "mean": 0.014342594193294644,
+            "p50": 0.014342594193294644,
+            "p90": 0.014377264166250825,
+            "p95": 0.014381597912870348,
+            "min": 0.014299256727099419,
+            "max": 0.01438593165948987
+          }
+        },
+        "online_collision_map_seconds": {
+          "all_finished": {
+            "count": 2,
+            "mean": 0.0015827214810997248,
+            "p50": 0.0015827214810997248,
+            "p90": 0.0015943915117532016,
+            "p95": 0.0015958502655848861,
+            "min": 0.0015681339427828789,
+            "max": 0.0015973090194165707
+          },
+          "success": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "failure": {
+            "count": 2,
+            "mean": 0.0015827214810997248,
+            "p50": 0.0015827214810997248,
+            "p90": 0.0015943915117532016,
+            "p95": 0.0015958502655848861,
+            "min": 0.0015681339427828789,
+            "max": 0.0015973090194165707
+          }
+        },
+        "roadmap_load_seconds": {
+          "all_finished": {
+            "count": 2,
+            "mean": 0.012291967635974288,
+            "p50": 0.012291967635974288,
+            "p90": 0.012571018515154719,
+            "p95": 0.012605899875052274,
+            "min": 0.011943154036998749,
+            "max": 0.012640781234949827
+          },
+          "success": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "failure": {
+            "count": 2,
+            "mean": 0.012291967635974288,
+            "p50": 0.012291967635974288,
+            "p90": 0.012571018515154719,
+            "p95": 0.012605899875052274,
+            "min": 0.011943154036998749,
+            "max": 0.012640781234949827
+          }
+        },
+        "warm_query_seconds": {
+          "all_finished": {
+            "count": 2,
+            "mean": 0.31085913931019604,
+            "p50": 0.31085913931019604,
+            "p90": 0.31985239558853207,
+            "p95": 0.3209765526233241,
+            "min": 0.299617568962276,
+            "max": 0.3221007096581161
+          },
+          "success": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "failure": {
+            "count": 2,
+            "mean": 0.31085913931019604,
+            "p50": 0.31085913931019604,
+            "p90": 0.31985239558853207,
+            "p95": 0.3209765526233241,
+            "min": 0.299617568962276,
+            "max": 0.3221007096581161
+          }
+        }
+      },
+      "success_cost": {
+        "count": 0,
+        "mean": null,
+        "p50": null,
+        "p90": null,
+        "p95": null,
+        "min": null,
+        "max": null
+      },
+      "success_cost_note": "Descriptive only. Compare methods using paired common-success costs below; unequal success subsets are not rankings."
+    },
+    {
+      "method": "EI_ZO",
+      "objective": "minimum_time",
+      "family": "all",
+      "planned_jobs": 10,
+      "legal_input_jobs": 8,
+      "invalid_input_jobs": 2,
+      "pending_jobs": 0,
+      "status_counts": {
+        "frontend_failed": 4,
+        "invalid_endpoint": 2,
+        "success_validated_numerical": 4
+      },
+      "unconditional_success": {
+        "estimate": 0.5,
+        "numerator": 4.0,
+        "denominator": 8.0,
+        "independent_scene_clusters": 4,
+        "ci95": [
+          0.0,
+          1.0
+        ],
+        "bootstrap_seed": 45827,
+        "bootstrap_replicates": 2000,
+        "method": "scene-level cluster bootstrap; resample scene clusters with all paired jobs intact"
+      },
+      "conditional_on_drm_success": {
+        "estimate": 1.0,
+        "numerator": 4.0,
+        "denominator": 4.0,
+        "independent_scene_clusters": 2,
+        "ci95": [
+          1.0,
+          1.0
+        ],
+        "bootstrap_seed": 45827,
+        "bootstrap_replicates": 2000,
+        "method": "scene-level cluster bootstrap; resample scene clusters with all paired jobs intact"
+      },
+      "drm_status_unknown_jobs": 0,
+      "timing_and_memory": {
+        "cold_e2e_seconds": {
+          "all_finished": {
+            "count": 10,
+            "mean": 1.0249450487084686,
+            "p50": 1.090627958998084,
+            "p90": 1.7549219849985092,
+            "p95": 1.8498462574323637,
+            "min": 0.21534171607345343,
+            "max": 1.9447705298662186
+          },
+          "success": {
+            "count": 4,
+            "mean": 1.4702893687644973,
+            "p50": 1.4232266310136765,
+            "p90": 1.881487681576982,
+            "p95": 1.9131291057216002,
+            "min": 1.0899336831644177,
+            "max": 1.9447705298662186
+          },
+          "failure": {
+            "count": 6,
+            "mean": 0.7280488353377829,
+            "p50": 0.876846531406045,
+            "p90": 1.0919447960332036,
+            "p95": 1.0922560766339302,
+            "min": 0.21534171607345343,
+            "max": 1.0925673572346568
+          }
+        },
+        "warm_query_seconds": {
+          "all_finished": {
+            "count": 8,
+            "mean": 0.40676747541874647,
+            "p50": 0.2725248569622636,
+            "p90": 1.0311758233234285,
+            "p95": 1.0887500012293456,
+            "min": 0.013043739832937717,
+            "max": 1.146324179135263
+          },
+          "success": {
+            "count": 4,
+            "mean": 0.6569515555165708,
+            "p50": 0.6269667444285005,
+            "p90": 1.096974883787334,
+            "p95": 1.1216495314612984,
+            "min": 0.2275485540740192,
+            "max": 1.146324179135263
+          },
+          "failure": {
+            "count": 4,
+            "mean": 0.15658339532092214,
+            "p50": 0.1454020095989108,
+            "p90": 0.3076229014899582,
+            "p95": 0.31505436187144364,
+            "min": 0.013043739832937717,
+            "max": 0.3224858222529292
+          }
+        },
+        "sampled_gpu_peak_mib": {
+          "all_finished": {
+            "count": 8,
+            "mean": 2304.25,
+            "p50": 2305.0,
+            "p90": 4420.0,
+            "p95": 4420.0,
+            "min": 188.0,
+            "max": 4420.0
+          },
+          "success": {
+            "count": 4,
+            "mean": 4420.0,
+            "p50": 4420.0,
+            "p90": 4420.0,
+            "p95": 4420.0,
+            "min": 4420.0,
+            "max": 4420.0
+          },
+          "failure": {
+            "count": 4,
+            "mean": 188.5,
+            "p50": 188.0,
+            "p90": 189.4,
+            "p95": 189.7,
+            "min": 188.0,
+            "max": 190.0
+          }
+        }
+      },
+      "metrics": {
+        "regions": {
+          "all_finished": {
+            "count": 4,
+            "mean": 1.5,
+            "p50": 1.5,
+            "p90": 2.0,
+            "p95": 2.0,
+            "min": 1.0,
+            "max": 2.0
+          },
+          "success": {
+            "count": 4,
+            "mean": 1.5,
+            "p50": 1.5,
+            "p90": 2.0,
+            "p95": 2.0,
+            "min": 1.0,
+            "max": 2.0
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "facets": {
+          "all_finished": {
+            "count": 4,
+            "mean": 57.5,
+            "p50": 57.5,
+            "p90": 72.4,
+            "p95": 72.7,
+            "min": 42.0,
+            "max": 73.0
+          },
+          "success": {
+            "count": 4,
+            "mean": 57.5,
+            "p50": 57.5,
+            "p90": 72.4,
+            "p95": 72.7,
+            "min": 42.0,
+            "max": 73.0
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "recovery_attempts": {
+          "all_finished": {
+            "count": 4,
+            "mean": 0.0,
+            "p50": 0.0,
+            "p90": 0.0,
+            "p95": 0.0,
+            "min": 0.0,
+            "max": 0.0
+          },
+          "success": {
+            "count": 4,
+            "mean": 0.0,
+            "p50": 0.0,
+            "p90": 0.0,
+            "p95": 0.0,
+            "min": 0.0,
+            "max": 0.0
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "normalized_path_length": {
+          "all_finished": {
+            "count": 4,
+            "mean": 1.054591486230148,
+            "p50": 1.005236786527186,
+            "p90": 1.256617822328035,
+            "p95": 1.3087586661208523,
+            "min": 0.84699286195255,
+            "max": 1.36089950991367
+          },
+          "success": {
+            "count": 4,
+            "mean": 1.054591486230148,
+            "p50": 1.005236786527186,
+            "p90": 1.256617822328035,
+            "p95": 1.3087586661208523,
+            "min": 0.84699286195255,
+            "max": 1.36089950991367
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "minimum_sampled_clearance_m": {
+          "all_finished": {
+            "count": 4,
+            "mean": 0.016845448859199055,
+            "p50": 0.01902502658433334,
+            "p90": 0.019025026584333443,
+            "p95": 0.019025026584333447,
+            "min": 0.01030671568379609,
+            "max": 0.01902502658433345
+          },
+          "success": {
+            "count": 4,
+            "mean": 0.016845448859199055,
+            "p50": 0.01902502658433334,
+            "p90": 0.019025026584333443,
+            "p95": 0.019025026584333447,
+            "min": 0.01030671568379609,
+            "max": 0.01902502658433345
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        }
+      },
+      "metrics_note": "Finite recorded values only, stratified by final status. Missing or unexecuted stages are not zero-filled; each statistic includes its observed count. Failure metrics describe saved candidates, not valid solutions.",
+      "stage_timing": {
+        "cold_e2e_seconds": {
+          "all_finished": {
+            "count": 10,
+            "mean": 0.668869313923642,
+            "p50": 0.6741348744835705,
+            "p90": 1.4137489160522818,
+            "p95": 1.4891182006336747,
+            "min": 0.005432297009974718,
+            "max": 1.5644874852150679
+          },
+          "success": {
+            "count": 4,
+            "mean": 1.082063239067793,
+            "p50": 1.0549085310194641,
+            "p90": 1.5142412954941393,
+            "p95": 1.5393643903546035,
+            "min": 0.6539484090171754,
+            "max": 1.5644874852150679
+          },
+          "failure": {
+            "count": 6,
+            "mean": 0.3934066971608748,
+            "p50": 0.4580913675017655,
+            "p90": 0.7164565015118569,
+            "p95": 0.7275240822928026,
+            "min": 0.005432297009974718,
+            "max": 0.7385916630737484
+          }
+        },
+        "collision_recovery_seconds": {
+          "all_finished": {
+            "count": 4,
+            "mean": 0.0,
+            "p50": 0.0,
+            "p90": 0.0,
+            "p95": 0.0,
+            "min": 0.0,
+            "max": 0.0
+          },
+          "success": {
+            "count": 4,
+            "mean": 0.0,
+            "p50": 0.0,
+            "p90": 0.0,
+            "p95": 0.0,
+            "min": 0.0,
+            "max": 0.0
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "drm_path_seconds": {
+          "all_finished": {
+            "count": 6,
+            "mean": 0.10587747542498012,
+            "p50": 0.01454441831447184,
+            "p90": 0.2953807725571096,
+            "p95": 0.3077692249789834,
+            "min": 0.007684000767767429,
+            "max": 0.3201576774008572
+          },
+          "success": {
+            "count": 4,
+            "mean": 0.011125826858915389,
+            "p50": 0.010790498927235603,
+            "p90": 0.014821974514052273,
+            "p95": 0.015030141663737595,
+            "min": 0.007684000767767429,
+            "max": 0.015238308813422918
+          },
+          "failure": {
+            "count": 2,
+            "mean": 0.2953807725571096,
+            "p50": 0.2953807725571096,
+            "p90": 0.3152022964321077,
+            "p95": 0.31767998691648247,
+            "min": 0.270603867713362,
+            "max": 0.3201576774008572
+          }
+        },
+        "eizo_inflation_seconds": {
+          "all_finished": {
+            "count": 4,
+            "mean": 0.054386340198107064,
+            "p50": 0.049656997667625546,
+            "p90": 0.0809698345605284,
+            "p95": 0.08633577537257223,
+            "min": 0.026529649272561073,
+            "max": 0.09170171618461609
+          },
+          "success": {
+            "count": 4,
+            "mean": 0.054386340198107064,
+            "p50": 0.049656997667625546,
+            "p90": 0.0809698345605284,
+            "p95": 0.08633577537257223,
+            "min": 0.026529649272561073,
+            "max": 0.09170171618461609
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "gpu_initialization_warmup_seconds": {
+          "all_finished": {
+            "count": 8,
+            "mean": 0.11335873237112537,
+            "p50": 0.11123609286732972,
+            "p90": 0.12631554827094077,
+            "p95": 0.12632357967086136,
+            "min": 0.10300164297223091,
+            "max": 0.12633161107078195
+          },
+          "success": {
+            "count": 4,
+            "mean": 0.1102291694842279,
+            "p50": 0.1084000444971025,
+            "p90": 0.11863075606524945,
+            "p95": 0.11987285101786256,
+            "min": 0.10300164297223091,
+            "max": 0.12111494597047567
+          },
+          "failure": {
+            "count": 4,
+            "mean": 0.11648829525802284,
+            "p50": 0.11797326849773526,
+            "p90": 0.12632472701370717,
+            "p95": 0.12632816904224456,
+            "min": 0.10367503296583891,
+            "max": 0.12633161107078195
+          }
+        },
+        "model_setup_seconds": {
+          "all_finished": {
+            "count": 8,
+            "mean": 0.01441206515301019,
+            "p50": 0.014391702599823475,
+            "p90": 0.01447809669189155,
+            "p95": 0.014505000528879463,
+            "min": 0.014331293292343616,
+            "max": 0.014531904365867376
+          },
+          "success": {
+            "count": 4,
+            "mean": 0.014420288614928722,
+            "p50": 0.014422742184251547,
+            "p90": 0.014453885424882174,
+            "p95": 0.0144544608425349,
+            "min": 0.01438063383102417,
+            "max": 0.014455036260187626
+          },
+          "failure": {
+            "count": 4,
+            "mean": 0.014403841691091657,
+            "p50": 0.014376084553077817,
+            "p90": 0.014489069348201156,
+            "p95": 0.014510486857034266,
+            "min": 0.014331293292343616,
+            "max": 0.014531904365867376
+          }
+        },
+        "online_collision_map_seconds": {
+          "all_finished": {
+            "count": 8,
+            "mean": 0.0018053696257993579,
+            "p50": 0.0019045600201934576,
+            "p90": 0.0033587550744414328,
+            "p95": 0.003360334690660238,
+            "min": 1.7520040273666382e-05,
+            "max": 0.0033619143068790436
+          },
+          "success": {
+            "count": 4,
+            "mean": 0.0011326934909448028,
+            "p50": 0.001105284783989191,
+            "p90": 0.002269184961915016,
+            "p95": 0.0022859346587210893,
+            "min": 1.7520040273666382e-05,
+            "max": 0.0023026843555271626
+          },
+          "failure": {
+            "count": 4,
+            "mean": 0.002478045760653913,
+            "p50": 0.0024877507239580154,
+            "p90": 0.0033605603501200678,
+            "p95": 0.0033612373284995557,
+            "min": 0.0015747672878205776,
+            "max": 0.0033619143068790436
+          }
+        },
+        "roadmap_load_seconds": {
+          "all_finished": {
+            "count": 8,
+            "mean": 0.012112006254028529,
+            "p50": 0.012064907466992736,
+            "p90": 0.012271636910736562,
+            "p95": 0.012302479846403003,
+            "min": 0.012017650064080954,
+            "max": 0.012333322782069445
+          },
+          "success": {
+            "count": 4,
+            "mean": 0.012062731548212469,
+            "p50": 0.012061404529958963,
+            "p90": 0.012101157195866108,
+            "p95": 0.012105505727231503,
+            "min": 0.01201826287433505,
+            "max": 0.012109854258596897
+          },
+          "failure": {
+            "count": 4,
+            "mean": 0.01216128095984459,
+            "p50": 0.01214707549661398,
+            "p90": 0.012306885980069637,
+            "p95": 0.01232010438106954,
+            "min": 0.012017650064080954,
+            "max": 0.012333322782069445
+          }
+        },
+        "trajectory_optimization_seconds": {
+          "all_finished": {
+            "count": 4,
+            "mean": 0.008346746792085469,
+            "p50": 0.008380857994779944,
+            "p90": 0.012386680720373988,
+            "p95": 0.012450051330961286,
+            "min": 0.0041118492372334,
+            "max": 0.012513421941548586
+          },
+          "success": {
+            "count": 4,
+            "mean": 0.008346746792085469,
+            "p50": 0.008380857994779944,
+            "p90": 0.012386680720373988,
+            "p95": 0.012450051330961286,
+            "min": 0.0041118492372334,
+            "max": 0.012513421941548586
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "validation_seconds": {
+          "all_finished": {
+            "count": 4,
+            "mean": 0.5759229713585228,
+            "p50": 0.5626160586252809,
+            "p90": 0.9832428558263928,
+            "p95": 1.0015339425066485,
+            "min": 0.15863473899662495,
+            "max": 1.0198250291869044
+          },
+          "success": {
+            "count": 4,
+            "mean": 0.5759229713585228,
+            "p50": 0.5626160586252809,
+            "p90": 0.9832428558263928,
+            "p95": 1.0015339425066485,
+            "min": 0.15863473899662495,
+            "max": 1.0198250291869044
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "warm_query_seconds": {
+          "all_finished": {
+            "count": 8,
+            "mean": 0.40676747541874647,
+            "p50": 0.2725248569622636,
+            "p90": 1.0311758233234285,
+            "p95": 1.0887500012293456,
+            "min": 0.013043739832937717,
+            "max": 1.146324179135263
+          },
+          "success": {
+            "count": 4,
+            "mean": 0.6569515555165708,
+            "p50": 0.6269667444285005,
+            "p90": 1.096974883787334,
+            "p95": 1.1216495314612984,
+            "min": 0.2275485540740192,
+            "max": 1.146324179135263
+          },
+          "failure": {
+            "count": 4,
+            "mean": 0.15658339532092214,
+            "p50": 0.1454020095989108,
+            "p90": 0.3076229014899582,
+            "p95": 0.31505436187144364,
+            "min": 0.013043739832937717,
+            "max": 0.3224858222529292
+          }
+        }
+      },
+      "success_cost": {
+        "count": 4,
+        "mean": 5.420144656256364,
+        "p50": 5.581748962315112,
+        "p90": 6.446447076446422,
+        "p95": 6.493027510037609,
+        "min": 3.977472756766436,
+        "max": 6.539607943628797
+      },
+      "success_cost_note": "Descriptive only. Compare methods using paired common-success costs below; unequal success subsets are not rankings."
+    },
+    {
+      "method": "EI_ZO",
+      "objective": "minimum_time",
+      "family": "bottleneck",
+      "planned_jobs": 2,
+      "legal_input_jobs": 2,
+      "invalid_input_jobs": 0,
+      "pending_jobs": 0,
+      "status_counts": {
+        "success_validated_numerical": 2
+      },
+      "unconditional_success": {
+        "estimate": 1.0,
+        "numerator": 2.0,
+        "denominator": 2.0,
+        "independent_scene_clusters": 1,
+        "ci95": null,
+        "bootstrap_seed": 45827,
+        "bootstrap_replicates": 2000,
+        "method": "scene-level cluster bootstrap; resample scene clusters with all paired jobs intact",
+        "limitation": "Fewer than two independent scene clusters; no confidence interval reported."
+      },
+      "conditional_on_drm_success": {
+        "estimate": 1.0,
+        "numerator": 2.0,
+        "denominator": 2.0,
+        "independent_scene_clusters": 1,
+        "ci95": null,
+        "bootstrap_seed": 45827,
+        "bootstrap_replicates": 2000,
+        "method": "scene-level cluster bootstrap; resample scene clusters with all paired jobs intact",
+        "limitation": "Fewer than two independent scene clusters; no confidence interval reported."
+      },
+      "drm_status_unknown_jobs": 0,
+      "timing_and_memory": {
+        "cold_e2e_seconds": {
+          "all_finished": {
+            "count": 2,
+            "mean": 1.8392991160508245,
+            "p50": 1.8392991160508245,
+            "p90": 1.9236762471031397,
+            "p95": 1.9342233884846791,
+            "min": 1.7338277022354305,
+            "max": 1.9447705298662186
+          },
+          "success": {
+            "count": 2,
+            "mean": 1.8392991160508245,
+            "p50": 1.8392991160508245,
+            "p90": 1.9236762471031397,
+            "p95": 1.9342233884846791,
+            "min": 1.7338277022354305,
+            "max": 1.9447705298662186
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "warm_query_seconds": {
+          "all_finished": {
+            "count": 2,
+            "mean": 1.0640753535553813,
+            "p50": 1.0640753535553813,
+            "p90": 1.1298744140192867,
+            "p95": 1.1380992965772747,
+            "min": 0.9818265279754996,
+            "max": 1.146324179135263
+          },
+          "success": {
+            "count": 2,
+            "mean": 1.0640753535553813,
+            "p50": 1.0640753535553813,
+            "p90": 1.1298744140192867,
+            "p95": 1.1380992965772747,
+            "min": 0.9818265279754996,
+            "max": 1.146324179135263
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "sampled_gpu_peak_mib": {
+          "all_finished": {
+            "count": 2,
+            "mean": 4420.0,
+            "p50": 4420.0,
+            "p90": 4420.0,
+            "p95": 4420.0,
+            "min": 4420.0,
+            "max": 4420.0
+          },
+          "success": {
+            "count": 2,
+            "mean": 4420.0,
+            "p50": 4420.0,
+            "p90": 4420.0,
+            "p95": 4420.0,
+            "min": 4420.0,
+            "max": 4420.0
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        }
+      },
+      "metrics": {
+        "regions": {
+          "all_finished": {
+            "count": 2,
+            "mean": 1.5,
+            "p50": 1.5,
+            "p90": 1.9,
+            "p95": 1.95,
+            "min": 1.0,
+            "max": 2.0
+          },
+          "success": {
+            "count": 2,
+            "mean": 1.5,
+            "p50": 1.5,
+            "p90": 1.9,
+            "p95": 1.95,
+            "min": 1.0,
+            "max": 2.0
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "facets": {
+          "all_finished": {
+            "count": 2,
+            "mean": 57.5,
+            "p50": 57.5,
+            "p90": 68.3,
+            "p95": 69.65,
+            "min": 44.0,
+            "max": 71.0
+          },
+          "success": {
+            "count": 2,
+            "mean": 57.5,
+            "p50": 57.5,
+            "p90": 68.3,
+            "p95": 69.65,
+            "min": 44.0,
+            "max": 71.0
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "recovery_attempts": {
+          "all_finished": {
+            "count": 2,
+            "mean": 0.0,
+            "p50": 0.0,
+            "p90": 0.0,
+            "p95": 0.0,
+            "min": 0.0,
+            "max": 0.0
+          },
+          "success": {
+            "count": 2,
+            "mean": 0.0,
+            "p50": 0.0,
+            "p90": 0.0,
+            "p95": 0.0,
+            "min": 0.0,
+            "max": 0.0
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "normalized_path_length": {
+          "all_finished": {
+            "count": 2,
+            "mean": 1.179039599169911,
+            "p50": 1.179039599169911,
+            "p90": 1.3245275277649182,
+            "p95": 1.342713518839294,
+            "min": 0.9971796884261521,
+            "max": 1.36089950991367
+          },
+          "success": {
+            "count": 2,
+            "mean": 1.179039599169911,
+            "p50": 1.179039599169911,
+            "p90": 1.3245275277649182,
+            "p95": 1.342713518839294,
+            "min": 0.9971796884261521,
+            "max": 1.36089950991367
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "minimum_sampled_clearance_m": {
+          "all_finished": {
+            "count": 2,
+            "mean": 0.019025026584333436,
+            "p50": 0.019025026584333436,
+            "p90": 0.019025026584333447,
+            "p95": 0.01902502658433345,
+            "min": 0.019025026584333422,
+            "max": 0.01902502658433345
+          },
+          "success": {
+            "count": 2,
+            "mean": 0.019025026584333436,
+            "p50": 0.019025026584333436,
+            "p90": 0.019025026584333447,
+            "p95": 0.01902502658433345,
+            "min": 0.019025026584333422,
+            "max": 0.01902502658433345
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        }
+      },
+      "metrics_note": "Finite recorded values only, stratified by final status. Missing or unexecuted stages are not zero-filled; each statistic includes its observed count. Failure metrics describe saved candidates, not valid solutions.",
+      "stage_timing": {
+        "cold_e2e_seconds": {
+          "all_finished": {
+            "count": 2,
+            "mean": 1.4807438356801867,
+            "p50": 1.4807438356801867,
+            "p90": 1.5477387553080917,
+            "p95": 1.5561131202615797,
+            "min": 1.3970001861453056,
+            "max": 1.5644874852150679
+          },
+          "success": {
+            "count": 2,
+            "mean": 1.4807438356801867,
+            "p50": 1.4807438356801867,
+            "p90": 1.5477387553080917,
+            "p95": 1.5561131202615797,
+            "min": 1.3970001861453056,
+            "max": 1.5644874852150679
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "collision_recovery_seconds": {
+          "all_finished": {
+            "count": 2,
+            "mean": 0.0,
+            "p50": 0.0,
+            "p90": 0.0,
+            "p95": 0.0,
+            "min": 0.0,
+            "max": 0.0
+          },
+          "success": {
+            "count": 2,
+            "mean": 0.0,
+            "p50": 0.0,
+            "p90": 0.0,
+            "p95": 0.0,
+            "min": 0.0,
+            "max": 0.0
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "drm_path_seconds": {
+          "all_finished": {
+            "count": 2,
+            "mean": 0.01454441831447184,
+            "p50": 0.01454441831447184,
+            "p90": 0.015099530713632703,
+            "p95": 0.01516891976352781,
+            "min": 0.013850527815520763,
+            "max": 0.015238308813422918
+          },
+          "success": {
+            "count": 2,
+            "mean": 0.01454441831447184,
+            "p50": 0.01454441831447184,
+            "p90": 0.015099530713632703,
+            "p95": 0.01516891976352781,
+            "min": 0.013850527815520763,
+            "max": 0.015238308813422918
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "eizo_inflation_seconds": {
+          "all_finished": {
+            "count": 2,
+            "mean": 0.0738152468111366,
+            "p50": 0.0738152468111366,
+            "p90": 0.0881244223099202,
+            "p95": 0.08991306924726813,
+            "min": 0.05592877743765712,
+            "max": 0.09170171618461609
+          },
+          "success": {
+            "count": 2,
+            "mean": 0.0738152468111366,
+            "p50": 0.0738152468111366,
+            "p90": 0.0881244223099202,
+            "p95": 0.08991306924726813,
+            "min": 0.05592877743765712,
+            "max": 0.09170171618461609
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "gpu_initialization_warmup_seconds": {
+          "all_finished": {
+            "count": 2,
+            "mean": 0.1034837095066905,
+            "p50": 0.1034837095066905,
+            "p90": 0.10386936273425817,
+            "p95": 0.10391756938770413,
+            "min": 0.10300164297223091,
+            "max": 0.1039657760411501
+          },
+          "success": {
+            "count": 2,
+            "mean": 0.1034837095066905,
+            "p50": 0.1034837095066905,
+            "p90": 0.10386936273425817,
+            "p95": 0.10391756938770413,
+            "min": 0.10300164297223091,
+            "max": 0.1039657760411501
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "model_setup_seconds": {
+          "all_finished": {
+            "count": 2,
+            "mean": 0.014417835045605898,
+            "p50": 0.014417835045605898,
+            "p90": 0.01444759601727128,
+            "p95": 0.014451316138729454,
+            "min": 0.01438063383102417,
+            "max": 0.014455036260187626
+          },
+          "success": {
+            "count": 2,
+            "mean": 0.014417835045605898,
+            "p50": 0.014417835045605898,
+            "p90": 0.01444759601727128,
+            "p95": 0.014451316138729454,
+            "min": 0.01438063383102417,
+            "max": 0.014455036260187626
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "online_collision_map_seconds": {
+          "all_finished": {
+            "count": 2,
+            "mean": 0.002246852032840252,
+            "p50": 0.002246852032840252,
+            "p90": 0.0022915178909897805,
+            "p95": 0.0022971011232584713,
+            "min": 0.0021910197101533413,
+            "max": 0.0023026843555271626
+          },
+          "success": {
+            "count": 2,
+            "mean": 0.002246852032840252,
+            "p50": 0.002246852032840252,
+            "p90": 0.0022915178909897805,
+            "p95": 0.0022971011232584713,
+            "min": 0.0021910197101533413,
+            "max": 0.0023026843555271626
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "roadmap_load_seconds": {
+          "all_finished": {
+            "count": 2,
+            "mean": 0.012030103942379355,
+            "p50": 0.012030103942379355,
+            "p90": 0.0120395767968148,
+            "p95": 0.012040760903619229,
+            "min": 0.01201826287433505,
+            "max": 0.01204194501042366
+          },
+          "success": {
+            "count": 2,
+            "mean": 0.012030103942379355,
+            "p50": 0.012030103942379355,
+            "p90": 0.0120395767968148,
+            "p95": 0.012040760903619229,
+            "min": 0.01201826287433505,
+            "max": 0.01204194501042366
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "trajectory_optimization_seconds": {
+          "all_finished": {
+            "count": 2,
+            "mean": 0.008380857994779944,
+            "p50": 0.008380857994779944,
+            "p90": 0.011348932562395931,
+            "p95": 0.011719941883347929,
+            "min": 0.004670764785259962,
+            "max": 0.012090951204299927
+          },
+          "success": {
+            "count": 2,
+            "mean": 0.008380857994779944,
+            "p50": 0.008380857994779944,
+            "p90": 0.011348932562395931,
+            "p95": 0.011719941883347929,
+            "min": 0.004670764785259962,
+            "max": 0.012090951204299927
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "validation_seconds": {
+          "all_finished": {
+            "count": 2,
+            "mean": 0.9588547402527183,
+            "p50": 0.9588547402527183,
+            "p90": 1.0076309714000673,
+            "p95": 1.0137280002934859,
+            "min": 0.8978844513185322,
+            "max": 1.0198250291869044
+          },
+          "success": {
+            "count": 2,
+            "mean": 0.9588547402527183,
+            "p50": 0.9588547402527183,
+            "p90": 1.0076309714000673,
+            "p95": 1.0137280002934859,
+            "min": 0.8978844513185322,
+            "max": 1.0198250291869044
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "warm_query_seconds": {
+          "all_finished": {
+            "count": 2,
+            "mean": 1.0640753535553813,
+            "p50": 1.0640753535553813,
+            "p90": 1.1298744140192867,
+            "p95": 1.1380992965772747,
+            "min": 0.9818265279754996,
+            "max": 1.146324179135263
+          },
+          "success": {
+            "count": 2,
+            "mean": 1.0640753535553813,
+            "p50": 1.0640753535553813,
+            "p90": 1.1298744140192867,
+            "p95": 1.1380992965772747,
+            "min": 0.9818265279754996,
+            "max": 1.146324179135263
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        }
+      },
+      "success_cost": {
+        "count": 2,
+        "mean": 6.384339831658171,
+        "p50": 6.384339831658171,
+        "p90": 6.508554321234672,
+        "p95": 6.524081132431734,
+        "min": 6.229071719687546,
+        "max": 6.539607943628797
+      },
+      "success_cost_note": "Descriptive only. Compare methods using paired common-success costs below; unequal success subsets are not rankings."
+    },
+    {
+      "method": "EI_ZO",
+      "objective": "minimum_time",
+      "family": "dense_clutter",
+      "planned_jobs": 2,
+      "legal_input_jobs": 0,
+      "invalid_input_jobs": 2,
+      "pending_jobs": 0,
+      "status_counts": {
+        "invalid_endpoint": 2
+      },
+      "unconditional_success": {
+        "estimate": null,
+        "numerator": 0.0,
+        "denominator": 0.0,
+        "independent_scene_clusters": 0,
+        "ci95": null,
+        "bootstrap_seed": 45827,
+        "bootstrap_replicates": 2000,
+        "method": "scene-level cluster bootstrap; resample scene clusters with all paired jobs intact",
+        "limitation": "Fewer than two independent scene clusters; no confidence interval reported."
+      },
+      "conditional_on_drm_success": {
+        "estimate": null,
+        "numerator": 0.0,
+        "denominator": 0.0,
+        "independent_scene_clusters": 0,
+        "ci95": null,
+        "bootstrap_seed": 45827,
+        "bootstrap_replicates": 2000,
+        "method": "scene-level cluster bootstrap; resample scene clusters with all paired jobs intact",
+        "limitation": "Fewer than two independent scene clusters; no confidence interval reported."
+      },
+      "drm_status_unknown_jobs": 0,
+      "timing_and_memory": {
+        "cold_e2e_seconds": {
+          "all_finished": {
+            "count": 2,
+            "mean": 0.21535517857410014,
+            "p50": 0.21535517857410014,
+            "p90": 0.2153659485746175,
+            "p95": 0.21536729482468217,
+            "min": 0.21534171607345343,
+            "max": 0.21536864107474685
+          },
+          "success": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "failure": {
+            "count": 2,
+            "mean": 0.21535517857410014,
+            "p50": 0.21535517857410014,
+            "p90": 0.2153659485746175,
+            "p95": 0.21536729482468217,
+            "min": 0.21534171607345343,
+            "max": 0.21536864107474685
+          }
+        },
+        "warm_query_seconds": {
+          "all_finished": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "success": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "sampled_gpu_peak_mib": {
+          "all_finished": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "success": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        }
+      },
+      "metrics": {
+        "regions": {
+          "all_finished": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "success": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "facets": {
+          "all_finished": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "success": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "recovery_attempts": {
+          "all_finished": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "success": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "normalized_path_length": {
+          "all_finished": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "success": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "minimum_sampled_clearance_m": {
+          "all_finished": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "success": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        }
+      },
+      "metrics_note": "Finite recorded values only, stratified by final status. Missing or unexecuted stages are not zero-filled; each statistic includes its observed count. Failure metrics describe saved candidates, not valid solutions.",
+      "stage_timing": {
+        "cold_e2e_seconds": {
+          "all_finished": {
+            "count": 2,
+            "mean": 0.0056722224690020084,
+            "p50": 0.0056722224690020084,
+            "p90": 0.005864162836223841,
+            "p95": 0.00588815538212657,
+            "min": 0.005432297009974718,
+            "max": 0.005912147928029299
+          },
+          "success": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "failure": {
+            "count": 2,
+            "mean": 0.0056722224690020084,
+            "p50": 0.0056722224690020084,
+            "p90": 0.005864162836223841,
+            "p95": 0.00588815538212657,
+            "min": 0.005432297009974718,
+            "max": 0.005912147928029299
+          }
+        }
+      },
+      "success_cost": {
+        "count": 0,
+        "mean": null,
+        "p50": null,
+        "p90": null,
+        "p95": null,
+        "min": null,
+        "max": null
+      },
+      "success_cost_note": "Descriptive only. Compare methods using paired common-success costs below; unequal success subsets are not rankings."
+    },
+    {
+      "method": "EI_ZO",
+      "objective": "minimum_time",
+      "family": "open_control",
+      "planned_jobs": 2,
+      "legal_input_jobs": 2,
+      "invalid_input_jobs": 0,
+      "pending_jobs": 0,
+      "status_counts": {
+        "success_validated_numerical": 2
+      },
+      "unconditional_success": {
+        "estimate": 1.0,
+        "numerator": 2.0,
+        "denominator": 2.0,
+        "independent_scene_clusters": 1,
+        "ci95": null,
+        "bootstrap_seed": 45827,
+        "bootstrap_replicates": 2000,
+        "method": "scene-level cluster bootstrap; resample scene clusters with all paired jobs intact",
+        "limitation": "Fewer than two independent scene clusters; no confidence interval reported."
+      },
+      "conditional_on_drm_success": {
+        "estimate": 1.0,
+        "numerator": 2.0,
+        "denominator": 2.0,
+        "independent_scene_clusters": 1,
+        "ci95": null,
+        "bootstrap_seed": 45827,
+        "bootstrap_replicates": 2000,
+        "method": "scene-level cluster bootstrap; resample scene clusters with all paired jobs intact",
+        "limitation": "Fewer than two independent scene clusters; no confidence interval reported."
+      },
+      "drm_status_unknown_jobs": 0,
+      "timing_and_memory": {
+        "cold_e2e_seconds": {
+          "all_finished": {
+            "count": 2,
+            "mean": 1.1012796214781702,
+            "p50": 1.1012796214781702,
+            "p90": 1.110356372129172,
+            "p95": 1.1114909659605474,
+            "min": 1.0899336831644177,
+            "max": 1.1126255597919226
+          },
+          "success": {
+            "count": 2,
+            "mean": 1.1012796214781702,
+            "p50": 1.1012796214781702,
+            "p90": 1.110356372129172,
+            "p95": 1.1114909659605474,
+            "min": 1.0899336831644177,
+            "max": 1.1126255597919226
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "warm_query_seconds": {
+          "all_finished": {
+            "count": 2,
+            "mean": 0.24982775747776031,
+            "p50": 0.24982775747776031,
+            "p90": 0.2676511202007532,
+            "p95": 0.2698790405411273,
+            "min": 0.2275485540740192,
+            "max": 0.27210696088150144
+          },
+          "success": {
+            "count": 2,
+            "mean": 0.24982775747776031,
+            "p50": 0.24982775747776031,
+            "p90": 0.2676511202007532,
+            "p95": 0.2698790405411273,
+            "min": 0.2275485540740192,
+            "max": 0.27210696088150144
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "sampled_gpu_peak_mib": {
+          "all_finished": {
+            "count": 2,
+            "mean": 4420.0,
+            "p50": 4420.0,
+            "p90": 4420.0,
+            "p95": 4420.0,
+            "min": 4420.0,
+            "max": 4420.0
+          },
+          "success": {
+            "count": 2,
+            "mean": 4420.0,
+            "p50": 4420.0,
+            "p90": 4420.0,
+            "p95": 4420.0,
+            "min": 4420.0,
+            "max": 4420.0
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        }
+      },
+      "metrics": {
+        "regions": {
+          "all_finished": {
+            "count": 2,
+            "mean": 1.5,
+            "p50": 1.5,
+            "p90": 1.9,
+            "p95": 1.95,
+            "min": 1.0,
+            "max": 2.0
+          },
+          "success": {
+            "count": 2,
+            "mean": 1.5,
+            "p50": 1.5,
+            "p90": 1.9,
+            "p95": 1.95,
+            "min": 1.0,
+            "max": 2.0
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "facets": {
+          "all_finished": {
+            "count": 2,
+            "mean": 57.5,
+            "p50": 57.5,
+            "p90": 69.9,
+            "p95": 71.45,
+            "min": 42.0,
+            "max": 73.0
+          },
+          "success": {
+            "count": 2,
+            "mean": 57.5,
+            "p50": 57.5,
+            "p90": 69.9,
+            "p95": 71.45,
+            "min": 42.0,
+            "max": 73.0
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "recovery_attempts": {
+          "all_finished": {
+            "count": 2,
+            "mean": 0.0,
+            "p50": 0.0,
+            "p90": 0.0,
+            "p95": 0.0,
+            "min": 0.0,
+            "max": 0.0
+          },
+          "success": {
+            "count": 2,
+            "mean": 0.0,
+            "p50": 0.0,
+            "p90": 0.0,
+            "p95": 0.0,
+            "min": 0.0,
+            "max": 0.0
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "normalized_path_length": {
+          "all_finished": {
+            "count": 2,
+            "mean": 0.9301433732903849,
+            "p50": 0.9301433732903849,
+            "p90": 0.9966637823606528,
+            "p95": 1.0049788334944363,
+            "min": 0.84699286195255,
+            "max": 1.0132938846282198
+          },
+          "success": {
+            "count": 2,
+            "mean": 0.9301433732903849,
+            "p50": 0.9301433732903849,
+            "p90": 0.9966637823606528,
+            "p95": 1.0049788334944363,
+            "min": 0.84699286195255,
+            "max": 1.0132938846282198
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "minimum_sampled_clearance_m": {
+          "all_finished": {
+            "count": 2,
+            "mean": 0.014665871134064673,
+            "p50": 0.014665871134064673,
+            "p90": 0.018153195494279538,
+            "p95": 0.018589111039306397,
+            "min": 0.01030671568379609,
+            "max": 0.019025026584333256
+          },
+          "success": {
+            "count": 2,
+            "mean": 0.014665871134064673,
+            "p50": 0.014665871134064673,
+            "p90": 0.018153195494279538,
+            "p95": 0.018589111039306397,
+            "min": 0.01030671568379609,
+            "max": 0.019025026584333256
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        }
+      },
+      "metrics_note": "Finite recorded values only, stratified by final status. Missing or unexecuted stages are not zero-filled; each statistic includes its observed count. Failure metrics describe saved candidates, not valid solutions.",
+      "stage_timing": {
+        "cold_e2e_seconds": {
+          "all_finished": {
+            "count": 2,
+            "mean": 0.683382642455399,
+            "p50": 0.683382642455399,
+            "p90": 0.7069300292059779,
+            "p95": 0.7098734525498003,
+            "min": 0.6539484090171754,
+            "max": 0.7128168758936226
+          },
+          "success": {
+            "count": 2,
+            "mean": 0.683382642455399,
+            "p50": 0.683382642455399,
+            "p90": 0.7069300292059779,
+            "p95": 0.7098734525498003,
+            "min": 0.6539484090171754,
+            "max": 0.7128168758936226
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "collision_recovery_seconds": {
+          "all_finished": {
+            "count": 2,
+            "mean": 0.0,
+            "p50": 0.0,
+            "p90": 0.0,
+            "p95": 0.0,
+            "min": 0.0,
+            "max": 0.0
+          },
+          "success": {
+            "count": 2,
+            "mean": 0.0,
+            "p50": 0.0,
+            "p90": 0.0,
+            "p95": 0.0,
+            "min": 0.0,
+            "max": 0.0
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "drm_path_seconds": {
+          "all_finished": {
+            "count": 2,
+            "mean": 0.007707235403358936,
+            "p50": 0.007707235403358936,
+            "p90": 0.007725823111832142,
+            "p95": 0.007728146575391293,
+            "min": 0.007684000767767429,
+            "max": 0.007730470038950443
+          },
+          "success": {
+            "count": 2,
+            "mean": 0.007707235403358936,
+            "p50": 0.007707235403358936,
+            "p90": 0.007725823111832142,
+            "p95": 0.007728146575391293,
+            "min": 0.007684000767767429,
+            "max": 0.007730470038950443
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "eizo_inflation_seconds": {
+          "all_finished": {
+            "count": 2,
+            "mean": 0.034957433585077524,
+            "p50": 0.034957433585077524,
+            "p90": 0.041699661035090686,
+            "p95": 0.04254243946634233,
+            "min": 0.026529649272561073,
+            "max": 0.043385217897593975
+          },
+          "success": {
+            "count": 2,
+            "mean": 0.034957433585077524,
+            "p50": 0.034957433585077524,
+            "p90": 0.041699661035090686,
+            "p95": 0.04254243946634233,
+            "min": 0.026529649272561073,
+            "max": 0.043385217897593975
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "gpu_initialization_warmup_seconds": {
+          "all_finished": {
+            "count": 2,
+            "mean": 0.11697462946176529,
+            "p50": 0.11697462946176529,
+            "p90": 0.1202868826687336,
+            "p95": 0.12070091431960464,
+            "min": 0.1128343129530549,
+            "max": 0.12111494597047567
+          },
+          "success": {
+            "count": 2,
+            "mean": 0.11697462946176529,
+            "p50": 0.11697462946176529,
+            "p90": 0.1202868826687336,
+            "p95": 0.12070091431960464,
+            "min": 0.1128343129530549,
+            "max": 0.12111494597047567
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "model_setup_seconds": {
+          "all_finished": {
+            "count": 2,
+            "mean": 0.014422742184251547,
+            "p50": 0.014422742184251547,
+            "p90": 0.014445508550852536,
+            "p95": 0.01444835434667766,
+            "min": 0.014394284226000309,
+            "max": 0.014451200142502785
+          },
+          "success": {
+            "count": 2,
+            "mean": 0.014422742184251547,
+            "p50": 0.014422742184251547,
+            "p90": 0.014445508550852536,
+            "p95": 0.01444835434667766,
+            "min": 0.014394284226000309,
+            "max": 0.014451200142502785
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "online_collision_map_seconds": {
+          "all_finished": {
+            "count": 2,
+            "mean": 1.85349490493536e-05,
+            "p50": 1.85349490493536e-05,
+            "p90": 1.9346876069903373e-05,
+            "p95": 1.9448366947472097e-05,
+            "min": 1.7520040273666382e-05,
+            "max": 1.9549857825040817e-05
+          },
+          "success": {
+            "count": 2,
+            "mean": 1.85349490493536e-05,
+            "p50": 1.85349490493536e-05,
+            "p90": 1.9346876069903373e-05,
+            "p95": 1.9448366947472097e-05,
+            "min": 1.7520040273666382e-05,
+            "max": 1.9549857825040817e-05
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "roadmap_load_seconds": {
+          "all_finished": {
+            "count": 2,
+            "mean": 0.012095359154045582,
+            "p50": 0.012095359154045582,
+            "p90": 0.012106955237686633,
+            "p95": 0.012108404748141765,
+            "min": 0.012080864049494267,
+            "max": 0.012109854258596897
+          },
+          "success": {
+            "count": 2,
+            "mean": 0.012095359154045582,
+            "p50": 0.012095359154045582,
+            "p90": 0.012106955237686633,
+            "p95": 0.012108404748141765,
+            "min": 0.012080864049494267,
+            "max": 0.012109854258596897
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "trajectory_optimization_seconds": {
+          "all_finished": {
+            "count": 2,
+            "mean": 0.008312635589390993,
+            "p50": 0.008312635589390993,
+            "p90": 0.011673264671117067,
+            "p95": 0.012093343306332827,
+            "min": 0.0041118492372334,
+            "max": 0.012513421941548586
+          },
+          "success": {
+            "count": 2,
+            "mean": 0.008312635589390993,
+            "p50": 0.008312635589390993,
+            "p90": 0.011673264671117067,
+            "p95": 0.012093343306332827,
+            "min": 0.0041118492372334,
+            "max": 0.012513421941548586
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "validation_seconds": {
+          "all_finished": {
+            "count": 2,
+            "mean": 0.19299120246432722,
+            "p50": 0.19299120246432722,
+            "p90": 0.22047637323848904,
+            "p95": 0.22391201958525925,
+            "min": 0.15863473899662495,
+            "max": 0.22734766593202949
+          },
+          "success": {
+            "count": 2,
+            "mean": 0.19299120246432722,
+            "p50": 0.19299120246432722,
+            "p90": 0.22047637323848904,
+            "p95": 0.22391201958525925,
+            "min": 0.15863473899662495,
+            "max": 0.22734766593202949
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "warm_query_seconds": {
+          "all_finished": {
+            "count": 2,
+            "mean": 0.24982775747776031,
+            "p50": 0.24982775747776031,
+            "p90": 0.2676511202007532,
+            "p95": 0.2698790405411273,
+            "min": 0.2275485540740192,
+            "max": 0.27210696088150144
+          },
+          "success": {
+            "count": 2,
+            "mean": 0.24982775747776031,
+            "p50": 0.24982775747776031,
+            "p90": 0.2676511202007532,
+            "p95": 0.2698790405411273,
+            "min": 0.2275485540740192,
+            "max": 0.27210696088150144
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        }
+      },
+      "success_cost": {
+        "count": 2,
+        "mean": 4.4559494808545566,
+        "p50": 4.4559494808545566,
+        "p90": 4.838730860125054,
+        "p95": 4.886578532533866,
+        "min": 3.977472756766436,
+        "max": 4.934426204942678
+      },
+      "success_cost_note": "Descriptive only. Compare methods using paired common-success costs below; unequal success subsets are not rankings."
+    },
+    {
+      "method": "EI_ZO",
+      "objective": "minimum_time",
+      "family": "route_choice",
+      "planned_jobs": 2,
+      "legal_input_jobs": 2,
+      "invalid_input_jobs": 0,
+      "pending_jobs": 0,
+      "status_counts": {
+        "frontend_failed": 2
+      },
+      "unconditional_success": {
+        "estimate": 0.0,
+        "numerator": 0.0,
+        "denominator": 2.0,
+        "independent_scene_clusters": 1,
+        "ci95": null,
+        "bootstrap_seed": 45827,
+        "bootstrap_replicates": 2000,
+        "method": "scene-level cluster bootstrap; resample scene clusters with all paired jobs intact",
+        "limitation": "Fewer than two independent scene clusters; no confidence interval reported."
+      },
+      "conditional_on_drm_success": {
+        "estimate": null,
+        "numerator": 0.0,
+        "denominator": 0.0,
+        "independent_scene_clusters": 0,
+        "ci95": null,
+        "bootstrap_seed": 45827,
+        "bootstrap_replicates": 2000,
+        "method": "scene-level cluster bootstrap; resample scene clusters with all paired jobs intact",
+        "limitation": "Fewer than two independent scene clusters; no confidence interval reported."
+      },
+      "drm_status_unknown_jobs": 0,
+      "timing_and_memory": {
+        "cold_e2e_seconds": {
+          "all_finished": {
+            "count": 2,
+            "mean": 0.876846531406045,
+            "p50": 0.876846531406045,
+            "p90": 0.8770755413919687,
+            "p95": 0.8771041676402092,
+            "min": 0.8765602689236403,
+            "max": 0.8771327938884497
+          },
+          "success": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "failure": {
+            "count": 2,
+            "mean": 0.876846531406045,
+            "p50": 0.876846531406045,
+            "p90": 0.8770755413919687,
+            "p95": 0.8771041676402092,
+            "min": 0.8765602689236403,
+            "max": 0.8771327938884497
+          }
+        },
+        "warm_query_seconds": {
+          "all_finished": {
+            "count": 2,
+            "mean": 0.015452502993866801,
+            "p50": 0.015452502993866801,
+            "p90": 0.01737951352261007,
+            "p95": 0.017620389838702975,
+            "min": 0.013043739832937717,
+            "max": 0.017861266154795885
+          },
+          "success": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "failure": {
+            "count": 2,
+            "mean": 0.015452502993866801,
+            "p50": 0.015452502993866801,
+            "p90": 0.01737951352261007,
+            "p95": 0.017620389838702975,
+            "min": 0.013043739832937717,
+            "max": 0.017861266154795885
+          }
+        },
+        "sampled_gpu_peak_mib": {
+          "all_finished": {
+            "count": 2,
+            "mean": 188.0,
+            "p50": 188.0,
+            "p90": 188.0,
+            "p95": 188.0,
+            "min": 188.0,
+            "max": 188.0
+          },
+          "success": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "failure": {
+            "count": 2,
+            "mean": 188.0,
+            "p50": 188.0,
+            "p90": 188.0,
+            "p95": 188.0,
+            "min": 188.0,
+            "max": 188.0
+          }
+        }
+      },
+      "metrics": {
+        "regions": {
+          "all_finished": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "success": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "facets": {
+          "all_finished": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "success": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "recovery_attempts": {
+          "all_finished": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "success": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "normalized_path_length": {
+          "all_finished": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "success": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "minimum_sampled_clearance_m": {
+          "all_finished": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "success": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        }
+      },
+      "metrics_note": "Finite recorded values only, stratified by final status. Missing or unexecuted stages are not zero-filled; each statistic includes its observed count. Failure metrics describe saved candidates, not valid solutions.",
+      "stage_timing": {
+        "cold_e2e_seconds": {
+          "all_finished": {
+            "count": 2,
+            "mean": 0.4580913675017655,
+            "p50": 0.4580913675017655,
+            "p90": 0.45918090948835016,
+            "p95": 0.4593171022366732,
+            "min": 0.45672944001853466,
+            "max": 0.4594532949849963
+          },
+          "success": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "failure": {
+            "count": 2,
+            "mean": 0.4580913675017655,
+            "p50": 0.4580913675017655,
+            "p90": 0.45918090948835016,
+            "p95": 0.4593171022366732,
+            "min": 0.45672944001853466,
+            "max": 0.4594532949849963
+          }
+        },
+        "gpu_initialization_warmup_seconds": {
+          "all_finished": {
+            "count": 2,
+            "mean": 0.12632013764232397,
+            "p50": 0.12632013764232397,
+            "p90": 0.12632931638509035,
+            "p95": 0.12633046372793616,
+            "min": 0.126308664213866,
+            "max": 0.12633161107078195
+          },
+          "success": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "failure": {
+            "count": 2,
+            "mean": 0.12632013764232397,
+            "p50": 0.12632013764232397,
+            "p90": 0.12632931638509035,
+            "p95": 0.12633046372793616,
+            "min": 0.126308664213866,
+            "max": 0.12633161107078195
+          }
+        },
+        "model_setup_seconds": {
+          "all_finished": {
+            "count": 2,
+            "mean": 0.014447476249188185,
+            "p50": 0.014447476249188185,
+            "p90": 0.014515018742531537,
+            "p95": 0.014523461554199457,
+            "min": 0.014363048132508993,
+            "max": 0.014531904365867376
+          },
+          "success": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "failure": {
+            "count": 2,
+            "mean": 0.014447476249188185,
+            "p50": 0.014447476249188185,
+            "p90": 0.014515018742531537,
+            "p95": 0.014523461554199457,
+            "min": 0.014363048132508993,
+            "max": 0.014531904365867376
+          }
+        },
+        "online_collision_map_seconds": {
+          "all_finished": {
+            "count": 2,
+            "mean": 0.0033596577122807503,
+            "p50": 0.0033596577122807503,
+            "p90": 0.003361462987959385,
+            "p95": 0.0033616886474192144,
+            "min": 0.003357401117682457,
+            "max": 0.0033619143068790436
+          },
+          "success": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "failure": {
+            "count": 2,
+            "mean": 0.0033596577122807503,
+            "p50": 0.0033596577122807503,
+            "p90": 0.003361462987959385,
+            "p95": 0.0033616886474192144,
+            "min": 0.003357401117682457,
+            "max": 0.0033619143068790436
+          }
+        },
+        "roadmap_load_seconds": {
+          "all_finished": {
+            "count": 2,
+            "mean": 0.012289261445403099,
+            "p50": 0.012289261445403099,
+            "p90": 0.012324510514736176,
+            "p95": 0.01232891664840281,
+            "min": 0.012245200108736753,
+            "max": 0.012333322782069445
+          },
+          "success": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "failure": {
+            "count": 2,
+            "mean": 0.012289261445403099,
+            "p50": 0.012289261445403099,
+            "p90": 0.012324510514736176,
+            "p95": 0.01232891664840281,
+            "min": 0.012245200108736753,
+            "max": 0.012333322782069445
+          }
+        },
+        "warm_query_seconds": {
+          "all_finished": {
+            "count": 2,
+            "mean": 0.015452502993866801,
+            "p50": 0.015452502993866801,
+            "p90": 0.01737951352261007,
+            "p95": 0.017620389838702975,
+            "min": 0.013043739832937717,
+            "max": 0.017861266154795885
+          },
+          "success": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "failure": {
+            "count": 2,
+            "mean": 0.015452502993866801,
+            "p50": 0.015452502993866801,
+            "p90": 0.01737951352261007,
+            "p95": 0.017620389838702975,
+            "min": 0.013043739832937717,
+            "max": 0.017861266154795885
+          }
+        }
+      },
+      "success_cost": {
+        "count": 0,
+        "mean": null,
+        "p50": null,
+        "p90": null,
+        "p95": null,
+        "min": null,
+        "max": null
+      },
+      "success_cost_note": "Descriptive only. Compare methods using paired common-success costs below; unequal success subsets are not rankings."
+    },
+    {
+      "method": "EI_ZO",
+      "objective": "minimum_time",
+      "family": "sparse_clutter",
+      "planned_jobs": 2,
+      "legal_input_jobs": 2,
+      "invalid_input_jobs": 0,
+      "pending_jobs": 0,
+      "status_counts": {
+        "frontend_failed": 2
+      },
+      "unconditional_success": {
+        "estimate": 0.0,
+        "numerator": 0.0,
+        "denominator": 2.0,
+        "independent_scene_clusters": 1,
+        "ci95": null,
+        "bootstrap_seed": 45827,
+        "bootstrap_replicates": 2000,
+        "method": "scene-level cluster bootstrap; resample scene clusters with all paired jobs intact",
+        "limitation": "Fewer than two independent scene clusters; no confidence interval reported."
+      },
+      "conditional_on_drm_success": {
+        "estimate": null,
+        "numerator": 0.0,
+        "denominator": 0.0,
+        "independent_scene_clusters": 0,
+        "ci95": null,
+        "bootstrap_seed": 45827,
+        "bootstrap_replicates": 2000,
+        "method": "scene-level cluster bootstrap; resample scene clusters with all paired jobs intact",
+        "limitation": "Fewer than two independent scene clusters; no confidence interval reported."
+      },
+      "drm_status_unknown_jobs": 0,
+      "timing_and_memory": {
+        "cold_e2e_seconds": {
+          "all_finished": {
+            "count": 2,
+            "mean": 1.0919447960332036,
+            "p50": 1.0919447960332036,
+            "p90": 1.0924428449943662,
+            "p95": 1.0925051011145115,
+            "min": 1.0913222348317504,
+            "max": 1.0925673572346568
+          },
+          "success": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "failure": {
+            "count": 2,
+            "mean": 1.0919447960332036,
+            "p50": 1.0919447960332036,
+            "p90": 1.0924428449943662,
+            "p95": 1.0925051011145115,
+            "min": 1.0913222348317504,
+            "max": 1.0925673572346568
+          }
+        },
+        "warm_query_seconds": {
+          "all_finished": {
+            "count": 2,
+            "mean": 0.29771428764797747,
+            "p50": 0.29771428764797747,
+            "p90": 0.31753151533193885,
+            "p95": 0.32000866879243406,
+            "min": 0.27294275304302573,
+            "max": 0.3224858222529292
+          },
+          "success": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "failure": {
+            "count": 2,
+            "mean": 0.29771428764797747,
+            "p50": 0.29771428764797747,
+            "p90": 0.31753151533193885,
+            "p95": 0.32000866879243406,
+            "min": 0.27294275304302573,
+            "max": 0.3224858222529292
+          }
+        },
+        "sampled_gpu_peak_mib": {
+          "all_finished": {
+            "count": 2,
+            "mean": 189.0,
+            "p50": 189.0,
+            "p90": 189.8,
+            "p95": 189.9,
+            "min": 188.0,
+            "max": 190.0
+          },
+          "success": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "failure": {
+            "count": 2,
+            "mean": 189.0,
+            "p50": 189.0,
+            "p90": 189.8,
+            "p95": 189.9,
+            "min": 188.0,
+            "max": 190.0
+          }
+        }
+      },
+      "metrics": {
+        "regions": {
+          "all_finished": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "success": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "facets": {
+          "all_finished": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "success": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "recovery_attempts": {
+          "all_finished": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "success": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "normalized_path_length": {
+          "all_finished": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "success": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "minimum_sampled_clearance_m": {
+          "all_finished": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "success": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        }
+      },
+      "metrics_note": "Finite recorded values only, stratified by final status. Missing or unexecuted stages are not zero-filled; each statistic includes its observed count. Failure metrics describe saved candidates, not valid solutions.",
+      "stage_timing": {
+        "cold_e2e_seconds": {
+          "all_finished": {
+            "count": 2,
+            "mean": 0.7164565015118569,
+            "p50": 0.7164565015118569,
+            "p90": 0.7341646307613701,
+            "p95": 0.7363781469175592,
+            "min": 0.6943213399499655,
+            "max": 0.7385916630737484
+          },
+          "success": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "failure": {
+            "count": 2,
+            "mean": 0.7164565015118569,
+            "p50": 0.7164565015118569,
+            "p90": 0.7341646307613701,
+            "p95": 0.7363781469175592,
+            "min": 0.6943213399499655,
+            "max": 0.7385916630737484
+          }
+        },
+        "drm_path_seconds": {
+          "all_finished": {
+            "count": 2,
+            "mean": 0.2953807725571096,
+            "p50": 0.2953807725571096,
+            "p90": 0.3152022964321077,
+            "p95": 0.31767998691648247,
+            "min": 0.270603867713362,
+            "max": 0.3201576774008572
+          },
+          "success": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "failure": {
+            "count": 2,
+            "mean": 0.2953807725571096,
+            "p50": 0.2953807725571096,
+            "p90": 0.3152022964321077,
+            "p95": 0.31767998691648247,
+            "min": 0.270603867713362,
+            "max": 0.3201576774008572
+          }
+        },
+        "gpu_initialization_warmup_seconds": {
+          "all_finished": {
+            "count": 2,
+            "mean": 0.10665645287372172,
+            "p50": 0.10665645287372172,
+            "p90": 0.10904158880002797,
+            "p95": 0.10933973079081624,
+            "min": 0.10367503296583891,
+            "max": 0.10963787278160453
+          },
+          "success": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "failure": {
+            "count": 2,
+            "mean": 0.10665645287372172,
+            "p50": 0.10665645287372172,
+            "p90": 0.10904158880002797,
+            "p95": 0.10933973079081624,
+            "min": 0.10367503296583891,
+            "max": 0.10963787278160453
+          }
+        },
+        "model_setup_seconds": {
+          "all_finished": {
+            "count": 2,
+            "mean": 0.014360207132995129,
+            "p50": 0.014360207132995129,
+            "p90": 0.014383338205516339,
+            "p95": 0.01438622958958149,
+            "min": 0.014331293292343616,
+            "max": 0.01438912097364664
+          },
+          "success": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "failure": {
+            "count": 2,
+            "mean": 0.014360207132995129,
+            "p50": 0.014360207132995129,
+            "p90": 0.014383338205516339,
+            "p95": 0.01438622958958149,
+            "min": 0.014331293292343616,
+            "max": 0.01438912097364664
+          }
+        },
+        "online_collision_map_seconds": {
+          "all_finished": {
+            "count": 2,
+            "mean": 0.0015964338090270758,
+            "p50": 0.0015964338090270758,
+            "p90": 0.0016137670259922742,
+            "p95": 0.001615933678112924,
+            "min": 0.0015747672878205776,
+            "max": 0.001618100330233574
+          },
+          "success": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "failure": {
+            "count": 2,
+            "mean": 0.0015964338090270758,
+            "p50": 0.0015964338090270758,
+            "p90": 0.0016137670259922742,
+            "p95": 0.001615933678112924,
+            "min": 0.0015747672878205776,
+            "max": 0.001618100330233574
+          }
+        },
+        "roadmap_load_seconds": {
+          "all_finished": {
+            "count": 2,
+            "mean": 0.01203330047428608,
+            "p50": 0.01203330047428608,
+            "p90": 0.01204582080245018,
+            "p95": 0.012047385843470693,
+            "min": 0.012017650064080954,
+            "max": 0.012048950884491205
+          },
+          "success": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "failure": {
+            "count": 2,
+            "mean": 0.01203330047428608,
+            "p50": 0.01203330047428608,
+            "p90": 0.01204582080245018,
+            "p95": 0.012047385843470693,
+            "min": 0.012017650064080954,
+            "max": 0.012048950884491205
+          }
+        },
+        "warm_query_seconds": {
+          "all_finished": {
+            "count": 2,
+            "mean": 0.29771428764797747,
+            "p50": 0.29771428764797747,
+            "p90": 0.31753151533193885,
+            "p95": 0.32000866879243406,
+            "min": 0.27294275304302573,
+            "max": 0.3224858222529292
+          },
+          "success": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "failure": {
+            "count": 2,
+            "mean": 0.29771428764797747,
+            "p50": 0.29771428764797747,
+            "p90": 0.31753151533193885,
+            "p95": 0.32000866879243406,
+            "min": 0.27294275304302573,
+            "max": 0.3224858222529292
+          }
+        }
+      },
+      "success_cost": {
+        "count": 0,
+        "mean": null,
+        "p50": null,
+        "p90": null,
+        "p95": null,
+        "min": null,
+        "max": null
+      },
+      "success_cost_note": "Descriptive only. Compare methods using paired common-success costs below; unequal success subsets are not rankings."
+    }
+  ],
+  "paired_comparisons": []
+}

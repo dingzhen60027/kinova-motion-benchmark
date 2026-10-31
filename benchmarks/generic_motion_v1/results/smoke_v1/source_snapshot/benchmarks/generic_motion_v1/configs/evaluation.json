@@ -1,0 +1,51 @@
+{
+  "protocol": "kinova7_generic_v1_evaluation",
+  "online_budget_seconds": 60.0,
+  "optimizer_budget_seconds": 60.0,
+  "validation_step_rad": 0.005,
+  "validation_minimum_samples": 400,
+  "validation_maximum_samples": 100000,
+  "endpoint_tolerance_rad": 0.00001,
+  "feasibility_tolerance": 0.00001,
+  "velocity_limit_rad_s": 1.0,
+  "acceleration_limit_rad_s2": 1.0,
+  "bezier_degree": 6,
+  "scsto_relative_tolerance": 0.01,
+  "max_recovery_attempts": 20,
+  "maximum_recovery_witnesses": 128,
+  "drm": {
+    "max_iterations_steering_to_node": 10,
+    "max_nodes_to_expand": 10000,
+    "try_shortcutting": true,
+    "online_edge_step_size": 0.01,
+    "max_number_planning_attempts": 20,
+    "voxel_padding": 0.01
+  },
+  "eizo": {
+    "num_particles": 10000,
+    "bisection_steps": 9,
+    "configuration_margin": 0.1,
+    "delta": 0.01,
+    "epsilon": 0.01,
+    "tau": 0.5,
+    "mixing_steps": 100,
+    "max_hyperplanes_per_iteration": 10
+  },
+  "roadmap": {
+    "map_center": [0.0, 0.0, 0.55],
+    "map_extent": [2.8, 2.8, 2.2],
+    "offline_voxel_resolution": 0.04,
+    "max_task_space_distance_between_nodes": 0.85,
+    "max_configuration_distance_between_nodes": 4.0,
+    "edge_step_size": 0.1,
+    "max_neighbors": 20
+  },
+  "nto": {
+    "solver": "IPOPT",
+    "collocation_points": 150,
+    "minimum_control_points": 16,
+    "maximum_iterations": 500,
+    "clearance_m": 0.00001,
+    "influence_distance_m": 0.01
+  }
+}

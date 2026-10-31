@@ -1,0 +1,35 @@
+FF.......                                                                [100%]
+=================================== FAILURES ===================================
+______ test_matching_receipt_tuple_does_not_prove_unsealed_files_checked _______
+
+evidence = (PosixPath('/tmp/pytest-of-eric/pytest-388/test_matching_receipt_tuple_do0/results/run'), {'jobs': [{'job_id': 'task',... ...}, PosixPath('/tmp/pytest-of-eric/pytest-388/test_matching_receipt_tuple_do0/results/run/jobs/task/attempts/0001'))
+
+    def test_matching_receipt_tuple_does_not_prove_unsealed_files_checked(evidence):
+        *_, attempt = evidence
+        receipt = read(attempt/'receipt.json')
+        (attempt/'unsealed.log').write_text('unsealed new evidence')
+        assert not outcomes.assess_saved_output(attempt)['accepted']
+>       assert not _untrusted_context_decision(attempt, receipt)['accepted']
+E       assert not True
+
+/tmp/test_cli_increment_independent.py:24: AssertionError
+__________ test_matching_receipt_tuple_does_not_prove_hashes_checked ___________
+
+evidence = (PosixPath('/tmp/pytest-of-eric/pytest-388/test_matching_receipt_tuple_do1/results/run'), {'jobs': [{'job_id': 'task',... ...}, PosixPath('/tmp/pytest-of-eric/pytest-388/test_matching_receipt_tuple_do1/results/run/jobs/task/attempts/0001'))
+
+    def test_matching_receipt_tuple_does_not_prove_hashes_checked(evidence):
+        *_, attempt = evidence
+        log = attempt/'stdout.log'
+        log.write_text('sealed old evidence')
+        _seal(attempt)
+        receipt = read(attempt/'receipt.json')
+        log.write_text('corrupted evidence')
+        assert not outcomes.assess_saved_output(attempt)['accepted']
+>       assert not _untrusted_context_decision(attempt, receipt)['accepted']
+E       assert not True
+
+/tmp/test_cli_increment_independent.py:35: AssertionError
+=========================== short test summary info ============================
+FAILED ../../../../../tmp/test_cli_increment_independent.py::test_matching_receipt_tuple_does_not_prove_unsealed_files_checked
+FAILED ../../../../../tmp/test_cli_increment_independent.py::test_matching_receipt_tuple_does_not_prove_hashes_checked
+2 failed, 7 passed in 0.56s

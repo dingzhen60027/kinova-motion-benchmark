@@ -1,0 +1,70 @@
+............................F........................................... [ 93%]
+.....                                                                    [100%]
+=================================== FAILURES ===================================
+_____ test_native_progress_requires_actual_common_validator_pass[RRTSTAR] ______
+
+tmp_path = PosixPath('/tmp/pytest-of-eric/pytest-348/test_native_progress_requires_1')
+method = 'RRTSTAR'
+
+    @pytest.mark.parametrize("method", ["RRTCONNECT", "RRTSTAR"])
+    def test_native_progress_requires_actual_common_validator_pass(tmp_path, method):
+>       result = native_solve(tmp_path, method, progress=True)
+
+benchmarks/generic_motion_v1/tests/test_ompl_baselines.py:138: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+tmp_path = PosixPath('/tmp/pytest-of-eric/pytest-348/test_native_progress_requires_1')
+method = 'RRTSTAR', barrier = False, seed = 73, progress = True
+
+    def native_solve(tmp_path, method, barrier=False, seed=73, progress=False):
+        """Each process initializes OMPL's global RNG exactly once, as production."""
+        script = textwrap.dedent(f"""
+            import json,time
+            import numpy as np
+            from types import SimpleNamespace
+            from benchmarks.generic_motion_v1.runners.ompl_baselines import solve,OmplNoExactSolution
+            from benchmarks.generic_motion_v1.roadmap import write
+            path={str(tmp_path)!r}
+            model=SimpleNamespace(lower=np.full(7,-1.),upper=np.ones(7),
+                robot_sha256='regression-fixture',collision_geometry_sha256='regression-fixture',
+                cuda=lambda q: np.abs(q[:,0])>.05 if {barrier!r} else np.ones(len(q),bool),
+                clearance=lambda q: np.abs(q[:,0])-.05 if {barrier!r} else np.ones(len(q)))
+            start=np.zeros(7); goal=np.zeros(7); start[0]=-.5; goal[0]=.5
+            try:
+                case=dict(q_start=start,q_goal=goal,velocity_limits_rad_s=[1.]*7,
+                    acceleration_limits_rad_s2=[1.]*7,endpoint_velocity_rad_s=[0.]*7)
+                candidate=solve(model,case,
+                    dict(ompl=dict(planning_seconds=.15,record_validated_progress={progress!r})),path,time.perf_counter()+8,{seed},{method!r})
+                write(path+'/candidate.json',candidate)
+            except OmplNoExactSolution as exc:
+                write(path+'/expected_failure.json',dict(solver_status=exc.solver_status))
+        """)
+        result = subprocess.run([sys.executable, "-c", script], text=True, capture_output=True, timeout=15)
+        (tmp_path / "process.log").write_text(result.stdout + result.stderr)
+>       assert result.returncode == 0, result.stdout + result.stderr
+E       AssertionError: Traceback (most recent call last):
+E           File "<string>", line 16, in <module>
+E           File "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/runners/ompl_baselines.py", line 255, in solve
+E             problem.setIntermediateSolutionCallback(intermediate)
+E         TypeError: setIntermediateSolutionCallback(): incompatible function arguments. The following argument types are supported:
+E             1. setIntermediateSolutionCallback(self, arg: std::function<void (ompl::base::Planner const*, std::vector<ompl::base::State const*, std::allocator<ompl::base::State const*> > const&, ompl::base::Cost)>, /) -> None
+E         
+E         Invoked with types: ompl._ompl.base.ProblemDefinition, function
+E         
+E       assert 1 == 0
+E        +  where 1 = CompletedProcess(args=['/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/bin/python', '-c', "\nimport json,time\nimport...const*> > const&, ompl::base::Cost)>, /) -> None\n\nInvoked with types: ompl._ompl.base.ProblemDefinition, function\n').returncode
+
+benchmarks/generic_motion_v1/tests/test_ompl_baselines.py:74: AssertionError
+=============================== warnings summary ===============================
+benchmarks/generic_motion_v1/tests/test_trajopt_baseline.py::test_canonical_analytic_gradient_matches_real_geometry_cpu
+  /home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/lib/python3.10/site-packages/csdecomp/drake_csd_bridge.py:62: DrakeDeprecationWarning: (Deprecated.)
+  
+  Deprecated:
+      Use is_floating_base_body() instead. This will be removed from
+      Drake on or after 2026-06-01.
+    if all_drake_bodies[-1].is_floating():
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED benchmarks/generic_motion_v1/tests/test_ompl_baselines.py::test_native_progress_requires_actual_common_validator_pass[RRTSTAR]
+1 failed, 76 passed, 1 warning in 1.89s

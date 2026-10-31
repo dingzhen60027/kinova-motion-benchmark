@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "/tmp/prepare_final_baseline_selection.py", line 320, in <module>
+    main()
+  File "/tmp/prepare_final_baseline_selection.py", line 310, in main
+    result = finalize(read(args.selection), legacy_smoke=args.legacy_smoke, legacy_dev=args.legacy_dev,
+  File "/tmp/prepare_final_baseline_selection.py", line 255, in finalize
+    audit[label]['coverage'] = enforce_main_coverage(planned, split, [0, 1, 2] if split == 'dev' else [0])
+  File "/tmp/prepare_final_baseline_selection.py", line 214, in enforce_main_coverage
+    found = {(p['case']['problem_id'], p['job']['replica_seed'], p['job']['method'], p['job']['objective'])
+  File "/tmp/prepare_final_baseline_selection.py", line 214, in <setcomp>
+    found = {(p['case']['problem_id'], p['job']['replica_seed'], p['job']['method'], p['job']['objective'])
+KeyError: 'replica_seed'

@@ -1,0 +1,98 @@
+{
+  "output": "/tmp/selection.complete.json",
+  "checks": {
+    "no_allow_pending": true,
+    "attempt_policy": "first_terminal",
+    "legacy_coverage_and_conditioning": {
+      "legacy_smoke": {
+        "planned": 20,
+        "legal": 16,
+        "finished": 20,
+        "seeds": [
+          0
+        ]
+      },
+      "legacy_dev": {
+        "planned": 360,
+        "legal": 360,
+        "finished": 360,
+        "seeds": [
+          0,
+          1,
+          2
+        ]
+      },
+      "legacy_test": {
+        "planned": 840,
+        "legal": 790,
+        "finished": 840,
+        "seeds": [
+          0
+        ]
+      },
+      "current_dev": {
+        "planned": 2520,
+        "selected": 2520,
+        "coverage": {
+          "methods": 10,
+          "method_objective_combinations": 14,
+          "registered_jobs": 2520,
+          "paired_seeds": [
+            0,
+            1,
+            2
+          ]
+        }
+      },
+      "current_test": {
+        "planned": 5880,
+        "selected": 5880,
+        "coverage": {
+          "methods": 10,
+          "method_objective_combinations": 14,
+          "registered_jobs": 5880,
+          "paired_seeds": [
+            0
+          ]
+        }
+      },
+      "current_test_initial_regions": {
+        "planned": 566,
+        "selected": 566
+      },
+      "current_dev_initial_regions": {
+        "planned": 360,
+        "selected": 220
+      },
+      "fixed_source_group": {
+        "registered_source_pairs": 420,
+        "eligible_source_pairs": 283,
+        "planned_backend_jobs": 566,
+        "source_run": "benchmarks/generic_motion_v1/results/test",
+        "source_run_manifest_sha256": "3d9b68108d9ce300040daa6d56e0f34d7c1eace9105ef1dc8789baac0a1e3a3f",
+        "final_source_optimizer_outcome_used_for_selection": false,
+        "failed_backend_loading_or_validation_retained": true
+      },
+      "current_dev_fixed_frontend": {
+        "legacy_nto_included": true,
+        "identical_validated_native_path_condition_passed": true,
+        "selected": 1320
+      },
+      "current_test_fixed_frontend": {
+        "legacy_nto_included": true,
+        "identical_validated_native_path_condition_passed": true,
+        "selected": 3396
+      }
+    },
+    "progress_curve_policy": {
+      "main_ompl_records_with_observed_progress": 0,
+      "main_has_no_claimed_intermediate_curve": "A final validated output does not establish an anytime curve. Main OMPL has observer disabled; leave intermediate first-valid/curve data absent when unavailable.",
+      "observer": "diagnostic_incumbent_observer is retained separately and must be explicitly labeled diagnostic if plotted; never substitute it for the main method."
+    },
+    "preserved_historical_comparisons": [
+      "historical_dev_ompl",
+      "historical_test"
+    ],
+    "evidence_scope": "Strict saved receipt, candidate/validation consistency and source checks; no new collision queries or optimizer calls. All current selected runs are complete before writing."
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "error": "RuntimeError(\"Exception while evaluating SNOPT costs and constraints: 'SystemExit: Failure at external/drake+/geometry/proximity/distance_to_shape_touching.cc:122 in BoxBoxGradient(): condition '(X_WA * p_ACa - X_WB * p_BCb).norm() < kEps' failed.\\n\\nAt:\\n  /tmp/nto_boxbox_capture_after_test.py(179): forward\\n  /tmp/nto_boxbox_capture_after_test.py(242): Solve\\n  /home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/runners/paper_nto.py(278): paper_nto\\n  /tmp/nto_boxbox_capture_after_test.py(250): execute\\n  /tmp/nto_boxbox_capture_after_test.py(331): main\\n  /tmp/nto_boxbox_capture_after_test.py(335): <module>\\n'\")",
+  "solve_seconds": 6.979004703927785,
+  "solver": "SNOPT",
+  "solver_status": "exception",
+  "solver_success": false,
+  "traceback": "Traceback (most recent call last):\n  File \"/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/runners/paper_nto.py\", line 278, in paper_nto\n    result = solver.Solve(prog, None, solve_options)\n  File \"/tmp/nto_boxbox_capture_after_test.py\", line 242, in Solve\n    return self.native.Solve(prog, initial_guess, solver_options)\nRuntimeError: Exception while evaluating SNOPT costs and constraints: 'SystemExit: Failure at external/drake+/geometry/proximity/distance_to_shape_touching.cc:122 in BoxBoxGradient(): condition '(X_WA * p_ACa - X_WB * p_BCb).norm() < kEps' failed.\n\nAt:\n  /tmp/nto_boxbox_capture_after_test.py(179): forward\n  /tmp/nto_boxbox_capture_after_test.py(242): Solve\n  /home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/runners/paper_nto.py(278): paper_nto\n  /tmp/nto_boxbox_capture_after_test.py(250): execute\n  /tmp/nto_boxbox_capture_after_test.py(331): main\n  /tmp/nto_boxbox_capture_after_test.py(335): <module>\n'\n"
+}

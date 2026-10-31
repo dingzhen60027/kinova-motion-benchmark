@@ -1,0 +1,57 @@
+{
+  "status": "solver_failed",
+  "problem_id": "dev-bottleneck-000-p01",
+  "scene_id": "dev-bottleneck-000",
+  "family": "bottleneck",
+  "objective": "minimum_distance",
+  "method": "NTO",
+  "method_seed": 3377930037,
+  "roadmap_id": "kinova7-full-n6000-s0",
+  "frontend_success": true,
+  "source_code_commit": "6f897328c064689fc19f12eee30952a08528d898",
+  "source_sha256": {
+    "runner": "dc891db134fbb91701595b02450b97cb717675de2e7db61a48d811a7d846d04d",
+    "validator": "12086b43b1735ab8455b260235eb0c92b336cb2b2cbaef6c286d1d2f5f376b43"
+  },
+  "timing": {
+    "model_setup_seconds": 0.0146746258251369,
+    "gpu_initialization_warmup_seconds": 0.11144042201340199,
+    "roadmap_load_seconds": 0.011354939080774784,
+    "online_collision_map_seconds": 0.0020707128569483757,
+    "drm_path_seconds": 0.20130955427885056,
+    "trajectory_optimization_seconds": 10.935080079827458,
+    "validation_seconds": 1.4053605091758072,
+    "cold_e2e_seconds": 12.973386730998755,
+    "warm_query_seconds": 12.54750841204077
+  },
+  "metrics": {
+    "cost": 12.709580590524626,
+    "cost_unit": "rad",
+    "path_length_rad": 12.709580590524624,
+    "normalized_path_length": 2.2058603542672395,
+    "minimum_sampled_clearance_m": -0.1067658278347734,
+    "duration_s": null,
+    "regions": 0,
+    "facets": 0
+  },
+  "budget_seconds": 60.0,
+  "reproduction_fidelity": "RSS-inspired Kinova-7D adaptation; local Clarabel backend; native EI-ZO unchanged by this benchmark",
+  "seed_semantics": "EI-ZO EizoOptions.seed is passed to native cuRAND; DRM graph sampling uses separate saved PCG64 seed; optimizer initialization is deterministic fixed DRM path",
+  "roadmap_sha256": "b3ff8bcedd45bf1d047da5d2851700b15786537e21a8872a518fc1e299be8461",
+  "offline_roadmap_seconds": 43.22702578594908,
+  "timing_scope": {
+    "cold": "worker function entry through final validation/failure; process startup measured separately by outer runner",
+    "warm": "same actual cold execution minus one-time model/dependency/GPU/roadmap setup; not a second timed solve",
+    "offline": "DRM construction is recorded separately and never added to query latency"
+  },
+  "gpu_memory": {
+    "sampled_peak_process_allocation_mib": 198,
+    "samples": 8,
+    "sampling_period_s": 0.2,
+    "method": "nvidia-smi process allocation; sampled peak, not CUDA allocator exact high water mark",
+    "error": null
+  },
+  "final_stage": "validation",
+  "cold_e2e_seconds": 13.288261137902737,
+  "sampled_gpu_peak_mib": 196.0
+}

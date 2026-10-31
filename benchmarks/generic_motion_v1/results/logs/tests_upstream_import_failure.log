@@ -1,0 +1,53 @@
+FF.                                                                      [100%]
+=================================== FAILURES ===================================
+_____________________________ TestBasic.test_link ______________________________
+
+self = <csdecomp.tests.csdecomp_test.TestBasic testMethod=test_link>
+
+    def test_link(self):
+>       link = csd.Link()
+E       AttributeError: module 'csdecomp' has no attribute 'Link'
+
+csdecomp/tests/csdecomp_test.py:15: AttributeError
+___________________ TestDrakeCSDBridge.test_drake_csd_bridge ___________________
+
+self = <csdecomp.tests.csdecomp_test.TestDrakeCSDBridge testMethod=test_drake_csd_bridge>
+
+    def test_drake_csd_bridge(self):
+        asset_path = "csdecomp/tests/test_assets"
+        directives_path = asset_path + "/directives/simple_kinova_sens_on_table.yml"
+        rbuilder = RobotDiagramBuilder()
+        plant = rbuilder.plant()
+        #builder = rbuilder.builder()
+        parser = rbuilder.parser()
+        scene_graph = rbuilder.scene_graph()
+        parser.package_map().Add("test_assets", asset_path)
+        parser.package_map().Add("kortex_description", asset_path + "/kinova/kortex_description")
+        parser.package_map().Add("robotiq_arg85_description", asset_path + "/robotiq")
+        directives = LoadModelDirectives(directives_path)
+        models = ProcessModelDirectives(directives, plant, parser)
+        plant.Finalize()
+        diagram = rbuilder.Build()
+        kin_idx = plant.GetModelInstanceByName("kinova")
+        rob_idx = plant.GetModelInstanceByName("robotiq")
+        checker = SceneGraphCollisionChecker(model = diagram,
+                                             robot_model_instances = [kin_idx, rob_idx],
+                                             edge_step_size = 0.1
+                                            )
+        diagram_context = diagram.CreateDefaultContext()
+        plant_context = plant.GetMyMutableContextFromRoot(diagram_context)
+        diagram.ForcedPublish(diagram_context)
+        plant_context = plant.GetMyContextFromRoot(diagram_context)
+        scene_graph_context = scene_graph.GetMyContextFromRoot(diagram_context)
+        query : QueryObject = scene_graph.get_query_output_port().Eval(scene_graph_context)
+        inspector : SceneGraphInspector = query.inspector()
+>       csd_plant = csd.convert_drake_plant_to_csd_plant(plant, plant_context, inspector)
+E       AttributeError: module 'csdecomp' has no attribute 'convert_drake_plant_to_csd_plant'
+
+csdecomp/tests/csdecomp_test.py:51: AttributeError
+------------------------------ Captured log call -------------------------------
+INFO     drake:None:0 Allocating contexts to support implicit context parallelism 4
+=========================== short test summary info ============================
+FAILED csdecomp/tests/csdecomp_test.py::TestBasic::test_link - AttributeError...
+FAILED csdecomp/tests/csdecomp_test.py::TestDrakeCSDBridge::test_drake_csd_bridge
+2 failed, 1 passed in 0.31s

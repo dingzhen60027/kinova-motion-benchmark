@@ -1,0 +1,51 @@
+{
+  "status": "frontend_failed",
+  "problem_id": "smoke-open_control-000-p00",
+  "scene_id": "smoke-open_control-000",
+  "family": "open_control",
+  "objective": "minimum_distance",
+  "method": "NTO_REFINED",
+  "method_seed": 1524244349,
+  "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c",
+  "frontend_success": false,
+  "frontend_native_success": true,
+  "source_code_commit": "e6b7e372e091ce5b01417073e0880e7c3068910c",
+  "source_sha256": {
+    "runner": "5c44255f5729b784c1233dac8ddceee5ea6875a7acd38c14f1c72a0e55cdfcaf",
+    "validator": "12086b43b1735ab8455b260235eb0c92b336cb2b2cbaef6c286d1d2f5f376b43"
+  },
+  "timing": {
+    "model_setup_seconds": 0.014372652862221003,
+    "gpu_initialization_warmup_seconds": 0.12419612193480134,
+    "roadmap_load_seconds": 0.016689998097717762,
+    "online_collision_map_seconds": 2.1235086023807526e-05,
+    "drm_path_seconds": 0.02861638367176056,
+    "drm_path_validation_seconds": 0.09755338821560144,
+    "cold_e2e_seconds": 0.5530208451673388,
+    "warm_query_seconds": 0.1271732049062848
+  },
+  "metrics": {},
+  "budget_seconds": 60.0,
+  "reproduction_fidelity": "Kinova; Drake KTO with SNOPT distance/IPOPT time, positive clearance and collision collocation refinement; not exact author FR3/hardware reproduction",
+  "seed_semantics": "EI-ZO EizoOptions.seed is passed to native cuRAND; DRM graph sampling uses separate saved PCG64 seed; optimizer initialization is deterministic fixed DRM path",
+  "roadmap_sha256": "bb780d13284769b0a97b6e891d2d90e2377e7494bb420fba32cc2f09355998a7",
+  "offline_roadmap_seconds": 45.87767210975289,
+  "frontend_validation_status": "collision_failed",
+  "failed_stage": "drm_path_validation",
+  "error": "Native DRM reported success, but its seed path failed the common numerical geometry check; no EI-ZO or optimizer call made",
+  "timing_scope": {
+    "cold": "worker function entry through final validation/failure; process startup measured separately by outer runner",
+    "warm": "same actual cold execution minus one-time model/dependency/GPU/roadmap setup; not a second timed solve",
+    "offline": "DRM construction is recorded separately and never added to query latency"
+  },
+  "gpu_memory": {
+    "sampled_peak_process_allocation_mib": 188,
+    "samples": 1,
+    "sampling_period_s": 0.2,
+    "method": "nvidia-smi process allocation; sampled peak, not CUDA allocator exact high water mark",
+    "error": null
+  },
+  "final_stage": "drm_path_validation",
+  "cold_e2e_seconds": 0.8149214750155807,
+  "sampled_gpu_peak_mib": 188.0
+}

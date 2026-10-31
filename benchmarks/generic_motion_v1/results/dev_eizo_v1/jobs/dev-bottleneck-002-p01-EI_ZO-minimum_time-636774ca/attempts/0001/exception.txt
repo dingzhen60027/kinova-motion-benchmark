@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/runners/csdecomp_baseline.py", line 289, in run_case
+    curve=biconvex(endpoints[0],endpoints[1],regions,velocity,acceleration,cfg['bezier_degree'],cfg['scsto_relative_tolerance'])
+  File "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/lib/python3.10/site-packages/scsplanning/biconvex.py", line 20, in biconvex
+    curve = polygonal(q_init, q_term, regions, vel_set, acc_set, deg)
+  File "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/lib/python3.10/site-packages/scsplanning/polygonal.py", line 21, in polygonal
+    points = get_points(q_init, q_term, regions)
+  File "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/lib/python3.10/site-packages/scsplanning/polygonal.py", line 91, in get_points
+    raise ValueError("Infeasible problem (could not find polygonal curve traversing the convex regions).")
+ValueError: Infeasible problem (could not find polygonal curve traversing the convex regions).

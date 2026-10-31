@@ -1,0 +1,48 @@
+{
+  "status": "frontend_failed",
+  "problem_id": "test-bottleneck-005-p00",
+  "scene_id": "test-bottleneck-005",
+  "family": "bottleneck",
+  "objective": "minimum_distance",
+  "method": "LGCS",
+  "method_seed": 619937318,
+  "roadmap_id": "kinova7-full-n9000-s2-e258c5f9914c",
+  "frontend_success": false,
+  "frontend_native_success": false,
+  "source_code_commit": "c8adbd8cef44db25b41559e8fbf2b38e120b624a",
+  "source_sha256": {
+    "runner": "5068d18002a81335127caa4284c2a5ce60aa1dc9c4338568b3c2a5f29c69f81d",
+    "validator": "12086b43b1735ab8455b260235eb0c92b336cb2b2cbaef6c286d1d2f5f376b43"
+  },
+  "timing": {
+    "model_setup_seconds": 0.014681817963719368,
+    "gpu_initialization_warmup_seconds": 0.1257235798984766,
+    "roadmap_load_seconds": 0.02141546318307519,
+    "online_collision_map_seconds": 0.006886179093271494,
+    "cold_e2e_seconds": 0.46758486330509186,
+    "warm_query_seconds": 0.02819956885650754
+  },
+  "metrics": {},
+  "budget_seconds": 60.0,
+  "reproduction_fidelity": "Kinova adaptation; native EI-ZO and locally reconstructed perspective MISOCP using Gurobi; not exact author FR3/hardware reproduction",
+  "seed_semantics": "EI-ZO EizoOptions.seed is passed to native cuRAND; DRM graph sampling uses separate saved PCG64 seed; optimizer initialization is deterministic fixed DRM path",
+  "roadmap_sha256": "a6e8e6df3a83a98ed3bfe70d00fb6e179d4be72ea207ca7e3e4327c06e1dcf83",
+  "offline_roadmap_seconds": 90.41396994423121,
+  "exception": "RuntimeError('[DRMPlanner] No collision-free path exists in roadmap.')",
+  "failed_stage": "drm_path",
+  "timing_scope": {
+    "cold": "worker function entry through final validation/failure; process startup measured separately by outer runner",
+    "warm": "same actual cold execution minus one-time model/dependency/GPU/roadmap setup; not a second timed solve",
+    "offline": "DRM construction is recorded separately and never added to query latency"
+  },
+  "gpu_memory": {
+    "sampled_peak_process_allocation_mib": 190,
+    "samples": 1,
+    "sampling_period_s": 0.2,
+    "method": "nvidia-smi process allocation; sampled peak, not CUDA allocator exact high water mark",
+    "error": null
+  },
+  "final_stage": "drm_path",
+  "cold_e2e_seconds": 0.7649955558590591,
+  "sampled_gpu_peak_mib": 188.0
+}

@@ -1,0 +1,32 @@
+{
+  "prepared_at_utc": "2026-10-30T19:47:38.907824+00:00",
+  "script": "/tmp/nto_boxbox_capture_after_test.py",
+  "script_sha256": "15d0296548ad88f44d7e70f0852f83aee4f5851a731fba7e0926d408e70aa5c8",
+  "script_runtime_executed": false,
+  "syntax_compile_passed": true,
+  "ast_parse_passed": true,
+  "model_constructions_in_preparation": 0,
+  "solve_calls_in_preparation": 0,
+  "gpu_calls_in_preparation": 0,
+  "allowed_scope": "After main test only: one unscored SNOPT Solve from exact original saved path/profile, then direct evaluator/pair queries at an intercepted q",
+  "source_attempt": "results/rss2025_paper_comparators_v1_dev_s000/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_distance-48b608ce/attempts/0001",
+  "method_seed": 1018884758,
+  "native_time_limit_seconds": 58.19628530321643,
+  "wrapper": "PyFunctionConstraint directly returns the original MinimumDistanceLowerBoundConstraint.Eval(x); exceptions capture x and input AutoDiff derivatives then rethrow.",
+  "source_urls": [
+    "https://raw.githubusercontent.com/RobotLocomotion/drake/v1.51.1/bindings/pydrake/solvers/solvers_py_mathematicalprogram.cc",
+    "https://raw.githubusercontent.com/RobotLocomotion/drake/v1.51.1/multibody/inverse_kinematics/distance_constraint_utilities.cc",
+    "https://raw.githubusercontent.com/RobotLocomotion/drake/v1.51.1/solvers/snopt_solver.cc"
+  ],
+  "limits": [
+    "Prepared by source and installed .pyi inspection, not runtime tested.",
+    "Python forwarding preserves numeric evaluator return objects but adds callback overhead; diagnostic elapsed time is not a score.",
+    "No original trigger q was saved; same original case may not reproduce the historical exception.",
+    "A completed-main-run receipt lifecycle gate prevents intended use while registered jobs are pending. It is not numerical certification or OS-wide scheduler locking.",
+    "If no native evaluator exception occurs, no q is inferred from a last context or rounded log.",
+    "Box pair probes at an exact captured q may identify the failing pair, but native exception does not provide pair identity; this is reported as available evidence, not guaranteed capture.",
+    "Original frontend is reused as saved; no new DRM, EI-ZO, geometry, finite difference, retry, or fallback solver.",
+    "The script must be invoked only after all main and any other timed jobs have stopped."
+  ],
+  "command": "OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 bash /home/eric/wjg/wd/csdecomp/local/python.sh /tmp/nto_boxbox_capture_after_test.py --repo /home/eric/wjg/wd/csdecomp --main-run /home/eric/wjg/wd/csdecomp/results/test --output /tmp/nto_boxbox_unscored_once --execute-after-main-test"
+}

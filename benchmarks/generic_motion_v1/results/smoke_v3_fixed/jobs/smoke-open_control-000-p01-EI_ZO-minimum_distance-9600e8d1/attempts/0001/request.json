@@ -1,0 +1,223 @@
+{
+  "job_id": "smoke-open_control-000-p01-EI_ZO-minimum_distance-9600e8d1",
+  "case_id": "smoke-open_control-000-p01",
+  "scene_id": "smoke-open_control-000",
+  "family": "open_control",
+  "method": "EI_ZO",
+  "objective": "minimum_distance",
+  "roadmap_id": "kinova7-full-n6000-s0",
+  "evaluation_config": {
+    "protocol": "kinova7_generic_v1_evaluation",
+    "online_budget_seconds": 60.0,
+    "optimizer_budget_seconds": 60.0,
+    "validation_step_rad": 0.005,
+    "validation_minimum_samples": 400,
+    "validation_maximum_samples": 100000,
+    "endpoint_tolerance_rad": 1e-05,
+    "feasibility_tolerance": 1e-05,
+    "velocity_limit_rad_s": 1.0,
+    "acceleration_limit_rad_s2": 1.0,
+    "bezier_degree": 6,
+    "scsto_relative_tolerance": 0.01,
+    "max_recovery_attempts": 20,
+    "maximum_recovery_witnesses": 128,
+    "drm": {
+      "max_iterations_steering_to_node": 10,
+      "max_nodes_to_expand": 10000,
+      "try_shortcutting": true,
+      "online_edge_step_size": 0.01,
+      "max_number_planning_attempts": 20,
+      "voxel_padding": 0.01
+    },
+    "eizo": {
+      "num_particles": 10000,
+      "bisection_steps": 9,
+      "configuration_margin": 0.1,
+      "delta": 0.01,
+      "epsilon": 0.01,
+      "tau": 0.5,
+      "mixing_steps": 100,
+      "max_hyperplanes_per_iteration": 10
+    },
+    "roadmap": {
+      "map_center": [
+        0.0,
+        0.0,
+        0.55
+      ],
+      "map_extent": [
+        2.8,
+        2.8,
+        2.2
+      ],
+      "offline_voxel_resolution": 0.04,
+      "max_task_space_distance_between_nodes": 0.85,
+      "max_configuration_distance_between_nodes": 4.0,
+      "edge_step_size": 0.1,
+      "max_neighbors": 20
+    },
+    "nto": {
+      "solver": "IPOPT",
+      "collocation_points": 150,
+      "minimum_control_points": 16,
+      "maximum_iterations": 500,
+      "clearance_m": 1e-05,
+      "influence_distance_m": 0.01
+    },
+    "region_coverage_tolerance_rad": 1e-06
+  },
+  "roadmap_dir": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/roadmaps/n6000_s000",
+  "method_seed": 2965764203,
+  "solver_seed": 3248103617,
+  "solver_seed_used": false,
+  "solver_seed_note": "The current solvers start deterministically from the fixed DRM path.",
+  "case": {
+    "acceleration_limits_rad_s2": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "benchmark_version": "kinova7_generic_v1",
+    "collision_geometry_sha256": "896ab9f55c5d8081b843358bd85cde2daae1f432564593f86218bf61733ce4fa",
+    "endpoint_clearances_m": [
+      0.019025026584333492,
+      0.019025026584333655
+    ],
+    "endpoint_sampling": {
+      "checker_disagreements": 0,
+      "checker_disagreements_outside_contact_band": 0,
+      "collision_or_clearance_rejections": 0,
+      "considered_configurations": 3,
+      "distance_bin": "medium",
+      "distance_bin_bounds": [
+        0.3,
+        0.45
+      ],
+      "distance_bin_rejections": 1,
+      "drawn_configurations": 64,
+      "joint_margin_rad": 0.02,
+      "maximum_attempts": 4096,
+      "minimum_clearance_m": 0.0001,
+      "policy": "uniform all seven joints; accept only limits, native and independent collision checks, clearance and requested normalized distance bin",
+      "unused_batch_tail_configurations": 61
+    },
+    "endpoint_seed": 4323820170949635881,
+    "endpoint_tcp_world_m": [
+      [
+        0.5855520445182982,
+        -0.10317095399461713,
+        0.7684127035375822
+      ],
+      [
+        0.33292278407613457,
+        0.007625347163135644,
+        0.6725982780199814
+      ]
+    ],
+    "endpoint_velocity_rad_s": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "family": "open_control",
+    "generator_config_sha256": "ac60e554b442d10bf820b642fc4425d4619f12fd8c2d236f1cee10c7c91a0f8f",
+    "generator_sources_sha256": {
+      "generator/__init__.py": "b73fa031be4d0c3c14aa4549e11cd634dcc2428fb786367a81b67ab9bc4b9e2e",
+      "generator/audit.py": "26febcec17ca1d2ff22326401b48421d9c0bd3a04b0de6f2c35e77e71d53fed4",
+      "generator/endpoints.py": "1d311eedc021a135e44eccb365e718cbc470c84472ab2be87e2781d751c08c64",
+      "generator/manifest.py": "acbf2224c9506a2c44ca8c480fcf94f0402cc6ff02738749f397fe03d672f278",
+      "generator/scene.py": "bcf4b159cea50ebd4984298f0825c70cacdf6dfb16ab963b02da03744128c650",
+      "generator/voxelize.py": "ebe45f389de4e6ec025144dde205b6f5b213d671cc28b380cfabb138855987b9"
+    },
+    "geometry_protocol_sha256": "d10cb605984c58a9b901b7c29eb134b3391f95d86d8fd8770f2942f25ee97f4e",
+    "input_arrays_file": "inputs/smoke-open_control-000-p01.npz",
+    "input_arrays_sha256": "e82474fa2d739d1432b146823c75bf046de60fb44e719b9947cf08c2acef7366",
+    "normalized_start_goal_joint_distance": 0.37801860528170006,
+    "objectives": [
+      "minimum_distance",
+      "minimum_time"
+    ],
+    "obstacle_geometry": [],
+    "obstacle_geometry_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "paired_seeds": [
+      {
+        "drm_seed": 0,
+        "method_seed": 2965764203,
+        "replicate": 0,
+        "solver_seed": 3248103617
+      },
+      {
+        "drm_seed": 1,
+        "method_seed": 156433264,
+        "replicate": 1,
+        "solver_seed": 1182853190
+      },
+      {
+        "drm_seed": 2,
+        "method_seed": 2404231180,
+        "replicate": 2,
+        "solver_seed": 553816079
+      }
+    ],
+    "problem_feasibility": "feasibility_unknown",
+    "problem_id": "smoke-open_control-000-p01",
+    "problem_sha256": "fe22eb220b1902ec5b49b298e9025d5b89ec489197ed02ede7da5c54d63ef841",
+    "q_goal": [
+      -1.6075301836703293,
+      0.6015646744534022,
+      -1.4398377413148087,
+      -1.8282749372243303,
+      -1.6334804754646717,
+      1.3253818357864255,
+      0.7164011353873279
+    ],
+    "q_start": [
+      -0.22804894059894432,
+      1.1899347176059303,
+      1.8282084570223511,
+      0.5771408179185209,
+      1.0970069386576173,
+      1.263158464998578,
+      -2.3368364432816024
+    ],
+    "robot_sha256": "a25f447c8caf4aff6dc76196c3d57cc940f00e802367f48034f06a9973927c75",
+    "scene_file": "scenes/smoke-open_control-000.json",
+    "scene_id": "smoke-open_control-000",
+    "scene_seed": 5171029007380848253,
+    "scene_sha256": "e95b033b1266a30a42e5dfd21f272ea97714d880f3a5016be12a539326bf3eeb",
+    "source_code_commit": "49df4a9569447ee57687db99bf65047fbd52d4cb",
+    "split": "smoke",
+    "start_goal_joint_distance": 5.957935187258169,
+    "straight_line_check_is_numerical": true,
+    "straight_line_checker_disagreements": 0,
+    "straight_line_collision": false,
+    "straight_line_disagreements_outside_contact_band": 0,
+    "straight_line_independent_colliding_samples": 0,
+    "straight_line_minimum_clearance_m": 0.014434900297222128,
+    "straight_line_native_colliding_samples": 0,
+    "straight_line_samples": 150,
+    "straight_line_step_rad": 0.04,
+    "validation_status": "valid_input",
+    "velocity_limits_rad_s": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "voxel_geometry_sha256": "1711c49032349ea591e9eb93521d51c2875af498bfd3788dbb396e21fcd73c6a",
+    "voxel_radius_m": 0.04,
+    "voxels_xyz": [],
+    "world_frame": "world; right-handed; metres; base_link identity"
+  }
+}
