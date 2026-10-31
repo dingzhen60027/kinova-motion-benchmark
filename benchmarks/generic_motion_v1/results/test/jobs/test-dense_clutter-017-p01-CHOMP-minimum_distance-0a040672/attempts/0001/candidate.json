@@ -1,0 +1,53 @@
+{
+  "kind": "polygon",
+  "native_cost": 0.5387219029636535,
+  "native_objective": "CHOMP: squared joint accelerations plus canonical signed-clearance potential integrated over C-space arc length",
+  "objective": "minimum_distance",
+  "optimizer_provenance": {
+    "algorithm": "CHOMP fixed-endpoint acceleration-metric covariant descent; C-space line-integral potential",
+    "collision_model": "unchanged Model.clearance; exact canonical primitives and filter pairs",
+    "initializer": "shared validated DRM path, all vertices retained",
+    "method": "CHOMP",
+    "native_objective": "CHOMP: squared joint accelerations plus canonical signed-clearance potential integrated over C-space arc length",
+    "profile": {
+      "backtracking_steps": 8,
+      "collision_check_step_rad": 0.05,
+      "finite_difference_rad": 1e-05,
+      "initial_knots": 64,
+      "learning_rate": 1.0,
+      "maximum_iterations": 40,
+      "maximum_knots": 256,
+      "maximum_update_rad": 0.08,
+      "obstacle_influence_m": 0.05,
+      "obstacle_weight": 10.0,
+      "relative_cost_tolerance": 1e-07,
+      "safety_band_m": 2e-06,
+      "smoothness_weight": 1.0
+    },
+    "reported_benchmark_cost": "Euclidean seven-joint PWL arc length in radians",
+    "seed": 2750418892,
+    "sources": [
+      "https://publications.ri.cmu.edu/storage/publications/pub_files/2013/5/CHOMP_IJRR.pdf"
+    ]
+  },
+  "optimizer_status": {
+    "analytic_gradient_calls": 35,
+    "candidate_changed": true,
+    "clearance_calls": 69,
+    "clearance_states": 4628,
+    "final_pwl_length_rad": 5.498782560785464,
+    "finite_sampling_is_not_continuous_certificate": true,
+    "geometry_seconds": 3.9230757071636617,
+    "initial_native_cost": 0.6532576167164302,
+    "initial_pwl_length_rad": 6.613895039204955,
+    "iterations": 35,
+    "minimum_optimizer_sample_clearance_m": 0.017370033889757393,
+    "native_cost": 0.5387219029636535,
+    "native_obstacle_cost": 0.05285439884008508,
+    "native_smoothness_cost": 0.010177914562802703,
+    "seconds": 3.943103172816336,
+    "solver_success": true,
+    "stop_reason": "line_search_stationary"
+  },
+  "solver_success": true
+}

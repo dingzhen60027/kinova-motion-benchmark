@@ -1,0 +1,195 @@
+{
+  "job_id": "test-route_choice-010-p04-LGCS-minimum_distance-a0057ed3",
+  "case_id": "test-route_choice-010-p04",
+  "scene_id": "test-route_choice-010",
+  "family": "route_choice",
+  "method": "LGCS",
+  "objective": "minimum_distance",
+  "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c",
+  "evaluation_config": {
+    "protocol": "kinova7_generic_v1_evaluation",
+    "online_budget_seconds": 60.0,
+    "optimizer_budget_seconds": 60.0,
+    "validation_step_rad": 0.005,
+    "validation_minimum_samples": 400,
+    "validation_maximum_samples": 100000,
+    "endpoint_tolerance_rad": 1e-05,
+    "feasibility_tolerance": 1e-05,
+    "velocity_limit_rad_s": 1.0,
+    "acceleration_limit_rad_s2": 1.0,
+    "bezier_degree": 6,
+    "scsto_relative_tolerance": 0.01,
+    "max_recovery_attempts": 20,
+    "maximum_recovery_witnesses": 128,
+    "drm": {
+      "max_iterations_steering_to_node": 10,
+      "max_nodes_to_expand": 10000,
+      "try_shortcutting": true,
+      "online_edge_step_size": 0.1,
+      "max_number_planning_attempts": 20,
+      "voxel_padding": 0.01
+    },
+    "eizo": {
+      "num_particles": 10000,
+      "bisection_steps": 9,
+      "configuration_margin": 0.01,
+      "delta": 0.005,
+      "epsilon": 0.005,
+      "tau": 0.5,
+      "mixing_steps": 60,
+      "max_hyperplanes_per_iteration": 10,
+      "max_iterations": 30
+    },
+    "roadmap": {
+      "map_center": [
+        0.0,
+        0.0,
+        0.55
+      ],
+      "map_extent": [
+        2.8,
+        2.8,
+        2.2
+      ],
+      "offline_voxel_resolution": 0.03,
+      "max_task_space_distance_between_nodes": 10.0,
+      "max_configuration_distance_between_nodes": 10.0,
+      "edge_step_size": 0.1,
+      "max_neighbors": 10
+    },
+    "nto": {
+      "solver": "IPOPT",
+      "collocation_points": 150,
+      "minimum_control_points": 16,
+      "maximum_iterations": 500,
+      "clearance_m": 1e-05,
+      "influence_distance_m": 0.01
+    },
+    "region_coverage_tolerance_rad": 1e-06,
+    "lgcs": {
+      "solver": "scip"
+    },
+    "drm_query": {
+      "backend": "safe_native",
+      "build_dir": "benchmarks/generic_motion_v1/reports/baseline_repair_v2/drm_safe_build_v2"
+    },
+    "ompl": {
+      "range_rad": 0.5,
+      "motion_step_rad": 0.01,
+      "planning_seconds": 10.0,
+      "simplification_seconds": 0.5,
+      "simplification_max_steps": 100,
+      "simplification_max_empty_steps": 50,
+      "validation_reserve_seconds": 5.0,
+      "goal_bias": 0.05,
+      "rewire_factor": 1.1,
+      "record_validated_progress": false,
+      "progress_poll_seconds": 0.5
+    },
+    "extended_baselines": {
+      "chomp": {
+        "initial_knots": 64,
+        "maximum_knots": 256,
+        "obstacle_influence_m": 0.05,
+        "collision_check_step_rad": 0.05,
+        "safety_band_m": 2e-06,
+        "maximum_iterations": 40,
+        "smoothness_weight": 1.0,
+        "obstacle_weight": 10.0,
+        "finite_difference_rad": 1e-05,
+        "learning_rate": 1.0,
+        "maximum_update_rad": 0.08,
+        "backtracking_steps": 8,
+        "relative_cost_tolerance": 1e-07
+      },
+      "stomp": {
+        "initial_knots": 64,
+        "maximum_knots": 256,
+        "obstacle_influence_m": 0.05,
+        "collision_check_step_rad": 0.05,
+        "safety_band_m": 2e-06,
+        "maximum_iterations": 40,
+        "iterations_after_valid": 5,
+        "rollouts": 12,
+        "noise_std_rad": 0.1,
+        "cost_sensitivity": 10.0,
+        "control_cost_weight": 0.1,
+        "maximum_update_rad": 0.08
+      },
+      "trajopt": {
+        "initial_knots": 64,
+        "maximum_knots": 256,
+        "segment_collocation_subdivisions": 3,
+        "clearance_m": 0.001,
+        "derivative_step_rad": 1e-05,
+        "maximum_sqp_iterations": 50,
+        "initial_trust_box_rad": 0.1,
+        "constraint_tolerance": 0.0001,
+        "initial_merit_coefficient": 10.0,
+        "maximum_merit_coefficient_increases": 5,
+        "minimum_model_improvement": 0.0001,
+        "maximum_optimizer_seconds": 45.0
+      }
+    }
+  },
+  "roadmap_dir": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/roadmaps/rss2025_n6000_s000",
+  "roadmap_used": true,
+  "replica_seed": 0,
+  "method_seed": 3417539011,
+  "solver_seed": 3729796699,
+  "solver_seed_used": false,
+  "solver_seed_note": "Reserved solver_seed is unused. Native OMPL/STOMP RNG uses method_seed; local deterministic optimizers use the fixed DRM seed path.",
+  "case_ref": {
+    "manifest_path": "benchmarks/generic_motion_v1/manifests/test.jsonl",
+    "manifest_sha256": "9fcbe5ccae28d8681586b1ac6c9986f51f7cc7b5cdc19352c101910e3b6ed03b",
+    "problem_id": "test-route_choice-010-p04",
+    "problem_sha256": "6e33f82bcf69346d0ef2e977391245d9c3a1bb5ac96fac51d3ef555f7a8e67ae",
+    "record_sha256": "600029961da4d9794eea9ea931b8981676889c38e88a735d2ba5da5aa31e459d",
+    "scene_id": "test-route_choice-010"
+  },
+  "execution_mode": "fixed_initial_regions",
+  "shared_initialization": {
+    "mode": "fixed_initial_regions",
+    "source_run": "benchmarks/generic_motion_v1/results/test",
+    "source_run_manifest_sha256": "3d9b68108d9ce300040daa6d56e0f34d7c1eace9105ef1dc8789baac0a1e3a3f",
+    "source_job_id": "test-route_choice-010-p04-EI_ZO-minimum_distance-13c3fdf6",
+    "source_attempt": "benchmarks/generic_motion_v1/results/test/jobs/test-route_choice-010-p04-EI_ZO-minimum_distance-13c3fdf6/attempts/0001",
+    "source_receipt_sha256": "7f935406be9a3d91cd0d8fd73ac58553bc359d5bf558c6e4eda743303a1ad210",
+    "case_id": "test-route_choice-010-p04",
+    "case_sha256": "600029961da4d9794eea9ea931b8981676889c38e88a735d2ba5da5aa31e459d",
+    "robot_sha256": "a25f447c8caf4aff6dc76196c3d57cc940f00e802367f48034f06a9973927c75",
+    "collision_geometry_sha256": "896ab9f55c5d8081b843358bd85cde2daae1f432564593f86218bf61733ce4fa",
+    "evaluation_config_sha256": "8b5d973b6447e162e2a29bdb8103de043a408dfd2568cc106dc58565fc3ace92",
+    "method_seed": 3417539011,
+    "replica_seed": 0,
+    "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c",
+    "files": {
+      "request.json": "4cf092cf0680d172f6c1cdb37ff9095cf1f61002b2e172a890a427e3e3bab42b",
+      "input.json": "1b70050bd4ba0a013fb2433a55302a416de13988f50c8d64dc1b001c5449ad4f",
+      "evaluation.json": "d56eb9d109a613e773bbe23d84d9e6f4bf6e6802ae262e4908c8fc9e1434a0bf",
+      "result.json": "1ebff81093a1f38c0ccc9ac4d3ed0de0f00eb00c8037a6b4241ad96ac4c02135",
+      "process.json": "a51f8f1fe73eb5a11aa4b3aac4a977debbc8f9879e7c15df4825786950aea46e",
+      "path.npy": "1918e44817e2fbcc8d79c4aa8e54b83b24731a1de567ac8119d326461d91f959",
+      "frontend_validation/validation.json": "c0c5d96dda9379197fe4da0783419d207d8b5aabe3967d71e3bc1890c9d38e78",
+      "frontend_validation/trajectory_samples.npz": "a906075dc637fd2fc4cf26d282ec3d9ab27c59674d0331653ea59d3c23c5aee0",
+      "rounds/000/regions.npz": "b4cd49b5dc7c2a0a2471254a53be2dac42ea5a145ff65ec52b80334dd209daf8",
+      "rounds/000/corridor.json": "a4840c5ee42626a5598cd41ecd96fb9f7c790e5fa56c4caeaa7d82b4ad1bc702",
+      "eizo_parameters.json": "3d7db4875c106c6780b89bb954470748c3384659a848908f834c7ee31e5c17e5"
+    },
+    "roadmap_native_sha256": "bb780d13284769b0a97b6e891d2d90e2377e7494bb420fba32cc2f09355998a7",
+    "source_initialization_recorded_stages": {
+      "model_setup_seconds": 0.014407298993319273,
+      "gpu_initialization_warmup_seconds": 0.12263971334323287,
+      "roadmap_load_seconds": 0.014862807001918554,
+      "online_collision_map_seconds": 0.001645154319703579,
+      "drm_path_seconds": 0.0434730751439929,
+      "drm_path_validation_seconds": 0.7483215038664639,
+      "eizo_inflation_seconds": 0.2492146180011332
+    },
+    "source_initialization_recorded_stage_seconds": 1.1945641706697643,
+    "source_attempt_cold_seconds": 2.5178393158130348,
+    "source_initialization_timing_scope": "Saved measured source stages only; excludes uninstrumented startup/dependency overhead and is not a separate exact frontend wall clock",
+    "initialization_digest": "95dbfda09ad346f26bc8b29d0ea8f40b83c55fe34c0c12f262215e2e5b7f6fcb"
+  },
+  "initialization_digest": "95dbfda09ad346f26bc8b29d0ea8f40b83c55fe34c0c12f262215e2e5b7f6fcb"
+}

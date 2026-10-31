@@ -1,0 +1,49 @@
+{
+  "status": "frontend_failed",
+  "problem_id": "test-sparse_clutter-018-p00",
+  "scene_id": "test-sparse_clutter-018",
+  "family": "sparse_clutter",
+  "objective": "minimum_distance",
+  "method": "NTO",
+  "method_seed": 3321070498,
+  "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c",
+  "frontend_success": false,
+  "frontend_native_success": false,
+  "roadmap_used": true,
+  "source_code_commit": "88f50536d59e6e617afcaece9bc01d214005746f",
+  "source_sha256": {
+    "runner": "5c9e467e88198d3ceff797e8b50e70553851dcb2041894d20d579b91e96f7e0b",
+    "validator": "12086b43b1735ab8455b260235eb0c92b336cb2b2cbaef6c286d1d2f5f376b43"
+  },
+  "timing": {
+    "model_setup_seconds": 0.01450390089303255,
+    "gpu_initialization_warmup_seconds": 0.1538842711597681,
+    "roadmap_load_seconds": 0.01484624668955803,
+    "online_collision_map_seconds": 0.001975317019969225,
+    "cold_e2e_seconds": 0.48444867925718427,
+    "warm_query_seconds": 0.039735482074320316
+  },
+  "metrics": {},
+  "budget_seconds": 60.0,
+  "reproduction_fidelity": "Kinova adaptation; Drake KTO/IPOPT with locally strengthened initialization; not exact author FR3/hardware reproduction",
+  "seed_semantics": "EI-ZO EizoOptions.seed is passed to native cuRAND; DRM graph sampling uses separate saved PCG64 seed; optimizer initialization is deterministic fixed DRM path",
+  "roadmap_sha256": "bb780d13284769b0a97b6e891d2d90e2377e7494bb420fba32cc2f09355998a7",
+  "offline_roadmap_seconds": 45.87767210975289,
+  "exception": "RuntimeError('[DRMPlanner] No collision-free path exists in roadmap.')",
+  "failed_stage": "drm_path",
+  "timing_scope": {
+    "cold": "worker function entry through final validation/failure; process startup measured separately by outer runner",
+    "warm": "same actual cold execution minus one-time model/dependency/GPU/roadmap setup; not a second timed solve",
+    "offline": "DRM construction is recorded separately and never added to query latency"
+  },
+  "gpu_memory": {
+    "sampled_peak_process_allocation_mib": 188,
+    "samples": 1,
+    "sampling_period_s": 0.2,
+    "method": "nvidia-smi process allocation; sampled peak, not CUDA allocator exact high water mark",
+    "error": null
+  },
+  "final_stage": "drm_path",
+  "cold_e2e_seconds": 0.8649174319580197,
+  "sampled_gpu_peak_mib": 188.0
+}
