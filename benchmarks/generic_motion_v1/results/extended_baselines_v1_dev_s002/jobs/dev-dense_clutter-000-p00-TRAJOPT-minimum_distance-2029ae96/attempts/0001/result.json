@@ -1,0 +1,49 @@
+{
+  "status": "frontend_failed",
+  "problem_id": "dev-dense_clutter-000-p00",
+  "scene_id": "dev-dense_clutter-000",
+  "family": "dense_clutter",
+  "objective": "minimum_distance",
+  "method": "TRAJOPT",
+  "method_seed": 1818311733,
+  "roadmap_id": "kinova7-full-n6000-s2-e258c5f9914c",
+  "frontend_success": false,
+  "frontend_native_success": false,
+  "roadmap_used": true,
+  "source_code_commit": "3414dd08f165e0cee0856e86007b53d9b6e97720",
+  "source_sha256": {
+    "runner": "8e3d98bd484913bbd412590ec1e2344d84cc18fac19aaa316f84d4cb338d8e17",
+    "validator": "12086b43b1735ab8455b260235eb0c92b336cb2b2cbaef6c286d1d2f5f376b43"
+  },
+  "timing": {
+    "model_setup_seconds": 0.014484059996902943,
+    "gpu_initialization_warmup_seconds": 0.12629545712843537,
+    "roadmap_load_seconds": 0.016749325674027205,
+    "online_collision_map_seconds": 0.0027428562752902508,
+    "cold_e2e_seconds": 0.5108534460887313,
+    "warm_query_seconds": 0.07873443467542529
+  },
+  "metrics": {},
+  "budget_seconds": 60.0,
+  "reproduction_fidelity": "Author TrajOpt trust-region SQP and BPMPD core with canonical signed-distance collocation; not exact author FR3/hardware reproduction",
+  "seed_semantics": "deterministic optimizer from fixed validated DRM path; method_seed retained as pairing identity",
+  "roadmap_sha256": "5b735cd3605db7b8cef80595bcc3e1c300f31f6ff22fe511a36f9ca476e06b61",
+  "offline_roadmap_seconds": 46.36882188823074,
+  "exception": "RuntimeError('[DRMPlanner] No collision-free path exists in roadmap.')",
+  "failed_stage": "drm_path",
+  "timing_scope": {
+    "cold": "worker function entry through final validation/failure; process startup measured separately by outer runner",
+    "warm": "same actual cold execution minus one-time model/dependency/GPU/roadmap setup; not a second timed solve",
+    "offline": "DRM construction is recorded separately and never added to query latency"
+  },
+  "gpu_memory": {
+    "sampled_peak_process_allocation_mib": 188,
+    "samples": 1,
+    "sampling_period_s": 0.2,
+    "method": "nvidia-smi process allocation; sampled peak, not CUDA allocator exact high water mark",
+    "error": null
+  },
+  "final_stage": "drm_path",
+  "cold_e2e_seconds": 0.8151209242641926,
+  "sampled_gpu_peak_mib": 188.0
+}

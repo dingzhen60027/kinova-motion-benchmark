@@ -1,0 +1,1366 @@
+{
+  "checked_utc": "2026-10-30T15:54:17.935046+00:00",
+  "scope": "Read-only CPU interface audit; no check/index/generate/run/resume/solver/model/GPU calls; no attempts or frozen runtime changed.",
+  "head": "61dbc3fa0c9a6d02ac89b1db835b40164e707b36",
+  "readme_sha256": "02178029d263837c320c800a8e4bc4c0bb4c4e445dba8028ead7ca195cc1a004",
+  "passed": true,
+  "checks": [
+    {
+      "name": "relative_links",
+      "passed": true,
+      "links": [
+        {
+          "reference": "environment.yml",
+          "exists": true,
+          "resolved": "local/environment.yml"
+        },
+        {
+          "reference": "local/conda-explicit.txt",
+          "exists": true,
+          "resolved": "local/conda-explicit.txt"
+        },
+        {
+          "reference": "local/requirements.lock.txt",
+          "exists": true,
+          "resolved": "local/requirements.lock.txt"
+        },
+        {
+          "reference": "benchmarks/generic_motion_v1/results/checks.json",
+          "exists": true,
+          "resolved": "benchmarks/generic_motion_v1/results/checks.json"
+        },
+        {
+          "reference": "benchmarks/generic_motion_v1/problems.jsonl",
+          "exists": true,
+          "resolved": "benchmarks/generic_motion_v1/problems.jsonl"
+        },
+        {
+          "reference": "benchmarks/generic_motion_v1/splits.json",
+          "exists": true,
+          "resolved": "benchmarks/generic_motion_v1/splits.json"
+        },
+        {
+          "reference": "benchmarks/generic_motion_v1/features.csv",
+          "exists": true,
+          "resolved": "benchmarks/generic_motion_v1/features.csv"
+        },
+        {
+          "reference": "benchmarks/generic_motion_v1/metadata.json",
+          "exists": true,
+          "resolved": "benchmarks/generic_motion_v1/metadata.json"
+        },
+        {
+          "reference": "csdecomp/tests/test_assets/directives/kinova_sens_on_table.yml",
+          "exists": true,
+          "resolved": "csdecomp/tests/test_assets/directives/kinova_sens_on_table.yml"
+        },
+        {
+          "reference": "benchmarks/generic_motion_v1/configs/robot.json",
+          "exists": true,
+          "resolved": "benchmarks/generic_motion_v1/configs/robot.json"
+        },
+        {
+          "reference": "configs/evaluation.json",
+          "exists": true,
+          "resolved": "configs/evaluation.json"
+        },
+        {
+          "reference": "benchmarks/generic_motion_v1/results/selection.json",
+          "exists": true,
+          "resolved": "benchmarks/generic_motion_v1/results/selection.json"
+        },
+        {
+          "reference": "benchmarks/generic_motion_v1/results/records.csv",
+          "exists": true,
+          "resolved": "benchmarks/generic_motion_v1/results/records.csv"
+        },
+        {
+          "reference": "benchmarks/generic_motion_v1/results/summary.csv",
+          "exists": true,
+          "resolved": "benchmarks/generic_motion_v1/results/summary.csv"
+        },
+        {
+          "reference": "benchmarks/generic_motion_v1/results/inventory.json",
+          "exists": true,
+          "resolved": "benchmarks/generic_motion_v1/results/inventory.json"
+        },
+        {
+          "reference": "benchmarks/generic_motion_v1/results/figures/",
+          "exists": true,
+          "resolved": "benchmarks/generic_motion_v1/results/figures"
+        },
+        {
+          "reference": "benchmarks/generic_motion_v1/results/trajectories/",
+          "exists": true,
+          "resolved": "benchmarks/generic_motion_v1/results/trajectories"
+        },
+        {
+          "reference": "benchmarks/generic_motion_v1/results/logs/",
+          "exists": true,
+          "resolved": "benchmarks/generic_motion_v1/results/logs"
+        },
+        {
+          "reference": "benchmarks/generic_motion_v1/BENCHMARK_OVERVIEW.md",
+          "exists": true,
+          "resolved": "benchmarks/generic_motion_v1/BENCHMARK_OVERVIEW.md"
+        },
+        {
+          "reference": "LICENSE",
+          "exists": true,
+          "resolved": "LICENSE"
+        },
+        {
+          "reference": "README.legacy.md",
+          "exists": true,
+          "resolved": "README.legacy.md"
+        }
+      ]
+    },
+    {
+      "name": "public_aliases",
+      "passed": true,
+      "links": [
+        {
+          "path": "benchmark",
+          "is_symlink": true,
+          "target": "benchmarks/generic_motion_v1",
+          "exists": true,
+          "target_inside_repository": true
+        },
+        {
+          "path": "results",
+          "is_symlink": true,
+          "target": "benchmarks/generic_motion_v1/results",
+          "exists": true,
+          "target_inside_repository": true
+        },
+        {
+          "path": "environment.yml",
+          "is_symlink": true,
+          "target": "local/environment.yml",
+          "exists": true,
+          "target_inside_repository": true
+        },
+        {
+          "path": "configs/benchmark.json",
+          "is_symlink": true,
+          "target": "../benchmark/configs/generator.json",
+          "exists": true,
+          "target_inside_repository": true
+        }
+      ]
+    },
+    {
+      "name": "cli_from_multiple_cwds",
+      "passed": true,
+      "commands": [
+        {
+          "check": "benchmark_help",
+          "cwd": "/home/eric/wjg/wd/csdecomp",
+          "argv": [
+            "bash",
+            "/home/eric/wjg/wd/csdecomp/local/python.sh",
+            "scripts/benchmark.py",
+            "--help"
+          ],
+          "returncode": 0,
+          "seconds": 0.022329880855977535,
+          "stdout_bytes": 601,
+          "stdout_sha256": "dadf57da94a2a85f8cb305aa6a53375666efefc0ad6b1b56d3fc41dc9de88fc7",
+          "stderr": ""
+        },
+        {
+          "check": "evaluate_help",
+          "cwd": "/home/eric/wjg/wd/csdecomp",
+          "argv": [
+            "bash",
+            "/home/eric/wjg/wd/csdecomp/local/python.sh",
+            "scripts/evaluate.py",
+            "--help"
+          ],
+          "returncode": 0,
+          "seconds": 0.02326655387878418,
+          "stdout_bytes": 457,
+          "stdout_sha256": "ee94132e45387ce803e3a2a967aa0b2f5b726785339b6db4d4b8ee2d1e2c057c",
+          "stderr": ""
+        },
+        {
+          "check": "methods",
+          "cwd": "/home/eric/wjg/wd/csdecomp",
+          "argv": [
+            "bash",
+            "/home/eric/wjg/wd/csdecomp/local/python.sh",
+            "scripts/evaluate.py",
+            "methods"
+          ],
+          "returncode": 0,
+          "seconds": 0.022036111913621426,
+          "stdout_bytes": 5132,
+          "stdout_sha256": "a4fd1d79bfdea2117b81db8affe96af6d2274608826dfa0e9c2bbd66a8f9f7a9",
+          "stderr": "",
+          "method_ids": [
+            "EI_ZO",
+            "LGCS",
+            "NTO_PAPER",
+            "NTO_REFINED",
+            "RRTCONNECT",
+            "RRTSTAR",
+            "CHOMP",
+            "STOMP",
+            "TRAJOPT"
+          ]
+        },
+        {
+          "check": "show",
+          "cwd": "/home/eric/wjg/wd/csdecomp",
+          "argv": [
+            "bash",
+            "/home/eric/wjg/wd/csdecomp/local/python.sh",
+            "scripts/benchmark.py",
+            "show",
+            "smoke-bottleneck-000-p00"
+          ],
+          "returncode": 0,
+          "seconds": 0.060553993098437786,
+          "stdout_bytes": 3877,
+          "stdout_sha256": "a45bc98c560957de1fff6116b0c4ada631a785a2b81249ce087ba76b92b71515",
+          "stderr": "",
+          "problem_id": "smoke-bottleneck-000-p00"
+        },
+        {
+          "check": "benchmark_help",
+          "cwd": "/tmp",
+          "argv": [
+            "bash",
+            "/home/eric/wjg/wd/csdecomp/local/python.sh",
+            "scripts/benchmark.py",
+            "--help"
+          ],
+          "returncode": 0,
+          "seconds": 0.027662457898259163,
+          "stdout_bytes": 601,
+          "stdout_sha256": "dadf57da94a2a85f8cb305aa6a53375666efefc0ad6b1b56d3fc41dc9de88fc7",
+          "stderr": ""
+        },
+        {
+          "check": "evaluate_help",
+          "cwd": "/tmp",
+          "argv": [
+            "bash",
+            "/home/eric/wjg/wd/csdecomp/local/python.sh",
+            "scripts/evaluate.py",
+            "--help"
+          ],
+          "returncode": 0,
+          "seconds": 0.02408603299409151,
+          "stdout_bytes": 457,
+          "stdout_sha256": "ee94132e45387ce803e3a2a967aa0b2f5b726785339b6db4d4b8ee2d1e2c057c",
+          "stderr": ""
+        },
+        {
+          "check": "methods",
+          "cwd": "/tmp",
+          "argv": [
+            "bash",
+            "/home/eric/wjg/wd/csdecomp/local/python.sh",
+            "scripts/evaluate.py",
+            "methods"
+          ],
+          "returncode": 0,
+          "seconds": 0.026391145307570696,
+          "stdout_bytes": 5132,
+          "stdout_sha256": "a4fd1d79bfdea2117b81db8affe96af6d2274608826dfa0e9c2bbd66a8f9f7a9",
+          "stderr": "",
+          "method_ids": [
+            "EI_ZO",
+            "LGCS",
+            "NTO_PAPER",
+            "NTO_REFINED",
+            "RRTCONNECT",
+            "RRTSTAR",
+            "CHOMP",
+            "STOMP",
+            "TRAJOPT"
+          ]
+        },
+        {
+          "check": "show",
+          "cwd": "/tmp",
+          "argv": [
+            "bash",
+            "/home/eric/wjg/wd/csdecomp/local/python.sh",
+            "scripts/benchmark.py",
+            "show",
+            "smoke-bottleneck-000-p00"
+          ],
+          "returncode": 0,
+          "seconds": 0.05923387734219432,
+          "stdout_bytes": 3877,
+          "stdout_sha256": "a45bc98c560957de1fff6116b0c4ada631a785a2b81249ce087ba76b92b71515",
+          "stderr": "",
+          "problem_id": "smoke-bottleneck-000-p00"
+        },
+        {
+          "check": "benchmark_help",
+          "cwd": "/home/eric/wjg/wd",
+          "argv": [
+            "bash",
+            "/home/eric/wjg/wd/csdecomp/local/python.sh",
+            "scripts/benchmark.py",
+            "--help"
+          ],
+          "returncode": 0,
+          "seconds": 0.024105374235659838,
+          "stdout_bytes": 601,
+          "stdout_sha256": "dadf57da94a2a85f8cb305aa6a53375666efefc0ad6b1b56d3fc41dc9de88fc7",
+          "stderr": ""
+        },
+        {
+          "check": "evaluate_help",
+          "cwd": "/home/eric/wjg/wd",
+          "argv": [
+            "bash",
+            "/home/eric/wjg/wd/csdecomp/local/python.sh",
+            "scripts/evaluate.py",
+            "--help"
+          ],
+          "returncode": 0,
+          "seconds": 0.02449508011341095,
+          "stdout_bytes": 457,
+          "stdout_sha256": "ee94132e45387ce803e3a2a967aa0b2f5b726785339b6db4d4b8ee2d1e2c057c",
+          "stderr": ""
+        },
+        {
+          "check": "methods",
+          "cwd": "/home/eric/wjg/wd",
+          "argv": [
+            "bash",
+            "/home/eric/wjg/wd/csdecomp/local/python.sh",
+            "scripts/evaluate.py",
+            "methods"
+          ],
+          "returncode": 0,
+          "seconds": 0.023832410108298063,
+          "stdout_bytes": 5132,
+          "stdout_sha256": "a4fd1d79bfdea2117b81db8affe96af6d2274608826dfa0e9c2bbd66a8f9f7a9",
+          "stderr": "",
+          "method_ids": [
+            "EI_ZO",
+            "LGCS",
+            "NTO_PAPER",
+            "NTO_REFINED",
+            "RRTCONNECT",
+            "RRTSTAR",
+            "CHOMP",
+            "STOMP",
+            "TRAJOPT"
+          ]
+        },
+        {
+          "check": "show",
+          "cwd": "/home/eric/wjg/wd",
+          "argv": [
+            "bash",
+            "/home/eric/wjg/wd/csdecomp/local/python.sh",
+            "scripts/benchmark.py",
+            "show",
+            "smoke-bottleneck-000-p00"
+          ],
+          "returncode": 0,
+          "seconds": 0.05794599326327443,
+          "stdout_bytes": 3877,
+          "stdout_sha256": "a45bc98c560957de1fff6116b0c4ada631a785a2b81249ce087ba76b92b71515",
+          "stderr": "",
+          "problem_id": "smoke-bottleneck-000-p00"
+        }
+      ]
+    },
+    {
+      "name": "unknown_problem_rejected",
+      "passed": true,
+      "returncode": 2,
+      "stderr": "usage: benchmark.py [-h] [--root ROOT] [--problem PROBLEM]\n                    [--split {smoke,dev,test}]\n                    {build,check,show}\nbenchmark.py: error: Unknown problem: nonexistent-audit-input"
+    },
+    {
+      "name": "active_test_sources",
+      "passed": true,
+      "head": "61dbc3fa0c9a6d02ac89b1db835b40164e707b36",
+      "frozen_source_commit": "61dbc3fa0c9a6d02ac89b1db835b40164e707b36",
+      "source_files": 60,
+      "hash_mismatches": [],
+      "uncommitted_runtime": [],
+      "uncommitted_other_files": [
+        "README.md",
+        "benchmarks/generic_motion_v1/reports/cli_commands.jsonl"
+      ]
+    },
+    {
+      "name": "canonical_model_sources",
+      "passed": true,
+      "source_files": 6,
+      "hash_mismatches": [],
+      "canonical_directive": "csdecomp/tests/test_assets/directives/kinova_sens_on_table.yml"
+    },
+    {
+      "name": "canonical_index",
+      "passed": true,
+      "registered": 490,
+      "scene_ids": 109,
+      "contains_only_references": true,
+      "counts": {
+        "dev": {
+          "category_valid": {
+            "bottleneck": 15,
+            "dense_clutter": 15,
+            "route_choice": 15,
+            "sparse_clutter": 15
+          },
+          "distance_bin_valid": {
+            "long": 20,
+            "medium": 20,
+            "short": 20
+          },
+          "generation_failed": 0,
+          "numerical_witnesses": 49,
+          "registered": 60,
+          "scene_ids": 20,
+          "straight_line_collision_count": 47,
+          "valid": 60,
+          "valid_environment_clusters": 20
+        },
+        "smoke": {
+          "category_valid": {
+            "bottleneck": 2,
+            "open_control": 2,
+            "route_choice": 2,
+            "sparse_clutter": 2
+          },
+          "distance_bin_valid": {
+            "medium": 4,
+            "short": 4
+          },
+          "generation_failed": 2,
+          "numerical_witnesses": 7,
+          "registered": 10,
+          "scene_ids": 5,
+          "straight_line_collision_count": 6,
+          "valid": 8,
+          "valid_environment_clusters": 4
+        },
+        "test": {
+          "category_valid": {
+            "bottleneck": 100,
+            "dense_clutter": 85,
+            "open_control": 20,
+            "route_choice": 95,
+            "sparse_clutter": 95
+          },
+          "distance_bin_valid": {
+            "long": 79,
+            "medium": 158,
+            "short": 158
+          },
+          "generation_failed": 25,
+          "numerical_witnesses": 308,
+          "registered": 420,
+          "scene_ids": 84,
+          "straight_line_collision_count": 290,
+          "valid": 395,
+          "valid_environment_clusters": 76
+        }
+      }
+    },
+    {
+      "name": "config_local_references",
+      "passed": true,
+      "references": [
+        {
+          "path": "benchmarks/generic_motion_v1/reports/baseline_repair_v2/drm_safe_build_v2",
+          "exists": true
+        },
+        {
+          "path": "benchmark/roadmaps/rss2025_n6000_s000",
+          "exists": true
+        },
+        {
+          "path": "benchmark/roadmaps/rss2025_n6000_s001",
+          "exists": true
+        },
+        {
+          "path": "benchmark/roadmaps/rss2025_n6000_s002",
+          "exists": true
+        }
+      ],
+      "ompl_record_validated_progress": false
+    },
+    {
+      "name": "absolute_scripts_without_launcher_chdir",
+      "passed": true,
+      "commands": [
+        {
+          "argv": [
+            "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/bin/python",
+            "/home/eric/wjg/wd/csdecomp/scripts/benchmark.py",
+            "--help"
+          ],
+          "cwd": "/tmp",
+          "returncode": 0,
+          "seconds": 0.02180361095815897,
+          "stdout_sha256": "dadf57da94a2a85f8cb305aa6a53375666efefc0ad6b1b56d3fc41dc9de88fc7",
+          "stderr": ""
+        },
+        {
+          "argv": [
+            "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/bin/python",
+            "/home/eric/wjg/wd/csdecomp/scripts/evaluate.py",
+            "--help"
+          ],
+          "cwd": "/tmp",
+          "returncode": 0,
+          "seconds": 0.023380060214549303,
+          "stdout_sha256": "ee94132e45387ce803e3a2a967aa0b2f5b726785339b6db4d4b8ee2d1e2c057c",
+          "stderr": ""
+        },
+        {
+          "argv": [
+            "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/bin/python",
+            "/home/eric/wjg/wd/csdecomp/scripts/evaluate.py",
+            "methods"
+          ],
+          "cwd": "/tmp",
+          "returncode": 0,
+          "seconds": 0.02264917129650712,
+          "stdout_sha256": "a4fd1d79bfdea2117b81db8affe96af6d2274608826dfa0e9c2bbd66a8f9f7a9",
+          "stderr": ""
+        },
+        {
+          "argv": [
+            "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/bin/python",
+            "/home/eric/wjg/wd/csdecomp/scripts/benchmark.py",
+            "show",
+            "smoke-bottleneck-000-p00"
+          ],
+          "cwd": "/tmp",
+          "returncode": 0,
+          "seconds": 0.05859066592529416,
+          "stdout_sha256": "a45bc98c560957de1fff6116b0c4ada631a785a2b81249ce087ba76b92b71515",
+          "stderr": ""
+        }
+      ]
+    },
+    {
+      "name": "untracked_runtime_candidates",
+      "passed": true,
+      "paths": []
+    }
+  ],
+  "issues": [
+    {
+      "severity": "documentation",
+      "location": "README.md",
+      "finding": "Two sentences end with a doubled period.",
+      "count": 2
+    },
+    {
+      "severity": "documentation",
+      "location": "README.md: current result snapshot",
+      "finding": "Snapshot says test observations are pending while an actual test run is now executing; refresh its completed/pending counts before delivery."
+    },
+    {
+      "severity": "clarification",
+      "location": "README.md: repository tree",
+      "finding": "The canonical index and public symlinks are unique. Original frozen manifests remain denormalized and retain obstacle arrays; wording \"Original frozen inputs, stored once\" refers to physical aliasing rather than absence of legacy payload repetition."
+    }
+  ],
+  "model_documentation": {
+    "fixed_environment": "table; two camera/tripod assemblies; protective box",
+    "base": "world origin; welded",
+    "gripper": "Robotiq fingers welded",
+    "joint_metric": "bounded R7 Euclidean; no angular wrap",
+    "motion_limits": "1 rad/s; 1 rad/s^2; zero endpoint velocity",
+    "missing_required_model_description": []
+  },
+  "raw_output_policy": "Small CLI outputs summarized by digest and parsed IDs; no large model or scene payload copied.",
+  "pending_patch_audit": {
+    "checked_utc": "2026-10-30T19:09:28.420455+00:00",
+    "status": "isolated_cpu_tests_passed; not_applied_to_repository_runtime",
+    "scope": "All code tests and patch applications used /tmp overlays/copies. Actual status query read one completed historical dev run only. No active formal-test scan, data generation, solver call or GPU query was performed.",
+    "apply_order": [
+      {
+        "order": 1,
+        "path": "/tmp/results_valid_output.patch",
+        "sha256": "cc54c796ad8cb28eec758f132fcda669c274348f4dd0f6275b8275bbc05be1d5"
+      },
+      {
+        "order": 2,
+        "path": "/tmp/unified_entrypoints.patch",
+        "sha256": "9456409d3a70c921a97a2fe8a1e1fc4f6660e37fe4c1317b448a2c992eeecfb2"
+      }
+    ],
+    "partial_generate_patch": "Already included in unified_entrypoints.patch; do not separately apply /tmp/cli_generate.patch.",
+    "shared_status_contract": [
+      "Same strict accepted-output gate as records.csv, original raw state retained.",
+      "First terminal attempt per job; later retries cannot improve or replace its primary score.",
+      "All receipt lifecycle and raw categories plus pending/retry relationships shown.",
+      "Manifest cache scoped to one command; sealed artifact hashes genuinely checked; no trusted receipt tuple/token bypass."
+    ],
+    "generate_contract": [
+      "smoke/dev/test supported only at explicitly new independent output.",
+      "Default seed and config come from original split receipt and frozen split generator config.",
+      "Existing destinations, canonical tree and symlink aliases rejected before generator dispatch.",
+      "Native generator, canonical inputs and active evaluation plan unchanged."
+    ],
+    "cpu_regression": {
+      "passed": 169,
+      "failed": 0,
+      "independent_adversarial_tests": 10,
+      "independent_failed": 0,
+      "composition": "142 existing accepted-output tests + 7 public CLI + 15 generation + 5 status; independent 9 + 1 checked separately"
+    },
+    "reviews": {
+      "saved_output_independent": {
+        "source": "/tmp/results_valid_output_second_review.json",
+        "source_sha256": "d3c39bb8131fd33fdaa498e2dfbc9c7a3d6b1df86116fd06794514354d7ba0f5",
+        "review": {
+          "checked_utc": "2026-10-30T16:16:49.267965+00:00",
+          "reviewer": "unify_dataset: independent of helper/patch implementation",
+          "patch": "/tmp/results_valid_output.patch",
+          "patch_sha256": "cc54c796ad8cb28eec758f132fcda669c274348f4dd0f6275b8275bbc05be1d5",
+          "passed": true,
+          "blocking_findings": [],
+          "scope": "Read-only full patch inspection; CPU-only adversarial tests of source overlays. No GPU/model query, planner, frozen runtime or actual attempt changes.",
+          "tests": {
+            "independent_counterexamples": {
+              "passed": 37,
+              "failed": 0,
+              "seconds": 0.64,
+              "log": "/tmp/results_valid_output_second_review_final.log"
+            },
+            "author_regression_suite_independently_rerun": {
+              "passed": 142,
+              "failed": 0,
+              "seconds": 3.17,
+              "log": "/tmp/results_valid_output_second_review_suite.log"
+            },
+            "not_additive": "The 37 independent tests are incorporated in the 142-test regression suite."
+          },
+          "findings_resolved": [
+            {
+              "problem": "Candidate/sample/summary binding absent in the initial overlay",
+              "evidence": "wrong positions/time/segment dtype; native collision mask; nonfinite clearance; self-consistent out-of-bounds candidate; zero active spline duration; scalar/type and missing historical summary cases",
+              "resolution": "Common CPU sampler reconstructs the saved coefficients, compares exact sample schedule within roundoff, recomputes scalar/derivative summaries, checks canonical bounds and saved collision mask consistency"
+            },
+            {
+              "problem": "Malformed JSON and artifact IO could interrupt accounting",
+              "evidence": "lists/null/scalars, malformed JSON bytes, non-string problem/status, receipt PermissionError",
+              "resolution": "Reject core malformed documents and receipt failures; scanner skips malformed records; integrity failures cannot be promoted"
+            },
+            {
+              "problem": "Existential witness might be confused with primary scoring",
+              "evidence": "Earlier terminal failure followed by valid later attempt",
+              "resolution": "Later witness may establish numerical existence; unchanged _selected_rows still chooses earliest terminal attempt"
+            }
+          ],
+          "selection_and_summary_ast_unchanged": {
+            "_selected_rows": true,
+            "summarize": true
+          },
+          "repository_files_unchanged": {
+            "benchmarks/generic_motion_v1/common.py": true,
+            "benchmarks/generic_motion_v1/runners/results.py": true,
+            "benchmarks/generic_motion_v1/dataset.py": true,
+            "benchmarks/generic_motion_v1/tests/test_results.py": true,
+            "benchmarks/generic_motion_v1/tests/test_dataset.py": true
+          },
+          "apply_check": {
+            "returncode": 0,
+            "stderr": ""
+          },
+          "cache_review": "Per-operation cache is passed by collect/collect_witnesses and reused for run manifests/job lookup/input resolution. No global cache added.",
+          "raw_status_preserved": true,
+          "limitations": [
+            "Saved numerical collision masks and clearances are checked for artifact/data consistency; this audit does not rerun geometry queries or certify continuous collision freedom.",
+            "CPU fixture masks are explicit synthetic accounting test doubles, not newly executed planning results.",
+            "Formal test remains on frozen runtime; reviewed patch is staged in /tmp and must be applied after its completion."
+          ],
+          "initial_failures_retained": [
+            {
+              "log": "/tmp/results_valid_output_second_review_initial.log",
+              "failed": 29,
+              "passed": 5,
+              "note": "Before sampler/helper and read-error fixes"
+            },
+            {
+              "log": "/tmp/results_valid_output_second_review_additional.log",
+              "failed": 3,
+              "passed": 34,
+              "note": "Remaining identity/status type and artifact IO errors; fixed and rerun"
+            }
+          ],
+          "artifacts_sha256": {
+            "/tmp/test_valid_output_second_review.py": "3354fe223bf1202be61850e08325c593ace7acb9bfdf6bae85041938d6e35d20",
+            "/tmp/run_valid_output_second_review.py": "5f20001c2f0a23b02bcb7519b077b7cfc4048d856521559a0d4217a73c7bd4b6",
+            "/tmp/results_valid_output_second_review_initial.log": "b40d64bcecc7ff95ba1fdc7f9e2521469369886d68be57f12999f12dc8f1379d",
+            "/tmp/results_valid_output_second_review_additional.log": "d9a0f03c17904c88226dadf8810094dc55ffc76382f7c5628a6ae0a50d7b4f12",
+            "/tmp/results_valid_output_second_review_final.log": "4d6ce749d0514d00a07f5e0b16f3e95b445f9af5c8971061201ca4587ddd4d84",
+            "/tmp/results_valid_output_second_review_suite.log": "8628b8311103442d70db7fc14458e77f10afa959327f51984c4c9927db558c39"
+          }
+        }
+      },
+      "entrypoints_independent": {
+        "source": "/tmp/cli_increment_independent_final_review.json",
+        "source_sha256": "dcc8fef1873dbdf4eec88d0af5dd776c87006b89de3d6e75a613102a1f37fed2",
+        "review": {
+          "status": "passed_with_scope_limits",
+          "review_time": "2026-10-31T03:06:35.532136+08:00",
+          "scope": "Read-only CLI/result acceptance review, CPU synthetic tests and temporary-copy patch application; no GPU or live test scanning",
+          "apply_order": [
+            {
+              "patch": "/tmp/results_valid_output.patch",
+              "sha256": "cc54c796ad8cb28eec758f132fcda669c274348f4dd0f6275b8275bbc05be1d5"
+            },
+            {
+              "patch": "/tmp/unified_entrypoints.patch",
+              "sha256": "9456409d3a70c921a97a2fe8a1e1fc4f6660e37fe4c1317b448a2c992eeecfb2"
+            }
+          ],
+          "generate_patch_already_included": "Do not separately apply /tmp/cli_generate.patch; its changes and permanent tests are included in unified_entrypoints.patch.",
+          "initial_review": {
+            "path": "/tmp/cli_increment_independent_initial_review.json",
+            "sha256": "df6660d369a83e00602130508d8e3c01e878ea6aab8b7c6a75aaed43f76b79fd",
+            "failed_tests": 2,
+            "passed_tests": 7,
+            "finding_closed": "Removed receipt_check bypass/token design completely; final outcomes.py is exactly the previously reviewed cc54 version."
+          },
+          "independent_counterexamples": {
+            "tests": "/tmp/test_cli_increment_independent.py",
+            "sha256": "334eeb11bf3c3bea109e9d7410bcfaa8b729712fa4a032c2ed7aee535ce5f6dc",
+            "test_body_unchanged": true,
+            "passed": 9,
+            "failed": 0,
+            "log": "/tmp/cli_increment_independent_final.log",
+            "log_sha256": "9f97bb226299f07535cd455323489a2330604d563a8773b883eb9a0f9a8b1bbd"
+          },
+          "manifest_cache_test": {
+            "tests": "/tmp/test_cli_manifest_cache_independent.py",
+            "sha256": "78b372126279085db10c15102115ad011f819993bfef76af6172bc6b2d510f01",
+            "passed": 1,
+            "failed": 0,
+            "log": "/tmp/cli_manifest_cache_independent_final.log",
+            "log_sha256": "ac03dc55bdc1ce87ab5a711fdf5a7d72d345e62c471c4cb4e9de283e03475f14",
+            "assertions": [
+              "Three selected jobs parse run manifest at most twice in one operation.",
+              "Fresh status operation rejects a candidate changed after the previous operation."
+            ]
+          },
+          "full_cpu_regression": {
+            "command": "PYTHONDONTWRITEBYTECODE=1 bash local/python.sh /tmp/test_entrypoint_patch.py",
+            "passed": 169,
+            "failed": 0,
+            "log": "/tmp/cli_increment_independent_regression.log",
+            "log_sha256": "6433ceff733f202c354e9679ecb62c51697370166379e6203ff50f423c908733",
+            "composition": "Original saved-output 142 + existing public CLI 7 + generation 15 + status 5; independent 9+1 are separate."
+          },
+          "temporary_apply": {
+            "receipt": "/tmp/cli_increment_apply_review.json",
+            "sha256": "5b47171345d621b1af2ca950bb6713da7b4bbdbd63f4d05f677b886833067632",
+            "both_patch_checks_and_applications_passed": true,
+            "five_core_files_exactly_match_reviewed_overlays": true
+          },
+          "ast_review": {
+            "existing_results_functions": "All unchanged, including attempt_row, _selected_rows and summarize.",
+            "new_results_functions": [
+              "run_status"
+            ],
+            "outcomes_modified_by_increment": false
+          },
+          "verified_findings": [
+            "status and records use the same strict acceptance and first-terminal attempt semantics.",
+            "Later success cannot replace a first terminal failure; later pending/retry cannot undo a completed first-terminal score.",
+            "No caller-supplied receipt tuple or assertion can bypass hashing in the final code. Original repeated receipt hashing is deliberately retained.",
+            "Manifest/input caches are scoped to one status operation; a fresh operation rereads and checks evidence.",
+            "Test reconstruction uses frozen split seed/config by default, is limited to an explicitly new independent path, and rejects existing paths plus canonical/symlink aliases.",
+            "Generation increment does not change the native generator, canonical inputs, or evaluation plan."
+          ],
+          "remaining_blockers_in_scope": [],
+          "limitations": [
+            "Tests exercise CLI dispatch and synthetic saved evidence; no dataset/GPU generation was executed.",
+            "status still performs strict artifact hashing and saved sample consistency, so it is not guaranteed instantaneous on a large run.",
+            "The review does not claim mathematical continuous collision certification."
+          ],
+          "repository_runtime_modified": false,
+          "historical_artifacts_modified": false,
+          "gpu_executed": false
+        }
+      },
+      "generate_cpu_review": {
+        "source": "/tmp/cli_generate_review.json",
+        "source_sha256": "c933e98b5dcc20c97dada53ab55cabf04f80e324a88b9a06135a0e5e8daedfad",
+        "review": {
+          "checked_utc": "2026-10-30T18:57:26.082435+00:00",
+          "passed": true,
+          "patch": "/tmp/cli_generate.patch",
+          "patch_sha256": "36b4bde2e2c908d35a2ad4539f0861dff99a1c1f580ca689887f27c1f9b693fa",
+          "modified_runtime": "none; CLI overlay only in /tmp",
+          "runtime_original_sha256": "35fb65b8fda0a999665bc36aeed8d7bc9e701977afbf90eecfa7e6a592f3a5fd",
+          "runtime_unchanged": true,
+          "tests": {
+            "passed": 22,
+            "failed": 0,
+            "seconds": 0.36,
+            "new_dispatch_and_path_tests": 15,
+            "existing_public_cli_tests": 7,
+            "command": "PYTHONDONTWRITEBYTECODE=1 bash /home/eric/wjg/wd/csdecomp/local/python.sh /tmp/run_cli_generate_reproduction.py",
+            "log": "/tmp/cli_generate_tests.log"
+          },
+          "original_split_defaults": [
+            {
+              "split": "smoke",
+              "seed": 20261027,
+              "configuration": "benchmarks/generic_motion_v1/configs/smoke_generator.json",
+              "sha256": "ac60e554b442d10bf820b642fc4425d4619f12fd8c2d236f1cee10c7c91a0f8f",
+              "matches_generation_receipt": true
+            },
+            {
+              "split": "dev",
+              "seed": 20261027,
+              "configuration": "benchmarks/generic_motion_v1/configs/dev_generator.json",
+              "sha256": "ac60e554b442d10bf820b642fc4425d4619f12fd8c2d236f1cee10c7c91a0f8f",
+              "matches_generation_receipt": true
+            },
+            {
+              "split": "test",
+              "seed": 20261027,
+              "configuration": "benchmarks/generic_motion_v1/configs/test_generator.json",
+              "sha256": "ac60e554b442d10bf820b642fc4425d4619f12fd8c2d236f1cee10c7c91a0f8f",
+              "matches_generation_receipt": true
+            }
+          ],
+          "safety": [
+            "The explicit output must be new; existing directories, files and dangling symlinks are rejected before generator/model calls.",
+            "Resolved canonical root and children, including symlink aliases and alias parents, are rejected.",
+            "Native generator exclusive file writes and default test gate remain unchanged. Public explicit test reconstruction passes unlock_test=True."
+          ],
+          "restriction_reason": "The smoke/dev-only public choice is an obsolete orchestration gate, not a generator capability or current benchmark validity requirement. The generator already supports all three splits. Independent reconstruction cannot change canonical index or the active test plan.",
+          "limitations": [
+            "No GPU dataset generation was run. Tests verify argument dispatch, original seed/config selection and safety paths with an explicit generator test double.",
+            "This patch enables reproduction using current generator code and original split seed/config. Its existence does not certify bit-identical regeneration receipts across source commits."
+          ],
+          "apply_check": {
+            "returncode": 0,
+            "stderr": ""
+          },
+          "files_sha256": {
+            "/tmp/cli_generate.patch": "36b4bde2e2c908d35a2ad4539f0861dff99a1c1f580ca689887f27c1f9b693fa",
+            "/tmp/cli_generate_patched.py": "5771dce257a598b50f21d6cae3a6fa66b9885ec460d7108c5317da8826b0a75f",
+            "/tmp/test_cli_generate_reproduction.py": "8404bd7f2bb1a6e41c30447deef63160f93c3fdfc3405e7fc4f887276f6c14f5",
+            "/tmp/run_cli_generate_reproduction.py": "31ca50d7e5d4abf46b1ba16ff4e80ea5e449a94e137b62196e525c691817ffac",
+            "/tmp/cli_generate_tests.log": "1335bfd33a9ad819deb910c32cdb7f2bb18f04fb97c5110431109fd345835029"
+          }
+        }
+      },
+      "isolated_patch_application": {
+        "source": "/tmp/cli_increment_apply_review.json",
+        "source_sha256": "5b47171345d621b1af2ca950bb6713da7b4bbdbd63f4d05f677b886833067632",
+        "review": {
+          "temporary_copy": "/tmp/cli_apply_review_yvg5k19r",
+          "patches": [
+            {
+              "path": "/tmp/results_valid_output.patch",
+              "sha256": "cc54c796ad8cb28eec758f132fcda669c274348f4dd0f6275b8275bbc05be1d5"
+            },
+            {
+              "path": "/tmp/unified_entrypoints.patch",
+              "sha256": "9456409d3a70c921a97a2fe8a1e1fc4f6660e37fe4c1317b448a2c992eeecfb2"
+            }
+          ],
+          "apply_order_verified": [
+            {
+              "patch": "/tmp/results_valid_output.patch",
+              "check_only": true,
+              "returncode": 0,
+              "stderr": ""
+            },
+            {
+              "patch": "/tmp/results_valid_output.patch",
+              "check_only": false,
+              "returncode": 0,
+              "stderr": ""
+            },
+            {
+              "patch": "/tmp/unified_entrypoints.patch",
+              "check_only": true,
+              "returncode": 0,
+              "stderr": ""
+            },
+            {
+              "patch": "/tmp/unified_entrypoints.patch",
+              "check_only": false,
+              "returncode": 0,
+              "stderr": ""
+            }
+          ],
+          "exact_final_overlay_match": {
+            "benchmarks/generic_motion_v1/outcomes.py": true,
+            "benchmarks/generic_motion_v1/runners/results.py": true,
+            "benchmarks/generic_motion_v1/cli.py": true,
+            "benchmarks/generic_motion_v1/dataset.py": true,
+            "benchmarks/generic_motion_v1/common.py": true
+          },
+          "real_repo_modified": false
+        }
+      }
+    },
+    "actual_cpu_status_query": {
+      "planned": 120,
+      "completed": 120,
+      "pending": 0,
+      "statuses": {
+        "no_solution_within_budget": 44,
+        "validation_failed": 18,
+        "success_numerical": 46,
+        "solver_failure": 10,
+        "infrastructure_error": 1,
+        "timeout": 1
+      },
+      "raw_statuses": {
+        "frontend_failed": 44,
+        "collision_failed": 18,
+        "success_validated_numerical": 45,
+        "solver_failed": 12,
+        "timeout": 1
+      },
+      "selection": "first_terminal_attempt_per_job; never best-of or last retry",
+      "actual_attempts": 120,
+      "attempt_lifecycles": {
+        "terminal": 120
+      },
+      "all_receipt_raw_statuses": {
+        "frontend_failed": 44,
+        "collision_failed": 18,
+        "success_validated_numerical": 45,
+        "solver_failed": 12,
+        "timeout": 1
+      },
+      "not_started_jobs": 0,
+      "unsealed_jobs": 0,
+      "interrupted_jobs_awaiting_resume": 0,
+      "ignored_later_terminal_attempts": 0,
+      "attempt_relations": [],
+      "acceptance": "same saved-output rule as records.csv; CPU evidence consistency, no new collision query",
+      "run_manifest_sha256": "1dcafad86f9b7c103e56f199ba93089937fb1ecb8fbeab138df54f8d7df05a70",
+      "status_check_seconds": 0.8788713067770004,
+      "probe_wall_seconds": 0.8811213648878038,
+      "probe_source": "temporary overlays after cc54 strict output policy; repository runtime unmodified",
+      "gpu_queries": 0,
+      "run": "results/rss2025_paper_comparators_v1_dev_s000",
+      "interpretation": "An original solver_failed record with a stored Drake BoxBoxGradient exception is correctly classified infrastructure_error; original raw status is retained. This is the existing cc54 common exception-priority rule, not a CLI scoring change.",
+      "exception_example": "jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_distance-48b608ce/attempts/0001"
+    },
+    "retained_logs": [
+      {
+        "path": "results/logs/cli_increment_independent_initial.log",
+        "sha256": "d4275dec4d54079964d4e87cfb4d2ad1eb3dcf89e0b79a44bca6ef2221819e52",
+        "bytes": 2180
+      },
+      {
+        "path": "results/logs/cli_increment_independent_final.log",
+        "sha256": "9f97bb226299f07535cd455323489a2330604d563a8773b883eb9a0f9a8b1bbd",
+        "bytes": 98
+      },
+      {
+        "path": "results/logs/cli_manifest_cache_independent_final.log",
+        "sha256": "ac03dc55bdc1ce87ab5a711fdf5a7d72d345e62c471c4cb4e9de283e03475f14",
+        "bytes": 98
+      },
+      {
+        "path": "results/logs/cli_increment_independent_regression.log",
+        "sha256": "6433ceff733f202c354e9679ecb62c51697370166379e6203ff50f423c908733",
+        "bytes": 260
+      },
+      {
+        "path": "results/logs/cli_generate_tests.log",
+        "sha256": "1335bfd33a9ad819deb910c32cdb7f2bb18f04fb97c5110431109fd345835029",
+        "bytes": 99
+      }
+    ],
+    "frozen_runtime_check": {
+      "benchmarks/generic_motion_v1/cli.py": {
+        "sha256": "35fb65b8fda0a999665bc36aeed8d7bc9e701977afbf90eecfa7e6a592f3a5fd",
+        "matches_frozen_source": true
+      },
+      "benchmarks/generic_motion_v1/runners/results.py": {
+        "sha256": "978cec1a3f22d1a6b27ee372050ba9351214019190e62fd229d9bee55ba1bdbc",
+        "matches_frozen_source": true
+      },
+      "benchmarks/generic_motion_v1/dataset.py": {
+        "sha256": "3cd262f6f65103625c79d3ea6d0bd50d66dbd774a6277f89a39a9d5544e130a2",
+        "matches_frozen_source": true
+      },
+      "benchmarks/generic_motion_v1/common.py": {
+        "sha256": "2ff4f60a288359f662a950fa564fcfe8bb07c0814e6f1dba3a2e49cf26bf706e",
+        "matches_frozen_source": true
+      }
+    },
+    "limitations": [
+      "Pending patches are not installed while formal source 61dbc3fa0 is running.",
+      "Generation tests use mocked dispatch; no full regenerated data or bit-identical generation claim.",
+      "Saved-output consistency does not rerun geometry checks or prove continuous collision freedom.",
+      "Status runtime scales with saved artifacts and sample reconstruction; 120-job dev measurement is not an extrapolated full-test guarantee."
+    ]
+  },
+  "applied_patch_execution": {
+    "checked_utc": "2026-10-30T22:28:51.652206+00:00",
+    "source_commit": "88f50536d59e6e617afcaece9bc01d214005746f",
+    "patches": [
+      {
+        "name": "results_valid_output.patch",
+        "sha256": "cc54c796ad8cb28eec758f132fcda669c274348f4dd0f6275b8275bbc05be1d5"
+      },
+      {
+        "name": "unified_entrypoints.patch",
+        "sha256": "9456409d3a70c921a97a2fe8a1e1fc4f6660e37fe4c1317b448a2c992eeecfb2"
+      },
+      {
+        "name": "fixed_initial_regions.patch",
+        "sha256": "54f390a3ab106313c358ede81873e17080b9bd68efffb912b38a8d695dfb649f"
+      },
+      {
+        "name": "legacy_nto_cli.patch",
+        "sha256": "40453c6954f43a0099e99a5488b6002249dfb19c61598358c2c94bcd26c9d80a"
+      }
+    ],
+    "algorithm_parameters_changed": false,
+    "legacy_registry_description_correction": "Path retains original DRM controls; only time adds shape-preserving knots. Description only.",
+    "regression": {
+      "command": "bash local/python.sh -m pytest -q",
+      "passed": 1083,
+      "warnings": 292,
+      "seconds": 25.33,
+      "log": "results/logs/tests_after_shared_initialization.log"
+    },
+    "upstream_native": {
+      "command": "bash local/python.sh -m pytest -q --import-mode=prepend csdecomp/tests/csdecomp_test.py csdecomp/tests/drake_dep_test.py",
+      "passed": 3,
+      "warnings": 16,
+      "seconds": 0.5,
+      "log": "results/logs/tests_upstream_native.log",
+      "scope": "Unchanged upstream tests; includes actual native GPU vs Drake collision checks on the upstream simple model. Canonical full model checked separately.",
+      "initial_collection_failure": {
+        "failed": 2,
+        "passed": 1,
+        "log": "results/logs/tests_upstream_import_failure.log",
+        "reason": "Global importlib collection synthesized csdecomp namespace from csdecomp/tests, masking the installed package; prepend mode loads the actual existing Conda package. No tests or native package were modified."
+      }
+    },
+    "original_formal_test_complete": {
+      "integrity_passed": true,
+      "complete": true,
+      "completed_jobs": 5040,
+      "planned_jobs": 5040,
+      "errors": [],
+      "unsealed_attempts": []
+    }
+  },
+  "fixed_initial_regions_first_four": {
+    "checks": [
+      {
+        "job": "test-sparse_clutter-000-p00-EI_ZO-minimum_distance-784d4b85",
+        "status": "success_validated_numerical",
+        "digest": "fc7537514796a45fa6bf0dff035879ac81a07612c5dd201e7a74bfb4f1d17095",
+        "files": {
+          "path.npy": "1264803fa726f0135262ba90d0ca3591482162cb5e9a0e1697c22cac56cff392",
+          "regions.npz": "2a34ccd458130f32eb68e1dd65af215fa14d38cda110897ff43c03e6069544e9",
+          "corridor.json": "46991e8391b1a18a51ea8b80d1ab5c911d36c0d24661790489284ba6f9d18a2f"
+        }
+      },
+      {
+        "job": "test-sparse_clutter-000-p00-LGCS-minimum_distance-e463516e",
+        "status": "success_validated_numerical",
+        "digest": "fc7537514796a45fa6bf0dff035879ac81a07612c5dd201e7a74bfb4f1d17095",
+        "files": {
+          "path.npy": "1264803fa726f0135262ba90d0ca3591482162cb5e9a0e1697c22cac56cff392",
+          "regions.npz": "2a34ccd458130f32eb68e1dd65af215fa14d38cda110897ff43c03e6069544e9",
+          "corridor.json": "46991e8391b1a18a51ea8b80d1ab5c911d36c0d24661790489284ba6f9d18a2f"
+        }
+      },
+      {
+        "job": "test-sparse_clutter-000-p02-EI_ZO-minimum_distance-3bcaa1e5",
+        "status": "success_validated_numerical",
+        "digest": "e5b659f4e8617c8b5dc994020135b6110eff2ee048e333d7dd30c2b7f63dc711",
+        "files": {
+          "path.npy": "97983443320c746371230cfff71b9b7dfa7da2fe72fd331613f7df51367a2647",
+          "regions.npz": "d4aabf20e2e5797ef83489b6cc4348547957dea738f72065297d96edba152d0e",
+          "corridor.json": "fca8c6ab397caf8f574ec478ca8830ce9b3210f2699b67496bfa1f433999dca9"
+        }
+      },
+      {
+        "job": "test-sparse_clutter-000-p02-LGCS-minimum_distance-945302d2",
+        "status": "success_validated_numerical",
+        "digest": "e5b659f4e8617c8b5dc994020135b6110eff2ee048e333d7dd30c2b7f63dc711",
+        "files": {
+          "path.npy": "97983443320c746371230cfff71b9b7dfa7da2fe72fd331613f7df51367a2647",
+          "regions.npz": "d4aabf20e2e5797ef83489b6cc4348547957dea738f72065297d96edba152d0e",
+          "corridor.json": "fca8c6ab397caf8f574ec478ca8830ce9b3210f2699b67496bfa1f433999dca9"
+        }
+      }
+    ],
+    "paired_snapshot_bytes_identical": true,
+    "normal_exit": true,
+    "full_plan_jobs": 566
+  },
+  "final_statistics_audit": {
+    "checked_utc": "2026-10-31T00:44:12.781828+00:00",
+    "status": "applied_and_verified",
+    "source_commit": "59bbfc922f4cc053a0a0ef89aa714b176875a0b1",
+    "patch": {
+      "name": "paired_summary.patch",
+      "sha256": "a706cc894e568a1c97dfae121ad16702c68a43a9ed0c3a3eef826821b50f9141"
+    },
+    "scope": "Final statistics-only patch: paired outcomes/common-success timing, contributing scene clusters and unique offline roadmap identities. No planner, model, motion-limit or benchmark input changes.",
+    "original_selection_and_attempt_status_unchanged": true,
+    "reviews": {
+      "author_cpu_regression": {
+        "passed": 62,
+        "seconds": 0.5,
+        "log": "/tmp/offline_summary_author_regression_final.log",
+        "log_sha256": "de575493c2f6d95fa14bce464ef5eaefe40540b38f81d4a5555889bf3a5953d5"
+      },
+      "independent_paired_statistics": {
+        "passed": 8,
+        "failed": 0,
+        "command": "PYTHONDONTWRITEBYTECODE=1 bash local/python.sh /tmp/run_paired_summary_independent.py",
+        "log": "/tmp/paired_summary_independent_offline_final.log",
+        "log_sha256": "1b2656f5fc4bff75b8cd52aba0844fe99ec5f4f66ebf1c6f920dd4c165b9649e",
+        "cases": [
+          "Unmatched replica seeds produce no paired observations.",
+          "An observation missing from one method is not implicitly a failure.",
+          "Unequal scene sizes retain the declared query-weighted estimator, with whole scenes resampled.",
+          "Missing objective value affects that metric only, not outcome or computation denominators.",
+          "Planner seed and input identity mismatches reject pairings.",
+          "Per-category estimates cannot borrow observations from other categories.",
+          "Path and time objective estimates remain separate."
+        ]
+      },
+      "independent_offline_accounting": {
+        "passed": 8,
+        "failed": 0,
+        "seconds": 0.2,
+        "log": "/tmp/offline_summary_independent_final.log",
+        "log_sha256": "3dac977b410a8f9c78c094a7d8e2d7367983a80c024a98ee9aca2b6feb0351ec",
+        "findings": [
+          "One offline_roadmap row per selected map identity; repeated methods/tasks/comparisons/retries do not repeat the build cost.",
+          "Native file must exist, actual content SHA always establishes identity, recorded SHA if present must match; same-ID incompatible sources reject.",
+          "Missing recorded numeric facts remain blank; actual native file SHA is observed provenance, not fabricated build measurement.",
+          "Separate native.map and all top-level artifact directory byte counts; independent OMPL methods are not charged.",
+          "Pending declarations may cite a genuinely ready built map, with zero actual attempt/load counts; timed-load counts are not all possible uses.",
+          "Online cold/within-call/backend computation unchanged; extra paired summaries separate common-success latency from failure-dominated means."
+        ],
+        "isolated_git_apply_passed": true,
+        "initial_counterexample_failures": {
+          "failed": 2,
+          "failures": [
+            "metadata without hash/size and no native.map falsely accepted as a ready build",
+            "same identity and identical incomplete metadata could merge equal-size different native contents"
+          ],
+          "log": "/tmp/offline_summary_independent_initial.log",
+          "passed": 6,
+          "patch_sha256": "5a4e5d1d8226ba118483aad71c690952dc7d1c06328c1620cca222cd07ebdad4",
+          "tests": 8
+        },
+        "initial_failure_log_sha256": "5101d1e725b122cb10b60264f0a7e1c7ce61fe401837f2616b2bd3cb1f2fed8e",
+        "limitations": [
+          "The helper is called after selected run provenance verification; this review does not collect or recheck all live runs.",
+          "Same native map copied with different sidecar directory byte totals is rejected conservatively as conflicting storage evidence rather than averaged.",
+          "Existing three actual maps already have recorded valid SHA and files; initial missing-evidence failures do not imply these current maps were corrupted."
+        ]
+      }
+    },
+    "full_regression": {
+      "command": "bash local/python.sh -m pytest -q",
+      "passed": 1118,
+      "warnings": 292,
+      "seconds": 25.43,
+      "log": "results/logs/tests_final_statistics.log",
+      "log_sha256": "be805018455bb5eb29393fab7a19fa7a035873878dee93f25d587e0fa8930adf",
+      "verification": "Read actual saved final test output; no new test execution during this JSON merge"
+    },
+    "upstream_native": {
+      "reused_existing_evidence": "applied_patch_execution.upstream_native",
+      "passed": 3,
+      "scope": "Previously completed unchanged upstream tests; no new rerun claimed here"
+    },
+    "test_count_policy": "62 author tests and the independent 8+8 checks are separate evidence runs, not additional unique tests to add to the final full-regression count 1118."
+  },
+  "final_replay_check": {
+    "cli_logs": [
+      "results/logs/final_replay_success.log",
+      "results/logs/final_replay_failure.log"
+    ],
+    "saved_samples_rendered": true,
+    "new_planning_or_collision_simulation": false,
+    "browser_checks": {
+      "success": {
+        "case": "smoke-bottleneck-000-p00",
+        "method": "EI_ZO",
+        "objective": "minimum_time",
+        "play_advanced_frame": true,
+        "pause_verified": true,
+        "observed_frame": 91,
+        "displayed_frames": 180,
+        "displayed_time_seconds": 3.0015
+      },
+      "failure": {
+        "case": "smoke-bottleneck-000-p00",
+        "method": "NTO",
+        "objective": "minimum_distance",
+        "status": "collision_failed",
+        "slider_frame": 16,
+        "displayed_frames": 180,
+        "displayed_parameter": 0.0835,
+        "time_axis": "spline_parameter_not_physical_time",
+        "saved_sampled_clearance_mm": -1.28112
+      }
+    },
+    "visual_review": [
+      "success scene: full canonical collision boxes, fixed world and conservative obstacle spheres present",
+      "failure joints: seven joint curves and negative clearance displayed"
+    ],
+    "temporary_browser_closed": true,
+    "temporary_local_http_server_stopped": true,
+    "independent_saved_array_binding": {
+      "passed": true,
+      "original_samples": {
+        "EI_ZO_time": 2242,
+        "NTO_path": 1716
+      },
+      "display_frames_each": 180,
+      "q_time_clearance_values_equal": true,
+      "sample_hash_matches_receipt_and_replay": true,
+      "canonical_model_and_voxels_match": true,
+      "display_box_max_dimension_rounding_error_m": 1.35e-07,
+      "fixed_boxes_equal": true,
+      "html_data_equals_replay_json": true,
+      "failure_frame16_source_sample_index": 143,
+      "failure_frame16_clearance_m": -0.0012811151501995119,
+      "replanning_or_fk_or_collision_queries": false
+    }
+  },
+  "final_selection_execution": {
+    "first_integration_attempt": {
+      "log": "results/logs/final_selection_preparation.log",
+      "outcome": "failed",
+      "reason": "Historical selected development jobs lack direct job.replica_seed; guard now consumes existing normalized row.replica_seed."
+    },
+    "corrected_integration": {
+      "log": "results/logs/final_selection_preparation_schema_fix.log",
+      "outcome": "passed",
+      "helper_sha256": "592ba32f8c76867ee3ba8a5122c440e4a9291db058860da8c8256c048471b0a4",
+      "unit_tests_passed": 44,
+      "independent_review": "Canonical Cartesian coverage rechecked from selected run manifests; dev 2520/test 5880 registered; all 14 combinations complete; no default seed inference."
+    },
+    "selection": "results/selection.json",
+    "policy": "first_terminal, all canonical inputs, no best-of, no pending current baseline jobs"
+  },
+  "final_delivery": {
+    "source_and_raw_evidence_commit": "0b59261116",
+    "selection_checks": "results/selection.json#final_selection_checks",
+    "export": {
+      "actual_attempts_including_history_and_diagnostics": 21628,
+      "runs": 63,
+      "summary_rows": 10942,
+      "log": "results/logs/final_summary_export.log"
+    },
+    "current_comparisons": {
+      "dev": {
+        "registered": 2520,
+        "legal": 2520,
+        "success_numerical": 1364,
+        "pending": 0
+      },
+      "test": {
+        "registered": 5880,
+        "legal": 5530,
+        "success_numerical": 3529,
+        "pending": 0
+      },
+      "fixed_initial_regions": {
+        "registered": 566,
+        "legal": 566,
+        "success_numerical": 565,
+        "timeout": 1,
+        "pending": 0
+      }
+    },
+    "dataset": {
+      "registered": 490,
+      "legal": 463,
+      "numerical_witnesses": 414,
+      "unknown_feasibility": 49,
+      "generation_failed": 27,
+      "frozen_files_checked": 605,
+      "original_inputs_modified": false,
+      "collision_rechecked_in_final_index_check": false,
+      "index_log": "results/logs/final_benchmark_index.log",
+      "check_log": "results/logs/final_benchmark_check.log"
+    },
+    "regression": {
+      "passed": 1118,
+      "warnings": 292,
+      "seconds": 25.5,
+      "log": "results/logs/tests_final_delivery.log",
+      "upstream_passed": 3,
+      "upstream_log": "results/logs/tests_upstream_native.log"
+    },
+    "final_visual_adjustment": {
+      "statistics_changed": false,
+      "change": "Count labels outside the 0–100 percent confidence-interval range",
+      "actual_render_log": "results/logs/final_figure_layout.log",
+      "visually_checked": true
+    },
+    "readme_sha256": "c9a2d32f002129d1743b44f965f0c434286e0402ecd37f253586c5637e5a4d62",
+    "independent_dataset_and_readme_review": {
+      "passed": true,
+      "manifest_feature_split_identity": true,
+      "source_and_witness_paths_exist": true,
+      "method_test_counts_match_summary": true
+    },
+    "independent_statistics_review": {
+      "passed": true,
+      "records_sha256": "9ac7f3a11598741c691881298eb4469a90b5897a0c852b80dd583d2c3d28b503",
+      "summary_sha256": "0d20de14dfd328d2b653fb611716b1d24e148d529007d48855499cc411f1dfdb",
+      "checks": [
+        "current complete Cartesian coverage",
+        "first terminal selection",
+        "four paired outcomes",
+        "common-success objective/cold/backend estimates",
+        "scene-cluster bootstrap intervals",
+        "offline roadmap identity and cost separation"
+      ],
+      "reviewer_harness_correction": {
+        "initial_checks": 385102,
+        "diagnostic_coverage_mismatches": 32,
+        "cause": "Reviewer initially omitted unattempted observer jobs; final summary was correct. Diagnostic run_manifest recheck counted all declarations.",
+        "corrected_checks_passed": 40,
+        "product_changes_required": false
+      },
+      "observer_diagnostic": {
+        "registered": 360,
+        "actual_attempts": 128,
+        "terminal": 127,
+        "pending": 233,
+        "included_in_main": false
+      },
+      "offline": {
+        "historical_map_identities": 3,
+        "current_map_identities": 3,
+        "current_build_seconds": 138.08469921769574,
+        "current_native_bytes": 17503087,
+        "current_artifact_directory_bytes": 23459723,
+        "added_to_online_cost": false
+      },
+      "main_intermediate_progress_records": 0,
+      "main_explicit_first_valid_records": 0
+    }
+  }
+}

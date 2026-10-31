@@ -1,0 +1,1739 @@
+{
+  "head_at_review": "88f50536d59e6e617afcaece9bc01d214005746f",
+  "gpu_planning_calls_in_this_subtask": 0,
+  "methods": [
+    {
+      "method": "EI_ZO",
+      "display_name": "DRM + EI-ZO + LSCS / SCSTO",
+      "implementation": "官方 CSDecomp EI-ZO 与作者 SCSPlanning；Clarabel 后端适配",
+      "distinction": "EI-ZO区域含随机数值近似；同seed不保证CUDA输出逐字节相同。区域/SCSTO可行性均仍需共同验证；不主张全C-space全局最优。",
+      "objectives": [
+        "minimum_distance",
+        "minimum_time"
+      ],
+      "initialization": "Validated native DRM path, then native EI-ZO corridor; fixed_initial_regions explicitly reuses the same sealed initial snapshot.",
+      "roadmap_required": true,
+      "quality_metric": "objective dependent",
+      "native_objective": "minimum_distance: 给定有序凸区域中的 PWL 欧氏关节长度最小化（LSCS）; minimum_time: 给定区域中的 Bézier 轨迹总时长最小化（SCSTO 双凸迭代）；不是仅做时间参数化",
+      "source": "https://github.com/wernerpe/csdecomp",
+      "source_files": [
+        "runners/csdecomp_baseline.py"
+      ],
+      "correctness": "原生算法调用与作者优化器真实接入；恢复路径经代码/回归核对。",
+      "constraints": "Fixed endpoints and canonical model; convex-region constraints; common final collision validation. SCSTO additionally shares unit per-joint velocity/acceleration limits and zero endpoint velocity. Native collision feedback, EditRegionsCuda and corridor repair retained.",
+      "stopping": "60 s total query; EI-ZO at most 30 iterations, at most 20 collision-recovery rounds; SCSTO relative tolerance 0.01.",
+      "verification": "CPU author LSCS/SCSTO actual solves and boundary checks; GPU checks delegated to serial parent execution",
+      "baseline_eligible": true,
+      "eligibility_scope": "Eligible under the explicitly stated implementation identity; low success or normal optimizer failure is not an implementation exclusion. Each output still needs common numerical validation and receipt/process/budget checks.",
+      "recommended_role": "主基线；两赛道分别统计",
+      "actual_coverage": {
+        "end_to_end": {
+          "minimum_distance": {
+            "smoke": {
+              "planned_jobs": 10,
+              "finished_jobs": 10,
+              "legal_jobs": 8,
+              "finished_legal_jobs": 8,
+              "invalid_input_jobs": 2,
+              "success_numerical": 3,
+              "failure_counts": {
+                "no_solution_within_budget": 5,
+                "timeout": 0,
+                "solver_failure": 0,
+                "validation_failed": 0,
+                "infrastructure_error": 0
+              },
+              "run_paths": [
+                "benchmarks/generic_motion_v1/results/smoke"
+              ],
+              "comparison_id": null,
+              "selection_policy": "First terminal attempt per declared job; no best-of.",
+              "mode": "end_to_end",
+              "split": "smoke",
+              "planner_replica_seeds": [
+                0
+              ],
+              "actual_attempts": 10,
+              "pending_jobs": 0,
+              "evidence_scope": "Smoke coverage only; these two completed runs are not a selected main performance comparison."
+            },
+            "dev": {
+              "planned_jobs": 180,
+              "finished_jobs": 180,
+              "legal_jobs": 180,
+              "finished_legal_jobs": 180,
+              "invalid_input_jobs": 0,
+              "success_numerical": 110,
+              "failure_counts": {
+                "no_solution_within_budget": 70,
+                "timeout": 0,
+                "solver_failure": 0,
+                "validation_failed": 0,
+                "infrastructure_error": 0
+              },
+              "run_paths": [
+                "benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s000",
+                "benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s001",
+                "benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s002"
+              ],
+              "comparison_id": "current_dev",
+              "selection_policy": "First terminal attempt per declared job; no best-of.",
+              "mode": "end_to_end",
+              "split": "dev",
+              "planner_replica_seeds": [
+                0,
+                1,
+                2
+              ],
+              "actual_attempts": 180,
+              "pending_jobs": 0,
+              "evidence_scope": "Cross-checked final selected summary status row against exactly selected records."
+            },
+            "test": {
+              "planned_jobs": 420,
+              "finished_jobs": 420,
+              "legal_jobs": 395,
+              "finished_legal_jobs": 395,
+              "invalid_input_jobs": 25,
+              "success_numerical": 283,
+              "failure_counts": {
+                "no_solution_within_budget": 112,
+                "timeout": 0,
+                "solver_failure": 0,
+                "validation_failed": 0,
+                "infrastructure_error": 0
+              },
+              "run_paths": [
+                "benchmarks/generic_motion_v1/results/test"
+              ],
+              "comparison_id": "current_test",
+              "selection_policy": "First terminal attempt per declared job; no best-of.",
+              "mode": "end_to_end",
+              "split": "test",
+              "planner_replica_seeds": [
+                0
+              ],
+              "actual_attempts": 420,
+              "pending_jobs": 0,
+              "evidence_scope": "Cross-checked final selected summary status row against exactly selected records."
+            }
+          },
+          "minimum_time": {
+            "smoke": {
+              "planned_jobs": 10,
+              "finished_jobs": 10,
+              "legal_jobs": 8,
+              "finished_legal_jobs": 8,
+              "invalid_input_jobs": 2,
+              "success_numerical": 3,
+              "failure_counts": {
+                "no_solution_within_budget": 5,
+                "timeout": 0,
+                "solver_failure": 0,
+                "validation_failed": 0,
+                "infrastructure_error": 0
+              },
+              "run_paths": [
+                "benchmarks/generic_motion_v1/results/smoke"
+              ],
+              "comparison_id": null,
+              "selection_policy": "First terminal attempt per declared job; no best-of.",
+              "mode": "end_to_end",
+              "split": "smoke",
+              "planner_replica_seeds": [
+                0
+              ],
+              "actual_attempts": 10,
+              "pending_jobs": 0,
+              "evidence_scope": "Smoke coverage only; these two completed runs are not a selected main performance comparison."
+            },
+            "dev": {
+              "planned_jobs": 180,
+              "finished_jobs": 180,
+              "legal_jobs": 180,
+              "finished_legal_jobs": 180,
+              "invalid_input_jobs": 0,
+              "success_numerical": 110,
+              "failure_counts": {
+                "no_solution_within_budget": 70,
+                "timeout": 0,
+                "solver_failure": 0,
+                "validation_failed": 0,
+                "infrastructure_error": 0
+              },
+              "run_paths": [
+                "benchmarks/generic_motion_v1/results/rss2025_reliable_v2_dev_s000",
+                "benchmarks/generic_motion_v1/results/rss2025_reliable_v2_dev_s001",
+                "benchmarks/generic_motion_v1/results/rss2025_reliable_v2_dev_s002"
+              ],
+              "comparison_id": "current_dev",
+              "selection_policy": "First terminal attempt per declared job; no best-of.",
+              "mode": "end_to_end",
+              "split": "dev",
+              "planner_replica_seeds": [
+                0,
+                1,
+                2
+              ],
+              "actual_attempts": 180,
+              "pending_jobs": 0,
+              "evidence_scope": "Cross-checked final selected summary status row against exactly selected records."
+            },
+            "test": {
+              "planned_jobs": 420,
+              "finished_jobs": 420,
+              "legal_jobs": 395,
+              "finished_legal_jobs": 395,
+              "invalid_input_jobs": 25,
+              "success_numerical": 283,
+              "failure_counts": {
+                "no_solution_within_budget": 112,
+                "timeout": 0,
+                "solver_failure": 0,
+                "validation_failed": 0,
+                "infrastructure_error": 0
+              },
+              "run_paths": [
+                "benchmarks/generic_motion_v1/results/test"
+              ],
+              "comparison_id": "current_test",
+              "selection_policy": "First terminal attempt per declared job; no best-of.",
+              "mode": "end_to_end",
+              "split": "test",
+              "planner_replica_seeds": [
+                0
+              ],
+              "actual_attempts": 420,
+              "pending_jobs": 0,
+              "evidence_scope": "Cross-checked final selected summary status row against exactly selected records."
+            }
+          }
+        },
+        "fixed_initial_regions": {
+          "minimum_distance": {
+            "planned_jobs": 283,
+            "finished_jobs": 283,
+            "legal_jobs": 283,
+            "finished_legal_jobs": 283,
+            "invalid_input_jobs": 0,
+            "success_numerical": 283,
+            "failure_counts": {
+              "no_solution_within_budget": 0,
+              "timeout": 0,
+              "solver_failure": 0,
+              "validation_failed": 0,
+              "infrastructure_error": 0
+            },
+            "run_paths": [
+              "benchmarks/generic_motion_v1/results/fixed_initial_regions"
+            ],
+            "comparison_id": "current_test_initial_regions",
+            "selection_policy": "First terminal attempt per declared job; no best-of.",
+            "mode": "fixed_initial_regions",
+            "split": "test",
+            "planner_replica_seeds": [
+              0
+            ],
+            "actual_attempts": 283,
+            "pending_jobs": 0,
+            "evidence_scope": "Cross-checked final selected summary status row against exactly selected records."
+          }
+        }
+      }
+    },
+    {
+      "method": "LGCS",
+      "display_name": "DRM + EI-ZO + LGCS reconstruction",
+      "implementation": "论文GCS思想的本地 perspective MISOCP 重构；当前显式选 SCIP",
+      "distinction": "不是作者未公开实现的逐行复现；仅在已给定局部图内谈最优性，须结合求解器终止/间隙，不能推出全自由空间全局最优。",
+      "objectives": [
+        "minimum_distance"
+      ],
+      "initialization": "Validated DRM/EI-ZO first corridor plus a second candidate route and graph expansion; optional fixed-initial mode starts from the identical source snapshot.",
+      "roadmap_required": true,
+      "quality_metric": "objective dependent",
+      "native_objective": "minimum_distance: 给定局部凸区域图中联合选择区域序列与PWL路径、最小化关节空间长度",
+      "source": "https://arxiv.org/abs/2504.10783",
+      "source_files": [
+        "runners/paper_lgcs.py",
+        "runners/paper_lgcs_scip.py",
+        "runners/paper_graph.py"
+      ],
+      "correctness": "真实MISOCP求解与流/区域残差检查；非把平滑器改名为GCS。",
+      "constraints": "Perspective region/flow constraints, selected-segment pool mapping and common collision validation; full native region editing and path-cover restoration retained.",
+      "stopping": "Remaining total 60 s passed to explicit MISOCP backend; configured SCIP, no silent solver fallback.",
+      "verification": "Implementation read in this review; existing dedicated tests remain for parent full suite",
+      "baseline_eligible": true,
+      "eligibility_scope": "Eligible under the explicitly stated implementation identity; low success or normal optimizer failure is not an implementation exclusion. Each output still needs common numerical validation and receipt/process/budget checks.",
+      "recommended_role": "路径基线",
+      "actual_coverage": {
+        "end_to_end": {
+          "minimum_distance": {
+            "smoke": {
+              "planned_jobs": 10,
+              "finished_jobs": 10,
+              "legal_jobs": 8,
+              "finished_legal_jobs": 8,
+              "invalid_input_jobs": 2,
+              "success_numerical": 3,
+              "failure_counts": {
+                "no_solution_within_budget": 5,
+                "timeout": 0,
+                "solver_failure": 0,
+                "validation_failed": 0,
+                "infrastructure_error": 0
+              },
+              "run_paths": [
+                "benchmarks/generic_motion_v1/results/smoke"
+              ],
+              "comparison_id": null,
+              "selection_policy": "First terminal attempt per declared job; no best-of.",
+              "mode": "end_to_end",
+              "split": "smoke",
+              "planner_replica_seeds": [
+                0
+              ],
+              "actual_attempts": 10,
+              "pending_jobs": 0,
+              "evidence_scope": "Smoke coverage only; these two completed runs are not a selected main performance comparison."
+            },
+            "dev": {
+              "planned_jobs": 180,
+              "finished_jobs": 180,
+              "legal_jobs": 180,
+              "finished_legal_jobs": 180,
+              "invalid_input_jobs": 0,
+              "success_numerical": 110,
+              "failure_counts": {
+                "no_solution_within_budget": 70,
+                "timeout": 0,
+                "solver_failure": 0,
+                "validation_failed": 0,
+                "infrastructure_error": 0
+              },
+              "run_paths": [
+                "benchmarks/generic_motion_v1/results/rss2025_reliable_v2_dev_s000",
+                "benchmarks/generic_motion_v1/results/rss2025_reliable_v2_dev_s001",
+                "benchmarks/generic_motion_v1/results/rss2025_reliable_v2_dev_s002"
+              ],
+              "comparison_id": "current_dev",
+              "selection_policy": "First terminal attempt per declared job; no best-of.",
+              "mode": "end_to_end",
+              "split": "dev",
+              "planner_replica_seeds": [
+                0,
+                1,
+                2
+              ],
+              "actual_attempts": 180,
+              "pending_jobs": 0,
+              "evidence_scope": "Cross-checked final selected summary status row against exactly selected records."
+            },
+            "test": {
+              "planned_jobs": 420,
+              "finished_jobs": 420,
+              "legal_jobs": 395,
+              "finished_legal_jobs": 395,
+              "invalid_input_jobs": 25,
+              "success_numerical": 282,
+              "failure_counts": {
+                "no_solution_within_budget": 112,
+                "timeout": 1,
+                "solver_failure": 0,
+                "validation_failed": 0,
+                "infrastructure_error": 0
+              },
+              "run_paths": [
+                "benchmarks/generic_motion_v1/results/test"
+              ],
+              "comparison_id": "current_test",
+              "selection_policy": "First terminal attempt per declared job; no best-of.",
+              "mode": "end_to_end",
+              "split": "test",
+              "planner_replica_seeds": [
+                0
+              ],
+              "actual_attempts": 420,
+              "pending_jobs": 0,
+              "evidence_scope": "Cross-checked final selected summary status row against exactly selected records."
+            }
+          }
+        },
+        "fixed_initial_regions": {
+          "minimum_distance": {
+            "planned_jobs": 283,
+            "finished_jobs": 283,
+            "legal_jobs": 283,
+            "finished_legal_jobs": 283,
+            "invalid_input_jobs": 0,
+            "success_numerical": 282,
+            "failure_counts": {
+              "no_solution_within_budget": 0,
+              "timeout": 1,
+              "solver_failure": 0,
+              "validation_failed": 0,
+              "infrastructure_error": 0
+            },
+            "run_paths": [
+              "benchmarks/generic_motion_v1/results/fixed_initial_regions"
+            ],
+            "comparison_id": "current_test_initial_regions",
+            "selection_policy": "First terminal attempt per declared job; no best-of.",
+            "mode": "fixed_initial_regions",
+            "split": "test",
+            "planner_replica_seeds": [
+              0
+            ],
+            "actual_attempts": 283,
+            "pending_jobs": 0,
+            "evidence_scope": "Cross-checked final selected summary status row against exactly selected records."
+          }
+        }
+      }
+    },
+    {
+      "method": "NTO_PAPER",
+      "display_name": "NTO published-profile reconstruction",
+      "implementation": "Drake KTO 重构；遵循论文的SNOPT路径/IPOPT时间、样条阶数",
+      "distinction": "Nc=150对应149内部绑定来自存档作者TeX，精确作者转录未公开。同类Drake BoxBoxGradient后端异常已见dev和test各一次（见results/nto_backend_issue.json），列infrastructure_error，不据此否定全部NTO。",
+      "objectives": [
+        "minimum_distance",
+        "minimum_time"
+      ],
+      "initialization": "Original DRM vertices; time initial spline duplicates its first and last control once each. No extra control resampling.",
+      "roadmap_required": true,
+      "quality_metric": "objective dependent",
+      "native_objective": "minimum_distance: 二阶B样条即PWL的关节空间长度; minimum_time: 四阶B样条的总时长",
+      "source": "https://arxiv.org/abs/2504.10783",
+      "source_files": [
+        "runners/paper_nto.py"
+      ],
+      "correctness": "真实SNOPT/IPOPT与真实碰撞约束；重构身份和未公开细节均明确。",
+      "constraints": "Canonical Drake minimum-distance constraint at 149 interior k/150 positions with zero clearance; fixed endpoints and joint bounds; shared time limits and zero endpoint velocity. May leave the DRM corridor.",
+      "stopping": "SNOPT for path, IPOPT for time; declared local 2000-iteration cap and tolerance/initial-duration policy; remaining 60 s query budget.",
+      "verification": "Actual native positive, infeasible and timeout CPU tests passed",
+      "baseline_eligible": true,
+      "eligibility_scope": "Eligible under the explicitly stated implementation identity; low success or normal optimizer failure is not an implementation exclusion. Each output still needs common numerical validation and receipt/process/budget checks.",
+      "recommended_role": "论文配置重构基线；两赛道",
+      "actual_coverage": {
+        "end_to_end": {
+          "minimum_distance": {
+            "smoke": {
+              "planned_jobs": 10,
+              "finished_jobs": 10,
+              "legal_jobs": 8,
+              "finished_legal_jobs": 8,
+              "invalid_input_jobs": 2,
+              "success_numerical": 1,
+              "failure_counts": {
+                "no_solution_within_budget": 5,
+                "timeout": 0,
+                "solver_failure": 2,
+                "validation_failed": 0,
+                "infrastructure_error": 0
+              },
+              "run_paths": [
+                "benchmarks/generic_motion_v1/results/smoke"
+              ],
+              "comparison_id": null,
+              "selection_policy": "First terminal attempt per declared job; no best-of.",
+              "mode": "end_to_end",
+              "split": "smoke",
+              "planner_replica_seeds": [
+                0
+              ],
+              "actual_attempts": 10,
+              "pending_jobs": 0,
+              "evidence_scope": "Smoke coverage only; these two completed runs are not a selected main performance comparison."
+            },
+            "dev": {
+              "planned_jobs": 180,
+              "finished_jobs": 180,
+              "legal_jobs": 180,
+              "finished_legal_jobs": 180,
+              "invalid_input_jobs": 0,
+              "success_numerical": 39,
+              "failure_counts": {
+                "no_solution_within_budget": 70,
+                "timeout": 0,
+                "solver_failure": 25,
+                "validation_failed": 45,
+                "infrastructure_error": 1
+              },
+              "run_paths": [
+                "benchmarks/generic_motion_v1/results/rss2025_paper_comparators_v1_dev_s000",
+                "benchmarks/generic_motion_v1/results/rss2025_paper_comparators_v1_dev_s001",
+                "benchmarks/generic_motion_v1/results/rss2025_paper_comparators_v1_dev_s002"
+              ],
+              "comparison_id": "current_dev",
+              "selection_policy": "First terminal attempt per declared job; no best-of.",
+              "mode": "end_to_end",
+              "split": "dev",
+              "planner_replica_seeds": [
+                0,
+                1,
+                2
+              ],
+              "actual_attempts": 180,
+              "pending_jobs": 0,
+              "evidence_scope": "Cross-checked final selected summary status row against exactly selected records."
+            },
+            "test": {
+              "planned_jobs": 420,
+              "finished_jobs": 420,
+              "legal_jobs": 395,
+              "finished_legal_jobs": 395,
+              "invalid_input_jobs": 25,
+              "success_numerical": 108,
+              "failure_counts": {
+                "no_solution_within_budget": 112,
+                "timeout": 1,
+                "solver_failure": 58,
+                "validation_failed": 115,
+                "infrastructure_error": 1
+              },
+              "run_paths": [
+                "benchmarks/generic_motion_v1/results/test"
+              ],
+              "comparison_id": "current_test",
+              "selection_policy": "First terminal attempt per declared job; no best-of.",
+              "mode": "end_to_end",
+              "split": "test",
+              "planner_replica_seeds": [
+                0
+              ],
+              "actual_attempts": 420,
+              "pending_jobs": 0,
+              "evidence_scope": "Cross-checked final selected summary status row against exactly selected records."
+            }
+          },
+          "minimum_time": {
+            "smoke": {
+              "planned_jobs": 10,
+              "finished_jobs": 10,
+              "legal_jobs": 8,
+              "finished_legal_jobs": 8,
+              "invalid_input_jobs": 2,
+              "success_numerical": 2,
+              "failure_counts": {
+                "no_solution_within_budget": 5,
+                "timeout": 0,
+                "solver_failure": 0,
+                "validation_failed": 1,
+                "infrastructure_error": 0
+              },
+              "run_paths": [
+                "benchmarks/generic_motion_v1/results/smoke"
+              ],
+              "comparison_id": null,
+              "selection_policy": "First terminal attempt per declared job; no best-of.",
+              "mode": "end_to_end",
+              "split": "smoke",
+              "planner_replica_seeds": [
+                0
+              ],
+              "actual_attempts": 10,
+              "pending_jobs": 0,
+              "evidence_scope": "Smoke coverage only; these two completed runs are not a selected main performance comparison."
+            },
+            "dev": {
+              "planned_jobs": 180,
+              "finished_jobs": 180,
+              "legal_jobs": 180,
+              "finished_legal_jobs": 180,
+              "invalid_input_jobs": 0,
+              "success_numerical": 88,
+              "failure_counts": {
+                "no_solution_within_budget": 70,
+                "timeout": 3,
+                "solver_failure": 1,
+                "validation_failed": 18,
+                "infrastructure_error": 0
+              },
+              "run_paths": [
+                "benchmarks/generic_motion_v1/results/rss2025_paper_comparators_v1_dev_s000",
+                "benchmarks/generic_motion_v1/results/rss2025_paper_comparators_v1_dev_s001",
+                "benchmarks/generic_motion_v1/results/rss2025_paper_comparators_v1_dev_s002"
+              ],
+              "comparison_id": "current_dev",
+              "selection_policy": "First terminal attempt per declared job; no best-of.",
+              "mode": "end_to_end",
+              "split": "dev",
+              "planner_replica_seeds": [
+                0,
+                1,
+                2
+              ],
+              "actual_attempts": 180,
+              "pending_jobs": 0,
+              "evidence_scope": "Cross-checked final selected summary status row against exactly selected records."
+            },
+            "test": {
+              "planned_jobs": 420,
+              "finished_jobs": 420,
+              "legal_jobs": 395,
+              "finished_legal_jobs": 395,
+              "invalid_input_jobs": 25,
+              "success_numerical": 239,
+              "failure_counts": {
+                "no_solution_within_budget": 112,
+                "timeout": 5,
+                "solver_failure": 5,
+                "validation_failed": 34,
+                "infrastructure_error": 0
+              },
+              "run_paths": [
+                "benchmarks/generic_motion_v1/results/test"
+              ],
+              "comparison_id": "current_test",
+              "selection_policy": "First terminal attempt per declared job; no best-of.",
+              "mode": "end_to_end",
+              "split": "test",
+              "planner_replica_seeds": [
+                0
+              ],
+              "actual_attempts": 420,
+              "pending_jobs": 0,
+              "evidence_scope": "Cross-checked final selected summary status row against exactly selected records."
+            }
+          }
+        }
+      }
+    },
+    {
+      "method": "NTO_REFINED",
+      "display_name": "NTO collision-refined adaptation",
+      "implementation": "同一NTO核心的本地数值加强；不是另一个论文原始实现",
+      "distinction": "_geometry_guard在求解后做碰撞细化，不是BoxBoxGradient的梯度修复；无法保证绕过同类原生后端错误。",
+      "objectives": [
+        "minimum_distance",
+        "minimum_time"
+      ],
+      "initialization": "Same original DRM controls as paper-profile reconstruction; each refinement starts from the previous native candidate.",
+      "roadmap_required": true,
+      "quality_metric": "objective dependent",
+      "native_objective": "minimum_distance: PWL关节空间长度; minimum_time: 四阶B样条总时长",
+      "source": "local declared numerical refinement of paper NTO profile",
+      "source_files": [
+        "runners/paper_nto_refined.py",
+        "runners/paper_nto.py"
+      ],
+      "correctness": "真实约束增加与本地正间隙策略；不是用更小机器人或宽松验证提高成功率。",
+      "constraints": "Unchanged model/validator, locally declared 1 mm optimization clearance and 0.5 mm geometry guard; adds collision collocation points, not robot/filter changes.",
+      "stopping": "At most 4 native solves and 600 collocation positions, one shared 60 s deadline; SNOPT total/major/minor limits 100000/2000/500.",
+      "verification": "Actual native CPU tests and refinement policy tests passed",
+      "baseline_eligible": true,
+      "eligibility_scope": "Eligible under the explicitly stated implementation identity; low success or normal optimizer failure is not an implementation exclusion. Each output still needs common numerical validation and receipt/process/budget checks.",
+      "recommended_role": "较强NTO适配基线；两赛道",
+      "actual_coverage": {
+        "end_to_end": {
+          "minimum_distance": {
+            "smoke": {
+              "planned_jobs": 10,
+              "finished_jobs": 10,
+              "legal_jobs": 8,
+              "finished_legal_jobs": 8,
+              "invalid_input_jobs": 2,
+              "success_numerical": 1,
+              "failure_counts": {
+                "no_solution_within_budget": 5,
+                "timeout": 2,
+                "solver_failure": 0,
+                "validation_failed": 0,
+                "infrastructure_error": 0
+              },
+              "run_paths": [
+                "benchmarks/generic_motion_v1/results/smoke"
+              ],
+              "comparison_id": null,
+              "selection_policy": "First terminal attempt per declared job; no best-of.",
+              "mode": "end_to_end",
+              "split": "smoke",
+              "planner_replica_seeds": [
+                0
+              ],
+              "actual_attempts": 10,
+              "pending_jobs": 0,
+              "evidence_scope": "Smoke coverage only; these two completed runs are not a selected main performance comparison."
+            },
+            "dev": {
+              "planned_jobs": 180,
+              "finished_jobs": 180,
+              "legal_jobs": 180,
+              "finished_legal_jobs": 180,
+              "invalid_input_jobs": 0,
+              "success_numerical": 88,
+              "failure_counts": {
+                "no_solution_within_budget": 70,
+                "timeout": 11,
+                "solver_failure": 10,
+                "validation_failed": 1,
+                "infrastructure_error": 0
+              },
+              "run_paths": [
+                "benchmarks/generic_motion_v1/results/rss2025_reliable_v2_dev_s000",
+                "benchmarks/generic_motion_v1/results/rss2025_reliable_v2_dev_s001",
+                "benchmarks/generic_motion_v1/results/rss2025_reliable_v2_dev_s002"
+              ],
+              "comparison_id": "current_dev",
+              "selection_policy": "First terminal attempt per declared job; no best-of.",
+              "mode": "end_to_end",
+              "split": "dev",
+              "planner_replica_seeds": [
+                0,
+                1,
+                2
+              ],
+              "actual_attempts": 180,
+              "pending_jobs": 0,
+              "evidence_scope": "Cross-checked final selected summary status row against exactly selected records."
+            },
+            "test": {
+              "planned_jobs": 420,
+              "finished_jobs": 420,
+              "legal_jobs": 395,
+              "finished_legal_jobs": 395,
+              "invalid_input_jobs": 25,
+              "success_numerical": 240,
+              "failure_counts": {
+                "no_solution_within_budget": 112,
+                "timeout": 18,
+                "solver_failure": 21,
+                "validation_failed": 4,
+                "infrastructure_error": 0
+              },
+              "run_paths": [
+                "benchmarks/generic_motion_v1/results/test"
+              ],
+              "comparison_id": "current_test",
+              "selection_policy": "First terminal attempt per declared job; no best-of.",
+              "mode": "end_to_end",
+              "split": "test",
+              "planner_replica_seeds": [
+                0
+              ],
+              "actual_attempts": 420,
+              "pending_jobs": 0,
+              "evidence_scope": "Cross-checked final selected summary status row against exactly selected records."
+            }
+          },
+          "minimum_time": {
+            "smoke": {
+              "planned_jobs": 10,
+              "finished_jobs": 10,
+              "legal_jobs": 8,
+              "finished_legal_jobs": 8,
+              "invalid_input_jobs": 2,
+              "success_numerical": 3,
+              "failure_counts": {
+                "no_solution_within_budget": 5,
+                "timeout": 0,
+                "solver_failure": 0,
+                "validation_failed": 0,
+                "infrastructure_error": 0
+              },
+              "run_paths": [
+                "benchmarks/generic_motion_v1/results/smoke"
+              ],
+              "comparison_id": null,
+              "selection_policy": "First terminal attempt per declared job; no best-of.",
+              "mode": "end_to_end",
+              "split": "smoke",
+              "planner_replica_seeds": [
+                0
+              ],
+              "actual_attempts": 10,
+              "pending_jobs": 0,
+              "evidence_scope": "Smoke coverage only; these two completed runs are not a selected main performance comparison."
+            },
+            "dev": {
+              "planned_jobs": 180,
+              "finished_jobs": 180,
+              "legal_jobs": 180,
+              "finished_legal_jobs": 180,
+              "invalid_input_jobs": 0,
+              "success_numerical": 100,
+              "failure_counts": {
+                "no_solution_within_budget": 70,
+                "timeout": 8,
+                "solver_failure": 0,
+                "validation_failed": 2,
+                "infrastructure_error": 0
+              },
+              "run_paths": [
+                "benchmarks/generic_motion_v1/results/rss2025_reliable_v2_dev_s000",
+                "benchmarks/generic_motion_v1/results/rss2025_reliable_v2_dev_s001",
+                "benchmarks/generic_motion_v1/results/rss2025_reliable_v2_dev_s002"
+              ],
+              "comparison_id": "current_dev",
+              "selection_policy": "First terminal attempt per declared job; no best-of.",
+              "mode": "end_to_end",
+              "split": "dev",
+              "planner_replica_seeds": [
+                0,
+                1,
+                2
+              ],
+              "actual_attempts": 180,
+              "pending_jobs": 0,
+              "evidence_scope": "Cross-checked final selected summary status row against exactly selected records."
+            },
+            "test": {
+              "planned_jobs": 420,
+              "finished_jobs": 420,
+              "legal_jobs": 395,
+              "finished_legal_jobs": 395,
+              "invalid_input_jobs": 25,
+              "success_numerical": 266,
+              "failure_counts": {
+                "no_solution_within_budget": 112,
+                "timeout": 13,
+                "solver_failure": 2,
+                "validation_failed": 2,
+                "infrastructure_error": 0
+              },
+              "run_paths": [
+                "benchmarks/generic_motion_v1/results/test"
+              ],
+              "comparison_id": "current_test",
+              "selection_policy": "First terminal attempt per declared job; no best-of.",
+              "mode": "end_to_end",
+              "split": "test",
+              "planner_replica_seeds": [
+                0
+              ],
+              "actual_attempts": 420,
+              "pending_jobs": 0,
+              "evidence_scope": "Cross-checked final selected summary status row against exactly selected records."
+            }
+          }
+        }
+      }
+    },
+    {
+      "method": "NTO",
+      "display_name": "NTO legacy adaptation",
+      "implementation": "已有本地 Drake KTO / IPOPT 转录，独立于PAPER/REFINED身份",
+      "distinction": "不等同论文的SNOPT路径配置；异常可能发生在原生求解或失败后轨迹重构阶段，保留日志，不能称已修。",
+      "objectives": [
+        "minimum_distance",
+        "minimum_time"
+      ],
+      "initialization": "Path retains original DRM controls; time duplicates endpoints and performs shape-preserving InsertKnots until at least 16 controls. No arc-length resampling.",
+      "roadmap_required": true,
+      "quality_metric": "objective dependent",
+      "native_objective": "minimum_distance: 二阶B样条/PWL长度; minimum_time: 四阶B样条总时长",
+      "source": "local historical Drake KTO adaptation",
+      "source_files": [
+        "runners/csdecomp_baseline.py"
+      ],
+      "correctness": "真实KTO/IPOPT转录；已有算法，第四补丁只恢复公共CLI入口。",
+      "constraints": "Canonical Drake minimum-distance constraint at 150 interior k/151 positions, clearance 1e-5 m; fixed endpoints/joint bounds and common time constraints; may leave initial corridor.",
+      "stopping": "IPOPT for both tracks; declared local 500-iteration cap and remaining 60 s query budget.",
+      "verification": "Read-only implementation review; retain separately from current NTO_PAPER/REFINED baseline identities",
+      "baseline_eligible": true,
+      "eligibility_scope": "Eligible under the explicitly stated implementation identity; low success or normal optimizer failure is not an implementation exclusion. Each output still needs common numerical validation and receipt/process/budget checks.",
+      "recommended_role": "单独标识的历史适配基线；实际覆盖由records确认",
+      "actual_coverage": {
+        "end_to_end": {
+          "minimum_distance": {
+            "smoke": {
+              "planned_jobs": 10,
+              "finished_jobs": 10,
+              "legal_jobs": 8,
+              "finished_legal_jobs": 8,
+              "invalid_input_jobs": 2,
+              "success_numerical": 1,
+              "failure_counts": {
+                "no_solution_within_budget": 5,
+                "timeout": 0,
+                "solver_failure": 0,
+                "validation_failed": 2,
+                "infrastructure_error": 0
+              },
+              "run_paths": [
+                "benchmarks/generic_motion_v1/results/nto_legacy_smoke"
+              ],
+              "comparison_id": null,
+              "selection_policy": "First terminal attempt per declared job; no best-of.",
+              "mode": "end_to_end",
+              "split": "smoke",
+              "planner_replica_seeds": [
+                0
+              ],
+              "actual_attempts": 10,
+              "pending_jobs": 0,
+              "evidence_scope": "Smoke coverage only; these two completed runs are not a selected main performance comparison."
+            },
+            "dev": {
+              "planned_jobs": 180,
+              "finished_jobs": 180,
+              "legal_jobs": 180,
+              "finished_legal_jobs": 180,
+              "invalid_input_jobs": 0,
+              "success_numerical": 40,
+              "failure_counts": {
+                "no_solution_within_budget": 70,
+                "timeout": 0,
+                "solver_failure": 29,
+                "validation_failed": 41,
+                "infrastructure_error": 0
+              },
+              "run_paths": [
+                "benchmarks/generic_motion_v1/results/nto_legacy_dev"
+              ],
+              "comparison_id": "current_dev",
+              "selection_policy": "First terminal attempt per declared job; no best-of.",
+              "mode": "end_to_end",
+              "split": "dev",
+              "planner_replica_seeds": [
+                0,
+                1,
+                2
+              ],
+              "actual_attempts": 180,
+              "pending_jobs": 0,
+              "evidence_scope": "Cross-checked final selected summary status row against exactly selected records."
+            },
+            "test": {
+              "planned_jobs": 420,
+              "finished_jobs": 420,
+              "legal_jobs": 395,
+              "finished_legal_jobs": 395,
+              "invalid_input_jobs": 25,
+              "success_numerical": 114,
+              "failure_counts": {
+                "no_solution_within_budget": 112,
+                "timeout": 0,
+                "solver_failure": 66,
+                "validation_failed": 103,
+                "infrastructure_error": 0
+              },
+              "run_paths": [
+                "benchmarks/generic_motion_v1/results/nto_legacy_test"
+              ],
+              "comparison_id": "current_test",
+              "selection_policy": "First terminal attempt per declared job; no best-of.",
+              "mode": "end_to_end",
+              "split": "test",
+              "planner_replica_seeds": [
+                0
+              ],
+              "actual_attempts": 420,
+              "pending_jobs": 0,
+              "evidence_scope": "Cross-checked final selected summary status row against exactly selected records."
+            }
+          },
+          "minimum_time": {
+            "smoke": {
+              "planned_jobs": 10,
+              "finished_jobs": 10,
+              "legal_jobs": 8,
+              "finished_legal_jobs": 8,
+              "invalid_input_jobs": 2,
+              "success_numerical": 1,
+              "failure_counts": {
+                "no_solution_within_budget": 5,
+                "timeout": 0,
+                "solver_failure": 1,
+                "validation_failed": 1,
+                "infrastructure_error": 0
+              },
+              "run_paths": [
+                "benchmarks/generic_motion_v1/results/nto_legacy_smoke"
+              ],
+              "comparison_id": null,
+              "selection_policy": "First terminal attempt per declared job; no best-of.",
+              "mode": "end_to_end",
+              "split": "smoke",
+              "planner_replica_seeds": [
+                0
+              ],
+              "actual_attempts": 10,
+              "pending_jobs": 0,
+              "evidence_scope": "Smoke coverage only; these two completed runs are not a selected main performance comparison."
+            },
+            "dev": {
+              "planned_jobs": 180,
+              "finished_jobs": 180,
+              "legal_jobs": 180,
+              "finished_legal_jobs": 180,
+              "invalid_input_jobs": 0,
+              "success_numerical": 97,
+              "failure_counts": {
+                "no_solution_within_budget": 70,
+                "timeout": 0,
+                "solver_failure": 6,
+                "validation_failed": 7,
+                "infrastructure_error": 0
+              },
+              "run_paths": [
+                "benchmarks/generic_motion_v1/results/nto_legacy_dev"
+              ],
+              "comparison_id": "current_dev",
+              "selection_policy": "First terminal attempt per declared job; no best-of.",
+              "mode": "end_to_end",
+              "split": "dev",
+              "planner_replica_seeds": [
+                0,
+                1,
+                2
+              ],
+              "actual_attempts": 180,
+              "pending_jobs": 0,
+              "evidence_scope": "Cross-checked final selected summary status row against exactly selected records."
+            },
+            "test": {
+              "planned_jobs": 420,
+              "finished_jobs": 420,
+              "legal_jobs": 395,
+              "finished_legal_jobs": 395,
+              "invalid_input_jobs": 25,
+              "success_numerical": 239,
+              "failure_counts": {
+                "no_solution_within_budget": 112,
+                "timeout": 0,
+                "solver_failure": 31,
+                "validation_failed": 13,
+                "infrastructure_error": 0
+              },
+              "run_paths": [
+                "benchmarks/generic_motion_v1/results/nto_legacy_test"
+              ],
+              "comparison_id": "current_test",
+              "selection_policy": "First terminal attempt per declared job; no best-of.",
+              "mode": "end_to_end",
+              "split": "test",
+              "planner_replica_seeds": [
+                0
+              ],
+              "actual_attempts": 420,
+              "pending_jobs": 0,
+              "evidence_scope": "Cross-checked final selected summary status row against exactly selected records."
+            }
+          }
+        }
+      }
+    },
+    {
+      "method": "RRTCONNECT",
+      "display_name": "OMPL RRTConnect + vertex reduction",
+      "implementation": "官方OMPL 2.0.1原生RRTConnect与reduceVertices；规范模型回调",
+      "distinction": "可很快找到短路径不等于最小时间轨迹；无本地时间赛道。搜索预算10s不是60s。",
+      "objectives": [
+        "minimum_distance"
+      ],
+      "initialization": "Fixed endpoints, independent bounded 7D native tree search; no DRM graph initialization.",
+      "roadmap_required": false,
+      "quality_metric": "validated Euclidean PWL length in rad",
+      "native_objective": "minimum_distance: 先找可行路径，再做顶点消减；本身不是全局最短路优化",
+      "source": "https://github.com/ompl/ompl/tree/c509861210a63ec962bbec72c52823abc16b102e",
+      "source_files": [
+        "runners/ompl_baselines.py"
+      ],
+      "correctness": "调用真正RRTConnect，未把其他搜索冒充；方法随机性来自固定paired method_seed。",
+      "constraints": "Canonical CSD state/motion callbacks at 0.01 rad motion step; exact goal required; common final 0.005 rad numerical check.",
+      "stopping": "At most 10 s search and 0.5 s vertex reduction, within 60 s total query; first solution behavior retained.",
+      "verification": "Real native CPU valid and impossible barrier solves; seed repeat and distinct seed streams; optional actual raw/final common validation",
+      "baseline_eligible": true,
+      "eligibility_scope": "Eligible under the explicitly stated implementation identity; low success or normal optimizer failure is not an implementation exclusion. Each output still needs common numerical validation and receipt/process/budget checks.",
+      "recommended_role": "独立采样路径基线",
+      "actual_coverage": {
+        "end_to_end": {
+          "minimum_distance": {
+            "smoke": {
+              "planned_jobs": 10,
+              "finished_jobs": 10,
+              "legal_jobs": 8,
+              "finished_legal_jobs": 8,
+              "invalid_input_jobs": 2,
+              "success_numerical": 7,
+              "failure_counts": {
+                "no_solution_within_budget": 1,
+                "timeout": 0,
+                "solver_failure": 0,
+                "validation_failed": 0,
+                "infrastructure_error": 0
+              },
+              "run_paths": [
+                "benchmarks/generic_motion_v1/results/smoke"
+              ],
+              "comparison_id": null,
+              "selection_policy": "First terminal attempt per declared job; no best-of.",
+              "mode": "end_to_end",
+              "split": "smoke",
+              "planner_replica_seeds": [
+                0
+              ],
+              "actual_attempts": 10,
+              "pending_jobs": 0,
+              "evidence_scope": "Smoke coverage only; these two completed runs are not a selected main performance comparison."
+            },
+            "dev": {
+              "planned_jobs": 180,
+              "finished_jobs": 180,
+              "legal_jobs": 180,
+              "finished_legal_jobs": 180,
+              "invalid_input_jobs": 0,
+              "success_numerical": 146,
+              "failure_counts": {
+                "no_solution_within_budget": 33,
+                "timeout": 0,
+                "solver_failure": 0,
+                "validation_failed": 1,
+                "infrastructure_error": 0
+              },
+              "run_paths": [
+                "benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s000",
+                "benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s001",
+                "benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s002"
+              ],
+              "comparison_id": "current_dev",
+              "selection_policy": "First terminal attempt per declared job; no best-of.",
+              "mode": "end_to_end",
+              "split": "dev",
+              "planner_replica_seeds": [
+                0,
+                1,
+                2
+              ],
+              "actual_attempts": 180,
+              "pending_jobs": 0,
+              "evidence_scope": "Cross-checked final selected summary status row against exactly selected records."
+            },
+            "test": {
+              "planned_jobs": 420,
+              "finished_jobs": 420,
+              "legal_jobs": 395,
+              "finished_legal_jobs": 395,
+              "invalid_input_jobs": 25,
+              "success_numerical": 358,
+              "failure_counts": {
+                "no_solution_within_budget": 37,
+                "timeout": 0,
+                "solver_failure": 0,
+                "validation_failed": 0,
+                "infrastructure_error": 0
+              },
+              "run_paths": [
+                "benchmarks/generic_motion_v1/results/test"
+              ],
+              "comparison_id": "current_test",
+              "selection_policy": "First terminal attempt per declared job; no best-of.",
+              "mode": "end_to_end",
+              "split": "test",
+              "planner_replica_seeds": [
+                0
+              ],
+              "actual_attempts": 420,
+              "pending_jobs": 0,
+              "evidence_scope": "Cross-checked final selected summary status row against exactly selected records."
+            }
+          }
+        }
+      }
+    },
+    {
+      "method": "RRTSTAR",
+      "display_name": "OMPL RRT* + vertex reduction",
+      "implementation": "官方OMPL 2.0.1原生RRTstar重接线与顶点消减",
+      "distinction": "有限预算不保证最优；主比较未记录中间共同验证曲线，不补造首解/代价曲线。诊断观测会消耗搜索预算，已默认关闭。",
+      "objectives": [
+        "minimum_distance"
+      ],
+      "initialization": "Fixed endpoints, independent bounded 7D native rewiring search; no DRM graph initialization.",
+      "roadmap_required": false,
+      "quality_metric": "validated Euclidean PWL length in rad",
+      "native_objective": "minimum_distance: 在采样树中持续改善PWL路径长度",
+      "source": "https://github.com/ompl/ompl/tree/c509861210a63ec962bbec72c52823abc16b102e",
+      "source_files": [
+        "runners/ompl_baselines.py",
+        "runners/validated_progress.py"
+      ],
+      "correctness": "真正RRTstar；可选进展观测保留同一树/RNG，而非重启取best-of。",
+      "constraints": "Same collision callbacks and common final numerical check as RRTConnect.",
+      "stopping": "10 s single native solve plus at most 0.5 s vertex reduction, 60 s total query. Main profile disables costly validated-progress observation.",
+      "verification": "Actual native CPU solve, impossible barrier, persistent continuation and validated progress tests passed",
+      "baseline_eligible": true,
+      "eligibility_scope": "Eligible under the explicitly stated implementation identity; low success or normal optimizer failure is not an implementation exclusion. Each output still needs common numerical validation and receipt/process/budget checks.",
+      "recommended_role": "渐近优化采样路径基线",
+      "actual_coverage": {
+        "end_to_end": {
+          "minimum_distance": {
+            "smoke": {
+              "planned_jobs": 10,
+              "finished_jobs": 10,
+              "legal_jobs": 8,
+              "finished_legal_jobs": 8,
+              "invalid_input_jobs": 2,
+              "success_numerical": 6,
+              "failure_counts": {
+                "no_solution_within_budget": 2,
+                "timeout": 0,
+                "solver_failure": 0,
+                "validation_failed": 0,
+                "infrastructure_error": 0
+              },
+              "run_paths": [
+                "benchmarks/generic_motion_v1/results/smoke"
+              ],
+              "comparison_id": null,
+              "selection_policy": "First terminal attempt per declared job; no best-of.",
+              "mode": "end_to_end",
+              "split": "smoke",
+              "planner_replica_seeds": [
+                0
+              ],
+              "actual_attempts": 10,
+              "pending_jobs": 0,
+              "evidence_scope": "Smoke coverage only; these two completed runs are not a selected main performance comparison."
+            },
+            "dev": {
+              "planned_jobs": 180,
+              "finished_jobs": 180,
+              "legal_jobs": 180,
+              "finished_legal_jobs": 180,
+              "invalid_input_jobs": 0,
+              "success_numerical": 120,
+              "failure_counts": {
+                "no_solution_within_budget": 60,
+                "timeout": 0,
+                "solver_failure": 0,
+                "validation_failed": 0,
+                "infrastructure_error": 0
+              },
+              "run_paths": [
+                "benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s000",
+                "benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s001",
+                "benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s002"
+              ],
+              "comparison_id": "current_dev",
+              "selection_policy": "First terminal attempt per declared job; no best-of.",
+              "mode": "end_to_end",
+              "split": "dev",
+              "planner_replica_seeds": [
+                0,
+                1,
+                2
+              ],
+              "actual_attempts": 180,
+              "pending_jobs": 0,
+              "evidence_scope": "Cross-checked final selected summary status row against exactly selected records."
+            },
+            "test": {
+              "planned_jobs": 420,
+              "finished_jobs": 420,
+              "legal_jobs": 395,
+              "finished_legal_jobs": 395,
+              "invalid_input_jobs": 25,
+              "success_numerical": 289,
+              "failure_counts": {
+                "no_solution_within_budget": 105,
+                "timeout": 0,
+                "solver_failure": 0,
+                "validation_failed": 1,
+                "infrastructure_error": 0
+              },
+              "run_paths": [
+                "benchmarks/generic_motion_v1/results/test"
+              ],
+              "comparison_id": "current_test",
+              "selection_policy": "First terminal attempt per declared job; no best-of.",
+              "mode": "end_to_end",
+              "split": "test",
+              "planner_replica_seeds": [
+                0
+              ],
+              "actual_attempts": 420,
+              "pending_jobs": 0,
+              "evidence_scope": "Cross-checked final selected summary status row against exactly selected records."
+            }
+          }
+        }
+      }
+    },
+    {
+      "method": "CHOMP",
+      "display_name": "CHOMP adaptation (C-space functional)",
+      "implementation": "自实现的协变下降适配，非官方MoveIt CHOMP",
+      "distinction": "碰撞泛函使用C-space最小净空，不同于原论文workspace body-point泛函；复合目标不能冒称纯长度最小化。",
+      "objectives": [
+        "minimum_distance"
+      ],
+      "initialization": "Validated DRM path; arc-spaced added knots retain all original vertices and fixed endpoints.",
+      "roadmap_required": true,
+      "quality_metric": "validated Euclidean PWL length in rad",
+      "native_objective": "minimum_distance: 平方关节加速度平滑项 + 沿C-space弧长积分的规范几何净空势能；共同评价仍是输出PWL长度",
+      "source": "https://publications.ri.cmu.edu/storage/publications/pub_files/2013/5/CHOMP_IJRR.pdf",
+      "source_files": [
+        "runners/chomp_stomp.py"
+      ],
+      "correctness": "具有加速度度量逆预条件、离散线积分梯度与回溯下降；不是普通平滑器。梯度/度量单测已有证据。",
+      "constraints": "Canonical signed-clearance potential and joint-limit projection; final common collision check is required, not assumed from a penalty value.",
+      "stopping": "40 iterations, at most 8 backtracking steps per iteration, relative-cost tolerance 1e-7; shared 60 s total query.",
+      "verification": "Analytic full objective gradient against independent finite differences, metric SPD/inverse, actual decrease and endpoint tests passed",
+      "baseline_eligible": true,
+      "eligibility_scope": "Eligible under the explicitly stated implementation identity; low success or normal optimizer failure is not an implementation exclusion. Each output still needs common numerical validation and receipt/process/budget checks.",
+      "recommended_role": "按适配身份接纳的局部路径基线",
+      "actual_coverage": {
+        "end_to_end": {
+          "minimum_distance": {
+            "smoke": {
+              "planned_jobs": 10,
+              "finished_jobs": 10,
+              "legal_jobs": 8,
+              "finished_legal_jobs": 8,
+              "invalid_input_jobs": 2,
+              "success_numerical": 3,
+              "failure_counts": {
+                "no_solution_within_budget": 5,
+                "timeout": 0,
+                "solver_failure": 0,
+                "validation_failed": 0,
+                "infrastructure_error": 0
+              },
+              "run_paths": [
+                "benchmarks/generic_motion_v1/results/smoke"
+              ],
+              "comparison_id": null,
+              "selection_policy": "First terminal attempt per declared job; no best-of.",
+              "mode": "end_to_end",
+              "split": "smoke",
+              "planner_replica_seeds": [
+                0
+              ],
+              "actual_attempts": 10,
+              "pending_jobs": 0,
+              "evidence_scope": "Smoke coverage only; these two completed runs are not a selected main performance comparison."
+            },
+            "dev": {
+              "planned_jobs": 180,
+              "finished_jobs": 180,
+              "legal_jobs": 180,
+              "finished_legal_jobs": 180,
+              "invalid_input_jobs": 0,
+              "success_numerical": 109,
+              "failure_counts": {
+                "no_solution_within_budget": 70,
+                "timeout": 0,
+                "solver_failure": 1,
+                "validation_failed": 0,
+                "infrastructure_error": 0
+              },
+              "run_paths": [
+                "benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s000",
+                "benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s001",
+                "benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s002"
+              ],
+              "comparison_id": "current_dev",
+              "selection_policy": "First terminal attempt per declared job; no best-of.",
+              "mode": "end_to_end",
+              "split": "dev",
+              "planner_replica_seeds": [
+                0,
+                1,
+                2
+              ],
+              "actual_attempts": 180,
+              "pending_jobs": 0,
+              "evidence_scope": "Cross-checked final selected summary status row against exactly selected records."
+            },
+            "test": {
+              "planned_jobs": 420,
+              "finished_jobs": 420,
+              "legal_jobs": 395,
+              "finished_legal_jobs": 395,
+              "invalid_input_jobs": 25,
+              "success_numerical": 282,
+              "failure_counts": {
+                "no_solution_within_budget": 112,
+                "timeout": 0,
+                "solver_failure": 1,
+                "validation_failed": 0,
+                "infrastructure_error": 0
+              },
+              "run_paths": [
+                "benchmarks/generic_motion_v1/results/test"
+              ],
+              "comparison_id": "current_test",
+              "selection_policy": "First terminal attempt per declared job; no best-of.",
+              "mode": "end_to_end",
+              "split": "test",
+              "planner_replica_seeds": [
+                0
+              ],
+              "actual_attempts": 420,
+              "pending_jobs": 0,
+              "evidence_scope": "Cross-checked final selected summary status row against exactly selected records."
+            }
+          }
+        }
+      }
+    },
+    {
+      "method": "STOMP",
+      "display_name": "STOMP (official core, canonical task)",
+      "implementation": "未改动的ros-industrial STOMP C++核心 + 本地规范几何任务/相关噪声回调",
+      "distinction": "噪声/规范几何任务桥接是本地实现，不能称作者原始场景逐项复现；原生目标不是纯路径长度。",
+      "objectives": [
+        "minimum_distance"
+      ],
+      "initialization": "Validated DRM path with original vertices retained; paired method_seed drives local PCG64 correlated-noise task callback.",
+      "roadmap_required": true,
+      "quality_metric": "validated Euclidean PWL length in rad",
+      "native_objective": "minimum_distance: 官方归一化加速度控制代价 + 逐节点规范净空势能；输出PWL长度另行评价",
+      "source": "https://github.com/ros-industrial/stomp/tree/b1a87c80f7338caae25a5c689b876da15492aa75",
+      "source_files": [
+        "runners/chomp_stomp.py",
+        "native/stomp_python.cpp",
+        "native/vendor/stomp/src/stomp.cpp"
+      ],
+      "correctness": "调用真正官方STOMP核心的采样权重/控制代价/更新，非普通加噪搜索。",
+      "constraints": "Fixed endpoints, joint projection and canonical signed-clearance callback; native task validity does not replace final common validation.",
+      "stopping": "40 iterations, 12 rollouts, 5 iterations after validity; shared 60 s total query.",
+      "verification": "Actual native optimizer, reproducible rollout arrays, nontrivial updates, fixed endpoints and deadline tests passed",
+      "baseline_eligible": true,
+      "eligibility_scope": "Eligible under the explicitly stated implementation identity; low success or normal optimizer failure is not an implementation exclusion. Each output still needs common numerical validation and receipt/process/budget checks.",
+      "recommended_role": "官方核心加任务适配的路径基线",
+      "actual_coverage": {
+        "end_to_end": {
+          "minimum_distance": {
+            "smoke": {
+              "planned_jobs": 10,
+              "finished_jobs": 10,
+              "legal_jobs": 8,
+              "finished_legal_jobs": 8,
+              "invalid_input_jobs": 2,
+              "success_numerical": 3,
+              "failure_counts": {
+                "no_solution_within_budget": 5,
+                "timeout": 0,
+                "solver_failure": 0,
+                "validation_failed": 0,
+                "infrastructure_error": 0
+              },
+              "run_paths": [
+                "benchmarks/generic_motion_v1/results/smoke"
+              ],
+              "comparison_id": null,
+              "selection_policy": "First terminal attempt per declared job; no best-of.",
+              "mode": "end_to_end",
+              "split": "smoke",
+              "planner_replica_seeds": [
+                0
+              ],
+              "actual_attempts": 10,
+              "pending_jobs": 0,
+              "evidence_scope": "Smoke coverage only; these two completed runs are not a selected main performance comparison."
+            },
+            "dev": {
+              "planned_jobs": 180,
+              "finished_jobs": 180,
+              "legal_jobs": 180,
+              "finished_legal_jobs": 180,
+              "invalid_input_jobs": 0,
+              "success_numerical": 110,
+              "failure_counts": {
+                "no_solution_within_budget": 70,
+                "timeout": 0,
+                "solver_failure": 0,
+                "validation_failed": 0,
+                "infrastructure_error": 0
+              },
+              "run_paths": [
+                "benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s000",
+                "benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s001",
+                "benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s002"
+              ],
+              "comparison_id": "current_dev",
+              "selection_policy": "First terminal attempt per declared job; no best-of.",
+              "mode": "end_to_end",
+              "split": "dev",
+              "planner_replica_seeds": [
+                0,
+                1,
+                2
+              ],
+              "actual_attempts": 180,
+              "pending_jobs": 0,
+              "evidence_scope": "Cross-checked final selected summary status row against exactly selected records."
+            },
+            "test": {
+              "planned_jobs": 420,
+              "finished_jobs": 420,
+              "legal_jobs": 395,
+              "finished_legal_jobs": 395,
+              "invalid_input_jobs": 25,
+              "success_numerical": 282,
+              "failure_counts": {
+                "no_solution_within_budget": 112,
+                "timeout": 0,
+                "solver_failure": 1,
+                "validation_failed": 0,
+                "infrastructure_error": 0
+              },
+              "run_paths": [
+                "benchmarks/generic_motion_v1/results/test"
+              ],
+              "comparison_id": "current_test",
+              "selection_policy": "First terminal attempt per declared job; no best-of.",
+              "mode": "end_to_end",
+              "split": "test",
+              "planner_replica_seeds": [
+                0
+              ],
+              "actual_attempts": 420,
+              "pending_jobs": 0,
+              "evidence_scope": "Cross-checked final selected summary status row against exactly selected records."
+            }
+          }
+        }
+      }
+    },
+    {
+      "method": "TRAJOPT",
+      "display_name": "TrajOpt adaptation (sampled collision)",
+      "implementation": "作者BasicTrustRegionSQP/BPMPD核心 + 本地规范几何约束桥接",
+      "distinction": "未使用原OpenRAVE swept-volume连续碰撞约束；当前segment collocation须明确。平方差目标不等于PWL长度。",
+      "objectives": [
+        "minimum_distance"
+      ],
+      "initialization": "Validated DRM path with original vertices retained in the expanded knot sequence.",
+      "roadmap_required": true,
+      "quality_metric": "validated Euclidean PWL length in rad",
+      "native_objective": "minimum_distance: 相邻关节配置差的平方和，配线性化碰撞不等式、L1 merit与信赖域；另评PWL长度",
+      "source": "https://github.com/joschu/trajopt/tree/9c634c060f7e2d61c4a888b0a5700d668a5d16f8",
+      "source_files": [
+        "runners/trajopt_baseline.py",
+        "native/trajopt_bridge.cpp"
+      ],
+      "correctness": "真实作者SQP/QP核心，并非将任意NLP命名TrajOpt。",
+      "constraints": "Canonical signed-distance segment collocation, fixed endpoints and joint bounds; common final validation. No OpenRAVE swept-volume collision implementation is claimed.",
+      "stopping": "50 SQP iterations, at most 5 merit-coefficient increases, 45 s optimizer limit within the same 60 s total query.",
+      "verification": "Real author SQP reduction/endpoint/iteration-limit/callback-failure tests, gradient comparison on canonical model all passed",
+      "baseline_eligible": true,
+      "eligibility_scope": "Eligible under the explicitly stated implementation identity; low success or normal optimizer failure is not an implementation exclusion. Each output still needs common numerical validation and receipt/process/budget checks.",
+      "recommended_role": "按采样碰撞适配身份接纳的路径基线",
+      "actual_coverage": {
+        "end_to_end": {
+          "minimum_distance": {
+            "smoke": {
+              "planned_jobs": 10,
+              "finished_jobs": 10,
+              "legal_jobs": 8,
+              "finished_legal_jobs": 8,
+              "invalid_input_jobs": 2,
+              "success_numerical": 3,
+              "failure_counts": {
+                "no_solution_within_budget": 5,
+                "timeout": 0,
+                "solver_failure": 0,
+                "validation_failed": 0,
+                "infrastructure_error": 0
+              },
+              "run_paths": [
+                "benchmarks/generic_motion_v1/results/smoke"
+              ],
+              "comparison_id": null,
+              "selection_policy": "First terminal attempt per declared job; no best-of.",
+              "mode": "end_to_end",
+              "split": "smoke",
+              "planner_replica_seeds": [
+                0
+              ],
+              "actual_attempts": 10,
+              "pending_jobs": 0,
+              "evidence_scope": "Smoke coverage only; these two completed runs are not a selected main performance comparison."
+            },
+            "dev": {
+              "planned_jobs": 180,
+              "finished_jobs": 180,
+              "legal_jobs": 180,
+              "finished_legal_jobs": 180,
+              "invalid_input_jobs": 0,
+              "success_numerical": 97,
+              "failure_counts": {
+                "no_solution_within_budget": 70,
+                "timeout": 0,
+                "solver_failure": 0,
+                "validation_failed": 13,
+                "infrastructure_error": 0
+              },
+              "run_paths": [
+                "benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s000",
+                "benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s001",
+                "benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s002"
+              ],
+              "comparison_id": "current_dev",
+              "selection_policy": "First terminal attempt per declared job; no best-of.",
+              "mode": "end_to_end",
+              "split": "dev",
+              "planner_replica_seeds": [
+                0,
+                1,
+                2
+              ],
+              "actual_attempts": 180,
+              "pending_jobs": 0,
+              "evidence_scope": "Cross-checked final selected summary status row against exactly selected records."
+            },
+            "test": {
+              "planned_jobs": 420,
+              "finished_jobs": 420,
+              "legal_jobs": 395,
+              "finished_legal_jobs": 395,
+              "invalid_input_jobs": 25,
+              "success_numerical": 264,
+              "failure_counts": {
+                "no_solution_within_budget": 112,
+                "timeout": 0,
+                "solver_failure": 0,
+                "validation_failed": 19,
+                "infrastructure_error": 0
+              },
+              "run_paths": [
+                "benchmarks/generic_motion_v1/results/test"
+              ],
+              "comparison_id": "current_test",
+              "selection_policy": "First terminal attempt per declared job; no best-of.",
+              "mode": "end_to_end",
+              "split": "test",
+              "planner_replica_seeds": [
+                0
+              ],
+              "actual_attempts": 420,
+              "pending_jobs": 0,
+              "evidence_scope": "Cross-checked final selected summary status row against exactly selected records."
+            }
+          }
+        }
+      }
+    }
+  ],
+  "source_sha256": {
+    "runners/methods.py": "49a2c068142cb4e9e6a753ee99bfd5057325fea4a9a4a68734a2f0da199b7ac9",
+    "runners/ompl_baselines.py": "f717d659e92f1e376efbccb07423a0b2949bc3174eb113607a65ffb1772c19ab",
+    "runners/validated_progress.py": "7746e82453909bae84a76373860bf4a6e2de63a9b6e70c2f7760dd6c3bac083f",
+    "runners/chomp_stomp.py": "b815f2b9e339ce8806bac7a60892dec4cfc17f21b0e2217eb8bb4e365efd1b47",
+    "runners/trajopt_baseline.py": "063eb6923c52a94eba2b89265b6bbedb9eba2c73cf1b24628716cdbf86377388",
+    "runners/paper_nto.py": "f6697df7115cf258b5cd7773de14aeb98e67a7e3d0952654715f765748c0337f",
+    "runners/paper_nto_refined.py": "bbb167acd8b72d686286a59d464a99c1a3bf51405b3ec78052114fd25c9e1360",
+    "runners/csdecomp_baseline.py": "5c9e467e88198d3ceff797e8b50e70553851dcb2041894d20d579b91e96f7e0b",
+    "runners/validate.py": "12086b43b1735ab8455b260235eb0c92b336cb2b2cbaef6c286d1d2f5f376b43",
+    "native/stomp_python.cpp": "7823c2b7fbe7d3a7f2b3205175ee121eef5b6b7fe5b94ff13163992af7a3ebad",
+    "native/trajopt_bridge.cpp": "08b7d4fb2b90bda6d612371a6f7d43220fbc5919621aebdc4ea06ceeb6cc4399",
+    "runners/paper_lgcs.py": "66de3124f4c19635c37ee4b78fc0231d96c933d870ed534313eeec33a4df4951",
+    "runners/paper_lgcs_scip.py": "935c45fe4aa61343efac1480e5aa7ea7071ad9a285ff878793a7133af0fb6332",
+    "runners/paper_graph.py": "e79715ecd952d048582ef7b24bbaa2a9c21477a2bf98ecd071e2183dbb8c754a",
+    "native/vendor/stomp/src/stomp.cpp": "4f63827235d93d7078a9a2f37e77bce5b9823109b838ddb87a74d14cd7e82d74",
+    "runners/shared_initialization.py": "19f226abb9e289b150a1c6b6ba70417dea23776e63a368f0fa79c8a24e6a9466"
+  },
+  "changes": {
+    "seed_zero_alias": {
+      "old": "0 -> 1 and 1 -> 1",
+      "new": "0 -> UINT32_MAX; positive identities unchanged; reserve UINT32_MAX input",
+      "scanned_historical_ompl_parameter_files": 377,
+      "requested_zero_count": 0,
+      "requested_one_count": 0,
+      "affected_historical_records": 0
+    },
+    "progress": {
+      "configuration": {
+        "ompl.record_validated_progress": true,
+        "ompl.progress_poll_seconds": 0.5
+      },
+      "default_enabled": false,
+      "first_valid_is_observed_upper_bound": true,
+      "clock_origin": "OMPL adapter entry; aggregate must add outer pre-adapter setup time",
+      "artifacts": "attempt/validated_progress/{summary.json,records.jsonl,candidate_*.npz,validation_*.json}",
+      "native_callback_unavailable": "Actual TypeError from installed wheel converting Python function; failed implementation test preserved in /tmp/bench_methods_tests.log",
+      "alternative": "same native RRTstar planner.solve continuation; no tree/sampler/RNG reset; common validation billed to search budget"
+    }
+  },
+  "tests": {
+    "command": "bash local/python.sh -m pytest benchmarks/generic_motion_v1/tests/test_ompl_baselines.py benchmarks/generic_motion_v1/tests/test_chomp_stomp.py benchmarks/generic_motion_v1/tests/test_trajopt_baseline.py benchmarks/generic_motion_v1/tests/test_validated_progress.py benchmarks/generic_motion_v1/tests/test_paper_nto.py benchmarks/generic_motion_v1/tests/test_paper_nto_refined.py benchmarks/generic_motion_v1/tests/test_baseline_validation.py benchmarks/generic_motion_v1/tests/test_native_handoff.py -q",
+    "passed": 130,
+    "warnings": 145,
+    "seconds": 2.68,
+    "log": "/tmp/bench_methods_qualification.log",
+    "log_sha256": "acd08a3541c020a169a36fc44dc4298e35e0a62adc0653f33a3fae87e351f30a",
+    "warnings_reason": "existing Drake is_floating deprecation"
+  },
+  "limitations": [
+    "No solver unit test establishes performance on all benchmark tasks; parent conducts serialized GPU evaluation",
+    "CHOMP and TrajOpt main comparison must retain adaptation labels",
+    "No finite collision samples establish mathematical continuous collision safety",
+    "Native local objective of CHOMP/STOMP/TrajOpt is composite/squared smoothness, not exact benchmark path length",
+    "Common validator applies derivative control hull bounds; it is a conservative numerical admissibility rule"
+  ],
+  "review_history": [
+    {
+      "head_at_review": "78864156fe1f47ebb217390e104d79f697a7eb7b",
+      "source_sha256": {
+        "runners/methods.py": "b920e4b64e8b4d08aad0e74e915425245a09da7892ea8a5d3818678cc4204595",
+        "runners/ompl_baselines.py": "f717d659e92f1e376efbccb07423a0b2949bc3174eb113607a65ffb1772c19ab",
+        "runners/validated_progress.py": "dab19fbde403e16fac8ace55ddcd9395bc6d49a3061b9a8c8e5c3ea0ead02aca",
+        "runners/chomp_stomp.py": "b815f2b9e339ce8806bac7a60892dec4cfc17f21b0e2217eb8bb4e365efd1b47",
+        "runners/trajopt_baseline.py": "063eb6923c52a94eba2b89265b6bbedb9eba2c73cf1b24628716cdbf86377388",
+        "runners/paper_nto.py": "f6697df7115cf258b5cd7773de14aeb98e67a7e3d0952654715f765748c0337f",
+        "runners/paper_nto_refined.py": "bbb167acd8b72d686286a59d464a99c1a3bf51405b3ec78052114fd25c9e1360",
+        "runners/csdecomp_baseline.py": "8e3d98bd484913bbd412590ec1e2344d84cc18fac19aaa316f84d4cb338d8e17",
+        "runners/validate.py": "12086b43b1735ab8455b260235eb0c92b336cb2b2cbaef6c286d1d2f5f376b43",
+        "native/stomp_python.cpp": "7823c2b7fbe7d3a7f2b3205175ee121eef5b6b7fe5b94ff13163992af7a3ebad",
+        "native/trajopt_bridge.cpp": "08b7d4fb2b90bda6d612371a6f7d43220fbc5919621aebdc4ea06ceeb6cc4399"
+      },
+      "scope": "Earlier source review; original tests and changes are retained under their existing top-level keys."
+    }
+  ],
+  "latest_review_at_utc": "2026-10-30T22:36:09.128414+00:00",
+  "latest_review_scope": "Read-only source/archived-audit check; no new planner, model, solver or GPU execution.",
+  "catalog_method_count": 10,
+  "supported_method_objective_combinations": 14,
+  "scsto_identity": "SCSTO is EI_ZO/minimum_time, not a separate stable method ID.",
+  "statistics_commit_at_merge": "59bbfc922f4cc053a0a0ef89aa714b176875a0b1",
+  "merged_at_utc": "2026-10-31T00:44:12.781828+00:00",
+  "source_compatibility": "Reviewed method sources are byte-identical to 88f50536d59e6e617afcaece9bc01d214005746f at statistics commit 59bbfc922f4cc053a0a0ef89aa714b176875a0b1; the latter changes only result aggregation and its tests.",
+  "actual_coverage_cell_template": {
+    "planned_jobs": null,
+    "finished_jobs": null,
+    "legal_jobs": null,
+    "invalid_input_jobs": null,
+    "success_numerical": null,
+    "failure_counts": null,
+    "run_paths": null
+  },
+  "shared_notes": [
+    "STOMP uses an unmodified official core, while canonical cost/noise callbacks are adaptations; label does not mean the whole author task setup was copied.",
+    "CHOMP is explicitly a C-space-functional adaptation with covariant descent. TrajOpt is author SQP/BPMPD core with sampled collision adaptation. Their native smoothness/collision or squared-difference objectives are not the evaluated PWL length.",
+    "Whole-flow and fixed_initial_regions results must remain distinct. Fixed-mode eligibility uses the sealed original front-end stage, regardless of original solver success; both backends newly receive the same 60 s budget. Later graph expansion/repair is retained.",
+    "All scores require the common numerical validator. Finite collision sampling does not prove continuous collision freedom; derivative control-hull bounds are conservative continuous-segment motion-limit checks.",
+    "Normal nonconvergence and hard-query failure remain valid method observations. Native backend exceptions remain infrastructure_error. Saved valid nonconverged candidates can count only under the strict common evidence rule, never when process/timeout/array evidence contradicts them.",
+    "Keep first terminal attempt for scores; an unscored diagnostic or later witness never replaces it. No assertion of completed legacy NTO coverage is made here."
+  ],
+  "known_backend_issue": {
+    "evidence": "results/nto_backend_issue.json",
+    "scored_instances": [
+      "dev-route_choice-002-p00",
+      "test-route_choice-014-p01"
+    ],
+    "unscored_diagnostic_assertion_reproduced": true,
+    "exact_q_captured": false,
+    "status": "Unfixed upstream backend issue; scored observations unchanged. No broad NTO exclusion follows from it."
+  },
+  "actual_coverage_status": "All declared current smoke/dev/test combinations and the explicit shared-initial-region cohort are complete. Smoke is coverage evidence only; performance comparisons use the named selected cohorts. Counts are cross-checked from final records.csv and summary.csv without replanning or recollection.",
+  "historical_evidence_scope": "Original tests, changes and limitations are retained as earlier audit evidence; current resolved config disables the diagnostic OMPL progress observer. Historical observer settings in changes are not active main-baseline settings.",
+  "actual_coverage_evidence": {
+    "filled_at_utc": "2026-10-31T00:54:28.245896+00:00",
+    "records": "results/records.csv",
+    "indexed_records": 21628,
+    "records_sha256": "9ac7f3a11598741c691881298eb4469a90b5897a0c852b80dd583d2c3d28b503",
+    "summary": "results/summary.csv",
+    "summary_sha256": "0d20de14dfd328d2b653fb611716b1d24e148d529007d48855499cc411f1dfdb",
+    "selection": "results/selection.json",
+    "selection_sha256": "0da5db94c46b0823603954c5eb30a1028ac13b6839eb492a006c70d316461d76",
+    "completed_export_log": "results/logs/final_summary_export.log",
+    "export_log_sha256": "a1abb7a78dee6a67d83316fdacd3f190be3df64fd226b37b962fa600620585cf",
+    "counts_denominator": "Success counts divide by legal finished queries, not registered invalid-input slots; paired seed repetitions are query observations, not independent scenes.",
+    "smoke_scope": "First terminal coverage from results/smoke and results/nto_legacy_smoke only; not an added selected comparison."
+  }
+}

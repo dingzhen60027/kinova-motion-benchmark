@@ -1,0 +1,53 @@
+{
+  "kind": "polygon",
+  "native_cost": 0.6571870047207069,
+  "native_objective": "CHOMP: squared joint accelerations plus canonical signed-clearance potential integrated over C-space arc length",
+  "objective": "minimum_distance",
+  "optimizer_provenance": {
+    "algorithm": "CHOMP fixed-endpoint acceleration-metric covariant descent; C-space line-integral potential",
+    "collision_model": "unchanged Model.clearance; exact canonical primitives and filter pairs",
+    "initializer": "shared validated DRM path, all vertices retained",
+    "method": "CHOMP",
+    "native_objective": "CHOMP: squared joint accelerations plus canonical signed-clearance potential integrated over C-space arc length",
+    "profile": {
+      "backtracking_steps": 8,
+      "collision_check_step_rad": 0.05,
+      "finite_difference_rad": 1e-05,
+      "initial_knots": 64,
+      "learning_rate": 1.0,
+      "maximum_iterations": 40,
+      "maximum_knots": 256,
+      "maximum_update_rad": 0.08,
+      "obstacle_influence_m": 0.05,
+      "obstacle_weight": 10.0,
+      "relative_cost_tolerance": 1e-07,
+      "safety_band_m": 2e-06,
+      "smoothness_weight": 1.0
+    },
+    "reported_benchmark_cost": "Euclidean seven-joint PWL arc length in radians",
+    "seed": 4113189672,
+    "sources": [
+      "https://publications.ri.cmu.edu/storage/publications/pub_files/2013/5/CHOMP_IJRR.pdf"
+    ]
+  },
+  "optimizer_status": {
+    "analytic_gradient_calls": 40,
+    "candidate_changed": true,
+    "clearance_calls": 132,
+    "clearance_states": 8747,
+    "final_pwl_length_rad": 6.758852009890552,
+    "finite_sampling_is_not_continuous_certificate": true,
+    "geometry_seconds": 5.580526394303888,
+    "initial_native_cost": 0.7403141285821693,
+    "initial_pwl_length_rad": 7.499638539383182,
+    "iterations": 40,
+    "minimum_optimizer_sample_clearance_m": 0.018633362673010766,
+    "native_cost": 0.6571870047207069,
+    "native_obstacle_cost": 0.06487680899485422,
+    "native_smoothness_cost": 0.008418914772164686,
+    "seconds": 5.608953279443085,
+    "solver_success": true,
+    "stop_reason": "maximum_iterations"
+  },
+  "solver_success": true
+}

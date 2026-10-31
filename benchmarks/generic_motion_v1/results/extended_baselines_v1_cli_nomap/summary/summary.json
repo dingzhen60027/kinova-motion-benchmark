@@ -1,0 +1,969 @@
+{
+  "schema_version": 1,
+  "run_dir": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_cli_nomap",
+  "planned_jobs": 1,
+  "integrity": {
+    "integrity_passed": true,
+    "complete": true,
+    "completed_jobs": 1,
+    "planned_jobs": 1,
+    "errors": [],
+    "unsealed_attempts": []
+  },
+  "complete": true,
+  "finished_jobs": 1,
+  "status_counts": {
+    "success_validated_numerical": 1
+  },
+  "run_manifest_sha256": "457880ce5886f1dd94b0986171fed1917707f9d23c9caf658a7e0ca6c0684f61",
+  "main_denominator": "All numerically legal planned jobs, including failures, timeouts and pending jobs. Invalid inputs are separately counted.",
+  "uncertainty": "Scene-level cluster bootstrap. All open_control IDs share one physical-world cluster. Seed repetitions are not independent environments.",
+  "numerical_validation": "Finite collision sampling, not a continuous safety certificate.",
+  "timing_definition": "cold_e2e is external process wall time including initialization and validation; warm_query is the recorded already-initialized online query. Offline roadmaps are listed once separately; missing durations remain null.",
+  "gpu_memory_definition": "Sampled process memory, not an exact allocator peak. Polling may miss short peaks.",
+  "offline_roadmaps": [],
+  "unresolved_offline_roadmap_ids": [],
+  "groups": [
+    {
+      "method": "RRTCONNECT",
+      "objective": "minimum_distance",
+      "family": "all",
+      "planned_jobs": 1,
+      "legal_input_jobs": 1,
+      "invalid_input_jobs": 0,
+      "pending_jobs": 0,
+      "status_counts": {
+        "success_validated_numerical": 1
+      },
+      "unconditional_success": {
+        "estimate": 1.0,
+        "numerator": 1.0,
+        "denominator": 1.0,
+        "independent_scene_clusters": 1,
+        "ci95": null,
+        "bootstrap_seed": 45827,
+        "bootstrap_replicates": 2000,
+        "method": "scene-level cluster bootstrap; resample scene clusters with all paired jobs intact",
+        "limitation": "Fewer than two independent scene clusters; no confidence interval reported."
+      },
+      "conditional_on_drm_success": {
+        "estimate": null,
+        "numerator": 0.0,
+        "denominator": 0.0,
+        "independent_scene_clusters": 0,
+        "ci95": null,
+        "bootstrap_seed": 45827,
+        "bootstrap_replicates": 2000,
+        "method": "scene-level cluster bootstrap; resample scene clusters with all paired jobs intact",
+        "limitation": "Fewer than two independent scene clusters; no confidence interval reported."
+      },
+      "conditional_on_native_drm_success": {
+        "estimate": null,
+        "numerator": 0.0,
+        "denominator": 0.0,
+        "independent_scene_clusters": 0,
+        "ci95": null,
+        "bootstrap_seed": 45827,
+        "bootstrap_replicates": 2000,
+        "method": "scene-level cluster bootstrap; resample scene clusters with all paired jobs intact",
+        "limitation": "Fewer than two independent scene clusters; no confidence interval reported."
+      },
+      "conditional_denominator_note": "drm_success is the accepted frontend (including the seed-path geometry gate when present); native_drm_success is the native planner return before that gate. Legacy receipts without a seed gate use the same denominator.",
+      "drm_status_unknown_jobs": 1,
+      "timing_and_memory": {
+        "cold_e2e_seconds": {
+          "all_finished": {
+            "count": 1,
+            "mean": 1.5166277228854597,
+            "p50": 1.5166277228854597,
+            "p90": 1.5166277228854597,
+            "p95": 1.5166277228854597,
+            "min": 1.5166277228854597,
+            "max": 1.5166277228854597
+          },
+          "success": {
+            "count": 1,
+            "mean": 1.5166277228854597,
+            "p50": 1.5166277228854597,
+            "p90": 1.5166277228854597,
+            "p95": 1.5166277228854597,
+            "min": 1.5166277228854597,
+            "max": 1.5166277228854597
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "warm_query_seconds": {
+          "all_finished": {
+            "count": 1,
+            "mean": 0.8383062952198088,
+            "p50": 0.8383062952198088,
+            "p90": 0.8383062952198088,
+            "p95": 0.8383062952198088,
+            "min": 0.8383062952198088,
+            "max": 0.8383062952198088
+          },
+          "success": {
+            "count": 1,
+            "mean": 0.8383062952198088,
+            "p50": 0.8383062952198088,
+            "p90": 0.8383062952198088,
+            "p95": 0.8383062952198088,
+            "min": 0.8383062952198088,
+            "max": 0.8383062952198088
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "sampled_gpu_peak_mib": {
+          "all_finished": {
+            "count": 1,
+            "mean": 196.0,
+            "p50": 196.0,
+            "p90": 196.0,
+            "p95": 196.0,
+            "min": 196.0,
+            "max": 196.0
+          },
+          "success": {
+            "count": 1,
+            "mean": 196.0,
+            "p50": 196.0,
+            "p90": 196.0,
+            "p95": 196.0,
+            "min": 196.0,
+            "max": 196.0
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        }
+      },
+      "metrics": {
+        "regions": {
+          "all_finished": {
+            "count": 1,
+            "mean": 0.0,
+            "p50": 0.0,
+            "p90": 0.0,
+            "p95": 0.0,
+            "min": 0.0,
+            "max": 0.0
+          },
+          "success": {
+            "count": 1,
+            "mean": 0.0,
+            "p50": 0.0,
+            "p90": 0.0,
+            "p95": 0.0,
+            "min": 0.0,
+            "max": 0.0
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "facets": {
+          "all_finished": {
+            "count": 1,
+            "mean": 0.0,
+            "p50": 0.0,
+            "p90": 0.0,
+            "p95": 0.0,
+            "min": 0.0,
+            "max": 0.0
+          },
+          "success": {
+            "count": 1,
+            "mean": 0.0,
+            "p50": 0.0,
+            "p90": 0.0,
+            "p95": 0.0,
+            "min": 0.0,
+            "max": 0.0
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "recovery_attempts": {
+          "all_finished": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "success": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "normalized_path_length": {
+          "all_finished": {
+            "count": 1,
+            "mean": 1.309349213525396,
+            "p50": 1.309349213525396,
+            "p90": 1.309349213525396,
+            "p95": 1.309349213525396,
+            "min": 1.309349213525396,
+            "max": 1.309349213525396
+          },
+          "success": {
+            "count": 1,
+            "mean": 1.309349213525396,
+            "p50": 1.309349213525396,
+            "p90": 1.309349213525396,
+            "p95": 1.309349213525396,
+            "min": 1.309349213525396,
+            "max": 1.309349213525396
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "minimum_sampled_clearance_m": {
+          "all_finished": {
+            "count": 1,
+            "mean": 0.003341075747114146,
+            "p50": 0.003341075747114146,
+            "p90": 0.003341075747114146,
+            "p95": 0.003341075747114146,
+            "min": 0.003341075747114146,
+            "max": 0.003341075747114146
+          },
+          "success": {
+            "count": 1,
+            "mean": 0.003341075747114146,
+            "p50": 0.003341075747114146,
+            "p90": 0.003341075747114146,
+            "p95": 0.003341075747114146,
+            "min": 0.003341075747114146,
+            "max": 0.003341075747114146
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        }
+      },
+      "metrics_note": "Finite recorded values only, stratified by final status. Missing or unexecuted stages are not zero-filled; each statistic includes its observed count. Failure metrics describe saved candidates, not valid solutions.",
+      "stage_timing": {
+        "cold_e2e_seconds": {
+          "all_finished": {
+            "count": 1,
+            "mean": 1.2767931269481778,
+            "p50": 1.2767931269481778,
+            "p90": 1.2767931269481778,
+            "p95": 1.2767931269481778,
+            "min": 1.2767931269481778,
+            "max": 1.2767931269481778
+          },
+          "success": {
+            "count": 1,
+            "mean": 1.2767931269481778,
+            "p50": 1.2767931269481778,
+            "p90": 1.2767931269481778,
+            "p95": 1.2767931269481778,
+            "min": 1.2767931269481778,
+            "max": 1.2767931269481778
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "gpu_initialization_warmup_seconds": {
+          "all_finished": {
+            "count": 1,
+            "mean": 0.14125685300678015,
+            "p50": 0.14125685300678015,
+            "p90": 0.14125685300678015,
+            "p95": 0.14125685300678015,
+            "min": 0.14125685300678015,
+            "max": 0.14125685300678015
+          },
+          "success": {
+            "count": 1,
+            "mean": 0.14125685300678015,
+            "p50": 0.14125685300678015,
+            "p90": 0.14125685300678015,
+            "p95": 0.14125685300678015,
+            "min": 0.14125685300678015,
+            "max": 0.14125685300678015
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "model_setup_seconds": {
+          "all_finished": {
+            "count": 1,
+            "mean": 0.014428853057324886,
+            "p50": 0.014428853057324886,
+            "p90": 0.014428853057324886,
+            "p95": 0.014428853057324886,
+            "min": 0.014428853057324886,
+            "max": 0.014428853057324886
+          },
+          "success": {
+            "count": 1,
+            "mean": 0.014428853057324886,
+            "p50": 0.014428853057324886,
+            "p90": 0.014428853057324886,
+            "p95": 0.014428853057324886,
+            "min": 0.014428853057324886,
+            "max": 0.014428853057324886
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "sampling_planning_seconds": {
+          "all_finished": {
+            "count": 1,
+            "mean": 0.19144641887396574,
+            "p50": 0.19144641887396574,
+            "p90": 0.19144641887396574,
+            "p95": 0.19144641887396574,
+            "min": 0.19144641887396574,
+            "max": 0.19144641887396574
+          },
+          "success": {
+            "count": 1,
+            "mean": 0.19144641887396574,
+            "p50": 0.19144641887396574,
+            "p90": 0.19144641887396574,
+            "p95": 0.19144641887396574,
+            "min": 0.19144641887396574,
+            "max": 0.19144641887396574
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "validation_seconds": {
+          "all_finished": {
+            "count": 1,
+            "mean": 0.6462522470392287,
+            "p50": 0.6462522470392287,
+            "p90": 0.6462522470392287,
+            "p95": 0.6462522470392287,
+            "min": 0.6462522470392287,
+            "max": 0.6462522470392287
+          },
+          "success": {
+            "count": 1,
+            "mean": 0.6462522470392287,
+            "p50": 0.6462522470392287,
+            "p90": 0.6462522470392287,
+            "p95": 0.6462522470392287,
+            "min": 0.6462522470392287,
+            "max": 0.6462522470392287
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "warm_query_seconds": {
+          "all_finished": {
+            "count": 1,
+            "mean": 0.8383062952198088,
+            "p50": 0.8383062952198088,
+            "p90": 0.8383062952198088,
+            "p95": 0.8383062952198088,
+            "min": 0.8383062952198088,
+            "max": 0.8383062952198088
+          },
+          "success": {
+            "count": 1,
+            "mean": 0.8383062952198088,
+            "p50": 0.8383062952198088,
+            "p90": 0.8383062952198088,
+            "p95": 0.8383062952198088,
+            "min": 0.8383062952198088,
+            "max": 0.8383062952198088
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        }
+      },
+      "success_cost": {
+        "count": 1,
+        "mean": 7.604595101575039,
+        "p50": 7.604595101575039,
+        "p90": 7.604595101575039,
+        "p95": 7.604595101575039,
+        "min": 7.604595101575039,
+        "max": 7.604595101575039
+      },
+      "success_cost_note": "Descriptive only. Compare methods using paired common-success costs below; unequal success subsets are not rankings."
+    },
+    {
+      "method": "RRTCONNECT",
+      "objective": "minimum_distance",
+      "family": "sparse_clutter",
+      "planned_jobs": 1,
+      "legal_input_jobs": 1,
+      "invalid_input_jobs": 0,
+      "pending_jobs": 0,
+      "status_counts": {
+        "success_validated_numerical": 1
+      },
+      "unconditional_success": {
+        "estimate": 1.0,
+        "numerator": 1.0,
+        "denominator": 1.0,
+        "independent_scene_clusters": 1,
+        "ci95": null,
+        "bootstrap_seed": 45827,
+        "bootstrap_replicates": 2000,
+        "method": "scene-level cluster bootstrap; resample scene clusters with all paired jobs intact",
+        "limitation": "Fewer than two independent scene clusters; no confidence interval reported."
+      },
+      "conditional_on_drm_success": {
+        "estimate": null,
+        "numerator": 0.0,
+        "denominator": 0.0,
+        "independent_scene_clusters": 0,
+        "ci95": null,
+        "bootstrap_seed": 45827,
+        "bootstrap_replicates": 2000,
+        "method": "scene-level cluster bootstrap; resample scene clusters with all paired jobs intact",
+        "limitation": "Fewer than two independent scene clusters; no confidence interval reported."
+      },
+      "conditional_on_native_drm_success": {
+        "estimate": null,
+        "numerator": 0.0,
+        "denominator": 0.0,
+        "independent_scene_clusters": 0,
+        "ci95": null,
+        "bootstrap_seed": 45827,
+        "bootstrap_replicates": 2000,
+        "method": "scene-level cluster bootstrap; resample scene clusters with all paired jobs intact",
+        "limitation": "Fewer than two independent scene clusters; no confidence interval reported."
+      },
+      "conditional_denominator_note": "drm_success is the accepted frontend (including the seed-path geometry gate when present); native_drm_success is the native planner return before that gate. Legacy receipts without a seed gate use the same denominator.",
+      "drm_status_unknown_jobs": 1,
+      "timing_and_memory": {
+        "cold_e2e_seconds": {
+          "all_finished": {
+            "count": 1,
+            "mean": 1.5166277228854597,
+            "p50": 1.5166277228854597,
+            "p90": 1.5166277228854597,
+            "p95": 1.5166277228854597,
+            "min": 1.5166277228854597,
+            "max": 1.5166277228854597
+          },
+          "success": {
+            "count": 1,
+            "mean": 1.5166277228854597,
+            "p50": 1.5166277228854597,
+            "p90": 1.5166277228854597,
+            "p95": 1.5166277228854597,
+            "min": 1.5166277228854597,
+            "max": 1.5166277228854597
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "warm_query_seconds": {
+          "all_finished": {
+            "count": 1,
+            "mean": 0.8383062952198088,
+            "p50": 0.8383062952198088,
+            "p90": 0.8383062952198088,
+            "p95": 0.8383062952198088,
+            "min": 0.8383062952198088,
+            "max": 0.8383062952198088
+          },
+          "success": {
+            "count": 1,
+            "mean": 0.8383062952198088,
+            "p50": 0.8383062952198088,
+            "p90": 0.8383062952198088,
+            "p95": 0.8383062952198088,
+            "min": 0.8383062952198088,
+            "max": 0.8383062952198088
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "sampled_gpu_peak_mib": {
+          "all_finished": {
+            "count": 1,
+            "mean": 196.0,
+            "p50": 196.0,
+            "p90": 196.0,
+            "p95": 196.0,
+            "min": 196.0,
+            "max": 196.0
+          },
+          "success": {
+            "count": 1,
+            "mean": 196.0,
+            "p50": 196.0,
+            "p90": 196.0,
+            "p95": 196.0,
+            "min": 196.0,
+            "max": 196.0
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        }
+      },
+      "metrics": {
+        "regions": {
+          "all_finished": {
+            "count": 1,
+            "mean": 0.0,
+            "p50": 0.0,
+            "p90": 0.0,
+            "p95": 0.0,
+            "min": 0.0,
+            "max": 0.0
+          },
+          "success": {
+            "count": 1,
+            "mean": 0.0,
+            "p50": 0.0,
+            "p90": 0.0,
+            "p95": 0.0,
+            "min": 0.0,
+            "max": 0.0
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "facets": {
+          "all_finished": {
+            "count": 1,
+            "mean": 0.0,
+            "p50": 0.0,
+            "p90": 0.0,
+            "p95": 0.0,
+            "min": 0.0,
+            "max": 0.0
+          },
+          "success": {
+            "count": 1,
+            "mean": 0.0,
+            "p50": 0.0,
+            "p90": 0.0,
+            "p95": 0.0,
+            "min": 0.0,
+            "max": 0.0
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "recovery_attempts": {
+          "all_finished": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "success": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "normalized_path_length": {
+          "all_finished": {
+            "count": 1,
+            "mean": 1.309349213525396,
+            "p50": 1.309349213525396,
+            "p90": 1.309349213525396,
+            "p95": 1.309349213525396,
+            "min": 1.309349213525396,
+            "max": 1.309349213525396
+          },
+          "success": {
+            "count": 1,
+            "mean": 1.309349213525396,
+            "p50": 1.309349213525396,
+            "p90": 1.309349213525396,
+            "p95": 1.309349213525396,
+            "min": 1.309349213525396,
+            "max": 1.309349213525396
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "minimum_sampled_clearance_m": {
+          "all_finished": {
+            "count": 1,
+            "mean": 0.003341075747114146,
+            "p50": 0.003341075747114146,
+            "p90": 0.003341075747114146,
+            "p95": 0.003341075747114146,
+            "min": 0.003341075747114146,
+            "max": 0.003341075747114146
+          },
+          "success": {
+            "count": 1,
+            "mean": 0.003341075747114146,
+            "p50": 0.003341075747114146,
+            "p90": 0.003341075747114146,
+            "p95": 0.003341075747114146,
+            "min": 0.003341075747114146,
+            "max": 0.003341075747114146
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        }
+      },
+      "metrics_note": "Finite recorded values only, stratified by final status. Missing or unexecuted stages are not zero-filled; each statistic includes its observed count. Failure metrics describe saved candidates, not valid solutions.",
+      "stage_timing": {
+        "cold_e2e_seconds": {
+          "all_finished": {
+            "count": 1,
+            "mean": 1.2767931269481778,
+            "p50": 1.2767931269481778,
+            "p90": 1.2767931269481778,
+            "p95": 1.2767931269481778,
+            "min": 1.2767931269481778,
+            "max": 1.2767931269481778
+          },
+          "success": {
+            "count": 1,
+            "mean": 1.2767931269481778,
+            "p50": 1.2767931269481778,
+            "p90": 1.2767931269481778,
+            "p95": 1.2767931269481778,
+            "min": 1.2767931269481778,
+            "max": 1.2767931269481778
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "gpu_initialization_warmup_seconds": {
+          "all_finished": {
+            "count": 1,
+            "mean": 0.14125685300678015,
+            "p50": 0.14125685300678015,
+            "p90": 0.14125685300678015,
+            "p95": 0.14125685300678015,
+            "min": 0.14125685300678015,
+            "max": 0.14125685300678015
+          },
+          "success": {
+            "count": 1,
+            "mean": 0.14125685300678015,
+            "p50": 0.14125685300678015,
+            "p90": 0.14125685300678015,
+            "p95": 0.14125685300678015,
+            "min": 0.14125685300678015,
+            "max": 0.14125685300678015
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "model_setup_seconds": {
+          "all_finished": {
+            "count": 1,
+            "mean": 0.014428853057324886,
+            "p50": 0.014428853057324886,
+            "p90": 0.014428853057324886,
+            "p95": 0.014428853057324886,
+            "min": 0.014428853057324886,
+            "max": 0.014428853057324886
+          },
+          "success": {
+            "count": 1,
+            "mean": 0.014428853057324886,
+            "p50": 0.014428853057324886,
+            "p90": 0.014428853057324886,
+            "p95": 0.014428853057324886,
+            "min": 0.014428853057324886,
+            "max": 0.014428853057324886
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "sampling_planning_seconds": {
+          "all_finished": {
+            "count": 1,
+            "mean": 0.19144641887396574,
+            "p50": 0.19144641887396574,
+            "p90": 0.19144641887396574,
+            "p95": 0.19144641887396574,
+            "min": 0.19144641887396574,
+            "max": 0.19144641887396574
+          },
+          "success": {
+            "count": 1,
+            "mean": 0.19144641887396574,
+            "p50": 0.19144641887396574,
+            "p90": 0.19144641887396574,
+            "p95": 0.19144641887396574,
+            "min": 0.19144641887396574,
+            "max": 0.19144641887396574
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "validation_seconds": {
+          "all_finished": {
+            "count": 1,
+            "mean": 0.6462522470392287,
+            "p50": 0.6462522470392287,
+            "p90": 0.6462522470392287,
+            "p95": 0.6462522470392287,
+            "min": 0.6462522470392287,
+            "max": 0.6462522470392287
+          },
+          "success": {
+            "count": 1,
+            "mean": 0.6462522470392287,
+            "p50": 0.6462522470392287,
+            "p90": 0.6462522470392287,
+            "p95": 0.6462522470392287,
+            "min": 0.6462522470392287,
+            "max": 0.6462522470392287
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        },
+        "warm_query_seconds": {
+          "all_finished": {
+            "count": 1,
+            "mean": 0.8383062952198088,
+            "p50": 0.8383062952198088,
+            "p90": 0.8383062952198088,
+            "p95": 0.8383062952198088,
+            "min": 0.8383062952198088,
+            "max": 0.8383062952198088
+          },
+          "success": {
+            "count": 1,
+            "mean": 0.8383062952198088,
+            "p50": 0.8383062952198088,
+            "p90": 0.8383062952198088,
+            "p95": 0.8383062952198088,
+            "min": 0.8383062952198088,
+            "max": 0.8383062952198088
+          },
+          "failure": {
+            "count": 0,
+            "mean": null,
+            "p50": null,
+            "p90": null,
+            "p95": null,
+            "min": null,
+            "max": null
+          }
+        }
+      },
+      "success_cost": {
+        "count": 1,
+        "mean": 7.604595101575039,
+        "p50": 7.604595101575039,
+        "p90": 7.604595101575039,
+        "p95": 7.604595101575039,
+        "min": 7.604595101575039,
+        "max": 7.604595101575039
+      },
+      "success_cost_note": "Descriptive only. Compare methods using paired common-success costs below; unequal success subsets are not rankings."
+    }
+  ],
+  "paired_comparisons": []
+}

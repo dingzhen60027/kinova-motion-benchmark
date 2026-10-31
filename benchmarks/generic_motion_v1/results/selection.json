@@ -1,0 +1,616 @@
+{
+  "schema_version": 1,
+  "attempt_policy": "first_terminal",
+  "comparisons": [
+    {
+      "id": "current_dev",
+      "mode": "end_to_end",
+      "compatibility_note": "Reviewed current method implementations reuse the latest completed development observations for unchanged algorithms. The historical extended configuration adds only OMPL and extended_baselines fields to the identical shared configuration; the shared validator source SHA256 is 12086b43b1735ab8455b260235eb0c92b336cb2b2cbaef6c286d1d2f5f376b43. All compared rows retain identical fixed inputs, canonical model, validation resolution, motion limits and 60-second outer budget. The main OMPL profile retains uninterrupted native search and final validation. The optional incumbent observer was rejected during development because repeated validation consumed search time; its actual records are diagnostic only. All compared paired method seeds are nonzero and do not use the corrected zero-seed mapping. Source changes include the unified CLI and data/result indexing; the incumbent observer is disabled in the main evaluation. No old and new attempt is chosen by outcome. NTO legacy adaptation is added using the same frozen inputs, expanded current evaluation configuration, paired seeds, current native DRM roadmaps, canonical model, numerical validator and 60-second outer budget. Its adapter is unchanged. Later source commits add output accounting, entrypoint access and an opt-in fixed-initialization mode; they do not change this full-flow NTO algorithm. Earlier NTO runs use a different roadmap/query protocol and remain historical. First-terminal selection is unchanged; no observation is chosen by outcome.",
+      "runs": [
+        {
+          "path": "benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s000",
+          "methods": [
+            "EI_ZO",
+            "CHOMP",
+            "STOMP",
+            "TRAJOPT",
+            "RRTCONNECT",
+            "RRTSTAR"
+          ],
+          "objectives": [
+            "minimum_distance"
+          ]
+        },
+        {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_reliable_v2_dev_s000",
+          "methods": [
+            "EI_ZO"
+          ],
+          "objectives": [
+            "minimum_time"
+          ]
+        },
+        {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_reliable_v2_dev_s000",
+          "methods": [
+            "LGCS",
+            "NTO_REFINED"
+          ]
+        },
+        {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_paper_comparators_v1_dev_s000",
+          "methods": [
+            "NTO_PAPER"
+          ]
+        },
+        {
+          "path": "benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s001",
+          "methods": [
+            "EI_ZO",
+            "CHOMP",
+            "STOMP",
+            "TRAJOPT",
+            "RRTCONNECT",
+            "RRTSTAR"
+          ],
+          "objectives": [
+            "minimum_distance"
+          ]
+        },
+        {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_reliable_v2_dev_s001",
+          "methods": [
+            "EI_ZO"
+          ],
+          "objectives": [
+            "minimum_time"
+          ]
+        },
+        {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_reliable_v2_dev_s001",
+          "methods": [
+            "LGCS",
+            "NTO_REFINED"
+          ]
+        },
+        {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_paper_comparators_v1_dev_s001",
+          "methods": [
+            "NTO_PAPER"
+          ]
+        },
+        {
+          "path": "benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s002",
+          "methods": [
+            "EI_ZO",
+            "CHOMP",
+            "STOMP",
+            "TRAJOPT",
+            "RRTCONNECT",
+            "RRTSTAR"
+          ],
+          "objectives": [
+            "minimum_distance"
+          ]
+        },
+        {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_reliable_v2_dev_s002",
+          "methods": [
+            "EI_ZO"
+          ],
+          "objectives": [
+            "minimum_time"
+          ]
+        },
+        {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_reliable_v2_dev_s002",
+          "methods": [
+            "LGCS",
+            "NTO_REFINED"
+          ]
+        },
+        {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_paper_comparators_v1_dev_s002",
+          "methods": [
+            "NTO_PAPER"
+          ]
+        },
+        {
+          "path": "results/nto_legacy_dev",
+          "methods": [
+            "NTO"
+          ],
+          "objectives": [
+            "minimum_distance",
+            "minimum_time"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "current_dev_fixed_frontend",
+      "mode": "fixed_frontend",
+      "compatibility_note": "Reviewed current method implementations reuse the latest completed development observations for unchanged algorithms. The historical extended configuration adds only OMPL and extended_baselines fields to the identical shared configuration; the shared validator source SHA256 is 12086b43b1735ab8455b260235eb0c92b336cb2b2cbaef6c286d1d2f5f376b43. All compared rows retain identical fixed inputs, canonical model, validation resolution, motion limits and 60-second outer budget. The main OMPL profile retains uninterrupted native search and final validation. The optional incumbent observer was rejected during development because repeated validation consumed search time; its actual records are diagnostic only. All compared paired method seeds are nonzero and do not use the corrected zero-seed mapping. Source changes include the unified CLI and data/result indexing; the incumbent observer is disabled in the main evaluation. No old and new attempt is chosen by outcome. NTO legacy adaptation is added using the same frozen inputs, expanded current evaluation configuration, paired seeds, current native DRM roadmaps, canonical model, numerical validator and 60-second outer budget. Its adapter is unchanged. Later source commits add output accounting, entrypoint access and an opt-in fixed-initialization mode; they do not change this full-flow NTO algorithm. Earlier NTO runs use a different roadmap/query protocol and remain historical. First-terminal selection is unchanged; no observation is chosen by outcome.",
+      "runs": [
+        {
+          "path": "benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s000",
+          "methods": [
+            "EI_ZO",
+            "CHOMP",
+            "STOMP",
+            "TRAJOPT"
+          ],
+          "objectives": [
+            "minimum_distance"
+          ]
+        },
+        {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_reliable_v2_dev_s000",
+          "methods": [
+            "EI_ZO"
+          ],
+          "objectives": [
+            "minimum_time"
+          ]
+        },
+        {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_reliable_v2_dev_s000",
+          "methods": [
+            "LGCS",
+            "NTO_REFINED"
+          ]
+        },
+        {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_paper_comparators_v1_dev_s000",
+          "methods": [
+            "NTO_PAPER"
+          ]
+        },
+        {
+          "path": "benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s001",
+          "methods": [
+            "EI_ZO",
+            "CHOMP",
+            "STOMP",
+            "TRAJOPT"
+          ],
+          "objectives": [
+            "minimum_distance"
+          ]
+        },
+        {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_reliable_v2_dev_s001",
+          "methods": [
+            "EI_ZO"
+          ],
+          "objectives": [
+            "minimum_time"
+          ]
+        },
+        {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_reliable_v2_dev_s001",
+          "methods": [
+            "LGCS",
+            "NTO_REFINED"
+          ]
+        },
+        {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_paper_comparators_v1_dev_s001",
+          "methods": [
+            "NTO_PAPER"
+          ]
+        },
+        {
+          "path": "benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s002",
+          "methods": [
+            "EI_ZO",
+            "CHOMP",
+            "STOMP",
+            "TRAJOPT"
+          ],
+          "objectives": [
+            "minimum_distance"
+          ]
+        },
+        {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_reliable_v2_dev_s002",
+          "methods": [
+            "EI_ZO"
+          ],
+          "objectives": [
+            "minimum_time"
+          ]
+        },
+        {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_reliable_v2_dev_s002",
+          "methods": [
+            "LGCS",
+            "NTO_REFINED"
+          ]
+        },
+        {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_paper_comparators_v1_dev_s002",
+          "methods": [
+            "NTO_PAPER"
+          ]
+        },
+        {
+          "path": "results/nto_legacy_dev",
+          "methods": [
+            "NTO"
+          ],
+          "objectives": [
+            "minimum_distance",
+            "minimum_time"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "historical_dev_ompl",
+      "mode": "end_to_end",
+      "runs": [
+        {
+          "path": "benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s000",
+          "methods": [
+            "RRTCONNECT",
+            "RRTSTAR"
+          ]
+        },
+        {
+          "path": "benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s001",
+          "methods": [
+            "RRTCONNECT",
+            "RRTSTAR"
+          ]
+        },
+        {
+          "path": "benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s002",
+          "methods": [
+            "RRTCONNECT",
+            "RRTSTAR"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "historical_test",
+      "mode": "end_to_end",
+      "runs": [
+        "benchmarks/generic_motion_v1/results/rss2025_formal_v1_main_s000_bottleneck",
+        "benchmarks/generic_motion_v1/results/rss2025_formal_v1_main_s000_dense_clutter",
+        "benchmarks/generic_motion_v1/results/rss2025_formal_v1_main_s000_open_control",
+        "benchmarks/generic_motion_v1/results/rss2025_formal_v1_main_s000_route_choice",
+        "benchmarks/generic_motion_v1/results/rss2025_formal_v1_main_s000_sparse_clutter",
+        "benchmarks/generic_motion_v1/results/rss2025_formal_v1_main_s001_bottleneck",
+        "benchmarks/generic_motion_v1/results/rss2025_formal_v1_main_s001_dense_clutter",
+        "benchmarks/generic_motion_v1/results/rss2025_formal_v1_main_s001_open_control",
+        "benchmarks/generic_motion_v1/results/rss2025_formal_v1_main_s001_route_choice",
+        "benchmarks/generic_motion_v1/results/rss2025_formal_v1_main_s001_sparse_clutter",
+        "benchmarks/generic_motion_v1/results/rss2025_formal_v1_main_s002_bottleneck",
+        "benchmarks/generic_motion_v1/results/rss2025_formal_v1_main_s002_dense_clutter",
+        "benchmarks/generic_motion_v1/results/rss2025_formal_v1_main_s002_open_control",
+        "benchmarks/generic_motion_v1/results/rss2025_formal_v1_main_s002_route_choice",
+        "benchmarks/generic_motion_v1/results/rss2025_formal_v1_main_s002_sparse_clutter"
+      ]
+    },
+    {
+      "id": "current_test",
+      "mode": "end_to_end",
+      "runs": [
+        {
+          "path": "results/test"
+        },
+        {
+          "path": "results/nto_legacy_test",
+          "methods": [
+            "NTO"
+          ],
+          "objectives": [
+            "minimum_distance",
+            "minimum_time"
+          ]
+        }
+      ],
+      "compatibility_note": " NTO legacy adaptation is added using the same frozen inputs, expanded current evaluation configuration, paired seeds, current native DRM roadmaps, canonical model, numerical validator and 60-second outer budget. Its adapter is unchanged. Later source commits add output accounting, entrypoint access and an opt-in fixed-initialization mode; they do not change this full-flow NTO algorithm. Earlier NTO runs use a different roadmap/query protocol and remain historical. First-terminal selection is unchanged; no observation is chosen by outcome."
+    },
+    {
+      "id": "current_test_fixed_frontend",
+      "mode": "fixed_frontend",
+      "runs": [
+        {
+          "path": "results/test",
+          "methods": [
+            "EI_ZO",
+            "LGCS",
+            "NTO_PAPER",
+            "NTO_REFINED",
+            "CHOMP",
+            "STOMP",
+            "TRAJOPT"
+          ]
+        },
+        {
+          "path": "results/nto_legacy_test",
+          "methods": [
+            "NTO"
+          ],
+          "objectives": [
+            "minimum_distance",
+            "minimum_time"
+          ]
+        }
+      ],
+      "compatibility_note": " NTO legacy adaptation is added using the same frozen inputs, expanded current evaluation configuration, paired seeds, current native DRM roadmaps, canonical model, numerical validator and 60-second outer budget. Its adapter is unchanged. Later source commits add output accounting, entrypoint access and an opt-in fixed-initialization mode; they do not change this full-flow NTO algorithm. Earlier NTO runs use a different roadmap/query protocol and remain historical. First-terminal selection is unchanged; no observation is chosen by outcome."
+    },
+    {
+      "id": "diagnostic_incumbent_observer",
+      "mode": "end_to_end",
+      "diagnostic_only": true,
+      "runs": [
+        {
+          "path": "results/dev_sampling"
+        }
+      ]
+    },
+    {
+      "id": "current_dev_initial_regions",
+      "mode": "fixed_frontend",
+      "require_shared_initial_regions": true,
+      "compatibility_note": "Reviewed current method implementations reuse the latest completed development observations for unchanged algorithms. The historical extended configuration adds only OMPL and extended_baselines fields to the identical shared configuration; the shared validator source SHA256 is 12086b43b1735ab8455b260235eb0c92b336cb2b2cbaef6c286d1d2f5f376b43. All compared rows retain identical fixed inputs, canonical model, validation resolution, motion limits and 60-second outer budget. The main OMPL profile retains uninterrupted native search and final validation. The optional incumbent observer was rejected during development because repeated validation consumed search time; its actual records are diagnostic only. All compared paired method seeds are nonzero and do not use the corrected zero-seed mapping. Source changes include the unified CLI and data/result indexing; the incumbent observer is disabled in the main evaluation. No old and new attempt is chosen by outcome.",
+      "runs": [
+        {
+          "path": "results/extended_baselines_v1_dev_s000",
+          "methods": [
+            "EI_ZO"
+          ],
+          "objectives": [
+            "minimum_distance"
+          ]
+        },
+        {
+          "path": "results/rss2025_reliable_v2_dev_s000",
+          "methods": [
+            "LGCS"
+          ],
+          "objectives": [
+            "minimum_distance"
+          ]
+        },
+        {
+          "path": "results/extended_baselines_v1_dev_s001",
+          "methods": [
+            "EI_ZO"
+          ],
+          "objectives": [
+            "minimum_distance"
+          ]
+        },
+        {
+          "path": "results/rss2025_reliable_v2_dev_s001",
+          "methods": [
+            "LGCS"
+          ],
+          "objectives": [
+            "minimum_distance"
+          ]
+        },
+        {
+          "path": "results/extended_baselines_v1_dev_s002",
+          "methods": [
+            "EI_ZO"
+          ],
+          "objectives": [
+            "minimum_distance"
+          ]
+        },
+        {
+          "path": "results/rss2025_reliable_v2_dev_s002",
+          "methods": [
+            "LGCS"
+          ],
+          "objectives": [
+            "minimum_distance"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "current_test_initial_regions",
+      "mode": "fixed_initial_regions",
+      "runs": [
+        {
+          "path": "results/fixed_initial_regions",
+          "methods": [
+            "EI_ZO",
+            "LGCS"
+          ],
+          "objectives": [
+            "minimum_distance"
+          ]
+        }
+      ],
+      "scope": "Both backends start from the identical receipt-bound original EI_ZO round-zero path/regions/corridor. Every predeclared eligible paired job remains in the denominator. The separate 60-second cold backend clock includes model setup, source loading/revalidation, optimization, repair and final validation; recorded source initialization stages are reported separately."
+    },
+    {
+      "id": "historical_nto_development",
+      "mode": "end_to_end",
+      "runs": [
+        {
+          "path": "results/dev_paired_v2",
+          "methods": [
+            "NTO"
+          ],
+          "objectives": [
+            "minimum_distance",
+            "minimum_time"
+          ]
+        }
+      ],
+      "scope": "24 historical observations: four tasks, three paired seeds, two objectives under the older roadmap/query protocol. Not pooled into current scores."
+    }
+  ],
+  "success_policy": {
+    "criterion": "saved candidate passing common independent numerical validation, legal fixed input, intact receipt, normal process completion within the declared outer budget",
+    "solver_convergence": "reported separately; a nonconverged solver with a validated output may qualify",
+    "raw_evidence": "never rewritten; no promotion of timeout, infrastructure error, invalid input or missing candidate",
+    "clarification_recorded_at_utc": "2026-10-30T15:51:57.963648+00:00",
+    "evidence": "results/valid_nonconverged.json",
+    "scope": "all methods and historical/current observations under the same evidence requirements"
+  },
+  "initialization_diagnostics": {
+    "independently_regenerated_test_regions": {
+      "retired_specification": {
+        "id": "current_test_initial_regions",
+        "mode": "fixed_frontend",
+        "require_shared_initial_regions": true,
+        "runs": [
+          {
+            "path": "results/test",
+            "methods": [
+              "EI_ZO",
+              "LGCS"
+            ],
+            "objectives": [
+              "minimum_distance"
+            ]
+          }
+        ]
+      },
+      "reason": "Equal seeds did not guarantee identical CUDA-generated initial regions. Original full-flow observations remain selected; fixed-initial comparison uses the new shared-snapshot run without deleting differing cases or applying a matching tolerance.",
+      "existing_evidence": "results/initial_conditions.json",
+      "full_completed_source_comparison": {
+        "counts": {
+          "identical_arrays": 281,
+          "both_unavailable": 137,
+          "different_arrays": 2
+        },
+        "completed_pairs": 420,
+        "differences": [
+          {
+            "problem_id": "test-dense_clutter-010-p01",
+            "replica_seed": 0,
+            "state": "different_arrays",
+            "paths": {
+              "EI_ZO": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/test/jobs/test-dense_clutter-010-p01-EI_ZO-minimum_distance-b8dd3203/attempts/0001/rounds/000/regions.npz",
+              "LGCS": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/test/jobs/test-dense_clutter-010-p01-LGCS-minimum_distance-29af1ebd/attempts/0001/first_corridor/regions.npz"
+            },
+            "sha256": {
+              "EI_ZO": "bd8916cb652a691c7e42b41136524ab7b7024d385b4da765d1424ac1f72c85c6",
+              "LGCS": "efce0e68bfe2bb862244db48a11a7cb64d1033fbdd85d1dc90f8d0648c989dd6"
+            }
+          },
+          {
+            "problem_id": "test-dense_clutter-016-p00",
+            "replica_seed": 0,
+            "state": "different_arrays",
+            "paths": {
+              "EI_ZO": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/test/jobs/test-dense_clutter-016-p00-EI_ZO-minimum_distance-e757fc8c/attempts/0001/rounds/000/regions.npz",
+              "LGCS": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/test/jobs/test-dense_clutter-016-p00-LGCS-minimum_distance-e9fd778d/attempts/0001/first_corridor/regions.npz"
+            },
+            "sha256": {
+              "EI_ZO": "4f697e667d5098c7757531f3ce69dc30cfaf759c265e9496adc6bd5201056134",
+              "LGCS": "750d88140a2707e2c192a1d15906beb9b1fa6bde1a2305bce20f35ccab8170e8"
+            }
+          }
+        ],
+        "comparison": "Exact initial array dtype, shape and bytes; final repaired regions are never substituted"
+      }
+    }
+  },
+  "final_selection_checks": {
+    "no_allow_pending": true,
+    "attempt_policy": "first_terminal",
+    "legacy_coverage_and_conditioning": {
+      "legacy_smoke": {
+        "planned": 20,
+        "legal": 16,
+        "finished": 20,
+        "seeds": [
+          0
+        ]
+      },
+      "legacy_dev": {
+        "planned": 360,
+        "legal": 360,
+        "finished": 360,
+        "seeds": [
+          0,
+          1,
+          2
+        ]
+      },
+      "legacy_test": {
+        "planned": 840,
+        "legal": 790,
+        "finished": 840,
+        "seeds": [
+          0
+        ]
+      },
+      "current_dev": {
+        "planned": 2520,
+        "selected": 2520,
+        "coverage": {
+          "methods": 10,
+          "method_objective_combinations": 14,
+          "registered_jobs": 2520,
+          "paired_seeds": [
+            0,
+            1,
+            2
+          ]
+        }
+      },
+      "current_test": {
+        "planned": 5880,
+        "selected": 5880,
+        "coverage": {
+          "methods": 10,
+          "method_objective_combinations": 14,
+          "registered_jobs": 5880,
+          "paired_seeds": [
+            0
+          ]
+        }
+      },
+      "current_test_initial_regions": {
+        "planned": 566,
+        "selected": 566
+      },
+      "current_dev_initial_regions": {
+        "planned": 360,
+        "selected": 220
+      },
+      "fixed_source_group": {
+        "registered_source_pairs": 420,
+        "eligible_source_pairs": 283,
+        "planned_backend_jobs": 566,
+        "source_run": "benchmarks/generic_motion_v1/results/test",
+        "source_run_manifest_sha256": "3d9b68108d9ce300040daa6d56e0f34d7c1eace9105ef1dc8789baac0a1e3a3f",
+        "final_source_optimizer_outcome_used_for_selection": false,
+        "failed_backend_loading_or_validation_retained": true
+      },
+      "current_dev_fixed_frontend": {
+        "legacy_nto_included": true,
+        "identical_validated_native_path_condition_passed": true,
+        "selected": 1320
+      },
+      "current_test_fixed_frontend": {
+        "legacy_nto_included": true,
+        "identical_validated_native_path_condition_passed": true,
+        "selected": 3396
+      }
+    },
+    "progress_curve_policy": {
+      "main_ompl_records_with_observed_progress": 0,
+      "main_has_no_claimed_intermediate_curve": "A final validated output does not establish an anytime curve. Main OMPL has observer disabled; leave intermediate first-valid/curve data absent when unavailable.",
+      "observer": "diagnostic_incumbent_observer is retained separately and must be explicitly labeled diagnostic if plotted; never substitute it for the main method."
+    },
+    "preserved_historical_comparisons": [
+      "historical_dev_ompl",
+      "historical_test"
+    ],
+    "evidence_scope": "Strict saved receipt, candidate/validation consistency and source checks; no new collision queries or optimizer calls. All current selected runs are complete before writing."
+  }
+}

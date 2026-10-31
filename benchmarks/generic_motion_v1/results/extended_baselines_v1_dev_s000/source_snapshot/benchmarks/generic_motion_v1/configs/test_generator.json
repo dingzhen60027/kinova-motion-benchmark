@@ -1,0 +1,27 @@
+{
+  "benchmark_version": "kinova7_generic_v1",
+  "rng": "numpy.random.PCG64; SHA256 domain-separated uint64 seeds",
+  "world_frame": "world; right-handed; metres; base_link identity",
+  "voxel_radius_m": 0.04,
+  "maximum_voxel_cell_side_m": 0.04,
+  "roi_min_m": [-0.2, -0.7, 0.18],
+  "roi_max_m": [0.8, 0.7, 1.0],
+  "endpoint_joint_margin_rad": 0.02,
+  "endpoint_clearance_m": 0.0001,
+  "endpoint_max_attempts": 4096,
+  "endpoint_batch_size": 64,
+  "straight_line_step_rad": 0.04,
+  "normalized_distance_definition": "sqrt(mean(((q_goal-q_start)/(upper-lower))**2))",
+  "normalized_distance_bins": {"short": [0.1, 0.3], "medium": [0.3, 0.45], "long": [0.45, 0.75]},
+  "distance_bin_cycle": ["short", "medium", "long"],
+  "maximum_scene_proposals": 256,
+  "sparse_clutter": {"obstacles_min": 6, "obstacles_max": 12, "sphere_radius_range_m": [0.03, 0.065], "box_size_range_m": [0.055, 0.11]},
+  "dense_clutter": {"obstacles_min": 20, "obstacles_max": 40, "sphere_radius_range_m": [0.025, 0.055]},
+  "bottleneck": {"gap_range_m": [0.22, 0.34], "wall_length_m": 0.3, "wall_thickness_m": 0.065, "wall_height_m": 0.4},
+  "route_choice": {"cluster_separation_range_m": [0.25, 0.45], "spheres_per_cluster": 6, "cluster_spread_m": 0.065, "sphere_radius_range_m": [0.035, 0.065]},
+  "splits": {
+    "smoke": {"main_layouts_per_family": 1, "pairs_per_layout": 2, "open_layouts": 1},
+    "dev": {"main_layouts_per_family": 5, "pairs_per_layout": 3, "open_layouts": 0},
+    "test": {"main_layouts_per_family": 20, "pairs_per_layout": 5, "open_layouts": 4}
+  }
+}

@@ -1,0 +1,331 @@
+{
+  "review_time": "2026-10-31T03:15:59.697940+08:00",
+  "scope": "Original read-only backend-source review, plus exactly one authorized unscored instrumented development-case SNOPT diagnostic after the main test completed. The diagnostic reproduced the BoxBoxGradient assertion; exact q capture failed. Scored development/test records remain unchanged.",
+  "head": "61dbc3fa0c9a6d02ac89b1db835b40164e707b36",
+  "case": "dev-route_choice-002-p00",
+  "method": "NTO_PAPER",
+  "objective": "minimum_distance",
+  "replica_seed": 0,
+  "method_seed": 1018884758,
+  "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/rss2025_paper_comparators_v1_dev_s000/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_distance-48b608ce/attempts/0001",
+  "original_source_commit": "b73f2ddbcbcbb485a883d08b6b42641ddf1e6d81",
+  "failure": {
+    "raw_status": "solver_failed",
+    "derived_status": "infrastructure_error",
+    "exception": "RuntimeError(\"Exception while evaluating SNOPT costs and constraints: 'Failure at external/drake+/geometry/proximity/distance_to_shape_touching.cc:122 in BoxBoxGradient(): condition '(X_WA * p_ACa - X_WB * p_BCb).norm() < kEps' failed.'\")",
+    "failed_stage": "trajectory_optimization",
+    "solver_seconds": 6.401457408908755,
+    "cold_e2e_seconds": 8.528424197807908,
+    "exit_code": 0,
+    "timed_out": false,
+    "frontend_validation": "success_validated_numerical",
+    "candidate_saved": false,
+    "solver_raw_saved": false
+  },
+  "artifact_sha256": {
+    "result.json": "da48864f5325c8c305039d2b1644a2146a022308485886c3f67a67ead370aa72",
+    "process.json": "2e968b5d86444eb8600b3266047f16b03b18baf85146b6aab7d229db620462ef",
+    "exception.txt": "56ac8c6fbb40f7ed9f9d12d369eac1d5d8729b440209ebb8d2e74d12c5edca0e",
+    "nto_solver_result.json": "1b2b0ab1d8429be387fb8e3aac447a474427d7f39477da53e528851a7c8956cf",
+    "nto_parameters.json": "dc33025a624c5398cb666341bdaa38738ac2057b1ab05fa9ff38a6d39f41e55a",
+    "nto_initial.npz": "5878b88faf29e3d400650d112616463ca989a8dd861679278b6a234d7a180383",
+    "path.npy": "7f2f1a7f3aa77027aee364ab4b05930e76d3c4c94b4e5eca1346e79ec3fa38ce",
+    "snopt.log": "0d8a025a92f0858b29c71334d0c1432bd70f9a2b1bd790337ef0fc59f196ad64",
+    "receipt.json": "f5fac7e6c782b2b5dcb0de9a22f001bb6354d60f42bd873e7e8afdfeb5e30e56",
+    "input.json": "ad45f2ed9731516f32c427aa9504950b11990a13a1c6db5037f97ae4bd3a61d6",
+    "frontend_validation/validation.json": "87bebb25e8a92d58cb6c4d92258b64c54a480bca8c26f34f90f6439145b119ea"
+  },
+  "source_comparison": [
+    {
+      "file": "benchmarks/generic_motion_v1/runners/paper_nto.py",
+      "old_sha256": "f6697df7115cf258b5cd7773de14aeb98e67a7e3d0952654715f765748c0337f",
+      "current_sha256": "f6697df7115cf258b5cd7773de14aeb98e67a7e3d0952654715f765748c0337f",
+      "identical": true
+    },
+    {
+      "file": "benchmarks/generic_motion_v1/runners/paper_nto_refined.py",
+      "old_sha256": "bbb167acd8b72d686286a59d464a99c1a3bf51405b3ec78052114fd25c9e1360",
+      "current_sha256": "bbb167acd8b72d686286a59d464a99c1a3bf51405b3ec78052114fd25c9e1360",
+      "identical": true
+    },
+    {
+      "file": "benchmarks/generic_motion_v1/model.py",
+      "old_sha256": "5b152e3e5ca484e5378856de11747c45826653df8a1183582fe90e0958fc5116",
+      "current_sha256": "5b152e3e5ca484e5378856de11747c45826653df8a1183582fe90e0958fc5116",
+      "identical": true
+    }
+  ],
+  "installed_drake_version": "1.51.1",
+  "unchanged_transcription": {
+    "collision_pairs": 8327,
+    "interior_collocation_bindings": 149,
+    "control_points": 5,
+    "spline_order": 2,
+    "clearance_m": 0.0,
+    "influence_distance_m": 0.01,
+    "solver": "SNOPT",
+    "shared_external_budget_seconds": 60.0
+  },
+  "saved_arrays_check": {
+    "arrays": {
+      "controls": {
+        "shape": [
+          5,
+          7
+        ],
+        "dtype": "float64",
+        "finite": true
+      },
+      "knots": {
+        "shape": [
+          7
+        ],
+        "dtype": "float64",
+        "finite": true
+      },
+      "original_path": {
+        "shape": [
+          5,
+          7
+        ],
+        "dtype": "float64",
+        "finite": true
+      },
+      "duration": {
+        "shape": [],
+        "dtype": "float64",
+        "finite": true
+      }
+    },
+    "initial_path_matches_saved_DRM": true,
+    "controls_equal_path": true,
+    "path_shape": [
+      5,
+      7
+    ],
+    "endpoint_max_abs_error": 1.166733825108679e-07,
+    "optimizer_raw_exists": false,
+    "candidate_exists": false,
+    "validation_exists": false,
+    "fault_iterate_saved": false
+  },
+  "geometry_guard_conclusion": {
+    "can_be_reused_as_gradient_compatibility_fix": false,
+    "reason": "_geometry_guard runs only after paper_nto returns a candidate. It samples model.clearance and proposes extra collocation parameters; it never provides or guards optimizer gradients. Native exceptions are re-raised before reaching it.",
+    "profile_changes_if_transplanted": [
+      "clearance becomes 0.001 m",
+      "0.0005 m guard",
+      "up to four solves",
+      "collocation grows from 149 to at most 600",
+      "SNOPT total iteration limit becomes 100000"
+    ],
+    "effect": "These are deliberate NTO_REFINED algorithm/profile changes, not a transparent NTO_PAPER backend repair."
+  },
+  "upstream_evidence": [
+    {
+      "url": "https://github.com/RobotLocomotion/drake/issues/21675",
+      "kind": "official issue",
+      "observation": "Same KTO/SNOPT/minimum-distance BoxBoxGradient assertion; labeled geometry proximity bug. A 2026-10-27 comment reports master reproduction and rounding between world/local witness points.",
+      "local_case_same_root_cause": "Strong match by operation and exact assertion, but exact local failing geometry was not saved.",
+      "observed_date": "2026-10-31",
+      "page_state_observed": "Open"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/RobotLocomotion/drake/v1.51.1/geometry/proximity/distance_to_shape_callback.cc",
+      "kind": "installed-version source",
+      "observation": "CalcDistanceFallback<double> invokes touching-normal logic when abs(signed distance)<1e-14. Thus a plain double distance query can trigger the exception, not only AutoDiff.",
+      "observed_date": "2026-10-31"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/RobotLocomotion/drake/v1.51.1/geometry/proximity/distance_to_shape_touching.cc",
+      "kind": "installed-version source",
+      "observation": "BoxBoxGradient demands world witness-point separation below 1e-14 before feature-based normal calculation.",
+      "observed_date": "2026-10-31"
+    },
+    {
+      "url": "https://github.com/RobotLocomotion/drake/pull/25144",
+      "kind": "open proposed upstream fix",
+      "head_commit": "f77d3d6d8bce599ece27319b258f83db170063e2",
+      "observation": "As viewed 2026-10-31, open. Proposes dropping the overly strict witness coincidence demand and a minimum-overlap-axis normal fallback. Not installed or locally validated.",
+      "observed_date": "2026-10-31",
+      "page_state_observed": "Open"
+    },
+    {
+      "url": "https://drake.mit.edu/doxygen_cxx/classdrake_1_1multibody_1_1_minimum_distance_lower_bound_constraint.html",
+      "kind": "official API formulation",
+      "observation": "Constraint uses a smooth over-maximum of penalties for candidate-pair distances. Substituting an active minimum-clearance gradient changes this evaluator, even if the same geometric pairs remain.",
+      "observed_date": "2026-10-31"
+    }
+  ],
+  "classification": {
+    "backend": "Known upstream Drake/FCL near-contact signed-distance/normal numerical failure is supported by the exact matching upstream issue.",
+    "adapter": "No evidence of a changed model, bad initialization shape, disabled constraints or incorrect 149-binding transcription. Old catch-all raw solver_failed classification loses backend distinction; derived infrastructure_error is appropriate.",
+    "method_validity": "This single affected current-dev record is not evidence that the entire method or benchmark is invalid; retain it as a failed observation and retain all other validated/failed records."
+  },
+  "current_reproduction": {
+    "kind": "unscored_instrumented_diagnostic",
+    "recorded_at_utc": "2026-10-30T22:32:11.919396+00:00",
+    "new_solve_executed": true,
+    "numerical_solve_count": 1,
+    "process_exit_code": 0,
+    "new_gpu_queries": 0,
+    "new_point_queries_after_solve": 0,
+    "source_case": "dev-route_choice-002-p00",
+    "source_attempt": "results/rss2025_paper_comparators_v1_dev_s000/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_distance-48b608ce/attempts/0001",
+    "runtime_commit": "88f50536d59e6e617afcaece9bc01d214005746f",
+    "command": "OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 bash /home/eric/wjg/wd/csdecomp/local/python.sh /tmp/nto_boxbox_capture_after_test.py --repo /home/eric/wjg/wd/csdecomp --main-run /home/eric/wjg/wd/csdecomp/results/test --output /tmp/nto_boxbox_unscored_once --execute-after-main-test",
+    "archive": "results/logs/nto_boxbox_diagnostic",
+    "script_sha256": "15d0296548ad88f44d7e70f0852f83aee4f5851a731fba7e0926d408e70aa5c8",
+    "archived_files_sha256": {
+      "nto_parameters.json": "36d4e9f6dfa7d076818ab3b00910d47540313d040040b15c49e86aa93194027a",
+      "diagnostic.json": "f14a3710eba7da5ad25a62d681878c5dcc035ead4f1803102a8e1854842692fc",
+      "preparation.json": "4eacfe8d2d3cb666c8d36a7a7d24c04ab65ed16e1abf025497f09c4c972fe328",
+      "command.log": "5e687db575f7dcc489822c2ca7bb0c2219608c4920b5ea6e9fcb8f17ba550e49",
+      "command.txt": "5d893d522b07577b3deb842a687707571841c1c88032328fed8d07cb48740c45",
+      "capture_after_test.py": "15d0296548ad88f44d7e70f0852f83aee4f5851a731fba7e0926d408e70aa5c8",
+      "nto_initial.npz": "5878b88faf29e3d400650d112616463ca989a8dd861679278b6a234d7a180383",
+      "actual_solver_options.json": "6efeca48550d709359f9b4c66ae383bcbf8ff21e2c2cfdcc30d5d9c470dbb791",
+      "nto_solver_result.json": "00d0a9f308858798afb92e7abb53a70c3ceb627e52ff3121583e1c3cb0d074ad",
+      "snopt.log": "0d8a025a92f0858b29c71334d0c1432bd70f9a2b1bd790337ef0fc59f196ad64"
+    },
+    "native_parameters_exactly_match_original": true,
+    "original_native_time_limit_seconds": 58.19628530321643,
+    "initial_npz_byte_identical": true,
+    "snopt_log_byte_identical": true,
+    "native_forwarding_value_and_autodiff_preflight_passed": true,
+    "native_solve_seconds": 6.979004703927785,
+    "diagnostic_call_wall_seconds": 6.994315562769771,
+    "boxbox_assertion_reproduced": true,
+    "exception": "RuntimeError(\"Exception while evaluating SNOPT costs and constraints: 'SystemExit: Failure at external/drake+/geometry/proximity/distance_to_shape_touching.cc:122 in BoxBoxGradient(): condition '(X_WA * p_ACa - X_WB * p_BCb).norm() < kEps' failed.\\n\\nAt:\\n  /tmp/nto_boxbox_capture_after_test.py(179): forward\\n  /tmp/nto_boxbox_capture_after_test.py(242): Solve\\n  /home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/runners/paper_nto.py(278): paper_nto\\n  /tmp/nto_boxbox_capture_after_test.py(250): execute\\n  /tmp/nto_boxbox_capture_after_test.py(331): main\\n  /tmp/nto_boxbox_capture_after_test.py(335): <module>\\n'\")",
+    "exact_fault_q_captured": false,
+    "pair_or_transform_captured": false,
+    "capture_failure_reason": "The native evaluator raised SystemExit at its Python binding boundary. SystemExit derives from BaseException, so the prepared wrapper except Exception did not intercept it. SNOPT then wrapped that callback error as RuntimeError. No exact q was stored and no q was inferred from rounded logs or a final context.",
+    "raw_script_reproduced_field": false,
+    "raw_script_field_limit": "The raw script field was computed from captured-q availability rather than the outer exception, hence false. Raw diagnostic.json is preserved unchanged; the exact repeated BoxBoxGradient assertion and identical native log establish assertion reproduction, while q capture failed.",
+    "candidate_saved": false,
+    "common_validator_run": false,
+    "score_eligible": false,
+    "scored_attempts_modified": false,
+    "interpretation": "The same original native backend assertion recurred under transparent evaluator forwarding with unchanged numerical options. This confirms the failure persists; it does not identify the exact failing geometry pair or demonstrate a repair.",
+    "instrumentation_overhead": "Python callback forwarding adds overhead; elapsed diagnostic time is not a comparable benchmark score.",
+    "forbidden_alternatives_executed": [],
+    "retry_performed": false,
+    "finite_differences": false,
+    "solver_or_collision_policy_changed": false,
+    "remaining_limitations": [
+      "No exact trigger q, pair or transform captured.",
+      "No second solve, finite-difference substitution, fallback solver or changed clearance was attempted.",
+      "Native BoxBoxGradient backend is not fixed by this diagnostic."
+    ]
+  },
+  "recommendations": [
+    "Keep both original scored failures as infrastructure_error; do not substitute this unscored diagnostic for a benchmark attempt.",
+    "Preserve source/Drake version and all raw evidence; this run reproduced the backend assertion and did not fix it.",
+    "Any future q-capture revision must acknowledge SystemExit/BaseException handling and requires a separately authorized diagnostic; no further attempt was made now.",
+    "Do not treat this known backend issue as evidence that all NTO implementations or the benchmark are invalid."
+  ],
+  "runtime_modified": false,
+  "gpu_used": false,
+  "formal_tasks_rerun": false,
+  "sources_observed_at": "2026-10-31T03:16:13.729464+08:00",
+  "next_allowed_diagnostic": "The single authorized diagnostic is consumed. No further solve or retry is performed in this task.",
+  "repair_status": "Unfixed known backend issue. Single authorized diagnostic reproduced the assertion but failed to capture q because the Python exception was SystemExit; no runtime/Drake/collision-model change.",
+  "temporary_review_sha256": "d3bb911bb91461b28c26557e0b7783a4c956506db9f00ebf9bb2e46afce6ce7f",
+  "reproduction_history": [
+    {
+      "new_solve_executed": false,
+      "new_point_query_executed": false,
+      "status": "not_reproduced_this_review",
+      "reason": "Root prohibited competing CPU solve loops while formal timing runs. No exact failing q/geometry pair is saved. Re-evaluating a benign initial q or rounded SNOPT printout would not reproduce the fault.",
+      "aborted_diagnostic_entrypoint": "/tmp/diagnose_nto_boxbox_cpu.py",
+      "aborted_log": "/tmp/nto_boxbox_cpu_diagnostic.log",
+      "aborted_before_model_construction_and_solve": true,
+      "aborted_error": "ModuleNotFoundError: benchmarks; 0.28 s import failure before the subsequent no-Solve instruction"
+    }
+  ],
+  "known_instances": [
+    {
+      "problem_id": "dev-route_choice-002-p00",
+      "method": "NTO_PAPER",
+      "objective": "minimum_distance",
+      "replica_seed": 0,
+      "method_seed": 1018884758,
+      "attempt": "results/rss2025_paper_comparators_v1_dev_s000/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_distance-48b608ce/attempts/0001",
+      "raw_status": "solver_failed",
+      "derived_status": "infrastructure_error",
+      "classification_reason": "Native Drake geometry assertion, no returned candidate; not ordinary optimizer nonconvergence or a proof of input infeasibility.",
+      "exception": "RuntimeError(\"Exception while evaluating SNOPT costs and constraints: 'Failure at external/drake+/geometry/proximity/distance_to_shape_touching.cc:122 in BoxBoxGradient(): condition '(X_WA * p_ACa - X_WB * p_BCb).norm() < kEps' failed.'\")",
+      "process_exit_code": 0,
+      "process_timed_out": false,
+      "cold_e2e_seconds": 8.528424197807908,
+      "native_solve_seconds": 6.401457408908755,
+      "candidate_saved": false,
+      "solver_raw_saved": false,
+      "source_code_commit": "b73f2ddbcbcbb485a883d08b6b42641ddf1e6d81",
+      "collision_pair_count": 8327,
+      "collocation_points": 149,
+      "clearance_m": 0.0,
+      "artifact_sha256": {
+        "result.json": "da48864f5325c8c305039d2b1644a2146a022308485886c3f67a67ead370aa72",
+        "request.json": "fb96dfdd0c3b3d805ede4b26eb2632649cfb17e7df0b467bb36d52237f2a12d6",
+        "process.json": "2e968b5d86444eb8600b3266047f16b03b18baf85146b6aab7d229db620462ef",
+        "nto_solver_result.json": "1b2b0ab1d8429be387fb8e3aac447a474427d7f39477da53e528851a7c8956cf",
+        "nto_parameters.json": "dc33025a624c5398cb666341bdaa38738ac2057b1ab05fa9ff38a6d39f41e55a",
+        "snopt.log": "0d8a025a92f0858b29c71334d0c1432bd70f9a2b1bd790337ef0fc59f196ad64",
+        "exception.txt": "56ac8c6fbb40f7ed9f9d12d369eac1d5d8729b440209ebb8d2e74d12c5edca0e",
+        "path.npy": "7f2f1a7f3aa77027aee364ab4b05930e76d3c4c94b4e5eca1346e79ec3fa38ce",
+        "nto_initial.npz": "5878b88faf29e3d400650d112616463ca989a8dd861679278b6a234d7a180383"
+      },
+      "receipt_sha256": "f5fac7e6c782b2b5dcb0de9a22f001bb6354d60f42bd873e7e8afdfeb5e30e56",
+      "selected_scored_attempt_unchanged": true
+    },
+    {
+      "problem_id": "test-route_choice-014-p01",
+      "method": "NTO_PAPER",
+      "objective": "minimum_distance",
+      "replica_seed": 0,
+      "method_seed": 1681071076,
+      "attempt": "results/test/jobs/test-route_choice-014-p01-NTO_PAPER-minimum_distance-69864806/attempts/0001",
+      "raw_status": "solver_failed",
+      "derived_status": "infrastructure_error",
+      "classification_reason": "Native Drake geometry assertion, no returned candidate; not ordinary optimizer nonconvergence or a proof of input infeasibility.",
+      "exception": "RuntimeError(\"Exception while evaluating SNOPT costs and constraints: 'Failure at external/drake+/geometry/proximity/distance_to_shape_touching.cc:122 in BoxBoxGradient(): condition '(X_WA * p_ACa - X_WB * p_BCb).norm() < kEps' failed.'\")",
+      "process_exit_code": 0,
+      "process_timed_out": false,
+      "cold_e2e_seconds": 2.5178636112250388,
+      "native_solve_seconds": 0.6505322712473571,
+      "candidate_saved": false,
+      "solver_raw_saved": false,
+      "source_code_commit": "61dbc3fa0c9a6d02ac89b1db835b40164e707b36",
+      "collision_pair_count": 6107,
+      "collocation_points": 149,
+      "clearance_m": 0.0,
+      "artifact_sha256": {
+        "result.json": "89a94cf7daab4f62fdb99a491e66040c07454c0e9b7bd17860fe80d9ef8050c7",
+        "request.json": "370d7e7f88c0634dc2cf2614e598d58cc8926f1483055ebb2447cb6086c2b865",
+        "process.json": "c435ec8629a7fda53ab1c31e9f5c7d92c55507e4511068acdf23d33e4af646a2",
+        "nto_solver_result.json": "92a67bd2c5bab14e6ba2d21ff95d39b40f10b3d58eb2e0edc1848ea9736910d1",
+        "nto_parameters.json": "b8e5ed1639e597a5fe357d6db7d6bcdf0355425923ea3a326f94fdb5498decea",
+        "snopt.log": "86d1bcde8d32eb11e5aa1c320ac020af9a67e624294308f84a37f9286ea13f4f",
+        "exception.txt": "7d35000648e6787c5278dfc73cf1e3f5a002eea7b97ec9b5073f3fc635e33dbe",
+        "path.npy": "ccb2c40c1c41e8394595437bd9cb7976945584a9af92b4303ee43d0f5759a911",
+        "nto_initial.npz": "8aa5af76ebeb5e54a84a0280692fea009eaf500491c662afa49e7a560643ec5d"
+      },
+      "receipt_sha256": "6a2bfba37407ccb3fee1936fce50d05f53d5adbca54fbf31ef7a37b80e4c75b6",
+      "selected_scored_attempt_unchanged": true
+    }
+  ],
+  "known_instance_scope": "Two explicitly checked scored records: one selected development instance and one new main-test instance. This is not a claim that every historical run has been scanned.",
+  "latest_source_compatibility": {
+    "benchmarks/generic_motion_v1/runners/paper_nto.py": {
+      "current_sha256": "f6697df7115cf258b5cd7773de14aeb98e67a7e3d0952654715f765748c0337f",
+      "matches_instrumented_original": true
+    },
+    "benchmarks/generic_motion_v1/model.py": {
+      "current_sha256": "5b152e3e5ca484e5378856de11747c45826653df8a1183582fe90e0958fc5116",
+      "matches_instrumented_original": true
+    }
+  },
+  "original_review_scope": "Read-only source, saved development artifacts and official upstream source/issue inspection. No solve loop, new geometry query, GPU or formal benchmark rerun completed.",
+  "updated_at_utc": "2026-10-30T22:32:39.583568+00:00"
+}

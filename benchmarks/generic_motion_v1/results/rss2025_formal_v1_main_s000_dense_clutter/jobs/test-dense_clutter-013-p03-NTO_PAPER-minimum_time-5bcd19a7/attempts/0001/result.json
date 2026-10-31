@@ -1,0 +1,60 @@
+{
+  "status": "invalid_endpoint",
+  "problem_id": "test-dense_clutter-013-p03",
+  "scene_id": "test-dense_clutter-013",
+  "family": "dense_clutter",
+  "objective": "minimum_time",
+  "method": "NTO_PAPER",
+  "method_seed": 2749432613,
+  "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c",
+  "frontend_success": false,
+  "frontend_native_success": false,
+  "source_code_commit": "c8adbd8cef44db25b41559e8fbf2b38e120b624a",
+  "source_sha256": {
+    "runner": "5068d18002a81335127caa4284c2a5ce60aa1dc9c4338568b3c2a5f29c69f81d",
+    "validator": "12086b43b1735ab8455b260235eb0c92b336cb2b2cbaef6c286d1d2f5f376b43"
+  },
+  "timing": {
+    "cold_e2e_seconds": 0.004658055957406759,
+    "warm_query_seconds": null
+  },
+  "metrics": {},
+  "budget_seconds": 60.0,
+  "reproduction_fidelity": "Kinova adaptation; reconstructed Drake KTO using published SNOPT distance/IPOPT time profile; not exact author FR3/hardware reproduction",
+  "seed_semantics": "EI-ZO EizoOptions.seed is passed to native cuRAND; DRM graph sampling uses separate saved PCG64 seed; optimizer initialization is deterministic fixed DRM path",
+  "input_validation_status": "invalid_endpoint",
+  "generation_rejections": {
+    "checker_disagreements": 0,
+    "checker_disagreements_outside_contact_band": 0,
+    "collision_or_clearance_rejections": 4096,
+    "considered_configurations": 4096,
+    "distance_bin": "short",
+    "distance_bin_bounds": [
+      0.1,
+      0.3
+    ],
+    "distance_bin_rejections": 0,
+    "drawn_configurations": 4096,
+    "joint_margin_rad": 0.02,
+    "maximum_attempts": 4096,
+    "minimum_clearance_m": 0.0001,
+    "policy": "uniform all seven joints; accept only limits, native and independent collision checks, clearance and requested normalized distance bin",
+    "unused_batch_tail_configurations": 0
+  },
+  "error": "Frozen input has no valid finite endpoint pair; no resampling performed",
+  "timing_scope": {
+    "cold": "worker function entry through final validation/failure; process startup measured separately by outer runner",
+    "warm": "same actual cold execution minus one-time model/dependency/GPU/roadmap setup; not a second timed solve",
+    "offline": "DRM construction is recorded separately and never added to query latency"
+  },
+  "gpu_memory": {
+    "sampled_peak_process_allocation_mib": null,
+    "samples": 0,
+    "sampling_period_s": 0.2,
+    "method": "nvidia-smi process allocation; sampled peak, not CUDA allocator exact high water mark",
+    "error": null
+  },
+  "final_stage": "initializing",
+  "cold_e2e_seconds": 0.16442069178447127,
+  "sampled_gpu_peak_mib": null
+}
