@@ -1,0 +1,418 @@
+{
+  "schema_version": 1,
+  "scope": "Read-only primary-source contract and existing-scene numerical audit; no GPU/IK/planner/optimizer execution.",
+  "recorded_utc": "2026-10-26T02:53:48.668452+00:00",
+  "git_head": "da370fa93d682db1ced2e5817b41ff90f38a1440",
+  "local_source_snapshot": {
+    "reproduction/paper/2504.10783v1.pdf": {
+      "sha256": "579c9917425fe01b583f067d0a1c9702917ccd810584dbac562fcdf9fead51d0",
+      "bytes": 9139599
+    },
+    "reproduction/paper/paper.txt": {
+      "sha256": "be864f166e7ed4cb5d5ce0e9fa0780db85596154e15d9575a14f4981f542a7d0",
+      "bytes": 97176
+    },
+    "reproduction/reports/paper_completion/source_evidence/arxiv_text/sections/experiments.tex": {
+      "sha256": "67ef1476c3153031ad88e286ec4bd5361d9c6bacf34b0e1f75b27aad389d9394",
+      "bytes": 13679
+    },
+    "reproduction/reports/paper_completion/source_evidence/arxiv_text/sections/appendix.tex": {
+      "sha256": "164a88154fb9340f14a6c3dd8320d958849279cb98b5deb5c9c1d2a06dc9c9c5",
+      "bytes": 12527
+    },
+    "reproduction/reports/paper_completion/parameter_trace.csv": {
+      "sha256": "57ade72565e0c8e07b0c67ec3d09e0bd8d2b300527918cc08f6204767cefb0a5",
+      "bytes": 57991
+    },
+    "reproduction/paper_constructed/config.json": {
+      "sha256": "bd0818510657d8f8d32b2cc4b96f5fab5bc08cfa1544dc5cd4fb5c701c5ea553",
+      "bytes": 5680
+    },
+    "reproduction/paper_constructed/data.py": {
+      "sha256": "10b3cc2ea64043f4b019c7b13986d7c60b2ae420185140a1e4987c231c050cef",
+      "bytes": 12568
+    },
+    "reproduction/paper_constructed/model.py": {
+      "sha256": "de0db93b8c4d957bfb2118b38e3d6127d08db8268a271347fc601975d01289c2",
+      "bytes": 12425
+    },
+    "reproduction/paper_constructed/optimization.py": {
+      "sha256": "63f8fc82bd3adeb1401de743f12807d1f6a0e1b75865dff1b62d2196b4a0d71c",
+      "bytes": 13857
+    },
+    "reproduction/paper_constructed/pipeline.py": {
+      "sha256": "df393741f9a7c03c5464b32edf07393f4c8572858d28af171e1df41e296407a0",
+      "bytes": 14688
+    },
+    "reproduction/paper_constructed/run.py": {
+      "sha256": "a5a1c857bb06d599317e2912d1d4793de2cbe579589d32942fdda451ed00884c",
+      "bytes": 24402
+    },
+    "reproduction/vendor/csdecomp_paperdate/csdecomp/src/cpp/urdf_parser.cpp": {
+      "sha256": "3bdff9a43148c1b0a598581faac8e7616f1b42c1f29f772c3baa0b66f2c5df39",
+      "bytes": 28320
+    }
+  },
+  "sources": [
+    {
+      "id": "paper_pdf",
+      "url": "https://arxiv.org/pdf/2504.10783v1",
+      "version": "2504.10783v1",
+      "submitted": "2025-04-15",
+      "locations": {
+        "environments_and_figure6": "PDF p.8, VII-A1 and Fig.6",
+        "task_objectives_and_methods": "PDF pp.8-9, VII-A2-A4, equations14-15",
+        "experiment_grid": "PDF p.9, VII-A5",
+        "results": "PDF p.10, Table I",
+        "drm_online": "PDF pp.6-7, V",
+        "recovery": "PDF pp.7-8, VI-B, Fig.5",
+        "parameters": "PDF p.14, Appendix D, Tables III-IV-V",
+        "hardware": "PDF pp.9-10, VII-B, Table II; p.14, Table VI"
+      },
+      "priority": "formal_published_specification"
+    },
+    {
+      "id": "author_tex",
+      "url": "https://arxiv.org/src/2504.10783v1",
+      "priority": "secondary_evidence_comments_are_drafts",
+      "local_sections": [
+        "experiments.tex",
+        "appendix.tex",
+        "pipeline.tex",
+        "drm.tex",
+        "fci.tex"
+      ],
+      "findings": [
+        "Commented NTO grid has Nc-1 interior locations, unlike formal PDF Nc count.",
+        "Commented experiments planning note suggests choosing DRM-successful seeds; do not adopt as new benchmark selection rule.",
+        "Commented parameter blocks supply 30-iteration EI-ZO cap; formal tables have priority."
+      ]
+    },
+    {
+      "id": "paperdate_parser",
+      "url": "https://github.com/wernerpe/csdecomp/blob/ee94f8145bb32ef6c08b1e575218335b9daf533f/csdecomp/src/cpp/urdf_parser.cpp#L504",
+      "revision": "ee94f8145bb32ef6c08b1e575218335b9daf533f",
+      "locations": {
+        "pair_loop": "lines550-553",
+        "world_world_exclusion": "line557",
+        "same_adjacent_fixed_exclusions": "lines605-610"
+      },
+      "finding": "Unique unordered candidate geometry pairs; no support for silently doubling counts."
+    },
+    {
+      "id": "official_arm",
+      "url": "https://github.com/frankarobotics/franka_description/blob/39f8c0bcea9bc48ae5334edcb2aa2a504f2d2c85/robots/common/franka_arm.xacro",
+      "revision": "39f8c0bcea9bc48ae5334edcb2aa2a504f2d2c85",
+      "revision_date": "2025-04-11",
+      "finding": "Official coarse link capsules; link7 coarse-frame Rz(pi/4) must be included."
+    },
+    {
+      "id": "official_capsule_macro",
+      "url": "https://github.com/frankarobotics/franka_description/blob/39f8c0bcea9bc48ae5334edcb2aa2a504f2d2c85/robots/common/utils.xacro",
+      "revision": "39f8c0bcea9bc48ae5334edcb2aa2a504f2d2c85",
+      "finding": "Capsule length is cylinder length/endcap-center separation; coarse geometry may be a fixed child frame."
+    },
+    {
+      "id": "official_hand",
+      "url": "https://github.com/frankarobotics/franka_description/blob/39f8c0bcea9bc48ae5334edcb2aa2a504f2d2c85/end_effectors/common/franka_hand.xacro",
+      "revision": "39f8c0bcea9bc48ae5334edcb2aa2a504f2d2c85",
+      "finding": "Two coarse hand capsules and four fine collision boxes per finger; transforms need fixed opening."
+    },
+    {
+      "id": "official_collision_docs",
+      "url": "https://github.com/frankarobotics/franka_ros/blob/develop/franka_description/doc/index.rst",
+      "pin_status": "moving_branch_read_for_explanation_not_asset_identity",
+      "finding": "Distinguishes fine collision geometry from simplified capsule self-collision geometry."
+    },
+    {
+      "id": "frax_tree",
+      "url": "https://api.github.com/repos/StanfordASL/frax/git/trees/main?recursive=1",
+      "observed_commit": "cc0a066b5b539c729838308496ae1b8a1d6aeada",
+      "observed_commit_date": "2026-10-08T02:28:53Z",
+      "finding": "Targeted tree inspection located Panda sphere asset, no FR3-named sphere asset."
+    },
+    {
+      "id": "frax_panda_spheres",
+      "url": "https://github.com/StanfordASL/frax/blob/cc0a066b5b539c729838308496ae1b8a1d6aeada/frax/assets/franka_panda/bubblify/panda_spherized.yml",
+      "revision": "cc0a066b5b539c729838308496ae1b8a1d6aeada",
+      "git_blob_sha": "4b25a3325ed1b3518ccad1ee78dbd41708673547",
+      "sphere_count": 22,
+      "finding": "Public Panda asset, not original FR3 33-sphere model; no unverified substitution."
+    },
+    {
+      "id": "frax_modeling_docs",
+      "url": "https://github.com/StanfordASL/frax/blob/cc0a066b5b539c729838308496ae1b8a1d6aeada/docs/modeling_collision.md",
+      "revision": "cc0a066b5b539c729838308496ae1b8a1d6aeada",
+      "finding": "Manual sphere modeling and explicit self-pair policies; modern engineering context only."
+    },
+    {
+      "id": "curobo_model_builder",
+      "url": "https://github.com/NVlabs/curobo/blob/main/curobo/examples/getting_started/build_robot_model.py",
+      "pin_status": "moving_branch_read_for_method_context_only_not_used_for_asset",
+      "finding": "Modern fitting and coverage/protrusion metrics; not recovered 2025 author asset."
+    }
+  ],
+  "pair_count_analysis": {
+    "published_total": 1187,
+    "published_self_associated": 527,
+    "difference": 660,
+    "all_robot_spheres": 33,
+    "obstacles": 20,
+    "adopted_dynamic_pairs": 660,
+    "fixed_base_is_included": true,
+    "kinematics_changed": false,
+    "static_count_policy": "actual unique physical candidate pairs; do not force 527",
+    "unfiltered_robot_pairs": 528,
+    "hypothesis_if_static_includes_33_table_pairs": {
+      "robot_robot_pairs": 494,
+      "exclusions_from_34_geometries": 34,
+      "status": "unverified_interpretation"
+    },
+    "rigid_component_upper_bounds": {
+      "eight_components_minimum_samebody_pairs": 52,
+      "eight_components_max_robot_plus_all_table_pairs": 509,
+      "seven_components_minimum_samebody_pairs": 62,
+      "seven_components_max_robot_plus_all_table_pairs": 499,
+      "assumptions": "33 spheres on <=8/7 rigid components; exclude intra-component pairs; at most33 robot/table checks. These do not identify author representation."
+    }
+  },
+  "constructed_sampling_contract": {
+    "obstacles_seed_sequence": [
+      "250410783",
+      "environment_seed"
+    ],
+    "start_seed_sequence": [
+      "250410783",
+      "5",
+      "environment_seed",
+      "1"
+    ],
+    "target_seed_sequence": [
+      "250410783",
+      "5",
+      "environment_seed",
+      "2"
+    ],
+    "per_side_strict_draw_cap": 200000,
+    "selection": "first collision-free joint-uniform sample whose TCP lies within the declared side box",
+    "goal_pose": "FK pushforward reachable pose, fixed before online IK/planning",
+    "no_retry_after_planning_failure": true,
+    "evaluation_seed_labels": "0..9 are fixed public constructed cases, not held-out or recovered original seeds",
+    "status": "source implementation inspected after correction"
+  },
+  "nto_contract": {
+    "count_priority": "formal PDF",
+    "counts": {
+      "forest_distance": 20,
+      "forest_time": 100,
+      "fr3_distance": 150,
+      "fr3_time": 150
+    },
+    "locations": "k/(Nc+1), k=1,...,Nc",
+    "location_provenance": "declared construction; original locations unpublished",
+    "old_v4_grid": "k/Nc, k=1,...,Nc-1 from draft TeX; old results preserved"
+  },
+  "old_v4_target_audit": {
+    "count": 10,
+    "rows": [
+      {
+        "path": "reproduction/runs/20261025T092858.440656Z_paper_completion_fr3/scenes/e00/scene.json",
+        "sha256": "5568d1972b3229ebe5f627c2f3ff7e4dd53df5e324fea5b98b151ea2f12f612f",
+        "seed": 0,
+        "target_z_m": 0.6860610306721239,
+        "tcp_z_dot_world_z": 0.3581649335001623,
+        "angle_tcp_z_to_world_down_deg": 110.98754100142497
+      },
+      {
+        "path": "reproduction/runs/20261025T092858.440656Z_paper_completion_fr3/scenes/e01/scene.json",
+        "sha256": "ef94a4aafbc7c9030f57e0a0f511f575badd73f4ddd8f66a45dbd955145ac19a",
+        "seed": 1,
+        "target_z_m": 0.3781179991742599,
+        "tcp_z_dot_world_z": -0.30126303167828905,
+        "angle_tcp_z_to_world_down_deg": 72.46652047032423
+      },
+      {
+        "path": "reproduction/runs/20261025T092858.440656Z_paper_completion_fr3/scenes/e02/scene.json",
+        "sha256": "743030bc144b70a7f3d9ae2545c46c651fc8b9d887d7c3f75b7b8d386a3f7d1d",
+        "seed": 2,
+        "target_z_m": 0.9036786546239841,
+        "tcp_z_dot_world_z": 0.32972686594043277,
+        "angle_tcp_z_to_world_down_deg": 109.25219820993398
+      },
+      {
+        "path": "reproduction/runs/20261025T092858.440656Z_paper_completion_fr3/scenes/e03/scene.json",
+        "sha256": "3e60a5b228927275aef5dd0c0aa84dcb9052361e1c86a885828d4c5467cd8465",
+        "seed": 3,
+        "target_z_m": 0.938794217552659,
+        "tcp_z_dot_world_z": 0.3006726402976212,
+        "angle_tcp_z_to_world_down_deg": 107.49800792868524
+      },
+      {
+        "path": "reproduction/runs/20261025T092858.440656Z_paper_completion_fr3/scenes/e04/scene.json",
+        "sha256": "203d494911c5a9e08d2f1da7d44e24ec3e9c0c926de903531c9246360d2cfbe3",
+        "seed": 4,
+        "target_z_m": 0.3781239254156412,
+        "tcp_z_dot_world_z": -0.4936956987827502,
+        "angle_tcp_z_to_world_down_deg": 60.4162200396462
+      },
+      {
+        "path": "reproduction/runs/20261025T092858.440656Z_paper_completion_fr3/scenes/e05/scene.json",
+        "sha256": "7f5aa0c5d6ee3eedc6d1b6d60dd770219ee6d93f11469cf6c768f2ae65a40672",
+        "seed": 5,
+        "target_z_m": 0.8029605089826747,
+        "tcp_z_dot_world_z": 0.7400493753549836,
+        "angle_tcp_z_to_world_down_deg": 137.73562176253833
+      },
+      {
+        "path": "reproduction/runs/20261025T092858.440656Z_paper_completion_fr3/scenes/e06/scene.json",
+        "sha256": "37d3c1a0cc4c154349d2444e73707d26d7e23bb5be618dc2bf24f5373b645bf2",
+        "seed": 6,
+        "target_z_m": 0.8450568504616944,
+        "tcp_z_dot_world_z": 0.21547002699635742,
+        "angle_tcp_z_to_world_down_deg": 102.44310420805756
+      },
+      {
+        "path": "reproduction/runs/20261025T092858.440656Z_paper_completion_fr3/scenes/e07/scene.json",
+        "sha256": "df20152e742a6f35538097b11475fa845c6cff30422edd01ff0fed85be915824",
+        "seed": 7,
+        "target_z_m": 0.7873313424047221,
+        "tcp_z_dot_world_z": 0.28274364988189127,
+        "angle_tcp_z_to_world_down_deg": 106.42402277759938
+      },
+      {
+        "path": "reproduction/runs/20261025T092858.440656Z_paper_completion_fr3/scenes/e08/scene.json",
+        "sha256": "68b403d2e9836a40fb879b1243b102340c827b96b847620bcd117d5ac691cf98",
+        "seed": 8,
+        "target_z_m": 0.9864376075800639,
+        "tcp_z_dot_world_z": 0.7303581836186627,
+        "angle_tcp_z_to_world_down_deg": 136.91643025804723
+      },
+      {
+        "path": "reproduction/runs/20261025T092858.440656Z_paper_completion_fr3/scenes/e09/scene.json",
+        "sha256": "87992978ef78716c487a5f6aeb4cc5a534373f332682797ef49e1b732e767b1a",
+        "seed": 9,
+        "target_z_m": 0.9161434269001376,
+        "tcp_z_dot_world_z": 0.4754358877490663,
+        "angle_tcp_z_to_world_down_deg": 118.38773442840892
+      }
+    ],
+    "height_min_m": 0.3781179991742599,
+    "height_max_m": 0.9864376075800639,
+    "height_mean_m": 0.7622705563767961,
+    "upward_tcp_z_count": 8,
+    "interpretation": "Not a downward-grasp orientation family. Formal paper random-pose language does not establish that this is incorrect. Figure6 has no orientation distribution."
+  },
+  "read_only_implementation_review": [
+    {
+      "item": "all33 dynamic spheres including fixed base",
+      "status": "source implementation confirmed"
+    },
+    {
+      "item": "exact formal Nc counts",
+      "status": "source implementation confirmed"
+    },
+    {
+      "item": "separate endpoint RNG and strict cap",
+      "status": "source implementation confirmed after correction"
+    },
+    {
+      "item": "shared240second case watchdog",
+      "status": "Shared240second case watchdog; LGCS TimeLimit60 and NTO SNOPT Time limit60/IPOPT max_cpu_time60. LSCS/SCSTO have no separate60second solver limit. Recovery can invoke further solves; interrupted/unstarted methods remain separate."
+    },
+    {
+      "item": "finger_opening configurable field",
+      "status": "Field documents fixed0.04m gripper; no adjustable gripper supported. Current hard-coded transform equals frozen config."
+    },
+    {
+      "item": "staticpair count and geometry quality",
+      "status": "must read actual final inventories; this source audit does not invent measurements"
+    }
+  ],
+  "audit_tool_failures": [
+    {
+      "command": "pdfinfo reproduction/paper/paper.pdf | head -16",
+      "failure": "PATH resolved bundled Poppler requiring GLIBC_2.38; no PDF read occurred",
+      "resolution": "Used /usr/bin/pdfinfo reproduction/paper/2504.10783v1.pdf successfully; formal pages mapped by saved text formfeeds."
+    },
+    {
+      "command": "sed -n 1,150p reproduction/paper_constructed/forest_data.py",
+      "failure": "Filename absent; actual module is forest.py",
+      "resolution": "Read actual forest.py."
+    },
+    {
+      "command": "rg ... reproduction/vendor/csdecomp_paperdate/csdecomp/src/cpp/edge_inflation_zero_order.*",
+      "failure": "Glob had no match",
+      "resolution": "No algorithm claim relies on this failed lookup."
+    }
+  ],
+  "report_review": {
+    "recorded_utc": "2026-10-26T03:06:27.747935+00:00",
+    "scope": "Read-only source and saved-artifact review plus presentation/provenance-guard edits; no GPU, planner, optimizer, batch plot or complete report run.",
+    "files": {
+      "reproduction/report_constructed.py": "0b25f7a968c5288cf768e20b39aadba031945b114c47e244dc7b4a61a1213f0a",
+      "reproduction/paper_constructed/plot.py": "4bef0943701c80f16c0d9e139e3df62e150c504ca523a1143e5156e8f2ea4798"
+    },
+    "actual_checks": [
+      "AST parse of report_constructed.py and paper_constructed/plot.py passed.",
+      "New completed-grid guard accepted actual completed v4 Forest400 and FR3400 summary/audit evidence; this checks guard compatibility, not new-v5 completion.",
+      "New geometry-identity guard passed actual final-v5 construction/audit/current/snapshot/source-manifest SHA chain for 20261026T025846.407684Z_paper_constructed_fr3.",
+      "An in-memory deliberately invalid manifest asset hash was rejected; no saved result or manifest was modified.",
+      "git diff --check passed."
+    ],
+    "final_model_evidence": {
+      "index": "reproduction/reports/paper_constructed/geometry_index.json",
+      "selected_attempt": "model_construction_04",
+      "sha256": "77b602396d93004c0aef6cf3776ef5783ed6fff9b08c0734829d3b9d2c1bd120",
+      "static_pairs": 268,
+      "dynamic_pairs": 660,
+      "total_pairs": 928,
+      "surface_subtriangles": 17177,
+      "coverage_scope": "continuous triangular-source surface with recorded float64 margin; not solid-volume certificate",
+      "audit_configurations_per_condition": 1184,
+      "static_sphere_false_positives": 18,
+      "online_sphere_false_positives": 38,
+      "static_hull_only_candidates": 3,
+      "online_hull_only_candidates": 2
+    },
+    "resolved_interpretation_issues": [
+      "Scheduled cases distinguished from actual method attempts.",
+      "Home/q7 findings restricted to checked poses and static/online conditions.",
+      "Whole-case watchdog censorship shown separately from solver failure.",
+      "Completed-run resume text requires actual exit0/no changed case files evidence.",
+      "All-case status figures distinguished from first-case trajectory replay.",
+      "Same-sphere Drake trajectory validation distinguished from separate official convex-hull pose audit.",
+      "v4/v5 changes are not a controlled model ablation or matched-endpoint comparison.",
+      "Current model-construction README link points to final-attempt report, not attempt01."
+    ]
+  },
+  "budget_source_recheck": {
+    "recorded_utc": "2026-10-26T03:36:09.976061+00:00",
+    "source": "reproduction/paper_constructed/optimization.py",
+    "sha256": "63f8fc82bd3adeb1401de743f12807d1f6a0e1b75865dff1b62d2196b4a0d71c",
+    "LGCS": "model.Params.TimeLimit = 60",
+    "NTO_SNOPT": "Time limit option uses optimizer_time_limit_seconds=60",
+    "NTO_IPOPT": "max_cpu_time option uses optimizer_time_limit_seconds=60",
+    "LSCS_SCSTO": "No separate60second limit set by wrappers; rely on shared240second case watchdog.",
+    "correction": "Earlier report-review wording all optimization solves limited60seconds was too broad; posthoc report/READMEs/contract corrected without changing numerical source."
+  },
+  "supplement_review": {
+    "recorded_utc": "2026-10-26T03:36:09.976098+00:00",
+    "scope": "Static source review only; no new GPU/solver/geometry evaluation",
+    "paper_hardware_sources": {
+      "VII_B": "PDF pp.9-10,11boxes,15physicaltrajectories,3D415,8cmperceptionvoxels,velocity/acceleration1",
+      "Appendix_D_TableVI": "PDF p.14,35000nodes,k10,dTS0.45,dCS4.5,6cmofflinevoxels,step0.1,FR3EI-ZOexceptNf20"
+    },
+    "hardware_script_findings": [
+      "Published numerical configuration matches the listed hardware conditions; model, mount, synthetic cloud and layouts are declared constructions.",
+      "Virtual state advances only after solver+native+independent voxel+exact scene-box+derivative/endpoint validation; failed trials retain state.",
+      "Failure-held state can make later fixed-side target a same-side or zero-pose-displacement task; scheduled15items are not15completedtraversals.",
+      "Main supplement summarizer now reads actual hardware manifest,roadmap and trial results, displays full/subset scope and rejects success inference from completed recording alone."
+    ],
+    "posthoc_source_sha256": "6abc3747fbbd6c4027c9acfd0bc6edc439fa4e27d8d84718c52eb6f6303a00b9",
+    "posthoc_changes": [
+      "Official replay reports status,incomplete_scope,selected/checked/all counts,input end-hash and parameter-axis semantics.",
+      "Mesh optional argument preserves synthetic-only,failure,unresolved and numerical-only conclusions.",
+      "Missing hardware summary or manifest cannot silently become a15trial successful experiment."
+    ]
+  }
+}

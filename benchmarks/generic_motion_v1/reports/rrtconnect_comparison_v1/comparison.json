@@ -1,0 +1,389 @@
+{
+  "created_utc": "2026-10-30T04:51:24.782236+00:00",
+  "analysis_only": true,
+  "new_planner_calls": 0,
+  "sources": {
+    "extended_metrics": {
+      "path": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/reports/extended_baselines_v1/metrics/metrics.json",
+      "sha256": "a7f322c61dc9ba41c193c0a9880e739c56f3068f25cfd57b15a6ff16102a962d"
+    },
+    "paper_metrics": {
+      "path": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/reports/paper_comparators_v1/comparison_metrics/metrics.json",
+      "sha256": "feac5019a717ae43f75313796b991dfb280e22172fc3c753aef059afa1ce0c66"
+    },
+    "frontend_review": {
+      "path": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/reports/rrtconnect_comparison_v1/rrt_frontend_review.json",
+      "sha256": "8c51bdbb3056691a3656ea4be7260f8366aeeaa41e00520f15a9171ebc1b5d19"
+    },
+    "compatibility_review": {
+      "path": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/reports/rrtconnect_comparison_v1/paper_compatibility_review.json",
+      "sha256": "66a3ce57b6593d897ec808f488bac9d146d79b6ba6786f3491e3e67f01ca35b4"
+    }
+  },
+  "methods": [
+    {
+      "label": "RRTConnect",
+      "source_period": "本轮扩展比较",
+      "objective": "minimum_distance",
+      "attempts": 180,
+      "successes": 146,
+      "status_counts": {
+        "success_validated_numerical": 146,
+        "planner_timeout": 33,
+        "validation_undetermined": 1
+      },
+      "cold_all_mean_s": 3.50940046859129,
+      "validated_cost_mean": 7.35503566978176,
+      "valid_seed_attempts": null,
+      "conditional_seed_success": null
+    },
+    {
+      "label": "RRT*",
+      "source_period": "本轮扩展比较",
+      "objective": "minimum_distance",
+      "attempts": 180,
+      "successes": 120,
+      "status_counts": {
+        "planner_timeout": 60,
+        "success_validated_numerical": 120
+      },
+      "cold_all_mean_s": 11.193976521851598,
+      "validated_cost_mean": 6.676053982098362,
+      "valid_seed_attempts": null,
+      "conditional_seed_success": null
+    },
+    {
+      "label": "LSCS",
+      "source_period": "本轮扩展比较",
+      "objective": "minimum_distance",
+      "attempts": 180,
+      "successes": 110,
+      "status_counts": {
+        "frontend_failed": 70,
+        "success_validated_numerical": 110
+      },
+      "cold_all_mean_s": 1.9473115543938346,
+      "validated_cost_mean": 6.373100758140136,
+      "valid_seed_attempts": 110,
+      "conditional_seed_success": 110
+    },
+    {
+      "label": "CHOMP",
+      "source_period": "本轮扩展比较",
+      "objective": "minimum_distance",
+      "attempts": 180,
+      "successes": 109,
+      "status_counts": {
+        "frontend_failed": 70,
+        "success_validated_numerical": 109,
+        "solver_failed": 1
+      },
+      "cold_all_mean_s": 3.3562926407955174,
+      "validated_cost_mean": 6.558419096906233,
+      "valid_seed_attempts": 110,
+      "conditional_seed_success": 109
+    },
+    {
+      "label": "STOMP",
+      "source_period": "本轮扩展比较",
+      "objective": "minimum_distance",
+      "attempts": 180,
+      "successes": 110,
+      "status_counts": {
+        "frontend_failed": 70,
+        "success_validated_numerical": 110
+      },
+      "cold_all_mean_s": 3.720545713192162,
+      "validated_cost_mean": 7.266714226672612,
+      "valid_seed_attempts": 110,
+      "conditional_seed_success": 110
+    },
+    {
+      "label": "TrajOpt",
+      "source_period": "本轮扩展比较",
+      "objective": "minimum_distance",
+      "attempts": 180,
+      "successes": 97,
+      "status_counts": {
+        "frontend_failed": 70,
+        "success_validated_numerical": 97,
+        "collision_failed": 13
+      },
+      "cold_all_mean_s": 3.1730624653657693,
+      "validated_cost_mean": 5.852637860970968,
+      "valid_seed_attempts": 110,
+      "conditional_seed_success": 97
+    },
+    {
+      "label": "LGCS",
+      "source_period": "前轮论文比较",
+      "objective": "minimum_distance",
+      "attempts": 180,
+      "successes": 110,
+      "status_counts": {
+        "frontend_failed": 70,
+        "success_validated_numerical": 110
+      },
+      "cold_all_mean_s": 4.334835973552739,
+      "validated_cost_mean": 6.225875548843331,
+      "valid_seed_attempts": 110,
+      "conditional_seed_success": 110
+    },
+    {
+      "label": "NTO-distance",
+      "source_period": "前轮论文比较",
+      "objective": "minimum_distance",
+      "attempts": 180,
+      "successes": 35,
+      "status_counts": {
+        "frontend_failed": 70,
+        "collision_failed": 45,
+        "solver_failed": 30,
+        "success_validated_numerical": 35
+      },
+      "cold_all_mean_s": 5.278126673721191,
+      "validated_cost_mean": 4.6750494829593015,
+      "valid_seed_attempts": 110,
+      "conditional_seed_success": 35
+    },
+    {
+      "label": "NTO-refined-distance",
+      "source_period": "前轮论文比较",
+      "objective": "minimum_distance",
+      "attempts": 180,
+      "successes": 87,
+      "status_counts": {
+        "frontend_failed": 70,
+        "success_validated_numerical": 87,
+        "timeout": 11,
+        "solver_failed": 11,
+        "collision_failed": 1
+      },
+      "cold_all_mean_s": 9.340723287616857,
+      "validated_cost_mean": 5.406012543453923,
+      "valid_seed_attempts": 110,
+      "conditional_seed_success": 87
+    },
+    {
+      "label": "SCSTO",
+      "source_period": "前轮论文比较",
+      "objective": "minimum_time",
+      "attempts": 180,
+      "successes": 110,
+      "status_counts": {
+        "frontend_failed": 70,
+        "success_validated_numerical": 110
+      },
+      "cold_all_mean_s": 2.0530669516857922,
+      "validated_cost_mean": 5.799337502200046,
+      "valid_seed_attempts": 110,
+      "conditional_seed_success": 110
+    },
+    {
+      "label": "NTO-time",
+      "source_period": "前轮论文比较",
+      "objective": "minimum_time",
+      "attempts": 180,
+      "successes": 88,
+      "status_counts": {
+        "frontend_failed": 70,
+        "success_validated_numerical": 88,
+        "collision_failed": 18,
+        "timeout": 3,
+        "solver_failed": 1
+      },
+      "cold_all_mean_s": 4.59395197362432,
+      "validated_cost_mean": 6.815502494551103,
+      "valid_seed_attempts": 110,
+      "conditional_seed_success": 88
+    },
+    {
+      "label": "NTO-refined-time",
+      "source_period": "前轮论文比较",
+      "objective": "minimum_time",
+      "attempts": 180,
+      "successes": 100,
+      "status_counts": {
+        "frontend_failed": 70,
+        "success_validated_numerical": 100,
+        "timeout": 8,
+        "collision_failed": 2
+      },
+      "cold_all_mean_s": 7.104508931238929,
+      "validated_cost_mean": 6.5976770689516995,
+      "valid_seed_attempts": 110,
+      "conditional_seed_success": 100
+    }
+  ],
+  "paired_quality": [
+    {
+      "other": "RRT*",
+      "source_period": "本轮扩展比较",
+      "common_success": 120,
+      "rrt_length_mean_rad": 6.643259666901378,
+      "other_length_mean_rad": 6.676053982098362,
+      "rrt_minus_other_mean_rad": -0.03279431519698342,
+      "mean_per_task_length_ratio": 1.0060467146232268,
+      "rrt_cold_mean_s": 1.6765667618329947,
+      "other_cold_mean_s": 11.44454956310413
+    },
+    {
+      "other": "LSCS",
+      "source_period": "本轮扩展比较",
+      "common_success": 110,
+      "rrt_length_mean_rad": 6.309307483131508,
+      "other_length_mean_rad": 6.373100758140136,
+      "rrt_minus_other_mean_rad": -0.06379327500862907,
+      "mean_per_task_length_ratio": 1.019445250262888,
+      "rrt_cold_mean_s": 1.473057881298221,
+      "other_cold_mean_s": 2.648109451321546
+    },
+    {
+      "other": "CHOMP",
+      "source_period": "本轮扩展比较",
+      "common_success": 109,
+      "rrt_length_mean_rad": 6.305170848140723,
+      "other_length_mean_rad": 6.558419096906233,
+      "rrt_minus_other_mean_rad": -0.2532482487655096,
+      "mean_per_task_length_ratio": 1.009476648486374,
+      "rrt_cold_mean_s": 1.4740338737418481,
+      "other_cold_mean_s": 4.971057164542582
+    },
+    {
+      "other": "STOMP",
+      "source_period": "本轮扩展比较",
+      "common_success": 110,
+      "rrt_length_mean_rad": 6.309307483131508,
+      "other_length_mean_rad": 7.266714226672612,
+      "rrt_minus_other_mean_rad": -0.957406743541104,
+      "mean_per_task_length_ratio": 0.900036870860021,
+      "rrt_cold_mean_s": 1.473057881298221,
+      "other_cold_mean_s": 5.5735162148379125
+    },
+    {
+      "other": "TrajOpt",
+      "source_period": "本轮扩展比较",
+      "common_success": 97,
+      "rrt_length_mean_rad": 6.089660925818944,
+      "other_length_mean_rad": 5.852637860970968,
+      "rrt_minus_other_mean_rad": 0.23702306484797495,
+      "mean_per_task_length_ratio": 1.0939180218867666,
+      "rrt_cold_mean_s": 1.4501808713593511,
+      "other_cold_mean_s": 4.290664313716295
+    },
+    {
+      "other": "LGCS",
+      "source_period": "前轮论文比较",
+      "common_success": 110,
+      "rrt_length_mean_rad": 6.309307483131508,
+      "other_length_mean_rad": 6.225875548843331,
+      "rrt_minus_other_mean_rad": 0.08343193428817691,
+      "mean_per_task_length_ratio": 1.0399638527638853,
+      "rrt_cold_mean_s": 1.473057881298221,
+      "other_cold_mean_s": 6.576856911025772
+    },
+    {
+      "other": "NTO-distance",
+      "source_period": "前轮论文比较",
+      "common_success": 35,
+      "rrt_length_mean_rad": 4.675049482959288,
+      "other_length_mean_rad": 4.6750494829593015,
+      "rrt_minus_other_mean_rad": -1.352568850571905e-14,
+      "mean_per_task_length_ratio": 0.9999999999999982,
+      "rrt_cold_mean_s": 1.2043958185905856,
+      "other_cold_mean_s": 1.9484457849791008
+    },
+    {
+      "other": "NTO-refined-distance",
+      "source_period": "前轮论文比较",
+      "common_success": 87,
+      "rrt_length_mean_rad": 5.8745548481919725,
+      "other_length_mean_rad": 5.406012543453923,
+      "rrt_minus_other_mean_rad": 0.46854230473804986,
+      "mean_per_task_length_ratio": 1.1109830742629159,
+      "rrt_cold_mean_s": 1.3700574960870047,
+      "other_cold_mean_s": 7.096430728929224
+    }
+  ],
+  "frozen_lscs_minus_rrt_pair": {
+    "split": "dev",
+    "roadmap_nodes": 6000,
+    "scope": "all",
+    "method_a": "LSCS",
+    "method_b": "RRTConnect",
+    "objective": "minimum_distance",
+    "paired_legal_jobs": 180,
+    "valid_success_difference": {
+      "estimate": -0.2,
+      "numerator": -36.0,
+      "denominator": 180.0,
+      "independent_scene_clusters": 20,
+      "ci95": [
+        -0.35,
+        -0.07222222222222222
+      ],
+      "bootstrap_seed": 45827,
+      "bootstrap_replicates": 2000,
+      "method": "scene-level cluster bootstrap; resample scene clusters with all paired jobs intact"
+    },
+    "common_success_cost_difference": {
+      "estimate": 0.06379327500862905,
+      "numerator": 7.017260250949196,
+      "denominator": 110.0,
+      "independent_scene_clusters": 15,
+      "ci95": [
+        -0.239982602852159,
+        0.35127259393299415
+      ],
+      "bootstrap_seed": 45827,
+      "bootstrap_replicates": 2000,
+      "method": "scene-level cluster bootstrap; resample scene clusters with all paired jobs intact"
+    },
+    "common_success_cold_latency_difference": {
+      "estimate": 1.1750515700233253,
+      "numerator": 129.2556727025658,
+      "denominator": 110.0,
+      "independent_scene_clusters": 15,
+      "ci95": [
+        0.9580588654441979,
+        1.4175728362761564
+      ],
+      "bootstrap_seed": 45827,
+      "bootstrap_replicates": 2000,
+      "method": "scene-level cluster bootstrap; resample scene clusters with all paired jobs intact"
+    },
+    "observed_cold_latency_difference": {
+      "estimate": -1.5620889141974557,
+      "numerator": -281.176004555542,
+      "denominator": 180.0,
+      "independent_scene_clusters": 20,
+      "ci95": [
+        -3.058430309143474,
+        -0.17980145554679242
+      ],
+      "bootstrap_seed": 45827,
+      "bootstrap_replicates": 2000,
+      "method": "scene-level cluster bootstrap; resample scene clusters with all paired jobs intact"
+    },
+    "resolved_pair_success_difference": {
+      "estimate": -0.2,
+      "numerator": -36.0,
+      "denominator": 180.0,
+      "independent_scene_clusters": 20,
+      "ci95": [
+        -0.35,
+        -0.07222222222222222
+      ],
+      "bootstrap_seed": 45827,
+      "bootstrap_replicates": 2000,
+      "method": "scene-level cluster bootstrap; resample scene clusters with all paired jobs intact"
+    },
+    "selection_note": "Cost conditions on joint success. Resolved-pair analysis excludes observed dependency/infrastructure failures from BOTH methods on matching tasks, is secondary and selection-biased; all legal pairs remain in the primary result."
+  },
+  "case_count": 60,
+  "scene_count": 20,
+  "paired_repetitions_per_method": 180,
+  "scope": "Only dev. Historical methods are explicitly marked; this is not one new same-runtime experiment.",
+  "uncertainty": "Use existing frozen paired CI for fresh LSCS/RRT. Costs condition on joint success; all-call latency includes failures.",
+  "backend_scope": "RRTConnect/RRT* provide geometric paths, not dynamically constrained minimum-time trajectories."
+}

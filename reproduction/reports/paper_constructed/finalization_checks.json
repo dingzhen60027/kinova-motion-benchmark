@@ -1,0 +1,30 @@
+{
+  "staged_diff_check_initial": {
+    "command": [
+      "git",
+      "diff",
+      "--cached",
+      "--check"
+    ],
+    "exit_code": 2,
+    "output": "reproduction/reports/paper_constructed/reproduction_report.md:191: new blank line at EOF.",
+    "repair": "Report generator now emits one final newline; numerical results unchanged."
+  },
+  "archive_receipts": "External portable_bundle receipt/manifest/exclusions excluded from regenerated archive to avoid embedding a stale self hash.",
+  "staged_diff_check_after_repair": {
+    "command": [
+      "git",
+      "diff",
+      "--cached",
+      "--check"
+    ],
+    "exit_code": 0,
+    "output": ""
+  },
+  "prior_archive_before_format_repair": {
+    "sha256": "bbc389b245084e8d3b03fea61db93f162f4c22a4da071aea00613ac93e37de8d",
+    "bytes": 538156941,
+    "all_contents_verified": true,
+    "reason_for_regeneration": "Remove a final blank Markdown line; include finalization evidence and exclude external self-receipts. No numerical data changes."
+  }
+}

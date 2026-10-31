@@ -1,0 +1,15 @@
+STATISTICS
+  Problem name     : LGCS_SCIP_binary_SOC_dependency_probe
+  Variables        : 3 (1 binary, 0 integer, 0 implicit integer, 2 continuous)
+  Constraints      : 0 initial, 3 maximal
+OBJECTIVE
+  Sense            : minimize
+VARIABLES
+  [binary] <x>: obj=0, original bounds=[0,1]
+  [continuous] <y>: obj=0, original bounds=[-inf,+inf]
+  [continuous] <t>: obj=1, original bounds=[0,+inf]
+CONSTRAINTS
+  [linear] <c1>: <x>[B] == 1;
+  [linear] <c2>: <y>[C] -2<x>[B] == 0;
+  [nonlinear] <c3>: <y>*<y>-<t>*<t> <= 0;
+END

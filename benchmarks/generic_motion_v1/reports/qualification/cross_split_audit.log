@@ -1,0 +1,54 @@
+{
+  "passed": true,
+  "splits": {
+    "smoke": {
+      "rows": 10,
+      "manifest_sha256": "92e19a293861fa1b93a2dba3919ae3bc3eec584f3845709dc99f2ce98e453720",
+      "valid": 8
+    },
+    "dev": {
+      "rows": 60,
+      "manifest_sha256": "32de21ac2474846ae3cdc9867a3f41585cf80e7d0d4531e26285de216ef56000",
+      "valid": 60
+    },
+    "test": {
+      "rows": 420,
+      "manifest_sha256": "9fcbe5ccae28d8681586b1ac6c9986f51f7cc7b5cdc19352c101910e3b6ed03b",
+      "valid": 395
+    }
+  },
+  "exact_geometry_duplicate_groups": [
+    [
+      {
+        "scene_id": "smoke-open_control-000",
+        "split": "smoke",
+        "family": "open_control"
+      },
+      {
+        "scene_id": "test-open_control-000",
+        "split": "test",
+        "family": "open_control"
+      },
+      {
+        "scene_id": "test-open_control-001",
+        "split": "test",
+        "family": "open_control"
+      },
+      {
+        "scene_id": "test-open_control-002",
+        "split": "test",
+        "family": "open_control"
+      },
+      {
+        "scene_id": "test-open_control-003",
+        "split": "test",
+        "family": "open_control"
+      }
+    ]
+  ],
+  "unintended_geometry_duplicate_groups": [],
+  "duplicate_unordered_endpoint_pairs": [],
+  "duplicate_endpoint_seed_groups": [],
+  "meaning": "Same numerical voxel world compared after sorting centres. All open_control IDs intentionally share the one fixed base world; they are not independent environments. Near-duplicate geometry is not ruled out by exact hashes.",
+  "methods_executed": false
+}

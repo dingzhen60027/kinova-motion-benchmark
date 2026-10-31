@@ -1,0 +1,85 @@
+{
+  "gradient_check": {
+    "finite_difference_step": 1e-06,
+    "constraints": 9,
+    "variables": 8,
+    "maximum_distance_jacobian_error": 4.1489345292688995e-10,
+    "maximum_length_gradient_error": 4.74159600472035e-10,
+    "autodiff_identity_error": 0.0,
+    "autodiff_chain_error": 0.0,
+    "length": 6.223048941808826,
+    "passed": true
+  },
+  "known_feasible_input": {
+    "passed": true,
+    "margin_passed": true,
+    "finite": true,
+    "minimum_clearance_m": 0.4142135623730949,
+    "endpoint_error": 0.0,
+    "limits_pass": true,
+    "pair_clearances_m": [
+      0.4142135623730949,
+      0.4142135623730949
+    ],
+    "collision_pairs": [],
+    "continuous_geometry": "exact floating-point line/circle minimum via cross-product and endpoint cases"
+  },
+  "known_infeasible_input": {
+    "passed": false,
+    "margin_passed": false,
+    "finite": true,
+    "minimum_clearance_m": -1.0,
+    "endpoint_error": 0.0,
+    "limits_pass": true,
+    "pair_clearances_m": [
+      -1.0
+    ],
+    "collision_pairs": [
+      [
+        0,
+        0
+      ]
+    ],
+    "continuous_geometry": "exact floating-point line/circle minimum via cross-product and endpoint cases"
+  },
+  "known_feasible_solve": {
+    "solver": "SNOPT",
+    "solver_success": true,
+    "solver_status": "SolutionResult.kSolutionFound",
+    "solver_info": 1,
+    "candidate_cost": 4.620343209560172,
+    "solver_objective": 4.620343209560172,
+    "original_path_cost": 5.656854249492381,
+    "original_node_count": 3,
+    "candidate_node_count": 3,
+    "exact_segment_circle_constraints": 2,
+    "minimum_constraint_residual_m": -5.5406016773694444e-08,
+    "validation_passed": true,
+    "margin_passed": true,
+    "minimum_clearance_m": 0.0009999445939832263,
+    "solver_seconds": 0.0015240008942782879,
+    "timing_scope": "diagnostic only, no paper speed comparison",
+    "status": "success_numerical"
+  },
+  "known_infeasible_solve": {
+    "solver": "SNOPT",
+    "solver_success": false,
+    "solver_status": "SolutionResult.kInfeasibleConstraints",
+    "solver_info": 13,
+    "candidate_cost": 4.0,
+    "solver_objective": 4.0,
+    "original_path_cost": 4.0,
+    "original_node_count": 2,
+    "candidate_node_count": 2,
+    "exact_segment_circle_constraints": 1,
+    "minimum_constraint_residual_m": -1.001,
+    "validation_passed": false,
+    "margin_passed": false,
+    "minimum_clearance_m": -1.0,
+    "solver_seconds": 0.0004349160008132458,
+    "timing_scope": "diagnostic only, no paper speed comparison",
+    "status": "optimization_failed"
+  },
+  "passed": true,
+  "scope": "independent geometry, callback derivatives and solver response controls"
+}

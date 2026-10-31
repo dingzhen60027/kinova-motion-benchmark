@@ -1,0 +1,747 @@
+CPU-only original-geometry diagnosis: test-sparse_clutter-017
+CPU-only original-geometry diagnosis: test-dense_clutter-002
+CPU-only original-geometry diagnosis: test-dense_clutter-009
+CPU-only original-geometry diagnosis: test-dense_clutter-013
+CPU-only original-geometry diagnosis: test-route_choice-011
+{
+  "read_only": true,
+  "gpu_calls": 0,
+  "planner_calls": 0,
+  "formal_test_planning_executed": false,
+  "source_commit": "ee1b5bed395a5c471f60dee760502b10d74f2844",
+  "elapsed_seconds": 3.133510404266417,
+  "command": "bash local/python.sh -m benchmarks.generic_motion_v1.reports.baseline_study.test_input_readiness",
+  "passed": true,
+  "errors": [],
+  "all_420_valid": false,
+  "valid_problem_count": 395,
+  "invalid_problem_count": 25,
+  "total_problem_count": 420,
+  "scene_id_count": 84,
+  "input_files_checked": 506,
+  "input_hash_failures": [],
+  "canonical_asset_hash_failures": [],
+  "prior_full_gpu_input_audit_verified": true,
+  "new_raw_rng_and_acceptance_replay_proposals": 133504,
+  "new_cpu_physical_diagnostic_states": 640,
+  "invalid_scene_diagnoses": {
+    "test-sparse_clutter-017": {
+      "sample_count": 128,
+      "sampling": "first 128 persisted proposals of p00; no new sampling",
+      "static_base_only_free_count": 79,
+      "physical_obstacles_only_free_count": 0,
+      "full_original_geometry_free_count": 0,
+      "conservative_cover_only_free_count": 0,
+      "full_frozen_geometry_free_count": 0,
+      "original_geometry_free_but_cover_rejected": 0,
+      "physical_collision_states_by_robot_geometry": {
+        "kinova::half_arm_1_link_collision": 128,
+        "kinova::shoulder_link_collision": 128,
+        "kinova::half_arm_2_link_collision": 36,
+        "kinova::forearm_link_collision": 15,
+        "kinova::spherical_wrist_2_link_collision": 12,
+        "kinova::force_torque_link_collision": 8,
+        "kinova::bracelet_link_collision": 8,
+        "kinova::spherical_wrist_1_link_collision": 6,
+        "robotiq::robotiq_85_base_link_collision": 3,
+        "robotiq::right_inner_finger_collision": 1,
+        "robotiq::left_outer_finger_collision": 1,
+        "robotiq::left_outer_knuckle_collision": 1
+      },
+      "cover_collision_states_by_robot_geometry": {
+        "kinova::shoulder_link_collision": 128,
+        "kinova::half_arm_1_link_collision": 128,
+        "robotiq::right_inner_finger_collision": 3,
+        "kinova::half_arm_2_link_collision": 48,
+        "kinova::forearm_link_collision": 20,
+        "kinova::spherical_wrist_1_link_collision": 13,
+        "kinova::spherical_wrist_2_link_collision": 14,
+        "kinova::bracelet_link_collision": 12,
+        "kinova::force_torque_link_collision": 9,
+        "robotiq::robotiq_85_base_link_collision": 9,
+        "robotiq::left_outer_knuckle_collision": 4,
+        "robotiq::left_outer_finger_collision": 4,
+        "robotiq::right_outer_knuckle_collision": 2,
+        "robotiq::left_inner_finger_collision": 1
+      },
+      "static_clearance_quantiles_m": [
+        -0.17137777635528872,
+        -0.08335662558289963,
+        0.019025026584333523,
+        0.019025077358295665,
+        0.01902519341821538
+      ],
+      "original_obstacle_clearance_quantiles_m": [
+        -0.08879178894259089,
+        -0.06857288480736376,
+        -0.06364941843998821,
+        -0.060732448683991705,
+        -0.06073244868399165
+      ],
+      "frozen_cover_clearance_quantiles_m": [
+        -0.08658259810636551,
+        -0.08360383130194358,
+        -0.0823161862751398,
+        -0.080743762395601,
+        -0.07816681633444475
+      ],
+      "global_infeasibility_proven": false,
+      "collision_geometry_changed_for_acceptance": false,
+      "problem_count": 5,
+      "raw_proposal_count": 20480,
+      "all_recorded_native_reject": true,
+      "all_recorded_independent_reject": true,
+      "no_start_found": true,
+      "scene_details": {
+        "family": "sparse_clutter",
+        "obstacle_count": 12,
+        "voxel_count": 356,
+        "geometry_sha256": "6a0cd54e0bab9aee0aad9209951a1105883fde559700ad941aa9866ef48478c1",
+        "layout_rejections": 0,
+        "fixed_geometry_overlapping_voxels": 0,
+        "fixed_geometry_minimum_clearance_m": 0.07329236518982796,
+        "minimum_cover_margin_m": 0.0062895398914644225,
+        "maximum_outward_overapproximation_bound_m": 0.07371046010853557
+      }
+    },
+    "test-dense_clutter-002": {
+      "sample_count": 128,
+      "sampling": "first 128 persisted proposals of p00; no new sampling",
+      "static_base_only_free_count": 80,
+      "physical_obstacles_only_free_count": 0,
+      "full_original_geometry_free_count": 0,
+      "conservative_cover_only_free_count": 0,
+      "full_frozen_geometry_free_count": 0,
+      "original_geometry_free_but_cover_rejected": 0,
+      "physical_collision_states_by_robot_geometry": {
+        "kinova::half_arm_2_link_collision": 15,
+        "kinova::forearm_link_collision": 10,
+        "kinova::half_arm_1_link_collision": 113,
+        "kinova::shoulder_link_collision": 128,
+        "robotiq::left_outer_finger_collision": 2,
+        "robotiq::left_outer_knuckle_collision": 2,
+        "kinova::bracelet_link_collision": 7,
+        "robotiq::robotiq_85_base_link_collision": 7,
+        "kinova::spherical_wrist_2_link_collision": 6,
+        "kinova::spherical_wrist_1_link_collision": 8,
+        "robotiq::left_inner_finger_collision": 1,
+        "robotiq::right_outer_finger_collision": 1,
+        "robotiq::right_outer_knuckle_collision": 3,
+        "robotiq::right_inner_finger_collision": 1,
+        "kinova::force_torque_link_collision": 1
+      },
+      "cover_collision_states_by_robot_geometry": {
+        "kinova::shoulder_link_collision": 128,
+        "kinova::half_arm_1_link_collision": 128,
+        "kinova::half_arm_2_link_collision": 32,
+        "kinova::forearm_link_collision": 23,
+        "kinova::bracelet_link_collision": 13,
+        "kinova::force_torque_link_collision": 9,
+        "robotiq::robotiq_85_base_link_collision": 9,
+        "robotiq::left_outer_knuckle_collision": 5,
+        "robotiq::left_outer_finger_collision": 5,
+        "robotiq::left_inner_finger_collision": 6,
+        "robotiq::right_outer_knuckle_collision": 4,
+        "kinova::spherical_wrist_1_link_collision": 15,
+        "kinova::spherical_wrist_2_link_collision": 15,
+        "robotiq::right_inner_finger_collision": 3,
+        "robotiq::right_outer_finger_collision": 3
+      },
+      "static_clearance_quantiles_m": [
+        -0.1868225232468299,
+        -0.07646036564132366,
+        0.019025026584333506,
+        0.01902503014045213,
+        0.019025162958024915
+      ],
+      "original_obstacle_clearance_quantiles_m": [
+        -0.08230146669769087,
+        -0.04151911795114959,
+        -0.029558637359036723,
+        -0.024608181424093167,
+        -0.011799107674530025
+      ],
+      "frozen_cover_clearance_quantiles_m": [
+        -0.08640225821299606,
+        -0.06494754776859496,
+        -0.0545182629419574,
+        -0.048347302343177134,
+        -0.03626498411473551
+      ],
+      "global_infeasibility_proven": false,
+      "collision_geometry_changed_for_acceptance": false,
+      "problem_count": 5,
+      "raw_proposal_count": 20480,
+      "all_recorded_native_reject": true,
+      "all_recorded_independent_reject": true,
+      "no_start_found": true,
+      "scene_details": {
+        "family": "dense_clutter",
+        "obstacle_count": 20,
+        "voxel_count": 331,
+        "geometry_sha256": "e55ffae6ce822db189e6d06ecc01354a84c9fb6d25f917ad59634a536baa3d4f",
+        "layout_rejections": 0,
+        "fixed_geometry_overlapping_voxels": 0,
+        "fixed_geometry_minimum_clearance_m": 0.04163978631691175,
+        "minimum_cover_margin_m": 0.006372101215117593,
+        "maximum_outward_overapproximation_bound_m": 0.07362789878488242
+      }
+    },
+    "test-dense_clutter-009": {
+      "sample_count": 128,
+      "sampling": "first 128 persisted proposals of p00; no new sampling",
+      "static_base_only_free_count": 83,
+      "physical_obstacles_only_free_count": 11,
+      "full_original_geometry_free_count": 8,
+      "conservative_cover_only_free_count": 0,
+      "full_frozen_geometry_free_count": 0,
+      "original_geometry_free_but_cover_rejected": 8,
+      "physical_collision_states_by_robot_geometry": {
+        "kinova::half_arm_1_link_collision": 93,
+        "kinova::shoulder_link_collision": 72,
+        "kinova::spherical_wrist_1_link_collision": 7,
+        "kinova::forearm_link_collision": 6,
+        "robotiq::left_outer_finger_collision": 3,
+        "robotiq::left_outer_knuckle_collision": 3,
+        "robotiq::left_inner_finger_collision": 4,
+        "robotiq::robotiq_85_base_link_collision": 5,
+        "kinova::half_arm_2_link_collision": 7,
+        "kinova::spherical_wrist_2_link_collision": 5,
+        "kinova::force_torque_link_collision": 2,
+        "kinova::bracelet_link_collision": 3
+      },
+      "cover_collision_states_by_robot_geometry": {
+        "kinova::shoulder_link_collision": 128,
+        "kinova::half_arm_1_link_collision": 128,
+        "kinova::spherical_wrist_1_link_collision": 11,
+        "kinova::spherical_wrist_2_link_collision": 14,
+        "kinova::forearm_link_collision": 17,
+        "kinova::bracelet_link_collision": 10,
+        "kinova::force_torque_link_collision": 8,
+        "robotiq::robotiq_85_base_link_collision": 11,
+        "robotiq::left_outer_knuckle_collision": 5,
+        "robotiq::left_outer_finger_collision": 6,
+        "robotiq::left_inner_finger_collision": 5,
+        "robotiq::right_inner_finger_collision": 4,
+        "robotiq::right_outer_knuckle_collision": 2,
+        "kinova::half_arm_2_link_collision": 16,
+        "robotiq::right_outer_finger_collision": 3
+      },
+      "static_clearance_quantiles_m": [
+        -0.18983614179203778,
+        -0.04715079610421877,
+        0.019025026584333526,
+        0.019025033657253245,
+        0.019025201527394474
+      ],
+      "original_obstacle_clearance_quantiles_m": [
+        -0.0968294026868701,
+        -0.027214128672666264,
+        -0.014016911136128941,
+        -0.00679632542482538,
+        0.007200670321428182
+      ],
+      "frozen_cover_clearance_quantiles_m": [
+        -0.08539281273101879,
+        -0.05924802658671508,
+        -0.039710803135518835,
+        -0.03221841489508023,
+        -0.016716155079341745
+      ],
+      "global_infeasibility_proven": false,
+      "collision_geometry_changed_for_acceptance": false,
+      "problem_count": 5,
+      "raw_proposal_count": 20480,
+      "all_recorded_native_reject": true,
+      "all_recorded_independent_reject": true,
+      "no_start_found": true,
+      "scene_details": {
+        "family": "dense_clutter",
+        "obstacle_count": 23,
+        "voxel_count": 431,
+        "geometry_sha256": "9cf6ed5227b8f690c3fdd7990b92899761b6330ab9b9b0f425f5da37485ea808",
+        "layout_rejections": 1,
+        "fixed_geometry_overlapping_voxels": 0,
+        "fixed_geometry_minimum_clearance_m": 0.021362630053310905,
+        "minimum_cover_margin_m": 0.008396713075060245,
+        "maximum_outward_overapproximation_bound_m": 0.07160328692493975
+      }
+    },
+    "test-dense_clutter-013": {
+      "sample_count": 128,
+      "sampling": "first 128 persisted proposals of p00; no new sampling",
+      "static_base_only_free_count": 80,
+      "physical_obstacles_only_free_count": 0,
+      "full_original_geometry_free_count": 0,
+      "conservative_cover_only_free_count": 0,
+      "full_frozen_geometry_free_count": 0,
+      "original_geometry_free_but_cover_rejected": 0,
+      "physical_collision_states_by_robot_geometry": {
+        "kinova::forearm_link_collision": 27,
+        "kinova::half_arm_1_link_collision": 128,
+        "kinova::shoulder_link_collision": 128,
+        "kinova::half_arm_2_link_collision": 30,
+        "robotiq::right_outer_knuckle_collision": 2,
+        "robotiq::left_outer_knuckle_collision": 4,
+        "kinova::bracelet_link_collision": 9,
+        "robotiq::robotiq_85_base_link_collision": 10,
+        "kinova::spherical_wrist_1_link_collision": 9,
+        "robotiq::left_outer_finger_collision": 3,
+        "robotiq::left_inner_finger_collision": 3,
+        "kinova::spherical_wrist_2_link_collision": 8,
+        "kinova::force_torque_link_collision": 4,
+        "robotiq::right_inner_finger_collision": 5,
+        "robotiq::right_outer_finger_collision": 1
+      },
+      "cover_collision_states_by_robot_geometry": {
+        "kinova::shoulder_link_collision": 128,
+        "kinova::half_arm_1_link_collision": 128,
+        "kinova::half_arm_2_link_collision": 52,
+        "kinova::forearm_link_collision": 45,
+        "kinova::spherical_wrist_2_link_collision": 21,
+        "kinova::bracelet_link_collision": 17,
+        "kinova::force_torque_link_collision": 18,
+        "robotiq::robotiq_85_base_link_collision": 22,
+        "robotiq::left_outer_knuckle_collision": 12,
+        "robotiq::left_outer_finger_collision": 12,
+        "robotiq::right_inner_finger_collision": 9,
+        "robotiq::right_outer_knuckle_collision": 8,
+        "robotiq::right_outer_finger_collision": 9,
+        "kinova::spherical_wrist_1_link_collision": 17,
+        "robotiq::left_inner_finger_collision": 9
+      },
+      "static_clearance_quantiles_m": [
+        -0.17503988810566123,
+        -0.03960493290188167,
+        0.019025026584333533,
+        0.019025050749101297,
+        0.019025180242970514
+      ],
+      "original_obstacle_clearance_quantiles_m": [
+        -0.08264156867661143,
+        -0.06418339714771268,
+        -0.060022816523387534,
+        -0.05735103013397024,
+        -0.054191855756262695
+      ],
+      "frozen_cover_clearance_quantiles_m": [
+        -0.08610273370922528,
+        -0.08140537007200063,
+        -0.07930011899782806,
+        -0.07775922442081218,
+        -0.0764792934648158
+      ],
+      "global_infeasibility_proven": false,
+      "collision_geometry_changed_for_acceptance": false,
+      "problem_count": 5,
+      "raw_proposal_count": 20480,
+      "all_recorded_native_reject": true,
+      "all_recorded_independent_reject": true,
+      "no_start_found": true,
+      "scene_details": {
+        "family": "dense_clutter",
+        "obstacle_count": 34,
+        "voxel_count": 614,
+        "geometry_sha256": "b0d57ffdb7a420a47d8a157cc5c2263b3247e83c587c8b137a03062ba0e773b1",
+        "layout_rejections": 1,
+        "fixed_geometry_overlapping_voxels": 0,
+        "fixed_geometry_minimum_clearance_m": 0.0425281430447474,
+        "minimum_cover_margin_m": 0.009198930652981193,
+        "maximum_outward_overapproximation_bound_m": 0.0708010693470188
+      }
+    },
+    "test-route_choice-011": {
+      "sample_count": 128,
+      "sampling": "first 128 persisted proposals of p00; no new sampling",
+      "static_base_only_free_count": 75,
+      "physical_obstacles_only_free_count": 89,
+      "full_original_geometry_free_count": 46,
+      "conservative_cover_only_free_count": 0,
+      "full_frozen_geometry_free_count": 0,
+      "original_geometry_free_but_cover_rejected": 46,
+      "physical_collision_states_by_robot_geometry": {
+        "kinova::spherical_wrist_2_link_collision": 3,
+        "kinova::spherical_wrist_1_link_collision": 2,
+        "kinova::half_arm_1_link_collision": 33,
+        "kinova::half_arm_2_link_collision": 19,
+        "robotiq::right_outer_finger_collision": 1,
+        "robotiq::robotiq_85_base_link_collision": 3,
+        "robotiq::left_inner_finger_collision": 2,
+        "robotiq::right_inner_finger_collision": 1,
+        "kinova::forearm_link_collision": 3,
+        "robotiq::left_outer_knuckle_collision": 1,
+        "robotiq::left_outer_finger_collision": 1,
+        "kinova::force_torque_link_collision": 3,
+        "kinova::bracelet_link_collision": 3
+      },
+      "cover_collision_states_by_robot_geometry": {
+        "kinova::shoulder_link_collision": 128,
+        "kinova::half_arm_1_link_collision": 111,
+        "kinova::spherical_wrist_1_link_collision": 6,
+        "kinova::spherical_wrist_2_link_collision": 6,
+        "kinova::bracelet_link_collision": 6,
+        "kinova::force_torque_link_collision": 5,
+        "kinova::half_arm_2_link_collision": 35,
+        "robotiq::robotiq_85_base_link_collision": 7,
+        "robotiq::left_outer_knuckle_collision": 4,
+        "robotiq::left_outer_finger_collision": 4,
+        "robotiq::left_inner_finger_collision": 3,
+        "robotiq::right_inner_finger_collision": 3,
+        "robotiq::right_outer_knuckle_collision": 2,
+        "robotiq::right_outer_finger_collision": 2,
+        "kinova::forearm_link_collision": 4
+      },
+      "static_clearance_quantiles_m": [
+        -0.18767135145930364,
+        -0.07754929325637153,
+        0.019025026584333464,
+        0.019025026584333634,
+        0.019025186628803262
+      ],
+      "original_obstacle_clearance_quantiles_m": [
+        -0.09281738435445303,
+        -0.006464840842730192,
+        0.011580047022444112,
+        0.01854505557974073,
+        0.0304938490536344
+      ],
+      "frozen_cover_clearance_quantiles_m": [
+        -0.08522886488590778,
+        -0.04011153190513854,
+        -0.022107076198704157,
+        -0.011539997499526434,
+        -0.001907343338099242
+      ],
+      "global_infeasibility_proven": false,
+      "collision_geometry_changed_for_acceptance": false,
+      "problem_count": 5,
+      "raw_proposal_count": 20480,
+      "all_recorded_native_reject": true,
+      "all_recorded_independent_reject": true,
+      "no_start_found": true,
+      "scene_details": {
+        "family": "route_choice",
+        "obstacle_count": 12,
+        "voxel_count": 285,
+        "geometry_sha256": "6a175a60b9848d0b14b7f500e144a3f1a109a264049252507c561c931eea243e",
+        "layout_rejections": 0,
+        "fixed_geometry_overlapping_voxels": 0,
+        "fixed_geometry_minimum_clearance_m": 0.10809181285127212,
+        "minimum_cover_margin_m": 0.005490550866071085,
+        "maximum_outward_overapproximation_bound_m": 0.07450944913392891
+      }
+    }
+  },
+  "family_distribution": {
+    "bottleneck": {
+      "total": 100,
+      "valid": 100,
+      "invalid": 0,
+      "scene_ids": 20,
+      "eligible_scene_ids": 20,
+      "actual_geometry_count": 20,
+      "independent_random_geometries": 20,
+      "obstacle_count_quantiles": [
+        2.0,
+        2.0,
+        2.0,
+        2.0,
+        2.0
+      ],
+      "voxel_count_quantiles": [
+        320.0,
+        320.0,
+        320.0,
+        320.0,
+        320.0
+      ],
+      "distance_bins_all": {
+        "short": 40,
+        "medium": 40,
+        "long": 20
+      },
+      "distance_bins_valid": {
+        "short": 40,
+        "medium": 40,
+        "long": 20
+      },
+      "normalized_distance_quantiles": [
+        0.13349045717044225,
+        0.25641766840854774,
+        0.3382488202525613,
+        0.425884551972096,
+        0.5758662553467323
+      ],
+      "distance_rad_quantiles": [
+        1.8344994613423407,
+        3.7386771897391995,
+        4.882345458832658,
+        6.238268368694682,
+        8.781554602704118
+      ],
+      "straight_line_blocked": 74,
+      "straight_line_free": 26
+    },
+    "dense_clutter": {
+      "total": 100,
+      "valid": 85,
+      "invalid": 15,
+      "scene_ids": 20,
+      "eligible_scene_ids": 17,
+      "actual_geometry_count": 20,
+      "independent_random_geometries": 20,
+      "obstacle_count_quantiles": [
+        20.0,
+        23.0,
+        26.5,
+        34.0,
+        40.0
+      ],
+      "voxel_count_quantiles": [
+        331.0,
+        429.0,
+        476.5,
+        547.75,
+        757.0
+      ],
+      "distance_bins_all": {
+        "short": 40,
+        "medium": 40,
+        "long": 20
+      },
+      "distance_bins_valid": {
+        "short": 34,
+        "medium": 34,
+        "long": 17
+      },
+      "normalized_distance_quantiles": [
+        0.12063288222299925,
+        0.26217866156582004,
+        0.3464824141425801,
+        0.41368543240870104,
+        0.5808125064037757
+      ],
+      "distance_rad_quantiles": [
+        1.9411910718574075,
+        3.9773726146700192,
+        5.122134145777301,
+        6.225530199420299,
+        9.04883687043405
+      ],
+      "straight_line_blocked": 74,
+      "straight_line_free": 11
+    },
+    "open_control": {
+      "total": 20,
+      "valid": 20,
+      "invalid": 0,
+      "scene_ids": 4,
+      "eligible_scene_ids": 4,
+      "actual_geometry_count": 1,
+      "independent_random_geometries": 0,
+      "obstacle_count_quantiles": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "voxel_count_quantiles": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "distance_bins_all": {
+        "short": 8,
+        "medium": 8,
+        "long": 4
+      },
+      "distance_bins_valid": {
+        "short": 8,
+        "medium": 8,
+        "long": 4
+      },
+      "normalized_distance_quantiles": [
+        0.22295385437508483,
+        0.27691453570848756,
+        0.3369860191927191,
+        0.4368210373323623,
+        0.5077585678008136
+      ],
+      "distance_rad_quantiles": [
+        3.1562943375096664,
+        4.044271131855939,
+        4.922463309596116,
+        6.555538594633057,
+        7.590703256525423
+      ],
+      "straight_line_blocked": 9,
+      "straight_line_free": 11
+    },
+    "route_choice": {
+      "total": 100,
+      "valid": 95,
+      "invalid": 5,
+      "scene_ids": 20,
+      "eligible_scene_ids": 19,
+      "actual_geometry_count": 20,
+      "independent_random_geometries": 20,
+      "obstacle_count_quantiles": [
+        12.0,
+        12.0,
+        12.0,
+        12.0,
+        12.0
+      ],
+      "voxel_count_quantiles": [
+        285.0,
+        341.75,
+        350.5,
+        383.5,
+        453.0
+      ],
+      "distance_bins_all": {
+        "short": 40,
+        "medium": 40,
+        "long": 20
+      },
+      "distance_bins_valid": {
+        "short": 38,
+        "medium": 38,
+        "long": 19
+      },
+      "normalized_distance_quantiles": [
+        0.1252246210141262,
+        0.2666799784621223,
+        0.35399047503012493,
+        0.4261169023327484,
+        0.5914883197432215
+      ],
+      "distance_rad_quantiles": [
+        1.9244845549641059,
+        3.9609433065052064,
+        5.2487803366161865,
+        6.385941767519938,
+        8.563846353883296
+      ],
+      "straight_line_blocked": 65,
+      "straight_line_free": 30
+    },
+    "sparse_clutter": {
+      "total": 100,
+      "valid": 95,
+      "invalid": 5,
+      "scene_ids": 20,
+      "eligible_scene_ids": 19,
+      "actual_geometry_count": 20,
+      "independent_random_geometries": 20,
+      "obstacle_count_quantiles": [
+        6.0,
+        7.0,
+        9.0,
+        10.25,
+        12.0
+      ],
+      "voxel_count_quantiles": [
+        85.0,
+        170.5,
+        219.5,
+        282.25,
+        415.0
+      ],
+      "distance_bins_all": {
+        "short": 40,
+        "medium": 40,
+        "long": 20
+      },
+      "distance_bins_valid": {
+        "short": 38,
+        "medium": 38,
+        "long": 19
+      },
+      "normalized_distance_quantiles": [
+        0.1332401482012378,
+        0.2705555008472089,
+        0.34060659288267003,
+        0.41906413319517966,
+        0.6159080362249232
+      ],
+      "distance_rad_quantiles": [
+        1.7925666436450058,
+        4.000651146018599,
+        5.04309389636834,
+        6.32872514467209,
+        8.420069772307935
+      ],
+      "straight_line_blocked": 68,
+      "straight_line_free": 27
+    }
+  },
+  "exact_cross_split_overlap_counts": {
+    "scene_seed": 0,
+    "endpoint_seed": 0,
+    "obstacle_geometry_sha256": 0
+  },
+  "near_duplicate_diagnostics": {
+    "within_test": {
+      "metric": "symmetric Hausdorff distance of frozen equal-radius sphere centres; not a topology/feasibility metric",
+      "diagnostic_threshold_m": 0.01,
+      "closest_pair": {
+        "left": "test-bottleneck-008",
+        "right": "test-bottleneck-013",
+        "symmetric_voxel_centre_hausdorff_m": 0.12677512012123007
+      },
+      "pairs_at_or_below_threshold": [],
+      "open_control_excluded": true,
+      "criterion_used_to_select_or_regenerate_data": false
+    },
+    "cross_split": {
+      "metric": "symmetric Hausdorff distance of frozen equal-radius sphere centres; not a topology/feasibility metric",
+      "diagnostic_threshold_m": 0.01,
+      "closest_pair": {
+        "left": "test-bottleneck-002",
+        "right": "dev-bottleneck-002",
+        "symmetric_voxel_centre_hausdorff_m": 0.06779364035579909
+      },
+      "pairs_at_or_below_threshold": [],
+      "open_control_excluded": true,
+      "criterion_used_to_select_or_regenerate_data": false
+    },
+    "cross_split_individual_endpoints": {
+      "metric": "RMS joint range-normalized difference",
+      "diagnostic_threshold": 0.01,
+      "pairs_at_or_below_threshold": 0,
+      "minimum_distance": 0.0639741993022274,
+      "closest_test": [
+        "test-dense_clutter-010-p03",
+        "q_goal"
+      ],
+      "closest_other": [
+        "dev-dense_clutter-000-p02",
+        "q_start"
+      ],
+      "criterion_used_to_select_or_regenerate_data": false
+    }
+  },
+  "manifest_sha256_before": {
+    "smoke": "92e19a293861fa1b93a2dba3919ae3bc3eec584f3845709dc99f2ce98e453720",
+    "dev": "32de21ac2474846ae3cdc9867a3f41585cf80e7d0d4531e26285de216ef56000",
+    "test": "9fcbe5ccae28d8681586b1ac6c9986f51f7cc7b5cdc19352c101910e3b6ed03b"
+  },
+  "manifest_sha256_after": {
+    "smoke": "92e19a293861fa1b93a2dba3919ae3bc3eec584f3845709dc99f2ce98e453720",
+    "dev": "32de21ac2474846ae3cdc9867a3f41585cf80e7d0d4531e26285de216ef56000",
+    "test": "9fcbe5ccae28d8681586b1ac6c9986f51f7cc7b5cdc19352c101910e3b6ed03b"
+  },
+  "decision": {
+    "v1_usable_as_fixed_test_with_declared_invalid_inputs": true,
+    "recommended_primary_denominator": 395,
+    "retained_invalid_inputs": 25,
+    "v2_required_to_claim_420_valid_and_full_family_balance": true,
+    "v2_required_to_use_current_395_valid": false,
+    "formal_evaluation_authorized_by_this_audit": false,
+    "global_path_feasibility_unknown": true
+  }
+}

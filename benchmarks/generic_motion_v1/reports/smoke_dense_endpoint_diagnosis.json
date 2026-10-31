@@ -1,0 +1,39 @@
+{
+  "problem_id": "smoke-dense_clutter-000-p00",
+  "input_arrays_sha256": "3895a9c679adc13af14681b2da083691a18a8f7fc82e21f0f02b8041c1cf6cc9",
+  "sample_count_for_link_diagnosis": 128,
+  "colliding_state_count_by_moving_geometry": {
+    "kinova::shoulder_link_collision": 128,
+    "kinova::half_arm_1_link_collision": 128,
+    "kinova::half_arm_2_link_collision": 42,
+    "kinova::forearm_link_collision": 33,
+    "kinova::spherical_wrist_1_link_collision": 19,
+    "kinova::spherical_wrist_2_link_collision": 18,
+    "kinova::bracelet_link_collision": 10,
+    "kinova::force_torque_link_collision": 7,
+    "robotiq::robotiq_85_base_link_collision": 10,
+    "robotiq::left_outer_knuckle_collision": 4,
+    "robotiq::left_outer_finger_collision": 4,
+    "robotiq::left_inner_finger_collision": 3,
+    "robotiq::right_inner_finger_collision": 2,
+    "robotiq::right_outer_knuckle_collision": 2,
+    "robotiq::right_outer_finger_collision": 2
+  },
+  "all_4096_proposals_clearance_quantiles": [
+    -0.19796100653169965,
+    -0.06387105422155628,
+    -0.03883077570717713
+  ],
+  "fixed_geometry_overlapping_voxels": 0,
+  "interpretation": "The first 128 uniformly drawn configurations all collide through shoulder and first half-arm with the frozen conservative online spheres. All 4096 endpoint proposals are independently colliding. This is sampler exhaustion, not a proof of global infeasibility; no scene, endpoint seed or geometry was replaced. CUDA and independent signed distances agree for the checked data.",
+  "source_sphere_geometry_probe": {
+    "sample_count": 128,
+    "collision_free_count": 0,
+    "minimum_signed_distance_quantiles_m": [
+      -0.17239791851429884,
+      -0.03996368547770028,
+      -0.01276563360678852
+    ],
+    "note": "Additional diagnostic against original source spheres plus the same static robot pairs. Endpoint acceptance remains frozen against the common conservative voxel cover, never replaced by this less conservative geometry."
+  }
+}

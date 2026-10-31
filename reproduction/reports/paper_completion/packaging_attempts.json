@@ -1,0 +1,22 @@
+[
+  {
+    "attempt": 1,
+    "command": "bash local/python.sh -m reproduction.package_completion",
+    "exit_code": 1,
+    "error": "FileNotFoundError: Forest run/scenes",
+    "cause": "Archive preflight incorrectly required FR3 shared-scene layout in Forest; Forest stores circles in per-case input.json.",
+    "repair": "Require scenes only for FR3; include all actual Forest input files unchanged."
+  },
+  {
+    "attempt": 2,
+    "command": "bash local/python.sh -m reproduction.package_completion",
+    "exit_code": 0,
+    "phase": "precommit archive verification",
+    "verified_members": 41785,
+    "bytes": 306839538,
+    "all_contents_verified": true,
+    "excluded_files": 421,
+    "excluded_bytes": 2080261865,
+    "note": "Final deliverable is regenerated after commit to record the committed source identity; current artifact manifest is authoritative for its final hash."
+  }
+]

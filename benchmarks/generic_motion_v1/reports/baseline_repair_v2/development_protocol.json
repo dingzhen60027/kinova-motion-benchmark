@@ -1,0 +1,55 @@
+{
+  "version": "paper_baseline_engineering_v2",
+  "declared_utc": "2026-10-29T12:17:22Z",
+  "starting_commit": "73356f1a0",
+  "purpose": "Repair reproducible implementation and solver limitations, then measure all fixed development tasks without changing the benchmark or archived formal observations.",
+  "inputs": {
+    "smoke": "benchmarks/generic_motion_v1/manifests/smoke.jsonl",
+    "dev": "benchmarks/generic_motion_v1/manifests/dev.jsonl",
+    "selection": "All registered cases, including invalid inputs and frontend failures",
+    "roadmap_nodes": 6000,
+    "smoke_roadmap_seeds": [0],
+    "dev_roadmap_seeds": [0, 1, 2]
+  },
+  "methods": [
+    ["EI_ZO", "minimum_distance"],
+    ["LGCS", "minimum_distance"],
+    ["NTO_REFINED", "minimum_distance"],
+    ["EI_ZO", "minimum_time"],
+    ["NTO_REFINED", "minimum_time"]
+  ],
+  "planned_registered_slots": {"smoke": 50, "dev": 900},
+  "lgcs": {
+    "solver": "SCIP",
+    "problem": "Same perspective graph-of-convex-sets mixed-integer shortest-path problem",
+    "fallback": "None; save primal bound, dual bound, gap and exact termination status"
+  },
+  "nto_refined": {
+    "distance_solver": "SNOPT",
+    "time_solver": "IPOPT",
+    "initial_collocation_locations": "k/150 for k=1,...,149",
+    "clearance_m": 0.001,
+    "refinement_clearance_m": 0.0005,
+    "maximum_solves": 4,
+    "maximum_collocation_points": 600,
+    "refinement_rule": "Add the minimum-clearance time in each detected low-clearance interval; no per-case tuning",
+    "control_points": "Retain original NTO_PAPER initialization and spline order",
+    "snopt_iterations": {"total": 100000, "major": 2000, "minor": 500},
+    "ipopt_maximum_iterations": 2000
+  },
+  "comparison": {
+    "historical_reference": "results/rss2025_full_dev_v1",
+    "reference_role": "Paired engineering comparison; historical and new source protocols are never pooled into one method score",
+    "metrics": "Existing independent validator and BASELINE_PROTOCOL.md definitions; scene-cluster intervals and matched common-success costs",
+    "external_cold_budget_seconds": 60,
+    "gpu_concurrency": 1,
+    "test_performance_runs": 0
+  },
+  "invariants": [
+    "Canonical robot, collision filters, obstacle geometry, voxel radii and endpoints remain unchanged",
+    "Every success requires the unchanged independent numerical validator",
+    "All failed diagnostic attempts, original profiles and frozen formal results are retained",
+    "Source snapshots and resolved configurations are captured before each batch",
+    "No per-task choice of optimizer, margin, endpoint, model or best result"
+  ]
+}

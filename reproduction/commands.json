@@ -1,0 +1,193 @@
+{
+  "cwd": "/home/eric/wjg/wd/csdecomp",
+  "format_note": "Module invocations for completed runs; outputs/statuses recorded from actual execution, not prospective commands.",
+  "commands": [
+    {
+      "label": "experiment_dependencies",
+      "command": [
+        "bash",
+        "local/python.sh",
+        "-m",
+        "pip",
+        "install",
+        "--no-deps",
+        "pybezier==0.1.4",
+        "./reproduction/vendor/scsplanning",
+        "cvxpy==1.7.5",
+        "clarabel==0.11.1",
+        "gurobipy"
+      ],
+      "exit_code": 0,
+      "completed_utc": "2026-10-25T06:18:40.486498+00:00"
+    },
+    {
+      "label": "numerical_gpu_tests",
+      "command": [
+        "bash",
+        "local/python.sh",
+        "-m",
+        "pytest",
+        "-q",
+        "reproduction/tests"
+      ],
+      "exit_code": 0,
+      "evidence": "logs/reproduction_tests_final.log",
+      "result": "7 passed in 0.60s"
+    },
+    {
+      "label": "forest_full",
+      "command": [
+        "bash",
+        "local/python.sh",
+        "-m",
+        "reproduction.run",
+        "run"
+      ],
+      "exit_code": 0,
+      "evidence": "logs/forest_full.log",
+      "run_dir": "runs/20261025T063552.273227Z_forest",
+      "worker_loop_elapsed_seconds": 647.8,
+      "result": "400 cases, 391 eligible, 1955 method attempts"
+    },
+    {
+      "label": "kinova_auxiliary",
+      "command": [
+        "bash",
+        "local/python.sh",
+        "-m",
+        "reproduction.kinova"
+      ],
+      "exit_code": 0,
+      "evidence": "logs/kinova_auxiliary.log",
+      "run_dir": "runs/20261025T065018.466779Z_kinova_auxiliary"
+    },
+    {
+      "label": "forest_throughput",
+      "command": [
+        "bash",
+        "local/python.sh",
+        "-m",
+        "reproduction.throughput"
+      ],
+      "started_utc": "2026-10-25T06:55:15.199252+00:00",
+      "exit_code": 0,
+      "completed_utc": "2026-10-25T06:55:21.853171+00:00",
+      "log": "logs/forest_throughput.log"
+    },
+    {
+      "label": "nto_control_count_ablation",
+      "command": [
+        "bash",
+        "local/python.sh",
+        "-m",
+        "reproduction.ablation",
+        "--run-dir",
+        "reproduction/runs/20261025T063552.273227Z_forest"
+      ],
+      "started_utc": "2026-10-25T06:55:21.853327+00:00",
+      "exit_code": 0,
+      "completed_utc": "2026-10-25T06:55:47.311745+00:00",
+      "log": "logs/nto_control_count_ablation.log"
+    },
+    {
+      "label": "summarize",
+      "command": [
+        "bash",
+        "local/python.sh",
+        "-m",
+        "reproduction.analyze",
+        "--run-dir",
+        "reproduction/runs/20261025T063552.273227Z_forest",
+        "--output",
+        "reproduction/reports/forest"
+      ],
+      "exit_code": 0,
+      "evidence": "reports/forest/summary.json"
+    },
+    {
+      "label": "plot_and_replay",
+      "command": [
+        "bash",
+        "local/python.sh",
+        "-m",
+        "reproduction.plot_results",
+        "--run-dir",
+        "reproduction/runs/20261025T063552.273227Z_forest",
+        "--summary-dir",
+        "reproduction/reports/forest",
+        "--output",
+        "reproduction/figures"
+      ],
+      "exit_code": 0,
+      "evidence": "figures/figure_sources.json"
+    },
+    {
+      "label": "artifact_audit",
+      "command": [
+        "bash",
+        "local/python.sh",
+        "-m",
+        "reproduction.audit",
+        "--run-dir",
+        "reproduction/runs/20261025T063552.273227Z_forest",
+        "--output",
+        "reproduction/reports/audit"
+      ],
+      "exit_code": 0,
+      "evidence": "reports/audit/audit.json"
+    },
+    {
+      "label": "resume_immutability",
+      "command": [
+        "bash",
+        "local/python.sh",
+        "-m",
+        "reproduction.run",
+        "resume",
+        "--run-dir",
+        "reproduction/runs/20261025T063552.273227Z_forest"
+      ],
+      "started_utc": "2026-10-25T07:02:25.509628+00:00",
+      "exit_code": 0,
+      "elapsed_seconds": 1.0698120552115142,
+      "case_files": 16822,
+      "case_bytes_unchanged": true,
+      "before_hash": "ca7dd5afa7d55c6091fc64bf307230abf594d3fe6eea1934985ee667e2cdb01d",
+      "after_hash": "ca7dd5afa7d55c6091fc64bf307230abf594d3fe6eea1934985ee667e2cdb01d"
+    },
+    {
+      "label": "existing_environment_setup",
+      "command": [
+        "bash",
+        "reproduction/setup.sh"
+      ],
+      "exit_code": 0,
+      "result": "Reused Conda prefix; pip check passed; 7 GPU/numerical tests passed in 0.61s",
+      "evidence": "environment.json"
+    },
+    {
+      "label": "final_compile",
+      "command": [
+        "bash",
+        "local/python.sh",
+        "-m",
+        "compileall",
+        "-q",
+        "reproduction"
+      ],
+      "exit_code": 0
+    },
+    {
+      "label": "final_pip_check",
+      "command": [
+        "bash",
+        "local/python.sh",
+        "-m",
+        "pip",
+        "check"
+      ],
+      "exit_code": 0,
+      "evidence": "logs/pip_check_final.log"
+    }
+  ]
+}

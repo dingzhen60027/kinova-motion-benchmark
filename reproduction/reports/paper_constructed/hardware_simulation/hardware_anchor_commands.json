@@ -1,0 +1,53 @@
+[
+  {
+    "command": "bash local/python.sh /tmp/diagnose_iiwa_anchors.py",
+    "exit_code": 1,
+    "status": "failed",
+    "reason": "Temporary driver outside package lacked repository PYTHONPATH",
+    "log": "reproduction/reports/paper_constructed/hardware_simulation/check_01/diagnosis_01.log"
+  },
+  {
+    "command": "PYTHONPATH=. bash local/python.sh /tmp/diagnose_iiwa_anchors.py",
+    "exit_code": 1,
+    "status": "failed",
+    "reason": "Launcher intentionally clears PYTHONPATH; use repository module context",
+    "log": "reproduction/reports/paper_constructed/hardware_simulation/check_01/diagnosis_02.log"
+  },
+  {
+    "command": "bash local/python.sh -c runpy.run_path(check_01/diagnosis_driver.py)",
+    "exit_code": 0,
+    "status": "completed",
+    "log": "reproduction/reports/paper_constructed/hardware_simulation/check_01/diagnosis_03.log"
+  },
+  {
+    "command": [
+      "bash",
+      "local/python.sh",
+      "-m",
+      "reproduction.hardware_constructed.construct_anchors",
+      "--output",
+      "reproduction/reports/paper_constructed/hardware_simulation/anchor_construction_01"
+    ],
+    "status": "completed",
+    "started_utc": "2026-10-26T03:47:43.130627+00:00",
+    "log": "reproduction/reports/paper_constructed/hardware_simulation/anchor_construction_01.log",
+    "exit_code": 0,
+    "wall_seconds": 1.4525100053288043
+  },
+  {
+    "command": [
+      "bash",
+      "local/python.sh",
+      "-m",
+      "reproduction.hardware_constructed.run",
+      "check",
+      "--output",
+      "reproduction/reports/paper_constructed/hardware_simulation/check_02"
+    ],
+    "status": "completed",
+    "started_utc": "2026-10-26T03:48:46.357930+00:00",
+    "log": "reproduction/reports/paper_constructed/hardware_simulation/check_02.log",
+    "exit_code": 0,
+    "wall_seconds": 1.358397028874606
+  }
+]

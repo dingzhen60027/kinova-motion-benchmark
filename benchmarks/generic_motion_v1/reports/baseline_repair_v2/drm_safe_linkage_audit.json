@@ -1,0 +1,67 @@
+{
+  "passed": true,
+  "checks": {
+    "native_dependency_exact_absolute_path": true,
+    "native_cuda_call_unresolved_in_sidecar": true,
+    "plan_is_not_dynamic_export": true,
+    "plan_is_local_text": true,
+    "module_initializer_exported": true,
+    "wheel_abi_matches_receipt": true,
+    "binary_hash_unchanged": true,
+    "native_library_hash_unchanged": true
+  },
+  "build_receipt_sha256": "306ee00ab99d2063f321b595b0e0006d72b58106204579b289642ce03113e4ce",
+  "native_library_sha256": "0a048625a9d745ac409cff55791d360fe9e91ad1b8d7a3b82245a1a024c57738",
+  "binary_sha256": "a3ca2a23e7ca84bfc90542a7e761b3f3f10b33c92889ff1ef85a477c902f8c83",
+  "local_pybind_header_version": {
+    "MAJOR": "2",
+    "MINOR": "12",
+    "PATCH": "0"
+  },
+  "compiler": "g++ (Ubuntu 9.5.0-1ubuntu1~22.04) 9.5.0",
+  "compiler_abi_macro": "1013",
+  "commands": [
+    {
+      "argv": [
+        "readelf",
+        "-d",
+        "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/reports/baseline_repair_v2/drm_safe_build_v2/_drm_safe_query.cpython-310-x86_64-linux-gnu.so"
+      ],
+      "returncode": 0,
+      "output": "benchmarks/generic_motion_v1/reports/baseline_repair_v2/drm_safe_v2_dynamic.txt",
+      "sha256": "44d4fcf8b7dc0351c8b3e0cb6b1a00ee12244b3fc64bef7505193ba1e0b6ea7c"
+    },
+    {
+      "argv": [
+        "nm",
+        "-D",
+        "-C",
+        "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/reports/baseline_repair_v2/drm_safe_build_v2/_drm_safe_query.cpython-310-x86_64-linux-gnu.so"
+      ],
+      "returncode": 0,
+      "output": "benchmarks/generic_motion_v1/reports/baseline_repair_v2/drm_safe_v2_symbols.txt",
+      "sha256": "d310ae0884c1b68176d34c71c14870f0a9a290119bfbb79a1ebbe9af94bd8541"
+    },
+    {
+      "argv": [
+        "nm",
+        "-C",
+        "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/reports/baseline_repair_v2/drm_safe_build_v2/_drm_safe_query.cpython-310-x86_64-linux-gnu.so"
+      ],
+      "returncode": 0,
+      "output": "benchmarks/generic_motion_v1/reports/baseline_repair_v2/drm_safe_v2_local_symbols.txt",
+      "sha256": "06f2aad670f2d95dba10717b6d6879d625af66fe5f237f49763b7d9f8a9831e4"
+    },
+    {
+      "argv": [
+        "strings",
+        "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/lib/python3.10/site-packages/csdecomp/pycsdecomp_bindings.so"
+      ],
+      "returncode": 0,
+      "output": "benchmarks/generic_motion_v1/reports/baseline_repair_v2/drm_safe_v2_native_strings.txt",
+      "sha256": "563e087c65fab938664cb97ab1b4e6a59855113b0c6bffe11409c949438e28d4"
+    }
+  ],
+  "scope": "Read-only binary inspection; no module import or GPU query",
+  "limitations": "Compatible exported pybind key, explicit compiler ABI, checked member layout and observed path equality are compatibility evidence for this installed wheel, not a proof of complete ABI equivalence across environments."
+}

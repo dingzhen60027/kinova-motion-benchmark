@@ -1,0 +1,53 @@
+{
+  "comparison": "Reuses exact saved accepted DRM path and input; no GPU or frontend rerun, so these are CPU diagnostic outcomes, not full benchmark success labels.",
+  "jobs": [
+    "dev-sparse_clutter-002-p02-NTO_PAPER-minimum_distance-462e42b6",
+    "dev-dense_clutter-002-p00-NTO_PAPER-minimum_distance-62127136",
+    "dev-route_choice-002-p00-NTO_PAPER-minimum_distance-48b608ce"
+  ],
+  "profile": {
+    "acceleration_limit_rad_s2": 1.0,
+    "clearance_m": 0.001,
+    "collocation_locations": "author_tex_interior_k_over_Nc",
+    "collocation_parameter_Nc": 150,
+    "distance_solver": "SNOPT",
+    "distance_spline_order": 2,
+    "influence_distance_m": 0.01,
+    "maximum_collocation_points": 600,
+    "maximum_iterations": 2000,
+    "maximum_native_solves": 4,
+    "maximum_optimizer_seconds": 60.0,
+    "minimum_control_points": null,
+    "name": "rss2025_nto_numerical_refinement_v1",
+    "provenance": "declared_NTO_refinement_on_frozen_Kinova_not_exact_author_configuration",
+    "refinement_geometry_batch": 32,
+    "refinement_guard_m": 0.0005,
+    "snopt_minor_iterations": 500,
+    "snopt_total_iterations": 100000,
+    "solver_feasibility_tolerance": 1e-06,
+    "sources": {
+      "clearance": "Author archived appendix describes epsilon as the minimum admissible distance but gives no value. The fixed 1 mm value is a declared local development policy.",
+      "collocation": "Archived author arXiv TeX commented appendix: k/Nc for k=1,...,Nc-1; 149 bindings. Published text says Nc points, so exact implementation is unresolved.",
+      "endpoint_copies": "Reconstruction choice: one extra copy at each endpoint of the cubic warm start, making its endpoint velocities zero while retaining all DRM nodes.",
+      "engineering": "Iteration limit 2000, solver tolerances, initialization duration length+2, positive duration bounds, and 60-second budget are explicit local protocol choices, not published exact settings.",
+      "iteration_limits": "Local policy: SNOPT total 100000 / major 2000 / minor 500; IPOPT max_iter 2000. All construction, solves and refinement checks share the external online deadline.",
+      "published": "RSS 2025 Werner et al., VII-A.3 and Appendix D; 4th order time spline, SNOPT distance, IPOPT time, Nc=150",
+      "refinement": "Local constraint generation: after each native solve, add the minimum-clearance sampled parameter in each current interval with clearance below 0.5 mm. At most 4 solves and 600 total points. No control insertion or case-specific policy."
+    },
+    "time_duration_bounds_seconds": [
+      0.05,
+      100.0
+    ],
+    "time_solver": "IPOPT",
+    "time_spline_order": 4,
+    "velocity_limit_rad_s": 1.0,
+    "warm_start_resampled": false
+  },
+  "selection": "Previously diagnosed fixed dev iteration-limit, collision-failure and backend-exception cases; selected before refined solves. Not a random performance sample.",
+  "source_sha256": {
+    "benchmarks/generic_motion_v1/reports/baseline_study/nto_refinement_cpu_probe.py": "3ddf7585a9e191c2ceb4ba7a8ff4b9cb9ba68046287faa0ccf7b958d031bba36",
+    "benchmarks/generic_motion_v1/runners/paper_nto.py": "f6697df7115cf258b5cd7773de14aeb98e67a7e3d0952654715f765748c0337f",
+    "benchmarks/generic_motion_v1/runners/paper_nto_refined.py": "0a3d724ac0679ce097a4afb9b8359a23d43f28b06a5ee86bb71eba0f9ef01945"
+  },
+  "test_data_used": false
+}

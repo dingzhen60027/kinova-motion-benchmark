@@ -1,0 +1,377 @@
+{
+  "status": "prepared",
+  "created_utc": "2026-10-26T08:12:13.037247+00:00",
+  "scope": "Environment acceptance only; not a new full-method paper benchmark",
+  "git_head": "0c041bc4d68bc833661796f4f80de63414b941fb",
+  "source_hashes": {
+    "local/python.sh": "cda99fd218a27640997e18b95705918b67c2d2bcba4a051755e41b1d27000005",
+    "reproduction/common.py": "db20b4edefc194b8bfbc790f3f6ce5717e61e277e0ffe41c8746a49ef2a1d3d3",
+    "reproduction/run.py": "621707637cd312afd02c6e28a3028504dd3c42c118df9bb292747b00c427b6eb",
+    "reproduction/forest.py": "4074e20bf900155a5caa7d016ebc39fe8e6e74c120e1354887c8cbb24a11b6ce",
+    "reproduction/configs/forest.json": "394cf763dc2ed3dabf93284ccf7c02bd7337fa0fa86d76c9bd9468fdd02ba463",
+    "reproduction/environment_reconstruction/run.py": "8338ada6f7fecfb1b70b9d6e793cce3cbb2af0c5365aa2713a43b51469081ae3",
+    "reproduction/environment_reconstruction/model.py": "91de11a0dbb7a6416d08c5da6a730dfbee14545774218b09f1c807ed00f7010a",
+    "reproduction/environment_reconstruction/profile.json": "2a31decab05eba6fd6d1f52777b2061351554cda67152ce76c78a31816740266",
+    "reproduction/paper_constructed/config.json": "bd0818510657d8f8d32b2cc4b96f5fab5bc08cfa1544dc5cd4fb5c701c5ea553",
+    "reproduction/paper_constructed/model.py": "de0db93b8c4d957bfb2118b38e3d6127d08db8268a271347fc601975d01289c2",
+    "reproduction/paper_constructed/data.py": "10b3cc2ea64043f4b019c7b13986d7c60b2ae420185140a1e4987c231c050cef",
+    "reproduction/paper_constructed/forest.py": "8dbb44d6c0fbeea949d7d6266a317f562cf3d871aaf07c7f55119843321b8155",
+    "reproduction/paper_constructed/validation.py": "9a829204583d10b0a6bb90beecea2bca36fe16b0cfc267b823896e474d90d630",
+    "reproduction/paper_constructed/run.py": "a5a1c857bb06d599317e2912d1d4793de2cbe579589d32942fdda451ed00884c",
+    "reproduction/paper_constructed/assets/fr3_33.json": "77b602396d93004c0aef6cf3776ef5783ed6fff9b08c0734829d3b9d2c1bd120",
+    "csdecomp/tests/test_assets/table.obj": "3e2f605cf4fbe58f0c4d3b23a5c9a7bba65781aad759e088d4d0d6fe9879107b",
+    "csdecomp/tests/test_assets/table.urdf": "af6db04235e8d67f550c2f97e734a4282d15da7a0ca543d24ef0267e9f97ea7c"
+  },
+  "runtime_versions": {
+    "csdecomp": "0.1.2",
+    "numpy": "2.2.6",
+    "drake": "1.51.1",
+    "scipy": "1.15.3",
+    "pybezier": "0.1.4",
+    "scsplanning": "0.1.0",
+    "gurobipy": "13.0.3",
+    "cvxpy": "1.7.5",
+    "clarabel": "0.11.1"
+  },
+  "system": {
+    "platform": "Linux-6.8.0-48-generic-x86_64-with-glibc2.35",
+    "python": "3.10.22 | packaged by conda-forge | (main, Oct  6 2026, 23:02:24) [GCC 14.4.0]",
+    "executable": "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/bin/python",
+    "conda_prefix": "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp"
+  },
+  "protocol_sha256": "4d0162241cce05e2642ba1d13bf011b3af36ccbd560723fe87f640c1aa33529e",
+  "profile": {
+    "name": "figure6_public_table_v1",
+    "paper": "arXiv:2504.10783v1",
+    "scope": "Environment acceptance only; not a new full-method paper benchmark",
+    "environment_seeds": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "forest_figure_roadmap_sizes": [
+      200,
+      400,
+      800,
+      1600
+    ],
+    "forest_random_roadmap_size": 200,
+    "fr3_roadmap_size": 3000,
+    "roadmap_seed": 0,
+    "child_timeout_seconds": 120,
+    "collision_audit_points_per_scene": 1024,
+    "forest_reference": "reproduction/reports/environment_reconstruction/forest_evidence/scene.json",
+    "fr3_scene_overrides": {
+      "table_size": [
+        2.5,
+        2.5,
+        0.2
+      ],
+      "table_center": [
+        0.4,
+        0.0,
+        -0.1
+      ],
+      "obstacle_lower": [
+        0.25,
+        -0.4,
+        0.0
+      ],
+      "obstacle_upper": [
+        0.75,
+        0.4,
+        0.8
+      ],
+      "right_ee_lower": [
+        0.2,
+        -0.65,
+        0.2
+      ],
+      "right_ee_upper": [
+        0.8,
+        -0.15,
+        1.0
+      ],
+      "left_ee_lower": [
+        0.2,
+        0.15,
+        0.2
+      ],
+      "left_ee_upper": [
+        0.8,
+        0.65,
+        1.0
+      ]
+    },
+    "table_visual": {
+      "mesh": "csdecomp/tests/test_assets/table.obj",
+      "translation": [
+        0.4,
+        0.0,
+        0.0
+      ],
+      "xy_extent_approximately": [
+        1.5,
+        1.5
+      ],
+      "collision_extent_differs_from_visual": true,
+      "source": "Public table.urdf and table.obj, unchanged since before paper; transform from public Kinova tabletop example, NOT recovered FR3 directive"
+    },
+    "coordinate_convention": "FR3 base at origin, x forward, z up, robot right=-y and left=+y; paper world axes unpublished",
+    "evidence": {
+      "forest_reference": "15 circles and displayed trajectory endpoints recovered from author Figure 6 vector artwork, frame affinely mapped to [-5,5]^2; original benchmark seed list remains unknown",
+      "forest_random": "Reuse v5's 10 obstacle realizations (default_rng seeds 0..9) under the paper's 15/r=.35/central7m/square10m parameters, with endpoints now taken from Figure 6. These are changed conditions on familiar scenes, not new seeds or held-out tasks",
+      "table": "Public author's table asset is a stronger source than prior arbitrary box. Its FR3 use and translation remain hypotheses. Visual is 1.5m; collision is deliberately the released 2.5m box, no colliding legs added",
+      "obstacle_height": "Figure 6 includes black spheres intersecting tabletop. Uniform center z support changed to [0,.8] to admit that relation. Law and numeric endpoints are inferred, not published",
+      "obstacle_xy_radius": "20 from paper; r=.05 and x=[.25,.75], y=[-.4,.4] retained declared reconstruction choices, not measured 3D coordinates",
+      "robot": "Existing conservative 33-sphere fit of pinned official FR3 geometry and official pair filters retained; author sphere placement/filter unavailable",
+      "tasks": "First collision-free joint-uniform configuration in right TCP box; independent joint-uniform FK pushforward pose in left box. No downward-orientation restriction, no selection by planner/optimizer outcome. Target witness is not the online IK initial guess",
+      "streams": "Reuse declared v5 obstacle and endpoint PRNG stream identifiers for paired environment changes. These are not author seeds",
+      "unknowns": [
+        "author 33-sphere centers and radii",
+        "author 527 static collision pairs",
+        "original 10 environment seeds and task list",
+        "FR3 original table directive",
+        "sphere radius and exact sampling volume",
+        "pose distribution",
+        "original KUKA/RealSense physical scene and records"
+      ]
+    }
+  },
+  "no_planning_before_scene_freeze": true,
+  "scene_hashes": {
+    "forest/e00.json": "9f413d04a24e4d19ee40290da5e44025010c1bab2621d25bf849fd648b3d9fd4",
+    "forest/e00_collision_audit.npz": "8e1c4dc2cff8c50e574a0417f3a9b03d04d2ae80d2f958eaf701665558731229",
+    "forest/e01.json": "c194eda0702d596045b35931ad1ff65fc4f49fd1444d6397ff8422c7cbd9ddf9",
+    "forest/e01_collision_audit.npz": "6b2301e51ad309bb5c1d1ed71091a8b72f580c73e3f42734130bcd4e6c2d472d",
+    "forest/e02.json": "25c207e1ce3a88c97421fae7d0af782ad78c0ad7b8fd4ac27f795e12140cf435",
+    "forest/e02_collision_audit.npz": "72d8b98c3b6fb971df884f100fb5179899b9b095ae24df2176958cd19cb862d8",
+    "forest/e03.json": "aca968a83d2cc8973aabdea1d0e6c4bf85d72aacb2ea823644b92bd16efe6a6f",
+    "forest/e03_collision_audit.npz": "18a97a9ef361a5da3f7f4d3c20ca2b500d903c7d1b81ca0a9b629e08689eb5dc",
+    "forest/e04.json": "9e541b9c6d05ba7fe5c5a53d15d5f4c73e9aaf73038db09bc7ff08c99b0000b4",
+    "forest/e04_collision_audit.npz": "8fab16ab26ec7c8119fb7f32347161bf5bbccab0e1355d20cc7eb652eda419ff",
+    "forest/e05.json": "5da3d2ee0ee340befa68d485fc5a0d130d3d62ba44bae23f4ec2d488938492ce",
+    "forest/e05_collision_audit.npz": "5ea99c475b79538e4718a35942ff7d86d3e8759b53557bfbb890ece90c29f54c",
+    "forest/e06.json": "f662d27d28bc7654789a3c212e8967bf2fea6b951b2b192331146bf7cfd6f59b",
+    "forest/e06_collision_audit.npz": "78745b8f27f06311f914698141a20d52f9b6564ac418449e801664c1884bdf11",
+    "forest/e07.json": "45dcb0636c988f41ba5df28ec28e57043e5d173675c893594ba2e11f4a6e08db",
+    "forest/e07_collision_audit.npz": "8d79374dc97b13055e823f0037dedcb64b8438abc425ec326963d3632ff7e9f0",
+    "forest/e08.json": "d04b5266e8833c51e4fcd740503acd5307034c4122aa61ef3c675b44a7acf186",
+    "forest/e08_collision_audit.npz": "c5c47142cf23f7bb498f848bda44feab02bace9f56ed38a3e003ea11d9850e73",
+    "forest/e09.json": "1bf94587b18849c86be8ea1dd681dbafbcb07ec29224916a80c72ca28ed6d573",
+    "forest/e09_collision_audit.npz": "d05ef131cc1789a6c68e94f83174c5218caa418fdae22aec0cd4363a32d5dcb7",
+    "forest/figure6.json": "192b9852c5a242dc3cef0d5db1c2eb0ed20217d83c50b2ecb693ee308deef1cd",
+    "forest/figure6_collision_audit.npz": "ec319f4262f1555c5c64e6e7c3c4fcbf723d67b50143839a9fd5ec9199f4c728",
+    "fr3/e00/audit.json": "5075cbe714ac0955d7fd9f32bfda9c70a876a4073b744bd4f37c391d8fd0aff9",
+    "fr3/e00/collision_audit.npz": "2da797aac8df7ecc115f004b0177ef324c85771c0bb07a446683ec44b5d2d7d8",
+    "fr3/e00/scene.json": "b539afb9d43e497230d179c410825ad4d6046b350604502a2bd33678874c1f59",
+    "fr3/e01/audit.json": "e476ac15b63375c9faf1fe7f0d5ed0deae6e7105fadc0c817ec241298709b427",
+    "fr3/e01/collision_audit.npz": "1aefad59ff7cfc461e4df7efa32df2a95c7a5455d2bf5bee7a5985354b832d3c",
+    "fr3/e01/scene.json": "947938df6cb84124999b666e8c66f45b37a34fa21619952bfed1d1475dd1e025",
+    "fr3/e02/audit.json": "ea64e6a10d1a91e66fdf64b1dc7b58d2a0556526d91270480f4cb1cbe1bb9222",
+    "fr3/e02/collision_audit.npz": "992ecea027e3bbdb1b2fdd936224c64b448a8332e20f09dc9e06363bf85358c0",
+    "fr3/e02/scene.json": "bb177ae385334a7c0520f9e67ea791557afb62e1ccbcd5f00e7c3eb1ef982a93",
+    "fr3/e03/audit.json": "565f514a363d184c8799000df3a0d5cb6a605f6f2bcca54ee3c51a22fbd487cf",
+    "fr3/e03/collision_audit.npz": "17a8474bdd8ff91ec5afa3fc95feecf25c2a6ad190e546a096a2d6e7e1956c37",
+    "fr3/e03/scene.json": "6d8d1a8f9bd4bfaa5a5bf1bd2859dd7872e3a1f92a0a6ffa9d6f9ff4f02e8a22",
+    "fr3/e04/audit.json": "7989ed1057a7b032898babeb59f95fc918b9298a3dcf95f3608101db798f245a",
+    "fr3/e04/collision_audit.npz": "8fed27176e82eda7f30ad6afacd8fb78076fc020852e1bf48501ff5c5cbb087b",
+    "fr3/e04/scene.json": "404c93bcb73aabb1bb4fa9b0a8faeb34b3bca6f2b5ac9e9185d92a9da5b41d50",
+    "fr3/e05/audit.json": "26575e1cb5255960816af6124892a4a95a9393c58ab6d06e3dcdabf90b99cf75",
+    "fr3/e05/collision_audit.npz": "0de6b5d13425fcc95646a959eb0ea07e9d8f82b9b1f508adef7f02a4d991d417",
+    "fr3/e05/scene.json": "d65dc6e52f5e4357fe8133689f259b1082cbbceb8a8bad1f73ad3a41cb8a67e7",
+    "fr3/e06/audit.json": "c054e1f9582ac8e8b9f4621235870a540b58b44a6819db249ad0439649d176f7",
+    "fr3/e06/collision_audit.npz": "f3414bb55b13ea5a2bfa0ccae6af958c90adfb5d21f2695a3313758424ac206a",
+    "fr3/e06/scene.json": "079dfac8e2a80a6e4532d6e3c84d5ded59dbc26e86edb11af02b34e00588754e",
+    "fr3/e07/audit.json": "e9f56fa182d02907701a20a3145067e296b30cf9632d7d2e002528f38c4467ab",
+    "fr3/e07/collision_audit.npz": "dd8ac16d25c8eefd20398a8e2feaed8a062797acf1e2d3b7baec3884526028c8",
+    "fr3/e07/scene.json": "c4912fb53c56193810247a81ffba4339d1e275bdb1387c3f01093fb4a6a14382",
+    "fr3/e08/audit.json": "76ab39afbf39704612fc2cb5a987cf53dad7d919ea2302b29f1b2babf5a2bcf4",
+    "fr3/e08/collision_audit.npz": "02099e37a1e2009aa171344e0d2ee4860537a52eb9b42034eab0740a12a86b36",
+    "fr3/e08/scene.json": "b34df06b241a2d3631fbaa1705a793f0454f795f01f144628764ea532b7e1783",
+    "fr3/e09/audit.json": "605931f2c29bf78a3a67fb07b58856761bfa5694ef85f6ba9746d2ccb21e5003",
+    "fr3/e09/collision_audit.npz": "86db25121344b9c0c50cb46033555ea3f0a6938fe428b509d3d950aa3c489c19",
+    "fr3/e09/scene.json": "19d810014d162011d78319d51a0bf9f2626a06d949d2909784379bf20d686a6a"
+  },
+  "cases": [
+    {
+      "id": "forest_n00200",
+      "kind": "forest",
+      "scene": "scenes/forest/figure6.json",
+      "roadmap": "forest_n00200",
+      "size": 200
+    },
+    {
+      "id": "forest_n00400",
+      "kind": "forest",
+      "scene": "scenes/forest/figure6.json",
+      "roadmap": "forest_n00400",
+      "size": 400
+    },
+    {
+      "id": "forest_n00800",
+      "kind": "forest",
+      "scene": "scenes/forest/figure6.json",
+      "roadmap": "forest_n00800",
+      "size": 800
+    },
+    {
+      "id": "forest_n01600",
+      "kind": "forest",
+      "scene": "scenes/forest/figure6.json",
+      "roadmap": "forest_n01600",
+      "size": 1600
+    },
+    {
+      "id": "forest_e00",
+      "kind": "forest",
+      "scene": "scenes/forest/e00.json",
+      "roadmap": "forest_n00200",
+      "size": 200
+    },
+    {
+      "id": "forest_e01",
+      "kind": "forest",
+      "scene": "scenes/forest/e01.json",
+      "roadmap": "forest_n00200",
+      "size": 200
+    },
+    {
+      "id": "forest_e02",
+      "kind": "forest",
+      "scene": "scenes/forest/e02.json",
+      "roadmap": "forest_n00200",
+      "size": 200
+    },
+    {
+      "id": "forest_e03",
+      "kind": "forest",
+      "scene": "scenes/forest/e03.json",
+      "roadmap": "forest_n00200",
+      "size": 200
+    },
+    {
+      "id": "forest_e04",
+      "kind": "forest",
+      "scene": "scenes/forest/e04.json",
+      "roadmap": "forest_n00200",
+      "size": 200
+    },
+    {
+      "id": "forest_e05",
+      "kind": "forest",
+      "scene": "scenes/forest/e05.json",
+      "roadmap": "forest_n00200",
+      "size": 200
+    },
+    {
+      "id": "forest_e06",
+      "kind": "forest",
+      "scene": "scenes/forest/e06.json",
+      "roadmap": "forest_n00200",
+      "size": 200
+    },
+    {
+      "id": "forest_e07",
+      "kind": "forest",
+      "scene": "scenes/forest/e07.json",
+      "roadmap": "forest_n00200",
+      "size": 200
+    },
+    {
+      "id": "forest_e08",
+      "kind": "forest",
+      "scene": "scenes/forest/e08.json",
+      "roadmap": "forest_n00200",
+      "size": 200
+    },
+    {
+      "id": "forest_e09",
+      "kind": "forest",
+      "scene": "scenes/forest/e09.json",
+      "roadmap": "forest_n00200",
+      "size": 200
+    },
+    {
+      "id": "fr3_e00",
+      "kind": "fr3",
+      "scene": "scenes/fr3/e00/scene.json",
+      "roadmap": "fr3_n03000",
+      "size": 3000
+    },
+    {
+      "id": "fr3_e01",
+      "kind": "fr3",
+      "scene": "scenes/fr3/e01/scene.json",
+      "roadmap": "fr3_n03000",
+      "size": 3000
+    },
+    {
+      "id": "fr3_e02",
+      "kind": "fr3",
+      "scene": "scenes/fr3/e02/scene.json",
+      "roadmap": "fr3_n03000",
+      "size": 3000
+    },
+    {
+      "id": "fr3_e03",
+      "kind": "fr3",
+      "scene": "scenes/fr3/e03/scene.json",
+      "roadmap": "fr3_n03000",
+      "size": 3000
+    },
+    {
+      "id": "fr3_e04",
+      "kind": "fr3",
+      "scene": "scenes/fr3/e04/scene.json",
+      "roadmap": "fr3_n03000",
+      "size": 3000
+    },
+    {
+      "id": "fr3_e05",
+      "kind": "fr3",
+      "scene": "scenes/fr3/e05/scene.json",
+      "roadmap": "fr3_n03000",
+      "size": 3000
+    },
+    {
+      "id": "fr3_e06",
+      "kind": "fr3",
+      "scene": "scenes/fr3/e06/scene.json",
+      "roadmap": "fr3_n03000",
+      "size": 3000
+    },
+    {
+      "id": "fr3_e07",
+      "kind": "fr3",
+      "scene": "scenes/fr3/e07/scene.json",
+      "roadmap": "fr3_n03000",
+      "size": 3000
+    },
+    {
+      "id": "fr3_e08",
+      "kind": "fr3",
+      "scene": "scenes/fr3/e08/scene.json",
+      "roadmap": "fr3_n03000",
+      "size": 3000
+    },
+    {
+      "id": "fr3_e09",
+      "kind": "fr3",
+      "scene": "scenes/fr3/e09/scene.json",
+      "roadmap": "fr3_n03000",
+      "size": 3000
+    }
+  ],
+  "scenes_frozen_utc": "2026-10-26T08:12:14.232388+00:00",
+  "scene_preparation_statuses": {
+    "ready": 21
+  }
+}

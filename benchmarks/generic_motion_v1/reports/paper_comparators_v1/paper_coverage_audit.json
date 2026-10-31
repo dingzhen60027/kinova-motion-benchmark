@@ -1,0 +1,195 @@
+{
+  "schema_version": 1,
+  "kind": "published_paper_method_coverage_audit",
+  "created_at_utc": "2026-10-29T14:42:30.522308+00:00",
+  "audited_head": "b73f2ddbcbcbb485a883d08b6b42641ddf1e6d81",
+  "official_paper": {
+    "url": "https://www.roboticsproceedings.org/rss21/p045.pdf",
+    "index_url": "https://www.roboticsproceedings.org/rss21/p045.html",
+    "doi": "10.15607/RSS.2025.XXI.045",
+    "sha256": "e61c094de19de72481ac480c37c1717bb9d145c675a9b3fc71066ea0fc726c57",
+    "bytes": 6908376,
+    "pages": 14
+  },
+  "comparison_combinations": [
+    {
+      "objective": "minimum_distance",
+      "method": "NTO",
+      "benchmark_method": "NTO_PAPER",
+      "paper_solver": "SNOPT",
+      "role": "external_baseline"
+    },
+    {
+      "objective": "minimum_distance",
+      "method": "LSCS",
+      "benchmark_method": "EI_ZO",
+      "paper_solver": "MOSEK",
+      "role": "EI-ZO_single_path_backend"
+    },
+    {
+      "objective": "minimum_distance",
+      "method": "LGCS",
+      "benchmark_method": "LGCS",
+      "paper_solver": "Gurobi",
+      "role": "EI-ZO_two_path_backend"
+    },
+    {
+      "objective": "minimum_time",
+      "method": "NTO",
+      "benchmark_method": "NTO_PAPER",
+      "paper_solver": "IPOPT",
+      "role": "external_baseline"
+    },
+    {
+      "objective": "minimum_time",
+      "method": "SCSTO",
+      "benchmark_method": "EI_ZO",
+      "paper_solver": "Clarabel",
+      "role": "EI-ZO_single_path_backend"
+    }
+  ],
+  "missing_experimental_method_names": [],
+  "figures_checked": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "tables_checked": [
+    "I",
+    "II",
+    "III",
+    "IV",
+    "V",
+    "VI"
+  ],
+  "pdf_pages_visually_checked": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14
+  ],
+  "non_comparison_references": {
+    "set_construction": [
+      "IRIS",
+      "IRIS-NP",
+      "IRIS-NP2",
+      "IRIS-ZO",
+      "Visibility Clique Cover"
+    ],
+    "intro_trajectory_optimization": [
+      "STOMP",
+      "CHOMP",
+      "TrajOpt"
+    ],
+    "sampling_background_or_pipeline": [
+      "OMPL",
+      "PRM",
+      "Lazy PRM"
+    ],
+    "future_complementary_work": [
+      "vectorized sampling-based planning",
+      "FCIT*"
+    ]
+  },
+  "separate_local_variant": "NTO_REFINED: fixed clearance and bounded adaptive collocation are local engineering extensions; retain separate from NTO_PAPER",
+  "published_Nc": 150,
+  "current_NTO_PAPER_interior_bindings": 149,
+  "collocation_provenance": "k/Nc k=1,...,Nc-1 is author TeX comment, not published explicit convention",
+  "DRM_reporting": "shared frontend and initial-path reference; not a separate continuous min-time solver",
+  "source_locations": {
+    "baseline": "sections/experiments.tex:45-50 / published PDF p9 VII-A.3",
+    "DBMPs": "sections/experiments.tex:51-57 / published PDF p9 VII-A.4",
+    "table_I": "figures/benchmarks/benchmark_results.tex / published PDF p10",
+    "parameters": "sections/appendix.tex:60-159 / published PDF p14 Appendix D",
+    "background": "sections/relatedworks.tex / published PDF pp2-3"
+  },
+  "files": [
+    {
+      "path": "reproduction/reports/paper_completion/source_evidence/arxiv_text/main.tex",
+      "sha256": "604ff12740c368e8f5e3b2a02c469a9e0846f7f70edf3b6d8bcaa58a98512096",
+      "bytes": 5439
+    },
+    {
+      "path": "reproduction/reports/paper_completion/source_evidence/arxiv_text/sections/experiments.tex",
+      "sha256": "67ef1476c3153031ad88e286ec4bd5361d9c6bacf34b0e1f75b27aad389d9394",
+      "bytes": 13679
+    },
+    {
+      "path": "reproduction/reports/paper_completion/source_evidence/arxiv_text/sections/appendix.tex",
+      "sha256": "164a88154fb9340f14a6c3dd8320d958849279cb98b5deb5c9c1d2a06dc9c9c5",
+      "bytes": 12527
+    },
+    {
+      "path": "reproduction/reports/paper_completion/source_evidence/arxiv_text/sections/limitations.tex",
+      "sha256": "c3a31d37c461aea016614acc0ad758109ed390185573bf84f587cb7fa4271733",
+      "bytes": 3072
+    },
+    {
+      "path": "reproduction/reports/paper_completion/source_evidence/arxiv_text/sections/relatedworks.tex",
+      "sha256": "0876b4bcef5038b7fdd940712c44623e5a8b9487651a47c362b751ad5b003c7b",
+      "bytes": 5320
+    },
+    {
+      "path": "reproduction/reports/paper_completion/source_evidence/arxiv_text/figures/benchmarks/benchmark_results.tex",
+      "sha256": "3e321734b973f518cbe53597bc0f6efd321685d286a14eccdaafdb9c6ddaa9d9",
+      "bytes": 2951
+    },
+    {
+      "path": "benchmarks/generic_motion_v1/runners/paper_nto.py",
+      "sha256": "f6697df7115cf258b5cd7773de14aeb98e67a7e3d0952654715f765748c0337f",
+      "bytes": 17579
+    },
+    {
+      "path": "benchmarks/generic_motion_v1/runners/paper_nto_refined.py",
+      "sha256": "bbb167acd8b72d686286a59d464a99c1a3bf51405b3ec78052114fd25c9e1360",
+      "bytes": 9971
+    },
+    {
+      "path": "benchmarks/generic_motion_v1/runners/csdecomp_baseline.py",
+      "sha256": "5c44255f5729b784c1233dac8ddceee5ea6875a7acd38c14f1c72a0e55cdfcaf",
+      "bytes": 44215
+    },
+    {
+      "path": "benchmarks/generic_motion_v1/runners/paper_lgcs.py",
+      "sha256": "66de3124f4c19635c37ee4b78fc0231d96c933d870ed534313eeec33a4df4951",
+      "bytes": 15648
+    },
+    {
+      "path": "benchmarks/generic_motion_v1/runners/paper_lgcs_scip.py",
+      "sha256": "935c45fe4aa61343efac1480e5aa7ea7071ad9a285ff878793a7133af0fb6332",
+      "bytes": 18916
+    },
+    {
+      "path": "benchmarks/generic_motion_v1/reports/paper_comparators_v1/source_evidence/rss2025_page09.png",
+      "sha256": "f724eb59baf0235711caaa548bc6f2d3966bd8301ecc145068a1911cc497430c",
+      "bytes": 241680
+    },
+    {
+      "path": "benchmarks/generic_motion_v1/reports/paper_comparators_v1/source_evidence/rss2025_page10.png",
+      "sha256": "bd5736165bbe7fbf95c0d5339ff430b1cb134e9b943a28e2aa4de986764e9050",
+      "bytes": 463449
+    }
+  ],
+  "checks": {
+    "five_method_objective_combinations": true,
+    "sole_external_baseline": "NTO",
+    "all_audited_files_exist": true,
+    "official_pdf_hash_verified": true
+  },
+  "execution_scope": "Read-only source and PDF audit; no planning runs or test-set reads performed",
+  "tool_issue_retained": "Bundled Poppler requires GLIBC_2.38; system /usr/bin/pdfinfo and /usr/bin/pdftoppm worked; no dependency changes"
+}

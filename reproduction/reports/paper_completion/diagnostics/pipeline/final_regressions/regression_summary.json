@@ -1,0 +1,264 @@
+{
+  "historical_run": "/home/eric/wjg/wd/csdecomp/reproduction/runs/20261025T082752.022456Z_paper_fr3",
+  "regressions": [
+    {
+      "case": "e00_r09_n12000",
+      "method": "LGCS",
+      "original_result": {
+        "status": "error",
+        "solver_success": false,
+        "validation_passed": false,
+        "collision_free": null,
+        "cost": null,
+        "total_seconds": 0.3720306414179504,
+        "reason": "RuntimeError('[DRMPlanner] No collision-free path exists in roadmap.')",
+        "traceback": "Traceback (most recent call last):\n  File \"/home/eric/wjg/wd/csdecomp/reproduction/paper_protocol/run.py\", line 374, in case_worker\n    answer = pipe.solve(method, path, drm, out)\n  File \"/home/eric/wjg/wd/csdecomp/reproduction/paper_protocol/pipeline.py\", line 117, in solve\n    second_path = self.forest.alternate_path(drm, regions[index])\n  File \"/home/eric/wjg/wd/csdecomp/reproduction/paper_protocol/data.py\", line 157, in alternate\n    ok, path = plan.Plan(\nRuntimeError: [DRMPlanner] No collision-free path exists in roadmap.\n",
+        "method": "LGCS",
+        "case_id": "e00_r09_n12000",
+        "elapsed_wall_seconds": 0.3771826052106917
+      },
+      "status": "success_numerical",
+      "recovery_iterations": 0,
+      "inflation_calls": 4,
+      "roundoff_corrections": [
+        5.390236434976714e-08,
+        1.1503529417922209e-07,
+        0.0,
+        0.0
+      ],
+      "construction_seconds": 0.39990718802437186,
+      "optimization_seconds": 0.0304221180267632,
+      "validation_seconds": 0.023523195646703243,
+      "total_seconds": 0.43032930605113506,
+      "wall_seconds": 0.4566384358331561,
+      "history": [
+        {
+          "iteration": 0,
+          "collisions": 0,
+          "passed": true
+        }
+      ],
+      "second_path": null,
+      "alternate_status": "unavailable",
+      "region_representation_audit": [
+        {
+          "stage": "inflate",
+          "maximum_measured_residual": 5.390236434976714e-08,
+          "adjusted_rows": 2,
+          "maximum_rhs_change": 5.3902364571811745e-08
+        },
+        {
+          "stage": "inflate",
+          "maximum_measured_residual": 1.1503529417922209e-07,
+          "adjusted_rows": 4,
+          "maximum_rhs_change": 1.150352946233113e-07
+        },
+        {
+          "stage": "inflate",
+          "maximum_measured_residual": 0.0,
+          "adjusted_rows": 0,
+          "maximum_rhs_change": 8.881784197001252e-16
+        },
+        {
+          "stage": "inflate",
+          "maximum_measured_residual": 0.0,
+          "adjusted_rows": 0,
+          "maximum_rhs_change": 8.881784197001252e-16
+        }
+      ],
+      "validation": {
+        "passed": true,
+        "collision_free": true,
+        "native_cuda_collision_free": true,
+        "independent_collision_free": true,
+        "endpoint_error": 2.6687221539441856e-07,
+        "endpoint_velocity": 0.0,
+        "limits_pass": true,
+        "region_residual": 4.320292745774168e-07,
+        "derivative_pass": true,
+        "derivative_bounds": {},
+        "cost": 6.701583469594476,
+        "duration": null,
+        "samples": 1344,
+        "cuda_collisions": 0,
+        "independent_collisions": 0,
+        "model_disagreements": 0,
+        "maximum_sample_joint_step": 0.0049938766190853155,
+        "collision_points": [],
+        "collision_regions": [],
+        "minimum_clearance": null,
+        "check": "independent_Drake_or_exact_circle_numerical_check_not_continuous_certificate"
+      },
+      "candidate_solver_success": true,
+      "regions": 4
+    },
+    {
+      "case": "e09_r07_n06000",
+      "method": "SCSTO",
+      "original_result": {
+        "status": "error",
+        "solver_success": false,
+        "validation_passed": false,
+        "collision_free": null,
+        "cost": null,
+        "total_seconds": 0.11020199721679091,
+        "reason": "RuntimeError('line start is not contained in region 0')",
+        "traceback": "Traceback (most recent call last):\n  File \"/home/eric/wjg/wd/csdecomp/reproduction/paper_protocol/run.py\", line 374, in case_worker\n    answer = pipe.solve(method, path, drm, out)\n  File \"/home/eric/wjg/wd/csdecomp/reproduction/paper_protocol/pipeline.py\", line 181, in solve\n    fixed, _ = csd.EditRegionsCuda(\nRuntimeError: line start is not contained in region 0\n",
+        "method": "SCSTO",
+        "case_id": "e09_r07_n06000",
+        "elapsed_wall_seconds": 0.11024155607447028
+      },
+      "status": "success_numerical",
+      "recovery_iterations": 1,
+      "inflation_calls": 2,
+      "roundoff_corrections": [
+        2.855127689826986e-09,
+        0.0
+      ],
+      "construction_seconds": 0.059393937699496746,
+      "optimization_seconds": 0.04352977219969034,
+      "validation_seconds": 0.07202506950125098,
+      "total_seconds": 0.10292370989918709,
+      "wall_seconds": 0.17881902400404215,
+      "history": [
+        {
+          "iteration": 0,
+          "collisions": 23,
+          "passed": false
+        },
+        {
+          "iteration": 1,
+          "collisions": 0,
+          "passed": true
+        }
+      ],
+      "second_path": null,
+      "alternate_status": "not_requested",
+      "region_representation_audit": [
+        {
+          "stage": "inflate",
+          "maximum_measured_residual": 2.855127689826986e-09,
+          "adjusted_rows": 1,
+          "maximum_rhs_change": 2.8551278008492886e-09
+        },
+        {
+          "stage": "inflate",
+          "maximum_measured_residual": 0.0,
+          "adjusted_rows": 0,
+          "maximum_rhs_change": 8.881784197001252e-16
+        },
+        {
+          "stage": "native_edit_input",
+          "maximum_rhs_change": 3.0994415283203125e-06,
+          "native_seed_containment": true
+        },
+        {
+          "stage": "native_edit_input",
+          "maximum_rhs_change": 0.0,
+          "native_seed_containment": true
+        },
+        {
+          "stage": "edit",
+          "maximum_measured_residual": 0.0,
+          "adjusted_rows": 0,
+          "maximum_rhs_change": 8.881784197001252e-16
+        },
+        {
+          "stage": "edit",
+          "maximum_measured_residual": 0.0,
+          "adjusted_rows": 0,
+          "maximum_rhs_change": 8.881784197001252e-16
+        }
+      ],
+      "validation": {
+        "passed": true,
+        "collision_free": true,
+        "native_cuda_collision_free": true,
+        "independent_collision_free": true,
+        "endpoint_error": 1.2078020832649842e-07,
+        "endpoint_velocity": 3.879538795800792e-13,
+        "limits_pass": true,
+        "region_residual": -2.148168167126485e-06,
+        "derivative_pass": true,
+        "derivative_bounds": {
+          "velocity": 1.0000000000190685,
+          "acceleration": 0.999997846904177,
+          "continuity_residual": 1.1324274851176597e-14
+        },
+        "cost": 6.366284855859802,
+        "duration": 6.366284855859802,
+        "samples": 2001,
+        "cuda_collisions": 0,
+        "independent_collisions": 0,
+        "model_disagreements": 0,
+        "maximum_sample_joint_step": 0.00473825818259307,
+        "collision_points": [],
+        "collision_regions": [],
+        "minimum_clearance": null,
+        "check": "independent_Drake_or_exact_circle_numerical_check_not_continuous_certificate"
+      },
+      "candidate_solver_success": true,
+      "regions": 2
+    }
+  ],
+  "historical_status_counts": {
+    "completed": 195,
+    "error": 197,
+    "drm_failed": 8
+  },
+  "historical_native_failure_categories": {
+    "graph_disconnected": 197,
+    "steering_or_lazy_budget_exhausted": 8
+  },
+  "historical_native_failures_by_environment": {
+    "e00": {
+      "graph_disconnected": 5
+    },
+    "e01": {
+      "graph_disconnected": 40
+    },
+    "e02": {
+      "graph_disconnected": 40
+    },
+    "e04": {
+      "graph_disconnected": 40
+    },
+    "e05": {
+      "graph_disconnected": 32,
+      "steering_or_lazy_budget_exhausted": 8
+    },
+    "e07": {
+      "graph_disconnected": 40
+    }
+  },
+  "old_boundary_goal_audit": {
+    "original": [
+      0.2228802454013384,
+      0.5167673625840713,
+      -1.7584181905730814,
+      -1.1701452010337567,
+      -0.19353512993511482,
+      4.438407215501558,
+      -1.9346344203908377
+    ],
+    "canonical": [
+      0.22288024425506592,
+      0.5167673826217651,
+      -1.7584182024002075,
+      -1.1701451539993286,
+      -0.19353513419628143,
+      4.4384074211120605,
+      -1.9346344470977783
+    ],
+    "representation": "float32_roundtrip_without_endpoint_displacement",
+    "joint_l2_error": 2.1392063612154796e-07,
+    "original_cuda_valid": true,
+    "original_independent_valid": true,
+    "canonical_cuda_valid": true,
+    "canonical_independent_valid": false,
+    "original_limits_valid": true,
+    "canonical_limits_valid": true,
+    "original_valid": true,
+    "canonical_valid": false
+  }
+}

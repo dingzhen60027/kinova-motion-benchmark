@@ -1,0 +1,357 @@
+[
+  {
+    "name": "tests",
+    "argv": [
+      "bash",
+      "local/python.sh",
+      "-m",
+      "pytest",
+      "tests/research_platform",
+      "-q"
+    ],
+    "cwd": "/home/eric/wjg/wd/csdecomp",
+    "started_utc": "2026-10-27T06:08:25.924346+00:00",
+    "status": "finished",
+    "exit_code": 0,
+    "wall_seconds": 12.23179943067953
+  },
+  {
+    "name": "doctor",
+    "argv": [
+      "bash",
+      "local/python.sh",
+      "-m",
+      "research_platform",
+      "doctor",
+      "--probe",
+      "--output",
+      "/home/eric/wjg/wd/csdecomp/research_platform/reports/strengthened_baselines/v1_20261027/doctor.json"
+    ],
+    "cwd": "/home/eric/wjg/wd/csdecomp",
+    "started_utc": "2026-10-27T06:08:38.156372+00:00",
+    "status": "finished",
+    "exit_code": 0,
+    "wall_seconds": 1.3657284849323332
+  },
+  {
+    "name": "regression_config",
+    "argv": [
+      "bash",
+      "local/python.sh",
+      "-m",
+      "research_platform",
+      "config",
+      "configs/research/forest_baseline_regression.json",
+      "--output",
+      "/home/eric/wjg/wd/csdecomp/research_platform/reports/strengthened_baselines/v1_20261027/regression_resolved.json"
+    ],
+    "cwd": "/home/eric/wjg/wd/csdecomp",
+    "started_utc": "2026-10-27T06:08:39.522392+00:00",
+    "status": "finished",
+    "exit_code": 0,
+    "wall_seconds": 0.03171395370736718
+  },
+  {
+    "name": "regression_run",
+    "argv": [
+      "bash",
+      "local/python.sh",
+      "-m",
+      "research_platform",
+      "run",
+      "--config",
+      "configs/research/forest_baseline_regression.json",
+      "--output",
+      "/home/eric/wjg/wd/csdecomp/runs/v1_20261027_regression"
+    ],
+    "cwd": "/home/eric/wjg/wd/csdecomp",
+    "started_utc": "2026-10-27T06:08:39.554335+00:00",
+    "status": "finished",
+    "exit_code": 0,
+    "wall_seconds": 10.331060805823654
+  },
+  {
+    "name": "regression_verify",
+    "argv": [
+      "bash",
+      "local/python.sh",
+      "-m",
+      "research_platform",
+      "verify",
+      "--run",
+      "/home/eric/wjg/wd/csdecomp/runs/v1_20261027_regression"
+    ],
+    "cwd": "/home/eric/wjg/wd/csdecomp",
+    "started_utc": "2026-10-27T06:08:49.885621+00:00",
+    "status": "finished",
+    "exit_code": 0,
+    "wall_seconds": 0.06398697989061475
+  },
+  {
+    "name": "regression_replay",
+    "argv": [
+      "bash",
+      "local/python.sh",
+      "-m",
+      "research_platform",
+      "replay",
+      "--run",
+      "/home/eric/wjg/wd/csdecomp/runs/v1_20261027_regression",
+      "--case",
+      "e000_r000_n00200"
+    ],
+    "cwd": "/home/eric/wjg/wd/csdecomp",
+    "started_utc": "2026-10-27T06:08:49.949933+00:00",
+    "status": "finished",
+    "exit_code": 0,
+    "wall_seconds": 0.4144208012148738
+  },
+  {
+    "name": "regression_resume",
+    "argv": [
+      "bash",
+      "local/python.sh",
+      "-m",
+      "research_platform",
+      "resume",
+      "--run",
+      "/home/eric/wjg/wd/csdecomp/runs/v1_20261027_regression"
+    ],
+    "cwd": "/home/eric/wjg/wd/csdecomp",
+    "started_utc": "2026-10-27T06:08:50.371048+00:00",
+    "status": "finished",
+    "exit_code": 0,
+    "wall_seconds": 0.4642663737758994
+  },
+  {
+    "name": "forest_config",
+    "argv": [
+      "bash",
+      "local/python.sh",
+      "-m",
+      "research_platform",
+      "config",
+      "configs/research/forest_baselines.json",
+      "--output",
+      "/home/eric/wjg/wd/csdecomp/research_platform/reports/strengthened_baselines/v1_20261027/forest_resolved.json"
+    ],
+    "cwd": "/home/eric/wjg/wd/csdecomp",
+    "started_utc": "2026-10-27T06:08:50.842104+00:00",
+    "status": "finished",
+    "exit_code": 0,
+    "wall_seconds": 0.06371391098946333
+  },
+  {
+    "name": "forest_run",
+    "argv": [
+      "bash",
+      "local/python.sh",
+      "-m",
+      "research_platform",
+      "run",
+      "--config",
+      "configs/research/forest_baselines.json",
+      "--output",
+      "/home/eric/wjg/wd/csdecomp/runs/v1_20261027_forest"
+    ],
+    "cwd": "/home/eric/wjg/wd/csdecomp",
+    "started_utc": "2026-10-27T06:08:50.906086+00:00",
+    "status": "finished",
+    "exit_code": 0,
+    "wall_seconds": 35.41866324516013
+  },
+  {
+    "name": "forest_verify",
+    "argv": [
+      "bash",
+      "local/python.sh",
+      "-m",
+      "research_platform",
+      "verify",
+      "--run",
+      "/home/eric/wjg/wd/csdecomp/runs/v1_20261027_forest"
+    ],
+    "cwd": "/home/eric/wjg/wd/csdecomp",
+    "started_utc": "2026-10-27T06:09:26.326345+00:00",
+    "status": "finished",
+    "exit_code": 0,
+    "wall_seconds": 0.16413396084681153
+  },
+  {
+    "name": "forest_replay",
+    "argv": [
+      "bash",
+      "local/python.sh",
+      "-m",
+      "research_platform",
+      "replay",
+      "--run",
+      "/home/eric/wjg/wd/csdecomp/runs/v1_20261027_forest",
+      "--case",
+      "e010_r000_n00200"
+    ],
+    "cwd": "/home/eric/wjg/wd/csdecomp",
+    "started_utc": "2026-10-27T06:09:26.491004+00:00",
+    "status": "finished",
+    "exit_code": 0,
+    "wall_seconds": 0.4143672161735594
+  },
+  {
+    "name": "forest_resume",
+    "argv": [
+      "bash",
+      "local/python.sh",
+      "-m",
+      "research_platform",
+      "resume",
+      "--run",
+      "/home/eric/wjg/wd/csdecomp/runs/v1_20261027_forest"
+    ],
+    "cwd": "/home/eric/wjg/wd/csdecomp",
+    "started_utc": "2026-10-27T06:09:26.924177+00:00",
+    "status": "finished",
+    "exit_code": 0,
+    "wall_seconds": 0.7647798368707299
+  },
+  {
+    "name": "fr3_config",
+    "argv": [
+      "bash",
+      "local/python.sh",
+      "-m",
+      "research_platform",
+      "config",
+      "configs/research/fr3_baselines.json",
+      "--output",
+      "/home/eric/wjg/wd/csdecomp/research_platform/reports/strengthened_baselines/v1_20261027/fr3_resolved.json"
+    ],
+    "cwd": "/home/eric/wjg/wd/csdecomp",
+    "started_utc": "2026-10-27T06:09:27.709664+00:00",
+    "status": "finished",
+    "exit_code": 0,
+    "wall_seconds": 0.06375022511929274
+  },
+  {
+    "name": "fr3_run",
+    "argv": [
+      "bash",
+      "local/python.sh",
+      "-m",
+      "research_platform",
+      "run",
+      "--config",
+      "configs/research/fr3_baselines.json",
+      "--output",
+      "/home/eric/wjg/wd/csdecomp/runs/v1_20261027_fr3"
+    ],
+    "cwd": "/home/eric/wjg/wd/csdecomp",
+    "started_utc": "2026-10-27T06:09:27.773776+00:00",
+    "status": "finished",
+    "exit_code": 0,
+    "wall_seconds": 55.200016191229224
+  },
+  {
+    "name": "fr3_verify",
+    "argv": [
+      "bash",
+      "local/python.sh",
+      "-m",
+      "research_platform",
+      "verify",
+      "--run",
+      "/home/eric/wjg/wd/csdecomp/runs/v1_20261027_fr3"
+    ],
+    "cwd": "/home/eric/wjg/wd/csdecomp",
+    "started_utc": "2026-10-27T06:10:22.974221+00:00",
+    "status": "finished",
+    "exit_code": 0,
+    "wall_seconds": 0.21410855278372765
+  },
+  {
+    "name": "fr3_replay",
+    "argv": [
+      "bash",
+      "local/python.sh",
+      "-m",
+      "research_platform",
+      "replay",
+      "--run",
+      "/home/eric/wjg/wd/csdecomp/runs/v1_20261027_fr3",
+      "--case",
+      "e010_r000_n03000"
+    ],
+    "cwd": "/home/eric/wjg/wd/csdecomp",
+    "started_utc": "2026-10-27T06:10:23.189990+00:00",
+    "status": "finished",
+    "exit_code": 0,
+    "wall_seconds": 2.0172851649113
+  },
+  {
+    "name": "fr3_resume",
+    "argv": [
+      "bash",
+      "local/python.sh",
+      "-m",
+      "research_platform",
+      "resume",
+      "--run",
+      "/home/eric/wjg/wd/csdecomp/runs/v1_20261027_fr3"
+    ],
+    "cwd": "/home/eric/wjg/wd/csdecomp",
+    "started_utc": "2026-10-27T06:10:25.229053+00:00",
+    "status": "finished",
+    "exit_code": 0,
+    "wall_seconds": 0.8146757748909295
+  },
+  {
+    "name": "historical_forest_verify",
+    "argv": [
+      "bash",
+      "local/python.sh",
+      "-m",
+      "research_platform",
+      "verify",
+      "--run",
+      "/home/eric/wjg/wd/csdecomp/runs/platform_final_v4_forest"
+    ],
+    "cwd": "/home/eric/wjg/wd/csdecomp",
+    "started_utc": "2026-10-27T06:10:26.060960+00:00",
+    "status": "finished",
+    "exit_code": 0,
+    "wall_seconds": 0.06373422872275114
+  },
+  {
+    "name": "historical_fr3_verify",
+    "argv": [
+      "bash",
+      "local/python.sh",
+      "-m",
+      "research_platform",
+      "verify",
+      "--run",
+      "/home/eric/wjg/wd/csdecomp/runs/platform_final_v4_fr3"
+    ],
+    "cwd": "/home/eric/wjg/wd/csdecomp",
+    "started_utc": "2026-10-27T06:10:26.125138+00:00",
+    "status": "finished",
+    "exit_code": 0,
+    "wall_seconds": 0.16391508094966412
+  },
+  {
+    "name": "historical_batch_verify",
+    "argv": [
+      "bash",
+      "local/python.sh",
+      "-m",
+      "research_platform",
+      "verify",
+      "--run",
+      "/home/eric/wjg/wd/csdecomp/runs/platform_final_v4_batch"
+    ],
+    "cwd": "/home/eric/wjg/wd/csdecomp",
+    "started_utc": "2026-10-27T06:10:26.289480+00:00",
+    "status": "finished",
+    "exit_code": 0,
+    "wall_seconds": 0.11379795195534825
+  }
+]

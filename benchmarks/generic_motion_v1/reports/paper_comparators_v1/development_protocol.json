@@ -1,0 +1,79 @@
+{
+  "version": "paper_comparators_v1",
+  "declared_utc": "2026-10-29T14:40:09.947353+00:00",
+  "starting_commit": "b73f2ddbc",
+  "purpose": "Complete the original-paper comparator matrix using NTO_PAPER on the same safe native DRM frontend as already sealed LSCS/LGCS/SCSTO. Keep NTO_REFINED separate.",
+  "inputs": {
+    "smoke": "benchmarks/generic_motion_v1/manifests/smoke.jsonl",
+    "dev": "benchmarks/generic_motion_v1/manifests/dev.jsonl",
+    "selection": "All registered cases including invalid inputs and frontend failures",
+    "roadmap_nodes": 6000,
+    "smoke_roadmap_seeds": [
+      0
+    ],
+    "dev_roadmap_seeds": [
+      0,
+      1,
+      2
+    ]
+  },
+  "methods": [
+    [
+      "NTO_PAPER",
+      "minimum_distance"
+    ],
+    [
+      "NTO_PAPER",
+      "minimum_time"
+    ]
+  ],
+  "planned_registered_slots": {
+    "smoke": 20,
+    "dev": 360
+  },
+  "nto_original": {
+    "distance_solver": "SNOPT",
+    "time_solver": "IPOPT",
+    "distance_spline_order": 2,
+    "time_spline_order": 4,
+    "collocation_parameter_Nc": 150,
+    "interior_locations": 149,
+    "clearance_m": 0.0,
+    "adaptive_refinement": false,
+    "maximum_solves": 1,
+    "control_points": "All DRM nodes retained; order4 duplicates each endpoint once",
+    "snopt_total_iterations": "Existing original backend default10000; unchanged",
+    "unpublished_choices": "See frozen paper_nto.PROFILE; no test-based tuning"
+  },
+  "comparison": {
+    "reused_runs": [
+      "benchmarks/generic_motion_v1/results/rss2025_reliable_v2_smoke_s000",
+      "benchmarks/generic_motion_v1/results/rss2025_reliable_v2_dev_s000",
+      "benchmarks/generic_motion_v1/results/rss2025_reliable_v2_dev_s001",
+      "benchmarks/generic_motion_v1/results/rss2025_reliable_v2_dev_s002"
+    ],
+    "reuse_rule": "Require exact runtime_source_hashes, resolved evaluation config, inputs, seeds, roadmap files and60s deadline equality. No repeated planner calls for these sealed observations. Each method-query appears once.",
+    "reused_slots": 950,
+    "primary_methods": [
+      "LSCS",
+      "LGCS",
+      "NTO-distance",
+      "SCSTO",
+      "NTO-time"
+    ],
+    "supplementary_methods": [
+      "NTO-refined-distance",
+      "NTO-refined-time"
+    ],
+    "external_cold_budget_seconds": 60,
+    "gpu_concurrency": 1,
+    "test_performance_runs": 0
+  },
+  "invariants": [
+    "No runtime/source/config/robot/filter/endpoint changes",
+    "Every success requires existing independent numerical validation",
+    "Preserve every failed solver candidate and native log",
+    "No selection based on method success or per-case best-result merging",
+    "Scene-cluster intervals; open control separate; costs paired on common success"
+  ]
+}

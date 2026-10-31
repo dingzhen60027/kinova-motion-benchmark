@@ -1,0 +1,42 @@
+{
+  "name": "figure6_public_table_v1",
+  "paper": "arXiv:2504.10783v1",
+  "scope": "Environment acceptance only; not a new full-method paper benchmark",
+  "environment_seeds": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+  "forest_figure_roadmap_sizes": [200, 400, 800, 1600],
+  "forest_random_roadmap_size": 200,
+  "fr3_roadmap_size": 3000,
+  "roadmap_seed": 0,
+  "child_timeout_seconds": 120,
+  "collision_audit_points_per_scene": 1024,
+  "forest_reference": "reproduction/reports/environment_reconstruction/forest_evidence/scene.json",
+  "fr3_scene_overrides": {
+    "table_size": [2.5, 2.5, 0.2],
+    "table_center": [0.4, 0.0, -0.1],
+    "obstacle_lower": [0.25, -0.4, 0.0],
+    "obstacle_upper": [0.75, 0.4, 0.8],
+    "right_ee_lower": [0.2, -0.65, 0.2],
+    "right_ee_upper": [0.8, -0.15, 1.0],
+    "left_ee_lower": [0.2, 0.15, 0.2],
+    "left_ee_upper": [0.8, 0.65, 1.0]
+  },
+  "table_visual": {
+    "mesh": "csdecomp/tests/test_assets/table.obj",
+    "translation": [0.4, 0.0, 0.0],
+    "xy_extent_approximately": [1.5, 1.5],
+    "collision_extent_differs_from_visual": true,
+    "source": "Public table.urdf and table.obj, unchanged since before paper; transform from public Kinova tabletop example, NOT recovered FR3 directive"
+  },
+  "coordinate_convention": "FR3 base at origin, x forward, z up, robot right=-y and left=+y; paper world axes unpublished",
+  "evidence": {
+    "forest_reference": "15 circles and displayed trajectory endpoints recovered from author Figure 6 vector artwork, frame affinely mapped to [-5,5]^2; original benchmark seed list remains unknown",
+    "forest_random": "Reuse v5's 10 obstacle realizations (default_rng seeds 0..9) under the paper's 15/r=.35/central7m/square10m parameters, with endpoints now taken from Figure 6. These are changed conditions on familiar scenes, not new seeds or held-out tasks",
+    "table": "Public author's table asset is a stronger source than prior arbitrary box. Its FR3 use and translation remain hypotheses. Visual is 1.5m; collision is deliberately the released 2.5m box, no colliding legs added",
+    "obstacle_height": "Figure 6 includes black spheres intersecting tabletop. Uniform center z support changed to [0,.8] to admit that relation. Law and numeric endpoints are inferred, not published",
+    "obstacle_xy_radius": "20 from paper; r=.05 and x=[.25,.75], y=[-.4,.4] retained declared reconstruction choices, not measured 3D coordinates",
+    "robot": "Existing conservative 33-sphere fit of pinned official FR3 geometry and official pair filters retained; author sphere placement/filter unavailable",
+    "tasks": "First collision-free joint-uniform configuration in right TCP box; independent joint-uniform FK pushforward pose in left box. No downward-orientation restriction, no selection by planner/optimizer outcome. Target witness is not the online IK initial guess",
+    "streams": "Reuse declared v5 obstacle and endpoint PRNG stream identifiers for paired environment changes. These are not author seeds",
+    "unknowns": ["author 33-sphere centers and radii", "author 527 static collision pairs", "original 10 environment seeds and task list", "FR3 original table directive", "sphere radius and exact sampling volume", "pose distribution", "original KUKA/RealSense physical scene and records"]
+  }
+}

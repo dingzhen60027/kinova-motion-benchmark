@@ -1,0 +1,23 @@
+{
+  "cwd": "/home/eric/wjg/wd/csdecomp",
+  "commands": [
+    [
+      "bash",
+      "local/python.sh",
+      "-m",
+      "benchmarks.generic_motion_v1.model"
+    ],
+    [
+      "bash",
+      "local/python.sh",
+      "-m",
+      "pytest",
+      "benchmarks/generic_motion_v1/tests/test_model_consistency.py",
+      "-q"
+    ]
+  ],
+  "logs": [
+    "../model_audit.log",
+    "../model_tests.log"
+  ]
+}

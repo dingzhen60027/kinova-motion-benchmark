@@ -1,0 +1,111 @@
+{
+  "algorithm": "TrajOpt",
+  "solver": "author BPMPD 2.21",
+  "author_commit": "9c634c060f7e2d61c4a888b0a5700d668a5d16f8",
+  "build_directory": "/home/eric/wjg/wd/csdecomp/.local_setup/solver_probes/trajopt_native_v2",
+  "available": true,
+  "status": "ready",
+  "build_receipt": {
+    "binaries": {
+      "bpmpd_caller": "a4005d171e882841747d342012286d883205ce7e20a52ac5b9e5c13c7b6306b6",
+      "libtrajopt_benchmark.so": "82e9e16f13325caa36ba8ac5716d50cc3ec7aa28bff795094bc116b9a8538c40"
+    },
+    "commands": [
+      [
+        "g++",
+        "-std=c++11",
+        "-O2",
+        "-no-pie",
+        "-I/home/eric/wjg/wd/csdecomp/.local_setup/solver_probes/trajopt_native_v2/source/src",
+        "-I/usr/include/eigen3",
+        "-I/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/native",
+        "-DBPMPD_WORKING_DIR=getenv(\"TRAJOPT_BPMPD_LOG_DIR\")",
+        "/home/eric/wjg/wd/csdecomp/.local_setup/solver_probes/trajopt_native_v2/source/src/sco/bpmpd_caller.cpp",
+        "/home/eric/wjg/wd/csdecomp/.local_setup/solver_probes/trajopt_native_v2/source/3rdpartylib/bpmpd_linux64.a",
+        "-o",
+        "/home/eric/wjg/wd/csdecomp/.local_setup/solver_probes/trajopt_native_v2/bpmpd_caller"
+      ],
+      [
+        "g++",
+        "-std=c++11",
+        "-O2",
+        "-shared",
+        "-fPIC",
+        "-I/home/eric/wjg/wd/csdecomp/.local_setup/solver_probes/trajopt_native_v2/source/src",
+        "-I/usr/include/eigen3",
+        "-I/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/native",
+        "-DHAVE_BPMPD",
+        "-DBPMPD_CALLER=\"/home/eric/wjg/wd/csdecomp/.local_setup/solver_probes/trajopt_native_v2/bpmpd_caller\"",
+        "/home/eric/wjg/wd/csdecomp/.local_setup/solver_probes/trajopt_native_v2/source/src/sco/solver_interface.cpp",
+        "/home/eric/wjg/wd/csdecomp/.local_setup/solver_probes/trajopt_native_v2/source/src/sco/modeling.cpp",
+        "/home/eric/wjg/wd/csdecomp/.local_setup/solver_probes/trajopt_native_v2/source/src/sco/expr_ops.cpp",
+        "/home/eric/wjg/wd/csdecomp/.local_setup/solver_probes/trajopt_native_v2/source/src/sco/expr_vec_ops.cpp",
+        "/home/eric/wjg/wd/csdecomp/.local_setup/solver_probes/trajopt_native_v2/source/src/sco/optimizers.cpp",
+        "/home/eric/wjg/wd/csdecomp/.local_setup/solver_probes/trajopt_native_v2/source/src/sco/modeling_utils.cpp",
+        "/home/eric/wjg/wd/csdecomp/.local_setup/solver_probes/trajopt_native_v2/source/src/sco/num_diff.cpp",
+        "/home/eric/wjg/wd/csdecomp/.local_setup/solver_probes/trajopt_native_v2/source/src/sco/bpmpd_interface.cpp",
+        "/home/eric/wjg/wd/csdecomp/.local_setup/solver_probes/trajopt_native_v2/source/src/utils/logging.cpp",
+        "/home/eric/wjg/wd/csdecomp/.local_setup/solver_probes/trajopt_native_v2/source/src/utils/stl_to_string.cpp",
+        "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/native/trajopt_bridge.cpp",
+        "-o",
+        "/home/eric/wjg/wd/csdecomp/.local_setup/solver_probes/trajopt_native_v2/libtrajopt_benchmark.so"
+      ]
+    ],
+    "fingerprint": {
+      "archive_sha256": "87d1d9246334530db6b5219e2852148b201259f7f3b38cc4fdf9f4e214f3ad09",
+      "author_commit": "9c634c060f7e2d61c4a888b0a5700d668a5d16f8",
+      "bridge_sha256": "08b7d4fb2b90bda6d612371a6f7d43220fbc5919621aebdc4ea06ceeb6cc4399",
+      "safe_io_sha256": "509a0e4fdd39174bf7c4af5f3d8ddc8bf3bf7f5ef417d55d9527ad75ad523769"
+    },
+    "optimizer_core_modified": false,
+    "status": "ready",
+    "transport_only_patch_sha256": "b7d4f47b3f34ea9ab23de17f9e35d67b681320689cb71f5fa7ad68a5c6b35c6a"
+  },
+  "build_receipt_sha256": "ad5bb1b4f5cd543f56b1b20cc24d2ef61cbd765ad3d8ffd5986bbac9b48a4300",
+  "unchanged_optimizer_sources": [
+    {
+      "file": "src/sco/optimizers.cpp",
+      "upstream_sha256": "84febfb0242f27bccb0391284fa3e3e0879e71413a86d1d7f73ca65bc41a4fbe",
+      "built_source_sha256": "84febfb0242f27bccb0391284fa3e3e0879e71413a86d1d7f73ca65bc41a4fbe",
+      "identical": true
+    },
+    {
+      "file": "src/sco/modeling.cpp",
+      "upstream_sha256": "215e315c2bccf835ae49d2f071830cafd3a8a3a119a434ca6f6081282738fe5c",
+      "built_source_sha256": "215e315c2bccf835ae49d2f071830cafd3a8a3a119a434ca6f6081282738fe5c",
+      "identical": true
+    },
+    {
+      "file": "src/sco/solver_interface.cpp",
+      "upstream_sha256": "84fa6197f18648f83a39a9e108894545095f897d2a22277915d866a2661d332d",
+      "built_source_sha256": "84fa6197f18648f83a39a9e108894545095f897d2a22277915d866a2661d332d",
+      "identical": true
+    },
+    {
+      "file": "src/sco/expr_ops.cpp",
+      "upstream_sha256": "e5be095b7ae678f2ecfadcaa062e1e5db90ac37bfc562830fad01c3742dc2ecb",
+      "built_source_sha256": "e5be095b7ae678f2ecfadcaa062e1e5db90ac37bfc562830fad01c3742dc2ecb",
+      "identical": true
+    },
+    {
+      "file": "src/sco/expr_vec_ops.cpp",
+      "upstream_sha256": "b5f73e1310f4f04f01addcb6e022af134916b399ad308b25943b9805830f0430",
+      "built_source_sha256": "b5f73e1310f4f04f01addcb6e022af134916b399ad308b25943b9805830f0430",
+      "identical": true
+    },
+    {
+      "file": "src/sco/modeling_utils.cpp",
+      "upstream_sha256": "cf7510033258c99cdfa8917fa95d22be2cb4a68c1d81f01dfb2d77412b5701e6",
+      "built_source_sha256": "cf7510033258c99cdfa8917fa95d22be2cb4a68c1d81f01dfb2d77412b5701e6",
+      "identical": true
+    },
+    {
+      "file": "src/sco/num_diff.cpp",
+      "upstream_sha256": "c64596e66dfdda4af8c56e9b11c8f9aa8438732f1e94329e95bd8db05c62a5e1",
+      "built_source_sha256": "c64596e66dfdda4af8c56e9b11c8f9aa8438732f1e94329e95bd8db05c62a5e1",
+      "identical": true
+    }
+  ],
+  "all_optimizer_sources_identical": true,
+  "compiler": "g++ (Ubuntu 9.5.0-1ubuntu1~22.04) 9.5.0"
+}

@@ -1,0 +1,280 @@
+{
+  "passed": true,
+  "run": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/rss2025_full_smoke_v1",
+  "run_manifest_sha256": "a2faa273ecc64dcecf0444030f9d75c143c67824023fab39a82f5bfcd82a233b",
+  "source_commit": "72984027030175b7bca78e2dcf592b38f0c1864b",
+  "planned_lgcs_jobs": 10,
+  "audited_attempts": 10,
+  "source_snapshots_checked": 30,
+  "counts": {
+    "latest_status": {
+      "frontend_failed": 5,
+      "invalid_endpoint": 2,
+      "unsupported": 2,
+      "success_validated_numerical": 1
+    },
+    "all_attempt_status": {
+      "frontend_failed": 5,
+      "invalid_endpoint": 2,
+      "unsupported": 2,
+      "success_validated_numerical": 1
+    },
+    "latest_alternate_status": {
+      "found": 2,
+      "no_eligible_interior_region": 1
+    },
+    "accepted_second_routes": 2,
+    "recovery_rounds": 0,
+    "recovered_successes": 0,
+    "license_limit_failures": 2,
+    "unsupported_attempts": 2,
+    "native_process_aborts": 0,
+    "selected_segments_checked": 1,
+    "interpolated_samples_checked": 1193,
+    "accepted_pool_original_edges_checked": 16
+  },
+  "records": [
+    {
+      "job_id": "smoke-sparse_clutter-000-p00-LGCS-minimum_distance-35f4c490",
+      "attempt": "0001",
+      "latest": true,
+      "status": "frontend_failed",
+      "error_category": null,
+      "files_checked": 13,
+      "family": "sparse_clutter",
+      "rounds": [],
+      "recoveries": [],
+      "alternate": null,
+      "final_stage": "drm_path"
+    },
+    {
+      "job_id": "smoke-sparse_clutter-000-p01-LGCS-minimum_distance-47fbbc7f",
+      "attempt": "0001",
+      "latest": true,
+      "status": "frontend_failed",
+      "error_category": null,
+      "files_checked": 13,
+      "family": "sparse_clutter",
+      "rounds": [],
+      "recoveries": [],
+      "alternate": null,
+      "final_stage": "drm_path"
+    },
+    {
+      "job_id": "smoke-dense_clutter-000-p00-LGCS-minimum_distance-476f0acc",
+      "attempt": "0001",
+      "latest": true,
+      "status": "invalid_endpoint",
+      "error_category": null,
+      "files_checked": 8,
+      "family": "dense_clutter",
+      "rounds": [],
+      "recoveries": [],
+      "alternate": null,
+      "final_stage": "initializing"
+    },
+    {
+      "job_id": "smoke-dense_clutter-000-p01-LGCS-minimum_distance-d866142a",
+      "attempt": "0001",
+      "latest": true,
+      "status": "invalid_endpoint",
+      "error_category": null,
+      "files_checked": 8,
+      "family": "dense_clutter",
+      "rounds": [],
+      "recoveries": [],
+      "alternate": null,
+      "final_stage": "initializing"
+    },
+    {
+      "job_id": "smoke-bottleneck-000-p00-LGCS-minimum_distance-7e8be86c",
+      "attempt": "0001",
+      "latest": true,
+      "status": "unsupported",
+      "error_category": "dependency_unsupported",
+      "files_checked": 74,
+      "family": "bottleneck",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 8,
+          "original_paths": 2,
+          "original_edges_checked": 8,
+          "maximum_best_cover_residual": -0.004615142733729982,
+          "mps": {
+            "solver_variables": 212,
+            "solver_constraints": 1900,
+            "solver_quadratic_constraints": 8,
+            "binary_flow_variables": 22
+          },
+          "solver_error_number": 10010,
+          "solver_status": null,
+          "solver_success": false
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "found",
+        "selected_region": 2,
+        "eligible_regions": [
+          1,
+          2
+        ],
+        "accepted": true,
+        "blocked_nodes": 3,
+        "original_nodes": 6000,
+        "kept_nodes": 5997
+      },
+      "final_stage": "trajectory_optimization"
+    },
+    {
+      "job_id": "smoke-bottleneck-000-p01-LGCS-minimum_distance-e8570b77",
+      "attempt": "0001",
+      "latest": true,
+      "status": "frontend_failed",
+      "error_category": null,
+      "files_checked": 12,
+      "family": "bottleneck",
+      "rounds": [],
+      "recoveries": [],
+      "alternate": null,
+      "final_stage": "drm_path"
+    },
+    {
+      "job_id": "smoke-route_choice-000-p00-LGCS-minimum_distance-3c7afb0d",
+      "attempt": "0001",
+      "latest": true,
+      "status": "frontend_failed",
+      "error_category": null,
+      "files_checked": 12,
+      "family": "route_choice",
+      "rounds": [],
+      "recoveries": [],
+      "alternate": null,
+      "final_stage": "drm_path"
+    },
+    {
+      "job_id": "smoke-route_choice-000-p01-LGCS-minimum_distance-adf880b1",
+      "attempt": "0001",
+      "latest": true,
+      "status": "unsupported",
+      "error_category": "dependency_unsupported",
+      "files_checked": 68,
+      "family": "route_choice",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 7,
+          "original_paths": 2,
+          "original_edges_checked": 7,
+          "maximum_best_cover_residual": -0.04780580887735897,
+          "mps": {
+            "solver_variables": 220,
+            "solver_constraints": 2071,
+            "solver_quadratic_constraints": 7,
+            "binary_flow_variables": 24
+          },
+          "solver_error_number": 10010,
+          "solver_status": null,
+          "solver_success": false
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "found",
+        "selected_region": 1,
+        "eligible_regions": [
+          1
+        ],
+        "accepted": true,
+        "blocked_nodes": 2,
+        "original_nodes": 6000,
+        "kept_nodes": 5998
+      },
+      "final_stage": "trajectory_optimization"
+    },
+    {
+      "job_id": "smoke-open_control-000-p00-LGCS-minimum_distance-1670ee6e",
+      "attempt": "0001",
+      "latest": true,
+      "status": "frontend_failed",
+      "error_category": null,
+      "files_checked": 15,
+      "family": "open_control",
+      "rounds": [],
+      "recoveries": [],
+      "alternate": null,
+      "final_stage": "drm_path_validation"
+    },
+    {
+      "job_id": "smoke-open_control-000-p01-LGCS-minimum_distance-ab346938",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 44,
+      "family": "open_control",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 1,
+          "original_paths": 1,
+          "original_edges_checked": 1,
+          "maximum_best_cover_residual": -0.09401799821377121,
+          "mps": {
+            "solver_variables": 10,
+            "solver_constraints": 97,
+            "solver_quadratic_constraints": 1,
+            "binary_flow_variables": 2
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 2,
+            "selected_regions": [
+              0
+            ],
+            "recovered_length_rad": 5.957935187258169,
+            "maximum_region_residual": -0.09401799821377121,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 1193,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "no_eligible_interior_region",
+        "selected_region": null,
+        "eligible_regions": [],
+        "accepted": false
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    }
+  ],
+  "errors": [],
+  "audit_source_sha256": "6e5accd8c1f3b26763a022d0a0f7319a539891848fdbcee87b60f3945326e1fe",
+  "limitations": [
+    "No GPU, planner, solver or runtime validator was called.",
+    "Membership and interpolation are independently recomputed from saved arrays; this is not a continuous collision proof.",
+    "Actual collision labels are preserved evidence from the original run and are not recomputed in this CPU audit.",
+    "Saved native/independent labels, signed clearances, ambiguity counts and passed flags are checked for consistency; every success also requires solver success and both frontend gates.",
+    "Same-robot/scene checks use immutable case/model hashes and frozen call sites. The native alternate-roadmap binary is hash-checked; its serializer is not independently decoded.",
+    "Raw cut pools may temporarily lose original path coverage; complete original-edge coverage is independently checked for every subsequent optimizer input pool.",
+    "A final failed solve may retain prior-round top-level validation; this audit labels its scope and never counts it as final success."
+  ]
+}

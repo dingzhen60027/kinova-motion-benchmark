@@ -1,0 +1,222 @@
+{
+  "scope": "ANALYSIS UNIT FIXTURE, NOT EXPERIMENTAL RESULTS",
+  "manifest": {
+    "environment": "forest",
+    "status": "completed",
+    "config": {
+      "protocol": "paper_completion_v4",
+      "paper": "arXiv:2504.10783v1",
+      "fidelity": "paper_and_arxiv_source_grounded_reconstruction_with_unreleased_assets_explicit",
+      "environment_seeds": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "roadmap_seeds": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "roadmap_sizes": {
+        "forest": [
+          200,
+          400,
+          800,
+          1600
+        ],
+        "fr3": [
+          3000,
+          6000,
+          9000,
+          12000
+        ]
+      },
+      "method_order": [
+        "LSCS",
+        "LGCS",
+        "SCSTO",
+        "NTO_distance",
+        "NTO_time"
+      ],
+      "roadmap_neighbors": 10,
+      "max_task_space_distance": 10.0,
+      "max_configuration_distance": 10.0,
+      "offline_voxel_side": 0.06,
+      "lazy_edge_step": 0.1,
+      "eizo": {
+        "forest": {
+          "delta": 0.05,
+          "epsilon": 0.01,
+          "num_particles": 1000,
+          "max_hyperplanes_per_iteration": 10,
+          "mixing_steps": 30,
+          "configuration_margin": 0.01,
+          "bisection_steps": 9,
+          "max_iterations": 30,
+          "tau": 0.5
+        },
+        "fr3": {
+          "delta": 0.005,
+          "epsilon": 0.005,
+          "num_particles": 10000,
+          "max_hyperplanes_per_iteration": 10,
+          "mixing_steps": 60,
+          "configuration_margin": 0.01,
+          "bisection_steps": 9,
+          "max_iterations": 30,
+          "tau": 0.5
+        }
+      },
+      "nto_solvers": {
+        "forest": {
+          "distance": "SNOPT",
+          "time": "SNOPT"
+        },
+        "fr3": {
+          "distance": "SNOPT",
+          "time": "IPOPT"
+        }
+      },
+      "nto_collocation": {
+        "forest": {
+          "distance": 20,
+          "time": 100
+        },
+        "fr3": {
+          "distance": 150,
+          "time": 150
+        }
+      },
+      "nto_collision_bound": 0.0,
+      "nto_influence_distance": 0.01,
+      "nto_repeat_initial_endpoints": true,
+      "nto_collocation_locations": "author_tex_interior_k_over_Nc",
+      "nto_major_iterations": 2000,
+      "optimizer_time_limit_seconds": 60.0,
+      "velocity_limit": 1.0,
+      "acceleration_limit": 1.0,
+      "bezier_degree": 6,
+      "scsto_relative_tolerance": 0.01,
+      "maximum_recovery_iterations": 20,
+      "validation_step": 0.005,
+      "validation_minimum_samples": 2001,
+      "endpoint_tolerance": 1e-05,
+      "feasibility_tolerance": 1e-05,
+      "case_timeout_seconds": 240,
+      "fr3_scene": {
+        "obstacle_count": 20,
+        "obstacle_radius": 0.05,
+        "obstacle_lower": [
+          0.25,
+          -0.4,
+          0.15
+        ],
+        "obstacle_upper": [
+          0.75,
+          0.4,
+          0.8
+        ],
+        "right_ee_lower": [
+          0.2,
+          0.15,
+          0.2
+        ],
+        "right_ee_upper": [
+          0.8,
+          0.65,
+          1.0
+        ],
+        "left_ee_lower": [
+          0.2,
+          -0.65,
+          0.2
+        ],
+        "left_ee_upper": [
+          0.8,
+          -0.15,
+          1.0
+        ],
+        "table_size": [
+          1.4,
+          1.6,
+          0.1
+        ],
+        "table_center": [
+          0.5,
+          0.0,
+          -0.05
+        ],
+        "offline_map_size": [
+          1.5,
+          1.8,
+          1.2
+        ],
+        "offline_map_center": [
+          0.5,
+          0.0,
+          0.55
+        ],
+        "finger_opening": 0.04,
+        "endpoint_sampling_limit": 200000,
+        "ik_attempts": 10
+      },
+      "assumptions": {
+        "model": "Deterministic 33-sphere fit to official FR3 meshes; kinematics, eight arm meshes and hand mesh verified identical to prepublication official revision. Joint limits pinned to official 2025-04-11 revision 39f8c0bcea9bc48ae5334edcb2aa2a504f2d2c85, avoiding 2026-expanded ranges. Still NOT the original authors unreleased sphere centers/radii/filters.",
+        "random_inputs": "Original seed numbers, obstacle radii/workspace distributions and target poses remain unpublished. Fixed 0..9 seeds, declared distributions. Start is a sampled right-side free configuration; target pose is FK of an independent left-side configuration. Goal joint coordinates are solved ONLINE from each roadmap pose map; no target reselection after planning failure.",
+        "velocity_acceleration": "Unit per-joint bounds as released example/hardware section; simulation limits and Bezier degree unpublished.",
+        "nto": "Original DRM nodes initialize order-2 distance splines; order-4 time splines repeat first/last control once for standstill. No arclength resampling or minimum-8 rule. Interior k/Nc collision locations follow the original arXiv TeX comment, not an explicitly published PDF detail.",
+        "solvers": "LSCS Clarabel substitutes for unlicensed MOSEK. LGCS exact Gurobi MISOCP; restricted-license failures retained. Native wheel and solver versions postdate paper.",
+        "budget": "60s solver limit and 240s case watchdog are reconstruction limits, not values supplied by paper.",
+        "validation": "Dense independent Drake checks with bounded step; no continuous collision certificate. Known-invalid DRM seeds are not inflated; NTO still receives them as warm starts. Native DRM success and independently valid DRM success are reported separately.",
+        "endpoint_margin": "1e-5 m IK margin is a declared numeric implementation choice to obtain collision-free float32-representable endpoints without changing target poses; the paper does not specify its numeric margin.",
+        "eizo_max_iterations": "30 from author arXiv TeX commented parameter blocks. Formal published Tables III/IV take precedence for all overlapping settings.",
+        "drm": "Offline native node, adjacency, pose and voxel collision maps for BOTH environments. Online goal IK is initialized by collision-free pose-map nearest nodes, per Section V-B. Native lazy step 0.1 retained. Unpublished native planner defaults are recorded.",
+        "forest_inputs": "Same fixed predeclared environment seeds and endpoints as v3; static point radius1e-6. Random endpoint coordinates and original seed list not released."
+      },
+      "endpoint_collision_margin": 1e-05
+    },
+    "config_hash": "d9b73489578d44c4cb5502793fbc62bb40aba6c0d0cf2d95f57c4aa78689cede",
+    "source_files": {},
+    "implementation_hash": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+    "runtime_versions": {
+      "csdecomp": "0.1.2",
+      "numpy": "2.2.6",
+      "drake": "1.51.1",
+      "scipy": "1.15.3",
+      "pybezier": "0.1.4",
+      "scsplanning": "0.1.0",
+      "gurobipy": "13.0.3",
+      "cvxpy": "1.7.5",
+      "clarabel": "0.11.1"
+    },
+    "cases": [
+      {
+        "id": "e00_r00_n00200",
+        "environment_seed": 0,
+        "roadmap_seed": 0,
+        "roadmap_size": 200
+      },
+      {
+        "id": "e00_r01_n00200",
+        "environment_seed": 0,
+        "roadmap_seed": 1,
+        "roadmap_size": 200
+      }
+    ],
+    "fidelity": "synthetic_analysis_test_only"
+  }
+}

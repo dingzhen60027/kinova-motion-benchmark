@@ -1,0 +1,59 @@
+benchmark: generic_motion_v1
+status: implementation_spec_not_generated
+robot:
+  canonical_model: choose_after_reduced_vs_full_kinova_audit
+  dof: 7
+  base_frame: world
+  obstacle_voxel_radius_m: 0.04
+problems:
+  objectives:
+    - minimum_distance
+    - minimum_time
+  min_time_limits:
+    velocity_rad_per_s: [1,1,1,1,1,1,1]
+    acceleration_rad_per_s2: [1,1,1,1,1,1,1]
+    start_goal_velocity_zero: true
+scenes:
+  families:
+    sparse_clutter:
+      obstacle_count: [6, 12]
+      test_layouts: 20
+      pairs_per_layout: 5
+    dense_clutter:
+      obstacle_count: [20, 40]
+      test_layouts: 20
+      pairs_per_layout: 5
+    bottleneck:
+      variable: [gap_width, barrier_orientation, barrier_position]
+      test_layouts: 20
+      pairs_per_layout: 5
+    route_choice:
+      variable: [cluster_separation, cluster_size, offset]
+      test_layouts: 20
+      pairs_per_layout: 5
+    open_control:
+      test_layouts: 4
+      pairs_per_layout: 5
+  endpoint_sampling:
+    type: collision_free_random_joint_configs
+    ensure_joint_limit_margin_rad: 0.02
+    keep_feasibility_unknown: true
+splits:
+  smoke_problem_count: 10
+  dev_layouts_per_main_family: 5
+  dev_pairs_per_layout: 3
+  test_total_problems: 420
+  seeds_distinct_between_splits: true
+planning:
+  roadmap_reference_sizes: [3000, 6000, 9000, 12000]
+  formal_default_size: 6000
+  formal_paired_seeds: 3
+  per_query_timeout_seconds: 60
+  report_offline_roadmap_time_separately: true
+  report_cold_and_warm_gpu_timings_separately: true
+protocol:
+  do_not_filter_based_on_planner_success: true
+  do_not_resample_per_method: true
+  require_same_collision_protocol: true
+  require_independent_numerical_validation: true
+  freeze_test_before_formal_evaluation: true

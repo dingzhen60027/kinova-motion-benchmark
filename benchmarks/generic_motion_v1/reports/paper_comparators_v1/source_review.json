@@ -1,0 +1,166 @@
+{
+  "schema_version": 1,
+  "scope": "Independent source and prepared-job review while experiment running; no tests, solver, planning, GPU, numerical validation, or final-success audit executed",
+  "created_utc": "2026-10-29T14:45:27.261780+00:00",
+  "passed": true,
+  "checks": [
+    {
+      "name": "equal_prior_runtime_source_hashes",
+      "passed": true,
+      "detail": {
+        "new_entries": 37,
+        "prior_entries": 37
+      }
+    },
+    {
+      "name": "equal_prior_evaluation_config",
+      "passed": true,
+      "detail": {
+        "new_entries": 21,
+        "prior_entries": 21
+      }
+    },
+    {
+      "name": "equal_prior_roadmap_files",
+      "passed": true,
+      "detail": {
+        "new_entries": 15,
+        "prior_entries": 15
+      }
+    },
+    {
+      "name": "equal_prior_external_dependency_files",
+      "passed": true,
+      "detail": {
+        "new_entries": 1780,
+        "prior_entries": 1780
+      }
+    },
+    {
+      "name": "equal_prior_data_files",
+      "passed": true,
+      "detail": {
+        "new_entries": 97,
+        "prior_entries": 97
+      }
+    },
+    {
+      "name": "exact_registered_matrix",
+      "passed": true,
+      "detail": {
+        "new": 380,
+        "reused": 950,
+        "paired_queries": 190
+      }
+    },
+    {
+      "name": "full_case_and_both_seeds_match_frozen_manifest",
+      "passed": true,
+      "detail": {
+        "mismatches": [],
+        "solver_seed_used": false
+      }
+    },
+    {
+      "name": "all_seven_methods_have_same_cases_and_config",
+      "passed": true,
+      "detail": {}
+    },
+    {
+      "name": "new_source_script_matches_freeze",
+      "passed": true,
+      "detail": {}
+    }
+  ],
+  "source_files": [
+    {
+      "path": "benchmarks/generic_motion_v1/reports/paper_comparators_v1/run_comparison_study.py",
+      "sha256": "54ad3056587418448f38a89fcafaea182f6d3fe936dc7dee2497435120577a2e"
+    },
+    {
+      "path": "benchmarks/generic_motion_v1/reports/paper_comparators_v1/audit_comparison.py",
+      "sha256": "092f61d18a72da06ae30b8030cd2e37a4ef902a1052a348d6c95c3a58d6d4eaf"
+    },
+    {
+      "path": "benchmarks/generic_motion_v1/reports/paper_comparators_v1/audit_existing_evidence.py",
+      "sha256": "0d63d0ca8cf0dd08e2c8fd71625b9162a6189a6996d15813904a312ff611ff48"
+    },
+    {
+      "path": "benchmarks/generic_motion_v1/reports/paper_comparators_v1/test_comparison_study.py",
+      "sha256": "39c4a73dd29c4c224f41c04a88d1c6ca6120f26309e1a41b49067dac88566fe5"
+    },
+    {
+      "path": "benchmarks/generic_motion_v1/reports/paper_comparators_v1/development_protocol.json",
+      "sha256": "ccb22df58b5dd646ac3b94c6d647ffda54ecdddda04f8e0837856afe0e3ba961"
+    },
+    {
+      "path": "benchmarks/generic_motion_v1/reports/paper_comparators_v1/execution_freeze.json",
+      "sha256": "aa5dca98219f86a171b53a1c005d857c4d12cc58ea813788e01404a78d58a69f"
+    },
+    {
+      "path": "benchmarks/generic_motion_v1/results/rss2025_paper_comparators_v1_smoke_s000/run_manifest.json",
+      "sha256": "f97d9d62d254f4d6e6e4b83379794c8510e75fba9ea2862c68fc042f631e13bb"
+    },
+    {
+      "path": "benchmarks/generic_motion_v1/results/rss2025_paper_comparators_v1_dev_s000/run_manifest.json",
+      "sha256": "1dcafad86f9b7c103e56f199ba93089937fb1ecb8fbeab138df54f8d7df05a70"
+    },
+    {
+      "path": "benchmarks/generic_motion_v1/results/rss2025_paper_comparators_v1_dev_s001/run_manifest.json",
+      "sha256": "aa7a0a1486ae00781dae6d492a13b174a98ea63878e48315f218f7c31acf7a7a"
+    },
+    {
+      "path": "benchmarks/generic_motion_v1/results/rss2025_paper_comparators_v1_dev_s002/run_manifest.json",
+      "sha256": "bc6ab9bd3fcecb2ba441bd9000269f814b60b180593adc70c8c7f7eaf0fc7694"
+    },
+    {
+      "path": "benchmarks/generic_motion_v1/results/rss2025_reliable_v2_smoke_s000/run_manifest.json",
+      "sha256": "7cf5f8466d2629ae8e454886f5ac4f0503832f8111a2fadab0dfc920be6dc815"
+    },
+    {
+      "path": "benchmarks/generic_motion_v1/results/rss2025_reliable_v2_dev_s000/run_manifest.json",
+      "sha256": "e8fd4211c317283cc4d3f62efadbe4b6f6caf96cabe91512fa73fd570cd97ecc"
+    },
+    {
+      "path": "benchmarks/generic_motion_v1/results/rss2025_reliable_v2_dev_s001/run_manifest.json",
+      "sha256": "ad8c55549ca0ab743f2c175f33ffdac86d142387991083d2f5a6e109acd078e8"
+    },
+    {
+      "path": "benchmarks/generic_motion_v1/results/rss2025_reliable_v2_dev_s002/run_manifest.json",
+      "sha256": "c45f896615a683eb85cc5a0f71abd227cbc38d95977cf150734ee5c66920fa22"
+    }
+  ],
+  "review_findings": [
+    {
+      "severity": "none",
+      "topic": "NTO attribution",
+      "finding": "NTO_PAPER dispatch calls paper_nto without refinement kwargs; NTO_REFINED has a separate dispatch and label. All original jobs use NTO_PAPER."
+    },
+    {
+      "severity": "none",
+      "topic": "timing",
+      "finding": "External batch watchdog starts before subprocess launch; includes imports/setup/warmup/planning/validation/output. Internal solver limits consume remaining worker deadline. warm_query is a component observation from same cold execution, not another independent warm run."
+    },
+    {
+      "severity": "none",
+      "topic": "selection",
+      "finding": "Prepared matrix includes every smoke/dev registration, including invalid endpoints and frontend failures. Completed sealed failed attempts are retained and skipped by resume; only incomplete coordinator interruptions create separate retry-pending receipts."
+    },
+    {
+      "severity": "followup",
+      "topic": "audit hardening",
+      "finding": "Final auditor should encode equality of current and reused external dependency/data/roadmap freeze mappings; driver source only directly checks current freeze plus reused source/config/manifests. Actual mappings independently verified equal in this review."
+    },
+    {
+      "severity": "followup",
+      "topic": "audit identity coverage",
+      "finding": "Final auditor should bind full job.case, method_seed, solver_seed, roadmap identity and label to declaration; actual prepared jobs independently verified here. solver_seed is explicitly unused by current solvers."
+    },
+    {
+      "severity": "pending",
+      "topic": "final results",
+      "finding": "Review eventual merged metrics/report after completion. This review does not claim planned jobs have finished or verified trajectories are continuously collision-free."
+    }
+  ],
+  "next_review": "Read final merged 1330 observations, resulting report tables, status attribution, paired costs, scene-cluster intervals and count agreement after timed execution completes."
+}

@@ -1,0 +1,37 @@
+{
+  "commands": [
+    {
+      "command": "bash local/python.sh -m reproduction.alignment_diagnosis.collocation --output reproduction/reports/alignment_diagnosis/forest_collocation",
+      "exit_code": 0,
+      "result": "forest_collocation/summary.json"
+    },
+    {
+      "command": "bash local/python.sh -m reproduction.alignment_diagnosis.ablation --environment forest --output reproduction/reports/alignment_diagnosis/forest_ablation",
+      "exit_code": 0,
+      "result": "forest_ablation/summary.json"
+    },
+    {
+      "command": "bash local/python.sh -m reproduction.alignment_diagnosis.ablation --environment fr3 --output reproduction/reports/alignment_diagnosis/fr3_ablation",
+      "exit_code": 0,
+      "result": "fr3_ablation/summary.json"
+    },
+    {
+      "command": "bash local/python.sh -m reproduction.alignment_diagnosis.summarize --run reproduction/reports/alignment_diagnosis/forest_ablation --run reproduction/reports/alignment_diagnosis/fr3_ablation --output reproduction/reports/alignment_diagnosis/comparison",
+      "exit_code": 0,
+      "result": "comparison/verification.json"
+    },
+    {
+      "command": "bash local/python.sh -m pytest -q reproduction/tests",
+      "exit_code": 0,
+      "result": "verification/pytest.json"
+    }
+  ],
+  "other_execution_ledgers": [
+    "verification/resume.json",
+    "task_distribution/summary.json",
+    "forest_oracle_full/manifest.json",
+    "fr3_collocation/execution.json",
+    "geometric_replay/final_summary.json"
+  ],
+  "scope": "commands actually executed; child attempt commands/exits are recorded in each matrix jobs/*/execution.json"
+}

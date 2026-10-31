@@ -1,0 +1,2660 @@
+{
+  "schema_version": 1,
+  "reviewed_utc": "2026-10-30T02:19:56.127962+00:00",
+  "passed": true,
+  "checks_count": 1392,
+  "failed_checks": [],
+  "scope": "Read-only raw-result and saved-array interpretation; no planning, GPU or geometry rerun",
+  "source_commit": "3414dd08f165e0cee0856e86007b53d9b6e97720",
+  "evidence_bindings": {
+    "audit": {
+      "path": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/reports/extended_baselines_v1/final_audit.json",
+      "sha256": "c165f45d3852abe41e417c7d173e121ea166a0469deeddb51e26a5b1d49f048d"
+    },
+    "metrics": {
+      "path": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/reports/extended_baselines_v1/metrics/metrics.json",
+      "sha256": "a7f322c61dc9ba41c193c0a9880e739c56f3068f25cfd57b15a6ff16102a962d"
+    },
+    "freeze": {
+      "path": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/reports/extended_baselines_v1/execution_freeze.json",
+      "sha256": "ea2a06af6444f36421f16333136322b1d6cf2d830e39fbe688e83cdb506b6273"
+    },
+    "index": {
+      "path": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/reports/extended_baselines_v1/run_index.json",
+      "sha256": "c5bae13d610138c96ca078fd9782aae750a0a5fa22bd4d1c0482c8c9be492c16"
+    }
+  },
+  "run_sources": [
+    {
+      "name": "smoke_s000",
+      "source_commit": "3414dd08f165e0cee0856e86007b53d9b6e97720",
+      "slots": 60,
+      "manifest_sha256": "572346a65a1355063fc10d3c9b058b6ebe77ff0ef56ee1fe9e64ba263476c2fe"
+    },
+    {
+      "name": "dev_s000",
+      "source_commit": "3414dd08f165e0cee0856e86007b53d9b6e97720",
+      "slots": 360,
+      "manifest_sha256": "fcedc11366d96a97a041af7080fe8461fa66e0b94bf1b5e0472e00251689f7a4"
+    },
+    {
+      "name": "dev_s001",
+      "source_commit": "3414dd08f165e0cee0856e86007b53d9b6e97720",
+      "slots": 360,
+      "manifest_sha256": "800eac4f01f969a91c275bcdd014276ff16f3a873bba92b3c3f4ad9d1eaae60e"
+    },
+    {
+      "name": "dev_s002",
+      "source_commit": "3414dd08f165e0cee0856e86007b53d9b6e97720",
+      "slots": 360,
+      "manifest_sha256": "9154c267cd3cc4e05067def8bbab81e280d36f2dc144a7735f612bd8e35c2b72"
+    }
+  ],
+  "main_dev": {
+    "LSCS": {
+      "trials": 180,
+      "legal_inputs": 180,
+      "unique_tasks": 60,
+      "unique_scene_clusters": 20,
+      "replica_seeds": [
+        0,
+        1,
+        2
+      ],
+      "statuses": {
+        "frontend_failed": 70,
+        "success_validated_numerical": 110
+      },
+      "validator_statuses": {
+        "success_validated_numerical": 110
+      },
+      "successes": 110,
+      "frontend_successes": 110,
+      "success_rate": 0.6111111111111112,
+      "failure_costs_excluded": true
+    },
+    "RRTConnect": {
+      "trials": 180,
+      "legal_inputs": 180,
+      "unique_tasks": 60,
+      "unique_scene_clusters": 20,
+      "replica_seeds": [
+        0,
+        1,
+        2
+      ],
+      "statuses": {
+        "success_validated_numerical": 146,
+        "planner_timeout": 33,
+        "validation_undetermined": 1
+      },
+      "validator_statuses": {
+        "success_validated_numerical": 146,
+        "validation_undetermined": 1
+      },
+      "successes": 146,
+      "frontend_successes": 0,
+      "success_rate": 0.8111111111111111,
+      "failure_costs_excluded": true
+    },
+    "RRT*": {
+      "trials": 180,
+      "legal_inputs": 180,
+      "unique_tasks": 60,
+      "unique_scene_clusters": 20,
+      "replica_seeds": [
+        0,
+        1,
+        2
+      ],
+      "statuses": {
+        "planner_timeout": 60,
+        "success_validated_numerical": 120
+      },
+      "validator_statuses": {
+        "success_validated_numerical": 120
+      },
+      "successes": 120,
+      "frontend_successes": 0,
+      "success_rate": 0.6666666666666666,
+      "failure_costs_excluded": true
+    },
+    "CHOMP": {
+      "trials": 180,
+      "legal_inputs": 180,
+      "unique_tasks": 60,
+      "unique_scene_clusters": 20,
+      "replica_seeds": [
+        0,
+        1,
+        2
+      ],
+      "statuses": {
+        "frontend_failed": 70,
+        "success_validated_numerical": 109,
+        "solver_failed": 1
+      },
+      "validator_statuses": {
+        "success_validated_numerical": 109,
+        "collision_failed": 1
+      },
+      "successes": 109,
+      "frontend_successes": 110,
+      "success_rate": 0.6055555555555555,
+      "failure_costs_excluded": true
+    },
+    "STOMP": {
+      "trials": 180,
+      "legal_inputs": 180,
+      "unique_tasks": 60,
+      "unique_scene_clusters": 20,
+      "replica_seeds": [
+        0,
+        1,
+        2
+      ],
+      "statuses": {
+        "frontend_failed": 70,
+        "success_validated_numerical": 110
+      },
+      "validator_statuses": {
+        "success_validated_numerical": 110
+      },
+      "successes": 110,
+      "frontend_successes": 110,
+      "success_rate": 0.6111111111111112,
+      "failure_costs_excluded": true
+    },
+    "TrajOpt": {
+      "trials": 180,
+      "legal_inputs": 180,
+      "unique_tasks": 60,
+      "unique_scene_clusters": 20,
+      "replica_seeds": [
+        0,
+        1,
+        2
+      ],
+      "statuses": {
+        "frontend_failed": 70,
+        "success_validated_numerical": 97,
+        "collision_failed": 13
+      },
+      "validator_statuses": {
+        "success_validated_numerical": 97,
+        "collision_failed": 13
+      },
+      "successes": 97,
+      "frontend_successes": 110,
+      "success_rate": 0.5388888888888889,
+      "failure_costs_excluded": true
+    }
+  },
+  "whole_study": {
+    "external_timeouts": 0,
+    "nonzero_process_exits": 0,
+    "statuses": {
+      "frontend_failed": 300,
+      "success_validated_numerical": 717,
+      "planner_timeout": 96,
+      "invalid_endpoint": 12,
+      "collision_failed": 13,
+      "solver_failed": 1,
+      "validation_undetermined": 1
+    },
+    "validation_statuses": {
+      "success_validated_numerical": 717,
+      "collision_failed": 14,
+      "validation_undetermined": 1
+    }
+  },
+  "shared_frontend_failure_reasons": {
+    "RuntimeError('[DRMPlanner] No collision-free path exists in roadmap.')": 50,
+    "returned": 20
+  },
+  "ompl_search_exhaustion": {
+    "RRT*": {
+      "Approximate solution": 60
+    },
+    "RRTConnect": {
+      "Approximate solution": 33
+    }
+  },
+  "critical_cases": {
+    "CHOMP": {
+      "case_id": "dev-sparse_clutter-003-p01",
+      "roadmap_seed": 1,
+      "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s001/jobs/dev-sparse_clutter-003-p01-CHOMP-minimum_distance-6cbc9c96/attempts/0001",
+      "status": "solver_failed",
+      "validator_status": "collision_failed",
+      "solver_success": false,
+      "solver_converged": null,
+      "native_status": null,
+      "optimizer_status": {
+        "analytic_gradient_calls": 25,
+        "candidate_changed": true,
+        "clearance_calls": 81,
+        "clearance_states": 5978,
+        "final_pwl_length_rad": 12.809156508729044,
+        "finite_sampling_is_not_continuous_certificate": true,
+        "geometry_seconds": 3.4087327807210386,
+        "initial_native_cost": 1.5098214879252965,
+        "initial_pwl_length_rad": 13.391536231826606,
+        "iterations": 25,
+        "minimum_optimizer_sample_clearance_m": -0.0013717225296514188,
+        "native_cost": 1.438925419163215,
+        "native_obstacle_cost": 0.12289986574116718,
+        "native_smoothness_cost": 0.20992676175154326,
+        "seconds": 3.4258567187935114,
+        "solver_success": false,
+        "stop_reason": "line_search_stationary"
+      },
+      "samples": {
+        "samples": 2670,
+        "native_collisions": 7,
+        "independent_collisions": 7,
+        "model_disagreements": 0,
+        "contact_band_samples": 0,
+        "colliding_samples_outside_contact_band": 7,
+        "minimum_sampled_clearance_m": -0.0014125475241306834
+      },
+      "endpoint_error_rad": 1.192324832441754e-07,
+      "joint_limits_passed": true,
+      "maximum_sample_step_rad": 0.004997581330792161,
+      "candidate_path_length_rad": 12.809156508729044,
+      "metric_cost": null,
+      "external_timed_out": false,
+      "exit_code": 0,
+      "cold_e2e_seconds": 6.522791261319071,
+      "files_sha256": {
+        "receipt.json": "a5646242ad0a16e78d564981534c9b30cdf2cf207b831215edd86004f5fcfffc",
+        "result.json": "4479a3f0b822e7c06492ec7bbd20acf5d8f4f64f0631f179c92ab7fc4281203f",
+        "candidate.json": "1b89710b8862ca5e907762f0f58bf8ff3a79279c95723daf75fb19f8ce4622f1",
+        "validation.json": "edadd57d3a54aed827183b65cf114df3123cceac753a596a0f3d79926cfacb33",
+        "trajectory_samples.npz": "1ac3033b1309f27c0697f267a0e519d0a38ec39ac473a642b3c175fcdca9f064",
+        "process.json": "6c119a961e934c66c84a3254b70616f084654b8853e2a42b1cffc259ab3e66a0"
+      }
+    },
+    "RRTConnect": {
+      "case_id": "dev-dense_clutter-003-p01",
+      "roadmap_seed": 1,
+      "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s001/jobs/dev-dense_clutter-003-p01-RRTCONNECT-minimum_distance-010906ea/attempts/0001",
+      "status": "validation_undetermined",
+      "validator_status": "validation_undetermined",
+      "solver_success": true,
+      "solver_converged": null,
+      "native_status": "Exact solution",
+      "optimizer_status": null,
+      "samples": {
+        "samples": 3692,
+        "native_collisions": 2,
+        "independent_collisions": 2,
+        "model_disagreements": 0,
+        "contact_band_samples": 2,
+        "colliding_samples_outside_contact_band": 0,
+        "minimum_sampled_clearance_m": -1.0354322592665e-06
+      },
+      "endpoint_error_rad": 0.0,
+      "joint_limits_passed": true,
+      "maximum_sample_step_rad": 0.005000000000000207,
+      "candidate_path_length_rad": 18.37301474972208,
+      "metric_cost": null,
+      "external_timed_out": false,
+      "exit_code": 0,
+      "cold_e2e_seconds": 5.57526873704046,
+      "files_sha256": {
+        "receipt.json": "77d20421dc4c4bb375b372207a221b0e62bf4f4bbf068f96558d91162a9397c0",
+        "result.json": "e36fd1fd53795b080be57c8eb1e38d317ea05da81005fe1945472fe191e6b764",
+        "candidate.json": "b42decda29db4d5c2df945f1a375d307b152d455e62c1a554f4cc7df36fbe85a",
+        "validation.json": "32018874f12c8337fab1d9efe22c401572ca25efd973d168f14166dd07bb6592",
+        "trajectory_samples.npz": "8c9c621b8586ffd507a88f2b25100c3322af70fe5ee05a29aa38782c2bd6e6f3",
+        "process.json": "a9db604a2490a95ae57f75db4b4a85d22cfae01e7329d1fb58fa89aa846182fe"
+      }
+    }
+  },
+  "trajopt_collision_cases": [
+    {
+      "case_id": "dev-sparse_clutter-004-p02",
+      "roadmap_seed": 0,
+      "native_status": "CONVERGED",
+      "solver_converged": true,
+      "minimum_sampled_clearance_m": -0.002887206361016875,
+      "native_collisions": 9,
+      "independent_collisions": 9,
+      "model_disagreements": 0,
+      "contact_band_samples": 0,
+      "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s000/jobs/dev-sparse_clutter-004-p02-TRAJOPT-minimum_distance-4b04ab81/attempts/0001",
+      "receipt_sha256": "8b4b59ff98c5b56db949c7891eb08aab2201973361012a73d54497ac4491729c"
+    },
+    {
+      "case_id": "dev-bottleneck-000-p02",
+      "roadmap_seed": 0,
+      "native_status": "CONVERGED",
+      "solver_converged": true,
+      "minimum_sampled_clearance_m": -0.0026079121940298933,
+      "native_collisions": 9,
+      "independent_collisions": 9,
+      "model_disagreements": 0,
+      "contact_band_samples": 0,
+      "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s000/jobs/dev-bottleneck-000-p02-TRAJOPT-minimum_distance-2fcf03c2/attempts/0001",
+      "receipt_sha256": "9495924cbeddea4d18a75eeaf89c53299220c5eea66a8b5e31017133cb2e143f"
+    },
+    {
+      "case_id": "dev-bottleneck-004-p01",
+      "roadmap_seed": 0,
+      "native_status": "CONVERGED",
+      "solver_converged": true,
+      "minimum_sampled_clearance_m": -0.008154080473786409,
+      "native_collisions": 9,
+      "independent_collisions": 9,
+      "model_disagreements": 0,
+      "contact_band_samples": 1,
+      "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s000/jobs/dev-bottleneck-004-p01-TRAJOPT-minimum_distance-ff499521/attempts/0001",
+      "receipt_sha256": "f0d57847394fac5311b1dd7a4d1ef401b2c166457a1ec5a017e7dcd303156f1a"
+    },
+    {
+      "case_id": "dev-route_choice-002-p01",
+      "roadmap_seed": 0,
+      "native_status": "CONVERGED",
+      "solver_converged": true,
+      "minimum_sampled_clearance_m": -0.00033412120312885114,
+      "native_collisions": 2,
+      "independent_collisions": 2,
+      "model_disagreements": 0,
+      "contact_band_samples": 0,
+      "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s000/jobs/dev-route_choice-002-p01-TRAJOPT-minimum_distance-1e7f50f4/attempts/0001",
+      "receipt_sha256": "fb20f762031a3d5c90f1142fdee63688c58a26012686e7e25f79bb5f2da2893a"
+    },
+    {
+      "case_id": "dev-route_choice-004-p00",
+      "roadmap_seed": 0,
+      "native_status": "CONVERGED",
+      "solver_converged": true,
+      "minimum_sampled_clearance_m": -0.0023016232025735795,
+      "native_collisions": 7,
+      "independent_collisions": 7,
+      "model_disagreements": 0,
+      "contact_band_samples": 0,
+      "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s000/jobs/dev-route_choice-004-p00-TRAJOPT-minimum_distance-92df5f24/attempts/0001",
+      "receipt_sha256": "c6d828fbb499182103545a0b9cf96a7ac0b00df27603adddf189a4084ea6f6dc"
+    },
+    {
+      "case_id": "dev-sparse_clutter-003-p01",
+      "roadmap_seed": 1,
+      "native_status": "CONVERGED",
+      "solver_converged": true,
+      "minimum_sampled_clearance_m": -0.0005751721320336745,
+      "native_collisions": 10,
+      "independent_collisions": 10,
+      "model_disagreements": 0,
+      "contact_band_samples": 0,
+      "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s001/jobs/dev-sparse_clutter-003-p01-TRAJOPT-minimum_distance-a8178bb1/attempts/0001",
+      "receipt_sha256": "95ee07321c22200f544e00e15701498b1a271c8ce2771e2bebd7f07e018602ea"
+    },
+    {
+      "case_id": "dev-bottleneck-001-p02",
+      "roadmap_seed": 1,
+      "native_status": "CONVERGED",
+      "solver_converged": true,
+      "minimum_sampled_clearance_m": -0.0011097083764706542,
+      "native_collisions": 5,
+      "independent_collisions": 5,
+      "model_disagreements": 0,
+      "contact_band_samples": 0,
+      "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s001/jobs/dev-bottleneck-001-p02-TRAJOPT-minimum_distance-84c16682/attempts/0001",
+      "receipt_sha256": "41c14a1c4773218aa976422f945801d16a905b93d4bb9272115b2e9a9382beee"
+    },
+    {
+      "case_id": "dev-bottleneck-004-p01",
+      "roadmap_seed": 1,
+      "native_status": "CONVERGED",
+      "solver_converged": true,
+      "minimum_sampled_clearance_m": -4.605271978558457e-05,
+      "native_collisions": 1,
+      "independent_collisions": 1,
+      "model_disagreements": 0,
+      "contact_band_samples": 0,
+      "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s001/jobs/dev-bottleneck-004-p01-TRAJOPT-minimum_distance-d9401d64/attempts/0001",
+      "receipt_sha256": "ea82f5c44985408a2b1fd6ef864946dc23405d6a17c1c26ef5b9f0edb5756ca6"
+    },
+    {
+      "case_id": "dev-route_choice-004-p00",
+      "roadmap_seed": 1,
+      "native_status": "CONVERGED",
+      "solver_converged": true,
+      "minimum_sampled_clearance_m": -0.00016536246158857016,
+      "native_collisions": 1,
+      "independent_collisions": 1,
+      "model_disagreements": 0,
+      "contact_band_samples": 0,
+      "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s001/jobs/dev-route_choice-004-p00-TRAJOPT-minimum_distance-adefa7d5/attempts/0001",
+      "receipt_sha256": "54f4c4e346334192b61357480564b1ea1fa5e687416b835b363a90d3174d8684"
+    },
+    {
+      "case_id": "dev-sparse_clutter-003-p00",
+      "roadmap_seed": 2,
+      "native_status": "CONVERGED",
+      "solver_converged": true,
+      "minimum_sampled_clearance_m": -0.0006713127001785258,
+      "native_collisions": 2,
+      "independent_collisions": 2,
+      "model_disagreements": 0,
+      "contact_band_samples": 0,
+      "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s002/jobs/dev-sparse_clutter-003-p00-TRAJOPT-minimum_distance-4b00ac43/attempts/0001",
+      "receipt_sha256": "5ae90beeb6488eeebe7d675ed386002ee10d85adc5fc046360dff9cb091b8389"
+    },
+    {
+      "case_id": "dev-bottleneck-000-p02",
+      "roadmap_seed": 2,
+      "native_status": "CONVERGED",
+      "solver_converged": true,
+      "minimum_sampled_clearance_m": -0.001088961769820084,
+      "native_collisions": 5,
+      "independent_collisions": 5,
+      "model_disagreements": 0,
+      "contact_band_samples": 0,
+      "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s002/jobs/dev-bottleneck-000-p02-TRAJOPT-minimum_distance-842e6d8d/attempts/0001",
+      "receipt_sha256": "6bd4fb0d926335910b6689f79eeac23628c1c007df0ad2ecf4af736ee42b1744"
+    },
+    {
+      "case_id": "dev-bottleneck-004-p01",
+      "roadmap_seed": 2,
+      "native_status": "CONVERGED",
+      "solver_converged": true,
+      "minimum_sampled_clearance_m": -0.0050188992957373975,
+      "native_collisions": 8,
+      "independent_collisions": 8,
+      "model_disagreements": 0,
+      "contact_band_samples": 0,
+      "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s002/jobs/dev-bottleneck-004-p01-TRAJOPT-minimum_distance-6e80dd4a/attempts/0001",
+      "receipt_sha256": "102ce20d454f15af79cdf042b45b986c95281fa1b2bb6c9c1d665884cd51fffd"
+    },
+    {
+      "case_id": "dev-route_choice-004-p00",
+      "roadmap_seed": 2,
+      "native_status": "PENALTY_ITERATION_LIMIT",
+      "solver_converged": false,
+      "minimum_sampled_clearance_m": -0.0029168016898510753,
+      "native_collisions": 4,
+      "independent_collisions": 4,
+      "model_disagreements": 0,
+      "contact_band_samples": 0,
+      "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s002/jobs/dev-route_choice-004-p00-TRAJOPT-minimum_distance-d1a458a9/attempts/0001",
+      "receipt_sha256": "8ff06af29163dacdd543d3f0152b02282adc9e4cdf8d2b9c7d4700142a69ec91"
+    }
+  ],
+  "trajopt_native_termination_by_final_status": {
+    "success_validated_numerical": {
+      "('CONVERGED', True)": 91,
+      "('PENALTY_ITERATION_LIMIT', False)": 5,
+      "('SCO_ITERATION_LIMIT', False)": 1
+    },
+    "collision_failed": {
+      "('CONVERGED', True)": 12,
+      "('PENALTY_ITERATION_LIMIT', False)": 1
+    }
+  },
+  "interpretations": [
+    "Each method has 180 legal dev attempts from 60 tasks, 20 scene clusters and three paired seeds. The independent random environments are the scene clusters, not the 180 repeated attempts.",
+    "The four local pipelines share 70 frontend failures and 110 validated DRM seeds. Failure to find a path in a fixed 6000-node graph is not proof that the continuous planning problem is infeasible.",
+    "CHOMP has one returned optimizer failure: line_search_stationary after 25 iterations, with solver_success=false. Its separately saved common validation rejects seven colliding samples outside the contact band; this is neither a crash nor a timeout. Native cost and path length improved, but the rejected path is excluded from successful quality statistics.",
+    "RRTConnect has one Exact solution candidate whose two colliding samples lie inside the fixed 2 micrometre contact band. Both collision implementations agree; validation_undetermined reflects contact ambiguity, not a checker disagreement, endpoint error, or sampling-step violation.",
+    "All 33 RRTConnect and 60 RRT* dev planner_timeout cases returned Approximate solution under the frozen 10-second search cap. They did not meet the exact-goal acceptance contract. They are not outer 60-second watchdog timeouts and do not establish infeasibility.",
+    "TrajOpt has 13 final collision failures despite returned candidates: 12 native CONVERGED and one PENALTY_ITERATION_LIMIT. All have collision samples outside the contact band and zero native/independent disagreements. Solver convergence is not a continuous-collision certificate.",
+    "TrajOpt has six validated nonconverged dev incumbents (five PENALTY_ITERATION_LIMIT and one SCO_ITERATION_LIMIT). These remain distinguished from native convergence; only common numerical validation qualifies them as successful outputs.",
+    "The comparison includes only the four newly frozen smoke/dev runs. Prior formal-test and historical baseline results are excluded. The test manifest remains protected; no new test planner evidence is present.",
+    "Collision acceptance is based on finite recorded sampling at 0.005 rad, not mathematical continuous collision freedom. All methods share a 60-second outer process limit, while declared internal iteration/search caps differ and remain frozen."
+  ],
+  "raw_chomp_stomp_termination": {
+    "smoke": {
+      "CHOMP": {
+        "registered": 10,
+        "candidates": 3,
+        "no_candidate": 7,
+        "raw_stop_reason_counts": {
+          "line_search_stationary": 2,
+          "maximum_iterations": 1
+        },
+        "raw_stop_reason_by_final_status": {
+          "success_validated_numerical": {
+            "line_search_stationary": 2,
+            "maximum_iterations": 1
+          }
+        },
+        "iterations_min": 6,
+        "iterations_max": 40,
+        "explicit_candidate_solver_converged_counts": {
+          "None": 3
+        },
+        "candidate_solver_success_counts": {
+          "True": 3
+        },
+        "all_candidate_metric_terminations_unknown": true,
+        "source": "candidate.optimizer_status and identical optimizer_result.json; these are raw stop/return reasons, not an added convergence flag",
+        "evidence": [
+          {
+            "case_id": "smoke-bottleneck-000-p00",
+            "seed": 0,
+            "stop_reason": "line_search_stationary",
+            "iterations": 37,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_smoke_s000/jobs/smoke-bottleneck-000-p00-CHOMP-minimum_distance-dd448abb/attempts/0001",
+            "optimizer_result_sha256": "639fa59bad839e1d68018fb73c25358f9961d4fd55561d471dec16abecc7cc6f"
+          },
+          {
+            "case_id": "smoke-route_choice-000-p01",
+            "seed": 0,
+            "stop_reason": "line_search_stationary",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_smoke_s000/jobs/smoke-route_choice-000-p01-CHOMP-minimum_distance-ec218eae/attempts/0001",
+            "optimizer_result_sha256": "a1002249316be3ec55f31205d840c8c2413d5a7d74fe40149275f36f567e21cd"
+          },
+          {
+            "case_id": "smoke-open_control-000-p01",
+            "seed": 0,
+            "stop_reason": "maximum_iterations",
+            "iterations": 40,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_smoke_s000/jobs/smoke-open_control-000-p01-CHOMP-minimum_distance-5f871f8c/attempts/0001",
+            "optimizer_result_sha256": "82fa22b14ee719ee30175111ce7be87dec0901a3bfa2137885c919ea08a44ae8"
+          }
+        ]
+      },
+      "STOMP": {
+        "registered": 10,
+        "candidates": 3,
+        "no_candidate": 7,
+        "raw_stop_reason_counts": {
+          "native_STOMP_return": 3
+        },
+        "raw_stop_reason_by_final_status": {
+          "success_validated_numerical": {
+            "native_STOMP_return": 3
+          }
+        },
+        "iterations_min": 6,
+        "iterations_max": 6,
+        "explicit_candidate_solver_converged_counts": {
+          "None": 3
+        },
+        "candidate_solver_success_counts": {
+          "True": 3
+        },
+        "all_candidate_metric_terminations_unknown": true,
+        "source": "candidate.optimizer_status and identical optimizer_result.json; these are raw stop/return reasons, not an added convergence flag",
+        "evidence": [
+          {
+            "case_id": "smoke-bottleneck-000-p00",
+            "seed": 0,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_smoke_s000/jobs/smoke-bottleneck-000-p00-STOMP-minimum_distance-d409ccd3/attempts/0001",
+            "optimizer_result_sha256": "facfb8a044a7c0c6068f3854aacde20436c7faaf9a9852ce6af3b23ce20fd52c"
+          },
+          {
+            "case_id": "smoke-route_choice-000-p01",
+            "seed": 0,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_smoke_s000/jobs/smoke-route_choice-000-p01-STOMP-minimum_distance-69d3e5c3/attempts/0001",
+            "optimizer_result_sha256": "5f068538d82ffded4fa35de91b84101d3f55ce2d81616f09f6a56e07fb93cb70"
+          },
+          {
+            "case_id": "smoke-open_control-000-p01",
+            "seed": 0,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_smoke_s000/jobs/smoke-open_control-000-p01-STOMP-minimum_distance-b2c5f2fe/attempts/0001",
+            "optimizer_result_sha256": "761c8009437eac72321b29bcd0d5c0d1627e7feb3ded9f798dc39277f44f425c"
+          }
+        ]
+      }
+    },
+    "dev": {
+      "CHOMP": {
+        "registered": 180,
+        "candidates": 110,
+        "no_candidate": 70,
+        "raw_stop_reason_counts": {
+          "maximum_iterations": 22,
+          "line_search_stationary": 77,
+          "relative_cost_tolerance": 11
+        },
+        "raw_stop_reason_by_final_status": {
+          "success_validated_numerical": {
+            "maximum_iterations": 22,
+            "line_search_stationary": 76,
+            "relative_cost_tolerance": 11
+          },
+          "solver_failed": {
+            "line_search_stationary": 1
+          }
+        },
+        "iterations_min": 1,
+        "iterations_max": 40,
+        "explicit_candidate_solver_converged_counts": {
+          "None": 110
+        },
+        "candidate_solver_success_counts": {
+          "True": 109,
+          "False": 1
+        },
+        "all_candidate_metric_terminations_unknown": true,
+        "source": "candidate.optimizer_status and identical optimizer_result.json; these are raw stop/return reasons, not an added convergence flag",
+        "evidence": [
+          {
+            "case_id": "dev-sparse_clutter-002-p01",
+            "seed": 0,
+            "stop_reason": "maximum_iterations",
+            "iterations": 40,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s000/jobs/dev-sparse_clutter-002-p01-CHOMP-minimum_distance-b1feaa20/attempts/0001",
+            "optimizer_result_sha256": "de98f3d9cc808c7bea01ee380cac60618fb1da3df3bdc47042ca1865e337c63f"
+          },
+          {
+            "case_id": "dev-sparse_clutter-002-p02",
+            "seed": 0,
+            "stop_reason": "line_search_stationary",
+            "iterations": 12,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s000/jobs/dev-sparse_clutter-002-p02-CHOMP-minimum_distance-f19271ab/attempts/0001",
+            "optimizer_result_sha256": "95a3e47997e45d23b5b47c73085c3ab5c3e44f833e19874b9b6f53f98495b31d"
+          },
+          {
+            "case_id": "dev-sparse_clutter-003-p00",
+            "seed": 0,
+            "stop_reason": "line_search_stationary",
+            "iterations": 39,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s000/jobs/dev-sparse_clutter-003-p00-CHOMP-minimum_distance-3a674831/attempts/0001",
+            "optimizer_result_sha256": "07e6773bf99e60b57871f083e53e2dccaad1694626e78617f87a73aa2d8a54dd"
+          },
+          {
+            "case_id": "dev-sparse_clutter-003-p01",
+            "seed": 0,
+            "stop_reason": "maximum_iterations",
+            "iterations": 40,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s000/jobs/dev-sparse_clutter-003-p01-CHOMP-minimum_distance-40a71b7d/attempts/0001",
+            "optimizer_result_sha256": "15c5a9b825bfdcc5174fe45cc095cb1418dab208b1d3698bf9ca6ca6c045a43d"
+          },
+          {
+            "case_id": "dev-sparse_clutter-003-p02",
+            "seed": 0,
+            "stop_reason": "line_search_stationary",
+            "iterations": 27,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s000/jobs/dev-sparse_clutter-003-p02-CHOMP-minimum_distance-5f10ae0a/attempts/0001",
+            "optimizer_result_sha256": "4f0e929e2fdfe7784e80115f7fd77c5f9788f5dc972cd0e2740345d40c13c65b"
+          },
+          {
+            "case_id": "dev-sparse_clutter-004-p00",
+            "seed": 0,
+            "stop_reason": "line_search_stationary",
+            "iterations": 33,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s000/jobs/dev-sparse_clutter-004-p00-CHOMP-minimum_distance-1e935d2d/attempts/0001",
+            "optimizer_result_sha256": "a8e97e8e12b5d29d1b08cc40c2c46cf3ab25dd550d4bc5d7b5744e97f89e9d54"
+          },
+          {
+            "case_id": "dev-sparse_clutter-004-p02",
+            "seed": 0,
+            "stop_reason": "line_search_stationary",
+            "iterations": 18,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s000/jobs/dev-sparse_clutter-004-p02-CHOMP-minimum_distance-96a11f44/attempts/0001",
+            "optimizer_result_sha256": "e94b2beec31c168f0c478fcc1e480deb61b2f3b40feb30c5b0b87c3e60150e18"
+          },
+          {
+            "case_id": "dev-dense_clutter-001-p00",
+            "seed": 0,
+            "stop_reason": "relative_cost_tolerance",
+            "iterations": 14,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s000/jobs/dev-dense_clutter-001-p00-CHOMP-minimum_distance-0285fa55/attempts/0001",
+            "optimizer_result_sha256": "92aa15c9be1967cfb34ad4170acbf00ba9f8d2a5e821f8a3b961695816b80cea"
+          },
+          {
+            "case_id": "dev-dense_clutter-002-p00",
+            "seed": 0,
+            "stop_reason": "line_search_stationary",
+            "iterations": 28,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s000/jobs/dev-dense_clutter-002-p00-CHOMP-minimum_distance-782175ba/attempts/0001",
+            "optimizer_result_sha256": "6571d32eda98eb0b9a338aa8e23f5fcdf30242ba9f6fbf060d7427275b8c705f"
+          },
+          {
+            "case_id": "dev-dense_clutter-002-p01",
+            "seed": 0,
+            "stop_reason": "line_search_stationary",
+            "iterations": 37,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s000/jobs/dev-dense_clutter-002-p01-CHOMP-minimum_distance-d0c932ee/attempts/0001",
+            "optimizer_result_sha256": "01385948c4d0c3c9d62cff07a534054e5df5ec0f5e72efea603773b91313f3b2"
+          },
+          {
+            "case_id": "dev-bottleneck-000-p00",
+            "seed": 0,
+            "stop_reason": "line_search_stationary",
+            "iterations": 1,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s000/jobs/dev-bottleneck-000-p00-CHOMP-minimum_distance-6a984cce/attempts/0001",
+            "optimizer_result_sha256": "b1d573b3921f2e7781c66bfcd5dd4e776ab4e2d17806a791cb9c32f8230267e5"
+          },
+          {
+            "case_id": "dev-bottleneck-000-p01",
+            "seed": 0,
+            "stop_reason": "maximum_iterations",
+            "iterations": 40,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s000/jobs/dev-bottleneck-000-p01-CHOMP-minimum_distance-8f3a1725/attempts/0001",
+            "optimizer_result_sha256": "5da047f87969609b49f5ae699181a9221f26dc5d9c835d4b55945a88f9a8d79f"
+          },
+          {
+            "case_id": "dev-bottleneck-000-p02",
+            "seed": 0,
+            "stop_reason": "line_search_stationary",
+            "iterations": 2,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s000/jobs/dev-bottleneck-000-p02-CHOMP-minimum_distance-0c142e7c/attempts/0001",
+            "optimizer_result_sha256": "c8ebc7892bc4db0825ee4a1fc4cf3c1c1bd9dbc3a52648790d4f488b36b3341e"
+          },
+          {
+            "case_id": "dev-bottleneck-001-p00",
+            "seed": 0,
+            "stop_reason": "relative_cost_tolerance",
+            "iterations": 28,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s000/jobs/dev-bottleneck-001-p00-CHOMP-minimum_distance-991625b0/attempts/0001",
+            "optimizer_result_sha256": "30813c9c28d77efec3245548927e2deb64b1a0d6d2b091b0d2700631a9f88ce9"
+          },
+          {
+            "case_id": "dev-bottleneck-001-p01",
+            "seed": 0,
+            "stop_reason": "line_search_stationary",
+            "iterations": 15,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s000/jobs/dev-bottleneck-001-p01-CHOMP-minimum_distance-04c326dc/attempts/0001",
+            "optimizer_result_sha256": "8210fd82182814e86372fb0d3d2353a016283f4804028dcaaa7b52d13fa6a12a"
+          },
+          {
+            "case_id": "dev-bottleneck-001-p02",
+            "seed": 0,
+            "stop_reason": "line_search_stationary",
+            "iterations": 13,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s000/jobs/dev-bottleneck-001-p02-CHOMP-minimum_distance-4a480d44/attempts/0001",
+            "optimizer_result_sha256": "27c86b2651037d08c384bf97e414f067751a5ae97b5ebfb04b4bc24685729856"
+          },
+          {
+            "case_id": "dev-bottleneck-002-p00",
+            "seed": 0,
+            "stop_reason": "line_search_stationary",
+            "iterations": 1,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s000/jobs/dev-bottleneck-002-p00-CHOMP-minimum_distance-3646f5b0/attempts/0001",
+            "optimizer_result_sha256": "425242e511c5069f8ee13f0588a2598b0c4a5be5c70fe6d2ec14b720ab6e0b72"
+          },
+          {
+            "case_id": "dev-bottleneck-002-p01",
+            "seed": 0,
+            "stop_reason": "line_search_stationary",
+            "iterations": 15,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s000/jobs/dev-bottleneck-002-p01-CHOMP-minimum_distance-7d3271dd/attempts/0001",
+            "optimizer_result_sha256": "64dd15acbf93747df26ec4da5d2791a74f5a0e809e33cc68667d7024290f8b2d"
+          },
+          {
+            "case_id": "dev-bottleneck-002-p02",
+            "seed": 0,
+            "stop_reason": "line_search_stationary",
+            "iterations": 16,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s000/jobs/dev-bottleneck-002-p02-CHOMP-minimum_distance-6679a2a6/attempts/0001",
+            "optimizer_result_sha256": "ba839a0f91467c51fd08b87e93e2c45fe9fbd78390bf28283d6efbc63480d600"
+          },
+          {
+            "case_id": "dev-bottleneck-003-p00",
+            "seed": 0,
+            "stop_reason": "relative_cost_tolerance",
+            "iterations": 1,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s000/jobs/dev-bottleneck-003-p00-CHOMP-minimum_distance-2d7066df/attempts/0001",
+            "optimizer_result_sha256": "ad77c1d8ef57c9cc388a7a91d0cef17482218a3d172f41f46c67d07e14685f46"
+          },
+          {
+            "case_id": "dev-bottleneck-003-p01",
+            "seed": 0,
+            "stop_reason": "line_search_stationary",
+            "iterations": 24,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s000/jobs/dev-bottleneck-003-p01-CHOMP-minimum_distance-75e10579/attempts/0001",
+            "optimizer_result_sha256": "f2667ae0aa0d9ce6ee6fb4e8f1af9712cb92a83c44d9535f7d8251d6650471c9"
+          },
+          {
+            "case_id": "dev-bottleneck-003-p02",
+            "seed": 0,
+            "stop_reason": "line_search_stationary",
+            "iterations": 33,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s000/jobs/dev-bottleneck-003-p02-CHOMP-minimum_distance-69eed7ae/attempts/0001",
+            "optimizer_result_sha256": "eeb05e83bd02af344987f7cf093049764b5d75e168bc083e761262b1e89f95fa"
+          },
+          {
+            "case_id": "dev-bottleneck-004-p00",
+            "seed": 0,
+            "stop_reason": "line_search_stationary",
+            "iterations": 30,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s000/jobs/dev-bottleneck-004-p00-CHOMP-minimum_distance-2e6bf58f/attempts/0001",
+            "optimizer_result_sha256": "31c688210afaabf6d13327b4deea915be91190b03a14c1c149f52fcc22f64334"
+          },
+          {
+            "case_id": "dev-bottleneck-004-p01",
+            "seed": 0,
+            "stop_reason": "line_search_stationary",
+            "iterations": 28,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s000/jobs/dev-bottleneck-004-p01-CHOMP-minimum_distance-6ee91084/attempts/0001",
+            "optimizer_result_sha256": "de8e3531cc9560a55557134c214aae2d3352a856dc1d3a9a832422c63d80ca2a"
+          },
+          {
+            "case_id": "dev-bottleneck-004-p02",
+            "seed": 0,
+            "stop_reason": "line_search_stationary",
+            "iterations": 13,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s000/jobs/dev-bottleneck-004-p02-CHOMP-minimum_distance-cec88fc5/attempts/0001",
+            "optimizer_result_sha256": "0c56adc4944536be247cf38a3cda176f47ee7e32886bb90fb36d9f5a05a34636"
+          },
+          {
+            "case_id": "dev-route_choice-000-p00",
+            "seed": 0,
+            "stop_reason": "line_search_stationary",
+            "iterations": 1,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s000/jobs/dev-route_choice-000-p00-CHOMP-minimum_distance-754fb7ec/attempts/0001",
+            "optimizer_result_sha256": "99fcefd0453f40f68d75eac44c08f7a014ac8e72d1ec599e7cd5c69db64820d7"
+          },
+          {
+            "case_id": "dev-route_choice-000-p01",
+            "seed": 0,
+            "stop_reason": "line_search_stationary",
+            "iterations": 1,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s000/jobs/dev-route_choice-000-p01-CHOMP-minimum_distance-c687e2cf/attempts/0001",
+            "optimizer_result_sha256": "f375724cbd92d8297dda21c61671b59a51e7c25693b5bccfa91f80d6d3451721"
+          },
+          {
+            "case_id": "dev-route_choice-000-p02",
+            "seed": 0,
+            "stop_reason": "maximum_iterations",
+            "iterations": 40,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s000/jobs/dev-route_choice-000-p02-CHOMP-minimum_distance-f2b4cae2/attempts/0001",
+            "optimizer_result_sha256": "81ec297e1bbd8bd4fd60c7ab8981a6016014198e90c5ee4a5c0d7d2a6b299c5e"
+          },
+          {
+            "case_id": "dev-route_choice-001-p00",
+            "seed": 0,
+            "stop_reason": "line_search_stationary",
+            "iterations": 1,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s000/jobs/dev-route_choice-001-p00-CHOMP-minimum_distance-9420d686/attempts/0001",
+            "optimizer_result_sha256": "8d23880bfa6ff81f14b410cc5d4fd0b2dcd0841acfe4b98c5ee63228dd19c2d0"
+          },
+          {
+            "case_id": "dev-route_choice-001-p01",
+            "seed": 0,
+            "stop_reason": "line_search_stationary",
+            "iterations": 1,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s000/jobs/dev-route_choice-001-p01-CHOMP-minimum_distance-29c558de/attempts/0001",
+            "optimizer_result_sha256": "c1dcc1f3365e56b853bbc79b45b486a6ac0593a387404352821db37fcbb712c9"
+          },
+          {
+            "case_id": "dev-route_choice-001-p02",
+            "seed": 0,
+            "stop_reason": "line_search_stationary",
+            "iterations": 1,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s000/jobs/dev-route_choice-001-p02-CHOMP-minimum_distance-53ad280f/attempts/0001",
+            "optimizer_result_sha256": "e99552615fd8d22b2e1c432628d91de13e2e67a8d3cf0e4f230137b08401d351"
+          },
+          {
+            "case_id": "dev-route_choice-002-p00",
+            "seed": 0,
+            "stop_reason": "maximum_iterations",
+            "iterations": 40,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s000/jobs/dev-route_choice-002-p00-CHOMP-minimum_distance-34b7cbf1/attempts/0001",
+            "optimizer_result_sha256": "45326a332384f74e14dd99cc80074265181d2a0a6687dc689949d8cd2c5476e5"
+          },
+          {
+            "case_id": "dev-route_choice-002-p01",
+            "seed": 0,
+            "stop_reason": "maximum_iterations",
+            "iterations": 40,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s000/jobs/dev-route_choice-002-p01-CHOMP-minimum_distance-62aa13f2/attempts/0001",
+            "optimizer_result_sha256": "cd5abfb8a2863f4dfaf753bba36afc563df0c8b4cff48badfc5c03e99ddedc23"
+          },
+          {
+            "case_id": "dev-route_choice-002-p02",
+            "seed": 0,
+            "stop_reason": "maximum_iterations",
+            "iterations": 40,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s000/jobs/dev-route_choice-002-p02-CHOMP-minimum_distance-ef3cd03d/attempts/0001",
+            "optimizer_result_sha256": "0208621d5bef10c23ea983c8d5c40d407a50383784e3c4e52cc4ef59b74c27df"
+          },
+          {
+            "case_id": "dev-route_choice-003-p01",
+            "seed": 0,
+            "stop_reason": "line_search_stationary",
+            "iterations": 4,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s000/jobs/dev-route_choice-003-p01-CHOMP-minimum_distance-b95d5f1c/attempts/0001",
+            "optimizer_result_sha256": "7d06420cd6812b84cf453b37f9d4d0de451168af3f261430b69972b4b761184a"
+          },
+          {
+            "case_id": "dev-route_choice-004-p00",
+            "seed": 0,
+            "stop_reason": "line_search_stationary",
+            "iterations": 16,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s000/jobs/dev-route_choice-004-p00-CHOMP-minimum_distance-c646f250/attempts/0001",
+            "optimizer_result_sha256": "ad2ec95524e3a14e2330a19dfc1bdd4035cac5ae8eb39c1afb4bc43a0a66bde5"
+          },
+          {
+            "case_id": "dev-route_choice-004-p01",
+            "seed": 0,
+            "stop_reason": "line_search_stationary",
+            "iterations": 18,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s000/jobs/dev-route_choice-004-p01-CHOMP-minimum_distance-15efbbf8/attempts/0001",
+            "optimizer_result_sha256": "b86ab33bf9c6e47c8ad0d0dc3b1c89c4c6ee724d9c22fe84b4085aec60c95e4d"
+          },
+          {
+            "case_id": "dev-route_choice-004-p02",
+            "seed": 0,
+            "stop_reason": "relative_cost_tolerance",
+            "iterations": 11,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s000/jobs/dev-route_choice-004-p02-CHOMP-minimum_distance-91572b3a/attempts/0001",
+            "optimizer_result_sha256": "cabcc1bc793479bacc408f9d674d03f5ce8cd7de68b0d86f96bd339ab56a996d"
+          },
+          {
+            "case_id": "dev-sparse_clutter-003-p00",
+            "seed": 1,
+            "stop_reason": "line_search_stationary",
+            "iterations": 25,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s001/jobs/dev-sparse_clutter-003-p00-CHOMP-minimum_distance-0814ebaa/attempts/0001",
+            "optimizer_result_sha256": "274ffcafdf34646c6405528cebaaf775cd8553b689a7364fd55737520b95e004"
+          },
+          {
+            "case_id": "dev-sparse_clutter-003-p01",
+            "seed": 1,
+            "stop_reason": "line_search_stationary",
+            "iterations": 25,
+            "final_status": "solver_failed",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s001/jobs/dev-sparse_clutter-003-p01-CHOMP-minimum_distance-6cbc9c96/attempts/0001",
+            "optimizer_result_sha256": "d688204a212986a285c4c480ea11a16f4edcd6ef978537ea7db52c428c9011e7"
+          },
+          {
+            "case_id": "dev-sparse_clutter-003-p02",
+            "seed": 1,
+            "stop_reason": "line_search_stationary",
+            "iterations": 33,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s001/jobs/dev-sparse_clutter-003-p02-CHOMP-minimum_distance-a0a7610b/attempts/0001",
+            "optimizer_result_sha256": "0f01fab8323deb80ce08f0b21ec7bd91836675a051b04cb158c21deb1fbe754b"
+          },
+          {
+            "case_id": "dev-sparse_clutter-004-p00",
+            "seed": 1,
+            "stop_reason": "line_search_stationary",
+            "iterations": 15,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s001/jobs/dev-sparse_clutter-004-p00-CHOMP-minimum_distance-6cd02f63/attempts/0001",
+            "optimizer_result_sha256": "f5d96a46669c46cb14247ed855429b53f7b7b0902a8dcad45fbe86d7613c8c7f"
+          },
+          {
+            "case_id": "dev-sparse_clutter-004-p02",
+            "seed": 1,
+            "stop_reason": "line_search_stationary",
+            "iterations": 35,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s001/jobs/dev-sparse_clutter-004-p02-CHOMP-minimum_distance-760f3797/attempts/0001",
+            "optimizer_result_sha256": "980fc5671538e63c035148bec99ed7d0479a0d18c2987b50f4b45f2d6cd550eb"
+          },
+          {
+            "case_id": "dev-dense_clutter-001-p00",
+            "seed": 1,
+            "stop_reason": "relative_cost_tolerance",
+            "iterations": 14,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s001/jobs/dev-dense_clutter-001-p00-CHOMP-minimum_distance-5962e373/attempts/0001",
+            "optimizer_result_sha256": "5b7140528619c5af7957cd770368fe828f2e7cb0c5f75cabe9c54a8e15855651"
+          },
+          {
+            "case_id": "dev-dense_clutter-002-p00",
+            "seed": 1,
+            "stop_reason": "line_search_stationary",
+            "iterations": 40,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s001/jobs/dev-dense_clutter-002-p00-CHOMP-minimum_distance-18a725d9/attempts/0001",
+            "optimizer_result_sha256": "0ba74ed19fa00d17d60a144188aa10cc4edc8d4b14265d952677250c465fa144"
+          },
+          {
+            "case_id": "dev-dense_clutter-002-p01",
+            "seed": 1,
+            "stop_reason": "maximum_iterations",
+            "iterations": 40,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s001/jobs/dev-dense_clutter-002-p01-CHOMP-minimum_distance-dc9d6f8a/attempts/0001",
+            "optimizer_result_sha256": "8969486a36e76456b058654fa1c961f0015d261f35e095639a4f338e7dd15e83"
+          },
+          {
+            "case_id": "dev-bottleneck-000-p00",
+            "seed": 1,
+            "stop_reason": "line_search_stationary",
+            "iterations": 1,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s001/jobs/dev-bottleneck-000-p00-CHOMP-minimum_distance-b08dcfe6/attempts/0001",
+            "optimizer_result_sha256": "5039096a85b6849b20171e304b65124f4ddc528f07d0edabe3163e0e637ae7fb"
+          },
+          {
+            "case_id": "dev-bottleneck-000-p01",
+            "seed": 1,
+            "stop_reason": "maximum_iterations",
+            "iterations": 40,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s001/jobs/dev-bottleneck-000-p01-CHOMP-minimum_distance-75a183ef/attempts/0001",
+            "optimizer_result_sha256": "67e181ad75e93f66e242a3b3d9a3b22668dd78d9c9a570b3b2ecc9716b713bcd"
+          },
+          {
+            "case_id": "dev-bottleneck-000-p02",
+            "seed": 1,
+            "stop_reason": "line_search_stationary",
+            "iterations": 7,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s001/jobs/dev-bottleneck-000-p02-CHOMP-minimum_distance-5388fac7/attempts/0001",
+            "optimizer_result_sha256": "34fd1b1d9cb8ed35516fd59debcbd86aaaa2c43f3e8ea234756f58c39922d92f"
+          },
+          {
+            "case_id": "dev-bottleneck-001-p00",
+            "seed": 1,
+            "stop_reason": "relative_cost_tolerance",
+            "iterations": 28,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s001/jobs/dev-bottleneck-001-p00-CHOMP-minimum_distance-893b77c4/attempts/0001",
+            "optimizer_result_sha256": "8b0bbb20522df14989c09a6d6c7ab0b0a0373b01ef4207b593818f6c6b09ed33"
+          },
+          {
+            "case_id": "dev-bottleneck-001-p01",
+            "seed": 1,
+            "stop_reason": "maximum_iterations",
+            "iterations": 40,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s001/jobs/dev-bottleneck-001-p01-CHOMP-minimum_distance-3d28d452/attempts/0001",
+            "optimizer_result_sha256": "702cbbee5cf98270f23bfb35fc5344ac8c884591e8980694571fb5ac230d29b5"
+          },
+          {
+            "case_id": "dev-bottleneck-001-p02",
+            "seed": 1,
+            "stop_reason": "line_search_stationary",
+            "iterations": 20,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s001/jobs/dev-bottleneck-001-p02-CHOMP-minimum_distance-04b46fd7/attempts/0001",
+            "optimizer_result_sha256": "efdb16ec251e26a5444d657e53c2d764416d3fa2eb3d25854935e81731918efa"
+          },
+          {
+            "case_id": "dev-bottleneck-002-p00",
+            "seed": 1,
+            "stop_reason": "line_search_stationary",
+            "iterations": 1,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s001/jobs/dev-bottleneck-002-p00-CHOMP-minimum_distance-015b33e2/attempts/0001",
+            "optimizer_result_sha256": "ffa11773b258d7ead12a76f5b2cdf3070a519eb9b671f4ec24c5f55ea182508f"
+          },
+          {
+            "case_id": "dev-bottleneck-002-p01",
+            "seed": 1,
+            "stop_reason": "maximum_iterations",
+            "iterations": 40,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s001/jobs/dev-bottleneck-002-p01-CHOMP-minimum_distance-d3513fdc/attempts/0001",
+            "optimizer_result_sha256": "60aa40fd7ad285808b82b340bedee3ae62318a6ee85a2249c43b9646a0fda5f8"
+          },
+          {
+            "case_id": "dev-bottleneck-002-p02",
+            "seed": 1,
+            "stop_reason": "line_search_stationary",
+            "iterations": 17,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s001/jobs/dev-bottleneck-002-p02-CHOMP-minimum_distance-7921e90b/attempts/0001",
+            "optimizer_result_sha256": "0e139ac6eb3afcd518a9a35d6bba35953e93c8a0aaff7d4e9abdd6cf4c71f076"
+          },
+          {
+            "case_id": "dev-bottleneck-003-p00",
+            "seed": 1,
+            "stop_reason": "relative_cost_tolerance",
+            "iterations": 1,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s001/jobs/dev-bottleneck-003-p00-CHOMP-minimum_distance-1edd10ed/attempts/0001",
+            "optimizer_result_sha256": "558b6fa3465b1203a6c6bab281225b79d884d661e8de4b5d701c0d4e340f1d07"
+          },
+          {
+            "case_id": "dev-bottleneck-003-p01",
+            "seed": 1,
+            "stop_reason": "line_search_stationary",
+            "iterations": 16,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s001/jobs/dev-bottleneck-003-p01-CHOMP-minimum_distance-8d9d06d0/attempts/0001",
+            "optimizer_result_sha256": "cd0597a9c29507eabda5e65aafaade39b978e8e2bc1b8407a15fd57f8b5296e8"
+          },
+          {
+            "case_id": "dev-bottleneck-003-p02",
+            "seed": 1,
+            "stop_reason": "maximum_iterations",
+            "iterations": 40,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s001/jobs/dev-bottleneck-003-p02-CHOMP-minimum_distance-e7a01147/attempts/0001",
+            "optimizer_result_sha256": "2a56126a2c89a45cca51f4f1e56ead4a47acb157226ac8f1e26169ad3f2cefbb"
+          },
+          {
+            "case_id": "dev-bottleneck-004-p00",
+            "seed": 1,
+            "stop_reason": "line_search_stationary",
+            "iterations": 28,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s001/jobs/dev-bottleneck-004-p00-CHOMP-minimum_distance-51919188/attempts/0001",
+            "optimizer_result_sha256": "348872a1f93f2f954f6e23dee76ce4bddcc3d8d3749681b4f93952a49b9d2c13"
+          },
+          {
+            "case_id": "dev-bottleneck-004-p01",
+            "seed": 1,
+            "stop_reason": "line_search_stationary",
+            "iterations": 33,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s001/jobs/dev-bottleneck-004-p01-CHOMP-minimum_distance-9820c12d/attempts/0001",
+            "optimizer_result_sha256": "4b8788f3c6677c53ec71b2ae6ca0dc179dfb2e642eaca04cbf2d98b4018fd160"
+          },
+          {
+            "case_id": "dev-bottleneck-004-p02",
+            "seed": 1,
+            "stop_reason": "line_search_stationary",
+            "iterations": 23,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s001/jobs/dev-bottleneck-004-p02-CHOMP-minimum_distance-978efd2e/attempts/0001",
+            "optimizer_result_sha256": "14b9cc5a498b6ac308c191d27012f39097d5bb92b51f89dc5b77d74e5c7b617f"
+          },
+          {
+            "case_id": "dev-route_choice-000-p00",
+            "seed": 1,
+            "stop_reason": "line_search_stationary",
+            "iterations": 1,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s001/jobs/dev-route_choice-000-p00-CHOMP-minimum_distance-1a68e987/attempts/0001",
+            "optimizer_result_sha256": "eed1e2b1273afef7278b5a622f72faf385567bb2818c2d01d9bb205d1bfc49cb"
+          },
+          {
+            "case_id": "dev-route_choice-000-p01",
+            "seed": 1,
+            "stop_reason": "line_search_stationary",
+            "iterations": 1,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s001/jobs/dev-route_choice-000-p01-CHOMP-minimum_distance-be448435/attempts/0001",
+            "optimizer_result_sha256": "a9a020124ebc5e78c2605d8e3be67a32b8d90feb5153edb334ed2f27f7255d3d"
+          },
+          {
+            "case_id": "dev-route_choice-000-p02",
+            "seed": 1,
+            "stop_reason": "maximum_iterations",
+            "iterations": 40,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s001/jobs/dev-route_choice-000-p02-CHOMP-minimum_distance-edd018d8/attempts/0001",
+            "optimizer_result_sha256": "747ffc2a5e94435601ac411df12e3286a6ceb8a75483642efc26dd3b0b704fb6"
+          },
+          {
+            "case_id": "dev-route_choice-001-p00",
+            "seed": 1,
+            "stop_reason": "line_search_stationary",
+            "iterations": 1,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s001/jobs/dev-route_choice-001-p00-CHOMP-minimum_distance-fab6b325/attempts/0001",
+            "optimizer_result_sha256": "109f587533014f8e61d9e8f2cec473b35028ba6f80fe4d16dfbb98ecbdf96a45"
+          },
+          {
+            "case_id": "dev-route_choice-001-p01",
+            "seed": 1,
+            "stop_reason": "line_search_stationary",
+            "iterations": 1,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s001/jobs/dev-route_choice-001-p01-CHOMP-minimum_distance-9e86deee/attempts/0001",
+            "optimizer_result_sha256": "0691f14ab5be8ff7b10e933cd8cf2597449dd7abf3bfd50bdff8d25fde5de15f"
+          },
+          {
+            "case_id": "dev-route_choice-001-p02",
+            "seed": 1,
+            "stop_reason": "line_search_stationary",
+            "iterations": 1,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s001/jobs/dev-route_choice-001-p02-CHOMP-minimum_distance-338e2a99/attempts/0001",
+            "optimizer_result_sha256": "9b3087df737c92eb992d5ba54363dc0a74bd99aff7d1b868fd293e5012187bb7"
+          },
+          {
+            "case_id": "dev-route_choice-002-p00",
+            "seed": 1,
+            "stop_reason": "line_search_stationary",
+            "iterations": 40,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s001/jobs/dev-route_choice-002-p00-CHOMP-minimum_distance-182d72fe/attempts/0001",
+            "optimizer_result_sha256": "54e54f20945a38bb0f8f45823276568b79792335d020117872426eadfe4a7fd0"
+          },
+          {
+            "case_id": "dev-route_choice-002-p01",
+            "seed": 1,
+            "stop_reason": "line_search_stationary",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s001/jobs/dev-route_choice-002-p01-CHOMP-minimum_distance-ee5345d3/attempts/0001",
+            "optimizer_result_sha256": "47abc714fe9bca42e4f1560614eee2967311b0369322759a5ea3fe3b787bd6d1"
+          },
+          {
+            "case_id": "dev-route_choice-002-p02",
+            "seed": 1,
+            "stop_reason": "maximum_iterations",
+            "iterations": 40,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s001/jobs/dev-route_choice-002-p02-CHOMP-minimum_distance-bf0227c9/attempts/0001",
+            "optimizer_result_sha256": "531f4a4909d4c4277010d4c717347270c1beb53d7ab3c05665f2f1f335070cee"
+          },
+          {
+            "case_id": "dev-route_choice-003-p01",
+            "seed": 1,
+            "stop_reason": "line_search_stationary",
+            "iterations": 8,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s001/jobs/dev-route_choice-003-p01-CHOMP-minimum_distance-e15f4c6b/attempts/0001",
+            "optimizer_result_sha256": "d96b591d7265488a3a8842fc7f6b553b369f60524dcbe380f24e191499fe6a78"
+          },
+          {
+            "case_id": "dev-route_choice-004-p00",
+            "seed": 1,
+            "stop_reason": "line_search_stationary",
+            "iterations": 32,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s001/jobs/dev-route_choice-004-p00-CHOMP-minimum_distance-a00df284/attempts/0001",
+            "optimizer_result_sha256": "e9973553438a98e170c7cc1ca44dc518184e1dc5b793f961e54607e6c627003c"
+          },
+          {
+            "case_id": "dev-route_choice-004-p01",
+            "seed": 1,
+            "stop_reason": "maximum_iterations",
+            "iterations": 40,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s001/jobs/dev-route_choice-004-p01-CHOMP-minimum_distance-ce2bf234/attempts/0001",
+            "optimizer_result_sha256": "e109b96865842d53e93b5156abd519f5436d29136ffd38a67e5b4ec921d3c16c"
+          },
+          {
+            "case_id": "dev-route_choice-004-p02",
+            "seed": 1,
+            "stop_reason": "relative_cost_tolerance",
+            "iterations": 11,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s001/jobs/dev-route_choice-004-p02-CHOMP-minimum_distance-3e392650/attempts/0001",
+            "optimizer_result_sha256": "d1ba707f6e6eb6cac2137d49eee53816ad7d3c749cd2a49d27cb319c47dd1438"
+          },
+          {
+            "case_id": "dev-sparse_clutter-003-p00",
+            "seed": 2,
+            "stop_reason": "line_search_stationary",
+            "iterations": 35,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s002/jobs/dev-sparse_clutter-003-p00-CHOMP-minimum_distance-311b0186/attempts/0001",
+            "optimizer_result_sha256": "ff7528780468e8224ceedda456fb05b494618118e8a79b33004e9038ce59ada5"
+          },
+          {
+            "case_id": "dev-sparse_clutter-003-p01",
+            "seed": 2,
+            "stop_reason": "maximum_iterations",
+            "iterations": 40,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s002/jobs/dev-sparse_clutter-003-p01-CHOMP-minimum_distance-94ebdaee/attempts/0001",
+            "optimizer_result_sha256": "1d9aafd4b5e0245e23a39e763ca6ac2d0d67bd02e9b2ea173b65fb709d0c98a3"
+          },
+          {
+            "case_id": "dev-sparse_clutter-003-p02",
+            "seed": 2,
+            "stop_reason": "line_search_stationary",
+            "iterations": 27,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s002/jobs/dev-sparse_clutter-003-p02-CHOMP-minimum_distance-c560208d/attempts/0001",
+            "optimizer_result_sha256": "b205d47ad65b49c0af479739364a116d692582d103f3d58050bd3921aa7842bf"
+          },
+          {
+            "case_id": "dev-sparse_clutter-004-p00",
+            "seed": 2,
+            "stop_reason": "line_search_stationary",
+            "iterations": 20,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s002/jobs/dev-sparse_clutter-004-p00-CHOMP-minimum_distance-db650d88/attempts/0001",
+            "optimizer_result_sha256": "cfbe3cb63da0369b758ccb64b2accf36150ccae0a84332f1cf02ca65552563e6"
+          },
+          {
+            "case_id": "dev-sparse_clutter-004-p01",
+            "seed": 2,
+            "stop_reason": "maximum_iterations",
+            "iterations": 40,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s002/jobs/dev-sparse_clutter-004-p01-CHOMP-minimum_distance-1492fe41/attempts/0001",
+            "optimizer_result_sha256": "46a48ef652beb5d9e740308db1cd6850711eb2978bc345a9da8020d8c7ab7233"
+          },
+          {
+            "case_id": "dev-sparse_clutter-004-p02",
+            "seed": 2,
+            "stop_reason": "line_search_stationary",
+            "iterations": 16,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s002/jobs/dev-sparse_clutter-004-p02-CHOMP-minimum_distance-f4c0f07f/attempts/0001",
+            "optimizer_result_sha256": "13330e805cc5b20c89072a75ea53b9446ee664949b5a1801e86461c8d1741463"
+          },
+          {
+            "case_id": "dev-dense_clutter-002-p00",
+            "seed": 2,
+            "stop_reason": "maximum_iterations",
+            "iterations": 40,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s002/jobs/dev-dense_clutter-002-p00-CHOMP-minimum_distance-33999102/attempts/0001",
+            "optimizer_result_sha256": "ad265d43b1ceadb736eddc738909d10784b8a0b3a85adcd6361577d57615d244"
+          },
+          {
+            "case_id": "dev-dense_clutter-002-p01",
+            "seed": 2,
+            "stop_reason": "line_search_stationary",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s002/jobs/dev-dense_clutter-002-p01-CHOMP-minimum_distance-0e858243/attempts/0001",
+            "optimizer_result_sha256": "53ae2a8f3e71ac6af710665ddc36ff2d8563443d830ca5bd28c002bf39382fdd"
+          },
+          {
+            "case_id": "dev-bottleneck-000-p00",
+            "seed": 2,
+            "stop_reason": "line_search_stationary",
+            "iterations": 1,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s002/jobs/dev-bottleneck-000-p00-CHOMP-minimum_distance-7105975d/attempts/0001",
+            "optimizer_result_sha256": "9d2fb068180bc50746ebab79d8a501f8b1be1ec9ced12b4c89fa4c528297f34a"
+          },
+          {
+            "case_id": "dev-bottleneck-000-p01",
+            "seed": 2,
+            "stop_reason": "maximum_iterations",
+            "iterations": 40,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s002/jobs/dev-bottleneck-000-p01-CHOMP-minimum_distance-97507ef7/attempts/0001",
+            "optimizer_result_sha256": "dfd0ca043a9cfb681e4ef533ba7160475d22250c9724b459ba305bf3cf878eb2"
+          },
+          {
+            "case_id": "dev-bottleneck-000-p02",
+            "seed": 2,
+            "stop_reason": "line_search_stationary",
+            "iterations": 21,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s002/jobs/dev-bottleneck-000-p02-CHOMP-minimum_distance-e70def8b/attempts/0001",
+            "optimizer_result_sha256": "be348f853e2029b7424aa19516eddd7ef2dbb223029de68e9b1940daba6dec41"
+          },
+          {
+            "case_id": "dev-bottleneck-001-p00",
+            "seed": 2,
+            "stop_reason": "relative_cost_tolerance",
+            "iterations": 28,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s002/jobs/dev-bottleneck-001-p00-CHOMP-minimum_distance-d41e297d/attempts/0001",
+            "optimizer_result_sha256": "c136179d6eb7e5f7fb040cdcd2a30cfe746597e23c8858982448982e380352a7"
+          },
+          {
+            "case_id": "dev-bottleneck-001-p01",
+            "seed": 2,
+            "stop_reason": "maximum_iterations",
+            "iterations": 40,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s002/jobs/dev-bottleneck-001-p01-CHOMP-minimum_distance-ee923823/attempts/0001",
+            "optimizer_result_sha256": "7a208572598a157522c7fb44f241a86ef2bee9ef11957606380d1462a2b4ebbe"
+          },
+          {
+            "case_id": "dev-bottleneck-001-p02",
+            "seed": 2,
+            "stop_reason": "line_search_stationary",
+            "iterations": 14,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s002/jobs/dev-bottleneck-001-p02-CHOMP-minimum_distance-5194de0d/attempts/0001",
+            "optimizer_result_sha256": "d8ebe657fc1c59bcea4bc5b28744d0952ba34012cbbb40b2dfb046fd4a957949"
+          },
+          {
+            "case_id": "dev-bottleneck-002-p00",
+            "seed": 2,
+            "stop_reason": "line_search_stationary",
+            "iterations": 1,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s002/jobs/dev-bottleneck-002-p00-CHOMP-minimum_distance-c31baf4d/attempts/0001",
+            "optimizer_result_sha256": "5269332d35657ef9bfe997b7d3db8386ae95d500d42252a3cfd5c06ab8f8d3bb"
+          },
+          {
+            "case_id": "dev-bottleneck-002-p01",
+            "seed": 2,
+            "stop_reason": "line_search_stationary",
+            "iterations": 27,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s002/jobs/dev-bottleneck-002-p01-CHOMP-minimum_distance-97ff7208/attempts/0001",
+            "optimizer_result_sha256": "65c0cd79ab2ecd53817bf6d6ba25ae01f49f5c5f68aeaa8809d231f592d072ab"
+          },
+          {
+            "case_id": "dev-bottleneck-002-p02",
+            "seed": 2,
+            "stop_reason": "line_search_stationary",
+            "iterations": 21,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s002/jobs/dev-bottleneck-002-p02-CHOMP-minimum_distance-238bfd37/attempts/0001",
+            "optimizer_result_sha256": "9e4c2a699f42fc90f1bd2fb086a0c76eeabb678ea419233eb63e925f62b048ca"
+          },
+          {
+            "case_id": "dev-bottleneck-003-p00",
+            "seed": 2,
+            "stop_reason": "relative_cost_tolerance",
+            "iterations": 1,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s002/jobs/dev-bottleneck-003-p00-CHOMP-minimum_distance-446aada6/attempts/0001",
+            "optimizer_result_sha256": "27bfda79dfa68254d367a4bca31a33efa86da5df442bf6d7f1ae0fc669ea8e84"
+          },
+          {
+            "case_id": "dev-bottleneck-003-p01",
+            "seed": 2,
+            "stop_reason": "line_search_stationary",
+            "iterations": 13,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s002/jobs/dev-bottleneck-003-p01-CHOMP-minimum_distance-626cd28a/attempts/0001",
+            "optimizer_result_sha256": "c4293d5b6bcded9b5585ca40faa5627e41ceb0038bd7519e84eed6a82523a71d"
+          },
+          {
+            "case_id": "dev-bottleneck-003-p02",
+            "seed": 2,
+            "stop_reason": "line_search_stationary",
+            "iterations": 39,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s002/jobs/dev-bottleneck-003-p02-CHOMP-minimum_distance-461cc25c/attempts/0001",
+            "optimizer_result_sha256": "cd39863d7868e769c0bccbfb8108c8d575f416a84db890fa8b21a8bb0c1bca47"
+          },
+          {
+            "case_id": "dev-bottleneck-004-p00",
+            "seed": 2,
+            "stop_reason": "line_search_stationary",
+            "iterations": 11,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s002/jobs/dev-bottleneck-004-p00-CHOMP-minimum_distance-84cc4e60/attempts/0001",
+            "optimizer_result_sha256": "60e9e53f59fe85d88647c282e3a44a062c5f2bfe70aedd581cb3a7b003f506bd"
+          },
+          {
+            "case_id": "dev-bottleneck-004-p01",
+            "seed": 2,
+            "stop_reason": "line_search_stationary",
+            "iterations": 9,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s002/jobs/dev-bottleneck-004-p01-CHOMP-minimum_distance-c3d33d89/attempts/0001",
+            "optimizer_result_sha256": "96c64d68cac762acb2c568f3538f927c585e7698f51d82a60b9c612a42f0119c"
+          },
+          {
+            "case_id": "dev-bottleneck-004-p02",
+            "seed": 2,
+            "stop_reason": "line_search_stationary",
+            "iterations": 8,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s002/jobs/dev-bottleneck-004-p02-CHOMP-minimum_distance-57e59c39/attempts/0001",
+            "optimizer_result_sha256": "c3b1973aa3f03144b237277b904f6c0a821dbccc39cafbb863a5f78973a86675"
+          },
+          {
+            "case_id": "dev-route_choice-000-p00",
+            "seed": 2,
+            "stop_reason": "line_search_stationary",
+            "iterations": 1,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s002/jobs/dev-route_choice-000-p00-CHOMP-minimum_distance-0cd6d18f/attempts/0001",
+            "optimizer_result_sha256": "005e76c59f06275e6014c7dbba0c6683d0beeb66a48ced24b0f2e5974d07f28c"
+          },
+          {
+            "case_id": "dev-route_choice-000-p01",
+            "seed": 2,
+            "stop_reason": "line_search_stationary",
+            "iterations": 1,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s002/jobs/dev-route_choice-000-p01-CHOMP-minimum_distance-a6799db4/attempts/0001",
+            "optimizer_result_sha256": "2533f08d9ff33c8e8719de9cd659cd55a39a5d55e04e653e7920e44543078c71"
+          },
+          {
+            "case_id": "dev-route_choice-000-p02",
+            "seed": 2,
+            "stop_reason": "line_search_stationary",
+            "iterations": 16,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s002/jobs/dev-route_choice-000-p02-CHOMP-minimum_distance-fe85547b/attempts/0001",
+            "optimizer_result_sha256": "468d41ad416df39146cd5a27c9b20055e8a2313c3facaa899ff631bffa66de87"
+          },
+          {
+            "case_id": "dev-route_choice-001-p00",
+            "seed": 2,
+            "stop_reason": "line_search_stationary",
+            "iterations": 1,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s002/jobs/dev-route_choice-001-p00-CHOMP-minimum_distance-dcd5d437/attempts/0001",
+            "optimizer_result_sha256": "8fb568f72feffbd4d3bc9b213cac327b87e42fd2605cf41caf31151fc0ec5322"
+          },
+          {
+            "case_id": "dev-route_choice-001-p01",
+            "seed": 2,
+            "stop_reason": "line_search_stationary",
+            "iterations": 1,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s002/jobs/dev-route_choice-001-p01-CHOMP-minimum_distance-4d1d4e5d/attempts/0001",
+            "optimizer_result_sha256": "ea1e1e48509a59cb8e35b6fec03b95e864cbbe043562fb791ad5f85221dc8fea"
+          },
+          {
+            "case_id": "dev-route_choice-001-p02",
+            "seed": 2,
+            "stop_reason": "line_search_stationary",
+            "iterations": 1,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s002/jobs/dev-route_choice-001-p02-CHOMP-minimum_distance-80ca9aa9/attempts/0001",
+            "optimizer_result_sha256": "6c9d2385d73bed541f7c11d994226e3ecac98344f2a6a94ec933b4cd23fbd9c0"
+          },
+          {
+            "case_id": "dev-route_choice-002-p00",
+            "seed": 2,
+            "stop_reason": "line_search_stationary",
+            "iterations": 9,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s002/jobs/dev-route_choice-002-p00-CHOMP-minimum_distance-b0a3b222/attempts/0001",
+            "optimizer_result_sha256": "6424a559180f80e2b2afa772e22c1a7bbd90244aa376045bf5cd1dd5d21f4835"
+          },
+          {
+            "case_id": "dev-route_choice-002-p01",
+            "seed": 2,
+            "stop_reason": "maximum_iterations",
+            "iterations": 40,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s002/jobs/dev-route_choice-002-p01-CHOMP-minimum_distance-25d282bf/attempts/0001",
+            "optimizer_result_sha256": "48d424822a8492dfd66cf4a897557e66b9228dedc6850693af9779612165d130"
+          },
+          {
+            "case_id": "dev-route_choice-002-p02",
+            "seed": 2,
+            "stop_reason": "maximum_iterations",
+            "iterations": 40,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s002/jobs/dev-route_choice-002-p02-CHOMP-minimum_distance-a721bd13/attempts/0001",
+            "optimizer_result_sha256": "a1493902e9919c4cd2bd34098f13bffcb69da4575d49351785696074c1de1432"
+          },
+          {
+            "case_id": "dev-route_choice-003-p01",
+            "seed": 2,
+            "stop_reason": "line_search_stationary",
+            "iterations": 22,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s002/jobs/dev-route_choice-003-p01-CHOMP-minimum_distance-331171a5/attempts/0001",
+            "optimizer_result_sha256": "685a678d781e9410d02c9552e34bcaf716701e717b064982e9e74105e0bdabe4"
+          },
+          {
+            "case_id": "dev-route_choice-004-p00",
+            "seed": 2,
+            "stop_reason": "line_search_stationary",
+            "iterations": 39,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s002/jobs/dev-route_choice-004-p00-CHOMP-minimum_distance-aefed6f8/attempts/0001",
+            "optimizer_result_sha256": "2fcbe3d411213843591d9cea3f38494fc9783c05b8cda53dff2985e9e4a89504"
+          },
+          {
+            "case_id": "dev-route_choice-004-p01",
+            "seed": 2,
+            "stop_reason": "line_search_stationary",
+            "iterations": 29,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s002/jobs/dev-route_choice-004-p01-CHOMP-minimum_distance-b25b249e/attempts/0001",
+            "optimizer_result_sha256": "850bb4b0506ff755404521e043ff9c32975a155c2801ff36042c92dee046386a"
+          },
+          {
+            "case_id": "dev-route_choice-004-p02",
+            "seed": 2,
+            "stop_reason": "relative_cost_tolerance",
+            "iterations": 11,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s002/jobs/dev-route_choice-004-p02-CHOMP-minimum_distance-4de0e7a3/attempts/0001",
+            "optimizer_result_sha256": "04c2376aec7ecb6be793f1e2ffbd9e32e9928bbb2acf6748192eb4d6e7a9f16c"
+          }
+        ]
+      },
+      "STOMP": {
+        "registered": 180,
+        "candidates": 110,
+        "no_candidate": 70,
+        "raw_stop_reason_counts": {
+          "native_STOMP_return": 110
+        },
+        "raw_stop_reason_by_final_status": {
+          "success_validated_numerical": {
+            "native_STOMP_return": 110
+          }
+        },
+        "iterations_min": 6,
+        "iterations_max": 6,
+        "explicit_candidate_solver_converged_counts": {
+          "None": 110
+        },
+        "candidate_solver_success_counts": {
+          "True": 110
+        },
+        "all_candidate_metric_terminations_unknown": true,
+        "source": "candidate.optimizer_status and identical optimizer_result.json; these are raw stop/return reasons, not an added convergence flag",
+        "evidence": [
+          {
+            "case_id": "dev-sparse_clutter-002-p01",
+            "seed": 0,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s000/jobs/dev-sparse_clutter-002-p01-STOMP-minimum_distance-b7a372ce/attempts/0001",
+            "optimizer_result_sha256": "560e72d030c4609e7949ab7e20e5366c062d4b109d5fc4ed8334ffb3a9d89828"
+          },
+          {
+            "case_id": "dev-sparse_clutter-002-p02",
+            "seed": 0,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s000/jobs/dev-sparse_clutter-002-p02-STOMP-minimum_distance-0d642712/attempts/0001",
+            "optimizer_result_sha256": "ebf674b0651c7ec9461877a170a84556ab06726bb1355470cd639e5bb15488a0"
+          },
+          {
+            "case_id": "dev-sparse_clutter-003-p00",
+            "seed": 0,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s000/jobs/dev-sparse_clutter-003-p00-STOMP-minimum_distance-c95e3fa7/attempts/0001",
+            "optimizer_result_sha256": "72806408748d423cc80189fff5153bd96d6d7123d02fcdbbe85c193878bf2420"
+          },
+          {
+            "case_id": "dev-sparse_clutter-003-p01",
+            "seed": 0,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s000/jobs/dev-sparse_clutter-003-p01-STOMP-minimum_distance-39232ccd/attempts/0001",
+            "optimizer_result_sha256": "2e955dc9b6c60f0a4c68e41b9732632203e029a3a10c2ec32472d360a063e748"
+          },
+          {
+            "case_id": "dev-sparse_clutter-003-p02",
+            "seed": 0,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s000/jobs/dev-sparse_clutter-003-p02-STOMP-minimum_distance-4c802d2d/attempts/0001",
+            "optimizer_result_sha256": "be0a812e4fa3033b08612bbc97ed0483943eabff2a65d029c7c8225270154cba"
+          },
+          {
+            "case_id": "dev-sparse_clutter-004-p00",
+            "seed": 0,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s000/jobs/dev-sparse_clutter-004-p00-STOMP-minimum_distance-7ffc900c/attempts/0001",
+            "optimizer_result_sha256": "772ecdf49e7ba1f1227afac331efe75104fbe8b4f1877aff0825ee5dd701292f"
+          },
+          {
+            "case_id": "dev-sparse_clutter-004-p02",
+            "seed": 0,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s000/jobs/dev-sparse_clutter-004-p02-STOMP-minimum_distance-4beb50ef/attempts/0001",
+            "optimizer_result_sha256": "dbcd91e9e6d0fda1c06d68971884d5b2caa710807f194ec3c423240384925444"
+          },
+          {
+            "case_id": "dev-dense_clutter-001-p00",
+            "seed": 0,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s000/jobs/dev-dense_clutter-001-p00-STOMP-minimum_distance-dcf90eac/attempts/0001",
+            "optimizer_result_sha256": "6aa8be64569bdc9e2dda49f701d8ac67b1df37f7515db26b1e1d08364aa38287"
+          },
+          {
+            "case_id": "dev-dense_clutter-002-p00",
+            "seed": 0,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s000/jobs/dev-dense_clutter-002-p00-STOMP-minimum_distance-12a977df/attempts/0001",
+            "optimizer_result_sha256": "68c9a3cf24b5be48fb831b6a513ddb17593d1e6914e47d76bc2a845e86931275"
+          },
+          {
+            "case_id": "dev-dense_clutter-002-p01",
+            "seed": 0,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s000/jobs/dev-dense_clutter-002-p01-STOMP-minimum_distance-406ee683/attempts/0001",
+            "optimizer_result_sha256": "2d4209a37c4421fc23ee20955258d404f7529d1dc3fda7d4adeabb994174bef2"
+          },
+          {
+            "case_id": "dev-bottleneck-000-p00",
+            "seed": 0,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s000/jobs/dev-bottleneck-000-p00-STOMP-minimum_distance-027a7161/attempts/0001",
+            "optimizer_result_sha256": "49882758342dda7bfa2464e21a548771d490168d0d64f3a9b6497bdf5b7979e2"
+          },
+          {
+            "case_id": "dev-bottleneck-000-p01",
+            "seed": 0,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s000/jobs/dev-bottleneck-000-p01-STOMP-minimum_distance-d394ad78/attempts/0001",
+            "optimizer_result_sha256": "9cb0dd8dfdde2b396a74d7f0c696bac6bdc0deb079e0262d404238cd980eb6c1"
+          },
+          {
+            "case_id": "dev-bottleneck-000-p02",
+            "seed": 0,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s000/jobs/dev-bottleneck-000-p02-STOMP-minimum_distance-bd22b758/attempts/0001",
+            "optimizer_result_sha256": "202bd818616e81256130a3b88eca677555335d362d495bf84e0b432e53f6d32f"
+          },
+          {
+            "case_id": "dev-bottleneck-001-p00",
+            "seed": 0,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s000/jobs/dev-bottleneck-001-p00-STOMP-minimum_distance-c0b4bcba/attempts/0001",
+            "optimizer_result_sha256": "977fc68399f35566b7203d87c6e080a9c95e462a824b5cbb8758aaa2615935ff"
+          },
+          {
+            "case_id": "dev-bottleneck-001-p01",
+            "seed": 0,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s000/jobs/dev-bottleneck-001-p01-STOMP-minimum_distance-314a4f03/attempts/0001",
+            "optimizer_result_sha256": "d7b25e55cece95e65d5ca96c03199352a8a83ce37a874619e8c46fa77dc95aa6"
+          },
+          {
+            "case_id": "dev-bottleneck-001-p02",
+            "seed": 0,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s000/jobs/dev-bottleneck-001-p02-STOMP-minimum_distance-d7906b8a/attempts/0001",
+            "optimizer_result_sha256": "7e5f08f7c292dcd65b7b2f13379a9ce43509e44e7c2a2d31bf22a70aaca04459"
+          },
+          {
+            "case_id": "dev-bottleneck-002-p00",
+            "seed": 0,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s000/jobs/dev-bottleneck-002-p00-STOMP-minimum_distance-d6eb7f29/attempts/0001",
+            "optimizer_result_sha256": "84900cee39ac5e20d6e31b213a5b13d596c3c4942f747a02292d70499d7aa846"
+          },
+          {
+            "case_id": "dev-bottleneck-002-p01",
+            "seed": 0,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s000/jobs/dev-bottleneck-002-p01-STOMP-minimum_distance-c86553ca/attempts/0001",
+            "optimizer_result_sha256": "adc7c9ed530f6a885da35763d5aa86dfee8e7c403e2f868255e2a1f66be2c877"
+          },
+          {
+            "case_id": "dev-bottleneck-002-p02",
+            "seed": 0,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s000/jobs/dev-bottleneck-002-p02-STOMP-minimum_distance-7b159550/attempts/0001",
+            "optimizer_result_sha256": "38602b8b72be3b8eb09594b55976bb6e70919ea15fdadb1a4790a8c2b569f713"
+          },
+          {
+            "case_id": "dev-bottleneck-003-p00",
+            "seed": 0,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s000/jobs/dev-bottleneck-003-p00-STOMP-minimum_distance-8bffe942/attempts/0001",
+            "optimizer_result_sha256": "792ec1745289a90ee73254282007d3061cc4cee719b31350f7f2e9af2d74cee2"
+          },
+          {
+            "case_id": "dev-bottleneck-003-p01",
+            "seed": 0,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s000/jobs/dev-bottleneck-003-p01-STOMP-minimum_distance-fa08670e/attempts/0001",
+            "optimizer_result_sha256": "2ccdf8310022ba310152d07d66ca21449b6fcd23f88ea6f8a989b2a00788e681"
+          },
+          {
+            "case_id": "dev-bottleneck-003-p02",
+            "seed": 0,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s000/jobs/dev-bottleneck-003-p02-STOMP-minimum_distance-790f67be/attempts/0001",
+            "optimizer_result_sha256": "afe9371a030528b63803a2351cde5441c62d26b3c0981aa27f16a16080646eaf"
+          },
+          {
+            "case_id": "dev-bottleneck-004-p00",
+            "seed": 0,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s000/jobs/dev-bottleneck-004-p00-STOMP-minimum_distance-c5f91d12/attempts/0001",
+            "optimizer_result_sha256": "f1a10894a0a4695da2376fac86639a63a5a3010a44731e974db824b1ce3d0ad6"
+          },
+          {
+            "case_id": "dev-bottleneck-004-p01",
+            "seed": 0,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s000/jobs/dev-bottleneck-004-p01-STOMP-minimum_distance-5275fc65/attempts/0001",
+            "optimizer_result_sha256": "f22431c8eef04828de5cfa498471f2276467126b7ed2d434af0a06ee598a2f9c"
+          },
+          {
+            "case_id": "dev-bottleneck-004-p02",
+            "seed": 0,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s000/jobs/dev-bottleneck-004-p02-STOMP-minimum_distance-5d82d3d6/attempts/0001",
+            "optimizer_result_sha256": "bcc55da330084f86cdb4bea07f8c84b8cbf01e64714638ab8d1f492c6fffd029"
+          },
+          {
+            "case_id": "dev-route_choice-000-p00",
+            "seed": 0,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s000/jobs/dev-route_choice-000-p00-STOMP-minimum_distance-ab991450/attempts/0001",
+            "optimizer_result_sha256": "1c4b288a7a749d14dbb8763e53b759cdcfe40e9585c5258927dd650f671881df"
+          },
+          {
+            "case_id": "dev-route_choice-000-p01",
+            "seed": 0,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s000/jobs/dev-route_choice-000-p01-STOMP-minimum_distance-a75e3c34/attempts/0001",
+            "optimizer_result_sha256": "31a8e2a82872d0e212fce98b44257799d044a974b98b5d6c3b67469195a10f0d"
+          },
+          {
+            "case_id": "dev-route_choice-000-p02",
+            "seed": 0,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s000/jobs/dev-route_choice-000-p02-STOMP-minimum_distance-9dc6ea9a/attempts/0001",
+            "optimizer_result_sha256": "f5d9a22791687f21422f1dbfd5f5b0916c27ce699363d9c13100ca039db1c764"
+          },
+          {
+            "case_id": "dev-route_choice-001-p00",
+            "seed": 0,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s000/jobs/dev-route_choice-001-p00-STOMP-minimum_distance-94ffb66d/attempts/0001",
+            "optimizer_result_sha256": "5e65514abbdf7f0bf83a8e27316902dcd730631300c07cb8701d53b7dd9d2af8"
+          },
+          {
+            "case_id": "dev-route_choice-001-p01",
+            "seed": 0,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s000/jobs/dev-route_choice-001-p01-STOMP-minimum_distance-2ff5a1f7/attempts/0001",
+            "optimizer_result_sha256": "334a1a80f1fb007c84855c417df6e77e16d5f7f3a1579b7d5145b4b5857cb729"
+          },
+          {
+            "case_id": "dev-route_choice-001-p02",
+            "seed": 0,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s000/jobs/dev-route_choice-001-p02-STOMP-minimum_distance-371ca811/attempts/0001",
+            "optimizer_result_sha256": "887173419223b0e62a90254b85c6cc713f6a692f91c52ad4f2756f96a2071174"
+          },
+          {
+            "case_id": "dev-route_choice-002-p00",
+            "seed": 0,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s000/jobs/dev-route_choice-002-p00-STOMP-minimum_distance-1cd96c04/attempts/0001",
+            "optimizer_result_sha256": "b5df278aa4ffc4e7bdbab903c5e76186789eef8b65244bd101b53f411c67012f"
+          },
+          {
+            "case_id": "dev-route_choice-002-p01",
+            "seed": 0,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s000/jobs/dev-route_choice-002-p01-STOMP-minimum_distance-3eb90bb5/attempts/0001",
+            "optimizer_result_sha256": "3093c7acffc69df549581c1bd67b7398ef2d13513d94cf32f2a7f8df2094aa8c"
+          },
+          {
+            "case_id": "dev-route_choice-002-p02",
+            "seed": 0,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s000/jobs/dev-route_choice-002-p02-STOMP-minimum_distance-d448a655/attempts/0001",
+            "optimizer_result_sha256": "b48b2a0888fd1f872d044a9d288d9a44e7b33443676d79679f9d76dea48119e6"
+          },
+          {
+            "case_id": "dev-route_choice-003-p01",
+            "seed": 0,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s000/jobs/dev-route_choice-003-p01-STOMP-minimum_distance-c9ecc1c7/attempts/0001",
+            "optimizer_result_sha256": "237d9babed4c02525941eee011db62058ef33189bc9a3da93fa45d436b61a4b6"
+          },
+          {
+            "case_id": "dev-route_choice-004-p00",
+            "seed": 0,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s000/jobs/dev-route_choice-004-p00-STOMP-minimum_distance-f8278b1e/attempts/0001",
+            "optimizer_result_sha256": "075c969a54e385f75ff29751192418f927a2d5cc22cf56610c95cc9f15a9c32c"
+          },
+          {
+            "case_id": "dev-route_choice-004-p01",
+            "seed": 0,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s000/jobs/dev-route_choice-004-p01-STOMP-minimum_distance-6575f735/attempts/0001",
+            "optimizer_result_sha256": "d97bd3fb26cda63747929e02e68cb082d451bdca9a74240eddcbd845b9cca5bf"
+          },
+          {
+            "case_id": "dev-route_choice-004-p02",
+            "seed": 0,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s000/jobs/dev-route_choice-004-p02-STOMP-minimum_distance-3a080d59/attempts/0001",
+            "optimizer_result_sha256": "9bbc094a55292a66d7e9848d29e10e84358d02f651cd256dace4b15930cb2665"
+          },
+          {
+            "case_id": "dev-sparse_clutter-003-p00",
+            "seed": 1,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s001/jobs/dev-sparse_clutter-003-p00-STOMP-minimum_distance-44a801a7/attempts/0001",
+            "optimizer_result_sha256": "1cfa6c243b02ccf228c251c1781847e58e341a71912357c4650335ec18defd44"
+          },
+          {
+            "case_id": "dev-sparse_clutter-003-p01",
+            "seed": 1,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s001/jobs/dev-sparse_clutter-003-p01-STOMP-minimum_distance-49a4431b/attempts/0001",
+            "optimizer_result_sha256": "d2e1c664af3cd5c7f3320825d692276f68648b3ca04b39b8da658af230c95f0e"
+          },
+          {
+            "case_id": "dev-sparse_clutter-003-p02",
+            "seed": 1,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s001/jobs/dev-sparse_clutter-003-p02-STOMP-minimum_distance-9fba9074/attempts/0001",
+            "optimizer_result_sha256": "a00a17221418c265907511387cc5a833c3673b245ee41933aeea954d7c8d1b47"
+          },
+          {
+            "case_id": "dev-sparse_clutter-004-p00",
+            "seed": 1,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s001/jobs/dev-sparse_clutter-004-p00-STOMP-minimum_distance-89e904af/attempts/0001",
+            "optimizer_result_sha256": "5e8fd4d6a7045a14dfcbb9cc8f9a040f376a438f2ac091b0376be00b360ac56f"
+          },
+          {
+            "case_id": "dev-sparse_clutter-004-p02",
+            "seed": 1,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s001/jobs/dev-sparse_clutter-004-p02-STOMP-minimum_distance-e00c84fe/attempts/0001",
+            "optimizer_result_sha256": "27e4cf25d88c937870bd0c900d33686293b5cebdec1a7be98480322d4cb3a5ca"
+          },
+          {
+            "case_id": "dev-dense_clutter-001-p00",
+            "seed": 1,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s001/jobs/dev-dense_clutter-001-p00-STOMP-minimum_distance-1fa400e0/attempts/0001",
+            "optimizer_result_sha256": "e6bfba832b424c9b4994eaca04b448894875f713a83528fa941174fa039132e6"
+          },
+          {
+            "case_id": "dev-dense_clutter-002-p00",
+            "seed": 1,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s001/jobs/dev-dense_clutter-002-p00-STOMP-minimum_distance-61408f7c/attempts/0001",
+            "optimizer_result_sha256": "a2cbd893a08b86dc6dd92db7d735117a0234e8ba962adece9aa54808866f3d5b"
+          },
+          {
+            "case_id": "dev-dense_clutter-002-p01",
+            "seed": 1,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s001/jobs/dev-dense_clutter-002-p01-STOMP-minimum_distance-a6e67f9f/attempts/0001",
+            "optimizer_result_sha256": "b435bd42696b827e297e92b76f70f02ffe4ea5c794783b83ce4a4fabe72c13e1"
+          },
+          {
+            "case_id": "dev-bottleneck-000-p00",
+            "seed": 1,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s001/jobs/dev-bottleneck-000-p00-STOMP-minimum_distance-369265b6/attempts/0001",
+            "optimizer_result_sha256": "5db2c030036b5e53cbbba2dc325f89f0a7e3d83615c3260f0d7e87fa9da123ae"
+          },
+          {
+            "case_id": "dev-bottleneck-000-p01",
+            "seed": 1,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s001/jobs/dev-bottleneck-000-p01-STOMP-minimum_distance-ee09ab8d/attempts/0001",
+            "optimizer_result_sha256": "00acf87b1aef08e8b48890cd31e6176ca83ff4b2a5b2abc9c5be2c9efa523dcf"
+          },
+          {
+            "case_id": "dev-bottleneck-000-p02",
+            "seed": 1,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s001/jobs/dev-bottleneck-000-p02-STOMP-minimum_distance-c2e23a35/attempts/0001",
+            "optimizer_result_sha256": "883fa9fc739bcfbb3f9f28ed0103811fd29bb02aa9c049ea4dfa0aecc7675459"
+          },
+          {
+            "case_id": "dev-bottleneck-001-p00",
+            "seed": 1,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s001/jobs/dev-bottleneck-001-p00-STOMP-minimum_distance-f25b11a1/attempts/0001",
+            "optimizer_result_sha256": "1ab20c5b4d71ebf9e5490b426ae7da152c134ba87ff977c91900ca7007753b72"
+          },
+          {
+            "case_id": "dev-bottleneck-001-p01",
+            "seed": 1,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s001/jobs/dev-bottleneck-001-p01-STOMP-minimum_distance-4760cda4/attempts/0001",
+            "optimizer_result_sha256": "9c9a89a2b90ddbbc7e3e6ef3e13874fbed52894d8608815ec05583ef7b1ae4b2"
+          },
+          {
+            "case_id": "dev-bottleneck-001-p02",
+            "seed": 1,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s001/jobs/dev-bottleneck-001-p02-STOMP-minimum_distance-e7e28f9b/attempts/0001",
+            "optimizer_result_sha256": "5f8da1d8eb07eda4b916452096581255baf97fc1d2e647579870e04d46702646"
+          },
+          {
+            "case_id": "dev-bottleneck-002-p00",
+            "seed": 1,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s001/jobs/dev-bottleneck-002-p00-STOMP-minimum_distance-59f74f90/attempts/0001",
+            "optimizer_result_sha256": "b03dbc4434a1f457b4c185bd338bcdd25ef62d7d0e2ecb8c3f3a2dd100085035"
+          },
+          {
+            "case_id": "dev-bottleneck-002-p01",
+            "seed": 1,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s001/jobs/dev-bottleneck-002-p01-STOMP-minimum_distance-d705d1ea/attempts/0001",
+            "optimizer_result_sha256": "9ef3a6cd28fa0e1509159e9437f3a2e12f8883896a0b80ceb63c380b96a9a014"
+          },
+          {
+            "case_id": "dev-bottleneck-002-p02",
+            "seed": 1,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s001/jobs/dev-bottleneck-002-p02-STOMP-minimum_distance-dcf69680/attempts/0001",
+            "optimizer_result_sha256": "3d6d8c861f57993cac15933a0f91d03329754f637aa10cbbabb731da9bdfe0e1"
+          },
+          {
+            "case_id": "dev-bottleneck-003-p00",
+            "seed": 1,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s001/jobs/dev-bottleneck-003-p00-STOMP-minimum_distance-72e30835/attempts/0001",
+            "optimizer_result_sha256": "d16f997c0daef465462ea5d808905699777590bdd2c10c537726a95c5adee982"
+          },
+          {
+            "case_id": "dev-bottleneck-003-p01",
+            "seed": 1,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s001/jobs/dev-bottleneck-003-p01-STOMP-minimum_distance-a5741e64/attempts/0001",
+            "optimizer_result_sha256": "0ca854f6d6475a194396668921b65ffb7f9cb1277a98bfcefda5d70c950097f5"
+          },
+          {
+            "case_id": "dev-bottleneck-003-p02",
+            "seed": 1,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s001/jobs/dev-bottleneck-003-p02-STOMP-minimum_distance-9156856a/attempts/0001",
+            "optimizer_result_sha256": "0bfd6925b395765d69a2b1dca727fa021c21e3460bd25c117de206b48d57a806"
+          },
+          {
+            "case_id": "dev-bottleneck-004-p00",
+            "seed": 1,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s001/jobs/dev-bottleneck-004-p00-STOMP-minimum_distance-05dc488c/attempts/0001",
+            "optimizer_result_sha256": "d27791c719507a7d80b0cb7793440f9d311553284da3303038abc7222a48d12c"
+          },
+          {
+            "case_id": "dev-bottleneck-004-p01",
+            "seed": 1,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s001/jobs/dev-bottleneck-004-p01-STOMP-minimum_distance-eaa3ea3a/attempts/0001",
+            "optimizer_result_sha256": "d73a0816e4b72d7cc6a547fe008c5780ef47f0c7fe6c25a69002c15c3a8ffce3"
+          },
+          {
+            "case_id": "dev-bottleneck-004-p02",
+            "seed": 1,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s001/jobs/dev-bottleneck-004-p02-STOMP-minimum_distance-6fae3eef/attempts/0001",
+            "optimizer_result_sha256": "646e1a4417347f3c18bc8fc61cdf1dbbd6ffaab4449ac58c38a098eb2a96c95e"
+          },
+          {
+            "case_id": "dev-route_choice-000-p00",
+            "seed": 1,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s001/jobs/dev-route_choice-000-p00-STOMP-minimum_distance-7a96a6c6/attempts/0001",
+            "optimizer_result_sha256": "228bade5377138e5e81a3f11d7a9243976acd5149b436f595715765af99bed7a"
+          },
+          {
+            "case_id": "dev-route_choice-000-p01",
+            "seed": 1,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s001/jobs/dev-route_choice-000-p01-STOMP-minimum_distance-84d889d2/attempts/0001",
+            "optimizer_result_sha256": "2f1147cee9ffd8dea2f983b81c7b307574f7fb55bcca10cfe77d2577c48fa198"
+          },
+          {
+            "case_id": "dev-route_choice-000-p02",
+            "seed": 1,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s001/jobs/dev-route_choice-000-p02-STOMP-minimum_distance-629f628d/attempts/0001",
+            "optimizer_result_sha256": "18873f2318e103a079ff12c9086cb659873cf49200293940548843a3b3f2155c"
+          },
+          {
+            "case_id": "dev-route_choice-001-p00",
+            "seed": 1,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s001/jobs/dev-route_choice-001-p00-STOMP-minimum_distance-342d8314/attempts/0001",
+            "optimizer_result_sha256": "e3665beb6a285e00dcb060cffe0ad8777576f55f9b56220ed754f4ccfbcf63f1"
+          },
+          {
+            "case_id": "dev-route_choice-001-p01",
+            "seed": 1,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s001/jobs/dev-route_choice-001-p01-STOMP-minimum_distance-4214f218/attempts/0001",
+            "optimizer_result_sha256": "191f5f5b541ea1ba7e014699eef0b36ab10dbdaedb486c6c2266ae58db02ba4d"
+          },
+          {
+            "case_id": "dev-route_choice-001-p02",
+            "seed": 1,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s001/jobs/dev-route_choice-001-p02-STOMP-minimum_distance-a2fa0732/attempts/0001",
+            "optimizer_result_sha256": "1bb8974fd09aa757ce95fb75b30fb2afb88a0f7b6d0cf041f80fc67de5df7e4c"
+          },
+          {
+            "case_id": "dev-route_choice-002-p00",
+            "seed": 1,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s001/jobs/dev-route_choice-002-p00-STOMP-minimum_distance-936e5809/attempts/0001",
+            "optimizer_result_sha256": "a70e0fc29920f73cfe0b717ce9b6eca8c0a5bc03f388571b336d59c524420e56"
+          },
+          {
+            "case_id": "dev-route_choice-002-p01",
+            "seed": 1,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s001/jobs/dev-route_choice-002-p01-STOMP-minimum_distance-7f73b7b7/attempts/0001",
+            "optimizer_result_sha256": "4d354733713662e0e74f36b711f9c3eab9918f851e940904c60b456e08936dc5"
+          },
+          {
+            "case_id": "dev-route_choice-002-p02",
+            "seed": 1,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s001/jobs/dev-route_choice-002-p02-STOMP-minimum_distance-666f3d6b/attempts/0001",
+            "optimizer_result_sha256": "9b70bb8fd0c76ba897a5b4360eb185517d0db7c2c0a5e7717c34a35821d24cf0"
+          },
+          {
+            "case_id": "dev-route_choice-003-p01",
+            "seed": 1,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s001/jobs/dev-route_choice-003-p01-STOMP-minimum_distance-34818029/attempts/0001",
+            "optimizer_result_sha256": "055ceb243e1740c9ccd068eddbbe50ae8f000fc13e1e0171f71a7df4fdb8ca07"
+          },
+          {
+            "case_id": "dev-route_choice-004-p00",
+            "seed": 1,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s001/jobs/dev-route_choice-004-p00-STOMP-minimum_distance-6057c53f/attempts/0001",
+            "optimizer_result_sha256": "f007393e760f16c462f18596ea3e471883ba510b4a48620d4e28d015702055da"
+          },
+          {
+            "case_id": "dev-route_choice-004-p01",
+            "seed": 1,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s001/jobs/dev-route_choice-004-p01-STOMP-minimum_distance-32d34737/attempts/0001",
+            "optimizer_result_sha256": "adb86e4d2ee6a89c83e759002a717ae12ac1d1027fcc011a7cc27a23c4fdeff0"
+          },
+          {
+            "case_id": "dev-route_choice-004-p02",
+            "seed": 1,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s001/jobs/dev-route_choice-004-p02-STOMP-minimum_distance-76ee091a/attempts/0001",
+            "optimizer_result_sha256": "79c939e155e6a8d8e8bf71310ce3aa21f8947c14705fa15e638a3732c0bd3032"
+          },
+          {
+            "case_id": "dev-sparse_clutter-003-p00",
+            "seed": 2,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s002/jobs/dev-sparse_clutter-003-p00-STOMP-minimum_distance-157daef4/attempts/0001",
+            "optimizer_result_sha256": "821900347d03142be8beee2e3d341310d3eed08bf947f03498815c69c6a88167"
+          },
+          {
+            "case_id": "dev-sparse_clutter-003-p01",
+            "seed": 2,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s002/jobs/dev-sparse_clutter-003-p01-STOMP-minimum_distance-c5e7e611/attempts/0001",
+            "optimizer_result_sha256": "b4001695b5380820076c50a1a63129c47ab10d4094adaf0865669ea4a7739189"
+          },
+          {
+            "case_id": "dev-sparse_clutter-003-p02",
+            "seed": 2,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s002/jobs/dev-sparse_clutter-003-p02-STOMP-minimum_distance-92356f32/attempts/0001",
+            "optimizer_result_sha256": "f41d04c1ca2638a983c522e4c3836f1441c6804d4ad85a435cbeeb2fab720268"
+          },
+          {
+            "case_id": "dev-sparse_clutter-004-p00",
+            "seed": 2,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s002/jobs/dev-sparse_clutter-004-p00-STOMP-minimum_distance-740f271f/attempts/0001",
+            "optimizer_result_sha256": "bf5f7c69774038ae5e912c4866f85df119321b43974220c51fd307193ef871cb"
+          },
+          {
+            "case_id": "dev-sparse_clutter-004-p01",
+            "seed": 2,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s002/jobs/dev-sparse_clutter-004-p01-STOMP-minimum_distance-665fd41b/attempts/0001",
+            "optimizer_result_sha256": "682b6b474fa07c31a459923ac5c77b4b57a4afe045f49d78f37a9945679ce9f5"
+          },
+          {
+            "case_id": "dev-sparse_clutter-004-p02",
+            "seed": 2,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s002/jobs/dev-sparse_clutter-004-p02-STOMP-minimum_distance-7782372f/attempts/0001",
+            "optimizer_result_sha256": "5c7f01d1539fd0e73bdbb09aa09e8faa2733f6ebe54ce6c6fddc6123eb9725d5"
+          },
+          {
+            "case_id": "dev-dense_clutter-002-p00",
+            "seed": 2,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s002/jobs/dev-dense_clutter-002-p00-STOMP-minimum_distance-536fb7c2/attempts/0001",
+            "optimizer_result_sha256": "b5d4c5ff32be4a53625b70b4b3dd5d6191f7d109954c029bab1eacbf2cdd6988"
+          },
+          {
+            "case_id": "dev-dense_clutter-002-p01",
+            "seed": 2,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s002/jobs/dev-dense_clutter-002-p01-STOMP-minimum_distance-8e426988/attempts/0001",
+            "optimizer_result_sha256": "30bc9ef676b476f482f6d9b97f908b1287556daa84e56d75a4dff9efae125693"
+          },
+          {
+            "case_id": "dev-bottleneck-000-p00",
+            "seed": 2,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s002/jobs/dev-bottleneck-000-p00-STOMP-minimum_distance-a686032e/attempts/0001",
+            "optimizer_result_sha256": "f3456d49b2f62141620ae82fbb11eb2c2fb93bdc2069f9648faf3d0e0e26206d"
+          },
+          {
+            "case_id": "dev-bottleneck-000-p01",
+            "seed": 2,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s002/jobs/dev-bottleneck-000-p01-STOMP-minimum_distance-a17a36ac/attempts/0001",
+            "optimizer_result_sha256": "24f33f6ae0499f53be4f64917f73d7f539fb02ba6c6d371f7f87591d9d8892bd"
+          },
+          {
+            "case_id": "dev-bottleneck-000-p02",
+            "seed": 2,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s002/jobs/dev-bottleneck-000-p02-STOMP-minimum_distance-32279cd6/attempts/0001",
+            "optimizer_result_sha256": "2b990ba33d0341fa4fc20ebb8807239f10813e01cf226cc53510690eabe2387a"
+          },
+          {
+            "case_id": "dev-bottleneck-001-p00",
+            "seed": 2,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s002/jobs/dev-bottleneck-001-p00-STOMP-minimum_distance-e3cab3da/attempts/0001",
+            "optimizer_result_sha256": "65309dac94df71d54124cd4ed356998aa0cc8bf003a424a35a6e1c0f392f1295"
+          },
+          {
+            "case_id": "dev-bottleneck-001-p01",
+            "seed": 2,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s002/jobs/dev-bottleneck-001-p01-STOMP-minimum_distance-5d7c9cbf/attempts/0001",
+            "optimizer_result_sha256": "f077c8f682b684cd4be1de2ce9b3f3840fbff1a7485abdf79dd135997087deb4"
+          },
+          {
+            "case_id": "dev-bottleneck-001-p02",
+            "seed": 2,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s002/jobs/dev-bottleneck-001-p02-STOMP-minimum_distance-3969f3ac/attempts/0001",
+            "optimizer_result_sha256": "26416a0573fa28c1041a44e3f7980c40f51d5a679da9d3a753ade6fcb94c63d1"
+          },
+          {
+            "case_id": "dev-bottleneck-002-p00",
+            "seed": 2,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s002/jobs/dev-bottleneck-002-p00-STOMP-minimum_distance-8817fcf2/attempts/0001",
+            "optimizer_result_sha256": "c994a0f20e1a5685b28357d2cc26b267c54ea37d57e50d1ca7a6044a9483c41a"
+          },
+          {
+            "case_id": "dev-bottleneck-002-p01",
+            "seed": 2,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s002/jobs/dev-bottleneck-002-p01-STOMP-minimum_distance-95af909f/attempts/0001",
+            "optimizer_result_sha256": "0cc8767590210ab15816bb5196142861be7437174cd972b8f6094d61364a10b4"
+          },
+          {
+            "case_id": "dev-bottleneck-002-p02",
+            "seed": 2,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s002/jobs/dev-bottleneck-002-p02-STOMP-minimum_distance-a7d18f40/attempts/0001",
+            "optimizer_result_sha256": "86b7d5e181c962408f8b0b329a356251fae8c1c197495175dc694720f4e8faed"
+          },
+          {
+            "case_id": "dev-bottleneck-003-p00",
+            "seed": 2,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s002/jobs/dev-bottleneck-003-p00-STOMP-minimum_distance-5530c77e/attempts/0001",
+            "optimizer_result_sha256": "a1751ccde8fc92b0679df72e24978f08b15c35be9ef3be88e7e266f2cf323072"
+          },
+          {
+            "case_id": "dev-bottleneck-003-p01",
+            "seed": 2,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s002/jobs/dev-bottleneck-003-p01-STOMP-minimum_distance-a4033558/attempts/0001",
+            "optimizer_result_sha256": "52cb0bebc76ce3ac77a6c5915ea3e728287d383f6a65c17c570685abccfca080"
+          },
+          {
+            "case_id": "dev-bottleneck-003-p02",
+            "seed": 2,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s002/jobs/dev-bottleneck-003-p02-STOMP-minimum_distance-13c73167/attempts/0001",
+            "optimizer_result_sha256": "4ddc62a7bc976590f6a753acac4a4c55671a2409cb969e2125e8595a5bdee9ca"
+          },
+          {
+            "case_id": "dev-bottleneck-004-p00",
+            "seed": 2,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s002/jobs/dev-bottleneck-004-p00-STOMP-minimum_distance-85e8c47f/attempts/0001",
+            "optimizer_result_sha256": "9791386826deefad35caec175ebb854ad37550064bf4e34a751e4642e25385c5"
+          },
+          {
+            "case_id": "dev-bottleneck-004-p01",
+            "seed": 2,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s002/jobs/dev-bottleneck-004-p01-STOMP-minimum_distance-e544b6fe/attempts/0001",
+            "optimizer_result_sha256": "90b17e51782b569229814bde325676b6bcc55133b4b8bfddbe93308bb85e64e2"
+          },
+          {
+            "case_id": "dev-bottleneck-004-p02",
+            "seed": 2,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s002/jobs/dev-bottleneck-004-p02-STOMP-minimum_distance-ef30fc54/attempts/0001",
+            "optimizer_result_sha256": "557c9c1f08010782c29e653075e860a4dcda570b666431e7f3c573c8c590df2a"
+          },
+          {
+            "case_id": "dev-route_choice-000-p00",
+            "seed": 2,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s002/jobs/dev-route_choice-000-p00-STOMP-minimum_distance-d94b6190/attempts/0001",
+            "optimizer_result_sha256": "ec7321f326dde2639b7d49a2e6c50157ca662e2fd91ed14dee021a448cb321d5"
+          },
+          {
+            "case_id": "dev-route_choice-000-p01",
+            "seed": 2,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s002/jobs/dev-route_choice-000-p01-STOMP-minimum_distance-f91091e3/attempts/0001",
+            "optimizer_result_sha256": "f9517778bb8af3292e0288b7d31ee38664ac27822f79a56381d5396e54dc949e"
+          },
+          {
+            "case_id": "dev-route_choice-000-p02",
+            "seed": 2,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s002/jobs/dev-route_choice-000-p02-STOMP-minimum_distance-866dfbce/attempts/0001",
+            "optimizer_result_sha256": "de85ef266e91fd89e298950b70df72cd208e847c66dee2cde7273213b5ccdae4"
+          },
+          {
+            "case_id": "dev-route_choice-001-p00",
+            "seed": 2,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s002/jobs/dev-route_choice-001-p00-STOMP-minimum_distance-7583f795/attempts/0001",
+            "optimizer_result_sha256": "7976b013ef95f9e1d12487e1c65d3270d2e3465d456ff6f87c1ade11635d14e6"
+          },
+          {
+            "case_id": "dev-route_choice-001-p01",
+            "seed": 2,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s002/jobs/dev-route_choice-001-p01-STOMP-minimum_distance-1faea6e0/attempts/0001",
+            "optimizer_result_sha256": "cfdf7ccdc67573c7ef6ea5a314e2dc1a124b36493fc3e8353ce328f551af389f"
+          },
+          {
+            "case_id": "dev-route_choice-001-p02",
+            "seed": 2,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s002/jobs/dev-route_choice-001-p02-STOMP-minimum_distance-5f66d4f8/attempts/0001",
+            "optimizer_result_sha256": "bf12f4df441bced2fb11660b6c841bbde4d6e931d8e95581e26d2d97dff8fec3"
+          },
+          {
+            "case_id": "dev-route_choice-002-p00",
+            "seed": 2,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s002/jobs/dev-route_choice-002-p00-STOMP-minimum_distance-8e892b6d/attempts/0001",
+            "optimizer_result_sha256": "c52e3794be5938dc56c6415b441c83f0a9b44f972d9168ea035fc6dcc21bb983"
+          },
+          {
+            "case_id": "dev-route_choice-002-p01",
+            "seed": 2,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s002/jobs/dev-route_choice-002-p01-STOMP-minimum_distance-333421f6/attempts/0001",
+            "optimizer_result_sha256": "02235f00c7b0f5b9978049f231584aad78c121c2bbcc51729f6d9fdc50c2a172"
+          },
+          {
+            "case_id": "dev-route_choice-002-p02",
+            "seed": 2,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s002/jobs/dev-route_choice-002-p02-STOMP-minimum_distance-b2497f36/attempts/0001",
+            "optimizer_result_sha256": "a36787e4fd926b64e23dfe7fc7b2a0e653d805580ded72769d9e34525144dac2"
+          },
+          {
+            "case_id": "dev-route_choice-003-p01",
+            "seed": 2,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s002/jobs/dev-route_choice-003-p01-STOMP-minimum_distance-c33054c8/attempts/0001",
+            "optimizer_result_sha256": "200b45c17160f2e5f9d18e0b8199ba4c52a6606325a7e5d25692e93a2e565f08"
+          },
+          {
+            "case_id": "dev-route_choice-004-p00",
+            "seed": 2,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s002/jobs/dev-route_choice-004-p00-STOMP-minimum_distance-873edb22/attempts/0001",
+            "optimizer_result_sha256": "df28eaca9562ace93acf4c31c4065d5fda5d3f205695b470e7aa222a20fdcfea"
+          },
+          {
+            "case_id": "dev-route_choice-004-p01",
+            "seed": 2,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s002/jobs/dev-route_choice-004-p01-STOMP-minimum_distance-372cfd99/attempts/0001",
+            "optimizer_result_sha256": "059813b3039c633ebfd2d152e621ba80cbb2efa4054ecba4e25d355c66c5f8aa"
+          },
+          {
+            "case_id": "dev-route_choice-004-p02",
+            "seed": 2,
+            "stop_reason": "native_STOMP_return",
+            "iterations": 6,
+            "final_status": "success_validated_numerical",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s002/jobs/dev-route_choice-004-p02-STOMP-minimum_distance-df3c9e9d/attempts/0001",
+            "optimizer_result_sha256": "7125b85c217f607dee783d988ef3c0ba03159b3a9e49efb1322159b34072e018"
+          }
+        ]
+      }
+    }
+  },
+  "raw_termination_interpretation": "Main metrics intentionally use top-level candidate termination/solver_status/native_status and explicit solver_converged only. CHOMP/STOMP candidates lack these top-level termination fields and solver_converged boolean, so their candidate termination/convergence remain unknown in frozen metrics. Raw optimizer_result.stop_reason supplies the actual stop/return reason below; line_search_stationary, relative_cost_tolerance, maximum_iterations and native_STOMP_return are not retroactively translated into convergence claims.",
+  "shared_frontend_failure_interpretation": "Of the 70 shared dev frontend failures, 50 have the retained native no-path-in-roadmap exception and 20 are a normal native return with query_success=false. Neither establishes continuous-space infeasibility."
+}

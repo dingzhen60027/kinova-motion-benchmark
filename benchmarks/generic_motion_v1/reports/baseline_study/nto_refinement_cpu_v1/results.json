@@ -1,0 +1,110 @@
+{
+  "final_common_gpu_validation_not_run": true,
+  "plan": {
+    "comparison": "Reuses exact saved accepted DRM path and input; no GPU or frontend rerun, so these are CPU diagnostic outcomes, not full benchmark success labels.",
+    "jobs": [
+      "dev-sparse_clutter-002-p02-NTO_PAPER-minimum_distance-462e42b6",
+      "dev-dense_clutter-002-p00-NTO_PAPER-minimum_distance-62127136",
+      "dev-route_choice-002-p00-NTO_PAPER-minimum_distance-48b608ce"
+    ],
+    "profile": {
+      "acceleration_limit_rad_s2": 1.0,
+      "clearance_m": 0.001,
+      "collocation_locations": "author_tex_interior_k_over_Nc",
+      "collocation_parameter_Nc": 150,
+      "distance_solver": "SNOPT",
+      "distance_spline_order": 2,
+      "influence_distance_m": 0.01,
+      "maximum_collocation_points": 600,
+      "maximum_iterations": 2000,
+      "maximum_native_solves": 4,
+      "maximum_optimizer_seconds": 60.0,
+      "minimum_control_points": null,
+      "name": "rss2025_nto_numerical_refinement_v1",
+      "provenance": "declared_NTO_refinement_on_frozen_Kinova_not_exact_author_configuration",
+      "refinement_geometry_batch": 32,
+      "refinement_guard_m": 0.0005,
+      "snopt_minor_iterations": 500,
+      "snopt_total_iterations": 100000,
+      "solver_feasibility_tolerance": 1e-06,
+      "sources": {
+        "clearance": "Author archived appendix describes epsilon as the minimum admissible distance but gives no value. The fixed 1 mm value is a declared local development policy.",
+        "collocation": "Archived author arXiv TeX commented appendix: k/Nc for k=1,...,Nc-1; 149 bindings. Published text says Nc points, so exact implementation is unresolved.",
+        "endpoint_copies": "Reconstruction choice: one extra copy at each endpoint of the cubic warm start, making its endpoint velocities zero while retaining all DRM nodes.",
+        "engineering": "Iteration limit 2000, solver tolerances, initialization duration length+2, positive duration bounds, and 60-second budget are explicit local protocol choices, not published exact settings.",
+        "iteration_limits": "Local policy: SNOPT total 100000 / major 2000 / minor 500; IPOPT max_iter 2000. All construction, solves and refinement checks share the external online deadline.",
+        "published": "RSS 2025 Werner et al., VII-A.3 and Appendix D; 4th order time spline, SNOPT distance, IPOPT time, Nc=150",
+        "refinement": "Local constraint generation: after each native solve, add the minimum-clearance sampled parameter in each current interval with clearance below 0.5 mm. At most 4 solves and 600 total points. No control insertion or case-specific policy."
+      },
+      "time_duration_bounds_seconds": [
+        0.05,
+        100.0
+      ],
+      "time_solver": "IPOPT",
+      "time_spline_order": 4,
+      "velocity_limit_rad_s": 1.0,
+      "warm_start_resampled": false
+    },
+    "selection": "Previously diagnosed fixed dev iteration-limit, collision-failure and backend-exception cases; selected before refined solves. Not a random performance sample.",
+    "source_sha256": {
+      "benchmarks/generic_motion_v1/reports/baseline_study/nto_refinement_cpu_probe.py": "3ddf7585a9e191c2ceb4ba7a8ff4b9cb9ba68046287faa0ccf7b958d031bba36",
+      "benchmarks/generic_motion_v1/runners/paper_nto.py": "f6697df7115cf258b5cd7773de14aeb98e67a7e3d0952654715f765748c0337f",
+      "benchmarks/generic_motion_v1/runners/paper_nto_refined.py": "0a3d724ac0679ce097a4afb9b8359a23d43f28b06a5ee86bb71eba0f9ef01945"
+    },
+    "test_data_used": false
+  },
+  "results": [
+    {
+      "cost": 6.618656115212021,
+      "cpu_diagnostic_seconds": 2.6088486090302467,
+      "cpu_geometry_free": true,
+      "endpoint_error_rad": 9.171842130228924e-08,
+      "initial_path_length": 9.268509629233986,
+      "input_sha256": "7a7fd8ae08cdb43618d08aae3af14425a81749dc7cd8163bd77327eb92ebceee",
+      "job": "dev-sparse_clutter-002-p02-NTO_PAPER-minimum_distance-462e42b6",
+      "joint_limits_passed": true,
+      "minimum_clearance_m": 0.0008779767780063008,
+      "native_solves": 1,
+      "observed_frontend_seconds": 0.7973504797555506,
+      "old_attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_distance-462e42b6/attempts/0001",
+      "outcome": "returned_candidate",
+      "path_sha256": "d08e425c6095ebfca882cf6d78a419e64e0f7d33a72ee09a12f63a2c2a99a215",
+      "prior_status": "solver_failed",
+      "samples": 2194,
+      "solver_status": "SolutionResult.kSolutionFound",
+      "solver_success": true
+    },
+    {
+      "cost": 14.385355322609353,
+      "cpu_diagnostic_seconds": 19.11333800898865,
+      "cpu_geometry_free": false,
+      "endpoint_error_rad": 1.1364751273390539e-07,
+      "initial_path_length": 4.713747476910588,
+      "input_sha256": "0d1e008dd7ca7d88d8690e92fb3136f991066a69eacdd7d25bbeacfbd7561ea1",
+      "job": "dev-dense_clutter-002-p00-NTO_PAPER-minimum_distance-62127136",
+      "joint_limits_passed": true,
+      "minimum_clearance_m": -0.06756652827661991,
+      "native_solves": 4,
+      "observed_frontend_seconds": 0.5351100983098149,
+      "old_attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-dense_clutter-002-p00-NTO_PAPER-minimum_distance-62127136/attempts/0001",
+      "outcome": "returned_candidate",
+      "path_sha256": "165821d3e64e401196e16d3621c00e4df0e1e84c854f145393480b3cfe8c9dfe",
+      "prior_status": "collision_failed",
+      "samples": 3169,
+      "solver_status": "SolutionResult.kInfeasibleConstraints",
+      "solver_success": false
+    },
+    {
+      "cpu_diagnostic_seconds": 72.72237064735964,
+      "exception": "TimeoutError('NTO refinement geometry check exhausted shared online budget')",
+      "input_sha256": "ad45f2ed9731516f32c427aa9504950b11990a13a1c6db5037f97ae4bd3a61d6",
+      "job": "dev-route_choice-002-p00-NTO_PAPER-minimum_distance-48b608ce",
+      "observed_frontend_seconds": 1.143894831649959,
+      "old_attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_distance-48b608ce/attempts/0001",
+      "outcome": "exception",
+      "path_sha256": "7f2f1a7f3aa77027aee364ab4b05930e76d3c4c94b4e5eca1346e79ec3fa38ce",
+      "prior_status": "solver_failed",
+      "traceback": "Traceback (most recent call last):\n  File \"/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/reports/baseline_study/nto_refinement_cpu_probe.py\", line 61, in main\n    candidate=paper_nto_refined(path,model,case,cfg,target,deadline)\n  File \"/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/runners/paper_nto_refined.py\", line 157, in paper_nto_refined\n    parameters, clearance, guard = _geometry_guard(candidate, model, cfg, target, deadline)\n  File \"/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/runners/paper_nto_refined.py\", line 76, in _geometry_guard\n    raise TimeoutError(\"NTO refinement geometry check exhausted shared online budget\")\nTimeoutError: NTO refinement geometry check exhausted shared online budget\n"
+    }
+  ]
+}

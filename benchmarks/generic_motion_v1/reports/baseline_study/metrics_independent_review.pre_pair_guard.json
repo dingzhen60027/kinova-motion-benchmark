@@ -1,0 +1,265 @@
+{
+  "cpu_only": true,
+  "real_observations": 900,
+  "current_metrics_sha256": "bebd650a691be6282cc2ab420ef9e8e35e9da46cfc04070f2585ac5022d7f9a3",
+  "before_fix_scope": "Direct recomputation of the former raw-counter aggregation from unchanged result receipts, not a claim of a historical metrics-file snapshot.",
+  "audited_sources": {
+    "runners/study_metrics.py": "eaf930ca793f9c35f958e54da2ab01f2e215b38e41e79c87e30ed912d3da25e1",
+    "runners/summarize.py": "0e0e499a95d649beae5d4f849d122ade08c03e705a2c38dd810560c73da5daa8",
+    "BASELINE_PROTOCOL.md": "407e0a3ef930aae041a23fbb21b613af50092111676bb53887ece8e287a764cf"
+  },
+  "status_and_denominator_recalculation": {
+    "LGCS": {
+      "jobs": 180,
+      "legal": 180,
+      "physical_scenes": 20,
+      "success": 94,
+      "status_counts": {
+        "frontend_failed": 69,
+        "success_validated_numerical": 94,
+        "unsupported": 16,
+        "infrastructure_error": 1
+      },
+      "complete_backend_timing_jobs": 94
+    },
+    "LSCS": {
+      "jobs": 180,
+      "legal": 180,
+      "physical_scenes": 20,
+      "success": 110,
+      "status_counts": {
+        "frontend_failed": 69,
+        "success_validated_numerical": 110,
+        "infrastructure_error": 1
+      },
+      "complete_backend_timing_jobs": 110
+    },
+    "NTO-distance": {
+      "jobs": 180,
+      "legal": 180,
+      "physical_scenes": 20,
+      "success": 35,
+      "status_counts": {
+        "frontend_failed": 69,
+        "collision_failed": 45,
+        "solver_failed": 30,
+        "success_validated_numerical": 35,
+        "infrastructure_error": 1
+      },
+      "complete_backend_timing_jobs": 109
+    },
+    "NTO-time": {
+      "jobs": 180,
+      "legal": 180,
+      "physical_scenes": 20,
+      "success": 88,
+      "status_counts": {
+        "frontend_failed": 69,
+        "success_validated_numerical": 88,
+        "collision_failed": 18,
+        "timeout": 3,
+        "infrastructure_error": 1,
+        "solver_failed": 1
+      },
+      "complete_backend_timing_jobs": 107
+    },
+    "SCSTO": {
+      "jobs": 180,
+      "legal": 180,
+      "physical_scenes": 20,
+      "success": 110,
+      "status_counts": {
+        "frontend_failed": 69,
+        "success_validated_numerical": 110,
+        "infrastructure_error": 1
+      },
+      "complete_backend_timing_jobs": 110
+    }
+  },
+  "paired_common_success_recalculation": [
+    {
+      "method_a": "LGCS",
+      "method_b": "LSCS",
+      "joint_success_jobs": 94,
+      "cost_difference": -0.0822822171659762,
+      "cold_latency_difference": 0.34803431374615335
+    },
+    {
+      "method_a": "LGCS",
+      "method_b": "NTO-distance",
+      "joint_success_jobs": 35,
+      "cost_difference": 0.009909067856890504,
+      "cold_latency_difference": -0.03701717802988631
+    },
+    {
+      "method_a": "LSCS",
+      "method_b": "NTO-distance",
+      "joint_success_jobs": 35,
+      "cost_difference": 0.009909067840610306,
+      "cold_latency_difference": -0.01437857077856149
+    },
+    {
+      "method_a": "NTO-time",
+      "method_b": "SCSTO",
+      "joint_success_jobs": 88,
+      "cost_difference": 1.302575759466466,
+      "cold_latency_difference": 0.9425429938710295
+    }
+  ],
+  "lgcs_unsupported_count": 16,
+  "lgcs_stage_comparison": {
+    "alternate_drm_path_seconds": {
+      "raw_counter_aggregation_before_fix": {
+        "count": 110,
+        "mean": 0.42643703813241285,
+        "p50": 0.004711683606728911,
+        "p90": 1.454248250927776,
+        "p95": 1.5375025846296921,
+        "min": 0.00441033486276865,
+        "max": 1.6490322626195848
+      },
+      "after": {
+        "count": 94,
+        "mean": 0.2696725944790276,
+        "p50": 0.004677565069869161,
+        "p90": 1.30926933712326,
+        "p95": 1.4238429250894111,
+        "min": 0.00441033486276865,
+        "max": 1.6351073579862714
+      }
+    },
+    "collision_recovery_seconds": {
+      "raw_counter_aggregation_before_fix": {
+        "count": 110,
+        "mean": 0.00442703426392241,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.0238549769623205,
+        "min": 0.0,
+        "max": 0.13872709590941668
+      },
+      "after": {
+        "count": 94,
+        "mean": 0.005180572010973033,
+        "p50": 0.0,
+        "p90": 0.0,
+        "p95": 0.0255061080213636,
+        "min": 0.0,
+        "max": 0.13872709590941668
+      }
+    },
+    "eizo_inflation_seconds": {
+      "raw_counter_aggregation_before_fix": {
+        "count": 110,
+        "mean": 0.31417274099181997,
+        "p50": 0.21071392367593944,
+        "p90": 0.6292737014591695,
+        "p95": 0.7481141901575027,
+        "min": 0.04694463172927499,
+        "max": 1.3787764739245176
+      },
+      "after": {
+        "count": 94,
+        "mean": 0.23926298050308956,
+        "p50": 0.17526475596241653,
+        "p90": 0.49721619752235713,
+        "p95": 0.5567131143063306,
+        "min": 0.04694463172927499,
+        "max": 0.9304692125879228
+      }
+    },
+    "trajectory_optimization_seconds": {
+      "raw_counter_aggregation_before_fix": {
+        "count": 110,
+        "mean": 0.16885508486408402,
+        "p50": 0.019784057745710015,
+        "p90": 0.4165290922392166,
+        "p95": 0.6923704201821235,
+        "min": 0.0,
+        "max": 4.519650899805129
+      },
+      "after": {
+        "count": 94,
+        "mean": 0.19759637590477916,
+        "p50": 0.02258825651369989,
+        "p90": 0.5374364675022664,
+        "p95": 0.8304901386145489,
+        "min": 0.006046303082257509,
+        "max": 4.519650899805129
+      }
+    },
+    "validation_seconds": {
+      "raw_counter_aggregation_before_fix": {
+        "count": 110,
+        "mean": 0.6381251940165054,
+        "p50": 0.5800309744663537,
+        "p90": 0.9219670170918107,
+        "p95": 1.548554608598351,
+        "min": 0.0,
+        "max": 5.577587842475623
+      },
+      "after": {
+        "count": 94,
+        "mean": 0.7467422483171872,
+        "p50": 0.6361882137134671,
+        "p90": 0.931978620775044,
+        "p95": 1.6956843380117776,
+        "min": 0.23792890086770058,
+        "max": 5.577587842475623
+      }
+    }
+  },
+  "raw_timing_preserved": true,
+  "actual_frontend_mismatch_count": 0,
+  "synthetic_legality_pooling_probe": {
+    "synthetic_not_experiment": true,
+    "bypassed_real_load_and_verifier": true,
+    "complete": true,
+    "comparable": true,
+    "legal_jobs": {
+      "LGCS": 0,
+      "LSCS": 1,
+      "NTO-distance": 1,
+      "NTO-time": 1,
+      "SCSTO": 1
+    },
+    "paired_labels": [
+      [
+        "LSCS",
+        "NTO-distance"
+      ],
+      [
+        "NTO-time",
+        "SCSTO"
+      ]
+    ]
+  },
+  "synthetic_extreme_scene_bootstrap": {
+    "False": {
+      "estimate": 0.0,
+      "numerator": 0.0,
+      "denominator": 5.0,
+      "independent_scene_clusters": 5,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "bootstrap_seed": 45827,
+      "bootstrap_replicates": 2000,
+      "method": "scene-level cluster bootstrap; resample scene clusters with all paired jobs intact"
+    },
+    "True": {
+      "estimate": 1.0,
+      "numerator": 5.0,
+      "denominator": 5.0,
+      "independent_scene_clusters": 5,
+      "ci95": [
+        1.0,
+        1.0
+      ],
+      "bootstrap_seed": 45827,
+      "bootstrap_replicates": 2000,
+      "method": "scene-level cluster bootstrap; resample scene clusters with all paired jobs intact"
+    }
+  }
+}

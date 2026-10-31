@@ -1,0 +1,5050 @@
+{
+  "passed": true,
+  "run": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/rss2025_formal_v1_main_s002_bottleneck",
+  "run_manifest_sha256": "181d06b597ae70d5695c1faaed39a85ac404ad9fc02e3d6c0ca0c1bbb1c8e0c6",
+  "source_commit": "c8adbd8cef44db25b41559e8fbf2b38e120b624a",
+  "planned_lgcs_jobs": 100,
+  "audited_attempts": 100,
+  "source_snapshots_checked": 32,
+  "counts": {
+    "latest_status": {
+      "success_validated_numerical": 65,
+      "unsupported": 15,
+      "frontend_failed": 17,
+      "infrastructure_error": 3
+    },
+    "all_attempt_status": {
+      "success_validated_numerical": 65,
+      "unsupported": 15,
+      "frontend_failed": 17,
+      "infrastructure_error": 3
+    },
+    "latest_alternate_status": {
+      "no_eligible_interior_region": 51,
+      "found": 28,
+      "native_no_alternate_path": 1
+    },
+    "accepted_second_routes": 28,
+    "recovery_rounds": 2,
+    "recovered_successes": 2,
+    "license_limit_failures": 15,
+    "unsupported_attempts": 15,
+    "native_process_aborts": 3,
+    "selected_segments_checked": 154,
+    "interpolated_samples_checked": 73800,
+    "accepted_pool_original_edges_checked": 281
+  },
+  "records": [
+    {
+      "job_id": "test-bottleneck-000-p00-LGCS-minimum_distance-0dee9281",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 44,
+      "family": "bottleneck",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 1,
+          "original_paths": 1,
+          "original_edges_checked": 1,
+          "maximum_best_cover_residual": -0.03225179605078443,
+          "mps": {
+            "solver_variables": 10,
+            "solver_constraints": 119,
+            "solver_quadratic_constraints": 1,
+            "binary_flow_variables": 2
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 2,
+            "selected_regions": [
+              0
+            ],
+            "recovered_length_rad": 3.144177059898834,
+            "maximum_region_residual": -0.03225179605078443,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 630,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "no_eligible_interior_region",
+        "selected_region": null,
+        "eligible_regions": [],
+        "accepted": false
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-bottleneck-000-p01-LGCS-minimum_distance-67f9e3f4",
+      "attempt": "0001",
+      "latest": true,
+      "status": "unsupported",
+      "error_category": "dependency_unsupported",
+      "files_checked": 65,
+      "family": "bottleneck",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 6,
+          "original_paths": 2,
+          "original_edges_checked": 6,
+          "maximum_best_cover_residual": -0.026753350914621166,
+          "mps": {
+            "solver_variables": 228,
+            "solver_constraints": 2312,
+            "solver_quadratic_constraints": 6,
+            "binary_flow_variables": 26
+          },
+          "solver_error_number": 10010,
+          "solver_status": null,
+          "solver_success": false
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "found",
+        "selected_region": 1,
+        "eligible_regions": [
+          1
+        ],
+        "accepted": true,
+        "blocked_nodes": 2,
+        "original_nodes": 6000,
+        "kept_nodes": 5998
+      },
+      "final_stage": "trajectory_optimization"
+    },
+    {
+      "job_id": "test-bottleneck-000-p02-LGCS-minimum_distance-8f0c902b",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 87,
+      "family": "bottleneck",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 2,
+          "original_paths": 1,
+          "original_edges_checked": 2,
+          "maximum_best_cover_residual": -0.06325125694274902,
+          "mps": {
+            "solver_variables": 34,
+            "solver_constraints": 310,
+            "solver_quadratic_constraints": 2,
+            "binary_flow_variables": 4
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 3,
+            "selected_regions": [
+              0,
+              1
+            ],
+            "recovered_length_rad": 7.904000972382744,
+            "maximum_region_residual": -2.347455563267431e-11,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 1584,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "collision_failed",
+            "passed": false,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 21,
+              "independent_collisions": 21,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        },
+        {
+          "round": "001",
+          "pool_regions": 2,
+          "original_paths": 1,
+          "original_edges_checked": 2,
+          "maximum_best_cover_residual": -0.06325125694274902,
+          "mps": {
+            "solver_variables": 34,
+            "solver_constraints": 316,
+            "solver_quadratic_constraints": 2,
+            "binary_flow_variables": 4
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 3,
+            "selected_regions": [
+              0,
+              1
+            ],
+            "recovered_length_rad": 7.918030716757628,
+            "maximum_region_residual": -6.588551926256514e-11,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 1586,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [
+        {
+          "round": "000",
+          "witnesses": 21,
+          "mapping_verified": true,
+          "handoffs": [
+            {
+              "index": "0000",
+              "status": "passed",
+              "maximum_offset_change": 0.0
+            },
+            {
+              "index": "0001",
+              "status": "passed",
+              "maximum_offset_change": 0.0
+            }
+          ],
+          "restored_cover_claim": true,
+          "note": "Raw edited pools may lose unprotected spans; only subsequent accepted optimizer pools are required to cover all original edges."
+        }
+      ],
+      "alternate": {
+        "status": "no_eligible_interior_region",
+        "selected_region": null,
+        "eligible_regions": [],
+        "accepted": false
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-bottleneck-000-p03-LGCS-minimum_distance-8a4d18d6",
+      "attempt": "0001",
+      "latest": true,
+      "status": "unsupported",
+      "error_category": "dependency_unsupported",
+      "files_checked": 65,
+      "family": "bottleneck",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 6,
+          "original_paths": 2,
+          "original_edges_checked": 6,
+          "maximum_best_cover_residual": -0.05151247978210449,
+          "mps": {
+            "solver_variables": 228,
+            "solver_constraints": 2960,
+            "solver_quadratic_constraints": 6,
+            "binary_flow_variables": 26
+          },
+          "solver_error_number": 10010,
+          "solver_status": null,
+          "solver_success": false
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "found",
+        "selected_region": 1,
+        "eligible_regions": [
+          1
+        ],
+        "accepted": true,
+        "blocked_nodes": 2,
+        "original_nodes": 6000,
+        "kept_nodes": 5998
+      },
+      "final_stage": "trajectory_optimization"
+    },
+    {
+      "job_id": "test-bottleneck-000-p04-LGCS-minimum_distance-d65f283f",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 74,
+      "family": "bottleneck",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 7,
+          "original_paths": 2,
+          "original_edges_checked": 7,
+          "maximum_best_cover_residual": -0.01374405608822915,
+          "mps": {
+            "solver_variables": 172,
+            "solver_constraints": 1565,
+            "solver_quadratic_constraints": 7,
+            "binary_flow_variables": 18
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 7,
+            "selected_regions": [
+              0,
+              3,
+              4,
+              5,
+              6,
+              2
+            ],
+            "recovered_length_rad": 7.812699905113591,
+            "maximum_region_residual": 1.552313833030894e-11,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 1571,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "found",
+        "selected_region": 1,
+        "eligible_regions": [
+          1
+        ],
+        "accepted": true,
+        "blocked_nodes": 2,
+        "original_nodes": 6000,
+        "kept_nodes": 5998
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-bottleneck-001-p00-LGCS-minimum_distance-c81cd55a",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 71,
+      "family": "bottleneck",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 6,
+          "original_paths": 2,
+          "original_edges_checked": 6,
+          "maximum_best_cover_residual": 0.0,
+          "mps": {
+            "solver_variables": 148,
+            "solver_constraints": 1283,
+            "solver_quadratic_constraints": 6,
+            "binary_flow_variables": 16
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 5,
+            "selected_regions": [
+              0,
+              1,
+              2,
+              5
+            ],
+            "recovered_length_rad": 5.169660414153326,
+            "maximum_region_residual": -1.3210218474668523e-09,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 1040,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "found",
+        "selected_region": 1,
+        "eligible_regions": [
+          1
+        ],
+        "accepted": true,
+        "blocked_nodes": 2,
+        "original_nodes": 6000,
+        "kept_nodes": 5998
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-bottleneck-001-p01-LGCS-minimum_distance-f458ac1f",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 68,
+      "family": "bottleneck",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 5,
+          "original_paths": 2,
+          "original_edges_checked": 5,
+          "maximum_best_cover_residual": -0.008603221332895927,
+          "mps": {
+            "solver_variables": 140,
+            "solver_constraints": 1311,
+            "solver_quadratic_constraints": 5,
+            "binary_flow_variables": 16
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 6,
+            "selected_regions": [
+              3,
+              0,
+              1,
+              2,
+              4
+            ],
+            "recovered_length_rad": 7.1159466823211694,
+            "maximum_region_residual": 3.693934047532821e-11,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 1431,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "found",
+        "selected_region": 1,
+        "eligible_regions": [
+          1
+        ],
+        "accepted": true,
+        "blocked_nodes": 2,
+        "original_nodes": 6000,
+        "kept_nodes": 5998
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-bottleneck-001-p02-LGCS-minimum_distance-fadeee8c",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 50,
+      "family": "bottleneck",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 2,
+          "original_paths": 1,
+          "original_edges_checked": 2,
+          "maximum_best_cover_residual": -0.021294009803379477,
+          "mps": {
+            "solver_variables": 34,
+            "solver_constraints": 226,
+            "solver_quadratic_constraints": 2,
+            "binary_flow_variables": 4
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 3,
+            "selected_regions": [
+              0,
+              1
+            ],
+            "recovered_length_rad": 7.701675229421886,
+            "maximum_region_residual": 1.1102230246251565e-16,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 1543,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "no_eligible_interior_region",
+        "selected_region": null,
+        "eligible_regions": [],
+        "accepted": false
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-bottleneck-001-p03-LGCS-minimum_distance-8b267727",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 44,
+      "family": "bottleneck",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 1,
+          "original_paths": 1,
+          "original_edges_checked": 1,
+          "maximum_best_cover_residual": -0.2816950773298963,
+          "mps": {
+            "solver_variables": 10,
+            "solver_constraints": 119,
+            "solver_quadratic_constraints": 1,
+            "binary_flow_variables": 2
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 2,
+            "selected_regions": [
+              0
+            ],
+            "recovered_length_rad": 4.673965182480326,
+            "maximum_region_residual": -0.28169508725948655,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 936,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "no_eligible_interior_region",
+        "selected_region": null,
+        "eligible_regions": [],
+        "accepted": false
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-bottleneck-001-p04-LGCS-minimum_distance-37c401c5",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 135,
+      "family": "bottleneck",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 5,
+          "original_paths": 2,
+          "original_edges_checked": 5,
+          "maximum_best_cover_residual": -0.009081954664705627,
+          "mps": {
+            "solver_variables": 172,
+            "solver_constraints": 1857,
+            "solver_quadratic_constraints": 5,
+            "binary_flow_variables": 20
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 6,
+            "selected_regions": [
+              0,
+              3,
+              1,
+              4,
+              2
+            ],
+            "recovered_length_rad": 6.341645640398301,
+            "maximum_region_residual": 2.062698900573423e-10,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 1277,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "collision_failed",
+            "passed": false,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 111,
+              "independent_collisions": 111,
+              "model_disagreements": 0,
+              "contact_band_samples": 1
+            }
+          }
+        },
+        {
+          "round": "001",
+          "pool_regions": 5,
+          "original_paths": 2,
+          "original_edges_checked": 5,
+          "maximum_best_cover_residual": -0.009081954664705627,
+          "mps": {
+            "solver_variables": 172,
+            "solver_constraints": 1866,
+            "solver_quadratic_constraints": 5,
+            "binary_flow_variables": 20
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 6,
+            "selected_regions": [
+              0,
+              3,
+              1,
+              4,
+              2
+            ],
+            "recovered_length_rad": 6.400638601184496,
+            "maximum_region_residual": 1.4105894230453941e-10,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 1287,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [
+        {
+          "round": "000",
+          "witnesses": 111,
+          "mapping_verified": true,
+          "handoffs": [
+            {
+              "index": "0000",
+              "status": "passed",
+              "maximum_offset_change": 0.0
+            },
+            {
+              "index": "0001",
+              "status": "passed",
+              "maximum_offset_change": 0.0
+            },
+            {
+              "index": "0002",
+              "status": "passed",
+              "maximum_offset_change": 0.0
+            },
+            {
+              "index": "0003",
+              "status": "passed",
+              "maximum_offset_change": 0.0
+            },
+            {
+              "index": "0004",
+              "status": "passed",
+              "maximum_offset_change": 0.0
+            }
+          ],
+          "restored_cover_claim": true,
+          "note": "Raw edited pools may lose unprotected spans; only subsequent accepted optimizer pools are required to cover all original edges."
+        }
+      ],
+      "alternate": {
+        "status": "found",
+        "selected_region": 1,
+        "eligible_regions": [
+          1
+        ],
+        "accepted": true,
+        "blocked_nodes": 2,
+        "original_nodes": 6000,
+        "kept_nodes": 5998
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-bottleneck-002-p00-LGCS-minimum_distance-851cefcf",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 50,
+      "family": "bottleneck",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 2,
+          "original_paths": 1,
+          "original_edges_checked": 2,
+          "maximum_best_cover_residual": -0.03152423641355373,
+          "mps": {
+            "solver_variables": 34,
+            "solver_constraints": 526,
+            "solver_quadratic_constraints": 2,
+            "binary_flow_variables": 4
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 3,
+            "selected_regions": [
+              0,
+              1
+            ],
+            "recovered_length_rad": 3.739275394829371,
+            "maximum_region_residual": -1.1519007969695849e-11,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 751,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "no_eligible_interior_region",
+        "selected_region": null,
+        "eligible_regions": [],
+        "accepted": false
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-bottleneck-002-p01-LGCS-minimum_distance-7037288d",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 44,
+      "family": "bottleneck",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 1,
+          "original_paths": 1,
+          "original_edges_checked": 1,
+          "maximum_best_cover_residual": -0.12222915205030405,
+          "mps": {
+            "solver_variables": 10,
+            "solver_constraints": 115,
+            "solver_quadratic_constraints": 1,
+            "binary_flow_variables": 2
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 2,
+            "selected_regions": [
+              0
+            ],
+            "recovered_length_rad": 6.63227993974352,
+            "maximum_region_residual": -0.12222917521707477,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 1328,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "no_eligible_interior_region",
+        "selected_region": null,
+        "eligible_regions": [],
+        "accepted": false
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-bottleneck-002-p02-LGCS-minimum_distance-9b8df40b",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 74,
+      "family": "bottleneck",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 6,
+          "original_paths": 2,
+          "original_edges_checked": 6,
+          "maximum_best_cover_residual": -0.01531839370727539,
+          "mps": {
+            "solver_variables": 180,
+            "solver_constraints": 1903,
+            "solver_quadratic_constraints": 6,
+            "binary_flow_variables": 20
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 5,
+            "selected_regions": [
+              0,
+              4,
+              5,
+              3
+            ],
+            "recovered_length_rad": 7.957204260897143,
+            "maximum_region_residual": 7.472911178751929e-13,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 1598,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "found",
+        "selected_region": 2,
+        "eligible_regions": [
+          1,
+          2
+        ],
+        "accepted": true,
+        "blocked_nodes": 2,
+        "original_nodes": 6000,
+        "kept_nodes": 5998
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-bottleneck-002-p03-LGCS-minimum_distance-ad2973e3",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 68,
+      "family": "bottleneck",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 5,
+          "original_paths": 2,
+          "original_edges_checked": 5,
+          "maximum_best_cover_residual": -0.081193596885212,
+          "mps": {
+            "solver_variables": 140,
+            "solver_constraints": 1780,
+            "solver_quadratic_constraints": 5,
+            "binary_flow_variables": 16
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 6,
+            "selected_regions": [
+              3,
+              0,
+              1,
+              2,
+              4
+            ],
+            "recovered_length_rad": 4.081154434850534,
+            "maximum_region_residual": 2.4368063122892636e-11,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 823,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "found",
+        "selected_region": 1,
+        "eligible_regions": [
+          1
+        ],
+        "accepted": true,
+        "blocked_nodes": 2,
+        "original_nodes": 6000,
+        "kept_nodes": 5998
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-bottleneck-002-p04-LGCS-minimum_distance-06f327f1",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 44,
+      "family": "bottleneck",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 1,
+          "original_paths": 1,
+          "original_edges_checked": 1,
+          "maximum_best_cover_residual": -0.026408672332763672,
+          "mps": {
+            "solver_variables": 10,
+            "solver_constraints": 179,
+            "solver_quadratic_constraints": 1,
+            "binary_flow_variables": 2
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 2,
+            "selected_regions": [
+              0
+            ],
+            "recovered_length_rad": 5.1737190253887295,
+            "maximum_region_residual": -0.026408785448219785,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 1036,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "no_eligible_interior_region",
+        "selected_region": null,
+        "eligible_regions": [],
+        "accepted": false
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-bottleneck-003-p00-LGCS-minimum_distance-266a3951",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 50,
+      "family": "bottleneck",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 2,
+          "original_paths": 1,
+          "original_edges_checked": 2,
+          "maximum_best_cover_residual": -0.08753912118330609,
+          "mps": {
+            "solver_variables": 34,
+            "solver_constraints": 376,
+            "solver_quadratic_constraints": 2,
+            "binary_flow_variables": 4
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 3,
+            "selected_regions": [
+              0,
+              1
+            ],
+            "recovered_length_rad": 4.229810137456846,
+            "maximum_region_residual": 2.2659207843389595e-11,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 849,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "no_eligible_interior_region",
+        "selected_region": null,
+        "eligible_regions": [],
+        "accepted": false
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-bottleneck-003-p01-LGCS-minimum_distance-0a25eac0",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 50,
+      "family": "bottleneck",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 2,
+          "original_paths": 1,
+          "original_edges_checked": 2,
+          "maximum_best_cover_residual": -0.06189232613727835,
+          "mps": {
+            "solver_variables": 34,
+            "solver_constraints": 316,
+            "solver_quadratic_constraints": 2,
+            "binary_flow_variables": 4
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 3,
+            "selected_regions": [
+              0,
+              1
+            ],
+            "recovered_length_rad": 5.903378299698951,
+            "maximum_region_residual": 2.958866485158751e-11,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 1184,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "no_eligible_interior_region",
+        "selected_region": null,
+        "eligible_regions": [],
+        "accepted": false
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-bottleneck-003-p02-LGCS-minimum_distance-2f1aaf21",
+      "attempt": "0001",
+      "latest": true,
+      "status": "unsupported",
+      "error_category": "dependency_unsupported",
+      "files_checked": 74,
+      "family": "bottleneck",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 8,
+          "original_paths": 2,
+          "original_edges_checked": 8,
+          "maximum_best_cover_residual": 0.0,
+          "mps": {
+            "solver_variables": 260,
+            "solver_constraints": 2058,
+            "solver_quadratic_constraints": 8,
+            "binary_flow_variables": 28
+          },
+          "solver_error_number": 10010,
+          "solver_status": null,
+          "solver_success": false
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "found",
+        "selected_region": 1,
+        "eligible_regions": [
+          1,
+          2
+        ],
+        "accepted": true,
+        "blocked_nodes": 2,
+        "original_nodes": 6000,
+        "kept_nodes": 5998
+      },
+      "final_stage": "trajectory_optimization"
+    },
+    {
+      "job_id": "test-bottleneck-003-p03-LGCS-minimum_distance-d3b08420",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 44,
+      "family": "bottleneck",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 1,
+          "original_paths": 1,
+          "original_edges_checked": 1,
+          "maximum_best_cover_residual": -0.04702952980856372,
+          "mps": {
+            "solver_variables": 10,
+            "solver_constraints": 119,
+            "solver_quadratic_constraints": 1,
+            "binary_flow_variables": 2
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 2,
+            "selected_regions": [
+              0
+            ],
+            "recovered_length_rad": 3.5833913100966415,
+            "maximum_region_residual": -0.04702952980856372,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 718,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "no_eligible_interior_region",
+        "selected_region": null,
+        "eligible_regions": [],
+        "accepted": false
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-bottleneck-003-p04-LGCS-minimum_distance-20963d9c",
+      "attempt": "0001",
+      "latest": true,
+      "status": "unsupported",
+      "error_category": "dependency_unsupported",
+      "files_checked": 65,
+      "family": "bottleneck",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 6,
+          "original_paths": 2,
+          "original_edges_checked": 6,
+          "maximum_best_cover_residual": -0.06661440577281486,
+          "mps": {
+            "solver_variables": 196,
+            "solver_constraints": 2304,
+            "solver_quadratic_constraints": 6,
+            "binary_flow_variables": 22
+          },
+          "solver_error_number": 10010,
+          "solver_status": null,
+          "solver_success": false
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "found",
+        "selected_region": 1,
+        "eligible_regions": [
+          1
+        ],
+        "accepted": true,
+        "blocked_nodes": 2,
+        "original_nodes": 6000,
+        "kept_nodes": 5998
+      },
+      "final_stage": "trajectory_optimization"
+    },
+    {
+      "job_id": "test-bottleneck-004-p00-LGCS-minimum_distance-221a5791",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 50,
+      "family": "bottleneck",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 2,
+          "original_paths": 1,
+          "original_edges_checked": 2,
+          "maximum_best_cover_residual": -0.001150746287903015,
+          "mps": {
+            "solver_variables": 34,
+            "solver_constraints": 457,
+            "solver_quadratic_constraints": 2,
+            "binary_flow_variables": 4
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 3,
+            "selected_regions": [
+              0,
+              1
+            ],
+            "recovered_length_rad": 3.3864035780658055,
+            "maximum_region_residual": 3.682676386063122e-11,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 680,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "no_eligible_interior_region",
+        "selected_region": null,
+        "eligible_regions": [],
+        "accepted": false
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-bottleneck-004-p01-LGCS-minimum_distance-01ae9eb6",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 50,
+      "family": "bottleneck",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 2,
+          "original_paths": 1,
+          "original_edges_checked": 2,
+          "maximum_best_cover_residual": -0.019386887799715424,
+          "mps": {
+            "solver_variables": 34,
+            "solver_constraints": 466,
+            "solver_quadratic_constraints": 2,
+            "binary_flow_variables": 4
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 3,
+            "selected_regions": [
+              0,
+              1
+            ],
+            "recovered_length_rad": 5.502787101460291,
+            "maximum_region_residual": -9.324985228431615e-12,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 1104,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "no_eligible_interior_region",
+        "selected_region": null,
+        "eligible_regions": [],
+        "accepted": false
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-bottleneck-004-p02-LGCS-minimum_distance-9facfe1f",
+      "attempt": "0001",
+      "latest": true,
+      "status": "unsupported",
+      "error_category": "dependency_unsupported",
+      "files_checked": 65,
+      "family": "bottleneck",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 6,
+          "original_paths": 2,
+          "original_edges_checked": 6,
+          "maximum_best_cover_residual": -0.010712474531966443,
+          "mps": {
+            "solver_variables": 212,
+            "solver_constraints": 2132,
+            "solver_quadratic_constraints": 6,
+            "binary_flow_variables": 24
+          },
+          "solver_error_number": 10010,
+          "solver_status": null,
+          "solver_success": false
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "found",
+        "selected_region": 1,
+        "eligible_regions": [
+          1
+        ],
+        "accepted": true,
+        "blocked_nodes": 2,
+        "original_nodes": 6000,
+        "kept_nodes": 5998
+      },
+      "final_stage": "trajectory_optimization"
+    },
+    {
+      "job_id": "test-bottleneck-004-p03-LGCS-minimum_distance-be72e2ad",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 50,
+      "family": "bottleneck",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 2,
+          "original_paths": 1,
+          "original_edges_checked": 2,
+          "maximum_best_cover_residual": -0.050561762898612805,
+          "mps": {
+            "solver_variables": 34,
+            "solver_constraints": 343,
+            "solver_quadratic_constraints": 2,
+            "binary_flow_variables": 4
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 3,
+            "selected_regions": [
+              0,
+              1
+            ],
+            "recovered_length_rad": 6.903601290426267,
+            "maximum_region_residual": 1.6586731987899839e-13,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 1383,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "no_eligible_interior_region",
+        "selected_region": null,
+        "eligible_regions": [],
+        "accepted": false
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-bottleneck-004-p04-LGCS-minimum_distance-47454b70",
+      "attempt": "0001",
+      "latest": true,
+      "status": "frontend_failed",
+      "error_category": null,
+      "files_checked": 12,
+      "family": "bottleneck",
+      "rounds": [],
+      "recoveries": [],
+      "alternate": null,
+      "final_stage": "drm_path"
+    },
+    {
+      "job_id": "test-bottleneck-005-p00-LGCS-minimum_distance-038697e8",
+      "attempt": "0001",
+      "latest": true,
+      "status": "frontend_failed",
+      "error_category": null,
+      "files_checked": 12,
+      "family": "bottleneck",
+      "rounds": [],
+      "recoveries": [],
+      "alternate": null,
+      "final_stage": "drm_path"
+    },
+    {
+      "job_id": "test-bottleneck-005-p01-LGCS-minimum_distance-5241679a",
+      "attempt": "0001",
+      "latest": true,
+      "status": "frontend_failed",
+      "error_category": null,
+      "files_checked": 12,
+      "family": "bottleneck",
+      "rounds": [],
+      "recoveries": [],
+      "alternate": null,
+      "final_stage": "drm_path"
+    },
+    {
+      "job_id": "test-bottleneck-005-p02-LGCS-minimum_distance-4e752caf",
+      "attempt": "0001",
+      "latest": true,
+      "status": "frontend_failed",
+      "error_category": null,
+      "files_checked": 12,
+      "family": "bottleneck",
+      "rounds": [],
+      "recoveries": [],
+      "alternate": null,
+      "final_stage": "drm_path"
+    },
+    {
+      "job_id": "test-bottleneck-005-p03-LGCS-minimum_distance-a303d731",
+      "attempt": "0001",
+      "latest": true,
+      "status": "frontend_failed",
+      "error_category": null,
+      "files_checked": 13,
+      "family": "bottleneck",
+      "rounds": [],
+      "recoveries": [],
+      "alternate": null,
+      "final_stage": "drm_path"
+    },
+    {
+      "job_id": "test-bottleneck-005-p04-LGCS-minimum_distance-7c15fc7e",
+      "attempt": "0001",
+      "latest": true,
+      "status": "frontend_failed",
+      "error_category": null,
+      "files_checked": 12,
+      "family": "bottleneck",
+      "rounds": [],
+      "recoveries": [],
+      "alternate": null,
+      "final_stage": "drm_path"
+    },
+    {
+      "job_id": "test-bottleneck-006-p00-LGCS-minimum_distance-72a014ac",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 50,
+      "family": "bottleneck",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 2,
+          "original_paths": 1,
+          "original_edges_checked": 2,
+          "maximum_best_cover_residual": -0.04124649123654789,
+          "mps": {
+            "solver_variables": 34,
+            "solver_constraints": 226,
+            "solver_quadratic_constraints": 2,
+            "binary_flow_variables": 4
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 3,
+            "selected_regions": [
+              0,
+              1
+            ],
+            "recovered_length_rad": 6.798096946221198,
+            "maximum_region_residual": 1.6810686176427225e-10,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 1363,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "no_eligible_interior_region",
+        "selected_region": null,
+        "eligible_regions": [],
+        "accepted": false
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-bottleneck-006-p01-LGCS-minimum_distance-9544d620",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 44,
+      "family": "bottleneck",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 1,
+          "original_paths": 1,
+          "original_edges_checked": 1,
+          "maximum_best_cover_residual": -0.04488493535411453,
+          "mps": {
+            "solver_variables": 10,
+            "solver_constraints": 79,
+            "solver_quadratic_constraints": 1,
+            "binary_flow_variables": 2
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 2,
+            "selected_regions": [
+              0
+            ],
+            "recovered_length_rad": 6.150774270453031,
+            "maximum_region_residual": -0.04488493535411453,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 1232,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "no_eligible_interior_region",
+        "selected_region": null,
+        "eligible_regions": [],
+        "accepted": false
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-bottleneck-006-p02-LGCS-minimum_distance-bb9f72ca",
+      "attempt": "0001",
+      "latest": true,
+      "status": "frontend_failed",
+      "error_category": null,
+      "files_checked": 12,
+      "family": "bottleneck",
+      "rounds": [],
+      "recoveries": [],
+      "alternate": null,
+      "final_stage": "drm_path"
+    },
+    {
+      "job_id": "test-bottleneck-006-p03-LGCS-minimum_distance-0cfa7994",
+      "attempt": "0001",
+      "latest": true,
+      "status": "unsupported",
+      "error_category": "dependency_unsupported",
+      "files_checked": 83,
+      "family": "bottleneck",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 8,
+          "original_paths": 2,
+          "original_edges_checked": 10,
+          "maximum_best_cover_residual": -0.0003756189307311253,
+          "mps": {
+            "solver_variables": 226,
+            "solver_constraints": 1730,
+            "solver_quadratic_constraints": 8,
+            "binary_flow_variables": 22
+          },
+          "solver_error_number": 10010,
+          "solver_status": null,
+          "solver_success": false
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "found",
+        "selected_region": 2,
+        "eligible_regions": [
+          1,
+          2,
+          3
+        ],
+        "accepted": true,
+        "blocked_nodes": 2,
+        "original_nodes": 6000,
+        "kept_nodes": 5998
+      },
+      "final_stage": "trajectory_optimization"
+    },
+    {
+      "job_id": "test-bottleneck-006-p04-LGCS-minimum_distance-a235f696",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 44,
+      "family": "bottleneck",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 1,
+          "original_paths": 1,
+          "original_edges_checked": 1,
+          "maximum_best_cover_residual": -0.052120253065989885,
+          "mps": {
+            "solver_variables": 10,
+            "solver_constraints": 113,
+            "solver_quadratic_constraints": 1,
+            "binary_flow_variables": 2
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 2,
+            "selected_regions": [
+              0
+            ],
+            "recovered_length_rad": 5.340638948449179,
+            "maximum_region_residual": -0.052120253065989885,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 1070,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "no_eligible_interior_region",
+        "selected_region": null,
+        "eligible_regions": [],
+        "accepted": false
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-bottleneck-007-p00-LGCS-minimum_distance-e1c32f1b",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 44,
+      "family": "bottleneck",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 1,
+          "original_paths": 1,
+          "original_edges_checked": 1,
+          "maximum_best_cover_residual": -0.03360989715492835,
+          "mps": {
+            "solver_variables": 10,
+            "solver_constraints": 117,
+            "solver_quadratic_constraints": 1,
+            "binary_flow_variables": 2
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 2,
+            "selected_regions": [
+              0
+            ],
+            "recovered_length_rad": 1.987922058565085,
+            "maximum_region_residual": -0.03360989715492835,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 399,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "no_eligible_interior_region",
+        "selected_region": null,
+        "eligible_regions": [],
+        "accepted": false
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-bottleneck-007-p01-LGCS-minimum_distance-47bdb4bb",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 77,
+      "family": "bottleneck",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 7,
+          "original_paths": 2,
+          "original_edges_checked": 7,
+          "maximum_best_cover_residual": -0.009577012946544006,
+          "mps": {
+            "solver_variables": 188,
+            "solver_constraints": 1774,
+            "solver_quadratic_constraints": 7,
+            "binary_flow_variables": 20
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 6,
+            "selected_regions": [
+              0,
+              4,
+              5,
+              6,
+              3
+            ],
+            "recovered_length_rad": 6.846599104178562,
+            "maximum_region_residual": 1.1858070081416372e-10,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 1377,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "found",
+        "selected_region": 2,
+        "eligible_regions": [
+          1,
+          2
+        ],
+        "accepted": true,
+        "blocked_nodes": 2,
+        "original_nodes": 6000,
+        "kept_nodes": 5998
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-bottleneck-007-p02-LGCS-minimum_distance-e8029d29",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 50,
+      "family": "bottleneck",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 2,
+          "original_paths": 1,
+          "original_edges_checked": 2,
+          "maximum_best_cover_residual": -0.03503955249990698,
+          "mps": {
+            "solver_variables": 34,
+            "solver_constraints": 298,
+            "solver_quadratic_constraints": 2,
+            "binary_flow_variables": 4
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 3,
+            "selected_regions": [
+              0,
+              1
+            ],
+            "recovered_length_rad": 8.694671688228544,
+            "maximum_region_residual": 3.503419776507144e-12,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 1742,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "no_eligible_interior_region",
+        "selected_region": null,
+        "eligible_regions": [],
+        "accepted": false
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-bottleneck-007-p03-LGCS-minimum_distance-0f70fb7f",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 44,
+      "family": "bottleneck",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 1,
+          "original_paths": 1,
+          "original_edges_checked": 1,
+          "maximum_best_cover_residual": -0.1712111234664917,
+          "mps": {
+            "solver_variables": 10,
+            "solver_constraints": 119,
+            "solver_quadratic_constraints": 1,
+            "binary_flow_variables": 2
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 2,
+            "selected_regions": [
+              0
+            ],
+            "recovered_length_rad": 2.3418003105629603,
+            "maximum_region_residual": -0.17121112816742423,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 470,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "no_eligible_interior_region",
+        "selected_region": null,
+        "eligible_regions": [],
+        "accepted": false
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-bottleneck-007-p04-LGCS-minimum_distance-9927b646",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 50,
+      "family": "bottleneck",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 2,
+          "original_paths": 1,
+          "original_edges_checked": 2,
+          "maximum_best_cover_residual": -0.09271279128346649,
+          "mps": {
+            "solver_variables": 34,
+            "solver_constraints": 286,
+            "solver_quadratic_constraints": 2,
+            "binary_flow_variables": 4
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 3,
+            "selected_regions": [
+              0,
+              1
+            ],
+            "recovered_length_rad": 5.495168146791475,
+            "maximum_region_residual": 2.767810425297057e-10,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 1102,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "no_eligible_interior_region",
+        "selected_region": null,
+        "eligible_regions": [],
+        "accepted": false
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-bottleneck-008-p00-LGCS-minimum_distance-1733ce01",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 44,
+      "family": "bottleneck",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 1,
+          "original_paths": 1,
+          "original_edges_checked": 1,
+          "maximum_best_cover_residual": -0.11546385142708449,
+          "mps": {
+            "solver_variables": 10,
+            "solver_constraints": 159,
+            "solver_quadratic_constraints": 1,
+            "binary_flow_variables": 2
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 2,
+            "selected_regions": [
+              0
+            ],
+            "recovered_length_rad": 3.040953525223134,
+            "maximum_region_residual": -0.11546385934506453,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 610,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "no_eligible_interior_region",
+        "selected_region": null,
+        "eligible_regions": [],
+        "accepted": false
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-bottleneck-008-p01-LGCS-minimum_distance-2aa4d816",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 50,
+      "family": "bottleneck",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 2,
+          "original_paths": 1,
+          "original_edges_checked": 2,
+          "maximum_best_cover_residual": -0.05753824377177197,
+          "mps": {
+            "solver_variables": 34,
+            "solver_constraints": 244,
+            "solver_quadratic_constraints": 2,
+            "binary_flow_variables": 4
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 3,
+            "selected_regions": [
+              0,
+              1
+            ],
+            "recovered_length_rad": 5.721592370374052,
+            "maximum_region_residual": 1.7482015834957565e-11,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 1148,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "no_eligible_interior_region",
+        "selected_region": null,
+        "eligible_regions": [],
+        "accepted": false
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-bottleneck-008-p02-LGCS-minimum_distance-fdda8438",
+      "attempt": "0001",
+      "latest": true,
+      "status": "unsupported",
+      "error_category": "dependency_unsupported",
+      "files_checked": 74,
+      "family": "bottleneck",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 8,
+          "original_paths": 2,
+          "original_edges_checked": 8,
+          "maximum_best_cover_residual": 0.0,
+          "mps": {
+            "solver_variables": 212,
+            "solver_constraints": 2091,
+            "solver_quadratic_constraints": 8,
+            "binary_flow_variables": 22
+          },
+          "solver_error_number": 10010,
+          "solver_status": null,
+          "solver_success": false
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "found",
+        "selected_region": 1,
+        "eligible_regions": [
+          1,
+          2
+        ],
+        "accepted": true,
+        "blocked_nodes": 2,
+        "original_nodes": 6000,
+        "kept_nodes": 5998
+      },
+      "final_stage": "trajectory_optimization"
+    },
+    {
+      "job_id": "test-bottleneck-008-p03-LGCS-minimum_distance-c478548e",
+      "attempt": "0001",
+      "latest": true,
+      "status": "unsupported",
+      "error_category": "dependency_unsupported",
+      "files_checked": 77,
+      "family": "bottleneck",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 9,
+          "original_paths": 2,
+          "original_edges_checked": 9,
+          "maximum_best_cover_residual": -0.018088198533806388,
+          "mps": {
+            "solver_variables": 252,
+            "solver_constraints": 2446,
+            "solver_quadratic_constraints": 9,
+            "binary_flow_variables": 26
+          },
+          "solver_error_number": 10010,
+          "solver_status": null,
+          "solver_success": false
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "found",
+        "selected_region": 2,
+        "eligible_regions": [
+          1,
+          2
+        ],
+        "accepted": true,
+        "blocked_nodes": 2,
+        "original_nodes": 6000,
+        "kept_nodes": 5998
+      },
+      "final_stage": "trajectory_optimization"
+    },
+    {
+      "job_id": "test-bottleneck-008-p04-LGCS-minimum_distance-4c379b21",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 80,
+      "family": "bottleneck",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 8,
+          "original_paths": 2,
+          "original_edges_checked": 8,
+          "maximum_best_cover_residual": 0.0,
+          "mps": {
+            "solver_variables": 196,
+            "solver_constraints": 1804,
+            "solver_quadratic_constraints": 8,
+            "binary_flow_variables": 20
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 7,
+            "selected_regions": [
+              0,
+              4,
+              5,
+              6,
+              7,
+              3
+            ],
+            "recovered_length_rad": 7.671705375296053,
+            "maximum_region_residual": 5.128175661894829e-12,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 1543,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "found",
+        "selected_region": 1,
+        "eligible_regions": [
+          1,
+          2
+        ],
+        "accepted": true,
+        "blocked_nodes": 2,
+        "original_nodes": 6000,
+        "kept_nodes": 5998
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-bottleneck-009-p00-LGCS-minimum_distance-d6befa79",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 50,
+      "family": "bottleneck",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 2,
+          "original_paths": 1,
+          "original_edges_checked": 2,
+          "maximum_best_cover_residual": -0.03723855923705699,
+          "mps": {
+            "solver_variables": 34,
+            "solver_constraints": 376,
+            "solver_quadratic_constraints": 2,
+            "binary_flow_variables": 4
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 3,
+            "selected_regions": [
+              0,
+              1
+            ],
+            "recovered_length_rad": 3.383012085672855,
+            "maximum_region_residual": 4.620992477555319e-11,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 679,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "no_eligible_interior_region",
+        "selected_region": null,
+        "eligible_regions": [],
+        "accepted": false
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-bottleneck-009-p01-LGCS-minimum_distance-8b23d2df",
+      "attempt": "0001",
+      "latest": true,
+      "status": "unsupported",
+      "error_category": "dependency_unsupported",
+      "files_checked": 80,
+      "family": "bottleneck",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 8,
+          "original_paths": 2,
+          "original_edges_checked": 9,
+          "maximum_best_cover_residual": -0.048551867457877984,
+          "mps": {
+            "solver_variables": 243,
+            "solver_constraints": 2681,
+            "solver_quadratic_constraints": 8,
+            "binary_flow_variables": 25
+          },
+          "solver_error_number": 10010,
+          "solver_status": null,
+          "solver_success": false
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "found",
+        "selected_region": 3,
+        "eligible_regions": [
+          1,
+          2,
+          3
+        ],
+        "accepted": true,
+        "blocked_nodes": 2,
+        "original_nodes": 6000,
+        "kept_nodes": 5998
+      },
+      "final_stage": "trajectory_optimization"
+    },
+    {
+      "job_id": "test-bottleneck-009-p02-LGCS-minimum_distance-79e8e694",
+      "attempt": "0001",
+      "latest": true,
+      "status": "frontend_failed",
+      "error_category": null,
+      "files_checked": 12,
+      "family": "bottleneck",
+      "rounds": [],
+      "recoveries": [],
+      "alternate": null,
+      "final_stage": "drm_path"
+    },
+    {
+      "job_id": "test-bottleneck-009-p03-LGCS-minimum_distance-0464c914",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 68,
+      "family": "bottleneck",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 5,
+          "original_paths": 2,
+          "original_edges_checked": 5,
+          "maximum_best_cover_residual": 0.0,
+          "mps": {
+            "solver_variables": 124,
+            "solver_constraints": 1248,
+            "solver_quadratic_constraints": 5,
+            "binary_flow_variables": 14
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 5,
+            "selected_regions": [
+              0,
+              3,
+              4,
+              2
+            ],
+            "recovered_length_rad": 3.5260597770975615,
+            "maximum_region_residual": 1.8572920978954244e-12,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 711,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "found",
+        "selected_region": 1,
+        "eligible_regions": [
+          1
+        ],
+        "accepted": true,
+        "blocked_nodes": 2,
+        "original_nodes": 6000,
+        "kept_nodes": 5998
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-bottleneck-009-p04-LGCS-minimum_distance-d07a04a8",
+      "attempt": "0001",
+      "latest": true,
+      "status": "frontend_failed",
+      "error_category": null,
+      "files_checked": 13,
+      "family": "bottleneck",
+      "rounds": [],
+      "recoveries": [],
+      "alternate": null,
+      "final_stage": "drm_path"
+    },
+    {
+      "job_id": "test-bottleneck-010-p00-LGCS-minimum_distance-0a4fd24b",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 44,
+      "family": "bottleneck",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 1,
+          "original_paths": 1,
+          "original_edges_checked": 1,
+          "maximum_best_cover_residual": -0.06589081865382695,
+          "mps": {
+            "solver_variables": 10,
+            "solver_constraints": 119,
+            "solver_quadratic_constraints": 1,
+            "binary_flow_variables": 2
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 2,
+            "selected_regions": [
+              0
+            ],
+            "recovered_length_rad": 2.8751410295519726,
+            "maximum_region_residual": -0.06589081865382695,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 577,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "no_eligible_interior_region",
+        "selected_region": null,
+        "eligible_regions": [],
+        "accepted": false
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-bottleneck-010-p01-LGCS-minimum_distance-cf446bea",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 71,
+      "family": "bottleneck",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 6,
+          "original_paths": 2,
+          "original_edges_checked": 6,
+          "maximum_best_cover_residual": -0.04037294379114753,
+          "mps": {
+            "solver_variables": 164,
+            "solver_constraints": 1582,
+            "solver_quadratic_constraints": 6,
+            "binary_flow_variables": 18
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 6,
+            "selected_regions": [
+              3,
+              0,
+              1,
+              2,
+              5
+            ],
+            "recovered_length_rad": 9.248504466131724,
+            "maximum_region_residual": 1.8743673280141593e-11,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 1857,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "found",
+        "selected_region": 1,
+        "eligible_regions": [
+          1
+        ],
+        "accepted": true,
+        "blocked_nodes": 2,
+        "original_nodes": 6000,
+        "kept_nodes": 5998
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-bottleneck-010-p02-LGCS-minimum_distance-ed7d11f7",
+      "attempt": "0001",
+      "latest": true,
+      "status": "unsupported",
+      "error_category": "dependency_unsupported",
+      "files_checked": 74,
+      "family": "bottleneck",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 7,
+          "original_paths": 2,
+          "original_edges_checked": 8,
+          "maximum_best_cover_residual": -0.045954482532170715,
+          "mps": {
+            "solver_variables": 219,
+            "solver_constraints": 2352,
+            "solver_quadratic_constraints": 7,
+            "binary_flow_variables": 23
+          },
+          "solver_error_number": 10010,
+          "solver_status": null,
+          "solver_success": false
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "found",
+        "selected_region": 1,
+        "eligible_regions": [
+          1,
+          2
+        ],
+        "accepted": true,
+        "blocked_nodes": 2,
+        "original_nodes": 6000,
+        "kept_nodes": 5998
+      },
+      "final_stage": "trajectory_optimization"
+    },
+    {
+      "job_id": "test-bottleneck-010-p03-LGCS-minimum_distance-0dded6e9",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 68,
+      "family": "bottleneck",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 5,
+          "original_paths": 2,
+          "original_edges_checked": 5,
+          "maximum_best_cover_residual": -0.04175458080442951,
+          "mps": {
+            "solver_variables": 124,
+            "solver_constraints": 1139,
+            "solver_quadratic_constraints": 5,
+            "binary_flow_variables": 14
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 5,
+            "selected_regions": [
+              0,
+              3,
+              4,
+              2
+            ],
+            "recovered_length_rad": 4.93820255107169,
+            "maximum_region_residual": 4.2732484217822275e-13,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 994,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "found",
+        "selected_region": 1,
+        "eligible_regions": [
+          1
+        ],
+        "accepted": true,
+        "blocked_nodes": 2,
+        "original_nodes": 6000,
+        "kept_nodes": 5998
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-bottleneck-010-p04-LGCS-minimum_distance-f875f48d",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 50,
+      "family": "bottleneck",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 2,
+          "original_paths": 1,
+          "original_edges_checked": 2,
+          "maximum_best_cover_residual": -0.014803901715506829,
+          "mps": {
+            "solver_variables": 34,
+            "solver_constraints": 286,
+            "solver_quadratic_constraints": 2,
+            "binary_flow_variables": 4
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 3,
+            "selected_regions": [
+              0,
+              1
+            ],
+            "recovered_length_rad": 5.7031581447749975,
+            "maximum_region_residual": -7.65432162097568e-12,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 1144,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "no_eligible_interior_region",
+        "selected_region": null,
+        "eligible_regions": [],
+        "accepted": false
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-bottleneck-011-p00-LGCS-minimum_distance-6d182116",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 44,
+      "family": "bottleneck",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 1,
+          "original_paths": 1,
+          "original_edges_checked": 1,
+          "maximum_best_cover_residual": -0.034960960559010434,
+          "mps": {
+            "solver_variables": 10,
+            "solver_constraints": 65,
+            "solver_quadratic_constraints": 1,
+            "binary_flow_variables": 2
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 2,
+            "selected_regions": [
+              0
+            ],
+            "recovered_length_rad": 3.4435008098869972,
+            "maximum_region_residual": -0.03496097539002507,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 690,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "no_eligible_interior_region",
+        "selected_region": null,
+        "eligible_regions": [],
+        "accepted": false
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-bottleneck-011-p01-LGCS-minimum_distance-d87635da",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 44,
+      "family": "bottleneck",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 1,
+          "original_paths": 1,
+          "original_edges_checked": 1,
+          "maximum_best_cover_residual": -0.07101171730280198,
+          "mps": {
+            "solver_variables": 10,
+            "solver_constraints": 199,
+            "solver_quadratic_constraints": 1,
+            "binary_flow_variables": 2
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 2,
+            "selected_regions": [
+              0
+            ],
+            "recovered_length_rad": 5.328901830033802,
+            "maximum_region_residual": -0.07101171730280198,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 1067,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "no_eligible_interior_region",
+        "selected_region": null,
+        "eligible_regions": [],
+        "accepted": false
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-bottleneck-011-p02-LGCS-minimum_distance-94f74b66",
+      "attempt": "0001",
+      "latest": true,
+      "status": "frontend_failed",
+      "error_category": null,
+      "files_checked": 13,
+      "family": "bottleneck",
+      "rounds": [],
+      "recoveries": [],
+      "alternate": null,
+      "final_stage": "drm_path"
+    },
+    {
+      "job_id": "test-bottleneck-011-p03-LGCS-minimum_distance-70d9856c",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 50,
+      "family": "bottleneck",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 2,
+          "original_paths": 1,
+          "original_edges_checked": 2,
+          "maximum_best_cover_residual": -0.0863466620598139,
+          "mps": {
+            "solver_variables": 34,
+            "solver_constraints": 316,
+            "solver_quadratic_constraints": 2,
+            "binary_flow_variables": 4
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 3,
+            "selected_regions": [
+              0,
+              1
+            ],
+            "recovered_length_rad": 4.122759541052701,
+            "maximum_region_residual": -4.8405723873656825e-14,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 827,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "no_eligible_interior_region",
+        "selected_region": null,
+        "eligible_regions": [],
+        "accepted": false
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-bottleneck-011-p04-LGCS-minimum_distance-a04f73b1",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 50,
+      "family": "bottleneck",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 2,
+          "original_paths": 1,
+          "original_edges_checked": 2,
+          "maximum_best_cover_residual": -0.053029723831172354,
+          "mps": {
+            "solver_variables": 34,
+            "solver_constraints": 346,
+            "solver_quadratic_constraints": 2,
+            "binary_flow_variables": 4
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 3,
+            "selected_regions": [
+              0,
+              1
+            ],
+            "recovered_length_rad": 5.437832101314653,
+            "maximum_region_residual": -1.7412737918220955e-12,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 1090,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "no_eligible_interior_region",
+        "selected_region": null,
+        "eligible_regions": [],
+        "accepted": false
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-bottleneck-012-p00-LGCS-minimum_distance-0297cc6d",
+      "attempt": "0001",
+      "latest": true,
+      "status": "unsupported",
+      "error_category": "dependency_unsupported",
+      "files_checked": 68,
+      "family": "bottleneck",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 7,
+          "original_paths": 2,
+          "original_edges_checked": 7,
+          "maximum_best_cover_residual": -0.039707087259556406,
+          "mps": {
+            "solver_variables": 220,
+            "solver_constraints": 2625,
+            "solver_quadratic_constraints": 7,
+            "binary_flow_variables": 24
+          },
+          "solver_error_number": 10010,
+          "solver_status": null,
+          "solver_success": false
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "found",
+        "selected_region": 1,
+        "eligible_regions": [
+          1
+        ],
+        "accepted": true,
+        "blocked_nodes": 2,
+        "original_nodes": 6000,
+        "kept_nodes": 5998
+      },
+      "final_stage": "trajectory_optimization"
+    },
+    {
+      "job_id": "test-bottleneck-012-p01-LGCS-minimum_distance-ae733292",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 50,
+      "family": "bottleneck",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 2,
+          "original_paths": 1,
+          "original_edges_checked": 2,
+          "maximum_best_cover_residual": -0.0946565857173094,
+          "mps": {
+            "solver_variables": 34,
+            "solver_constraints": 376,
+            "solver_quadratic_constraints": 2,
+            "binary_flow_variables": 4
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 3,
+            "selected_regions": [
+              0,
+              1
+            ],
+            "recovered_length_rad": 7.145984576134595,
+            "maximum_region_residual": 9.836575998178887e-12,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 1432,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "no_eligible_interior_region",
+        "selected_region": null,
+        "eligible_regions": [],
+        "accepted": false
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-bottleneck-012-p02-LGCS-minimum_distance-0dc1f2f6",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 50,
+      "family": "bottleneck",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 2,
+          "original_paths": 1,
+          "original_edges_checked": 2,
+          "maximum_best_cover_residual": -0.11284962116055253,
+          "mps": {
+            "solver_variables": 34,
+            "solver_constraints": 376,
+            "solver_quadratic_constraints": 2,
+            "binary_flow_variables": 4
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 3,
+            "selected_regions": [
+              0,
+              1
+            ],
+            "recovered_length_rad": 7.378314585738938,
+            "maximum_region_residual": -3.094968725747549e-11,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 1479,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "no_eligible_interior_region",
+        "selected_region": null,
+        "eligible_regions": [],
+        "accepted": false
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-bottleneck-012-p03-LGCS-minimum_distance-639f6db6",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 44,
+      "family": "bottleneck",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 1,
+          "original_paths": 1,
+          "original_edges_checked": 1,
+          "maximum_best_cover_residual": 0.0,
+          "mps": {
+            "solver_variables": 10,
+            "solver_constraints": 159,
+            "solver_quadratic_constraints": 1,
+            "binary_flow_variables": 2
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 2,
+            "selected_regions": [
+              0
+            ],
+            "recovered_length_rad": 1.8344994613423407,
+            "maximum_region_residual": 0.0,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 368,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "no_eligible_interior_region",
+        "selected_region": null,
+        "eligible_regions": [],
+        "accepted": false
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-bottleneck-012-p04-LGCS-minimum_distance-349e9242",
+      "attempt": "0001",
+      "latest": true,
+      "status": "unsupported",
+      "error_category": "dependency_unsupported",
+      "files_checked": 77,
+      "family": "bottleneck",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 8,
+          "original_paths": 2,
+          "original_edges_checked": 8,
+          "maximum_best_cover_residual": -0.029232263565063477,
+          "mps": {
+            "solver_variables": 228,
+            "solver_constraints": 2302,
+            "solver_quadratic_constraints": 8,
+            "binary_flow_variables": 24
+          },
+          "solver_error_number": 10010,
+          "solver_status": null,
+          "solver_success": false
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "found",
+        "selected_region": 2,
+        "eligible_regions": [
+          1,
+          2,
+          3
+        ],
+        "accepted": true,
+        "blocked_nodes": 2,
+        "original_nodes": 6000,
+        "kept_nodes": 5998
+      },
+      "final_stage": "trajectory_optimization"
+    },
+    {
+      "job_id": "test-bottleneck-013-p00-LGCS-minimum_distance-520e7a5e",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 50,
+      "family": "bottleneck",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 2,
+          "original_paths": 1,
+          "original_edges_checked": 2,
+          "maximum_best_cover_residual": -0.11355112680117807,
+          "mps": {
+            "solver_variables": 34,
+            "solver_constraints": 556,
+            "solver_quadratic_constraints": 2,
+            "binary_flow_variables": 4
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 3,
+            "selected_regions": [
+              0,
+              1
+            ],
+            "recovered_length_rad": 3.0165705918114827,
+            "maximum_region_residual": -3.9623859748871837e-13,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 606,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "no_eligible_interior_region",
+        "selected_region": null,
+        "eligible_regions": [],
+        "accepted": false
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-bottleneck-013-p01-LGCS-minimum_distance-44dcf5b6",
+      "attempt": "0001",
+      "latest": true,
+      "status": "frontend_failed",
+      "error_category": null,
+      "files_checked": 13,
+      "family": "bottleneck",
+      "rounds": [],
+      "recoveries": [],
+      "alternate": null,
+      "final_stage": "drm_path"
+    },
+    {
+      "job_id": "test-bottleneck-013-p02-LGCS-minimum_distance-bcd87c5e",
+      "attempt": "0001",
+      "latest": true,
+      "status": "frontend_failed",
+      "error_category": null,
+      "files_checked": 13,
+      "family": "bottleneck",
+      "rounds": [],
+      "recoveries": [],
+      "alternate": null,
+      "final_stage": "drm_path"
+    },
+    {
+      "job_id": "test-bottleneck-013-p03-LGCS-minimum_distance-48011ecd",
+      "attempt": "0001",
+      "latest": true,
+      "status": "frontend_failed",
+      "error_category": null,
+      "files_checked": 13,
+      "family": "bottleneck",
+      "rounds": [],
+      "recoveries": [],
+      "alternate": null,
+      "final_stage": "drm_path"
+    },
+    {
+      "job_id": "test-bottleneck-013-p04-LGCS-minimum_distance-7e59d354",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 50,
+      "family": "bottleneck",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 2,
+          "original_paths": 1,
+          "original_edges_checked": 2,
+          "maximum_best_cover_residual": -0.021630240838748094,
+          "mps": {
+            "solver_variables": 34,
+            "solver_constraints": 217,
+            "solver_quadratic_constraints": 2,
+            "binary_flow_variables": 4
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 3,
+            "selected_regions": [
+              0,
+              1
+            ],
+            "recovered_length_rad": 5.083984979501239,
+            "maximum_region_residual": -5.14099873782925e-12,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 1020,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "no_eligible_interior_region",
+        "selected_region": null,
+        "eligible_regions": [],
+        "accepted": false
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-bottleneck-014-p00-LGCS-minimum_distance-9fdf5d6d",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 44,
+      "family": "bottleneck",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 1,
+          "original_paths": 1,
+          "original_edges_checked": 1,
+          "maximum_best_cover_residual": -0.21645450592041016,
+          "mps": {
+            "solver_variables": 10,
+            "solver_constraints": 139,
+            "solver_quadratic_constraints": 1,
+            "binary_flow_variables": 2
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 2,
+            "selected_regions": [
+              0
+            ],
+            "recovered_length_rad": 3.9528515271976516,
+            "maximum_region_residual": -0.2164545888867715,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 792,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "no_eligible_interior_region",
+        "selected_region": null,
+        "eligible_regions": [],
+        "accepted": false
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-bottleneck-014-p01-LGCS-minimum_distance-12ff43aa",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 44,
+      "family": "bottleneck",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 1,
+          "original_paths": 1,
+          "original_edges_checked": 1,
+          "maximum_best_cover_residual": -0.016942740462260186,
+          "mps": {
+            "solver_variables": 10,
+            "solver_constraints": 69,
+            "solver_quadratic_constraints": 1,
+            "binary_flow_variables": 2
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 2,
+            "selected_regions": [
+              0
+            ],
+            "recovered_length_rad": 4.894494434887665,
+            "maximum_region_residual": -0.016942740462260186,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 980,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "no_eligible_interior_region",
+        "selected_region": null,
+        "eligible_regions": [],
+        "accepted": false
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-bottleneck-014-p02-LGCS-minimum_distance-a9ff430c",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 50,
+      "family": "bottleneck",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 2,
+          "original_paths": 1,
+          "original_edges_checked": 2,
+          "maximum_best_cover_residual": -0.05967090462273328,
+          "mps": {
+            "solver_variables": 34,
+            "solver_constraints": 316,
+            "solver_quadratic_constraints": 2,
+            "binary_flow_variables": 4
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 3,
+            "selected_regions": [
+              0,
+              1
+            ],
+            "recovered_length_rad": 8.377171375584844,
+            "maximum_region_residual": -1.9662049766111522e-12,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 1679,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "no_eligible_interior_region",
+        "selected_region": null,
+        "eligible_regions": [],
+        "accepted": false
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-bottleneck-014-p03-LGCS-minimum_distance-95773737",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 65,
+      "family": "bottleneck",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 4,
+          "original_paths": 1,
+          "original_edges_checked": 4,
+          "maximum_best_cover_residual": -0.02331863497461306,
+          "mps": {
+            "solver_variables": 98,
+            "solver_constraints": 1014,
+            "solver_quadratic_constraints": 4,
+            "binary_flow_variables": 10
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 5,
+            "selected_regions": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "recovered_length_rad": 4.684661248576899,
+            "maximum_region_residual": 2.0876519575552255e-09,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 943,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "native_no_alternate_path",
+        "selected_region": 1,
+        "eligible_regions": [
+          1,
+          2
+        ],
+        "accepted": false,
+        "blocked_nodes": 2,
+        "original_nodes": 6000,
+        "kept_nodes": 5998
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-bottleneck-014-p04-LGCS-minimum_distance-0e06e5d5",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 50,
+      "family": "bottleneck",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 2,
+          "original_paths": 1,
+          "original_edges_checked": 2,
+          "maximum_best_cover_residual": -0.007291614802388269,
+          "mps": {
+            "solver_variables": 34,
+            "solver_constraints": 220,
+            "solver_quadratic_constraints": 2,
+            "binary_flow_variables": 4
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 3,
+            "selected_regions": [
+              0,
+              1
+            ],
+            "recovered_length_rad": 6.701540884394156,
+            "maximum_region_residual": 5.780709244618265e-12,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 1344,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "no_eligible_interior_region",
+        "selected_region": null,
+        "eligible_regions": [],
+        "accepted": false
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-bottleneck-015-p00-LGCS-minimum_distance-2d6921c2",
+      "attempt": "0001",
+      "latest": true,
+      "status": "frontend_failed",
+      "error_category": null,
+      "files_checked": 13,
+      "family": "bottleneck",
+      "rounds": [],
+      "recoveries": [],
+      "alternate": null,
+      "final_stage": "drm_path"
+    },
+    {
+      "job_id": "test-bottleneck-015-p01-LGCS-minimum_distance-495df278",
+      "attempt": "0001",
+      "latest": true,
+      "status": "unsupported",
+      "error_category": "dependency_unsupported",
+      "files_checked": 77,
+      "family": "bottleneck",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 9,
+          "original_paths": 2,
+          "original_edges_checked": 9,
+          "maximum_best_cover_residual": -0.015913399945509443,
+          "mps": {
+            "solver_variables": 332,
+            "solver_constraints": 3068,
+            "solver_quadratic_constraints": 9,
+            "binary_flow_variables": 36
+          },
+          "solver_error_number": 10010,
+          "solver_status": null,
+          "solver_success": false
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "found",
+        "selected_region": 1,
+        "eligible_regions": [
+          1,
+          2
+        ],
+        "accepted": true,
+        "blocked_nodes": 2,
+        "original_nodes": 6000,
+        "kept_nodes": 5998
+      },
+      "final_stage": "trajectory_optimization"
+    },
+    {
+      "job_id": "test-bottleneck-015-p02-LGCS-minimum_distance-faeb6856",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 44,
+      "family": "bottleneck",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 1,
+          "original_paths": 1,
+          "original_edges_checked": 1,
+          "maximum_best_cover_residual": -0.02138967977824313,
+          "mps": {
+            "solver_variables": 10,
+            "solver_constraints": 99,
+            "solver_quadratic_constraints": 1,
+            "binary_flow_variables": 2
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 2,
+            "selected_regions": [
+              0
+            ],
+            "recovered_length_rad": 7.386247348653053,
+            "maximum_region_residual": -0.02138967977824313,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 1479,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "no_eligible_interior_region",
+        "selected_region": null,
+        "eligible_regions": [],
+        "accepted": false
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-bottleneck-015-p03-LGCS-minimum_distance-8be2f722",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 44,
+      "family": "bottleneck",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 1,
+          "original_paths": 1,
+          "original_edges_checked": 1,
+          "maximum_best_cover_residual": -0.11706794677941046,
+          "mps": {
+            "solver_variables": 10,
+            "solver_constraints": 119,
+            "solver_quadratic_constraints": 1,
+            "binary_flow_variables": 2
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 2,
+            "selected_regions": [
+              0
+            ],
+            "recovered_length_rad": 3.9620382345351777,
+            "maximum_region_residual": -0.11706798423812392,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 794,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "no_eligible_interior_region",
+        "selected_region": null,
+        "eligible_regions": [],
+        "accepted": false
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-bottleneck-015-p04-LGCS-minimum_distance-b170684e",
+      "attempt": "0001",
+      "latest": true,
+      "status": "unsupported",
+      "error_category": "dependency_unsupported",
+      "files_checked": 62,
+      "family": "bottleneck",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 5,
+          "original_paths": 2,
+          "original_edges_checked": 5,
+          "maximum_best_cover_residual": -0.049213084406401375,
+          "mps": {
+            "solver_variables": 188,
+            "solver_constraints": 2608,
+            "solver_quadratic_constraints": 5,
+            "binary_flow_variables": 22
+          },
+          "solver_error_number": 10010,
+          "solver_status": null,
+          "solver_success": false
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "found",
+        "selected_region": 1,
+        "eligible_regions": [
+          1
+        ],
+        "accepted": true,
+        "blocked_nodes": 2,
+        "original_nodes": 6000,
+        "kept_nodes": 5998
+      },
+      "final_stage": "trajectory_optimization"
+    },
+    {
+      "job_id": "test-bottleneck-016-p00-LGCS-minimum_distance-880ea0dc",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 44,
+      "family": "bottleneck",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 1,
+          "original_paths": 1,
+          "original_edges_checked": 1,
+          "maximum_best_cover_residual": -0.18897891915756365,
+          "mps": {
+            "solver_variables": 10,
+            "solver_constraints": 139,
+            "solver_quadratic_constraints": 1,
+            "binary_flow_variables": 2
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 2,
+            "selected_regions": [
+              0
+            ],
+            "recovered_length_rad": 3.614342543042804,
+            "maximum_region_residual": -0.18897891915756365,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 724,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "no_eligible_interior_region",
+        "selected_region": null,
+        "eligible_regions": [],
+        "accepted": false
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-bottleneck-016-p01-LGCS-minimum_distance-fec782c9",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 44,
+      "family": "bottleneck",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 1,
+          "original_paths": 1,
+          "original_edges_checked": 1,
+          "maximum_best_cover_residual": -0.21284103393554688,
+          "mps": {
+            "solver_variables": 10,
+            "solver_constraints": 119,
+            "solver_quadratic_constraints": 1,
+            "binary_flow_variables": 2
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 2,
+            "selected_regions": [
+              0
+            ],
+            "recovered_length_rad": 4.54735489707003,
+            "maximum_region_residual": -0.2128410505944216,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 911,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "no_eligible_interior_region",
+        "selected_region": null,
+        "eligible_regions": [],
+        "accepted": false
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-bottleneck-016-p02-LGCS-minimum_distance-41500c02",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 50,
+      "family": "bottleneck",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 2,
+          "original_paths": 1,
+          "original_edges_checked": 2,
+          "maximum_best_cover_residual": -0.09037358160109199,
+          "mps": {
+            "solver_variables": 34,
+            "solver_constraints": 406,
+            "solver_quadratic_constraints": 2,
+            "binary_flow_variables": 4
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 3,
+            "selected_regions": [
+              0,
+              1
+            ],
+            "recovered_length_rad": 7.711493658523056,
+            "maximum_region_residual": -9.767076036837352e-12,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 1545,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "no_eligible_interior_region",
+        "selected_region": null,
+        "eligible_regions": [],
+        "accepted": false
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-bottleneck-016-p03-LGCS-minimum_distance-fe361b81",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 50,
+      "family": "bottleneck",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 2,
+          "original_paths": 1,
+          "original_edges_checked": 2,
+          "maximum_best_cover_residual": -0.09744224125366685,
+          "mps": {
+            "solver_variables": 34,
+            "solver_constraints": 436,
+            "solver_quadratic_constraints": 2,
+            "binary_flow_variables": 4
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 3,
+            "selected_regions": [
+              0,
+              1
+            ],
+            "recovered_length_rad": 4.275419098223331,
+            "maximum_region_residual": -7.577341532005732e-13,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 858,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "no_eligible_interior_region",
+        "selected_region": null,
+        "eligible_regions": [],
+        "accepted": false
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-bottleneck-016-p04-LGCS-minimum_distance-95abd69d",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 50,
+      "family": "bottleneck",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 2,
+          "original_paths": 1,
+          "original_edges_checked": 2,
+          "maximum_best_cover_residual": -0.018149868845858563,
+          "mps": {
+            "solver_variables": 34,
+            "solver_constraints": 262,
+            "solver_quadratic_constraints": 2,
+            "binary_flow_variables": 4
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 3,
+            "selected_regions": [
+              0,
+              1
+            ],
+            "recovered_length_rad": 6.120909477764252,
+            "maximum_region_residual": 2.7426727555734942e-11,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 1227,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "no_eligible_interior_region",
+        "selected_region": null,
+        "eligible_regions": [],
+        "accepted": false
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-bottleneck-017-p00-LGCS-minimum_distance-eeb36c00",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 50,
+      "family": "bottleneck",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 2,
+          "original_paths": 1,
+          "original_edges_checked": 2,
+          "maximum_best_cover_residual": -0.07397603988647461,
+          "mps": {
+            "solver_variables": 34,
+            "solver_constraints": 376,
+            "solver_quadratic_constraints": 2,
+            "binary_flow_variables": 4
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 3,
+            "selected_regions": [
+              0,
+              1
+            ],
+            "recovered_length_rad": 5.280158847513174,
+            "maximum_region_residual": 2.831068712794149e-13,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 1059,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "no_eligible_interior_region",
+        "selected_region": null,
+        "eligible_regions": [],
+        "accepted": false
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-bottleneck-017-p01-LGCS-minimum_distance-b4e0162d",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 50,
+      "family": "bottleneck",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 2,
+          "original_paths": 1,
+          "original_edges_checked": 2,
+          "maximum_best_cover_residual": -0.0018883387537873553,
+          "mps": {
+            "solver_variables": 34,
+            "solver_constraints": 268,
+            "solver_quadratic_constraints": 2,
+            "binary_flow_variables": 4
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 3,
+            "selected_regions": [
+              0,
+              1
+            ],
+            "recovered_length_rad": 5.909690194261559,
+            "maximum_region_residual": 1.950350991819505e-10,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 1185,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "no_eligible_interior_region",
+        "selected_region": null,
+        "eligible_regions": [],
+        "accepted": false
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-bottleneck-017-p02-LGCS-minimum_distance-290f039a",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 44,
+      "family": "bottleneck",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 1,
+          "original_paths": 1,
+          "original_edges_checked": 1,
+          "maximum_best_cover_residual": -0.017185601541792397,
+          "mps": {
+            "solver_variables": 10,
+            "solver_constraints": 99,
+            "solver_quadratic_constraints": 1,
+            "binary_flow_variables": 2
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 2,
+            "selected_regions": [
+              0
+            ],
+            "recovered_length_rad": 6.698852581708912,
+            "maximum_region_residual": -0.017185601541792397,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 1341,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "no_eligible_interior_region",
+        "selected_region": null,
+        "eligible_regions": [],
+        "accepted": false
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-bottleneck-017-p03-LGCS-minimum_distance-ac092795",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 86,
+      "family": "bottleneck",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 7,
+          "original_paths": 2,
+          "original_edges_checked": 9,
+          "maximum_best_cover_residual": -0.016942205347628025,
+          "mps": {
+            "solver_variables": 187,
+            "solver_constraints": 1886,
+            "solver_quadratic_constraints": 7,
+            "binary_flow_variables": 19
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 7,
+            "selected_regions": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              6
+            ],
+            "recovered_length_rad": 7.511604766252195,
+            "maximum_region_residual": 3.779110357982063e-11,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 1511,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "found",
+        "selected_region": 3,
+        "eligible_regions": [
+          1,
+          2,
+          3
+        ],
+        "accepted": true,
+        "blocked_nodes": 2,
+        "original_nodes": 6000,
+        "kept_nodes": 5998
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-bottleneck-017-p04-LGCS-minimum_distance-f8f258f5",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 50,
+      "family": "bottleneck",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 2,
+          "original_paths": 1,
+          "original_edges_checked": 2,
+          "maximum_best_cover_residual": -0.026661396026611328,
+          "mps": {
+            "solver_variables": 34,
+            "solver_constraints": 376,
+            "solver_quadratic_constraints": 2,
+            "binary_flow_variables": 4
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 3,
+            "selected_regions": [
+              0,
+              1
+            ],
+            "recovered_length_rad": 6.945130319754442,
+            "maximum_region_residual": -1.3077317007059719e-12,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 1392,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "no_eligible_interior_region",
+        "selected_region": null,
+        "eligible_regions": [],
+        "accepted": false
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-bottleneck-018-p00-LGCS-minimum_distance-bfcbaef8",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 44,
+      "family": "bottleneck",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 1,
+          "original_paths": 1,
+          "original_edges_checked": 1,
+          "maximum_best_cover_residual": -0.03556958471497107,
+          "mps": {
+            "solver_variables": 10,
+            "solver_constraints": 99,
+            "solver_quadratic_constraints": 1,
+            "binary_flow_variables": 2
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 2,
+            "selected_regions": [
+              0
+            ],
+            "recovered_length_rad": 4.474988197312665,
+            "maximum_region_residual": -0.03556958471497107,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 896,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "no_eligible_interior_region",
+        "selected_region": null,
+        "eligible_regions": [],
+        "accepted": false
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-bottleneck-018-p01-LGCS-minimum_distance-895e092d",
+      "attempt": "0001",
+      "latest": true,
+      "status": "unsupported",
+      "error_category": "dependency_unsupported",
+      "files_checked": 65,
+      "family": "bottleneck",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 6,
+          "original_paths": 2,
+          "original_edges_checked": 6,
+          "maximum_best_cover_residual": -0.03333809478346783,
+          "mps": {
+            "solver_variables": 212,
+            "solver_constraints": 2612,
+            "solver_quadratic_constraints": 6,
+            "binary_flow_variables": 24
+          },
+          "solver_error_number": 10010,
+          "solver_status": null,
+          "solver_success": false
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "found",
+        "selected_region": 1,
+        "eligible_regions": [
+          1
+        ],
+        "accepted": true,
+        "blocked_nodes": 3,
+        "original_nodes": 6000,
+        "kept_nodes": 5997
+      },
+      "final_stage": "trajectory_optimization"
+    },
+    {
+      "job_id": "test-bottleneck-018-p02-LGCS-minimum_distance-cf421e48",
+      "attempt": "0001",
+      "latest": true,
+      "status": "frontend_failed",
+      "error_category": null,
+      "files_checked": 12,
+      "family": "bottleneck",
+      "rounds": [],
+      "recoveries": [],
+      "alternate": null,
+      "final_stage": "drm_path"
+    },
+    {
+      "job_id": "test-bottleneck-018-p03-LGCS-minimum_distance-a39a70e3",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 68,
+      "family": "bottleneck",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 5,
+          "original_paths": 2,
+          "original_edges_checked": 5,
+          "maximum_best_cover_residual": -0.06772359511737336,
+          "mps": {
+            "solver_variables": 124,
+            "solver_constraints": 1623,
+            "solver_quadratic_constraints": 5,
+            "binary_flow_variables": 14
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 5,
+            "selected_regions": [
+              0,
+              3,
+              4,
+              2
+            ],
+            "recovered_length_rad": 4.515481445463822,
+            "maximum_region_residual": 1.736939481133959e-10,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 910,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "found",
+        "selected_region": 1,
+        "eligible_regions": [
+          1
+        ],
+        "accepted": true,
+        "blocked_nodes": 2,
+        "original_nodes": 6000,
+        "kept_nodes": 5998
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-bottleneck-018-p04-LGCS-minimum_distance-47badac0",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 50,
+      "family": "bottleneck",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 2,
+          "original_paths": 1,
+          "original_edges_checked": 2,
+          "maximum_best_cover_residual": -0.1008765697479248,
+          "mps": {
+            "solver_variables": 34,
+            "solver_constraints": 346,
+            "solver_quadratic_constraints": 2,
+            "binary_flow_variables": 4
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 3,
+            "selected_regions": [
+              0,
+              1
+            ],
+            "recovered_length_rad": 6.456795827179959,
+            "maximum_region_residual": 1.1188827642172328e-12,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 1294,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "no_eligible_interior_region",
+        "selected_region": null,
+        "eligible_regions": [],
+        "accepted": false
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-bottleneck-019-p00-LGCS-minimum_distance-f0273d27",
+      "attempt": "0001",
+      "latest": true,
+      "status": "frontend_failed",
+      "error_category": null,
+      "files_checked": 12,
+      "family": "bottleneck",
+      "rounds": [],
+      "recoveries": [],
+      "alternate": null,
+      "final_stage": "drm_path"
+    },
+    {
+      "job_id": "test-bottleneck-019-p01-LGCS-minimum_distance-7070be3e",
+      "attempt": "0001",
+      "latest": true,
+      "status": "infrastructure_error",
+      "error_category": "native_process_signal",
+      "files_checked": 12,
+      "family": "bottleneck",
+      "rounds": [],
+      "recoveries": [],
+      "alternate": null,
+      "final_stage": null
+    },
+    {
+      "job_id": "test-bottleneck-019-p02-LGCS-minimum_distance-7dec0549",
+      "attempt": "0001",
+      "latest": true,
+      "status": "frontend_failed",
+      "error_category": null,
+      "files_checked": 12,
+      "family": "bottleneck",
+      "rounds": [],
+      "recoveries": [],
+      "alternate": null,
+      "final_stage": "drm_path"
+    },
+    {
+      "job_id": "test-bottleneck-019-p03-LGCS-minimum_distance-64f0b105",
+      "attempt": "0001",
+      "latest": true,
+      "status": "infrastructure_error",
+      "error_category": "native_process_signal",
+      "files_checked": 12,
+      "family": "bottleneck",
+      "rounds": [],
+      "recoveries": [],
+      "alternate": null,
+      "final_stage": null
+    },
+    {
+      "job_id": "test-bottleneck-019-p04-LGCS-minimum_distance-0c7b57ac",
+      "attempt": "0001",
+      "latest": true,
+      "status": "infrastructure_error",
+      "error_category": "native_process_signal",
+      "files_checked": 12,
+      "family": "bottleneck",
+      "rounds": [],
+      "recoveries": [],
+      "alternate": null,
+      "final_stage": null
+    }
+  ],
+  "errors": [],
+  "audit_source_sha256": "6e5accd8c1f3b26763a022d0a0f7319a539891848fdbcee87b60f3945326e1fe",
+  "limitations": [
+    "No GPU, planner, solver or runtime validator was called.",
+    "Membership and interpolation are independently recomputed from saved arrays; this is not a continuous collision proof.",
+    "Actual collision labels are preserved evidence from the original run and are not recomputed in this CPU audit.",
+    "Saved native/independent labels, signed clearances, ambiguity counts and passed flags are checked for consistency; every success also requires solver success and both frontend gates.",
+    "Same-robot/scene checks use immutable case/model hashes and frozen call sites. The native alternate-roadmap binary is hash-checked; its serializer is not independently decoded.",
+    "Raw cut pools may temporarily lose original path coverage; complete original-edge coverage is independently checked for every subsequent optimizer input pool.",
+    "A final failed solve may retain prior-round top-level validation; this audit labels its scope and never counts it as final success."
+  ]
+}

@@ -1,0 +1,78 @@
+--- a/benchmarks/generic_motion_v1/runners/csdecomp_baseline.py
++++ b/benchmarks/generic_motion_v1/runners/csdecomp_baseline.py
+@@ -139,6 +139,46 @@
+                 duration=float(curve.end_time()-curve.start_time()),provenance='adapted_Drake_KTO_NTO')
+ 
+ 
++def _input_endpoints(case):
++    """Reject recorded or malformed input before any conversion or GPU call."""
++    if case.get('validation_status') != 'valid_input':
++        return None
++    try:
++        endpoints=np.asarray([case.get('q_start'),case.get('q_goal')],dtype=float)
++    except (TypeError,ValueError):
++        return None
++    if endpoints.shape != (2,7) or not np.isfinite(endpoints).all():
++        return None
++    return endpoints
++
++
++def _assert_motion_limits(case,cfg):
++    """The fixed manifest defines the task; evaluation cannot silently change it.
++
++    This v1 runner supports uniform per-joint limits. A different vector or
++    endpoint velocity requires a separately named and frozen input protocol.
++    """
++    for record_key,config_key in (
++            ('velocity_limits_rad_s','velocity_limit_rad_s'),
++            ('acceleration_limits_rad_s2','acceleration_limit_rad_s2')):
++        try:
++            manifest_limits=np.asarray(case[record_key],dtype=float)
++            configured=float(cfg[config_key])
++        except (KeyError,TypeError,ValueError) as exc:
++            raise ValueError(f'Missing or malformed frozen motion limits: {record_key}') from exc
++        if (manifest_limits.shape != (7,) or not np.isfinite(manifest_limits).all()
++                or np.any(manifest_limits<=0) or not np.isfinite(configured) or configured<=0
++                or not np.array_equal(manifest_limits,np.full(7,configured))):
++            raise ValueError(f'Evaluation {config_key} differs from frozen manifest {record_key}; '
++                             'a different task requires a separately frozen experiment protocol')
++    try:
++        endpoint_velocity=np.asarray(case['endpoint_velocity_rad_s'],dtype=float)
++    except (KeyError,TypeError,ValueError) as exc:
++        raise ValueError('Missing or malformed frozen endpoint velocity') from exc
++    if endpoint_velocity.shape != (7,) or not np.array_equal(endpoint_velocity,np.zeros(7)):
++        raise ValueError('This frozen protocol requires seven zero endpoint velocities')
++
++
+ def run_case(case,roadmap_dir,out,objective='minimum_distance',seed=0,method='EI_ZO',config=None):
+     """Run a fixed query, saving every stage; caller enforces process watchdog.
+ 
+@@ -174,14 +214,15 @@
+         try:
+             # A frozen generation failure is an input outcome, never a CUDA
+             # infrastructure error and never an invitation to resample.
+-            endpoints=np.asarray([case.get('q_start'),case.get('q_goal')],float)
+-            if (case.get('validation_status') != 'valid_input' or endpoints.shape != (2,7)
+-                    or not np.isfinite(endpoints).all()):
++            endpoints=_input_endpoints(case)
++            if endpoints is None:
+                 result['status']='invalid_endpoint'
+                 result['input_validation_status']=case.get('validation_status')
+-                result['generation_rejections']=case.get('generation_rejections',case.get('endpoint_generation'))
++                result['generation_rejections']=case.get('generation_rejections',case.get('endpoint_sampling'))
+                 result['error']='Frozen input has no valid finite endpoint pair; no resampling performed'
+                 return result
++            stage('input_contract')
++            _assert_motion_limits(case,cfg)
+             import csdecomp as csd
+             from pydrake.all import HPolyhedron
+             from ..model import Model
+@@ -327,6 +368,8 @@
+             (out/'exception.txt').write_text(traceback.format_exc())
+             if isinstance(exc,TimeoutError):result['status']='timeout'
+             elif 'cuda' in str(exc).lower():result['status']='infrastructure_error';result['error_category']='CUDA_error'
++            elif phase=='input_contract':
++                result['status']='infrastructure_error';result['error_category']='input_protocol_mismatch'
+             elif phase=='drm_path':result['status']='frontend_failed'
+             elif phase in ('trajectory_optimization','collision_recovery','eizo_inflation'):result['status']='solver_failed'
+             elif phase=='validation':result['status']='validation_undetermined'

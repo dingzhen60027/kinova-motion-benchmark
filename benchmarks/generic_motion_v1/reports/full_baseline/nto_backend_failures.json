@@ -1,0 +1,2883 @@
+{
+  "all_nto_final_status_counts": [
+    {
+      "count": 45,
+      "objective": "minimum_distance",
+      "status": "collision_failed"
+    },
+    {
+      "count": 69,
+      "objective": "minimum_distance",
+      "status": "frontend_failed"
+    },
+    {
+      "count": 1,
+      "objective": "minimum_distance",
+      "status": "infrastructure_error"
+    },
+    {
+      "count": 30,
+      "objective": "minimum_distance",
+      "status": "solver_failed"
+    },
+    {
+      "count": 35,
+      "objective": "minimum_distance",
+      "status": "success_validated_numerical"
+    },
+    {
+      "count": 18,
+      "objective": "minimum_time",
+      "status": "collision_failed"
+    },
+    {
+      "count": 69,
+      "objective": "minimum_time",
+      "status": "frontend_failed"
+    },
+    {
+      "count": 1,
+      "objective": "minimum_time",
+      "status": "infrastructure_error"
+    },
+    {
+      "count": 1,
+      "objective": "minimum_time",
+      "status": "solver_failed"
+    },
+    {
+      "count": 88,
+      "objective": "minimum_time",
+      "status": "success_validated_numerical"
+    },
+    {
+      "count": 3,
+      "objective": "minimum_time",
+      "status": "timeout"
+    }
+  ],
+  "backend_exception_count": 1,
+  "backend_exception_job_ids": [
+    "dev-route_choice-002-p00-NTO_PAPER-minimum_distance-48b608ce"
+  ],
+  "created_utc": "2026-10-28T04:00:11.803014+00:00",
+  "interpretation_boundaries": [
+    "All31 records retain their sealed run status solver_failed. Nothing is reclassified, deleted, retried, or replaced.",
+    "The single BoxBoxGradient assertion is a Drake geometry-derivative evaluation failure while SNOPT evaluates costs/constraints; it is not evidence that the underlying motion-planning problem is infeasible or that NTO intrinsically fails.",
+    "Its canonical Kinova collision geometry contains boxes; original paper FR3 sphere geometry may behave differently. This is an explicit model/backend reproduction limitation.",
+    "SNOPT info13 maps to Drake kInfeasibleConstraints, not a proof of globally infeasible motion planning.",
+    "SNOPT info31/info32 are kept distinct. Exact major/minor iteration counts are absent from the header-only SNOPT logs; do not infer counts solely from the configured2000-major-iteration cap.",
+    "SNOPT info41/info43 are retained as raw codes and Drake kSolverSpecificError; no unverified fine-grained cause is asserted.",
+    "IPOPT details.status=1 here is documented by the saved details description as Max iteration exceeded and the log reports2000 iterations; do not confuse this enum with another IPOPT return-code enumeration.",
+    "Four solver_failed candidates passed finite numerical geometry validation. They remain solver_failed and are not counted as successful baseline solves.",
+    "Failures from dense curve validation after solver success are outside this31-record solver_failed subset and are separately preserved as collision_failed.",
+    "This report is read-only postprocessing of a complete900-job dev run, not a new solver/GPU experiment."
+  ],
+  "nto_jobs": 360,
+  "numerically_valid_but_solver_failed_job_ids": [
+    "dev-bottleneck-000-p01-NTO_PAPER-minimum_distance-013e5065",
+    "dev-bottleneck-001-p02-NTO_PAPER-minimum_distance-1c0dc07c",
+    "dev-sparse_clutter-003-p00-NTO_PAPER-minimum_distance-32f5f434",
+    "dev-sparse_clutter-003-p02-NTO_PAPER-minimum_distance-c79bd7c1"
+  ],
+  "raw_code_distribution": [
+    {
+      "code_field": "status",
+      "count": 1,
+      "drake_solution_result": "SolutionResult.kIterationLimit",
+      "raw_code": 1,
+      "solver": "IPOPT"
+    },
+    {
+      "code_field": "info",
+      "count": 7,
+      "drake_solution_result": "SolutionResult.kInfeasibleConstraints",
+      "raw_code": 13,
+      "solver": "SNOPT"
+    },
+    {
+      "code_field": "info",
+      "count": 10,
+      "drake_solution_result": "SolutionResult.kIterationLimit",
+      "raw_code": 31,
+      "solver": "SNOPT"
+    },
+    {
+      "code_field": "info",
+      "count": 6,
+      "drake_solution_result": "SolutionResult.kIterationLimit",
+      "raw_code": 32,
+      "solver": "SNOPT"
+    },
+    {
+      "code_field": "info",
+      "count": 5,
+      "drake_solution_result": "SolutionResult.kSolverSpecificError",
+      "raw_code": 41,
+      "solver": "SNOPT"
+    },
+    {
+      "code_field": "info",
+      "count": 1,
+      "drake_solution_result": "SolutionResult.kSolverSpecificError",
+      "raw_code": 43,
+      "solver": "SNOPT"
+    },
+    {
+      "code_field": "info",
+      "count": 1,
+      "drake_solution_result": "exception",
+      "raw_code": null,
+      "solver": "SNOPT"
+    }
+  ],
+  "records": [
+    {
+      "attempt": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_distance-462e42b6/attempts/0001",
+      "candidate_available": true,
+      "case_id": "dev-sparse_clutter-002-p02",
+      "classification": "unsuccessful_native_solver_return",
+      "collision_geometry_sha256": "896ab9f55c5d8081b843358bd85cde2daae1f432564593f86218bf61733ce4fa",
+      "drake_solution_result": "SolutionResult.kIterationLimit",
+      "evidence_files": {
+        "candidate.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_distance-462e42b6/attempts/0001/candidate.json",
+          "sha256": "b06a29cc8649d63c03c6e47dbde3338f16186e3ca45335101fda8e0a1e25ba60"
+        },
+        "candidate.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_distance-462e42b6/attempts/0001/candidate.npz",
+          "sha256": "d6d459b51d8497e81f6ffb18b4098d7d570a25d05205d08d5eb494e55037960e"
+        },
+        "nto_initial.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_distance-462e42b6/attempts/0001/nto_initial.npz",
+          "sha256": "fbc97554380c076a46237a18e843d62bee4dc156e6de27b86370e5bce3f47143"
+        },
+        "nto_parameters.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_distance-462e42b6/attempts/0001/nto_parameters.json",
+          "sha256": "d292c69c0cccf403b54e909fb72991217eee28ce62272eceee36801622ec5330"
+        },
+        "nto_solver_raw.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_distance-462e42b6/attempts/0001/nto_solver_raw.npz",
+          "sha256": "2cf0c64550e5aaf5d858fe9d7574bc721d1f057a11d547bbc75defc78d536206"
+        },
+        "nto_solver_result.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_distance-462e42b6/attempts/0001/nto_solver_result.json",
+          "sha256": "b5cb272b7279537b109b9e902acc4d1a58d738e8800ef44cd48748ca319ee6d8"
+        },
+        "path.npy": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_distance-462e42b6/attempts/0001/path.npy",
+          "sha256": "d08e425c6095ebfca882cf6d78a419e64e0f7d33a72ee09a12f63a2c2a99a215"
+        },
+        "receipt.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_distance-462e42b6/attempts/0001/receipt.json",
+          "sha256": "8183c786544bbce1b16a6c029cc311cf5c111a0fb96aa6f3685142bccd08a355"
+        },
+        "result.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_distance-462e42b6/attempts/0001/result.json",
+          "sha256": "041d1b04abe8b813bf4d0253f6ffff9f471a16e6f5994bd9b05b2ea476b7083d"
+        },
+        "snopt.log": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_distance-462e42b6/attempts/0001/snopt.log",
+          "sha256": "c0664f8134f11ccd11e495cb7d6b0fbd913ff58dc837f91daa83bdd92ff81d42"
+        },
+        "trajectory_samples.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_distance-462e42b6/attempts/0001/trajectory_samples.npz",
+          "sha256": "bf686912ea94653d744488bc0649137add8c593c30ac0d12104cbfa0b8c1b051"
+        },
+        "validation.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_distance-462e42b6/attempts/0001/validation.json",
+          "sha256": "44b976186d5a7ae4b1065b9fde187c9d168db79d87e4886e42bdcd19693dfbc9"
+        }
+      },
+      "exception": null,
+      "failed_stage": null,
+      "frontend_validation_status": "success_validated_numerical",
+      "job_id": "dev-sparse_clutter-002-p02-NTO_PAPER-minimum_distance-462e42b6",
+      "minimum_sampled_clearance_m": -0.08328280057196086,
+      "native_solver_success": false,
+      "native_status_description": null,
+      "objective": "minimum_distance",
+      "raw_code": 31,
+      "raw_code_field": "info",
+      "raw_solver_result": {
+        "native_solver_details": {
+          "info": 31,
+          "solve_time": 8.543169143
+        },
+        "raw_solution": "nto_solver_raw.npz",
+        "returned_controls_finite": true,
+        "returned_duration_finite": true,
+        "solve_seconds": 8.54487331211567,
+        "solver_objective": 20.4007806649674,
+        "solver_status": "SolutionResult.kIterationLimit",
+        "solver_success": false
+      },
+      "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c",
+      "robot_sha256": "a25f447c8caf4aff6dc76196c3d57cc940f00e802367f48034f06a9973927c75",
+      "run_status": "solver_failed",
+      "scene_id": "dev-sparse_clutter-002",
+      "solve_seconds": 8.54487331211567,
+      "solver": "SNOPT",
+      "traceback": null,
+      "validation_status": "collision_failed"
+    },
+    {
+      "attempt": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-004-p02-NTO_PAPER-minimum_distance-d9eb82ec/attempts/0001",
+      "candidate_available": true,
+      "case_id": "dev-sparse_clutter-004-p02",
+      "classification": "unsuccessful_native_solver_return",
+      "collision_geometry_sha256": "896ab9f55c5d8081b843358bd85cde2daae1f432564593f86218bf61733ce4fa",
+      "drake_solution_result": "SolutionResult.kIterationLimit",
+      "evidence_files": {
+        "candidate.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-004-p02-NTO_PAPER-minimum_distance-d9eb82ec/attempts/0001/candidate.json",
+          "sha256": "6b80c1d3a1969aa08538b645fd36a878e50d71c264e2f6946f66463f184fb252"
+        },
+        "candidate.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-004-p02-NTO_PAPER-minimum_distance-d9eb82ec/attempts/0001/candidate.npz",
+          "sha256": "6a071e91e1a407c8352a5ed85a75a88e48a7efaf56b4e158e2ffa709f61a0138"
+        },
+        "nto_initial.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-004-p02-NTO_PAPER-minimum_distance-d9eb82ec/attempts/0001/nto_initial.npz",
+          "sha256": "a70afb62e764fafe23c35829d942555ecd400c70767e9315438bad79fc7aaf09"
+        },
+        "nto_parameters.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-004-p02-NTO_PAPER-minimum_distance-d9eb82ec/attempts/0001/nto_parameters.json",
+          "sha256": "1c6cbde6ded51f906188e6706d94e44b4a9041d2c34b9d4e771b186b7df08c1a"
+        },
+        "nto_solver_raw.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-004-p02-NTO_PAPER-minimum_distance-d9eb82ec/attempts/0001/nto_solver_raw.npz",
+          "sha256": "90465bb7657ac63ff12f0f7dca28dc3c6cc6aa54fbda65cee6e6330033428872"
+        },
+        "nto_solver_result.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-004-p02-NTO_PAPER-minimum_distance-d9eb82ec/attempts/0001/nto_solver_result.json",
+          "sha256": "ebc5c72bfd8099ff5bd54979f266a510c8e9cb062594d2a677da9428836e9f64"
+        },
+        "path.npy": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-004-p02-NTO_PAPER-minimum_distance-d9eb82ec/attempts/0001/path.npy",
+          "sha256": "5dd3a0434185a8d81129d75ac2d01f6b75727c0453fb6ea45118b550f0e67a8d"
+        },
+        "receipt.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-004-p02-NTO_PAPER-minimum_distance-d9eb82ec/attempts/0001/receipt.json",
+          "sha256": "361c00e8dddf501863f2bb8e711d9b16bf3d2ae478e22e22a89e520289174799"
+        },
+        "result.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-004-p02-NTO_PAPER-minimum_distance-d9eb82ec/attempts/0001/result.json",
+          "sha256": "7688fbdbda60563795f80cfb901aa86e07fc72e12cdc32e907d5b64d37443164"
+        },
+        "snopt.log": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-004-p02-NTO_PAPER-minimum_distance-d9eb82ec/attempts/0001/snopt.log",
+          "sha256": "c0664f8134f11ccd11e495cb7d6b0fbd913ff58dc837f91daa83bdd92ff81d42"
+        },
+        "trajectory_samples.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-004-p02-NTO_PAPER-minimum_distance-d9eb82ec/attempts/0001/trajectory_samples.npz",
+          "sha256": "7126f31791b4422d734d1926d81cd1acfcc6acb5d5130fb538c3a5e4d9750da1"
+        },
+        "validation.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-004-p02-NTO_PAPER-minimum_distance-d9eb82ec/attempts/0001/validation.json",
+          "sha256": "599091105636d0e3717fbc5ff6b88b6c862c52e2d5b5fc13ec18f3f291a8b98e"
+        }
+      },
+      "exception": null,
+      "failed_stage": null,
+      "frontend_validation_status": "success_validated_numerical",
+      "job_id": "dev-sparse_clutter-004-p02-NTO_PAPER-minimum_distance-d9eb82ec",
+      "minimum_sampled_clearance_m": -0.05075955964616972,
+      "native_solver_success": false,
+      "native_status_description": null,
+      "objective": "minimum_distance",
+      "raw_code": 31,
+      "raw_code_field": "info",
+      "raw_solver_result": {
+        "native_solver_details": {
+          "info": 31,
+          "solve_time": 3.196692432
+        },
+        "raw_solution": "nto_solver_raw.npz",
+        "returned_controls_finite": true,
+        "returned_duration_finite": true,
+        "solve_seconds": 3.1987003153190017,
+        "solver_objective": 39.9463760619749,
+        "solver_status": "SolutionResult.kIterationLimit",
+        "solver_success": false
+      },
+      "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c",
+      "robot_sha256": "a25f447c8caf4aff6dc76196c3d57cc940f00e802367f48034f06a9973927c75",
+      "run_status": "solver_failed",
+      "scene_id": "dev-sparse_clutter-004",
+      "solve_seconds": 3.1987003153190017,
+      "solver": "SNOPT",
+      "traceback": null,
+      "validation_status": "collision_failed"
+    },
+    {
+      "attempt": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-dense_clutter-002-p00-NTO_PAPER-minimum_distance-a5581945/attempts/0001",
+      "candidate_available": true,
+      "case_id": "dev-dense_clutter-002-p00",
+      "classification": "unsuccessful_native_solver_return",
+      "collision_geometry_sha256": "896ab9f55c5d8081b843358bd85cde2daae1f432564593f86218bf61733ce4fa",
+      "drake_solution_result": "SolutionResult.kInfeasibleConstraints",
+      "evidence_files": {
+        "candidate.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-dense_clutter-002-p00-NTO_PAPER-minimum_distance-a5581945/attempts/0001/candidate.json",
+          "sha256": "687c45f1ebf39f66bd86eba93fb952057bd38ee88fd2a402a333aa502f3488ec"
+        },
+        "candidate.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-dense_clutter-002-p00-NTO_PAPER-minimum_distance-a5581945/attempts/0001/candidate.npz",
+          "sha256": "df1ca1b08c096723cd139983afa638fbbaf754cbec50fed9b23ff0435e9b5049"
+        },
+        "nto_initial.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-dense_clutter-002-p00-NTO_PAPER-minimum_distance-a5581945/attempts/0001/nto_initial.npz",
+          "sha256": "531aced539cd1952c906f5d62d2c9bb147005fcd444565f336abe8fb25bf82de"
+        },
+        "nto_parameters.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-dense_clutter-002-p00-NTO_PAPER-minimum_distance-a5581945/attempts/0001/nto_parameters.json",
+          "sha256": "634cc36ecafe28ddac2167e34328c0e32a5ff0522c6dc0296eb1ca03655a42ef"
+        },
+        "nto_solver_raw.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-dense_clutter-002-p00-NTO_PAPER-minimum_distance-a5581945/attempts/0001/nto_solver_raw.npz",
+          "sha256": "1a0c7cecf5d06a17bb2d2247afb94f7b086e1b018894246bf31eee51e9f81a9f"
+        },
+        "nto_solver_result.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-dense_clutter-002-p00-NTO_PAPER-minimum_distance-a5581945/attempts/0001/nto_solver_result.json",
+          "sha256": "8b90dc0bdcf5da7e17ddfb748501aed59ffc0da41cc708e1a22dd71b4cda9b82"
+        },
+        "path.npy": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-dense_clutter-002-p00-NTO_PAPER-minimum_distance-a5581945/attempts/0001/path.npy",
+          "sha256": "ec8924fd98847996f8cb005800127799b51b84ff502b5242e6eb6de71c38bcf2"
+        },
+        "receipt.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-dense_clutter-002-p00-NTO_PAPER-minimum_distance-a5581945/attempts/0001/receipt.json",
+          "sha256": "cd2b2aaf39ea57398bf86c351e24f671711fbaf2fa8668d814f025a28723297a"
+        },
+        "result.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-dense_clutter-002-p00-NTO_PAPER-minimum_distance-a5581945/attempts/0001/result.json",
+          "sha256": "b979bffd4502f2018270668931ca8982df041ed0acb2339dfe0de1c40348694f"
+        },
+        "snopt.log": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-dense_clutter-002-p00-NTO_PAPER-minimum_distance-a5581945/attempts/0001/snopt.log",
+          "sha256": "c0664f8134f11ccd11e495cb7d6b0fbd913ff58dc837f91daa83bdd92ff81d42"
+        },
+        "trajectory_samples.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-dense_clutter-002-p00-NTO_PAPER-minimum_distance-a5581945/attempts/0001/trajectory_samples.npz",
+          "sha256": "f26e574dc27d6c1ea650edd49c14a6948a59894cf91f223c1453f3da3b2ec275"
+        },
+        "validation.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-dense_clutter-002-p00-NTO_PAPER-minimum_distance-a5581945/attempts/0001/validation.json",
+          "sha256": "a556f73c6dd4a74b5a357efde0c36fe4cb42ddb94757d123c3c2f8d37025acd6"
+        }
+      },
+      "exception": null,
+      "failed_stage": null,
+      "frontend_validation_status": "success_validated_numerical",
+      "job_id": "dev-dense_clutter-002-p00-NTO_PAPER-minimum_distance-a5581945",
+      "minimum_sampled_clearance_m": -0.05331733324352398,
+      "native_solver_success": false,
+      "native_status_description": null,
+      "objective": "minimum_distance",
+      "raw_code": 13,
+      "raw_code_field": "info",
+      "raw_solver_result": {
+        "native_solver_details": {
+          "info": 13,
+          "solve_time": 1.427047153
+        },
+        "raw_solution": "nto_solver_raw.npz",
+        "returned_controls_finite": true,
+        "returned_duration_finite": true,
+        "solve_seconds": 1.4287393898703158,
+        "solver_objective": 10.051938679280179,
+        "solver_status": "SolutionResult.kInfeasibleConstraints",
+        "solver_success": false
+      },
+      "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c",
+      "robot_sha256": "a25f447c8caf4aff6dc76196c3d57cc940f00e802367f48034f06a9973927c75",
+      "run_status": "solver_failed",
+      "scene_id": "dev-dense_clutter-002",
+      "solve_seconds": 1.4287393898703158,
+      "solver": "SNOPT",
+      "traceback": null,
+      "validation_status": "collision_failed"
+    },
+    {
+      "attempt": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-dense_clutter-002-p01-NTO_PAPER-minimum_distance-5a43f054/attempts/0001",
+      "candidate_available": true,
+      "case_id": "dev-dense_clutter-002-p01",
+      "classification": "unsuccessful_native_solver_return",
+      "collision_geometry_sha256": "896ab9f55c5d8081b843358bd85cde2daae1f432564593f86218bf61733ce4fa",
+      "drake_solution_result": "SolutionResult.kInfeasibleConstraints",
+      "evidence_files": {
+        "candidate.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-dense_clutter-002-p01-NTO_PAPER-minimum_distance-5a43f054/attempts/0001/candidate.json",
+          "sha256": "f2f7942b50263c35c8301bb4866c91c802efac8aa8c896be1185dadc5507b5b0"
+        },
+        "candidate.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-dense_clutter-002-p01-NTO_PAPER-minimum_distance-5a43f054/attempts/0001/candidate.npz",
+          "sha256": "3a92548f43f618e66f0d3879ecfb55a42d95d938a03ab557ead2928a7a8ca5de"
+        },
+        "nto_initial.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-dense_clutter-002-p01-NTO_PAPER-minimum_distance-5a43f054/attempts/0001/nto_initial.npz",
+          "sha256": "3a43ba5154bef2299b6343c553bc66bfe8db6253cc52cbc82c726779315b8c29"
+        },
+        "nto_parameters.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-dense_clutter-002-p01-NTO_PAPER-minimum_distance-5a43f054/attempts/0001/nto_parameters.json",
+          "sha256": "8829b4f1c06c0fe253fd0d6eb52d31a14a0ef13ebfa66fdae0ec75e234ae8702"
+        },
+        "nto_solver_raw.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-dense_clutter-002-p01-NTO_PAPER-minimum_distance-5a43f054/attempts/0001/nto_solver_raw.npz",
+          "sha256": "13148ab2ca25d01ab374e08e3be22ef265ea8e99b8970bcd5a400c2ff2c1a42f"
+        },
+        "nto_solver_result.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-dense_clutter-002-p01-NTO_PAPER-minimum_distance-5a43f054/attempts/0001/nto_solver_result.json",
+          "sha256": "09c24643d2a3e8491d587318772163505bbaee70393189aecc75b11a3c8219a5"
+        },
+        "path.npy": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-dense_clutter-002-p01-NTO_PAPER-minimum_distance-5a43f054/attempts/0001/path.npy",
+          "sha256": "306692d71aa69af4a3d045d3ca3e587e43e3c4af1225fecdb7b95c2be6cccfda"
+        },
+        "receipt.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-dense_clutter-002-p01-NTO_PAPER-minimum_distance-5a43f054/attempts/0001/receipt.json",
+          "sha256": "fbb93c3a72ec467f51ba2b0b09fda24f89afcafb7df592a6624a8a530d97c769"
+        },
+        "result.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-dense_clutter-002-p01-NTO_PAPER-minimum_distance-5a43f054/attempts/0001/result.json",
+          "sha256": "6a1683a2bba8cf9adaf1c6599c6886ff83bd85f6afa93df81f056cd97beb44c8"
+        },
+        "snopt.log": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-dense_clutter-002-p01-NTO_PAPER-minimum_distance-5a43f054/attempts/0001/snopt.log",
+          "sha256": "c0664f8134f11ccd11e495cb7d6b0fbd913ff58dc837f91daa83bdd92ff81d42"
+        },
+        "trajectory_samples.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-dense_clutter-002-p01-NTO_PAPER-minimum_distance-5a43f054/attempts/0001/trajectory_samples.npz",
+          "sha256": "6d42b4afc9589a207c339d516da988eb348f7a30924398eb3b1568e20a6235bc"
+        },
+        "validation.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-dense_clutter-002-p01-NTO_PAPER-minimum_distance-5a43f054/attempts/0001/validation.json",
+          "sha256": "2a548bb17c3aab2f45c5468c0c0bbc54c691bf25366bc0f9bf115af78df55a00"
+        }
+      },
+      "exception": null,
+      "failed_stage": null,
+      "frontend_validation_status": "success_validated_numerical",
+      "job_id": "dev-dense_clutter-002-p01-NTO_PAPER-minimum_distance-5a43f054",
+      "minimum_sampled_clearance_m": -0.08620382091163595,
+      "native_solver_success": false,
+      "native_status_description": null,
+      "objective": "minimum_distance",
+      "raw_code": 13,
+      "raw_code_field": "info",
+      "raw_solver_result": {
+        "native_solver_details": {
+          "info": 13,
+          "solve_time": 5.135326944
+        },
+        "raw_solution": "nto_solver_raw.npz",
+        "returned_controls_finite": true,
+        "returned_duration_finite": true,
+        "solve_seconds": 5.137184784281999,
+        "solver_objective": 23.922292542855075,
+        "solver_status": "SolutionResult.kInfeasibleConstraints",
+        "solver_success": false
+      },
+      "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c",
+      "robot_sha256": "a25f447c8caf4aff6dc76196c3d57cc940f00e802367f48034f06a9973927c75",
+      "run_status": "solver_failed",
+      "scene_id": "dev-dense_clutter-002",
+      "solve_seconds": 5.137184784281999,
+      "solver": "SNOPT",
+      "traceback": null,
+      "validation_status": "collision_failed"
+    },
+    {
+      "attempt": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-000-p01-NTO_PAPER-minimum_distance-013e5065/attempts/0001",
+      "candidate_available": true,
+      "case_id": "dev-bottleneck-000-p01",
+      "classification": "unsuccessful_native_solver_return",
+      "collision_geometry_sha256": "896ab9f55c5d8081b843358bd85cde2daae1f432564593f86218bf61733ce4fa",
+      "drake_solution_result": "SolutionResult.kIterationLimit",
+      "evidence_files": {
+        "candidate.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-000-p01-NTO_PAPER-minimum_distance-013e5065/attempts/0001/candidate.json",
+          "sha256": "ad1ccd0e0c7f3b4992e754d4f3abcd6a137bcafec888aaf99d158fcdf91a10f3"
+        },
+        "candidate.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-000-p01-NTO_PAPER-minimum_distance-013e5065/attempts/0001/candidate.npz",
+          "sha256": "e78d2abe0e102ea1b8060c4fdf5ade9a004a5ae5bc251df52ee5f8cc778b96b1"
+        },
+        "nto_initial.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-000-p01-NTO_PAPER-minimum_distance-013e5065/attempts/0001/nto_initial.npz",
+          "sha256": "f23f0781157331daa6ef2b82286a93d5b862506e07120504bc94bc81bb722464"
+        },
+        "nto_parameters.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-000-p01-NTO_PAPER-minimum_distance-013e5065/attempts/0001/nto_parameters.json",
+          "sha256": "127946d653c4cea9b0e6f909beedc76f77701d9d1c792e2c165bb601c0b01632"
+        },
+        "nto_solver_raw.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-000-p01-NTO_PAPER-minimum_distance-013e5065/attempts/0001/nto_solver_raw.npz",
+          "sha256": "d96b1f59eef1f5757d29f48ad4de05c69a5db1ab8ee1b9bd27fb7c48cae05238"
+        },
+        "nto_solver_result.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-000-p01-NTO_PAPER-minimum_distance-013e5065/attempts/0001/nto_solver_result.json",
+          "sha256": "ed4deba3269b6c625d0476174ee519cac599308e940c05b6e7031eb2aeffbea3"
+        },
+        "path.npy": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-000-p01-NTO_PAPER-minimum_distance-013e5065/attempts/0001/path.npy",
+          "sha256": "5268d4711cb75254ba45acc860d546dfea5f3739a1dd7e7234998fa09a1381b4"
+        },
+        "receipt.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-000-p01-NTO_PAPER-minimum_distance-013e5065/attempts/0001/receipt.json",
+          "sha256": "282499090e04968cf6ab328bc276113a30679a13b38c728ec88a976d858ccd12"
+        },
+        "result.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-000-p01-NTO_PAPER-minimum_distance-013e5065/attempts/0001/result.json",
+          "sha256": "6467d958422b533b38d947cd2caf4b8521e5552e1906307a94e10d099ecd25cf"
+        },
+        "snopt.log": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-000-p01-NTO_PAPER-minimum_distance-013e5065/attempts/0001/snopt.log",
+          "sha256": "c0664f8134f11ccd11e495cb7d6b0fbd913ff58dc837f91daa83bdd92ff81d42"
+        },
+        "trajectory_samples.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-000-p01-NTO_PAPER-minimum_distance-013e5065/attempts/0001/trajectory_samples.npz",
+          "sha256": "4fe700cb9d1726e6ce12ede862db8aebafb6fc711c18a17eb750fd395b9f9072"
+        },
+        "validation.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-000-p01-NTO_PAPER-minimum_distance-013e5065/attempts/0001/validation.json",
+          "sha256": "395ab1399b73886eb4d70ced49c02d11f12a0c0ccf467b60887614b4e624f233"
+        }
+      },
+      "exception": null,
+      "failed_stage": null,
+      "frontend_validation_status": "success_validated_numerical",
+      "job_id": "dev-bottleneck-000-p01-NTO_PAPER-minimum_distance-013e5065",
+      "minimum_sampled_clearance_m": 0.0007448175655305755,
+      "native_solver_success": false,
+      "native_status_description": null,
+      "objective": "minimum_distance",
+      "raw_code": 31,
+      "raw_code_field": "info",
+      "raw_solver_result": {
+        "native_solver_details": {
+          "info": 31,
+          "solve_time": 45.081153405
+        },
+        "raw_solution": "nto_solver_raw.npz",
+        "returned_controls_finite": true,
+        "returned_duration_finite": true,
+        "solve_seconds": 45.08282552380115,
+        "solver_objective": 9.117005274649138,
+        "solver_status": "SolutionResult.kIterationLimit",
+        "solver_success": false
+      },
+      "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c",
+      "robot_sha256": "a25f447c8caf4aff6dc76196c3d57cc940f00e802367f48034f06a9973927c75",
+      "run_status": "solver_failed",
+      "scene_id": "dev-bottleneck-000",
+      "solve_seconds": 45.08282552380115,
+      "solver": "SNOPT",
+      "traceback": null,
+      "validation_status": "success_validated_numerical"
+    },
+    {
+      "attempt": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-000-p02-NTO_PAPER-minimum_distance-383b7f04/attempts/0001",
+      "candidate_available": true,
+      "case_id": "dev-bottleneck-000-p02",
+      "classification": "unsuccessful_native_solver_return",
+      "collision_geometry_sha256": "896ab9f55c5d8081b843358bd85cde2daae1f432564593f86218bf61733ce4fa",
+      "drake_solution_result": "SolutionResult.kIterationLimit",
+      "evidence_files": {
+        "candidate.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-000-p02-NTO_PAPER-minimum_distance-383b7f04/attempts/0001/candidate.json",
+          "sha256": "7d0d123d096edbc098dac7e7780d6bf24eb835701a6ba0532d6fc92e1b5d9d7d"
+        },
+        "candidate.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-000-p02-NTO_PAPER-minimum_distance-383b7f04/attempts/0001/candidate.npz",
+          "sha256": "da53fb7f09eade5b11c6ef88cd5f0e4e66ba04f7fce932892c479bde06cb0960"
+        },
+        "nto_initial.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-000-p02-NTO_PAPER-minimum_distance-383b7f04/attempts/0001/nto_initial.npz",
+          "sha256": "7bc529fb9805fd4cdb19669966c35c5d21210298e83c44d6ae8e363a112797cd"
+        },
+        "nto_parameters.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-000-p02-NTO_PAPER-minimum_distance-383b7f04/attempts/0001/nto_parameters.json",
+          "sha256": "65b8f7452f0d731575c38e09c8c740223df97c30bbac9060c6aadfcecdfcbda5"
+        },
+        "nto_solver_raw.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-000-p02-NTO_PAPER-minimum_distance-383b7f04/attempts/0001/nto_solver_raw.npz",
+          "sha256": "72186c44c62fd80fe327197c64a5f4de440eab036b9183b5d0f060eb029a0a21"
+        },
+        "nto_solver_result.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-000-p02-NTO_PAPER-minimum_distance-383b7f04/attempts/0001/nto_solver_result.json",
+          "sha256": "7fb64e4ff65599bf778212b70c727aac514a90cbfe4ea4882fab1e2536b03e37"
+        },
+        "path.npy": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-000-p02-NTO_PAPER-minimum_distance-383b7f04/attempts/0001/path.npy",
+          "sha256": "faf738c318d83c7790e0f28eab5d72bc96a22f212dc91862c6071b4f056463b1"
+        },
+        "receipt.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-000-p02-NTO_PAPER-minimum_distance-383b7f04/attempts/0001/receipt.json",
+          "sha256": "7ccb66e7adf527002535aeef938023e59accf8f25fd95808e030ab8589d969c3"
+        },
+        "result.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-000-p02-NTO_PAPER-minimum_distance-383b7f04/attempts/0001/result.json",
+          "sha256": "f60074a6a723a3137c725ef403a0b5314bc8b549ebdf58baefab9e1532a86f18"
+        },
+        "snopt.log": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-000-p02-NTO_PAPER-minimum_distance-383b7f04/attempts/0001/snopt.log",
+          "sha256": "c0664f8134f11ccd11e495cb7d6b0fbd913ff58dc837f91daa83bdd92ff81d42"
+        },
+        "trajectory_samples.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-000-p02-NTO_PAPER-minimum_distance-383b7f04/attempts/0001/trajectory_samples.npz",
+          "sha256": "beaa23d35066335a2da1a89681e3524ccad0aad1020fd7c5b9796ab3e49185c9"
+        },
+        "validation.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-000-p02-NTO_PAPER-minimum_distance-383b7f04/attempts/0001/validation.json",
+          "sha256": "c417a9ffc3d127843e99636bc1bc6a3c772636605c6feb885426fc27829a9938"
+        }
+      },
+      "exception": null,
+      "failed_stage": null,
+      "frontend_validation_status": "success_validated_numerical",
+      "job_id": "dev-bottleneck-000-p02-NTO_PAPER-minimum_distance-383b7f04",
+      "minimum_sampled_clearance_m": -0.10887428657532316,
+      "native_solver_success": false,
+      "native_status_description": null,
+      "objective": "minimum_distance",
+      "raw_code": 31,
+      "raw_code_field": "info",
+      "raw_solver_result": {
+        "native_solver_details": {
+          "info": 31,
+          "solve_time": 4.178448164
+        },
+        "raw_solution": "nto_solver_raw.npz",
+        "returned_controls_finite": true,
+        "returned_duration_finite": true,
+        "solve_seconds": 4.1801048829220235,
+        "solver_objective": 20.581230747472972,
+        "solver_status": "SolutionResult.kIterationLimit",
+        "solver_success": false
+      },
+      "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c",
+      "robot_sha256": "a25f447c8caf4aff6dc76196c3d57cc940f00e802367f48034f06a9973927c75",
+      "run_status": "solver_failed",
+      "scene_id": "dev-bottleneck-000",
+      "solve_seconds": 4.1801048829220235,
+      "solver": "SNOPT",
+      "traceback": null,
+      "validation_status": "collision_failed"
+    },
+    {
+      "attempt": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-001-p02-NTO_PAPER-minimum_distance-48855244/attempts/0001",
+      "candidate_available": true,
+      "case_id": "dev-bottleneck-001-p02",
+      "classification": "unsuccessful_native_solver_return",
+      "collision_geometry_sha256": "896ab9f55c5d8081b843358bd85cde2daae1f432564593f86218bf61733ce4fa",
+      "drake_solution_result": "SolutionResult.kInfeasibleConstraints",
+      "evidence_files": {
+        "candidate.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-001-p02-NTO_PAPER-minimum_distance-48855244/attempts/0001/candidate.json",
+          "sha256": "ec12a12f7c3bf89f1aa6e36e9987113c275142acbfd994b8e5401dcd756e610c"
+        },
+        "candidate.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-001-p02-NTO_PAPER-minimum_distance-48855244/attempts/0001/candidate.npz",
+          "sha256": "c9c3854ca8faaa8bd071d381abad974f48a7d57cef84d22ea531d79ab8d11342"
+        },
+        "nto_initial.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-001-p02-NTO_PAPER-minimum_distance-48855244/attempts/0001/nto_initial.npz",
+          "sha256": "4b13cf09cb24aa02325461fd24da97603d13421037216b8b0014680ff3b27884"
+        },
+        "nto_parameters.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-001-p02-NTO_PAPER-minimum_distance-48855244/attempts/0001/nto_parameters.json",
+          "sha256": "d0162f69dce80e013eade5313f5cbb7fcde7395cf62a1aad4d28c47c106bb4f6"
+        },
+        "nto_solver_raw.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-001-p02-NTO_PAPER-minimum_distance-48855244/attempts/0001/nto_solver_raw.npz",
+          "sha256": "acce1134460acb720e7572c1b641a8b2ed3b8ac1c22a01f2b82643f16b934f16"
+        },
+        "nto_solver_result.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-001-p02-NTO_PAPER-minimum_distance-48855244/attempts/0001/nto_solver_result.json",
+          "sha256": "4107e8babfd3b87014a0d2c429fdbadcd286c63d3b7d2baa37785bcc230aea3f"
+        },
+        "path.npy": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-001-p02-NTO_PAPER-minimum_distance-48855244/attempts/0001/path.npy",
+          "sha256": "ad03a114b18ef3e80aca0babfca759e6463b9acb0102ca2965da1d35355a02a7"
+        },
+        "receipt.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-001-p02-NTO_PAPER-minimum_distance-48855244/attempts/0001/receipt.json",
+          "sha256": "f7bb12031bc1a21ffbb0b5c55c9b3cb36818d4b97c37fc64be6c28137c5d3167"
+        },
+        "result.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-001-p02-NTO_PAPER-minimum_distance-48855244/attempts/0001/result.json",
+          "sha256": "5fe0064dc541ebb6d298ede497204ba45093470958ce05fd5591275e57e6f93d"
+        },
+        "snopt.log": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-001-p02-NTO_PAPER-minimum_distance-48855244/attempts/0001/snopt.log",
+          "sha256": "c0664f8134f11ccd11e495cb7d6b0fbd913ff58dc837f91daa83bdd92ff81d42"
+        },
+        "trajectory_samples.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-001-p02-NTO_PAPER-minimum_distance-48855244/attempts/0001/trajectory_samples.npz",
+          "sha256": "718a3ea3431e315e544f6cdf8d8564ba9e4f0798a0de61f3163270d3ef5d279f"
+        },
+        "validation.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-001-p02-NTO_PAPER-minimum_distance-48855244/attempts/0001/validation.json",
+          "sha256": "c06698a66a0b020cee350a9a3d58b04d2d0ed22e3a2e6a8c70eb9fbd4c42eacb"
+        }
+      },
+      "exception": null,
+      "failed_stage": null,
+      "frontend_validation_status": "success_validated_numerical",
+      "job_id": "dev-bottleneck-001-p02-NTO_PAPER-minimum_distance-48855244",
+      "minimum_sampled_clearance_m": -0.07803375100436663,
+      "native_solver_success": false,
+      "native_status_description": null,
+      "objective": "minimum_distance",
+      "raw_code": 13,
+      "raw_code_field": "info",
+      "raw_solver_result": {
+        "native_solver_details": {
+          "info": 13,
+          "solve_time": 4.121889228
+        },
+        "raw_solution": "nto_solver_raw.npz",
+        "returned_controls_finite": true,
+        "returned_duration_finite": true,
+        "solve_seconds": 4.12353285215795,
+        "solver_objective": 16.4703966840347,
+        "solver_status": "SolutionResult.kInfeasibleConstraints",
+        "solver_success": false
+      },
+      "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c",
+      "robot_sha256": "a25f447c8caf4aff6dc76196c3d57cc940f00e802367f48034f06a9973927c75",
+      "run_status": "solver_failed",
+      "scene_id": "dev-bottleneck-001",
+      "solve_seconds": 4.12353285215795,
+      "solver": "SNOPT",
+      "traceback": null,
+      "validation_status": "collision_failed"
+    },
+    {
+      "attempt": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-004-p01-NTO_PAPER-minimum_distance-71d3bbd5/attempts/0001",
+      "candidate_available": true,
+      "case_id": "dev-bottleneck-004-p01",
+      "classification": "unsuccessful_native_solver_return",
+      "collision_geometry_sha256": "896ab9f55c5d8081b843358bd85cde2daae1f432564593f86218bf61733ce4fa",
+      "drake_solution_result": "SolutionResult.kSolverSpecificError",
+      "evidence_files": {
+        "candidate.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-004-p01-NTO_PAPER-minimum_distance-71d3bbd5/attempts/0001/candidate.json",
+          "sha256": "a1f74ac78ea9329b2fcfbfe2a76aa6919db488604fc00d48fd1adcdf7bdbaf24"
+        },
+        "candidate.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-004-p01-NTO_PAPER-minimum_distance-71d3bbd5/attempts/0001/candidate.npz",
+          "sha256": "ffb74b4ccf0137a703d6323527926ae98ebec84e40bebef5db37b130069b3c4a"
+        },
+        "nto_initial.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-004-p01-NTO_PAPER-minimum_distance-71d3bbd5/attempts/0001/nto_initial.npz",
+          "sha256": "e0861cf7327ab6a28a2086685e4c17c90822a3de5135f511fd38fb480f7543cd"
+        },
+        "nto_parameters.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-004-p01-NTO_PAPER-minimum_distance-71d3bbd5/attempts/0001/nto_parameters.json",
+          "sha256": "97a9744fe56d9e88955972733c9d1bc800d71ed861260d09e2a6f88239879cb2"
+        },
+        "nto_solver_raw.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-004-p01-NTO_PAPER-minimum_distance-71d3bbd5/attempts/0001/nto_solver_raw.npz",
+          "sha256": "590f8288d81753df3241dc7242e5346fc54f196d93236fa179043c09dc76a8ff"
+        },
+        "nto_solver_result.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-004-p01-NTO_PAPER-minimum_distance-71d3bbd5/attempts/0001/nto_solver_result.json",
+          "sha256": "5eee04ec4b7f11ac26b0467e3c13e10cda93ddd17b265d7f16c8560ff1339b51"
+        },
+        "path.npy": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-004-p01-NTO_PAPER-minimum_distance-71d3bbd5/attempts/0001/path.npy",
+          "sha256": "26c3dffa6429a1ccd8f05f350078d986107c84f5af24209d066ee0d8c678b0c7"
+        },
+        "receipt.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-004-p01-NTO_PAPER-minimum_distance-71d3bbd5/attempts/0001/receipt.json",
+          "sha256": "4a3ceb9508ef2b0b116851cf02c7721a65443b21e1075eb26bde0f312632aecf"
+        },
+        "result.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-004-p01-NTO_PAPER-minimum_distance-71d3bbd5/attempts/0001/result.json",
+          "sha256": "f48913821c4860d4b9df1eed95f7dab879fa8b1f63f16c7885530e6a676ddfc8"
+        },
+        "snopt.log": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-004-p01-NTO_PAPER-minimum_distance-71d3bbd5/attempts/0001/snopt.log",
+          "sha256": "c0664f8134f11ccd11e495cb7d6b0fbd913ff58dc837f91daa83bdd92ff81d42"
+        },
+        "trajectory_samples.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-004-p01-NTO_PAPER-minimum_distance-71d3bbd5/attempts/0001/trajectory_samples.npz",
+          "sha256": "e716b4ec5b5d909dd356ba9fd50ff786f6e0ab566ea4546f3ebba2417dc92028"
+        },
+        "validation.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-004-p01-NTO_PAPER-minimum_distance-71d3bbd5/attempts/0001/validation.json",
+          "sha256": "88c5d6f66b0246016d9f9cb369217e64935b0e779c27217ae6bb2b7e85848dda"
+        }
+      },
+      "exception": null,
+      "failed_stage": null,
+      "frontend_validation_status": "success_validated_numerical",
+      "job_id": "dev-bottleneck-004-p01-NTO_PAPER-minimum_distance-71d3bbd5",
+      "minimum_sampled_clearance_m": -0.16453943337795662,
+      "native_solver_success": false,
+      "native_status_description": null,
+      "objective": "minimum_distance",
+      "raw_code": 41,
+      "raw_code_field": "info",
+      "raw_solver_result": {
+        "native_solver_details": {
+          "info": 41,
+          "solve_time": 14.434907592
+        },
+        "raw_solution": "nto_solver_raw.npz",
+        "returned_controls_finite": true,
+        "returned_duration_finite": true,
+        "solve_seconds": 14.436743991915137,
+        "solver_objective": 21.12993051032803,
+        "solver_status": "SolutionResult.kSolverSpecificError",
+        "solver_success": false
+      },
+      "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c",
+      "robot_sha256": "a25f447c8caf4aff6dc76196c3d57cc940f00e802367f48034f06a9973927c75",
+      "run_status": "solver_failed",
+      "scene_id": "dev-bottleneck-004",
+      "solve_seconds": 14.436743991915137,
+      "solver": "SNOPT",
+      "traceback": null,
+      "validation_status": "collision_failed"
+    },
+    {
+      "attempt": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_distance-48b608ce/attempts/0001",
+      "candidate_available": false,
+      "case_id": "dev-route_choice-002-p00",
+      "classification": "backend_geometry_derivative_exception",
+      "collision_geometry_sha256": "896ab9f55c5d8081b843358bd85cde2daae1f432564593f86218bf61733ce4fa",
+      "drake_solution_result": "exception",
+      "evidence_files": {
+        "exception.txt": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_distance-48b608ce/attempts/0001/exception.txt",
+          "sha256": "dfebc81404ff6876e68ea33e7859884f0c3edc692ba4171b9725c3eba1d64bee"
+        },
+        "nto_initial.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_distance-48b608ce/attempts/0001/nto_initial.npz",
+          "sha256": "5878b88faf29e3d400650d112616463ca989a8dd861679278b6a234d7a180383"
+        },
+        "nto_parameters.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_distance-48b608ce/attempts/0001/nto_parameters.json",
+          "sha256": "64eb945bd4695a26648bef2da88f3e41be046ee2e211da9f71b8a082843b8b2f"
+        },
+        "nto_solver_result.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_distance-48b608ce/attempts/0001/nto_solver_result.json",
+          "sha256": "be3b35beea88967cdf45fda95d3515e1cc5b16b8f1816a636ef0dc62b28e92dc"
+        },
+        "path.npy": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_distance-48b608ce/attempts/0001/path.npy",
+          "sha256": "7f2f1a7f3aa77027aee364ab4b05930e76d3c4c94b4e5eca1346e79ec3fa38ce"
+        },
+        "receipt.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_distance-48b608ce/attempts/0001/receipt.json",
+          "sha256": "f6132b435e00c312deb439e988d6d999d847a41ce6adeef2eed1c91747ee59dd"
+        },
+        "result.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_distance-48b608ce/attempts/0001/result.json",
+          "sha256": "ee2b35936d713388b784213e531ade77dba09121d82825e53c2e8c2ce21b5ced"
+        },
+        "snopt.log": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_distance-48b608ce/attempts/0001/snopt.log",
+          "sha256": "c0664f8134f11ccd11e495cb7d6b0fbd913ff58dc837f91daa83bdd92ff81d42"
+        }
+      },
+      "exception": "RuntimeError(\"Exception while evaluating SNOPT costs and constraints: 'Failure at external/drake+/geometry/proximity/distance_to_shape_touching.cc:122 in BoxBoxGradient(): condition '(X_WA * p_ACa - X_WB * p_BCb).norm() < kEps' failed.'\")",
+      "failed_stage": "trajectory_optimization",
+      "frontend_validation_status": "success_validated_numerical",
+      "job_id": "dev-route_choice-002-p00-NTO_PAPER-minimum_distance-48b608ce",
+      "minimum_sampled_clearance_m": null,
+      "native_solver_success": false,
+      "native_status_description": null,
+      "objective": "minimum_distance",
+      "raw_code": null,
+      "raw_code_field": "info",
+      "raw_solver_result": {
+        "error": "RuntimeError(\"Exception while evaluating SNOPT costs and constraints: 'Failure at external/drake+/geometry/proximity/distance_to_shape_touching.cc:122 in BoxBoxGradient(): condition '(X_WA * p_ACa - X_WB * p_BCb).norm() < kEps' failed.'\")",
+        "solve_seconds": 6.398992366157472,
+        "solver": "SNOPT",
+        "solver_status": "exception",
+        "solver_success": false,
+        "traceback": "Traceback (most recent call last):\n  File \"/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/runners/paper_nto.py\", line 222, in paper_nto\n    result = solver.Solve(prog)\nRuntimeError: Exception while evaluating SNOPT costs and constraints: 'Failure at external/drake+/geometry/proximity/distance_to_shape_touching.cc:122 in BoxBoxGradient(): condition '(X_WA * p_ACa - X_WB * p_BCb).norm() < kEps' failed.'\n"
+      },
+      "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c",
+      "robot_sha256": "a25f447c8caf4aff6dc76196c3d57cc940f00e802367f48034f06a9973927c75",
+      "run_status": "solver_failed",
+      "scene_id": "dev-route_choice-002",
+      "solve_seconds": 6.398992366157472,
+      "solver": "SNOPT",
+      "traceback": "Traceback (most recent call last):\n  File \"/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/runners/paper_nto.py\", line 222, in paper_nto\n    result = solver.Solve(prog)\nRuntimeError: Exception while evaluating SNOPT costs and constraints: 'Failure at external/drake+/geometry/proximity/distance_to_shape_touching.cc:122 in BoxBoxGradient(): condition '(X_WA * p_ACa - X_WB * p_BCb).norm() < kEps' failed.'\n",
+      "validation_status": null
+    },
+    {
+      "attempt": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-002-p01-NTO_PAPER-minimum_distance-c53f6104/attempts/0001",
+      "candidate_available": true,
+      "case_id": "dev-route_choice-002-p01",
+      "classification": "unsuccessful_native_solver_return",
+      "collision_geometry_sha256": "896ab9f55c5d8081b843358bd85cde2daae1f432564593f86218bf61733ce4fa",
+      "drake_solution_result": "SolutionResult.kInfeasibleConstraints",
+      "evidence_files": {
+        "candidate.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-002-p01-NTO_PAPER-minimum_distance-c53f6104/attempts/0001/candidate.json",
+          "sha256": "10994fcf1d7418c8f4199df1baf58a65ae3bfde6dcaa97ec52ce3a09a7e1787a"
+        },
+        "candidate.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-002-p01-NTO_PAPER-minimum_distance-c53f6104/attempts/0001/candidate.npz",
+          "sha256": "4c99e3fede3e91c5ec37f74b5751e02f3f057f8c4b2f2e294ed2a0dda0eae3d3"
+        },
+        "nto_initial.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-002-p01-NTO_PAPER-minimum_distance-c53f6104/attempts/0001/nto_initial.npz",
+          "sha256": "f5fe478473a51b22804df748d994a11b41405f8f92f8d716deb63d154ec58ef2"
+        },
+        "nto_parameters.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-002-p01-NTO_PAPER-minimum_distance-c53f6104/attempts/0001/nto_parameters.json",
+          "sha256": "f57552523693df0ea02146842b578edca7098e8b095fe96e1888b19ee2ac5188"
+        },
+        "nto_solver_raw.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-002-p01-NTO_PAPER-minimum_distance-c53f6104/attempts/0001/nto_solver_raw.npz",
+          "sha256": "19d03fde28a19b4c0a56c884297f175897e87cebb1f44399b351184167ab9e82"
+        },
+        "nto_solver_result.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-002-p01-NTO_PAPER-minimum_distance-c53f6104/attempts/0001/nto_solver_result.json",
+          "sha256": "3519734fafca7779df7ca36c385c92aa2243af7a55354ab51ba7015bd2971930"
+        },
+        "path.npy": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-002-p01-NTO_PAPER-minimum_distance-c53f6104/attempts/0001/path.npy",
+          "sha256": "5a82445ddf16d43d301254f63c13574ed4e74b2b8d6b74f076751f44288cbeb5"
+        },
+        "receipt.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-002-p01-NTO_PAPER-minimum_distance-c53f6104/attempts/0001/receipt.json",
+          "sha256": "212211de2e422a611c303a6813f2702a73195e1571e38ce372c56ebf238a8f23"
+        },
+        "result.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-002-p01-NTO_PAPER-minimum_distance-c53f6104/attempts/0001/result.json",
+          "sha256": "fa55e64c33cde9c27b99a9d436adbd221e0d4e720718265bd7c82bf3cf9fdeb8"
+        },
+        "snopt.log": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-002-p01-NTO_PAPER-minimum_distance-c53f6104/attempts/0001/snopt.log",
+          "sha256": "c0664f8134f11ccd11e495cb7d6b0fbd913ff58dc837f91daa83bdd92ff81d42"
+        },
+        "trajectory_samples.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-002-p01-NTO_PAPER-minimum_distance-c53f6104/attempts/0001/trajectory_samples.npz",
+          "sha256": "3f70057bd88a346c03e593da1080964a9a950f9ea1d85a219964b7832d64c780"
+        },
+        "validation.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-002-p01-NTO_PAPER-minimum_distance-c53f6104/attempts/0001/validation.json",
+          "sha256": "96314b44df26d15470e41462d6c26510ad0dd1ea40c0cc03f74bea06f0ae2b74"
+        }
+      },
+      "exception": null,
+      "failed_stage": null,
+      "frontend_validation_status": "success_validated_numerical",
+      "job_id": "dev-route_choice-002-p01-NTO_PAPER-minimum_distance-c53f6104",
+      "minimum_sampled_clearance_m": -0.08328733961170498,
+      "native_solver_success": false,
+      "native_status_description": null,
+      "objective": "minimum_distance",
+      "raw_code": 13,
+      "raw_code_field": "info",
+      "raw_solver_result": {
+        "native_solver_details": {
+          "info": 13,
+          "solve_time": 6.177423573
+        },
+        "raw_solution": "nto_solver_raw.npz",
+        "returned_controls_finite": true,
+        "returned_duration_finite": true,
+        "solve_seconds": 6.179194044321775,
+        "solver_objective": 16.273754361606397,
+        "solver_status": "SolutionResult.kInfeasibleConstraints",
+        "solver_success": false
+      },
+      "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c",
+      "robot_sha256": "a25f447c8caf4aff6dc76196c3d57cc940f00e802367f48034f06a9973927c75",
+      "run_status": "solver_failed",
+      "scene_id": "dev-route_choice-002",
+      "solve_seconds": 6.179194044321775,
+      "solver": "SNOPT",
+      "traceback": null,
+      "validation_status": "collision_failed"
+    },
+    {
+      "attempt": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-003-p01-NTO_PAPER-minimum_distance-8ef49866/attempts/0001",
+      "candidate_available": true,
+      "case_id": "dev-route_choice-003-p01",
+      "classification": "unsuccessful_native_solver_return",
+      "collision_geometry_sha256": "896ab9f55c5d8081b843358bd85cde2daae1f432564593f86218bf61733ce4fa",
+      "drake_solution_result": "SolutionResult.kSolverSpecificError",
+      "evidence_files": {
+        "candidate.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-003-p01-NTO_PAPER-minimum_distance-8ef49866/attempts/0001/candidate.json",
+          "sha256": "a0500171fc9774204ecf71b49b4412c9c22fd5ab80f1e23a4bc7e2bcc263bbcf"
+        },
+        "candidate.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-003-p01-NTO_PAPER-minimum_distance-8ef49866/attempts/0001/candidate.npz",
+          "sha256": "11c8c2747fac44fbe824f16db93f1e3ccf7fed588ede819eb5c57281c89a387a"
+        },
+        "nto_initial.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-003-p01-NTO_PAPER-minimum_distance-8ef49866/attempts/0001/nto_initial.npz",
+          "sha256": "d8f0796f5daa048bb2b38ef6b58ecfe9f3487e9aaaabc3f0fca23b5cfd04fc17"
+        },
+        "nto_parameters.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-003-p01-NTO_PAPER-minimum_distance-8ef49866/attempts/0001/nto_parameters.json",
+          "sha256": "ea8ca41bb16a02cd196b4001466de96898a855e77e00f3e39fc9bdb2d11fae2b"
+        },
+        "nto_solver_raw.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-003-p01-NTO_PAPER-minimum_distance-8ef49866/attempts/0001/nto_solver_raw.npz",
+          "sha256": "160a38c8184b6dcd485ae524dd77d0687051404364060b2d830e18cbf080405f"
+        },
+        "nto_solver_result.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-003-p01-NTO_PAPER-minimum_distance-8ef49866/attempts/0001/nto_solver_result.json",
+          "sha256": "501352f2f5d05539bc76ef52ca71f72604aa9f1a19bf1f6e62a7006aa1dc1053"
+        },
+        "path.npy": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-003-p01-NTO_PAPER-minimum_distance-8ef49866/attempts/0001/path.npy",
+          "sha256": "9207792bec1924b624155a7778dc050cfeb2fc951148b63dd66635e166ec506b"
+        },
+        "receipt.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-003-p01-NTO_PAPER-minimum_distance-8ef49866/attempts/0001/receipt.json",
+          "sha256": "18c0623a98213c7ca80714319ad9226e5b674b99b346fc0ac99f9ba80f80a2d8"
+        },
+        "result.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-003-p01-NTO_PAPER-minimum_distance-8ef49866/attempts/0001/result.json",
+          "sha256": "bf8fb0c508dfeac469c2ca427ba156080deb0ca0e2a474418aac0df306990b8d"
+        },
+        "snopt.log": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-003-p01-NTO_PAPER-minimum_distance-8ef49866/attempts/0001/snopt.log",
+          "sha256": "c0664f8134f11ccd11e495cb7d6b0fbd913ff58dc837f91daa83bdd92ff81d42"
+        },
+        "trajectory_samples.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-003-p01-NTO_PAPER-minimum_distance-8ef49866/attempts/0001/trajectory_samples.npz",
+          "sha256": "c0843cbc9ece015aeeab6ac94037dac02d861a63587a4534c183e0f25b735275"
+        },
+        "validation.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-003-p01-NTO_PAPER-minimum_distance-8ef49866/attempts/0001/validation.json",
+          "sha256": "b79a7210bcc86b506d8fe15a6b774715ccf0cdd95c00cd9263d5f91f78898147"
+        }
+      },
+      "exception": null,
+      "failed_stage": null,
+      "frontend_validation_status": "success_validated_numerical",
+      "job_id": "dev-route_choice-003-p01-NTO_PAPER-minimum_distance-8ef49866",
+      "minimum_sampled_clearance_m": -0.17695378380820392,
+      "native_solver_success": false,
+      "native_status_description": null,
+      "objective": "minimum_distance",
+      "raw_code": 41,
+      "raw_code_field": "info",
+      "raw_solver_result": {
+        "native_solver_details": {
+          "info": 41,
+          "solve_time": 5.356156969
+        },
+        "raw_solution": "nto_solver_raw.npz",
+        "returned_controls_finite": true,
+        "returned_duration_finite": true,
+        "solve_seconds": 5.357839270029217,
+        "solver_objective": 29.09306966353127,
+        "solver_status": "SolutionResult.kSolverSpecificError",
+        "solver_success": false
+      },
+      "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c",
+      "robot_sha256": "a25f447c8caf4aff6dc76196c3d57cc940f00e802367f48034f06a9973927c75",
+      "run_status": "solver_failed",
+      "scene_id": "dev-route_choice-003",
+      "solve_seconds": 5.357839270029217,
+      "solver": "SNOPT",
+      "traceback": null,
+      "validation_status": "collision_failed"
+    },
+    {
+      "attempt": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-004-p00-NTO_PAPER-minimum_distance-43d238ca/attempts/0001",
+      "candidate_available": true,
+      "case_id": "dev-route_choice-004-p00",
+      "classification": "unsuccessful_native_solver_return",
+      "collision_geometry_sha256": "896ab9f55c5d8081b843358bd85cde2daae1f432564593f86218bf61733ce4fa",
+      "drake_solution_result": "SolutionResult.kSolverSpecificError",
+      "evidence_files": {
+        "candidate.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-004-p00-NTO_PAPER-minimum_distance-43d238ca/attempts/0001/candidate.json",
+          "sha256": "3f040c6fbfc6bf7834805332da2e293060167b973ad7ee2319c9aded8759b672"
+        },
+        "candidate.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-004-p00-NTO_PAPER-minimum_distance-43d238ca/attempts/0001/candidate.npz",
+          "sha256": "77a24968fcb5aeae7df05e966255bec830350a0c1586755bc3df91666e36fde5"
+        },
+        "nto_initial.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-004-p00-NTO_PAPER-minimum_distance-43d238ca/attempts/0001/nto_initial.npz",
+          "sha256": "c9f4298aac2f254660520519840208812703f8c2dfd819eb2c5c41469cc25440"
+        },
+        "nto_parameters.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-004-p00-NTO_PAPER-minimum_distance-43d238ca/attempts/0001/nto_parameters.json",
+          "sha256": "eeaad84c01b64dfaa0cd10451e195a68c2d1af3353205816697c8fa83e29cd9c"
+        },
+        "nto_solver_raw.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-004-p00-NTO_PAPER-minimum_distance-43d238ca/attempts/0001/nto_solver_raw.npz",
+          "sha256": "5f66d4cd80bb861fc9cd0a089485d6effbb52864e216c7b85113670fcc1b4a94"
+        },
+        "nto_solver_result.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-004-p00-NTO_PAPER-minimum_distance-43d238ca/attempts/0001/nto_solver_result.json",
+          "sha256": "1942ef6d9e638ef7459347500dac76421ee113730c2550c17fceef409714b588"
+        },
+        "path.npy": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-004-p00-NTO_PAPER-minimum_distance-43d238ca/attempts/0001/path.npy",
+          "sha256": "d612de49dbec74593efa9e714be037ddd832db9e77d899196b3653dcb3826a98"
+        },
+        "receipt.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-004-p00-NTO_PAPER-minimum_distance-43d238ca/attempts/0001/receipt.json",
+          "sha256": "ffd9b5c424103da49c3dca82150c0627dc7b9c04ab90b996376f51a8837fb5fb"
+        },
+        "result.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-004-p00-NTO_PAPER-minimum_distance-43d238ca/attempts/0001/result.json",
+          "sha256": "aaa081b68964a5cdf6e5a9d449aea7a2b33c36b8aacec961645591bef18d3325"
+        },
+        "snopt.log": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-004-p00-NTO_PAPER-minimum_distance-43d238ca/attempts/0001/snopt.log",
+          "sha256": "c0664f8134f11ccd11e495cb7d6b0fbd913ff58dc837f91daa83bdd92ff81d42"
+        },
+        "trajectory_samples.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-004-p00-NTO_PAPER-minimum_distance-43d238ca/attempts/0001/trajectory_samples.npz",
+          "sha256": "49ec87bde206e303a29b4b6777c63c6c1bd6df90d456979643ec50ed3ff86503"
+        },
+        "validation.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-004-p00-NTO_PAPER-minimum_distance-43d238ca/attempts/0001/validation.json",
+          "sha256": "4890fbff365d9912d00dcbaceeee8a713f5bc5ec2bac4ad5853ccc54971c6c92"
+        }
+      },
+      "exception": null,
+      "failed_stage": null,
+      "frontend_validation_status": "success_validated_numerical",
+      "job_id": "dev-route_choice-004-p00-NTO_PAPER-minimum_distance-43d238ca",
+      "minimum_sampled_clearance_m": -0.009004111966163242,
+      "native_solver_success": false,
+      "native_status_description": null,
+      "objective": "minimum_distance",
+      "raw_code": 41,
+      "raw_code_field": "info",
+      "raw_solver_result": {
+        "native_solver_details": {
+          "info": 41,
+          "solve_time": 1.183871905
+        },
+        "raw_solution": "nto_solver_raw.npz",
+        "returned_controls_finite": true,
+        "returned_duration_finite": true,
+        "solve_seconds": 1.1856804331764579,
+        "solver_objective": 5.467798851584164,
+        "solver_status": "SolutionResult.kSolverSpecificError",
+        "solver_success": false
+      },
+      "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c",
+      "robot_sha256": "a25f447c8caf4aff6dc76196c3d57cc940f00e802367f48034f06a9973927c75",
+      "run_status": "solver_failed",
+      "scene_id": "dev-route_choice-004",
+      "solve_seconds": 1.1856804331764579,
+      "solver": "SNOPT",
+      "traceback": null,
+      "validation_status": "collision_failed"
+    },
+    {
+      "attempt": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-003-p02-NTO_PAPER-minimum_distance-43e16ea0/attempts/0001",
+      "candidate_available": true,
+      "case_id": "dev-sparse_clutter-003-p02",
+      "classification": "unsuccessful_native_solver_return",
+      "collision_geometry_sha256": "896ab9f55c5d8081b843358bd85cde2daae1f432564593f86218bf61733ce4fa",
+      "drake_solution_result": "SolutionResult.kInfeasibleConstraints",
+      "evidence_files": {
+        "candidate.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-003-p02-NTO_PAPER-minimum_distance-43e16ea0/attempts/0001/candidate.json",
+          "sha256": "ffb6e919ad29f4376424c8172f9cf4a4d5d33b86739d5210a1b87c12319b4c75"
+        },
+        "candidate.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-003-p02-NTO_PAPER-minimum_distance-43e16ea0/attempts/0001/candidate.npz",
+          "sha256": "81d3e8a908b0cbb12300c4991c1aa850df3fcaf22c92bd4d9e68c038acd4d42b"
+        },
+        "nto_initial.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-003-p02-NTO_PAPER-minimum_distance-43e16ea0/attempts/0001/nto_initial.npz",
+          "sha256": "b3fc2b5c7a03d41451ded3f754d2a4356184d784722883b0a30dcca405a96d8e"
+        },
+        "nto_parameters.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-003-p02-NTO_PAPER-minimum_distance-43e16ea0/attempts/0001/nto_parameters.json",
+          "sha256": "74f20f08050f131cc3648b3dab6838696db234ad9b76156a76b3fc74f091603b"
+        },
+        "nto_solver_raw.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-003-p02-NTO_PAPER-minimum_distance-43e16ea0/attempts/0001/nto_solver_raw.npz",
+          "sha256": "a09784bb9bb0bd6f2101997db1626ffcfde6ee8e6beaf31e8ee351fdc78b321d"
+        },
+        "nto_solver_result.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-003-p02-NTO_PAPER-minimum_distance-43e16ea0/attempts/0001/nto_solver_result.json",
+          "sha256": "583c577b8e2b9ccd4a767e8fe17371ec5eed03950746fd1bcb79d643362e16b4"
+        },
+        "path.npy": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-003-p02-NTO_PAPER-minimum_distance-43e16ea0/attempts/0001/path.npy",
+          "sha256": "22d9c0dfaf76a790c996955d193dc13bc6a3c330fedab42c8576c97cd22171cd"
+        },
+        "receipt.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-003-p02-NTO_PAPER-minimum_distance-43e16ea0/attempts/0001/receipt.json",
+          "sha256": "3f733968a0cc154adecf1033b9f680d697385867afd4cc4c91a0b1ae5c137ce1"
+        },
+        "result.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-003-p02-NTO_PAPER-minimum_distance-43e16ea0/attempts/0001/result.json",
+          "sha256": "0e39d45026ecca5215c271497b5202148ee48c2a9288fe698e1e5d7b975f0fe1"
+        },
+        "snopt.log": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-003-p02-NTO_PAPER-minimum_distance-43e16ea0/attempts/0001/snopt.log",
+          "sha256": "c0664f8134f11ccd11e495cb7d6b0fbd913ff58dc837f91daa83bdd92ff81d42"
+        },
+        "trajectory_samples.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-003-p02-NTO_PAPER-minimum_distance-43e16ea0/attempts/0001/trajectory_samples.npz",
+          "sha256": "8f9f87b468d8563b198c1b40240f1fde2174d51e70a2c097e1f14fae1f57fcdf"
+        },
+        "validation.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-003-p02-NTO_PAPER-minimum_distance-43e16ea0/attempts/0001/validation.json",
+          "sha256": "50ecd338a57ecc91a5360676e08626b9295cbb5e986fbb22a9abc2f672eb9f6b"
+        }
+      },
+      "exception": null,
+      "failed_stage": null,
+      "frontend_validation_status": "success_validated_numerical",
+      "job_id": "dev-sparse_clutter-003-p02-NTO_PAPER-minimum_distance-43e16ea0",
+      "minimum_sampled_clearance_m": -0.023481064901007542,
+      "native_solver_success": false,
+      "native_status_description": null,
+      "objective": "minimum_distance",
+      "raw_code": 13,
+      "raw_code_field": "info",
+      "raw_solver_result": {
+        "native_solver_details": {
+          "info": 13,
+          "solve_time": 2.897873482
+        },
+        "raw_solution": "nto_solver_raw.npz",
+        "returned_controls_finite": true,
+        "returned_duration_finite": true,
+        "solve_seconds": 2.8991811689920723,
+        "solver_objective": 10.809743180291573,
+        "solver_status": "SolutionResult.kInfeasibleConstraints",
+        "solver_success": false
+      },
+      "roadmap_id": "kinova7-full-n6000-s1-e258c5f9914c",
+      "robot_sha256": "a25f447c8caf4aff6dc76196c3d57cc940f00e802367f48034f06a9973927c75",
+      "run_status": "solver_failed",
+      "scene_id": "dev-sparse_clutter-003",
+      "solve_seconds": 2.8991811689920723,
+      "solver": "SNOPT",
+      "traceback": null,
+      "validation_status": "collision_failed"
+    },
+    {
+      "attempt": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-dense_clutter-002-p01-NTO_PAPER-minimum_distance-420853ea/attempts/0001",
+      "candidate_available": true,
+      "case_id": "dev-dense_clutter-002-p01",
+      "classification": "unsuccessful_native_solver_return",
+      "collision_geometry_sha256": "896ab9f55c5d8081b843358bd85cde2daae1f432564593f86218bf61733ce4fa",
+      "drake_solution_result": "SolutionResult.kIterationLimit",
+      "evidence_files": {
+        "candidate.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-dense_clutter-002-p01-NTO_PAPER-minimum_distance-420853ea/attempts/0001/candidate.json",
+          "sha256": "a3b341f01ec5549b74bf776bf915447e565d5be560f3613f7ce403f0bb6c34d6"
+        },
+        "candidate.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-dense_clutter-002-p01-NTO_PAPER-minimum_distance-420853ea/attempts/0001/candidate.npz",
+          "sha256": "cee9aad0efe20fd38a358d4289a65d40fea96f6d9a3cbfb96eab35bc7cbf2b69"
+        },
+        "nto_initial.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-dense_clutter-002-p01-NTO_PAPER-minimum_distance-420853ea/attempts/0001/nto_initial.npz",
+          "sha256": "4eca509f82b273cb9e247d5906df5287e291fef2a100a89a42424cea793f0b42"
+        },
+        "nto_parameters.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-dense_clutter-002-p01-NTO_PAPER-minimum_distance-420853ea/attempts/0001/nto_parameters.json",
+          "sha256": "c1d58aa9afb4ea45c22c34ca4a6aff101013827a500b3f42e2f577befe49bedb"
+        },
+        "nto_solver_raw.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-dense_clutter-002-p01-NTO_PAPER-minimum_distance-420853ea/attempts/0001/nto_solver_raw.npz",
+          "sha256": "d0b41270be40a8349a5c1eff28ce43bf1f0eb8f8cf7c93f790a4fa0cc53c10c3"
+        },
+        "nto_solver_result.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-dense_clutter-002-p01-NTO_PAPER-minimum_distance-420853ea/attempts/0001/nto_solver_result.json",
+          "sha256": "75ad0b5484de6e041d32c4e05d3a3e5f13b8500b7f8917af1ff6fa2cb6b1c5cf"
+        },
+        "path.npy": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-dense_clutter-002-p01-NTO_PAPER-minimum_distance-420853ea/attempts/0001/path.npy",
+          "sha256": "bbfbb30cf1bdfd076d08f1b94d45e4c14c1b5a0a62f5d60395f40eeb3bb348d4"
+        },
+        "receipt.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-dense_clutter-002-p01-NTO_PAPER-minimum_distance-420853ea/attempts/0001/receipt.json",
+          "sha256": "7d3f15c925b9ce88df6f855da2a6fc368a8643e562489dbe47f65fe555a444f6"
+        },
+        "result.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-dense_clutter-002-p01-NTO_PAPER-minimum_distance-420853ea/attempts/0001/result.json",
+          "sha256": "de648e30b67804ffe6a5dce51b1625c9c6c550b5e0941eae669492975ce51ea8"
+        },
+        "snopt.log": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-dense_clutter-002-p01-NTO_PAPER-minimum_distance-420853ea/attempts/0001/snopt.log",
+          "sha256": "c0664f8134f11ccd11e495cb7d6b0fbd913ff58dc837f91daa83bdd92ff81d42"
+        },
+        "trajectory_samples.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-dense_clutter-002-p01-NTO_PAPER-minimum_distance-420853ea/attempts/0001/trajectory_samples.npz",
+          "sha256": "b9b8c261f3ea29489341fb78a09295d09b8851d821df626dbc0bbd3c2fba2f67"
+        },
+        "validation.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-dense_clutter-002-p01-NTO_PAPER-minimum_distance-420853ea/attempts/0001/validation.json",
+          "sha256": "8b9920c0d2881ca11fab5d56c58db928cd07a3ddc81345258acc87cb2a28e43d"
+        }
+      },
+      "exception": null,
+      "failed_stage": null,
+      "frontend_validation_status": "success_validated_numerical",
+      "job_id": "dev-dense_clutter-002-p01-NTO_PAPER-minimum_distance-420853ea",
+      "minimum_sampled_clearance_m": -0.11031793901560649,
+      "native_solver_success": false,
+      "native_status_description": null,
+      "objective": "minimum_distance",
+      "raw_code": 31,
+      "raw_code_field": "info",
+      "raw_solver_result": {
+        "native_solver_details": {
+          "info": 31,
+          "solve_time": 2.63698746
+        },
+        "raw_solution": "nto_solver_raw.npz",
+        "returned_controls_finite": true,
+        "returned_duration_finite": true,
+        "solve_seconds": 2.6389469145797193,
+        "solver_objective": 37.94259913208723,
+        "solver_status": "SolutionResult.kIterationLimit",
+        "solver_success": false
+      },
+      "roadmap_id": "kinova7-full-n6000-s1-e258c5f9914c",
+      "robot_sha256": "a25f447c8caf4aff6dc76196c3d57cc940f00e802367f48034f06a9973927c75",
+      "run_status": "solver_failed",
+      "scene_id": "dev-dense_clutter-002",
+      "solve_seconds": 2.6389469145797193,
+      "solver": "SNOPT",
+      "traceback": null,
+      "validation_status": "collision_failed"
+    },
+    {
+      "attempt": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-001-p02-NTO_PAPER-minimum_distance-1c0dc07c/attempts/0001",
+      "candidate_available": true,
+      "case_id": "dev-bottleneck-001-p02",
+      "classification": "unsuccessful_native_solver_return",
+      "collision_geometry_sha256": "896ab9f55c5d8081b843358bd85cde2daae1f432564593f86218bf61733ce4fa",
+      "drake_solution_result": "SolutionResult.kIterationLimit",
+      "evidence_files": {
+        "candidate.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-001-p02-NTO_PAPER-minimum_distance-1c0dc07c/attempts/0001/candidate.json",
+          "sha256": "6e5c32aaad5851c4150261bfdc5751a2c05a6c0e6bb2849040f652055005d89e"
+        },
+        "candidate.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-001-p02-NTO_PAPER-minimum_distance-1c0dc07c/attempts/0001/candidate.npz",
+          "sha256": "2319b2ae2b305efe68fc7d65e7424c3cc61050cb86dcd10ffeaf16dcc25bea45"
+        },
+        "nto_initial.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-001-p02-NTO_PAPER-minimum_distance-1c0dc07c/attempts/0001/nto_initial.npz",
+          "sha256": "5b80a346ceb155f996fd14540d2b8c41123f71e6ce5b08feca12744262169601"
+        },
+        "nto_parameters.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-001-p02-NTO_PAPER-minimum_distance-1c0dc07c/attempts/0001/nto_parameters.json",
+          "sha256": "a2d460703ead2851f5df4fe82fffc7b8556fdd9596474caed77df277c3899821"
+        },
+        "nto_solver_raw.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-001-p02-NTO_PAPER-minimum_distance-1c0dc07c/attempts/0001/nto_solver_raw.npz",
+          "sha256": "464e698a1263f4f3ee7e73f3b239686c9b6a217409aa018dc774b60bf2a61f53"
+        },
+        "nto_solver_result.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-001-p02-NTO_PAPER-minimum_distance-1c0dc07c/attempts/0001/nto_solver_result.json",
+          "sha256": "d260397b6a6f7b41b61431262cd9f9ec09acc2a9ee7d4afc86964834d753a9ac"
+        },
+        "path.npy": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-001-p02-NTO_PAPER-minimum_distance-1c0dc07c/attempts/0001/path.npy",
+          "sha256": "afdc8b90f91b3904e276e5d89606263ee81bca033949e74c379e4bbc9a5ba164"
+        },
+        "receipt.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-001-p02-NTO_PAPER-minimum_distance-1c0dc07c/attempts/0001/receipt.json",
+          "sha256": "14383b829e6d1d41d615d8ff4a882cada6787f50bc52d17455f9bc28de13b269"
+        },
+        "result.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-001-p02-NTO_PAPER-minimum_distance-1c0dc07c/attempts/0001/result.json",
+          "sha256": "c32fb268ac0963967785a73439185b5b216034a79c3c0ad7c7c46a116006ab59"
+        },
+        "snopt.log": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-001-p02-NTO_PAPER-minimum_distance-1c0dc07c/attempts/0001/snopt.log",
+          "sha256": "c0664f8134f11ccd11e495cb7d6b0fbd913ff58dc837f91daa83bdd92ff81d42"
+        },
+        "trajectory_samples.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-001-p02-NTO_PAPER-minimum_distance-1c0dc07c/attempts/0001/trajectory_samples.npz",
+          "sha256": "08b1536943b6c41658386d2c27276bced998b6c42d657d9a87338d75d839903e"
+        },
+        "validation.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-001-p02-NTO_PAPER-minimum_distance-1c0dc07c/attempts/0001/validation.json",
+          "sha256": "b69137a11dd5d132c2f6dd606c8619ee2d866f2c263911c6675f57452b00d9e2"
+        }
+      },
+      "exception": null,
+      "failed_stage": null,
+      "frontend_validation_status": "success_validated_numerical",
+      "job_id": "dev-bottleneck-001-p02-NTO_PAPER-minimum_distance-1c0dc07c",
+      "minimum_sampled_clearance_m": 0.003983429634858843,
+      "native_solver_success": false,
+      "native_status_description": null,
+      "objective": "minimum_distance",
+      "raw_code": 32,
+      "raw_code_field": "info",
+      "raw_solver_result": {
+        "native_solver_details": {
+          "info": 32,
+          "solve_time": 51.483091532
+        },
+        "raw_solution": "nto_solver_raw.npz",
+        "returned_controls_finite": true,
+        "returned_duration_finite": true,
+        "solve_seconds": 51.484691007994115,
+        "solver_objective": 8.740027330242409,
+        "solver_status": "SolutionResult.kIterationLimit",
+        "solver_success": false
+      },
+      "roadmap_id": "kinova7-full-n6000-s1-e258c5f9914c",
+      "robot_sha256": "a25f447c8caf4aff6dc76196c3d57cc940f00e802367f48034f06a9973927c75",
+      "run_status": "solver_failed",
+      "scene_id": "dev-bottleneck-001",
+      "solve_seconds": 51.484691007994115,
+      "solver": "SNOPT",
+      "traceback": null,
+      "validation_status": "success_validated_numerical"
+    },
+    {
+      "attempt": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-004-p01-NTO_PAPER-minimum_distance-a8eb3288/attempts/0001",
+      "candidate_available": true,
+      "case_id": "dev-bottleneck-004-p01",
+      "classification": "unsuccessful_native_solver_return",
+      "collision_geometry_sha256": "896ab9f55c5d8081b843358bd85cde2daae1f432564593f86218bf61733ce4fa",
+      "drake_solution_result": "SolutionResult.kIterationLimit",
+      "evidence_files": {
+        "candidate.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-004-p01-NTO_PAPER-minimum_distance-a8eb3288/attempts/0001/candidate.json",
+          "sha256": "fe7632f568421f32b696dcc564d7521ed6c253f7ad85d36a26be75207ad217a2"
+        },
+        "candidate.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-004-p01-NTO_PAPER-minimum_distance-a8eb3288/attempts/0001/candidate.npz",
+          "sha256": "2660424666eebbb79d0fa4756cad4756015afdf9363067965f10157c4b548e3e"
+        },
+        "nto_initial.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-004-p01-NTO_PAPER-minimum_distance-a8eb3288/attempts/0001/nto_initial.npz",
+          "sha256": "ae1ac038a9b7beb7865e05ba9a7ddb85a6e7b6e3097bc48649ce1e3e7c4b3b5f"
+        },
+        "nto_parameters.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-004-p01-NTO_PAPER-minimum_distance-a8eb3288/attempts/0001/nto_parameters.json",
+          "sha256": "e131d1d95feb90e4256b17b2cfe5fa97aac3f804878f906336964f8faf669676"
+        },
+        "nto_solver_raw.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-004-p01-NTO_PAPER-minimum_distance-a8eb3288/attempts/0001/nto_solver_raw.npz",
+          "sha256": "8033cceae52feff9c223b1ce0b73fbb2c8a969af5fb02e7096bf1fde462eb105"
+        },
+        "nto_solver_result.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-004-p01-NTO_PAPER-minimum_distance-a8eb3288/attempts/0001/nto_solver_result.json",
+          "sha256": "1804cec49389e6edc9e23d6ebb13af90e21828e4279fa5bd2254977eb20c68d8"
+        },
+        "path.npy": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-004-p01-NTO_PAPER-minimum_distance-a8eb3288/attempts/0001/path.npy",
+          "sha256": "41328b092266bfd1f0b78f099829c5676eaeb1415228fce40178f08b84bebad1"
+        },
+        "receipt.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-004-p01-NTO_PAPER-minimum_distance-a8eb3288/attempts/0001/receipt.json",
+          "sha256": "85800bf6409fa5097ad0783134e2e6dd40e5072b0279a7c5c51c51b76028fd2f"
+        },
+        "result.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-004-p01-NTO_PAPER-minimum_distance-a8eb3288/attempts/0001/result.json",
+          "sha256": "56f94fb299b06d9368a3872ceaaf13d4d3aeeab7635d3210f6ede8f0b4dd2820"
+        },
+        "snopt.log": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-004-p01-NTO_PAPER-minimum_distance-a8eb3288/attempts/0001/snopt.log",
+          "sha256": "c0664f8134f11ccd11e495cb7d6b0fbd913ff58dc837f91daa83bdd92ff81d42"
+        },
+        "trajectory_samples.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-004-p01-NTO_PAPER-minimum_distance-a8eb3288/attempts/0001/trajectory_samples.npz",
+          "sha256": "48a69852f8912c85b95a9c7498d966161b009cea46f3fc5ffc66870b83d504a5"
+        },
+        "validation.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-004-p01-NTO_PAPER-minimum_distance-a8eb3288/attempts/0001/validation.json",
+          "sha256": "a870546a71651699ebc145620b57c03734464cf4ed3ee981468e639b33b54bbb"
+        }
+      },
+      "exception": null,
+      "failed_stage": null,
+      "frontend_validation_status": "success_validated_numerical",
+      "job_id": "dev-bottleneck-004-p01-NTO_PAPER-minimum_distance-a8eb3288",
+      "minimum_sampled_clearance_m": -0.07592097854788565,
+      "native_solver_success": false,
+      "native_status_description": null,
+      "objective": "minimum_distance",
+      "raw_code": 31,
+      "raw_code_field": "info",
+      "raw_solver_result": {
+        "native_solver_details": {
+          "info": 31,
+          "solve_time": 21.249396419
+        },
+        "raw_solution": "nto_solver_raw.npz",
+        "returned_controls_finite": true,
+        "returned_duration_finite": true,
+        "solve_seconds": 21.250681426841766,
+        "solver_objective": 32.714538725001766,
+        "solver_status": "SolutionResult.kIterationLimit",
+        "solver_success": false
+      },
+      "roadmap_id": "kinova7-full-n6000-s1-e258c5f9914c",
+      "robot_sha256": "a25f447c8caf4aff6dc76196c3d57cc940f00e802367f48034f06a9973927c75",
+      "run_status": "solver_failed",
+      "scene_id": "dev-bottleneck-004",
+      "solve_seconds": 21.250681426841766,
+      "solver": "SNOPT",
+      "traceback": null,
+      "validation_status": "collision_failed"
+    },
+    {
+      "attempt": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-004-p02-NTO_PAPER-minimum_distance-ef5f9153/attempts/0001",
+      "candidate_available": true,
+      "case_id": "dev-bottleneck-004-p02",
+      "classification": "unsuccessful_native_solver_return",
+      "collision_geometry_sha256": "896ab9f55c5d8081b843358bd85cde2daae1f432564593f86218bf61733ce4fa",
+      "drake_solution_result": "SolutionResult.kIterationLimit",
+      "evidence_files": {
+        "candidate.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-004-p02-NTO_PAPER-minimum_distance-ef5f9153/attempts/0001/candidate.json",
+          "sha256": "cdae8832950fb66a54eaac48a644e10c8f3ad610a8e5c718c49b22c447ac7bb6"
+        },
+        "candidate.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-004-p02-NTO_PAPER-minimum_distance-ef5f9153/attempts/0001/candidate.npz",
+          "sha256": "e655742f6802e432d1a65c40f5ad4b49ac69cbc78935c12b633faa1ab41d5281"
+        },
+        "nto_initial.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-004-p02-NTO_PAPER-minimum_distance-ef5f9153/attempts/0001/nto_initial.npz",
+          "sha256": "67c97d2734a6daa9d44845d9942374099034093c87a8eac3f820a2c82cd21656"
+        },
+        "nto_parameters.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-004-p02-NTO_PAPER-minimum_distance-ef5f9153/attempts/0001/nto_parameters.json",
+          "sha256": "26038599495b37d476eb09b4b13ddd1cf9237e06da77b03fbbbf19c7571c8811"
+        },
+        "nto_solver_raw.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-004-p02-NTO_PAPER-minimum_distance-ef5f9153/attempts/0001/nto_solver_raw.npz",
+          "sha256": "3188f5041fc64554391ba23c5194a986b657f6b82a42e1470fead246c204fbd6"
+        },
+        "nto_solver_result.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-004-p02-NTO_PAPER-minimum_distance-ef5f9153/attempts/0001/nto_solver_result.json",
+          "sha256": "ced26803ca64e081dca801f8656c4cdab22371f7c505347b106b06c48607ffaa"
+        },
+        "path.npy": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-004-p02-NTO_PAPER-minimum_distance-ef5f9153/attempts/0001/path.npy",
+          "sha256": "105eb04e29e43a877c5481cb5fce8449d956e6d5f706f63f8ae117b2be8fee84"
+        },
+        "receipt.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-004-p02-NTO_PAPER-minimum_distance-ef5f9153/attempts/0001/receipt.json",
+          "sha256": "66ad84465e7fce6f9a0444259356d6b48b5b3313d7bb798fb8444959b78095f5"
+        },
+        "result.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-004-p02-NTO_PAPER-minimum_distance-ef5f9153/attempts/0001/result.json",
+          "sha256": "7bc8a3268b346f72848470dffc613209af8bed60d7e6ce4c617dfa5b55cc943f"
+        },
+        "snopt.log": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-004-p02-NTO_PAPER-minimum_distance-ef5f9153/attempts/0001/snopt.log",
+          "sha256": "c0664f8134f11ccd11e495cb7d6b0fbd913ff58dc837f91daa83bdd92ff81d42"
+        },
+        "trajectory_samples.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-004-p02-NTO_PAPER-minimum_distance-ef5f9153/attempts/0001/trajectory_samples.npz",
+          "sha256": "883bdbbf38bc6fe9e98c6d0f689814bbeaffff499b6830c1f9acb8abbf6be23c"
+        },
+        "validation.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-004-p02-NTO_PAPER-minimum_distance-ef5f9153/attempts/0001/validation.json",
+          "sha256": "65d6f4549fa232029261fd88f2c259a6fd4d6884abbb87d1cd74863e0ca4c7ab"
+        }
+      },
+      "exception": null,
+      "failed_stage": null,
+      "frontend_validation_status": "success_validated_numerical",
+      "job_id": "dev-bottleneck-004-p02-NTO_PAPER-minimum_distance-ef5f9153",
+      "minimum_sampled_clearance_m": -0.025513681203421096,
+      "native_solver_success": false,
+      "native_status_description": null,
+      "objective": "minimum_distance",
+      "raw_code": 31,
+      "raw_code_field": "info",
+      "raw_solver_result": {
+        "native_solver_details": {
+          "info": 31,
+          "solve_time": 10.538778078
+        },
+        "raw_solution": "nto_solver_raw.npz",
+        "returned_controls_finite": true,
+        "returned_duration_finite": true,
+        "solve_seconds": 10.54070649901405,
+        "solver_objective": 9.848941176288703,
+        "solver_status": "SolutionResult.kIterationLimit",
+        "solver_success": false
+      },
+      "roadmap_id": "kinova7-full-n6000-s1-e258c5f9914c",
+      "robot_sha256": "a25f447c8caf4aff6dc76196c3d57cc940f00e802367f48034f06a9973927c75",
+      "run_status": "solver_failed",
+      "scene_id": "dev-bottleneck-004",
+      "solve_seconds": 10.54070649901405,
+      "solver": "SNOPT",
+      "traceback": null,
+      "validation_status": "collision_failed"
+    },
+    {
+      "attempt": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-003-p01-NTO_PAPER-minimum_distance-4c4f8816/attempts/0001",
+      "candidate_available": true,
+      "case_id": "dev-route_choice-003-p01",
+      "classification": "unsuccessful_native_solver_return",
+      "collision_geometry_sha256": "896ab9f55c5d8081b843358bd85cde2daae1f432564593f86218bf61733ce4fa",
+      "drake_solution_result": "SolutionResult.kInfeasibleConstraints",
+      "evidence_files": {
+        "candidate.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-003-p01-NTO_PAPER-minimum_distance-4c4f8816/attempts/0001/candidate.json",
+          "sha256": "5ae76f27d34175cc4c4e1a28a495e2a2c676d453af449c216dd8042a5f4196fc"
+        },
+        "candidate.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-003-p01-NTO_PAPER-minimum_distance-4c4f8816/attempts/0001/candidate.npz",
+          "sha256": "44e375477ab8715642da001ea2c4def8b411739afd1b5f5dc91c3c3bdd5f0d6b"
+        },
+        "nto_initial.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-003-p01-NTO_PAPER-minimum_distance-4c4f8816/attempts/0001/nto_initial.npz",
+          "sha256": "5c9a5df0e2825c478651cc5b968373c090e98640bfae736af21781a27316ab4c"
+        },
+        "nto_parameters.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-003-p01-NTO_PAPER-minimum_distance-4c4f8816/attempts/0001/nto_parameters.json",
+          "sha256": "79fc72877cf8d6cf9c2018e392334f1524d66e3e33ce67122dcc446ac6264ef5"
+        },
+        "nto_solver_raw.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-003-p01-NTO_PAPER-minimum_distance-4c4f8816/attempts/0001/nto_solver_raw.npz",
+          "sha256": "2f55244fb8676c9300f0879ddf4a64dfc2be0b617ac47934a30f55e80106c919"
+        },
+        "nto_solver_result.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-003-p01-NTO_PAPER-minimum_distance-4c4f8816/attempts/0001/nto_solver_result.json",
+          "sha256": "8ecb5aabce5db533392de35f0aa3078ca472556106b0290e50eab0134fafabc7"
+        },
+        "path.npy": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-003-p01-NTO_PAPER-minimum_distance-4c4f8816/attempts/0001/path.npy",
+          "sha256": "781038fb5d01c567a37aeaab9a40dc4fe5d44db462df297723830cf33dd6bbcd"
+        },
+        "receipt.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-003-p01-NTO_PAPER-minimum_distance-4c4f8816/attempts/0001/receipt.json",
+          "sha256": "0a99eb700d57e12511e59b458f85c8ecd9646e962b91e44eaf330b0133347dc5"
+        },
+        "result.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-003-p01-NTO_PAPER-minimum_distance-4c4f8816/attempts/0001/result.json",
+          "sha256": "b791b107397ee28245a8bdf358d6c73cc8030ebb2942d30055e8327f0e8dde57"
+        },
+        "snopt.log": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-003-p01-NTO_PAPER-minimum_distance-4c4f8816/attempts/0001/snopt.log",
+          "sha256": "c0664f8134f11ccd11e495cb7d6b0fbd913ff58dc837f91daa83bdd92ff81d42"
+        },
+        "trajectory_samples.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-003-p01-NTO_PAPER-minimum_distance-4c4f8816/attempts/0001/trajectory_samples.npz",
+          "sha256": "1bd2b8767de50d66e82224b3adaa0225c5f6309281b1155f7a7d8c7612223cf3"
+        },
+        "validation.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-003-p01-NTO_PAPER-minimum_distance-4c4f8816/attempts/0001/validation.json",
+          "sha256": "df01ff420b33e39b6bc0bfdce0acc4d4b7e88db390a8a6b2df7ff14978a4cc05"
+        }
+      },
+      "exception": null,
+      "failed_stage": null,
+      "frontend_validation_status": "success_validated_numerical",
+      "job_id": "dev-route_choice-003-p01-NTO_PAPER-minimum_distance-4c4f8816",
+      "minimum_sampled_clearance_m": -0.03407695140123369,
+      "native_solver_success": false,
+      "native_status_description": null,
+      "objective": "minimum_distance",
+      "raw_code": 13,
+      "raw_code_field": "info",
+      "raw_solver_result": {
+        "native_solver_details": {
+          "info": 13,
+          "solve_time": 1.253157756
+        },
+        "raw_solution": "nto_solver_raw.npz",
+        "returned_controls_finite": true,
+        "returned_duration_finite": true,
+        "solve_seconds": 1.2547144456766546,
+        "solver_objective": 12.908621976996276,
+        "solver_status": "SolutionResult.kInfeasibleConstraints",
+        "solver_success": false
+      },
+      "roadmap_id": "kinova7-full-n6000-s1-e258c5f9914c",
+      "robot_sha256": "a25f447c8caf4aff6dc76196c3d57cc940f00e802367f48034f06a9973927c75",
+      "run_status": "solver_failed",
+      "scene_id": "dev-route_choice-003",
+      "solve_seconds": 1.2547144456766546,
+      "solver": "SNOPT",
+      "traceback": null,
+      "validation_status": "collision_failed"
+    },
+    {
+      "attempt": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-003-p00-NTO_PAPER-minimum_distance-32f5f434/attempts/0001",
+      "candidate_available": true,
+      "case_id": "dev-sparse_clutter-003-p00",
+      "classification": "unsuccessful_native_solver_return",
+      "collision_geometry_sha256": "896ab9f55c5d8081b843358bd85cde2daae1f432564593f86218bf61733ce4fa",
+      "drake_solution_result": "SolutionResult.kIterationLimit",
+      "evidence_files": {
+        "candidate.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-003-p00-NTO_PAPER-minimum_distance-32f5f434/attempts/0001/candidate.json",
+          "sha256": "9ff660949aca9f765c59b6b7078b46e417f31e0a5209b3fdf7d52995c1dc6693"
+        },
+        "candidate.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-003-p00-NTO_PAPER-minimum_distance-32f5f434/attempts/0001/candidate.npz",
+          "sha256": "65199ec6efd9e8e6ebc3e0b0de36e0ff5f8b3c576fdf55661bafc9f690af13ca"
+        },
+        "nto_initial.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-003-p00-NTO_PAPER-minimum_distance-32f5f434/attempts/0001/nto_initial.npz",
+          "sha256": "2c3e833f04c3a57f332a30cbacf040fa2c0f57d70c11500e4b9e4d548f6d6508"
+        },
+        "nto_parameters.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-003-p00-NTO_PAPER-minimum_distance-32f5f434/attempts/0001/nto_parameters.json",
+          "sha256": "08acfe327c48e644489ccf135b556e80c302938d2fae39f1101a57d9591af8db"
+        },
+        "nto_solver_raw.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-003-p00-NTO_PAPER-minimum_distance-32f5f434/attempts/0001/nto_solver_raw.npz",
+          "sha256": "b2468ade348cce481905fd611ccf7ada63b6a9df74967b8f300b42f32723c356"
+        },
+        "nto_solver_result.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-003-p00-NTO_PAPER-minimum_distance-32f5f434/attempts/0001/nto_solver_result.json",
+          "sha256": "006de1eb9c2d1b14763754e8cea5ff7f357d8af709465456ac7a8ae59b07060f"
+        },
+        "path.npy": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-003-p00-NTO_PAPER-minimum_distance-32f5f434/attempts/0001/path.npy",
+          "sha256": "6299f5c88d52bb6d8f0f9e55d70d214498050dcbb8da1fff32ca1becffc54b98"
+        },
+        "receipt.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-003-p00-NTO_PAPER-minimum_distance-32f5f434/attempts/0001/receipt.json",
+          "sha256": "3f9bc8710836e5fb49b1021e550ed546185e68676e65176a579a25fe1b95916f"
+        },
+        "result.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-003-p00-NTO_PAPER-minimum_distance-32f5f434/attempts/0001/result.json",
+          "sha256": "cdd3395b23d9693beb5d3f1faffa7bb11abffaf1b5af523fd9b04020d57fd913"
+        },
+        "snopt.log": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-003-p00-NTO_PAPER-minimum_distance-32f5f434/attempts/0001/snopt.log",
+          "sha256": "c0664f8134f11ccd11e495cb7d6b0fbd913ff58dc837f91daa83bdd92ff81d42"
+        },
+        "trajectory_samples.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-003-p00-NTO_PAPER-minimum_distance-32f5f434/attempts/0001/trajectory_samples.npz",
+          "sha256": "84a273ec914e9c8d39352b9463e26c24304a54af10ed85ce3912b75669563261"
+        },
+        "validation.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-003-p00-NTO_PAPER-minimum_distance-32f5f434/attempts/0001/validation.json",
+          "sha256": "18f93f8d98fd1eed6f32436f7be276ac828447c0d39f2fab07bbae53a23a5dea"
+        }
+      },
+      "exception": null,
+      "failed_stage": null,
+      "frontend_validation_status": "success_validated_numerical",
+      "job_id": "dev-sparse_clutter-003-p00-NTO_PAPER-minimum_distance-32f5f434",
+      "minimum_sampled_clearance_m": 0.0011496675953452523,
+      "native_solver_success": false,
+      "native_status_description": null,
+      "objective": "minimum_distance",
+      "raw_code": 32,
+      "raw_code_field": "info",
+      "raw_solver_result": {
+        "native_solver_details": {
+          "info": 32,
+          "solve_time": 28.647296944
+        },
+        "raw_solution": "nto_solver_raw.npz",
+        "returned_controls_finite": true,
+        "returned_duration_finite": true,
+        "solve_seconds": 28.649041552096605,
+        "solver_objective": 3.606448973505481,
+        "solver_status": "SolutionResult.kIterationLimit",
+        "solver_success": false
+      },
+      "roadmap_id": "kinova7-full-n6000-s2-e258c5f9914c",
+      "robot_sha256": "a25f447c8caf4aff6dc76196c3d57cc940f00e802367f48034f06a9973927c75",
+      "run_status": "solver_failed",
+      "scene_id": "dev-sparse_clutter-003",
+      "solve_seconds": 28.649041552096605,
+      "solver": "SNOPT",
+      "traceback": null,
+      "validation_status": "success_validated_numerical"
+    },
+    {
+      "attempt": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-003-p01-NTO_PAPER-minimum_distance-d286af33/attempts/0001",
+      "candidate_available": true,
+      "case_id": "dev-sparse_clutter-003-p01",
+      "classification": "unsuccessful_native_solver_return",
+      "collision_geometry_sha256": "896ab9f55c5d8081b843358bd85cde2daae1f432564593f86218bf61733ce4fa",
+      "drake_solution_result": "SolutionResult.kIterationLimit",
+      "evidence_files": {
+        "candidate.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-003-p01-NTO_PAPER-minimum_distance-d286af33/attempts/0001/candidate.json",
+          "sha256": "5f3525cff38e57ab918718df92950dc9cd105498d53815ffcc97eea72bd0b5bc"
+        },
+        "candidate.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-003-p01-NTO_PAPER-minimum_distance-d286af33/attempts/0001/candidate.npz",
+          "sha256": "99a11f2e422a0a54fb2054e141a9a48cd030361692f108b5fb66635519348704"
+        },
+        "nto_initial.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-003-p01-NTO_PAPER-minimum_distance-d286af33/attempts/0001/nto_initial.npz",
+          "sha256": "1394eab533b3ebf18c4b7c12564a9c06bfd96473869cfbe73ec7040a3c0f3338"
+        },
+        "nto_parameters.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-003-p01-NTO_PAPER-minimum_distance-d286af33/attempts/0001/nto_parameters.json",
+          "sha256": "e36aa2a16e617304f610bbd944f8b505c0c1a8d37558906da3347179683eab2f"
+        },
+        "nto_solver_raw.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-003-p01-NTO_PAPER-minimum_distance-d286af33/attempts/0001/nto_solver_raw.npz",
+          "sha256": "ccd766b19eeec5895bfbe9ac195faf7e6aa1801145e4df175b5a2d816672ebba"
+        },
+        "nto_solver_result.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-003-p01-NTO_PAPER-minimum_distance-d286af33/attempts/0001/nto_solver_result.json",
+          "sha256": "93d6e6ed1f60cb2c421b288bc335cfa50164c054b6650a32ef4890612abf3a03"
+        },
+        "path.npy": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-003-p01-NTO_PAPER-minimum_distance-d286af33/attempts/0001/path.npy",
+          "sha256": "fb9a01052e92fe9dd335cbdb60e3ca77c9d501ab7c22903711209612b0ca7aaa"
+        },
+        "receipt.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-003-p01-NTO_PAPER-minimum_distance-d286af33/attempts/0001/receipt.json",
+          "sha256": "8938edc7fd8499e72ab33c39767a69cb10e97aa7995166983894e45a14616c8e"
+        },
+        "result.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-003-p01-NTO_PAPER-minimum_distance-d286af33/attempts/0001/result.json",
+          "sha256": "6b929656bdd250a9f68419aeb6f6d1afda9271d8e4122f2de5796a2f62a1a1e0"
+        },
+        "snopt.log": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-003-p01-NTO_PAPER-minimum_distance-d286af33/attempts/0001/snopt.log",
+          "sha256": "c0664f8134f11ccd11e495cb7d6b0fbd913ff58dc837f91daa83bdd92ff81d42"
+        },
+        "trajectory_samples.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-003-p01-NTO_PAPER-minimum_distance-d286af33/attempts/0001/trajectory_samples.npz",
+          "sha256": "7f49192b1a07595f994fb6187157be2fa3411d72f0f900309da63f38e173bf86"
+        },
+        "validation.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-003-p01-NTO_PAPER-minimum_distance-d286af33/attempts/0001/validation.json",
+          "sha256": "8349cb13635c61a22e2ec48ff6f2a12a9261a8d8521aaee804dc29dcd5ea3c14"
+        }
+      },
+      "exception": null,
+      "failed_stage": null,
+      "frontend_validation_status": "success_validated_numerical",
+      "job_id": "dev-sparse_clutter-003-p01-NTO_PAPER-minimum_distance-d286af33",
+      "minimum_sampled_clearance_m": -0.006244889486542199,
+      "native_solver_success": false,
+      "native_status_description": null,
+      "objective": "minimum_distance",
+      "raw_code": 32,
+      "raw_code_field": "info",
+      "raw_solver_result": {
+        "native_solver_details": {
+          "info": 32,
+          "solve_time": 28.442266285
+        },
+        "raw_solution": "nto_solver_raw.npz",
+        "returned_controls_finite": true,
+        "returned_duration_finite": true,
+        "solve_seconds": 28.44409425696358,
+        "solver_objective": 12.302342107695598,
+        "solver_status": "SolutionResult.kIterationLimit",
+        "solver_success": false
+      },
+      "roadmap_id": "kinova7-full-n6000-s2-e258c5f9914c",
+      "robot_sha256": "a25f447c8caf4aff6dc76196c3d57cc940f00e802367f48034f06a9973927c75",
+      "run_status": "solver_failed",
+      "scene_id": "dev-sparse_clutter-003",
+      "solve_seconds": 28.44409425696358,
+      "solver": "SNOPT",
+      "traceback": null,
+      "validation_status": "collision_failed"
+    },
+    {
+      "attempt": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-003-p02-NTO_PAPER-minimum_distance-c79bd7c1/attempts/0001",
+      "candidate_available": true,
+      "case_id": "dev-sparse_clutter-003-p02",
+      "classification": "unsuccessful_native_solver_return",
+      "collision_geometry_sha256": "896ab9f55c5d8081b843358bd85cde2daae1f432564593f86218bf61733ce4fa",
+      "drake_solution_result": "SolutionResult.kIterationLimit",
+      "evidence_files": {
+        "candidate.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-003-p02-NTO_PAPER-minimum_distance-c79bd7c1/attempts/0001/candidate.json",
+          "sha256": "10fbcbb3fad8b1bfc8083283792ef6aa08bc208fc94c3c2247c66ba1ed31c07a"
+        },
+        "candidate.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-003-p02-NTO_PAPER-minimum_distance-c79bd7c1/attempts/0001/candidate.npz",
+          "sha256": "7af0cb9e3aa364a8bd4e45c73c0a234db87babb56efaa82b50041ac6a853d110"
+        },
+        "nto_initial.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-003-p02-NTO_PAPER-minimum_distance-c79bd7c1/attempts/0001/nto_initial.npz",
+          "sha256": "fb1c58e1d57e4e6d14c28865877b2b0fe206557afdda5377a6e3bbac56640ac5"
+        },
+        "nto_parameters.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-003-p02-NTO_PAPER-minimum_distance-c79bd7c1/attempts/0001/nto_parameters.json",
+          "sha256": "ac9f9b796dd5d306abf32c9afe8cbaddc7f0a9f3d8c416ea05d209de685fbc9e"
+        },
+        "nto_solver_raw.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-003-p02-NTO_PAPER-minimum_distance-c79bd7c1/attempts/0001/nto_solver_raw.npz",
+          "sha256": "bfaa9b3f27d1b3ef4a16e8872b2160c6f3d63d5c8220244b50a16ba2aef32e97"
+        },
+        "nto_solver_result.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-003-p02-NTO_PAPER-minimum_distance-c79bd7c1/attempts/0001/nto_solver_result.json",
+          "sha256": "c54962d93642934c4a07768d38bf28085d9b60eebb6c6a54600a78b3745bb78d"
+        },
+        "path.npy": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-003-p02-NTO_PAPER-minimum_distance-c79bd7c1/attempts/0001/path.npy",
+          "sha256": "baf6378d4256f0f53b543d19cbfdb2f4ac7708d16ada5b449b0a266da122fadf"
+        },
+        "receipt.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-003-p02-NTO_PAPER-minimum_distance-c79bd7c1/attempts/0001/receipt.json",
+          "sha256": "a20c237855c7c105c9360dd3c7d67876c296b9329f70e5c9ac747e946b331943"
+        },
+        "result.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-003-p02-NTO_PAPER-minimum_distance-c79bd7c1/attempts/0001/result.json",
+          "sha256": "f8c56af70b4250011c2600bdf2361b003d3a403191bf8a4de6c1bcf31d1aac78"
+        },
+        "snopt.log": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-003-p02-NTO_PAPER-minimum_distance-c79bd7c1/attempts/0001/snopt.log",
+          "sha256": "c0664f8134f11ccd11e495cb7d6b0fbd913ff58dc837f91daa83bdd92ff81d42"
+        },
+        "trajectory_samples.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-003-p02-NTO_PAPER-minimum_distance-c79bd7c1/attempts/0001/trajectory_samples.npz",
+          "sha256": "ad7ddd3a34b05fdd3b908b0fb0a3f79a74acd6b8313b8c18761302d5723379c8"
+        },
+        "validation.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-003-p02-NTO_PAPER-minimum_distance-c79bd7c1/attempts/0001/validation.json",
+          "sha256": "5cd8a165e872ff47022d19ae2804caaee2904de25d7a4486c2262f8e9b96ee03"
+        }
+      },
+      "exception": null,
+      "failed_stage": null,
+      "frontend_validation_status": "success_validated_numerical",
+      "job_id": "dev-sparse_clutter-003-p02-NTO_PAPER-minimum_distance-c79bd7c1",
+      "minimum_sampled_clearance_m": 0.001423573899876858,
+      "native_solver_success": false,
+      "native_status_description": null,
+      "objective": "minimum_distance",
+      "raw_code": 32,
+      "raw_code_field": "info",
+      "raw_solver_result": {
+        "native_solver_details": {
+          "info": 32,
+          "solve_time": 46.301400972
+        },
+        "raw_solution": "nto_solver_raw.npz",
+        "returned_controls_finite": true,
+        "returned_duration_finite": true,
+        "solve_seconds": 46.30309637775645,
+        "solver_objective": 7.483186905997997,
+        "solver_status": "SolutionResult.kIterationLimit",
+        "solver_success": false
+      },
+      "roadmap_id": "kinova7-full-n6000-s2-e258c5f9914c",
+      "robot_sha256": "a25f447c8caf4aff6dc76196c3d57cc940f00e802367f48034f06a9973927c75",
+      "run_status": "solver_failed",
+      "scene_id": "dev-sparse_clutter-003",
+      "solve_seconds": 46.30309637775645,
+      "solver": "SNOPT",
+      "traceback": null,
+      "validation_status": "success_validated_numerical"
+    },
+    {
+      "attempt": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-004-p00-NTO_PAPER-minimum_distance-4d30a589/attempts/0001",
+      "candidate_available": true,
+      "case_id": "dev-sparse_clutter-004-p00",
+      "classification": "unsuccessful_native_solver_return",
+      "collision_geometry_sha256": "896ab9f55c5d8081b843358bd85cde2daae1f432564593f86218bf61733ce4fa",
+      "drake_solution_result": "SolutionResult.kSolverSpecificError",
+      "evidence_files": {
+        "candidate.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-004-p00-NTO_PAPER-minimum_distance-4d30a589/attempts/0001/candidate.json",
+          "sha256": "b49da9b2f6270ca5501ef86a3420c699a0e923d73e287b45918e4de10f17dd38"
+        },
+        "candidate.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-004-p00-NTO_PAPER-minimum_distance-4d30a589/attempts/0001/candidate.npz",
+          "sha256": "ac42b71f82f6be0522a3e73c134bf4997292942334bb9f8be1442822d6c2650c"
+        },
+        "nto_initial.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-004-p00-NTO_PAPER-minimum_distance-4d30a589/attempts/0001/nto_initial.npz",
+          "sha256": "25da3365f9e77af5cec845336042ce652f09e07619ece61c1507409def8a990f"
+        },
+        "nto_parameters.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-004-p00-NTO_PAPER-minimum_distance-4d30a589/attempts/0001/nto_parameters.json",
+          "sha256": "e1198715c21bd3b77410849455f68badce8a8466f8aba3d9bee008903cf3df32"
+        },
+        "nto_solver_raw.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-004-p00-NTO_PAPER-minimum_distance-4d30a589/attempts/0001/nto_solver_raw.npz",
+          "sha256": "b41716ed549c664499f96fec001304206d554e1395b8d25d8b28f2babc7eb884"
+        },
+        "nto_solver_result.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-004-p00-NTO_PAPER-minimum_distance-4d30a589/attempts/0001/nto_solver_result.json",
+          "sha256": "fdf35b686fe968a5de0db1fa58fcd338d84a82fe0d84bf67a4dbc8062cac65bd"
+        },
+        "path.npy": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-004-p00-NTO_PAPER-minimum_distance-4d30a589/attempts/0001/path.npy",
+          "sha256": "37266d27250497857e9fbf433f66d1955d19c0c11f254004e2806554c0531509"
+        },
+        "receipt.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-004-p00-NTO_PAPER-minimum_distance-4d30a589/attempts/0001/receipt.json",
+          "sha256": "2eecf0944b00d93f5b29118b54c2b1d53e28dd31995af8b82baf9e1dde90b25b"
+        },
+        "result.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-004-p00-NTO_PAPER-minimum_distance-4d30a589/attempts/0001/result.json",
+          "sha256": "38f61ced2e71deb38241a425bb1bb8c585ef47a5b863b38b414954e1256a1da8"
+        },
+        "snopt.log": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-004-p00-NTO_PAPER-minimum_distance-4d30a589/attempts/0001/snopt.log",
+          "sha256": "c0664f8134f11ccd11e495cb7d6b0fbd913ff58dc837f91daa83bdd92ff81d42"
+        },
+        "trajectory_samples.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-004-p00-NTO_PAPER-minimum_distance-4d30a589/attempts/0001/trajectory_samples.npz",
+          "sha256": "0cd0f827e02ba8fb078f6b46c673a4f5074d9b75604073b795962a243075bf38"
+        },
+        "validation.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-004-p00-NTO_PAPER-minimum_distance-4d30a589/attempts/0001/validation.json",
+          "sha256": "3f237c70b4b31e3c5c3b54ca261a660bfde0e7249752d6dbe1b512a99fe13e8b"
+        }
+      },
+      "exception": null,
+      "failed_stage": null,
+      "frontend_validation_status": "success_validated_numerical",
+      "job_id": "dev-sparse_clutter-004-p00-NTO_PAPER-minimum_distance-4d30a589",
+      "minimum_sampled_clearance_m": -0.043048739541567516,
+      "native_solver_success": false,
+      "native_status_description": null,
+      "objective": "minimum_distance",
+      "raw_code": 43,
+      "raw_code_field": "info",
+      "raw_solver_result": {
+        "native_solver_details": {
+          "info": 43,
+          "solve_time": 0.064696487
+        },
+        "raw_solution": "nto_solver_raw.npz",
+        "returned_controls_finite": true,
+        "returned_duration_finite": true,
+        "solve_seconds": 0.0659285020083189,
+        "solver_objective": 11.805286986205974,
+        "solver_status": "SolutionResult.kSolverSpecificError",
+        "solver_success": false
+      },
+      "roadmap_id": "kinova7-full-n6000-s2-e258c5f9914c",
+      "robot_sha256": "a25f447c8caf4aff6dc76196c3d57cc940f00e802367f48034f06a9973927c75",
+      "run_status": "solver_failed",
+      "scene_id": "dev-sparse_clutter-004",
+      "solve_seconds": 0.0659285020083189,
+      "solver": "SNOPT",
+      "traceback": null,
+      "validation_status": "collision_failed"
+    },
+    {
+      "attempt": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-004-p01-NTO_PAPER-minimum_distance-9030e34e/attempts/0001",
+      "candidate_available": true,
+      "case_id": "dev-sparse_clutter-004-p01",
+      "classification": "unsuccessful_native_solver_return",
+      "collision_geometry_sha256": "896ab9f55c5d8081b843358bd85cde2daae1f432564593f86218bf61733ce4fa",
+      "drake_solution_result": "SolutionResult.kIterationLimit",
+      "evidence_files": {
+        "candidate.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-004-p01-NTO_PAPER-minimum_distance-9030e34e/attempts/0001/candidate.json",
+          "sha256": "10135a0c85a8c332b619ce8997a55a4297f0eade30480eca4b3d403c230ad534"
+        },
+        "candidate.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-004-p01-NTO_PAPER-minimum_distance-9030e34e/attempts/0001/candidate.npz",
+          "sha256": "6292e99f19297b1c8c9422ff60b33f9d46f902955e422f74bda75b197f7374a5"
+        },
+        "nto_initial.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-004-p01-NTO_PAPER-minimum_distance-9030e34e/attempts/0001/nto_initial.npz",
+          "sha256": "dd6e46e4ea77614c3db5b07f288596cb12ba10fa37424ee49394a3f4d8760859"
+        },
+        "nto_parameters.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-004-p01-NTO_PAPER-minimum_distance-9030e34e/attempts/0001/nto_parameters.json",
+          "sha256": "8a8df33617950262a929414a1a75d2198a87a30f5e78f96cdd08a433d7aa63d6"
+        },
+        "nto_solver_raw.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-004-p01-NTO_PAPER-minimum_distance-9030e34e/attempts/0001/nto_solver_raw.npz",
+          "sha256": "618ec6df9b3314b76707129497cfeabadbf62638158469382442c71ae0b9f0f0"
+        },
+        "nto_solver_result.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-004-p01-NTO_PAPER-minimum_distance-9030e34e/attempts/0001/nto_solver_result.json",
+          "sha256": "c36bf5d5db632f163b7aabf19d39ddf2c559d5d1557197243f6144fbb5a9995c"
+        },
+        "path.npy": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-004-p01-NTO_PAPER-minimum_distance-9030e34e/attempts/0001/path.npy",
+          "sha256": "8279b9588f2a17134c26747fc31b43081d3bd1b034988d3b92166cf9b3ee2bcc"
+        },
+        "receipt.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-004-p01-NTO_PAPER-minimum_distance-9030e34e/attempts/0001/receipt.json",
+          "sha256": "744c4835319d536132303805a2caa9ffc49b7a9f1271725577758b6c26f5e8a4"
+        },
+        "result.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-004-p01-NTO_PAPER-minimum_distance-9030e34e/attempts/0001/result.json",
+          "sha256": "e045c748ab734508826cb42d8bc96a8d0392a1592c39294235ee9f30fca98030"
+        },
+        "snopt.log": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-004-p01-NTO_PAPER-minimum_distance-9030e34e/attempts/0001/snopt.log",
+          "sha256": "c0664f8134f11ccd11e495cb7d6b0fbd913ff58dc837f91daa83bdd92ff81d42"
+        },
+        "trajectory_samples.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-004-p01-NTO_PAPER-minimum_distance-9030e34e/attempts/0001/trajectory_samples.npz",
+          "sha256": "ca6678110841fb80355a58adaa6d41b84f816f28884fc22023babb23715fb8e5"
+        },
+        "validation.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-004-p01-NTO_PAPER-minimum_distance-9030e34e/attempts/0001/validation.json",
+          "sha256": "575c30acb14b108d004307cd8d2d35e68594d4dfae9744338b5cf4a5cc5be0f6"
+        }
+      },
+      "exception": null,
+      "failed_stage": null,
+      "frontend_validation_status": "success_validated_numerical",
+      "job_id": "dev-sparse_clutter-004-p01-NTO_PAPER-minimum_distance-9030e34e",
+      "minimum_sampled_clearance_m": -0.11111239573789,
+      "native_solver_success": false,
+      "native_status_description": null,
+      "objective": "minimum_distance",
+      "raw_code": 31,
+      "raw_code_field": "info",
+      "raw_solver_result": {
+        "native_solver_details": {
+          "info": 31,
+          "solve_time": 4.406099121
+        },
+        "raw_solution": "nto_solver_raw.npz",
+        "returned_controls_finite": true,
+        "returned_duration_finite": true,
+        "solve_seconds": 4.407835371326655,
+        "solver_objective": 34.13571312475522,
+        "solver_status": "SolutionResult.kIterationLimit",
+        "solver_success": false
+      },
+      "roadmap_id": "kinova7-full-n6000-s2-e258c5f9914c",
+      "robot_sha256": "a25f447c8caf4aff6dc76196c3d57cc940f00e802367f48034f06a9973927c75",
+      "run_status": "solver_failed",
+      "scene_id": "dev-sparse_clutter-004",
+      "solve_seconds": 4.407835371326655,
+      "solver": "SNOPT",
+      "traceback": null,
+      "validation_status": "collision_failed"
+    },
+    {
+      "attempt": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-004-p01-NTO_PAPER-minimum_time-d2e382a8/attempts/0001",
+      "candidate_available": true,
+      "case_id": "dev-sparse_clutter-004-p01",
+      "classification": "unsuccessful_native_solver_return",
+      "collision_geometry_sha256": "896ab9f55c5d8081b843358bd85cde2daae1f432564593f86218bf61733ce4fa",
+      "drake_solution_result": "SolutionResult.kIterationLimit",
+      "evidence_files": {
+        "candidate.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-004-p01-NTO_PAPER-minimum_time-d2e382a8/attempts/0001/candidate.json",
+          "sha256": "c9d2355fc37327796b69b82d7413034195aaa132481b676bca23bfa850972264"
+        },
+        "candidate.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-004-p01-NTO_PAPER-minimum_time-d2e382a8/attempts/0001/candidate.npz",
+          "sha256": "dd68428bb769440c73c717e738ac41902bde5148d3b59c6cda72aa5de772dc06"
+        },
+        "ipopt.log": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-004-p01-NTO_PAPER-minimum_time-d2e382a8/attempts/0001/ipopt.log",
+          "sha256": "bc75f693bdc67d45015e89131eb6d6779f591876232cc93272a9343d6a0fc9fd"
+        },
+        "nto_initial.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-004-p01-NTO_PAPER-minimum_time-d2e382a8/attempts/0001/nto_initial.npz",
+          "sha256": "ae081ba8508ee0bb030b6a44697b2b01ddd4aeb3a8ffdccd86b8fc7e2a89a824"
+        },
+        "nto_parameters.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-004-p01-NTO_PAPER-minimum_time-d2e382a8/attempts/0001/nto_parameters.json",
+          "sha256": "42cb6de68b13a9ad0d4286e981951b8eaf24f5cf48e24a3a1d67bbe6582f40b5"
+        },
+        "nto_solver_raw.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-004-p01-NTO_PAPER-minimum_time-d2e382a8/attempts/0001/nto_solver_raw.npz",
+          "sha256": "8d53903702d56e893f090bfbf3eda0e793f4d641fa40234fa6a3e8f08345e331"
+        },
+        "nto_solver_result.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-004-p01-NTO_PAPER-minimum_time-d2e382a8/attempts/0001/nto_solver_result.json",
+          "sha256": "6d7ecc54187ae016ca9a1d71e8bf6146ae468a6a0306bd044b0261a388cfaae5"
+        },
+        "path.npy": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-004-p01-NTO_PAPER-minimum_time-d2e382a8/attempts/0001/path.npy",
+          "sha256": "8279b9588f2a17134c26747fc31b43081d3bd1b034988d3b92166cf9b3ee2bcc"
+        },
+        "receipt.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-004-p01-NTO_PAPER-minimum_time-d2e382a8/attempts/0001/receipt.json",
+          "sha256": "aeed11864e56f9a73b1819193a371aaf6abae030b05b73c0ad6b287bc05a3a91"
+        },
+        "result.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-004-p01-NTO_PAPER-minimum_time-d2e382a8/attempts/0001/result.json",
+          "sha256": "53c26858a83d01d158fc6993c96fb9badd7006db53e0681351956a5ac9651ce0"
+        },
+        "trajectory_samples.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-004-p01-NTO_PAPER-minimum_time-d2e382a8/attempts/0001/trajectory_samples.npz",
+          "sha256": "91cc1571a9aaa5263432c1f517532269bec39c53ad1a5004daa7a10a0067f9d8"
+        },
+        "validation.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-004-p01-NTO_PAPER-minimum_time-d2e382a8/attempts/0001/validation.json",
+          "sha256": "df59d1ce1017ec9023103589a5eeb6d50592939fc64342c83d464ea943bdb1e3"
+        }
+      },
+      "exception": null,
+      "failed_stage": null,
+      "frontend_validation_status": "success_validated_numerical",
+      "job_id": "dev-sparse_clutter-004-p01-NTO_PAPER-minimum_time-d2e382a8",
+      "minimum_sampled_clearance_m": -0.12385088579514572,
+      "native_solver_success": false,
+      "native_status_description": "Max iteration exceeded",
+      "objective": "minimum_time",
+      "raw_code": 1,
+      "raw_code_field": "status",
+      "raw_solver_result": {
+        "native_solver_details": {
+          "status": 1
+        },
+        "native_status_description": "Max iteration exceeded",
+        "raw_solution": "nto_solver_raw.npz",
+        "returned_controls_finite": true,
+        "returned_duration_finite": true,
+        "solve_seconds": 47.61190757993609,
+        "solver_objective": 57.56456025895594,
+        "solver_status": "SolutionResult.kIterationLimit",
+        "solver_success": false
+      },
+      "roadmap_id": "kinova7-full-n6000-s2-e258c5f9914c",
+      "robot_sha256": "a25f447c8caf4aff6dc76196c3d57cc940f00e802367f48034f06a9973927c75",
+      "run_status": "solver_failed",
+      "scene_id": "dev-sparse_clutter-004",
+      "solve_seconds": 47.61190757993609,
+      "solver": "IPOPT",
+      "traceback": null,
+      "validation_status": "invalid_endpoint"
+    },
+    {
+      "attempt": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-004-p02-NTO_PAPER-minimum_distance-297942c1/attempts/0001",
+      "candidate_available": true,
+      "case_id": "dev-sparse_clutter-004-p02",
+      "classification": "unsuccessful_native_solver_return",
+      "collision_geometry_sha256": "896ab9f55c5d8081b843358bd85cde2daae1f432564593f86218bf61733ce4fa",
+      "drake_solution_result": "SolutionResult.kIterationLimit",
+      "evidence_files": {
+        "candidate.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-004-p02-NTO_PAPER-minimum_distance-297942c1/attempts/0001/candidate.json",
+          "sha256": "abc4fc53e9d969b339a259c5a60db960b150b46ce932644cbbc639d6f7f85f25"
+        },
+        "candidate.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-004-p02-NTO_PAPER-minimum_distance-297942c1/attempts/0001/candidate.npz",
+          "sha256": "c83022bded2056ac321cbe0c684240caf7d56ccc5d9761374c3608471cdc9c61"
+        },
+        "nto_initial.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-004-p02-NTO_PAPER-minimum_distance-297942c1/attempts/0001/nto_initial.npz",
+          "sha256": "06eada4bd372241a700bbb9f41ec69b64100ce7d916dcbf7efd56a03a7f998e3"
+        },
+        "nto_parameters.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-004-p02-NTO_PAPER-minimum_distance-297942c1/attempts/0001/nto_parameters.json",
+          "sha256": "5a78691c4e38668ea3066f6e639d3d930b51d6fe0e9d7ecda50fff3b17268fda"
+        },
+        "nto_solver_raw.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-004-p02-NTO_PAPER-minimum_distance-297942c1/attempts/0001/nto_solver_raw.npz",
+          "sha256": "016703a58a3e268a3542584997ed19f5c4378d9a7ec62c5db9db63156cadf71d"
+        },
+        "nto_solver_result.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-004-p02-NTO_PAPER-minimum_distance-297942c1/attempts/0001/nto_solver_result.json",
+          "sha256": "82229388fc0820dd9abcfdf1968744cf30dd336ac9d844fb6a4a57c09846adda"
+        },
+        "path.npy": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-004-p02-NTO_PAPER-minimum_distance-297942c1/attempts/0001/path.npy",
+          "sha256": "ef86aa9c6626e7fb1ae593e451c208d88f23517fda759eacad44a1e4d64852d7"
+        },
+        "receipt.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-004-p02-NTO_PAPER-minimum_distance-297942c1/attempts/0001/receipt.json",
+          "sha256": "df81e0e7bc407f6beacbb2d4f4e6cc7af61e400fd86bab49e5584efe5cb0bdd5"
+        },
+        "result.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-004-p02-NTO_PAPER-minimum_distance-297942c1/attempts/0001/result.json",
+          "sha256": "939970464ffad6020c6fd166d37b918c77ae8ff785dfc9066b30a1ce2aaeb670"
+        },
+        "snopt.log": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-004-p02-NTO_PAPER-minimum_distance-297942c1/attempts/0001/snopt.log",
+          "sha256": "c0664f8134f11ccd11e495cb7d6b0fbd913ff58dc837f91daa83bdd92ff81d42"
+        },
+        "trajectory_samples.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-004-p02-NTO_PAPER-minimum_distance-297942c1/attempts/0001/trajectory_samples.npz",
+          "sha256": "91195c79f84dce23345e0942496c55900678f1360ade1d588918257d0f231933"
+        },
+        "validation.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-004-p02-NTO_PAPER-minimum_distance-297942c1/attempts/0001/validation.json",
+          "sha256": "5e48e9d949e8b99cba08d6813e1d78a9b76f6e81213f0f86bb9c7ce021f8ad02"
+        }
+      },
+      "exception": null,
+      "failed_stage": null,
+      "frontend_validation_status": "success_validated_numerical",
+      "job_id": "dev-sparse_clutter-004-p02-NTO_PAPER-minimum_distance-297942c1",
+      "minimum_sampled_clearance_m": -0.013557100233877371,
+      "native_solver_success": false,
+      "native_status_description": null,
+      "objective": "minimum_distance",
+      "raw_code": 32,
+      "raw_code_field": "info",
+      "raw_solver_result": {
+        "native_solver_details": {
+          "info": 32,
+          "solve_time": 36.561934848
+        },
+        "raw_solution": "nto_solver_raw.npz",
+        "returned_controls_finite": true,
+        "returned_duration_finite": true,
+        "solve_seconds": 36.563712164759636,
+        "solver_objective": 7.956278111543013,
+        "solver_status": "SolutionResult.kIterationLimit",
+        "solver_success": false
+      },
+      "roadmap_id": "kinova7-full-n6000-s2-e258c5f9914c",
+      "robot_sha256": "a25f447c8caf4aff6dc76196c3d57cc940f00e802367f48034f06a9973927c75",
+      "run_status": "solver_failed",
+      "scene_id": "dev-sparse_clutter-004",
+      "solve_seconds": 36.563712164759636,
+      "solver": "SNOPT",
+      "traceback": null,
+      "validation_status": "collision_failed"
+    },
+    {
+      "attempt": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-dense_clutter-002-p01-NTO_PAPER-minimum_distance-16e5781b/attempts/0001",
+      "candidate_available": true,
+      "case_id": "dev-dense_clutter-002-p01",
+      "classification": "unsuccessful_native_solver_return",
+      "collision_geometry_sha256": "896ab9f55c5d8081b843358bd85cde2daae1f432564593f86218bf61733ce4fa",
+      "drake_solution_result": "SolutionResult.kInfeasibleConstraints",
+      "evidence_files": {
+        "candidate.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-dense_clutter-002-p01-NTO_PAPER-minimum_distance-16e5781b/attempts/0001/candidate.json",
+          "sha256": "b093b1423c052f5471bf88206e90b6b64d2e2f1fe87dffc39fef8bf3ef0279b7"
+        },
+        "candidate.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-dense_clutter-002-p01-NTO_PAPER-minimum_distance-16e5781b/attempts/0001/candidate.npz",
+          "sha256": "6d8ea5771230d289b402662ceab8c2f4d6fcce7892ba1c2f2d1a8d7ddf33ee7f"
+        },
+        "nto_initial.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-dense_clutter-002-p01-NTO_PAPER-minimum_distance-16e5781b/attempts/0001/nto_initial.npz",
+          "sha256": "3b665d53bf6ee0610f29d844279455ece08c32952474b38d2fa4362f5efa289f"
+        },
+        "nto_parameters.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-dense_clutter-002-p01-NTO_PAPER-minimum_distance-16e5781b/attempts/0001/nto_parameters.json",
+          "sha256": "a2621b363ca0cef6714af4280bed271117d2a7da4798100b3848304c46b0e93d"
+        },
+        "nto_solver_raw.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-dense_clutter-002-p01-NTO_PAPER-minimum_distance-16e5781b/attempts/0001/nto_solver_raw.npz",
+          "sha256": "62ddad14c5cb1a7b14bd8d2c6f89c84e3cd64ec69b886a2795454f80eeb2c9c7"
+        },
+        "nto_solver_result.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-dense_clutter-002-p01-NTO_PAPER-minimum_distance-16e5781b/attempts/0001/nto_solver_result.json",
+          "sha256": "be233d655128addf083fa490683c1b45ac06ce31064383d9fbd4fbca4166b63e"
+        },
+        "path.npy": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-dense_clutter-002-p01-NTO_PAPER-minimum_distance-16e5781b/attempts/0001/path.npy",
+          "sha256": "435912946f5cdde20ac7a3753ba823d5b135810338601f480146e2acc811a741"
+        },
+        "receipt.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-dense_clutter-002-p01-NTO_PAPER-minimum_distance-16e5781b/attempts/0001/receipt.json",
+          "sha256": "6403c7e774696bb52d4176326691e1f47051f1393c03b71ae71aeef4e05f4042"
+        },
+        "result.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-dense_clutter-002-p01-NTO_PAPER-minimum_distance-16e5781b/attempts/0001/result.json",
+          "sha256": "9fe349d87536657fb7895284810284a611cc4ba83ec5239e7e2ab4dd6a141960"
+        },
+        "snopt.log": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-dense_clutter-002-p01-NTO_PAPER-minimum_distance-16e5781b/attempts/0001/snopt.log",
+          "sha256": "c0664f8134f11ccd11e495cb7d6b0fbd913ff58dc837f91daa83bdd92ff81d42"
+        },
+        "trajectory_samples.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-dense_clutter-002-p01-NTO_PAPER-minimum_distance-16e5781b/attempts/0001/trajectory_samples.npz",
+          "sha256": "27c70bfc6c66ec0d89d08133f8b9ce129c39f2fb02467f1893c791f58b04a3ec"
+        },
+        "validation.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-dense_clutter-002-p01-NTO_PAPER-minimum_distance-16e5781b/attempts/0001/validation.json",
+          "sha256": "f5ab5487ce03ad7b7f92af09c3475deddd6af05f5b2b6ef13f49df364ebf6ed3"
+        }
+      },
+      "exception": null,
+      "failed_stage": null,
+      "frontend_validation_status": "success_validated_numerical",
+      "job_id": "dev-dense_clutter-002-p01-NTO_PAPER-minimum_distance-16e5781b",
+      "minimum_sampled_clearance_m": -0.08606892698282066,
+      "native_solver_success": false,
+      "native_status_description": null,
+      "objective": "minimum_distance",
+      "raw_code": 13,
+      "raw_code_field": "info",
+      "raw_solver_result": {
+        "native_solver_details": {
+          "info": 13,
+          "solve_time": 3.676582891
+        },
+        "raw_solution": "nto_solver_raw.npz",
+        "returned_controls_finite": true,
+        "returned_duration_finite": true,
+        "solve_seconds": 3.6779476050287485,
+        "solver_objective": 18.369037722049168,
+        "solver_status": "SolutionResult.kInfeasibleConstraints",
+        "solver_success": false
+      },
+      "roadmap_id": "kinova7-full-n6000-s2-e258c5f9914c",
+      "robot_sha256": "a25f447c8caf4aff6dc76196c3d57cc940f00e802367f48034f06a9973927c75",
+      "run_status": "solver_failed",
+      "scene_id": "dev-dense_clutter-002",
+      "solve_seconds": 3.6779476050287485,
+      "solver": "SNOPT",
+      "traceback": null,
+      "validation_status": "collision_failed"
+    },
+    {
+      "attempt": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-000-p02-NTO_PAPER-minimum_distance-6de702a7/attempts/0001",
+      "candidate_available": true,
+      "case_id": "dev-bottleneck-000-p02",
+      "classification": "unsuccessful_native_solver_return",
+      "collision_geometry_sha256": "896ab9f55c5d8081b843358bd85cde2daae1f432564593f86218bf61733ce4fa",
+      "drake_solution_result": "SolutionResult.kSolverSpecificError",
+      "evidence_files": {
+        "candidate.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-000-p02-NTO_PAPER-minimum_distance-6de702a7/attempts/0001/candidate.json",
+          "sha256": "18627c5ec40b8e015fee3a6cce484710afe5401357ab547205066c8d73e51e68"
+        },
+        "candidate.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-000-p02-NTO_PAPER-minimum_distance-6de702a7/attempts/0001/candidate.npz",
+          "sha256": "5d176ac87dc8756dcf74bf856d154085effd8502888d1ac9815c377d14fe3a1c"
+        },
+        "nto_initial.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-000-p02-NTO_PAPER-minimum_distance-6de702a7/attempts/0001/nto_initial.npz",
+          "sha256": "ad90aaccec7f8829b47561627462f897fe2fb3a039e79c6805c9db1e1cfa58b0"
+        },
+        "nto_parameters.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-000-p02-NTO_PAPER-minimum_distance-6de702a7/attempts/0001/nto_parameters.json",
+          "sha256": "4e60f732691ea7159285f9454218b2262ed936b0187d42833d10f230a0f38585"
+        },
+        "nto_solver_raw.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-000-p02-NTO_PAPER-minimum_distance-6de702a7/attempts/0001/nto_solver_raw.npz",
+          "sha256": "bc802c9b80226b138daa127af3d2bb1c5f6a0dfc0f58777212ff86350782b1bf"
+        },
+        "nto_solver_result.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-000-p02-NTO_PAPER-minimum_distance-6de702a7/attempts/0001/nto_solver_result.json",
+          "sha256": "976ac0ceb708cc7b44af34a350d59b167e07d0b50561cc7ca39296acdea488d8"
+        },
+        "path.npy": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-000-p02-NTO_PAPER-minimum_distance-6de702a7/attempts/0001/path.npy",
+          "sha256": "53dc8d5d1dab42f888329945b21dba76ae00c589147bab0f8b7a62d8a94aa2f2"
+        },
+        "receipt.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-000-p02-NTO_PAPER-minimum_distance-6de702a7/attempts/0001/receipt.json",
+          "sha256": "139ff66382743e3cee98741c84f3ff38c5e907872d3b8491df6d4468d6379f85"
+        },
+        "result.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-000-p02-NTO_PAPER-minimum_distance-6de702a7/attempts/0001/result.json",
+          "sha256": "c4f94eb2486f9bb11df9047966be512cab312505d76141154990de3f298ab346"
+        },
+        "snopt.log": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-000-p02-NTO_PAPER-minimum_distance-6de702a7/attempts/0001/snopt.log",
+          "sha256": "c0664f8134f11ccd11e495cb7d6b0fbd913ff58dc837f91daa83bdd92ff81d42"
+        },
+        "trajectory_samples.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-000-p02-NTO_PAPER-minimum_distance-6de702a7/attempts/0001/trajectory_samples.npz",
+          "sha256": "84ced7a887502e72fe54b11c2868124dfc58a0b69cc8da90c5c0e19a98257588"
+        },
+        "validation.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-000-p02-NTO_PAPER-minimum_distance-6de702a7/attempts/0001/validation.json",
+          "sha256": "5a284ec54d39a0d7d78f7fa7b7c742db43fb6b4699b38e76f8bf7f2a180d929c"
+        }
+      },
+      "exception": null,
+      "failed_stage": null,
+      "frontend_validation_status": "success_validated_numerical",
+      "job_id": "dev-bottleneck-000-p02-NTO_PAPER-minimum_distance-6de702a7",
+      "minimum_sampled_clearance_m": -0.04773737954386159,
+      "native_solver_success": false,
+      "native_status_description": null,
+      "objective": "minimum_distance",
+      "raw_code": 41,
+      "raw_code_field": "info",
+      "raw_solver_result": {
+        "native_solver_details": {
+          "info": 41,
+          "solve_time": 11.902195428
+        },
+        "raw_solution": "nto_solver_raw.npz",
+        "returned_controls_finite": true,
+        "returned_duration_finite": true,
+        "solve_seconds": 11.903946368955076,
+        "solver_objective": 8.021048361603654,
+        "solver_status": "SolutionResult.kSolverSpecificError",
+        "solver_success": false
+      },
+      "roadmap_id": "kinova7-full-n6000-s2-e258c5f9914c",
+      "robot_sha256": "a25f447c8caf4aff6dc76196c3d57cc940f00e802367f48034f06a9973927c75",
+      "run_status": "solver_failed",
+      "scene_id": "dev-bottleneck-000",
+      "solve_seconds": 11.903946368955076,
+      "solver": "SNOPT",
+      "traceback": null,
+      "validation_status": "collision_failed"
+    },
+    {
+      "attempt": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-004-p01-NTO_PAPER-minimum_distance-0f216ec3/attempts/0001",
+      "candidate_available": true,
+      "case_id": "dev-bottleneck-004-p01",
+      "classification": "unsuccessful_native_solver_return",
+      "collision_geometry_sha256": "896ab9f55c5d8081b843358bd85cde2daae1f432564593f86218bf61733ce4fa",
+      "drake_solution_result": "SolutionResult.kSolverSpecificError",
+      "evidence_files": {
+        "candidate.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-004-p01-NTO_PAPER-minimum_distance-0f216ec3/attempts/0001/candidate.json",
+          "sha256": "92eb9692e3d8e205755325ff1f29bbabe694af868f7bb0113e8ddcc3d2e3eed4"
+        },
+        "candidate.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-004-p01-NTO_PAPER-minimum_distance-0f216ec3/attempts/0001/candidate.npz",
+          "sha256": "d3c237f2c4178e42a13764f59b4a5c30d6b384aba6bf01e520136f9da9e134b5"
+        },
+        "nto_initial.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-004-p01-NTO_PAPER-minimum_distance-0f216ec3/attempts/0001/nto_initial.npz",
+          "sha256": "70c94d4a3c4596ba4259bb3948779f9cfbf937e0cd1b76238979796c829c34ff"
+        },
+        "nto_parameters.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-004-p01-NTO_PAPER-minimum_distance-0f216ec3/attempts/0001/nto_parameters.json",
+          "sha256": "2f6fc73d1e1e3e546a57227f767db0118f9bfb64bc5a5a95a508d3ed17a5d85a"
+        },
+        "nto_solver_raw.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-004-p01-NTO_PAPER-minimum_distance-0f216ec3/attempts/0001/nto_solver_raw.npz",
+          "sha256": "ff5163441e9188711a618b814d31699846218de4d1f50279bda0a51a7818dee9"
+        },
+        "nto_solver_result.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-004-p01-NTO_PAPER-minimum_distance-0f216ec3/attempts/0001/nto_solver_result.json",
+          "sha256": "7ce50cfad0c2c0609db4cc1841a5cb6c49cf72d94c63392a0001d5c96be2bdf9"
+        },
+        "path.npy": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-004-p01-NTO_PAPER-minimum_distance-0f216ec3/attempts/0001/path.npy",
+          "sha256": "f5bb20f68c8c6ad0ae2d685c5b830e6ef2cac5936767fe7b3dff637fb45cc234"
+        },
+        "receipt.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-004-p01-NTO_PAPER-minimum_distance-0f216ec3/attempts/0001/receipt.json",
+          "sha256": "85f9e34f2895923529d142b0f2af8e6f5ca038cdc01537b12721be78e8b59d0f"
+        },
+        "result.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-004-p01-NTO_PAPER-minimum_distance-0f216ec3/attempts/0001/result.json",
+          "sha256": "d56109288f141a5f7cc280ed7c0a935bfaf0e2e281f61b5135e1a41846a2bdb5"
+        },
+        "snopt.log": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-004-p01-NTO_PAPER-minimum_distance-0f216ec3/attempts/0001/snopt.log",
+          "sha256": "c0664f8134f11ccd11e495cb7d6b0fbd913ff58dc837f91daa83bdd92ff81d42"
+        },
+        "trajectory_samples.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-004-p01-NTO_PAPER-minimum_distance-0f216ec3/attempts/0001/trajectory_samples.npz",
+          "sha256": "d8afa0359192a1fbc4681db93b3b1875955ad1393f14c277b1838b80a081397e"
+        },
+        "validation.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-004-p01-NTO_PAPER-minimum_distance-0f216ec3/attempts/0001/validation.json",
+          "sha256": "92b3657268e15fa6971f0896f9d2ad7443fbaf1f2692f0e277b6aaf9b52fcef3"
+        }
+      },
+      "exception": null,
+      "failed_stage": null,
+      "frontend_validation_status": "success_validated_numerical",
+      "job_id": "dev-bottleneck-004-p01-NTO_PAPER-minimum_distance-0f216ec3",
+      "minimum_sampled_clearance_m": -0.04798076014308769,
+      "native_solver_success": false,
+      "native_status_description": null,
+      "objective": "minimum_distance",
+      "raw_code": 41,
+      "raw_code_field": "info",
+      "raw_solver_result": {
+        "native_solver_details": {
+          "info": 41,
+          "solve_time": 6.406830431
+        },
+        "raw_solution": "nto_solver_raw.npz",
+        "returned_controls_finite": true,
+        "returned_duration_finite": true,
+        "solve_seconds": 6.4084987114183605,
+        "solver_objective": 37.26737535210418,
+        "solver_status": "SolutionResult.kSolverSpecificError",
+        "solver_success": false
+      },
+      "roadmap_id": "kinova7-full-n6000-s2-e258c5f9914c",
+      "robot_sha256": "a25f447c8caf4aff6dc76196c3d57cc940f00e802367f48034f06a9973927c75",
+      "run_status": "solver_failed",
+      "scene_id": "dev-bottleneck-004",
+      "solve_seconds": 6.4084987114183605,
+      "solver": "SNOPT",
+      "traceback": null,
+      "validation_status": "collision_failed"
+    },
+    {
+      "attempt": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-004-p02-NTO_PAPER-minimum_distance-2115708d/attempts/0001",
+      "candidate_available": true,
+      "case_id": "dev-bottleneck-004-p02",
+      "classification": "unsuccessful_native_solver_return",
+      "collision_geometry_sha256": "896ab9f55c5d8081b843358bd85cde2daae1f432564593f86218bf61733ce4fa",
+      "drake_solution_result": "SolutionResult.kIterationLimit",
+      "evidence_files": {
+        "candidate.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-004-p02-NTO_PAPER-minimum_distance-2115708d/attempts/0001/candidate.json",
+          "sha256": "18b252cc66a3f3d7daf2be8ad12b55326cb8a61198eeff0a8bb6a3e4cf29a643"
+        },
+        "candidate.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-004-p02-NTO_PAPER-minimum_distance-2115708d/attempts/0001/candidate.npz",
+          "sha256": "3cf76ddbf1ada32111a05e900ed9aa7d86b832265fc9cc967b50cbae6d6c7409"
+        },
+        "nto_initial.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-004-p02-NTO_PAPER-minimum_distance-2115708d/attempts/0001/nto_initial.npz",
+          "sha256": "0ec2c6a26f16d90fde17a3ec1f07acea57b351ed50c2928aa65ca245eff9a4e8"
+        },
+        "nto_parameters.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-004-p02-NTO_PAPER-minimum_distance-2115708d/attempts/0001/nto_parameters.json",
+          "sha256": "3bf4d3d2dcb454edcb013332555bca77915d52898076218e9bfac44add81ee01"
+        },
+        "nto_solver_raw.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-004-p02-NTO_PAPER-minimum_distance-2115708d/attempts/0001/nto_solver_raw.npz",
+          "sha256": "2c651b26f3c197596e8232e76f7da1f181d66ca3d05cb2162bb4a2556eee1375"
+        },
+        "nto_solver_result.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-004-p02-NTO_PAPER-minimum_distance-2115708d/attempts/0001/nto_solver_result.json",
+          "sha256": "7c1620e38c458630843b84a229e67d3bec3728ee9a32e659ab9ed24784fd01e6"
+        },
+        "path.npy": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-004-p02-NTO_PAPER-minimum_distance-2115708d/attempts/0001/path.npy",
+          "sha256": "a93ff45d2eb0d6f1a84fc81b653e3d48289b9bdec985153d9264d904246300bd"
+        },
+        "receipt.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-004-p02-NTO_PAPER-minimum_distance-2115708d/attempts/0001/receipt.json",
+          "sha256": "58db3ce2f8c51239a78e2a353a2dc2ec8328bd25e2c4d6fedc872ce0de336ac4"
+        },
+        "result.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-004-p02-NTO_PAPER-minimum_distance-2115708d/attempts/0001/result.json",
+          "sha256": "990023e77d232c2bf11caabbafe83f824c302a3b0e35fa7308c236c10e7e0458"
+        },
+        "snopt.log": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-004-p02-NTO_PAPER-minimum_distance-2115708d/attempts/0001/snopt.log",
+          "sha256": "c0664f8134f11ccd11e495cb7d6b0fbd913ff58dc837f91daa83bdd92ff81d42"
+        },
+        "trajectory_samples.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-004-p02-NTO_PAPER-minimum_distance-2115708d/attempts/0001/trajectory_samples.npz",
+          "sha256": "1cd2e78f6bbc24582452de5bd77140919b52761e399bed991c004f6220d3165c"
+        },
+        "validation.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-004-p02-NTO_PAPER-minimum_distance-2115708d/attempts/0001/validation.json",
+          "sha256": "28d7cc7b6c80c36e32360cdc4dc00e4aee284eccf64e21265474d1a36230eca4"
+        }
+      },
+      "exception": null,
+      "failed_stage": null,
+      "frontend_validation_status": "success_validated_numerical",
+      "job_id": "dev-bottleneck-004-p02-NTO_PAPER-minimum_distance-2115708d",
+      "minimum_sampled_clearance_m": -0.060548875546550085,
+      "native_solver_success": false,
+      "native_status_description": null,
+      "objective": "minimum_distance",
+      "raw_code": 31,
+      "raw_code_field": "info",
+      "raw_solver_result": {
+        "native_solver_details": {
+          "info": 31,
+          "solve_time": 8.612803097
+        },
+        "raw_solution": "nto_solver_raw.npz",
+        "returned_controls_finite": true,
+        "returned_duration_finite": true,
+        "solve_seconds": 8.614413056056947,
+        "solver_objective": 26.07999472627203,
+        "solver_status": "SolutionResult.kIterationLimit",
+        "solver_success": false
+      },
+      "roadmap_id": "kinova7-full-n6000-s2-e258c5f9914c",
+      "robot_sha256": "a25f447c8caf4aff6dc76196c3d57cc940f00e802367f48034f06a9973927c75",
+      "run_status": "solver_failed",
+      "scene_id": "dev-bottleneck-004",
+      "solve_seconds": 8.614413056056947,
+      "solver": "SNOPT",
+      "traceback": null,
+      "validation_status": "collision_failed"
+    },
+    {
+      "attempt": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-000-p02-NTO_PAPER-minimum_distance-4ccece59/attempts/0001",
+      "candidate_available": true,
+      "case_id": "dev-route_choice-000-p02",
+      "classification": "unsuccessful_native_solver_return",
+      "collision_geometry_sha256": "896ab9f55c5d8081b843358bd85cde2daae1f432564593f86218bf61733ce4fa",
+      "drake_solution_result": "SolutionResult.kIterationLimit",
+      "evidence_files": {
+        "candidate.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-000-p02-NTO_PAPER-minimum_distance-4ccece59/attempts/0001/candidate.json",
+          "sha256": "46962a606b143621d8dfb0e31187bffefbed03743f01661eaa2a31102fb4baae"
+        },
+        "candidate.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-000-p02-NTO_PAPER-minimum_distance-4ccece59/attempts/0001/candidate.npz",
+          "sha256": "1a32fb38e95228deaa14e932ac30dd7317f0193afbd7d3675c7742c01184bb87"
+        },
+        "nto_initial.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-000-p02-NTO_PAPER-minimum_distance-4ccece59/attempts/0001/nto_initial.npz",
+          "sha256": "208754f129e2bed976d9171fbf667a43105e462ab84f9e48a95725d16e43c047"
+        },
+        "nto_parameters.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-000-p02-NTO_PAPER-minimum_distance-4ccece59/attempts/0001/nto_parameters.json",
+          "sha256": "8f2dbfa114513e647164c1b688980a48ac31b67cdd2cd07f57cb9ef21a277680"
+        },
+        "nto_solver_raw.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-000-p02-NTO_PAPER-minimum_distance-4ccece59/attempts/0001/nto_solver_raw.npz",
+          "sha256": "a605f188cf0a95e506b81ab9125c048536ece0f5eecf29084fc0d0e2b96bc45f"
+        },
+        "nto_solver_result.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-000-p02-NTO_PAPER-minimum_distance-4ccece59/attempts/0001/nto_solver_result.json",
+          "sha256": "b9e0281da5e9c6976244384d95e9373bb5f58592dc54ad659b6dbec3cc146037"
+        },
+        "path.npy": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-000-p02-NTO_PAPER-minimum_distance-4ccece59/attempts/0001/path.npy",
+          "sha256": "5c5d6a285e87141ea9485d5fe5d77cf3656d94b579e54a8ad579c751582c8bcb"
+        },
+        "receipt.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-000-p02-NTO_PAPER-minimum_distance-4ccece59/attempts/0001/receipt.json",
+          "sha256": "6730d75fafbfb7c6cb6a150f76075c25ee5ab34506f2338304e16102650ba34d"
+        },
+        "result.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-000-p02-NTO_PAPER-minimum_distance-4ccece59/attempts/0001/result.json",
+          "sha256": "2034814b8d0da17d661912d66f7cd7df11cbcdb103affeabcadacf66c7071e7d"
+        },
+        "snopt.log": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-000-p02-NTO_PAPER-minimum_distance-4ccece59/attempts/0001/snopt.log",
+          "sha256": "c0664f8134f11ccd11e495cb7d6b0fbd913ff58dc837f91daa83bdd92ff81d42"
+        },
+        "trajectory_samples.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-000-p02-NTO_PAPER-minimum_distance-4ccece59/attempts/0001/trajectory_samples.npz",
+          "sha256": "873ac432003415a3a1bd072e2aaea71188cf64f2626418dd4994e6507263637b"
+        },
+        "validation.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-000-p02-NTO_PAPER-minimum_distance-4ccece59/attempts/0001/validation.json",
+          "sha256": "c03d73e1e18e52d88b9d851c1baa2f35b6b00f4926316810fb8ad5158c223079"
+        }
+      },
+      "exception": null,
+      "failed_stage": null,
+      "frontend_validation_status": "success_validated_numerical",
+      "job_id": "dev-route_choice-000-p02-NTO_PAPER-minimum_distance-4ccece59",
+      "minimum_sampled_clearance_m": -0.11145356093550818,
+      "native_solver_success": false,
+      "native_status_description": null,
+      "objective": "minimum_distance",
+      "raw_code": 31,
+      "raw_code_field": "info",
+      "raw_solver_result": {
+        "native_solver_details": {
+          "info": 31,
+          "solve_time": 5.687641244
+        },
+        "raw_solution": "nto_solver_raw.npz",
+        "returned_controls_finite": true,
+        "returned_duration_finite": true,
+        "solve_seconds": 5.6893480606377125,
+        "solver_objective": 27.59026375924198,
+        "solver_status": "SolutionResult.kIterationLimit",
+        "solver_success": false
+      },
+      "roadmap_id": "kinova7-full-n6000-s2-e258c5f9914c",
+      "robot_sha256": "a25f447c8caf4aff6dc76196c3d57cc940f00e802367f48034f06a9973927c75",
+      "run_status": "solver_failed",
+      "scene_id": "dev-route_choice-000",
+      "solve_seconds": 5.6893480606377125,
+      "solver": "SNOPT",
+      "traceback": null,
+      "validation_status": "collision_failed"
+    },
+    {
+      "attempt": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-004-p00-NTO_PAPER-minimum_distance-c739d06b/attempts/0001",
+      "candidate_available": true,
+      "case_id": "dev-route_choice-004-p00",
+      "classification": "unsuccessful_native_solver_return",
+      "collision_geometry_sha256": "896ab9f55c5d8081b843358bd85cde2daae1f432564593f86218bf61733ce4fa",
+      "drake_solution_result": "SolutionResult.kIterationLimit",
+      "evidence_files": {
+        "candidate.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-004-p00-NTO_PAPER-minimum_distance-c739d06b/attempts/0001/candidate.json",
+          "sha256": "d100051e041087cfce1cde1a5384c0fbc38b9e7f10ff3a7b266acaf867c40448"
+        },
+        "candidate.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-004-p00-NTO_PAPER-minimum_distance-c739d06b/attempts/0001/candidate.npz",
+          "sha256": "bf72dc1374f144ca4ec63674e9de1ec546e1379916fe4d079ced3856f2d4bc75"
+        },
+        "nto_initial.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-004-p00-NTO_PAPER-minimum_distance-c739d06b/attempts/0001/nto_initial.npz",
+          "sha256": "e34f7834c87b4cc2fd4eeae8b42bc1670e6a28c7c6097c79fe1692982578fb20"
+        },
+        "nto_parameters.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-004-p00-NTO_PAPER-minimum_distance-c739d06b/attempts/0001/nto_parameters.json",
+          "sha256": "46c1c4a769c28af7a2f7cf6608e7b67670940b70bb9dbe1bf1a165ae52386ebd"
+        },
+        "nto_solver_raw.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-004-p00-NTO_PAPER-minimum_distance-c739d06b/attempts/0001/nto_solver_raw.npz",
+          "sha256": "3947015bd992397aaefe1ff21328a0b7b4e5d03c6d78aa7243b556cc12b3462b"
+        },
+        "nto_solver_result.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-004-p00-NTO_PAPER-minimum_distance-c739d06b/attempts/0001/nto_solver_result.json",
+          "sha256": "5ad51f295846ac61da37ce5903d883a9a2bcd22c486704b01ee2714e14abcaa0"
+        },
+        "path.npy": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-004-p00-NTO_PAPER-minimum_distance-c739d06b/attempts/0001/path.npy",
+          "sha256": "be69a18a37e6ed846f31d7ee9f6c9bc924c5a4f1f873322a42a9edded5cd9699"
+        },
+        "receipt.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-004-p00-NTO_PAPER-minimum_distance-c739d06b/attempts/0001/receipt.json",
+          "sha256": "3b2aca18173d5985fda3d063e9079d9970445d04915e2db07c9ec55451b3d582"
+        },
+        "result.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-004-p00-NTO_PAPER-minimum_distance-c739d06b/attempts/0001/result.json",
+          "sha256": "0c00941cb50ecfffeea21a67c204b988bd680488c483c1b2b9f0f1b9fa8a65cf"
+        },
+        "snopt.log": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-004-p00-NTO_PAPER-minimum_distance-c739d06b/attempts/0001/snopt.log",
+          "sha256": "c0664f8134f11ccd11e495cb7d6b0fbd913ff58dc837f91daa83bdd92ff81d42"
+        },
+        "trajectory_samples.npz": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-004-p00-NTO_PAPER-minimum_distance-c739d06b/attempts/0001/trajectory_samples.npz",
+          "sha256": "e11a1938cecc6ee3900f6bb52123f89d3690bd6becf8f0e39ca65baf6277f723"
+        },
+        "validation.json": {
+          "path": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-004-p00-NTO_PAPER-minimum_distance-c739d06b/attempts/0001/validation.json",
+          "sha256": "acb079e88c04a210dc9f631f09726195419ea0fcaa491837656178bf3da3a635"
+        }
+      },
+      "exception": null,
+      "failed_stage": null,
+      "frontend_validation_status": "success_validated_numerical",
+      "job_id": "dev-route_choice-004-p00-NTO_PAPER-minimum_distance-c739d06b",
+      "minimum_sampled_clearance_m": -0.00023847632068609045,
+      "native_solver_success": false,
+      "native_status_description": null,
+      "objective": "minimum_distance",
+      "raw_code": 32,
+      "raw_code_field": "info",
+      "raw_solver_result": {
+        "native_solver_details": {
+          "info": 32,
+          "solve_time": 36.88278791
+        },
+        "raw_solution": "nto_solver_raw.npz",
+        "returned_controls_finite": true,
+        "returned_duration_finite": true,
+        "solve_seconds": 36.88440117100254,
+        "solver_objective": 4.858134723582654,
+        "solver_status": "SolutionResult.kIterationLimit",
+        "solver_success": false
+      },
+      "roadmap_id": "kinova7-full-n6000-s2-e258c5f9914c",
+      "robot_sha256": "a25f447c8caf4aff6dc76196c3d57cc940f00e802367f48034f06a9973927c75",
+      "run_status": "solver_failed",
+      "scene_id": "dev-route_choice-004",
+      "solve_seconds": 36.88440117100254,
+      "solver": "SNOPT",
+      "traceback": null,
+      "validation_status": "collision_failed"
+    }
+  ],
+  "report_type": "Complete dev NTO solver_failed raw-code and backend-exception evidence",
+  "run": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1",
+  "run_manifest_sha256": "44452e26ea4e0eacee15e4df12e9cf183b48c561c6fd1ddf73ab86631a75919c",
+  "solver_failed_by_objective": {
+    "minimum_distance": 30,
+    "minimum_time": 1
+  },
+  "solver_failed_records": 31,
+  "source_commit": "72984027030175b7bca78e2dcf592b38f0c1864b"
+}

@@ -1,0 +1,11 @@
+objective value:                     2.64575131167134
+phi_1_0                                             1 	(obj:0)
+phi_0_2                                             1 	(obj:0)
+length_0                             2.64575131167134 	(obj:1)
+delta_0_0                                           1 	(obj:0)
+delta_0_1                                           1 	(obj:0)
+delta_0_2                                           1 	(obj:0)
+delta_0_3                                           1 	(obj:0)
+delta_0_4                                           1 	(obj:0)
+delta_0_5                                           1 	(obj:0)
+delta_0_6                                           1 	(obj:0)

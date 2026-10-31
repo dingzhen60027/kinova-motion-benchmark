@@ -1,0 +1,124 @@
+{
+  "fresh_checkout": "/tmp/kinova-new-main-verification-lfl2zhi6",
+  "cwd": "/tmp",
+  "new_main_head": "04f416a8a9340822cd9b7980863e81bf56b2cdf9",
+  "old_objects_present": {
+    "caeccafa74b5baee401144301f5261ef9cf426cb": false,
+    "88f50536d59e6e617afcaece9bc01d214005746f": false,
+    "61dbc3fa0c9a6d02ac89b1db835b40164e707b36": false
+  },
+  "runs": [
+    {
+      "run": "interface_check",
+      "returncode": 0,
+      "verification": {
+        "integrity_passed": true,
+        "complete": true,
+        "completed_jobs": 3,
+        "planned_jobs": 3,
+        "errors": [],
+        "unsealed_attempts": []
+      },
+      "stderr": ""
+    },
+    {
+      "run": "nto_legacy_smoke",
+      "returncode": 0,
+      "verification": {
+        "integrity_passed": true,
+        "complete": true,
+        "completed_jobs": 20,
+        "planned_jobs": 20,
+        "errors": [],
+        "unsealed_attempts": []
+      },
+      "stderr": ""
+    },
+    {
+      "run": "rss2025_full_smoke_v1",
+      "returncode": 0,
+      "verification": {
+        "integrity_passed": true,
+        "complete": true,
+        "completed_jobs": 50,
+        "planned_jobs": 50,
+        "errors": [],
+        "unsealed_attempts": []
+      },
+      "stderr": ""
+    },
+    {
+      "run": "rss2025_formal_v1_main_s000_open_control",
+      "returncode": 0,
+      "verification": {
+        "integrity_passed": true,
+        "complete": true,
+        "completed_jobs": 100,
+        "planned_jobs": 100,
+        "errors": [],
+        "unsealed_attempts": []
+      },
+      "stderr": ""
+    }
+  ],
+  "passed": true,
+  "shared_initialization_check": {
+    "returncode": 0,
+    "result": {
+      "passed": true,
+      "case_id": "test-sparse_clutter-000-p00",
+      "source_attempt": "benchmarks/generic_motion_v1/results/test/jobs/test-sparse_clutter-000-p00-EI_ZO-minimum_distance-3cafa806/attempts/0001",
+      "scope": "one actual sealed shared-initialization source binding after relocation; no planner executed"
+    },
+    "stderr": ""
+  },
+  "copied_file_count": 6170,
+  "verified_run_manifest_sha256": {
+    "benchmarks/generic_motion_v1/results/interface_check/run_manifest.json": "fb8c27e5c7755d2d0c217250c7dfa47f49156700dbe5eade099abf9d3654eb41",
+    "benchmarks/generic_motion_v1/results/nto_legacy_smoke/run_manifest.json": "7847d54df3c9556dc8efe84217e9851434e63b973d0b142adfbb73258034cc2d",
+    "benchmarks/generic_motion_v1/results/rss2025_full_smoke_v1/run_manifest.json": "a2faa273ecc64dcecf0444030f9d75c143c67824023fab39a82f5bfcd82a233b",
+    "benchmarks/generic_motion_v1/results/rss2025_formal_v1_main_s000_open_control/run_manifest.json": "3e6c89a6fb03a6a0e2a57623a59e3f6d861e64702361c10991ed922650bfa616"
+  },
+  "existing_conda_prefix": "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp",
+  "verification_commands": [
+    [
+      "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/bin/python",
+      "/tmp/kinova-new-main-verification-lfl2zhi6/scripts/evaluate.py",
+      "verify",
+      "--run",
+      "/tmp/kinova-new-main-verification-lfl2zhi6/benchmarks/generic_motion_v1/results/interface_check"
+    ],
+    [
+      "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/bin/python",
+      "/tmp/kinova-new-main-verification-lfl2zhi6/scripts/evaluate.py",
+      "verify",
+      "--run",
+      "/tmp/kinova-new-main-verification-lfl2zhi6/benchmarks/generic_motion_v1/results/nto_legacy_smoke"
+    ],
+    [
+      "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/bin/python",
+      "/tmp/kinova-new-main-verification-lfl2zhi6/scripts/evaluate.py",
+      "verify",
+      "--run",
+      "/tmp/kinova-new-main-verification-lfl2zhi6/benchmarks/generic_motion_v1/results/rss2025_full_smoke_v1"
+    ],
+    [
+      "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/bin/python",
+      "/tmp/kinova-new-main-verification-lfl2zhi6/scripts/evaluate.py",
+      "verify",
+      "--run",
+      "/tmp/kinova-new-main-verification-lfl2zhi6/benchmarks/generic_motion_v1/results/rss2025_formal_v1_main_s000_open_control"
+    ]
+  ],
+  "regression": {
+    "command": "bash local/python.sh -m pytest -q",
+    "passed": 1129,
+    "warnings": 292,
+    "seconds": 26.5,
+    "log": "publication_provenance_full_pytest.log"
+  },
+  "initial_failed_verification": {
+    "reason": "CLI prefix guard did not honor the launcher CSDECOMP_CONDA_PREFIX override; fixed before rerun.",
+    "log": "publication_fresh_clone_verification_initial_environment_failure.log"
+  }
+}

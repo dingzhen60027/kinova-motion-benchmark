@@ -1,0 +1,736 @@
+{
+  "audit_script_sha256": "3c2cb64f50ecb52cad34e5ef53afa147b9c8fc59cd1798978722ba333abc537e",
+  "audit_type": "Independent CPU LSCS/SCSTO artifact audit using NumPy and SciPy BPoly; no GPU/solver/runtime-validator invocation",
+  "audited_bezier_rounds": 3,
+  "audited_candidate_validation_rounds": 9,
+  "audited_polygon_rounds": 6,
+  "complete": true,
+  "completed_latest_jobs": 50,
+  "created_unix_seconds": 1793158894.326019,
+  "environment": {
+    "numpy": "2.2.6",
+    "python": "3.10.22 | packaged by conda-forge | (main, Oct  6 2026, 23:02:24) [GCC 14.4.0]",
+    "scipy": "1.15.3"
+  },
+  "frozen_planning_commit": "72984027030175b7bca78e2dcf592b38f0c1864b",
+  "issues": [],
+  "limitations": [
+    "Existing collision signs/clearances are checked for accounting and interpolation consistency; no new geometry collision queries.",
+    "Derivative control-hull bounds are sufficient numerical bounds; finite collision samples are not a continuous collision proof.",
+    "All returned rounds, including colliding/failed candidates, are kept; partial interrupted optimizer inputs are explicitly labeled.",
+    "Author LSCS/SCSTO return exposes no separate native solver iteration receipt; solver-success flag is checked against the preserved candidate and final independent numerical validation.",
+    "Kinova adaptation, not original FR3 geometry or hardware reproduction."
+  ],
+  "maximum_independent_sample_error_rad": 3.1086244689504383e-15,
+  "passed": true,
+  "planned_jobs": 50,
+  "receipts_verified": 50,
+  "records": [
+    {
+      "attempt": "0001",
+      "family": "sparse_clutter",
+      "job_id": "smoke-sparse_clutter-000-p00-EI_ZO-minimum_distance-8a37c053",
+      "latest": true,
+      "objective": "minimum_distance",
+      "root_candidate_rounds": [],
+      "root_validation_scope": "Last completed validation may precede an interrupted/failed later solve; never upgraded to success",
+      "rounds": [],
+      "status": "frontend_failed"
+    },
+    {
+      "attempt": "0001",
+      "family": "sparse_clutter",
+      "job_id": "smoke-sparse_clutter-000-p00-EI_ZO-minimum_time-3826a1bd",
+      "latest": true,
+      "objective": "minimum_time",
+      "root_candidate_rounds": [],
+      "root_validation_scope": "Last completed validation may precede an interrupted/failed later solve; never upgraded to success",
+      "rounds": [],
+      "status": "frontend_failed"
+    },
+    {
+      "attempt": "0001",
+      "family": "sparse_clutter",
+      "job_id": "smoke-sparse_clutter-000-p01-EI_ZO-minimum_distance-1b280c49",
+      "latest": true,
+      "objective": "minimum_distance",
+      "root_candidate_rounds": [],
+      "root_validation_scope": "Last completed validation may precede an interrupted/failed later solve; never upgraded to success",
+      "rounds": [],
+      "status": "frontend_failed"
+    },
+    {
+      "attempt": "0001",
+      "family": "sparse_clutter",
+      "job_id": "smoke-sparse_clutter-000-p01-EI_ZO-minimum_time-3890080e",
+      "latest": true,
+      "objective": "minimum_time",
+      "root_candidate_rounds": [],
+      "root_validation_scope": "Last completed validation may precede an interrupted/failed later solve; never upgraded to success",
+      "rounds": [],
+      "status": "frontend_failed"
+    },
+    {
+      "attempt": "0001",
+      "family": "dense_clutter",
+      "job_id": "smoke-dense_clutter-000-p00-EI_ZO-minimum_distance-7a5f6271",
+      "latest": true,
+      "objective": "minimum_distance",
+      "root_candidate_rounds": [],
+      "root_validation_scope": "Last completed validation may precede an interrupted/failed later solve; never upgraded to success",
+      "rounds": [],
+      "status": "invalid_endpoint"
+    },
+    {
+      "attempt": "0001",
+      "family": "dense_clutter",
+      "job_id": "smoke-dense_clutter-000-p00-EI_ZO-minimum_time-782465ac",
+      "latest": true,
+      "objective": "minimum_time",
+      "root_candidate_rounds": [],
+      "root_validation_scope": "Last completed validation may precede an interrupted/failed later solve; never upgraded to success",
+      "rounds": [],
+      "status": "invalid_endpoint"
+    },
+    {
+      "attempt": "0001",
+      "family": "dense_clutter",
+      "job_id": "smoke-dense_clutter-000-p01-EI_ZO-minimum_distance-557efa10",
+      "latest": true,
+      "objective": "minimum_distance",
+      "root_candidate_rounds": [],
+      "root_validation_scope": "Last completed validation may precede an interrupted/failed later solve; never upgraded to success",
+      "rounds": [],
+      "status": "invalid_endpoint"
+    },
+    {
+      "attempt": "0001",
+      "family": "dense_clutter",
+      "job_id": "smoke-dense_clutter-000-p01-EI_ZO-minimum_time-b6d69d08",
+      "latest": true,
+      "objective": "minimum_time",
+      "root_candidate_rounds": [],
+      "root_validation_scope": "Last completed validation may precede an interrupted/failed later solve; never upgraded to success",
+      "rounds": [],
+      "status": "invalid_endpoint"
+    },
+    {
+      "attempt": "0001",
+      "family": "bottleneck",
+      "job_id": "smoke-bottleneck-000-p00-EI_ZO-minimum_distance-0fe69a89",
+      "latest": true,
+      "objective": "minimum_distance",
+      "root_candidate_rounds": [
+        "003"
+      ],
+      "rounds": [
+        {
+          "candidate_sha256": "1340c1e20c3700640b933f38d080e2e1dbfe6a1a863ddd58d5bda38bcbc25756",
+          "contact_band_samples": 0,
+          "degree": null,
+          "derivative_control_bounds": {},
+          "directory": "jobs/smoke-bottleneck-000-p00-EI_ZO-minimum_distance-0fe69a89/attempts/0001/rounds/000",
+          "endpoint_error_rad": 1.1102230246251565e-16,
+          "independent_collisions": 86,
+          "independently_reconstructed_cost": 7.11416310099784,
+          "maximum_sample_error_rad": 4.440892098500626e-16,
+          "maximum_sample_joint_step_rad": 0.004999310549571129,
+          "minimum_sampled_clearance_m": -0.025010320963742186,
+          "model_disagreements": 0,
+          "native_collisions": 86,
+          "normalized_path_length": 1.275748397846752,
+          "objective": "minimum_distance",
+          "reconstructed_kind": "polygon",
+          "region_residual": 1.7181478462191535e-11,
+          "samples": 1429,
+          "scope": "candidate_and_validation_audited",
+          "solver_status": "author_scsplanning_get_points_returned",
+          "solver_success": true,
+          "validation_status": "collision_failed"
+        },
+        {
+          "candidate_sha256": "2dd767241d2ef2fe1f73f1350b5cae5441ec94d56e3c4b0dd904ab82db8fcdfd",
+          "contact_band_samples": 0,
+          "degree": null,
+          "derivative_control_bounds": {},
+          "directory": "jobs/smoke-bottleneck-000-p00-EI_ZO-minimum_distance-0fe69a89/attempts/0001/rounds/001",
+          "endpoint_error_rad": 5.440730028703117e-16,
+          "independent_collisions": 49,
+          "independently_reconstructed_cost": 7.180590263875365,
+          "maximum_sample_error_rad": 4.440892098500626e-16,
+          "maximum_sample_joint_step_rad": 0.004999526131441551,
+          "minimum_sampled_clearance_m": -0.0104685152039544,
+          "model_disagreements": 0,
+          "native_collisions": 49,
+          "normalized_path_length": 1.2881937198032103,
+          "objective": "minimum_distance",
+          "reconstructed_kind": "polygon",
+          "region_residual": 9.994560734583047e-12,
+          "samples": 1442,
+          "scope": "candidate_and_validation_audited",
+          "solver_status": "author_scsplanning_get_points_returned",
+          "solver_success": true,
+          "validation_status": "collision_failed"
+        },
+        {
+          "candidate_sha256": "67bf7a33e81c665b674f776bbb766bb0ce664355964d052be0838537aeaace52",
+          "contact_band_samples": 0,
+          "degree": null,
+          "derivative_control_bounds": {},
+          "directory": "jobs/smoke-bottleneck-000-p00-EI_ZO-minimum_distance-0fe69a89/attempts/0001/rounds/002",
+          "endpoint_error_rad": 1.1102230246251565e-16,
+          "independent_collisions": 38,
+          "independently_reconstructed_cost": 7.185382814440424,
+          "maximum_sample_error_rad": 4.440892098500626e-16,
+          "maximum_sample_joint_step_rad": 0.004998580861506819,
+          "minimum_sampled_clearance_m": -0.009340854355966842,
+          "model_disagreements": 0,
+          "native_collisions": 38,
+          "normalized_path_length": 1.2908615119126932,
+          "objective": "minimum_distance",
+          "reconstructed_kind": "polygon",
+          "region_residual": 2.013417210733337e-11,
+          "samples": 1443,
+          "scope": "candidate_and_validation_audited",
+          "solver_status": "author_scsplanning_get_points_returned",
+          "solver_success": true,
+          "validation_status": "collision_failed"
+        },
+        {
+          "candidate_sha256": "9852f85df878e6102cef7c800b243a5db13bd8abc6797ccc7d9a41938e2f257c",
+          "contact_band_samples": 0,
+          "degree": null,
+          "derivative_control_bounds": {},
+          "directory": "jobs/smoke-bottleneck-000-p00-EI_ZO-minimum_distance-0fe69a89/attempts/0001/rounds/003",
+          "endpoint_error_rad": 5.4672143489065705e-16,
+          "independent_collisions": 0,
+          "independently_reconstructed_cost": 7.202973630957703,
+          "maximum_sample_error_rad": 4.440892098500626e-16,
+          "maximum_sample_joint_step_rad": 0.0049993006953542975,
+          "minimum_sampled_clearance_m": 0.003255963430613844,
+          "model_disagreements": 0,
+          "native_collisions": 0,
+          "normalized_path_length": 1.2981715277870234,
+          "objective": "minimum_distance",
+          "reconstructed_kind": "polygon",
+          "region_residual": 8.323564060219724e-12,
+          "samples": 1447,
+          "scope": "candidate_and_validation_audited",
+          "solver_status": "author_scsplanning_get_points_returned",
+          "solver_success": true,
+          "validation_status": "success_validated_numerical"
+        }
+      ],
+      "status": "success_validated_numerical",
+      "successful_final_round": "003"
+    },
+    {
+      "attempt": "0001",
+      "family": "bottleneck",
+      "job_id": "smoke-bottleneck-000-p00-EI_ZO-minimum_time-5130e1f4",
+      "latest": true,
+      "objective": "minimum_time",
+      "root_candidate_rounds": [
+        "000"
+      ],
+      "rounds": [
+        {
+          "candidate_sha256": "548c7ec4c8dcca798c7141f45a99f1b8ad3c31291a4cda2140c2b190fd5a280e",
+          "contact_band_samples": 0,
+          "degree": 6,
+          "derivative_control_bounds": {
+            "acceleration_per_joint": [
+              0.9999996410328991,
+              0.9332294455927187,
+              0.8160124363928832,
+              0.9986418807404943,
+              0.9999999999998274,
+              0.8418035856447303,
+              0.9290926240734404
+            ],
+            "continuity_residual": 2.7212365694140317e-10,
+            "endpoint_velocity": 3.9967511283691506e-16,
+            "velocity_per_joint": [
+              0.9999999999033388,
+              0.8908349760339975,
+              0.9264382838063172,
+              0.9988039532876212,
+              0.9999999999003146,
+              0.9291618493118388,
+              0.8737293139000587
+            ]
+          },
+          "directory": "jobs/smoke-bottleneck-000-p00-EI_ZO-minimum_time-5130e1f4/attempts/0001/rounds/000",
+          "endpoint_error_rad": 1.2309179313825187e-09,
+          "independent_collisions": 0,
+          "independently_reconstructed_cost": 5.872210014066253,
+          "maximum_sample_error_rad": 3.1086244689504383e-15,
+          "maximum_sample_joint_step_rad": 0.004997832686109718,
+          "minimum_sampled_clearance_m": 0.019025026584333384,
+          "model_disagreements": 0,
+          "native_collisions": 0,
+          "normalized_path_length": 1.5195573769367154,
+          "objective": "minimum_time",
+          "reconstructed_kind": "bezier",
+          "region_residual": 3.5574276857630593e-10,
+          "samples": 2242,
+          "scope": "candidate_and_validation_audited",
+          "solver_status": "author_scsplanning_biconvex_returned",
+          "solver_success": true,
+          "validation_status": "success_validated_numerical"
+        }
+      ],
+      "status": "success_validated_numerical",
+      "successful_final_round": "000"
+    },
+    {
+      "attempt": "0001",
+      "family": "bottleneck",
+      "job_id": "smoke-bottleneck-000-p01-EI_ZO-minimum_distance-2d75d8e2",
+      "latest": true,
+      "objective": "minimum_distance",
+      "root_candidate_rounds": [],
+      "root_validation_scope": "Last completed validation may precede an interrupted/failed later solve; never upgraded to success",
+      "rounds": [],
+      "status": "frontend_failed"
+    },
+    {
+      "attempt": "0001",
+      "family": "bottleneck",
+      "job_id": "smoke-bottleneck-000-p01-EI_ZO-minimum_time-c9f8d768",
+      "latest": true,
+      "objective": "minimum_time",
+      "root_candidate_rounds": [],
+      "root_validation_scope": "Last completed validation may precede an interrupted/failed later solve; never upgraded to success",
+      "rounds": [],
+      "status": "frontend_failed"
+    },
+    {
+      "attempt": "0001",
+      "family": "route_choice",
+      "job_id": "smoke-route_choice-000-p00-EI_ZO-minimum_distance-ac955db5",
+      "latest": true,
+      "objective": "minimum_distance",
+      "root_candidate_rounds": [],
+      "root_validation_scope": "Last completed validation may precede an interrupted/failed later solve; never upgraded to success",
+      "rounds": [],
+      "status": "frontend_failed"
+    },
+    {
+      "attempt": "0001",
+      "family": "route_choice",
+      "job_id": "smoke-route_choice-000-p00-EI_ZO-minimum_time-a1e2678f",
+      "latest": true,
+      "objective": "minimum_time",
+      "root_candidate_rounds": [],
+      "root_validation_scope": "Last completed validation may precede an interrupted/failed later solve; never upgraded to success",
+      "rounds": [],
+      "status": "frontend_failed"
+    },
+    {
+      "attempt": "0001",
+      "family": "route_choice",
+      "job_id": "smoke-route_choice-000-p01-EI_ZO-minimum_distance-ed21bb14",
+      "latest": true,
+      "objective": "minimum_distance",
+      "root_candidate_rounds": [
+        "000"
+      ],
+      "rounds": [
+        {
+          "candidate_sha256": "d7976ab86044de3a5daaf561957f7fb9659064a66be28aa3f78b49ba94ab8bfe",
+          "contact_band_samples": 0,
+          "degree": null,
+          "derivative_control_bounds": {},
+          "directory": "jobs/smoke-route_choice-000-p01-EI_ZO-minimum_distance-ed21bb14/attempts/0001/rounds/000",
+          "endpoint_error_rad": 3.1401849173675503e-16,
+          "independent_collisions": 0,
+          "independently_reconstructed_cost": 7.791139617109987,
+          "maximum_sample_error_rad": 8.881784197001252e-16,
+          "maximum_sample_joint_step_rad": 0.004994822912927393,
+          "minimum_sampled_clearance_m": 0.007617724271213745,
+          "model_disagreements": 0,
+          "native_collisions": 0,
+          "normalized_path_length": 1.4015769701144287,
+          "objective": "minimum_distance",
+          "reconstructed_kind": "polygon",
+          "region_residual": 4.035394240986534e-11,
+          "samples": 1563,
+          "scope": "candidate_and_validation_audited",
+          "solver_status": "author_scsplanning_get_points_returned",
+          "solver_success": true,
+          "validation_status": "success_validated_numerical"
+        }
+      ],
+      "status": "success_validated_numerical",
+      "successful_final_round": "000"
+    },
+    {
+      "attempt": "0001",
+      "family": "route_choice",
+      "job_id": "smoke-route_choice-000-p01-EI_ZO-minimum_time-b5a7dfb7",
+      "latest": true,
+      "objective": "minimum_time",
+      "root_candidate_rounds": [
+        "000"
+      ],
+      "rounds": [
+        {
+          "candidate_sha256": "b4668bb6502ce0ab07e3663892de3988e4bf21fc131203fa2a56786200815a24",
+          "contact_band_samples": 0,
+          "degree": 6,
+          "derivative_control_bounds": {
+            "acceleration_per_joint": [
+              0.9999998386908627,
+              0.9578183008135166,
+              0.5161468487068548,
+              0.9999998369725586,
+              1.0000000001277531,
+              0.9999998201761571,
+              0.9999924212463877
+            ],
+            "continuity_residual": 5.412377213076525e-10,
+            "endpoint_velocity": 9.240607062216152e-13,
+            "velocity_per_joint": [
+              0.9999999999822689,
+              0.8534617326446019,
+              0.2955638323353522,
+              0.9999999989245331,
+              1.000000000014359,
+              0.9999999930697582,
+              0.8661794649656094
+            ]
+          },
+          "directory": "jobs/smoke-route_choice-000-p01-EI_ZO-minimum_time-b5a7dfb7/attempts/0001/rounds/000",
+          "endpoint_error_rad": 1.022825727337572e-09,
+          "independent_collisions": 0,
+          "independently_reconstructed_cost": 7.303303278641862,
+          "maximum_sample_error_rad": 2.6645352591003757e-15,
+          "maximum_sample_joint_step_rad": 0.0049883897259248595,
+          "minimum_sampled_clearance_m": 0.007617724260406918,
+          "model_disagreements": 0,
+          "native_collisions": 0,
+          "normalized_path_length": 1.5581849939255488,
+          "objective": "minimum_time",
+          "reconstructed_kind": "bezier",
+          "region_residual": 8.008353979960248e-10,
+          "samples": 2484,
+          "scope": "candidate_and_validation_audited",
+          "solver_status": "author_scsplanning_biconvex_returned",
+          "solver_success": true,
+          "validation_status": "success_validated_numerical"
+        }
+      ],
+      "status": "success_validated_numerical",
+      "successful_final_round": "000"
+    },
+    {
+      "attempt": "0001",
+      "family": "open_control",
+      "job_id": "smoke-open_control-000-p00-EI_ZO-minimum_distance-db0cc41b",
+      "latest": true,
+      "objective": "minimum_distance",
+      "root_candidate_rounds": [],
+      "root_validation_scope": "Last completed validation may precede an interrupted/failed later solve; never upgraded to success",
+      "rounds": [],
+      "status": "frontend_failed"
+    },
+    {
+      "attempt": "0001",
+      "family": "open_control",
+      "job_id": "smoke-open_control-000-p00-EI_ZO-minimum_time-a705f17a",
+      "latest": true,
+      "objective": "minimum_time",
+      "root_candidate_rounds": [],
+      "root_validation_scope": "Last completed validation may precede an interrupted/failed later solve; never upgraded to success",
+      "rounds": [],
+      "status": "frontend_failed"
+    },
+    {
+      "attempt": "0001",
+      "family": "open_control",
+      "job_id": "smoke-open_control-000-p01-EI_ZO-minimum_distance-20ef0364",
+      "latest": true,
+      "objective": "minimum_distance",
+      "root_candidate_rounds": [
+        "000"
+      ],
+      "rounds": [
+        {
+          "candidate_sha256": "841c164928fc2e297fccaf34511dcd5dd2a028fea4050d4efb9e26d9ca50b0cc",
+          "contact_band_samples": 0,
+          "degree": null,
+          "derivative_control_bounds": {},
+          "directory": "jobs/smoke-open_control-000-p01-EI_ZO-minimum_distance-20ef0364/attempts/0001/rounds/000",
+          "endpoint_error_rad": 5.881301029635769e-16,
+          "independent_collisions": 0,
+          "independently_reconstructed_cost": 5.957935187258169,
+          "maximum_sample_error_rad": 4.440892098500626e-16,
+          "maximum_sample_joint_step_rad": 0.004998267774545852,
+          "minimum_sampled_clearance_m": 0.013688405342964475,
+          "model_disagreements": 0,
+          "native_collisions": 0,
+          "normalized_path_length": 1.000143220530866,
+          "objective": "minimum_distance",
+          "reconstructed_kind": "polygon",
+          "region_residual": -0.09401799821377121,
+          "samples": 1193,
+          "scope": "candidate_and_validation_audited",
+          "solver_status": "author_scsplanning_get_points_returned",
+          "solver_success": true,
+          "validation_status": "success_validated_numerical"
+        }
+      ],
+      "status": "success_validated_numerical",
+      "successful_final_round": "000"
+    },
+    {
+      "attempt": "0001",
+      "family": "open_control",
+      "job_id": "smoke-open_control-000-p01-EI_ZO-minimum_time-61913820",
+      "latest": true,
+      "objective": "minimum_time",
+      "root_candidate_rounds": [
+        "000"
+      ],
+      "rounds": [
+        {
+          "candidate_sha256": "15a1146b4eb2196a6f902bc4d91070f07ef316d55c0111ad4f96797b2086b01b",
+          "contact_band_samples": 0,
+          "degree": 6,
+          "derivative_control_bounds": {
+            "acceleration_per_joint": [
+              0.5253953179007859,
+              0.4013011726946796,
+              0.9999999999591439,
+              0.7512128057434077,
+              0.8505400150978792,
+              0.17109607799703763,
+              0.9293767833751969
+            ],
+            "continuity_residual": 0.0,
+            "endpoint_velocity": 1.1931054213878516e-12,
+            "velocity_per_joint": [
+              0.5461696386585496,
+              0.3960382044179475,
+              0.9999999999736161,
+              0.8237081144251545,
+              0.8925353168329567,
+              0.16885219412118166,
+              0.9455651491711476
+            ]
+          },
+          "directory": "jobs/smoke-open_control-000-p01-EI_ZO-minimum_time-61913820/attempts/0001/rounds/000",
+          "endpoint_error_rad": 1.2366035645442176e-15,
+          "independent_collisions": 0,
+          "independently_reconstructed_cost": 4.934426203624176,
+          "maximum_sample_error_rad": 1.3322676295501878e-15,
+          "maximum_sample_joint_step_rad": 0.004452638864070878,
+          "minimum_sampled_clearance_m": 0.019025026584333322,
+          "model_disagreements": 0,
+          "native_collisions": 0,
+          "normalized_path_length": 1.0082156539237792,
+          "objective": "minimum_time",
+          "reconstructed_kind": "bezier",
+          "region_residual": -0.09401799821337625,
+          "samples": 1912,
+          "scope": "candidate_and_validation_audited",
+          "solver_status": "author_scsplanning_biconvex_returned",
+          "solver_success": true,
+          "validation_status": "success_validated_numerical"
+        }
+      ],
+      "status": "success_validated_numerical",
+      "successful_final_round": "000"
+    }
+  ],
+  "run": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/rss2025_full_smoke_v1",
+  "run_manifest_sha256": "a2faa273ecc64dcecf0444030f9d75c143c67824023fab39a82f5bfcd82a233b",
+  "scs_attempts": 20,
+  "scs_latest_jobs": 20,
+  "scs_status_counts": [
+    {
+      "count": 5,
+      "objective": "minimum_distance",
+      "status": "frontend_failed"
+    },
+    {
+      "count": 2,
+      "objective": "minimum_distance",
+      "status": "invalid_endpoint"
+    },
+    {
+      "count": 3,
+      "objective": "minimum_distance",
+      "status": "success_validated_numerical"
+    },
+    {
+      "count": 5,
+      "objective": "minimum_time",
+      "status": "frontend_failed"
+    },
+    {
+      "count": 2,
+      "objective": "minimum_time",
+      "status": "invalid_endpoint"
+    },
+    {
+      "count": 3,
+      "objective": "minimum_time",
+      "status": "success_validated_numerical"
+    }
+  ],
+  "sealed_files_verified": 1098,
+  "source_snapshot_checks": [
+    {
+      "expected_sha256": "49eda53ff201f411b384c21cccd1f3f20eabac749077f96123f7cfd48a7ce04f",
+      "path": "benchmarks/generic_motion_v1/__main__.py",
+      "sha256": "49eda53ff201f411b384c21cccd1f3f20eabac749077f96123f7cfd48a7ce04f"
+    },
+    {
+      "expected_sha256": "90566d6dec5fcbca5c79fae316214ec6af640b233ec5d955f567165d51cbd176",
+      "path": "benchmarks/generic_motion_v1/batch.py",
+      "sha256": "90566d6dec5fcbca5c79fae316214ec6af640b233ec5d955f567165d51cbd176"
+    },
+    {
+      "expected_sha256": "f96929b039fbc3e9bb89ab3187b6badc5712f9d28510dabd7262422fa526ee34",
+      "path": "benchmarks/generic_motion_v1/common.py",
+      "sha256": "f96929b039fbc3e9bb89ab3187b6badc5712f9d28510dabd7262422fa526ee34"
+    },
+    {
+      "expected_sha256": "ac60e554b442d10bf820b642fc4425d4619f12fd8c2d236f1cee10c7c91a0f8f",
+      "path": "benchmarks/generic_motion_v1/configs/dev_generator.json",
+      "sha256": "ac60e554b442d10bf820b642fc4425d4619f12fd8c2d236f1cee10c7c91a0f8f"
+    },
+    {
+      "expected_sha256": "147fc627b192130ef51b34a959eb1082de8883b0c8cc253d4f855ce28fc530a0",
+      "path": "benchmarks/generic_motion_v1/configs/evaluation.json",
+      "sha256": "147fc627b192130ef51b34a959eb1082de8883b0c8cc253d4f855ce28fc530a0"
+    },
+    {
+      "expected_sha256": "ac60e554b442d10bf820b642fc4425d4619f12fd8c2d236f1cee10c7c91a0f8f",
+      "path": "benchmarks/generic_motion_v1/configs/generator.json",
+      "sha256": "ac60e554b442d10bf820b642fc4425d4619f12fd8c2d236f1cee10c7c91a0f8f"
+    },
+    {
+      "expected_sha256": "af89a0de7988658a88a5696d5aae37ca4321fdc6f8a5bf2db5cb87c079807ce2",
+      "path": "benchmarks/generic_motion_v1/configs/robot.json",
+      "sha256": "af89a0de7988658a88a5696d5aae37ca4321fdc6f8a5bf2db5cb87c079807ce2"
+    },
+    {
+      "expected_sha256": "8c58d9430b82ca92c80b68e0aa11a5886d876f8d838cb9d3a9cb74ce450b9eba",
+      "path": "benchmarks/generic_motion_v1/configs/rss2025_eizo.json",
+      "sha256": "8c58d9430b82ca92c80b68e0aa11a5886d876f8d838cb9d3a9cb74ce450b9eba"
+    },
+    {
+      "expected_sha256": "ac60e554b442d10bf820b642fc4425d4619f12fd8c2d236f1cee10c7c91a0f8f",
+      "path": "benchmarks/generic_motion_v1/configs/smoke_generator.json",
+      "sha256": "ac60e554b442d10bf820b642fc4425d4619f12fd8c2d236f1cee10c7c91a0f8f"
+    },
+    {
+      "expected_sha256": "ac60e554b442d10bf820b642fc4425d4619f12fd8c2d236f1cee10c7c91a0f8f",
+      "path": "benchmarks/generic_motion_v1/configs/test_generator.json",
+      "sha256": "ac60e554b442d10bf820b642fc4425d4619f12fd8c2d236f1cee10c7c91a0f8f"
+    },
+    {
+      "expected_sha256": "b73fa031be4d0c3c14aa4549e11cd634dcc2428fb786367a81b67ab9bc4b9e2e",
+      "path": "benchmarks/generic_motion_v1/generator/__init__.py",
+      "sha256": "b73fa031be4d0c3c14aa4549e11cd634dcc2428fb786367a81b67ab9bc4b9e2e"
+    },
+    {
+      "expected_sha256": "3436ad76c1fcf5c32f949475075d8437f7b5a0f3464be4ec317a5e2451d69fd7",
+      "path": "benchmarks/generic_motion_v1/generator/audit.py",
+      "sha256": "3436ad76c1fcf5c32f949475075d8437f7b5a0f3464be4ec317a5e2451d69fd7"
+    },
+    {
+      "expected_sha256": "9e9c4e44d1593474213233214e6cc82a727cfa761979a80a2f9d1701b21321fe",
+      "path": "benchmarks/generic_motion_v1/generator/configuration.py",
+      "sha256": "9e9c4e44d1593474213233214e6cc82a727cfa761979a80a2f9d1701b21321fe"
+    },
+    {
+      "expected_sha256": "37174be436cfdd2313e7ea35d39120709316c701550c248a8672291ac5853cac",
+      "path": "benchmarks/generic_motion_v1/generator/endpoints.py",
+      "sha256": "37174be436cfdd2313e7ea35d39120709316c701550c248a8672291ac5853cac"
+    },
+    {
+      "expected_sha256": "53a582deee17cc2222e1d52558578a08979045ec489b0406611760d7932722f2",
+      "path": "benchmarks/generic_motion_v1/generator/integrity.py",
+      "sha256": "53a582deee17cc2222e1d52558578a08979045ec489b0406611760d7932722f2"
+    },
+    {
+      "expected_sha256": "a5da5e21c82984dd775adbcd8e88732be88082ac2d2818603cceab5cef560d5d",
+      "path": "benchmarks/generic_motion_v1/generator/manifest.py",
+      "sha256": "a5da5e21c82984dd775adbcd8e88732be88082ac2d2818603cceab5cef560d5d"
+    },
+    {
+      "expected_sha256": "bcf4b159cea50ebd4984298f0825c70cacdf6dfb16ab963b02da03744128c650",
+      "path": "benchmarks/generic_motion_v1/generator/scene.py",
+      "sha256": "bcf4b159cea50ebd4984298f0825c70cacdf6dfb16ab963b02da03744128c650"
+    },
+    {
+      "expected_sha256": "377a8f020a9b635daadfe01622d901efb327ff4146b0cd7383bd83a8ef5e0ff1",
+      "path": "benchmarks/generic_motion_v1/generator/voxelize.py",
+      "sha256": "377a8f020a9b635daadfe01622d901efb327ff4146b0cd7383bd83a8ef5e0ff1"
+    },
+    {
+      "expected_sha256": "5b152e3e5ca484e5378856de11747c45826653df8a1183582fe90e0958fc5116",
+      "path": "benchmarks/generic_motion_v1/model.py",
+      "sha256": "5b152e3e5ca484e5378856de11747c45826653df8a1183582fe90e0958fc5116"
+    },
+    {
+      "expected_sha256": "460b799f6fc85c89ec8300858644154b3e51764573433b91c45681ac1bd1dc7c",
+      "path": "benchmarks/generic_motion_v1/roadmap.py",
+      "sha256": "460b799f6fc85c89ec8300858644154b3e51764573433b91c45681ac1bd1dc7c"
+    },
+    {
+      "expected_sha256": "5068d18002a81335127caa4284c2a5ce60aa1dc9c4338568b3c2a5f29c69f81d",
+      "path": "benchmarks/generic_motion_v1/runners/csdecomp_baseline.py",
+      "sha256": "5068d18002a81335127caa4284c2a5ce60aa1dc9c4338568b3c2a5f29c69f81d"
+    },
+    {
+      "expected_sha256": "5eb45ca2f96b5dd5c727c4afca0b94b00f58ab06ec618073d3089f0ea668b01c",
+      "path": "benchmarks/generic_motion_v1/runners/native_handoff.py",
+      "sha256": "5eb45ca2f96b5dd5c727c4afca0b94b00f58ab06ec618073d3089f0ea668b01c"
+    },
+    {
+      "expected_sha256": "cb26df9783dc97646ff06a1600125d90a0259f2151b3db56e39be365926a90d9",
+      "path": "benchmarks/generic_motion_v1/runners/paper_graph.py",
+      "sha256": "cb26df9783dc97646ff06a1600125d90a0259f2151b3db56e39be365926a90d9"
+    },
+    {
+      "expected_sha256": "51882030b2564aabb2904e45c8ebeda6827d086db45b45e722962f76895a0900",
+      "path": "benchmarks/generic_motion_v1/runners/paper_lgcs.py",
+      "sha256": "51882030b2564aabb2904e45c8ebeda6827d086db45b45e722962f76895a0900"
+    },
+    {
+      "expected_sha256": "619298a79247d6408728f241c35280a6270856b324565ad855cdfd845e3fd358",
+      "path": "benchmarks/generic_motion_v1/runners/paper_nto.py",
+      "sha256": "619298a79247d6408728f241c35280a6270856b324565ad855cdfd845e3fd358"
+    },
+    {
+      "expected_sha256": "35579fcf1079e73fdd742005bfc1a3475d814cdf72a7b7cfa897f8ede7ff742b",
+      "path": "benchmarks/generic_motion_v1/runners/replay.py",
+      "sha256": "35579fcf1079e73fdd742005bfc1a3475d814cdf72a7b7cfa897f8ede7ff742b"
+    },
+    {
+      "expected_sha256": "0e0e499a95d649beae5d4f849d122ade08c03e705a2c38dd810560c73da5daa8",
+      "path": "benchmarks/generic_motion_v1/runners/summarize.py",
+      "sha256": "0e0e499a95d649beae5d4f849d122ade08c03e705a2c38dd810560c73da5daa8"
+    },
+    {
+      "expected_sha256": "12086b43b1735ab8455b260235eb0c92b336cb2b2cbaef6c286d1d2f5f376b43",
+      "path": "benchmarks/generic_motion_v1/runners/validate.py",
+      "sha256": "12086b43b1735ab8455b260235eb0c92b336cb2b2cbaef6c286d1d2f5f376b43"
+    },
+    {
+      "expected_sha256": "e2a222d76e3fd709c82ec7f95df93efc697e1893ac06188e368aaaf3d223e6bc",
+      "path": "reproduction/alignment_diagnosis/geometric_solvers.py",
+      "sha256": "e2a222d76e3fd709c82ec7f95df93efc697e1893ac06188e368aaaf3d223e6bc"
+    },
+    {
+      "expected_sha256": "dbce28518dc6d94052391397fe42a84a75d4f647e4ec5fb893c0ac64c7a520ec",
+      "path": "reproduction/paper_completion/optimization.py",
+      "sha256": "dbce28518dc6d94052391397fe42a84a75d4f647e4ec5fb893c0ac64c7a520ec"
+    }
+  ]
+}

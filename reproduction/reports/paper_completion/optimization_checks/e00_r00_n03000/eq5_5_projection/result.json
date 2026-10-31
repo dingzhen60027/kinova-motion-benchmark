@@ -1,0 +1,28 @@
+{
+  "case": "e00_r00_n03000",
+  "planner": "eq5_5_projection",
+  "status": "exception",
+  "elapsed_seconds": 0.016593943815678358,
+  "error": "GurobiError(10010, 'Model too large for size-limited license; visit https://gurobi.com/unrestricted for more information')",
+  "optimization_metadata": {
+    "kind": "polygon",
+    "solver": "Gurobi",
+    "formulation": "GCS_Eq5.5_split_vertex_exact_projection",
+    "graph_vertices": 7,
+    "graph_edges": 22,
+    "split_graph_vertices": 16,
+    "split_graph_edges": 29,
+    "solver_variables": 204,
+    "solver_constraints": 1473,
+    "solver_quadratic_constraints": 7,
+    "perspective_membership_rows": 1408,
+    "solver_parameters": {
+      "Threads": 1,
+      "MIPGap": 1e-06,
+      "TimeLimit": 60,
+      "NonConvex": 0,
+      "Presolve": 0
+    }
+  },
+  "traceback": "Traceback (most recent call last):\n  File \"/home/eric/wjg/wd/csdecomp/reproduction/verify_completion_optimization.py\", line 50, in run\n    answer = solver(regions, start, goal)\n  File \"/home/eric/wjg/wd/csdecomp/reproduction/paper_completion/optimization.py\", line 147, in lgcs\n    model.optimize()\n  File \"src/gurobipy/_model.pyx\", line 926, in gurobipy._model.Model.optimize\ngurobipy._exception.GurobiError: Model too large for size-limited license; visit https://gurobi.com/unrestricted for more information\n"
+}

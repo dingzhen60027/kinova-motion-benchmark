@@ -1,0 +1,74 @@
+LOADED_RUNNER /home/eric/wjg/wd/csdecomp/runs/platform_acceptance_forest/source_snapshot/research_platform/runner.py
+.FFF                                                                     [100%]
+=================================== FAILURES ===================================
+___________ test_sigterm_ignoring_grandchild_cannot_survive_timeout ____________
+
+tmp_path = PosixPath('/home/eric/wjg/wd/csdecomp/research_platform/reports/process_before_replay_raw/test_sigterm_ignoring_grandchi0')
+
+    @pytest.mark.skipif(sys.platform!='linux',reason='Linux process-group lifecycle contract')
+    def test_sigterm_ignoring_grandchild_cannot_survive_timeout(tmp_path):
+        out=tmp_path/'0001';out.mkdir()
+        execution=runner.execute_process(child_command(ignore_term=True),out,.15)
+        pgid=storage.read(out/'process.json')['pid']
+        try:
+            assert execution['outcome']=='timeout'
+            assert 'grandchild-ready' in (out/'stdout.log').read_text()
+            deadline=time.monotonic()+.5
+            while active_group(pgid) and time.monotonic()<deadline:time.sleep(.01)
+>           assert not active_group(pgid),'The process-group leader exited but its SIGTERM-ignoring child survived'
+E           AssertionError: The process-group leader exited but its SIGTERM-ignoring child survived
+E           assert not [3613431]
+E            +  where [3613431] = active_group(3613430)
+
+tests/research_platform/test_process_lifecycle.py:74: AssertionError
+___ test_normal_parent_exit_cannot_leave_descendant_running_after_job_return ___
+
+tmp_path = PosixPath('/home/eric/wjg/wd/csdecomp/research_platform/reports/process_before_replay_raw/test_normal_parent_exit_cannot0')
+
+    @pytest.mark.skipif(sys.platform!='linux',reason='Linux process-group lifecycle contract')
+    def test_normal_parent_exit_cannot_leave_descendant_running_after_job_return(tmp_path):
+        out=tmp_path/'0001';out.mkdir()
+        execution=runner.execute_process(child_command(parent_exit=True),out,.15)
+        pgid=storage.read(out/'process.json')['pid']
+        try:
+            deadline=time.monotonic()+.5
+            while active_group(pgid) and time.monotonic()<deadline:time.sleep(.01)
+>           assert not active_group(pgid),'A completed process leader left an unbounded descendant'
+E           AssertionError: A completed process leader left an unbounded descendant
+E           assert not [3613433]
+E            +  where [3613433] = active_group(3613432)
+
+tests/research_platform/test_process_lifecycle.py:86: AssertionError
+_____ test_process_metadata_write_failure_still_terminates_launched_group ______
+
+tmp_path = PosixPath('/home/eric/wjg/wd/csdecomp/research_platform/reports/process_before_replay_raw/test_process_metadata_write_fa0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x760dd8761a80>
+
+    @pytest.mark.skipif(sys.platform!='linux',reason='Linux process-group lifecycle contract')
+    def test_process_metadata_write_failure_still_terminates_launched_group(tmp_path,monkeypatch):
+        out=tmp_path/'0001';out.mkdir()
+        launched=[];real_popen=runner.subprocess.Popen
+        def track(*args,**kwargs):
+            process=real_popen(*args,**kwargs);launched.append(process);return process
+        def fail_metadata(*args,**kwargs):
+            raise OSError('injected metadata write failure')
+        monkeypatch.setattr(runner.subprocess,'Popen',track)
+        monkeypatch.setattr(runner,'atomic',fail_metadata)
+        try:
+            with pytest.raises(OSError,match='injected metadata'):
+                runner.execute_process(child_command(),out,.15)
+            assert len(launched)==1
+            deadline=time.monotonic()+.5
+            while active_group(launched[0].pid) and time.monotonic()<deadline:time.sleep(.01)
+>           assert not active_group(launched[0].pid),'A failure writing process metadata leaked the started worker'
+E           AssertionError: A failure writing process metadata leaked the started worker
+E           assert not [3613436, 3613437]
+E            +  where [3613436, 3613437] = active_group(3613436)
+E            +    where 3613436 = <Popen: returncode: None args: ['/home/eric/wjg/wd/csdecomp/.conda/envs/csde...>.pid
+
+tests/research_platform/test_process_lifecycle.py:106: AssertionError
+=========================== short test summary info ============================
+FAILED tests/research_platform/test_process_lifecycle.py::test_sigterm_ignoring_grandchild_cannot_survive_timeout
+FAILED tests/research_platform/test_process_lifecycle.py::test_normal_parent_exit_cannot_leave_descendant_running_after_job_return
+FAILED tests/research_platform/test_process_lifecycle.py::test_process_metadata_write_failure_still_terminates_launched_group
+3 failed, 1 passed in 2.08s

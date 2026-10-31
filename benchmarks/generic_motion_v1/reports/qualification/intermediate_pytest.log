@@ -1,0 +1,52 @@
+..........................................F..F.......................... [ 67%]
+..................................                                       [100%]
+=================================== FAILURES ===================================
+_____________________ test_contact_band_not_silent_success _____________________
+
+    def test_contact_band_not_silent_success():
+        class Touching(Model):
+            def clearance(self,q):return np.full(len(q),1e-7)
+        p=np.array([[0]*7,[1,0,0,0,0,0,0]],float)
+>       assert validate(dict(kind='polygon',points=p),Touching(),case(p))['status']=='validation_undetermined'
+
+benchmarks/generic_motion_v1/tests/test_baseline_validation.py:44: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+benchmarks/generic_motion_v1/runners/validate.py:137: in validate
+    objective=_objective(candidate)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+candidate = {'kind': 'polygon', 'points': array([[0., 0., 0., 0., 0., 0., 0.],
+       [1., 0., 0., 0., 0., 0., 0.]])}
+
+    def _objective(candidate):
+        objective = candidate.get('objective')
+        if objective not in ('minimum_distance', 'minimum_time'):
+>           raise ValueError('Candidate must declare a supported objective')
+E           ValueError: Candidate must declare a supported objective
+
+benchmarks/generic_motion_v1/runners/validate.py:23: ValueError
+_________________ test_sampling_cap_rejects_without_allocation _________________
+
+    def test_sampling_cap_rejects_without_allocation():
+        p=np.array([[0]*7,[100000,0,0,0,0,0,0]],float)
+>       with pytest.raises(ValueError,match='cap'):
+E       AssertionError: Regex pattern did not match.
+E         Expected regex: 'cap'
+E         Actual message: 'Candidate must declare a supported objective'
+
+benchmarks/generic_motion_v1/tests/test_baseline_validation.py:66: AssertionError
+=============================== warnings summary ===============================
+benchmarks/generic_motion_v1/tests/test_model_consistency.py: 58 warnings
+benchmarks/generic_motion_v1/tests/test_reporting.py: 29 warnings
+  /home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/lib/python3.10/site-packages/csdecomp/drake_csd_bridge.py:62: DrakeDeprecationWarning: (Deprecated.)
+  
+  Deprecated:
+      Use is_floating_base_body() instead. This will be removed from
+      Drake on or after 2026-06-01.
+    if all_drake_bodies[-1].is_floating():
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED benchmarks/generic_motion_v1/tests/test_baseline_validation.py::test_contact_band_not_silent_success
+FAILED benchmarks/generic_motion_v1/tests/test_baseline_validation.py::test_sampling_cap_rejects_without_allocation
+2 failed, 104 passed, 87 warnings in 1.79s

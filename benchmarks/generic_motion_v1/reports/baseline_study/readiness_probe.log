@@ -1,0 +1,264 @@
+{
+  "timestamp_utc": "2026-10-28T04:14:48.595660+00:00",
+  "python": "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/bin/python",
+  "scope": "existing Conda; CPU probes and sealed evidence reads only; no dependency modifications or GPU"
+}
+{
+  "python_modules": {
+    "cvxpy": true,
+    "pyscipopt": false,
+    "ecos": false,
+    "clarabel": true,
+    "scs": true,
+    "highspy": false,
+    "ortools": false,
+    "gurobipy": true,
+    "mosek": true,
+    "cvxopt": false,
+    "cylp": false
+  },
+  "executables": {
+    "scip": null,
+    "highs": null,
+    "cbc": null,
+    "ipopt": null
+  },
+  "cvxpy_version": "1.7.5",
+  "installed_solvers": [
+    "CLARABEL",
+    "GUROBI",
+    "MOSEK",
+    "OSQP",
+    "SCIPY",
+    "SCS"
+  ]
+}
+{
+  "actual_cpu_probes": [
+    {
+      "formulation": "continuous_SOCP",
+      "solver": "CLARABEL",
+      "status": "optimal",
+      "objective": 1.4142135626672818
+    },
+    {
+      "formulation": "continuous_SOCP",
+      "solver": "SCS",
+      "status": "optimal",
+      "objective": 1.414213562461647
+    },
+    {
+      "formulation": "mixed_integer_SOCP",
+      "solver": "CLARABEL",
+      "error_type": "SolverError",
+      "error": "Problem is mixed-integer, but candidate QP/Conic solvers ([]) are not MIP-capable."
+    },
+    {
+      "formulation": "mixed_integer_SOCP",
+      "solver": "SCS",
+      "error_type": "SolverError",
+      "error": "Problem is mixed-integer, but candidate QP/Conic solvers ([]) are not MIP-capable."
+    },
+    {
+      "formulation": "mixed_integer_SOCP",
+      "solver": "SCIPY",
+      "error_type": "SolverError",
+      "error": "Either candidate conic solvers (['SCIPY']) do not support the cones output by the problem (SOC, NonNeg, Zero), or there are not enough constraints in the problem."
+    }
+  ]
+}
+{
+  "sealed_runtime_commit": "72984027030175b7bca78e2dcf592b38f0c1864b",
+  "method_statuses": [
+    {
+      "method": "EI_ZO",
+      "objective": "minimum_distance",
+      "status": {
+        "frontend_failed": 69,
+        "success_validated_numerical": 110,
+        "infrastructure_error": 1
+      }
+    },
+    {
+      "method": "LGCS",
+      "objective": "minimum_distance",
+      "status": {
+        "frontend_failed": 69,
+        "success_validated_numerical": 94,
+        "unsupported": 16,
+        "infrastructure_error": 1
+      }
+    },
+    {
+      "method": "NTO_PAPER",
+      "objective": "minimum_distance",
+      "status": {
+        "frontend_failed": 69,
+        "collision_failed": 45,
+        "solver_failed": 30,
+        "success_validated_numerical": 35,
+        "infrastructure_error": 1
+      }
+    },
+    {
+      "method": "EI_ZO",
+      "objective": "minimum_time",
+      "status": {
+        "frontend_failed": 69,
+        "success_validated_numerical": 110,
+        "infrastructure_error": 1
+      }
+    },
+    {
+      "method": "NTO_PAPER",
+      "objective": "minimum_time",
+      "status": {
+        "frontend_failed": 69,
+        "success_validated_numerical": 88,
+        "collision_failed": 18,
+        "timeout": 3,
+        "infrastructure_error": 1,
+        "solver_failed": 1
+      }
+    }
+  ],
+  "license_failures": [
+    {
+      "job_id": "dev-bottleneck-002-p01-LGCS-minimum_distance-7670fddf",
+      "family": "bottleneck",
+      "error": 10010,
+      "variables": 172,
+      "linear_constraints": 2003,
+      "regions": 5
+    },
+    {
+      "job_id": "dev-bottleneck-004-p01-LGCS-minimum_distance-207614b7",
+      "family": "bottleneck",
+      "error": 10010,
+      "variables": 204,
+      "linear_constraints": 1868,
+      "regions": 7
+    },
+    {
+      "job_id": "dev-bottleneck-004-p02-LGCS-minimum_distance-9b647d44",
+      "family": "bottleneck",
+      "error": 10010,
+      "variables": 316,
+      "linear_constraints": 3551,
+      "regions": 9
+    },
+    {
+      "job_id": "dev-route_choice-003-p01-LGCS-minimum_distance-905b7ec1",
+      "family": "route_choice",
+      "error": 10010,
+      "variables": 292,
+      "linear_constraints": 3473,
+      "regions": 8
+    },
+    {
+      "job_id": "dev-dense_clutter-002-p01-LGCS-minimum_distance-51646afd",
+      "family": "dense_clutter",
+      "error": 10010,
+      "variables": 259,
+      "linear_constraints": 2750,
+      "regions": 10
+    },
+    {
+      "job_id": "dev-bottleneck-001-p01-LGCS-minimum_distance-c707ae4a",
+      "family": "bottleneck",
+      "error": 10010,
+      "variables": 196,
+      "linear_constraints": 3244,
+      "regions": 6
+    },
+    {
+      "job_id": "dev-bottleneck-004-p00-LGCS-minimum_distance-8ea782fa",
+      "family": "bottleneck",
+      "error": 10010,
+      "variables": 204,
+      "linear_constraints": 2393,
+      "regions": 5
+    },
+    {
+      "job_id": "dev-bottleneck-004-p01-LGCS-minimum_distance-a1d5ca7f",
+      "family": "bottleneck",
+      "error": 10010,
+      "variables": 290,
+      "linear_constraints": 2911,
+      "regions": 8
+    },
+    {
+      "job_id": "dev-bottleneck-004-p02-LGCS-minimum_distance-49411f94",
+      "family": "bottleneck",
+      "error": 10010,
+      "variables": 212,
+      "linear_constraints": 2358,
+      "regions": 8
+    },
+    {
+      "job_id": "dev-route_choice-002-p00-LGCS-minimum_distance-fcb53c53",
+      "family": "route_choice",
+      "error": 10010,
+      "variables": 212,
+      "linear_constraints": 2644,
+      "regions": 8
+    },
+    {
+      "job_id": "dev-route_choice-002-p01-LGCS-minimum_distance-12a5ecdb",
+      "family": "route_choice",
+      "error": 10010,
+      "variables": 212,
+      "linear_constraints": 1876,
+      "regions": 6
+    },
+    {
+      "job_id": "dev-sparse_clutter-004-p01-LGCS-minimum_distance-bb4fecf4",
+      "family": "sparse_clutter",
+      "error": 10010,
+      "variables": 260,
+      "linear_constraints": 2011,
+      "regions": 10
+    },
+    {
+      "job_id": "dev-bottleneck-000-p02-LGCS-minimum_distance-0e924476",
+      "family": "bottleneck",
+      "error": 10010,
+      "variables": 228,
+      "linear_constraints": 2287,
+      "regions": 8
+    },
+    {
+      "job_id": "dev-bottleneck-001-p01-LGCS-minimum_distance-cc9fe9d1",
+      "family": "bottleneck",
+      "error": 10010,
+      "variables": 148,
+      "linear_constraints": 2050,
+      "regions": 6
+    },
+    {
+      "job_id": "dev-bottleneck-004-p01-LGCS-minimum_distance-fcdabf56",
+      "family": "bottleneck",
+      "error": 10010,
+      "variables": 275,
+      "linear_constraints": 3014,
+      "regions": 8
+    },
+    {
+      "job_id": "dev-route_choice-002-p00-LGCS-minimum_distance-4b16280a",
+      "family": "route_choice",
+      "error": 10010,
+      "variables": 188,
+      "linear_constraints": 2421,
+      "regions": 7
+    }
+  ],
+  "unique_validated_seed_case_roadmap_pairs": 110,
+  "original_validated_seed_records": 550,
+  "saved_seed_samples_reconstructed": 796115,
+  "all_paths_identical_across_five_methods": true,
+  "canonical_endpoints_passed": true,
+  "saved_dual_checker_labels_passed": true,
+  "seed_length_mean_rad": 7.219790162827398,
+  "seed_frontend_stage_sum_p50_seconds": 0.7294736949261278,
+  "timing_scope": "online_collision_map + DRM Plan + numerical seed validation, from original LSCS records; no standalone execution/cold or warm benchmark inferred"
+}

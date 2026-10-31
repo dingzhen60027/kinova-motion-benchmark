@@ -1,0 +1,9 @@
+{
+  "pid": 3613631,
+  "command": [
+    "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/bin/python",
+    "-c",
+    "import os,subprocess,sys,time\nfrom research_platform.runner import parent_death_signal\nparent_death_signal()\nprint(\"worker-ready\",os.getpid(),flush=True)\nsubprocess.Popen([sys.executable,\"-c\",\"import os,time; print('grandchild-ready',os.getpid(),flush=True); time.sleep(30)\"])\ntime.sleep(30)\n"
+  ],
+  "timeout_seconds": 30
+}

@@ -1,0 +1,574 @@
+[
+  {
+    "label": "initial_geometry_contract_tests",
+    "command": [
+      "bash",
+      "local/python.sh",
+      "-m",
+      "pytest",
+      "-q",
+      "reproduction/tests/test_constructed_model.py"
+    ],
+    "status": "completed",
+    "started_utc": "2026-10-26T02:41:37.179238+00:00",
+    "log": "reproduction/logs/completion_verification_initial_geometry_contract_tests.log",
+    "recorder_sha256": "7e32b0d75d90579df9a348434e8e95d409649f29823665a7c6b2d43f6c8f855c",
+    "exit_code": 0,
+    "elapsed_seconds": 1.017993114888668,
+    "completed_utc": "2026-10-26T02:41:38.197421+00:00"
+  },
+  {
+    "label": "constructed_optimizer_tests",
+    "command": [
+      "bash",
+      "local/python.sh",
+      "-m",
+      "pytest",
+      "-q",
+      "reproduction/tests/test_constructed_optimization.py"
+    ],
+    "status": "completed",
+    "started_utc": "2026-10-26T02:43:41.159169+00:00",
+    "log": "reproduction/logs/constructed_verification_constructed_optimizer_tests.log",
+    "recorder_sha256": "c36a7f9519c57f8612d7553d1cf2fa7ea7cd9d1802c89acb301ee161e040b45e",
+    "exit_code": 0,
+    "elapsed_seconds": 0.911213852930814,
+    "completed_utc": "2026-10-26T02:43:42.070647+00:00"
+  },
+  {
+    "label": "frozen_candidate_tests",
+    "command": [
+      "bash",
+      "local/python.sh",
+      "-m",
+      "pytest",
+      "-q",
+      "reproduction/tests"
+    ],
+    "status": "completed",
+    "started_utc": "2026-10-26T02:49:41.847034+00:00",
+    "log": "reproduction/logs/constructed_verification_frozen_candidate_tests.log",
+    "recorder_sha256": "f788187ca7dbf67ae26040c189eb0a99fa8af67201bd809eb73965846df4dea0",
+    "exit_code": 0,
+    "elapsed_seconds": 2.2391969677992165,
+    "completed_utc": "2026-10-26T02:49:44.086459+00:00"
+  },
+  {
+    "label": "pilot_analysis",
+    "command": [
+      "bash",
+      "local/python.sh",
+      "-m",
+      "reproduction.paper_constructed.analyze",
+      "--run-dir",
+      "reproduction/runs/20261026T024958.231103Z_paper_constructed_forest",
+      "reproduction/runs/20261026T025000.439432Z_paper_constructed_fr3",
+      "--output",
+      "reproduction/reports/paper_constructed/pilot",
+      "--audit",
+      "--collision-depths"
+    ],
+    "status": "completed",
+    "started_utc": "2026-10-26T02:51:04.792621+00:00",
+    "log": "reproduction/logs/constructed_verification_pilot_analysis.log",
+    "recorder_sha256": "f788187ca7dbf67ae26040c189eb0a99fa8af67201bd809eb73965846df4dea0",
+    "exit_code": 0,
+    "elapsed_seconds": 0.5503997760824859,
+    "completed_utc": "2026-10-26T02:51:05.343276+00:00"
+  },
+  {
+    "label": "environment",
+    "command": [
+      "bash",
+      "local/python.sh",
+      "-m",
+      "reproduction.capture_constructed_environment"
+    ],
+    "status": "completed",
+    "started_utc": "2026-10-26T03:40:11.737495+00:00",
+    "log": "reproduction/logs/constructed_verification_environment.log",
+    "recorder_sha256": "f788187ca7dbf67ae26040c189eb0a99fa8af67201bd809eb73965846df4dea0",
+    "exit_code": 0,
+    "elapsed_seconds": 0.09261242812499404,
+    "completed_utc": "2026-10-26T03:40:11.830360+00:00"
+  },
+  {
+    "label": "hardware_preflight_01",
+    "command": [
+      "bash",
+      "local/python.sh",
+      "-m",
+      "reproduction.hardware_constructed.run",
+      "check",
+      "--output",
+      "reproduction/reports/paper_constructed/hardware_simulation/check_01"
+    ],
+    "status": "failed",
+    "started_utc": "2026-10-26T03:40:15.649619+00:00",
+    "log": "reproduction/logs/constructed_verification_hardware_preflight_01.log",
+    "recorder_sha256": "f788187ca7dbf67ae26040c189eb0a99fa8af67201bd809eb73965846df4dea0",
+    "exit_code": 1,
+    "elapsed_seconds": 0.7649711687117815,
+    "completed_utc": "2026-10-26T03:40:16.414838+00:00"
+  },
+  {
+    "label": "throughput_forest",
+    "command": [
+      "bash",
+      "local/python.sh",
+      "-m",
+      "reproduction.paper_constructed.throughput",
+      "--run-dir",
+      "reproduction/runs/20261026T025110.685774Z_paper_constructed_forest"
+    ],
+    "status": "completed",
+    "started_utc": "2026-10-26T03:40:48.114821+00:00",
+    "log": "reproduction/logs/constructed_verification_throughput_forest.log",
+    "recorder_sha256": "f788187ca7dbf67ae26040c189eb0a99fa8af67201bd809eb73965846df4dea0",
+    "exit_code": 0,
+    "elapsed_seconds": 9.000737269874662,
+    "completed_utc": "2026-10-26T03:40:57.115816+00:00",
+    "run_dir": "/home/eric/wjg/wd/csdecomp/reproduction/runs/20261026T034048.516508Z_paper_constructed_forest_throughput"
+  },
+  {
+    "label": "throughput_fr3",
+    "command": [
+      "bash",
+      "local/python.sh",
+      "-m",
+      "reproduction.paper_constructed.throughput",
+      "--run-dir",
+      "reproduction/runs/20261026T025846.407684Z_paper_constructed_fr3"
+    ],
+    "status": "completed",
+    "started_utc": "2026-10-26T03:41:06.477875+00:00",
+    "log": "reproduction/logs/constructed_verification_throughput_fr3.log",
+    "recorder_sha256": "f788187ca7dbf67ae26040c189eb0a99fa8af67201bd809eb73965846df4dea0",
+    "exit_code": 0,
+    "elapsed_seconds": 43.4927822179161,
+    "completed_utc": "2026-10-26T03:41:49.970922+00:00",
+    "run_dir": "/home/eric/wjg/wd/csdecomp/reproduction/runs/20261026T034106.879715Z_paper_constructed_fr3_throughput"
+  },
+  {
+    "label": "full_analysis",
+    "command": [
+      "bash",
+      "local/python.sh",
+      "-m",
+      "reproduction.paper_constructed.analyze",
+      "--run-dir",
+      "reproduction/runs/20261026T025110.685774Z_paper_constructed_forest",
+      "reproduction/runs/20261026T025846.407684Z_paper_constructed_fr3",
+      "--output",
+      "reproduction/reports/paper_constructed",
+      "--audit",
+      "--collision-depths"
+    ],
+    "status": "completed",
+    "started_utc": "2026-10-26T03:42:20.508671+00:00",
+    "log": "reproduction/logs/constructed_verification_full_analysis.log",
+    "recorder_sha256": "f788187ca7dbf67ae26040c189eb0a99fa8af67201bd809eb73965846df4dea0",
+    "exit_code": 0,
+    "elapsed_seconds": 4.437236389610916,
+    "completed_utc": "2026-10-26T03:42:24.946186+00:00"
+  },
+  {
+    "label": "full_audit",
+    "command": [
+      "bash",
+      "local/python.sh",
+      "-m",
+      "reproduction.audit_paper_constructed",
+      "--run-dir",
+      "reproduction/runs/20261026T025110.685774Z_paper_constructed_forest",
+      "reproduction/runs/20261026T025846.407684Z_paper_constructed_fr3",
+      "--output",
+      "reproduction/reports/paper_constructed/audit",
+      "--resume"
+    ],
+    "status": "completed",
+    "started_utc": "2026-10-26T03:42:54.719931+00:00",
+    "log": "reproduction/logs/constructed_verification_full_audit.log",
+    "recorder_sha256": "f788187ca7dbf67ae26040c189eb0a99fa8af67201bd809eb73965846df4dea0",
+    "exit_code": 0,
+    "elapsed_seconds": 8.4300242876634,
+    "completed_utc": "2026-10-26T03:43:03.150229+00:00"
+  },
+  {
+    "label": "main_report_initial",
+    "command": [
+      "bash",
+      "local/python.sh",
+      "-m",
+      "reproduction.report_constructed"
+    ],
+    "status": "completed",
+    "started_utc": "2026-10-26T03:43:51.360536+00:00",
+    "log": "reproduction/logs/constructed_verification_main_report_initial.log",
+    "recorder_sha256": "f788187ca7dbf67ae26040c189eb0a99fa8af67201bd809eb73965846df4dea0",
+    "exit_code": 0,
+    "elapsed_seconds": 0.06202527089044452,
+    "completed_utc": "2026-10-26T03:43:51.422853+00:00"
+  },
+  {
+    "label": "figures_initial",
+    "command": [
+      "bash",
+      "local/python.sh",
+      "-m",
+      "reproduction.paper_constructed.plot",
+      "--summary-dir",
+      "reproduction/reports/paper_constructed",
+      "--output",
+      "reproduction/figures/paper_constructed"
+    ],
+    "status": "completed",
+    "started_utc": "2026-10-26T03:43:56.214207+00:00",
+    "log": "reproduction/logs/constructed_verification_figures_initial.log",
+    "recorder_sha256": "f788187ca7dbf67ae26040c189eb0a99fa8af67201bd809eb73965846df4dea0",
+    "exit_code": 0,
+    "elapsed_seconds": 7.617319932207465,
+    "completed_utc": "2026-10-26T03:44:03.831817+00:00"
+  },
+  {
+    "label": "figures_legend_repair",
+    "command": [
+      "bash",
+      "local/python.sh",
+      "-m",
+      "reproduction.paper_constructed.plot",
+      "--summary-dir",
+      "reproduction/reports/paper_constructed",
+      "--output",
+      "reproduction/figures/paper_constructed"
+    ],
+    "status": "completed",
+    "started_utc": "2026-10-26T03:46:17.334755+00:00",
+    "log": "reproduction/logs/constructed_verification_figures_legend_repair.log",
+    "recorder_sha256": "f788187ca7dbf67ae26040c189eb0a99fa8af67201bd809eb73965846df4dea0",
+    "exit_code": 0,
+    "elapsed_seconds": 7.6448517721146345,
+    "completed_utc": "2026-10-26T03:46:24.979925+00:00"
+  },
+  {
+    "label": "figure_source_qa",
+    "command": [
+      "python3",
+      "/home/eric/.codex/skills/nature-figure/scripts/validate_figure.py",
+      "reproduction/paper_constructed/plot.py",
+      "--json"
+    ],
+    "status": "completed",
+    "started_utc": "2026-10-26T03:46:58.346816+00:00",
+    "log": "reproduction/logs/constructed_verification_figure_source_qa.log",
+    "recorder_sha256": "f788187ca7dbf67ae26040c189eb0a99fa8af67201bd809eb73965846df4dea0",
+    "exit_code": 0,
+    "elapsed_seconds": 0.05525717558339238,
+    "completed_utc": "2026-10-26T03:46:58.402368+00:00"
+  },
+  {
+    "label": "pdf_text_paper_results",
+    "command": [
+      "python3",
+      "/home/eric/.codex/skills/nature-figure/scripts/audit_pdf_text.py",
+      "reproduction/figures/paper_constructed/paper_results.pdf",
+      "--min-pt",
+      "5",
+      "--json"
+    ],
+    "status": "completed",
+    "started_utc": "2026-10-26T03:47:03.666822+00:00",
+    "log": "reproduction/logs/constructed_verification_pdf_text_paper_results.log",
+    "recorder_sha256": "f788187ca7dbf67ae26040c189eb0a99fa8af67201bd809eb73965846df4dea0",
+    "exit_code": 0,
+    "elapsed_seconds": 0.025753512978553772,
+    "completed_utc": "2026-10-26T03:47:03.692875+00:00"
+  },
+  {
+    "label": "pdf_text_paper_case_statuses",
+    "command": [
+      "python3",
+      "/home/eric/.codex/skills/nature-figure/scripts/audit_pdf_text.py",
+      "reproduction/figures/paper_constructed/paper_case_statuses.pdf",
+      "--min-pt",
+      "5",
+      "--json"
+    ],
+    "status": "completed",
+    "started_utc": "2026-10-26T03:47:03.786099+00:00",
+    "log": "reproduction/logs/constructed_verification_pdf_text_paper_case_statuses.log",
+    "recorder_sha256": "f788187ca7dbf67ae26040c189eb0a99fa8af67201bd809eb73965846df4dea0",
+    "exit_code": 0,
+    "elapsed_seconds": 0.025316165294498205,
+    "completed_utc": "2026-10-26T03:47:03.811749+00:00"
+  },
+  {
+    "label": "pdf_text_fr3_scene_replay",
+    "command": [
+      "python3",
+      "/home/eric/.codex/skills/nature-figure/scripts/audit_pdf_text.py",
+      "reproduction/figures/paper_constructed/fr3_scene_replay.pdf",
+      "--min-pt",
+      "5",
+      "--json"
+    ],
+    "status": "completed",
+    "started_utc": "2026-10-26T03:47:03.905637+00:00",
+    "log": "reproduction/logs/constructed_verification_pdf_text_fr3_scene_replay.log",
+    "recorder_sha256": "f788187ca7dbf67ae26040c189eb0a99fa8af67201bd809eb73965846df4dea0",
+    "exit_code": 0,
+    "elapsed_seconds": 0.026423071045428514,
+    "completed_utc": "2026-10-26T03:47:03.932380+00:00"
+  },
+  {
+    "label": "pdf_text_fr3_model_diagnostic",
+    "command": [
+      "python3",
+      "/home/eric/.codex/skills/nature-figure/scripts/audit_pdf_text.py",
+      "reproduction/figures/paper_constructed/fr3_model_diagnostic.pdf",
+      "--min-pt",
+      "5",
+      "--json"
+    ],
+    "status": "completed",
+    "started_utc": "2026-10-26T03:47:04.026625+00:00",
+    "log": "reproduction/logs/constructed_verification_pdf_text_fr3_model_diagnostic.log",
+    "recorder_sha256": "f788187ca7dbf67ae26040c189eb0a99fa8af67201bd809eb73965846df4dea0",
+    "exit_code": 0,
+    "elapsed_seconds": 0.027794224210083485,
+    "completed_utc": "2026-10-26T03:47:04.054747+00:00"
+  },
+  {
+    "label": "hardware_smoke",
+    "command": [
+      "bash",
+      "local/python.sh",
+      "-m",
+      "reproduction.hardware_constructed.run",
+      "run",
+      "--nodes",
+      "800",
+      "--trials",
+      "0",
+      "1"
+    ],
+    "status": "completed",
+    "started_utc": "2026-10-26T03:49:13.408763+00:00",
+    "log": "reproduction/logs/constructed_verification_hardware_smoke.log",
+    "recorder_sha256": "f788187ca7dbf67ae26040c189eb0a99fa8af67201bd809eb73965846df4dea0",
+    "exit_code": 0,
+    "elapsed_seconds": 3.972934079822153,
+    "completed_utc": "2026-10-26T03:49:17.382026+00:00",
+    "run_dir": "/home/eric/wjg/wd/csdecomp/reproduction/runs/20261026T034913.809331Z_constructed_hardware_simulation"
+  },
+  {
+    "label": "hardware_full",
+    "command": [
+      "bash",
+      "local/python.sh",
+      "-m",
+      "reproduction.hardware_constructed.run",
+      "run"
+    ],
+    "status": "completed",
+    "started_utc": "2026-10-26T03:50:09.924538+00:00",
+    "log": "reproduction/logs/constructed_verification_hardware_full.log",
+    "recorder_sha256": "f788187ca7dbf67ae26040c189eb0a99fa8af67201bd809eb73965846df4dea0",
+    "exit_code": 0,
+    "elapsed_seconds": 127.07466453872621,
+    "completed_utc": "2026-10-26T03:52:16.999554+00:00",
+    "run_dir": "/home/eric/wjg/wd/csdecomp/reproduction/runs/20261026T035010.325340Z_constructed_hardware_simulation"
+  },
+  {
+    "label": "lgcs_enumeration",
+    "command": [
+      "bash",
+      "local/python.sh",
+      "-m",
+      "reproduction.enumerate_constructed_lgcs",
+      "--run-dir",
+      "reproduction/runs/20261026T025846.407684Z_paper_constructed_fr3",
+      "--execute"
+    ],
+    "status": "completed",
+    "started_utc": "2026-10-26T03:52:21.663989+00:00",
+    "log": "reproduction/logs/constructed_verification_lgcs_enumeration.log",
+    "recorder_sha256": "f788187ca7dbf67ae26040c189eb0a99fa8af67201bd809eb73965846df4dea0",
+    "exit_code": 0,
+    "elapsed_seconds": 193.15352430101484,
+    "completed_utc": "2026-10-26T03:55:34.817848+00:00",
+    "run_dir": "/home/eric/wjg/wd/csdecomp/reproduction/runs/20261026T035221.712074Z_constructed_LGCS_enumeration"
+  },
+  {
+    "label": "hardware_report",
+    "command": [
+      "bash",
+      "local/python.sh",
+      "-m",
+      "reproduction.hardware_constructed.report",
+      "--run-dir",
+      "reproduction/runs/20261026T035010.325340Z_constructed_hardware_simulation",
+      "--smoke-run",
+      "reproduction/runs/20261026T034913.809331Z_constructed_hardware_simulation"
+    ],
+    "status": "completed",
+    "started_utc": "2026-10-26T03:56:08.626551+00:00",
+    "log": "reproduction/logs/constructed_verification_hardware_report.log",
+    "recorder_sha256": "f788187ca7dbf67ae26040c189eb0a99fa8af67201bd809eb73965846df4dea0",
+    "exit_code": 0,
+    "elapsed_seconds": 0.11761762201786041,
+    "completed_utc": "2026-10-26T03:56:08.744526+00:00"
+  },
+  {
+    "label": "hardware_replay",
+    "command": [
+      "bash",
+      "local/python.sh",
+      "-m",
+      "reproduction.hardware_constructed.plot",
+      "--run-dir",
+      "reproduction/runs/20261026T035010.325340Z_constructed_hardware_simulation",
+      "--output",
+      "reproduction/reports/paper_constructed/hardware_simulation/replay"
+    ],
+    "status": "completed",
+    "started_utc": "2026-10-26T03:56:12.743989+00:00",
+    "log": "reproduction/logs/constructed_verification_hardware_replay.log",
+    "recorder_sha256": "f788187ca7dbf67ae26040c189eb0a99fa8af67201bd809eb73965846df4dea0",
+    "exit_code": 0,
+    "elapsed_seconds": 2.1392749729566276,
+    "completed_utc": "2026-10-26T03:56:14.883617+00:00"
+  },
+  {
+    "label": "supplements",
+    "command": [
+      "bash",
+      "local/python.sh",
+      "-m",
+      "reproduction.summarize_constructed_supplements",
+      "--enumeration",
+      "reproduction/runs/20261026T035221.712074Z_constructed_LGCS_enumeration",
+      "--official-replay",
+      "reproduction/reports/paper_constructed/official_replay",
+      "--mesh-diagnostic",
+      "reproduction/reports/paper_constructed/mesh_candidate_diagnostic_20261026T034309.558905Z",
+      "--hardware",
+      "reproduction/runs/20261026T035010.325340Z_constructed_hardware_simulation"
+    ],
+    "status": "completed",
+    "started_utc": "2026-10-26T03:56:19.539720+00:00",
+    "log": "reproduction/logs/constructed_verification_supplements.log",
+    "recorder_sha256": "f788187ca7dbf67ae26040c189eb0a99fa8af67201bd809eb73965846df4dea0",
+    "exit_code": 0,
+    "elapsed_seconds": 0.05788056505843997,
+    "completed_utc": "2026-10-26T03:56:19.597971+00:00"
+  },
+  {
+    "label": "main_report_final",
+    "command": [
+      "bash",
+      "local/python.sh",
+      "-m",
+      "reproduction.report_constructed"
+    ],
+    "status": "completed",
+    "started_utc": "2026-10-26T03:56:34.739691+00:00",
+    "log": "reproduction/logs/constructed_verification_main_report_final.log",
+    "recorder_sha256": "f788187ca7dbf67ae26040c189eb0a99fa8af67201bd809eb73965846df4dea0",
+    "exit_code": 0,
+    "elapsed_seconds": 0.06747755408287048,
+    "completed_utc": "2026-10-26T03:56:34.807554+00:00"
+  },
+  {
+    "label": "hardware_replay_legend",
+    "command": [
+      "bash",
+      "local/python.sh",
+      "-m",
+      "reproduction.hardware_constructed.plot",
+      "--run-dir",
+      "reproduction/runs/20261026T035010.325340Z_constructed_hardware_simulation",
+      "--output",
+      "reproduction/reports/paper_constructed/hardware_simulation/replay"
+    ],
+    "status": "completed",
+    "started_utc": "2026-10-26T03:59:26.628801+00:00",
+    "log": "reproduction/logs/constructed_verification_hardware_replay_legend.log",
+    "recorder_sha256": "f788187ca7dbf67ae26040c189eb0a99fa8af67201bd809eb73965846df4dea0",
+    "exit_code": 0,
+    "elapsed_seconds": 2.148092069197446,
+    "completed_utc": "2026-10-26T03:59:28.777301+00:00"
+  },
+  {
+    "label": "supplements_linked",
+    "command": [
+      "bash",
+      "local/python.sh",
+      "-m",
+      "reproduction.summarize_constructed_supplements",
+      "--enumeration",
+      "reproduction/runs/20261026T035221.712074Z_constructed_LGCS_enumeration",
+      "--official-replay",
+      "reproduction/reports/paper_constructed/official_replay",
+      "--mesh-diagnostic",
+      "reproduction/reports/paper_constructed/mesh_candidate_diagnostic_20261026T034309.558905Z",
+      "--hardware",
+      "reproduction/runs/20261026T035010.325340Z_constructed_hardware_simulation"
+    ],
+    "status": "completed",
+    "started_utc": "2026-10-26T04:00:35.644335+00:00",
+    "log": "reproduction/logs/constructed_verification_supplements_linked.log",
+    "recorder_sha256": "f788187ca7dbf67ae26040c189eb0a99fa8af67201bd809eb73965846df4dea0",
+    "exit_code": 0,
+    "elapsed_seconds": 0.06390607170760632,
+    "completed_utc": "2026-10-26T04:00:35.708638+00:00"
+  },
+  {
+    "label": "main_report_delivery",
+    "command": [
+      "bash",
+      "local/python.sh",
+      "-m",
+      "reproduction.report_constructed"
+    ],
+    "status": "completed",
+    "started_utc": "2026-10-26T04:00:35.801656+00:00",
+    "log": "reproduction/logs/constructed_verification_main_report_delivery.log",
+    "recorder_sha256": "f788187ca7dbf67ae26040c189eb0a99fa8af67201bd809eb73965846df4dea0",
+    "exit_code": 0,
+    "elapsed_seconds": 0.06400388991460204,
+    "completed_utc": "2026-10-26T04:00:35.866050+00:00"
+  },
+  {
+    "label": "delivery_verification",
+    "command": [
+      "bash",
+      "local/python.sh",
+      "-m",
+      "reproduction.verify_constructed_delivery"
+    ],
+    "status": "completed",
+    "started_utc": "2026-10-26T04:00:46.679316+00:00",
+    "log": "reproduction/logs/constructed_verification_delivery_verification.log",
+    "recorder_sha256": "f788187ca7dbf67ae26040c189eb0a99fa8af67201bd809eb73965846df4dea0",
+    "exit_code": 0,
+    "elapsed_seconds": 1.3778316918760538,
+    "completed_utc": "2026-10-26T04:00:48.057533+00:00"
+  },
+  {
+    "label": "report_eof_format",
+    "command": [
+      "bash",
+      "local/python.sh",
+      "-m",
+      "reproduction.report_constructed"
+    ],
+    "status": "completed",
+    "started_utc": "2026-10-26T04:04:32.207636+00:00",
+    "log": "reproduction/logs/constructed_verification_report_eof_format.log",
+    "recorder_sha256": "f788187ca7dbf67ae26040c189eb0a99fa8af67201bd809eb73965846df4dea0",
+    "exit_code": 0,
+    "elapsed_seconds": 0.06520466785877943,
+    "completed_utc": "2026-10-26T04:04:32.273264+00:00"
+  }
+]

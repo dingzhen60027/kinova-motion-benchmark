@@ -1,0 +1,119 @@
+{
+  "scope": "Finite geometry-only hypothesis test; not exhaustive recovery of original RNG",
+  "generator_families": [
+    "numpy.default_rng (PCG64)",
+    "numpy.RandomState (MT19937)"
+  ],
+  "seed_range_inclusive": [
+    0,
+    9999
+  ],
+  "draw_layouts": [
+    "15x2",
+    "2x15 transposed"
+  ],
+  "sampling": "independent uniform [-3.5,3.5] coordinates; no rejection sampling",
+  "assignment": "Hungarian minimum total squared Euclidean center distance",
+  "declared_exact_match_max_error_m": 0.001,
+  "tested_candidates": 40000,
+  "found_exact_match": false,
+  "best_per_family_layout": [
+    {
+      "generator": "default_rng",
+      "layout": "15x2",
+      "seed": 9282,
+      "matched_center_rmse_m": 0.7774311329512058,
+      "max_matched_center_error_m": 1.227612144633345,
+      "candidate_to_figure_assignment": [
+        12,
+        8,
+        2,
+        10,
+        11,
+        0,
+        6,
+        3,
+        9,
+        1,
+        5,
+        7,
+        13,
+        4,
+        14
+      ]
+    },
+    {
+      "generator": "default_rng",
+      "layout": "2x15_transposed",
+      "seed": 9792,
+      "matched_center_rmse_m": 0.8463500672737674,
+      "max_matched_center_error_m": 1.5803447120022447,
+      "candidate_to_figure_assignment": [
+        14,
+        9,
+        11,
+        3,
+        13,
+        8,
+        10,
+        5,
+        0,
+        1,
+        7,
+        4,
+        2,
+        12,
+        6
+      ]
+    },
+    {
+      "generator": "RandomState",
+      "layout": "15x2",
+      "seed": 335,
+      "matched_center_rmse_m": 0.8392911964917078,
+      "max_matched_center_error_m": 1.6995743375522487,
+      "candidate_to_figure_assignment": [
+        0,
+        7,
+        1,
+        8,
+        10,
+        6,
+        4,
+        13,
+        2,
+        3,
+        14,
+        11,
+        9,
+        5,
+        12
+      ]
+    },
+    {
+      "generator": "RandomState",
+      "layout": "2x15_transposed",
+      "seed": 7130,
+      "matched_center_rmse_m": 0.8181980136622851,
+      "max_matched_center_error_m": 1.4219242981994038,
+      "candidate_to_figure_assignment": [
+        9,
+        8,
+        0,
+        6,
+        5,
+        7,
+        10,
+        2,
+        11,
+        12,
+        14,
+        3,
+        1,
+        13,
+        4
+      ]
+    }
+  ],
+  "elapsed_seconds": 1.885078930761665
+}

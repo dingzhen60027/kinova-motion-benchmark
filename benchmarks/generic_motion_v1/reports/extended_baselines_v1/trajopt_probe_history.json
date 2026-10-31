@@ -1,0 +1,38 @@
+[
+  {
+    "stage": "initial BPMPD caller link",
+    "observed_returncode": 1,
+    "reason": "Bundled archive uses non-PIE relocations; ordinary Ubuntu PIE link rejected R_X86_64_32S. Fixed compile flag -no-pie for caller only."
+  },
+  {
+    "stage": "gradient online probe v1",
+    "observed_exception": "ValueError: max() arg is an empty sequence",
+    "reason": "Engineering probe demanded static clearance above 0.02 m; none of its 512 sampled configurations met that condition. Failed empty outputs preserved. Probe v2 tests explicit free configurations above 1e-4 m; no dataset/endpoints changed."
+  },
+  {
+    "stage": "canonical probe v1",
+    "evidence": "trajopt_canonical_probe.log",
+    "reason": "Probe script used nonexistent manifest key voxel_radius; corrected to voxel_radius_m."
+  },
+  {
+    "stage": "canonical probe v2",
+    "evidence": "trajopt_canonical_probe_v2.log",
+    "reason": "Local settings array shadowed settings function; renamed array."
+  },
+  {
+    "stage": "canonical probe v3",
+    "evidence": "trajopt_canonical_probe_v3.log",
+    "reason": "Engineering script selected an existing path.npy from a failed DRM query; incomplete path has wrong goal. Adapter rejected it. Later script uses explicitly named validated bottleneck seed for integration check only."
+  },
+  {
+    "stage": "canonical probe v4",
+    "evidence": "trajopt_canonical_probe_v4.log",
+    "reason": "Author BPMPD single-read pipe serializer asserted on partial large payload (>pipe capacity); child aborted and parent waited on inherited pipe write FD. Stopped own probe PID1007348 with SIGTERM. Fixed only local IPC transport; author SQP/QP arithmetic unchanged."
+  },
+  {
+    "stage": "canonical probe v5",
+    "evidence": "trajopt_canonical_probe_v5/probe_summary.json",
+    "status": "passed",
+    "reason": "Default64-knot policy; native author optimizer converged14QPsolves in2.630839s and passed commonCUDA+Drake finite validation."
+  }
+]

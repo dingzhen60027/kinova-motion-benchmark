@@ -1,0 +1,45 @@
+{
+  "source_files": {
+    "/home/eric/wjg/wd/csdecomp/reproduction/reports/paper_protocol/forest/methods.csv": "ece8e4fa28a141b4e7149c0f773d91c9d0b34a25c99b5c16a6d2dd1f7f66a216",
+    "/home/eric/wjg/wd/csdecomp/reproduction/reports/paper_protocol/forest/paired.csv": "80f750c98392a89b1e1d48a607884f67a31bac40ecb09357e8502e43ac706792",
+    "/home/eric/wjg/wd/csdecomp/reproduction/reports/paper_protocol/forest/summary.json": "64050bb96557ed5815573af4a96b6316d04b44917286327068b13400431c09e4",
+    "/home/eric/wjg/wd/csdecomp/reproduction/reports/paper_protocol/fr3/methods.csv": "fc98a76371bfc0bfc8b0be6c782f144327845e88a954003b333977c91f19b6b0",
+    "/home/eric/wjg/wd/csdecomp/reproduction/reports/paper_protocol/fr3/paired.csv": "5675a8aa497f3dae20337ad397dd35d8d354d351a48c7bb9fdf7fc64e7a89c24",
+    "/home/eric/wjg/wd/csdecomp/reproduction/reports/paper_protocol/fr3/summary.json": "de9b9da54ffba0688210316d58df6c770624307f07f4a9df8af278d71b1049fc"
+  },
+  "selection": "all requested cases; fixed lexicographically first FR3 case for scene replay",
+  "hardware": "i7-13700K / Quadro RTX 8000; paper hardware differs",
+  "guarantee": "independent numerical validation, not continuous certification",
+  "fidelity": "published parameters; reconstructed FR3 sphere fit and unpublished random inputs",
+  "timing": "all recorded attempts including failures; construction + optimization, with explicitly flagged method-wall-time fallbacks for caught exceptions",
+  "paired_cost_display": "all common validated observations; median and interquartile range, no iid confidence interval",
+  "fr3_replay": {
+    "case_id": "e00_r00_n03000",
+    "selection": "lexicographically first case before outcome filtering",
+    "paths": [
+      {
+        "method": "LSCS",
+        "source": "cases/e00_r00_n03000/LSCS/trajectory_samples.npz",
+        "validated": "success_numerical",
+        "plotted_samples": 300,
+        "available_samples": 1523
+      },
+      {
+        "method": "SCSTO",
+        "source": "cases/e00_r00_n03000/SCSTO/trajectory_samples.npz",
+        "validated": "success_numerical",
+        "plotted_samples": 300,
+        "available_samples": 2698
+      },
+      {
+        "method": "NTO_time",
+        "source": "cases/e00_r00_n03000/NTO_time/trajectory_samples.npz",
+        "validated": "validation_failed",
+        "plotted_samples": 300,
+        "available_samples": 2024
+      }
+    ],
+    "scene": "/home/eric/wjg/wd/csdecomp/reproduction/runs/20261025T082752.022456Z_paper_fr3/scenes/e00/scene.json",
+    "geometry": "33-sphere fit, not original authors geometry; TCP curves illustrate saved joint trajectories"
+  }
+}

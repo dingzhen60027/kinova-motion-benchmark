@@ -1,0 +1,25 @@
+.....................................F............                       [100%]
+=================================== FAILURES ===================================
+______________ test_endpoint_regression_with_real_author_solvers _______________
+
+tmp_path = PosixPath('/tmp/pytest-of-eric/pytest-223/test_endpoint_regression_with_0')
+
+    def test_endpoint_regression_with_real_author_solvers(tmp_path):
+        # A realistic fixed endpoint differs from its native float32 projection.
+        # The halfspace is valid for the seed but excludes the original endpoint.
+        start=np.array([.10000002,0,0,0,0,0,0])
+        goal=np.zeros(7)
+        native=start.astype(np.float32).astype(float)
+        assert native[0]<start[0]
+        upper=np.ones(7);upper[0]=native[0]
+        original=HPolyhedron.MakeBox(-np.ones(7),upper)
+        # Native seed feasibility is not equivalent to the fixed input equality.
+        assert np.max(original.A()@native-original.b())<=0
+        assert np.max(original.A()@start-original.b())>0
+>       with pytest.raises(ValueError,match='Infeasible'):
+E       Failed: DID NOT RAISE ValueError
+
+benchmarks/generic_motion_v1/tests/test_baseline_region_coverage.py:52: Failed
+=========================== short test summary info ============================
+FAILED benchmarks/generic_motion_v1/tests/test_baseline_region_coverage.py::test_endpoint_regression_with_real_author_solvers
+1 failed, 49 passed in 0.54s

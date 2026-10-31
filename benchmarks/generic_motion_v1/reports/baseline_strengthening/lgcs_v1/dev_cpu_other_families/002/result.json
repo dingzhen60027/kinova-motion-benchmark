@@ -1,0 +1,159 @@
+{
+  "candidate": {
+    "algebraic_validation": {
+      "degree": 0.0,
+      "finite": true,
+      "flow_balance": 0.0,
+      "flow_bounds": 0.0,
+      "flow_integrality": 1.1102230246251565e-16,
+      "homogeneous_membership": 2.9976021664879227e-14,
+      "length_nonnegative": 1.7763568394002505e-15,
+      "passed": true,
+      "soc_norm": 9.608156492646458e-10,
+      "tolerance": 1e-07,
+      "vector_flow": 6.811539781942569e-16
+    },
+    "backend": "scip",
+    "constraint_representation": "linear rows plus unsquared Euclidean norm epigraphs",
+    "decoded_membership_violation": 3.774758283725532e-15,
+    "decoded_objective_excess": 4.117840290973618e-09,
+    "discarded_disjoint_cycle_edges": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        0
+      ]
+    ],
+    "formulation": "GCS_Eq5.5_split_vertex_exact_projection",
+    "gap": 4.766945534908771e-09,
+    "globally_optimal": false,
+    "graph_edges": 26,
+    "graph_vertices": 10,
+    "kind": "polygon",
+    "method": "LGCS",
+    "model_construction_seconds": 0.05012674769386649,
+    "numerical_variant": "strict_scip_tolerances_v1",
+    "objective": "minimum_distance",
+    "optimality_scope": "supplied local convex-region graph, not full collision-free C-space",
+    "perspective_membership_rows": 1919,
+    "provenance": "local_paper_GCS_MISOCP_reconstruction_with_SCIP",
+    "pyscipopt_module": "/home/eric/wjg/wd/csdecomp/.local_setup/solver_probes/pyscipopt/pyscipopt/__init__.py",
+    "pyscipopt_version": "6.3.0",
+    "recovered_path_length": 10.292534499996847,
+    "reproduction_status": "adapted",
+    "requested_time_limit_seconds": 60.0,
+    "scip_original_solution_feasible": true,
+    "segment_regions": [
+      5,
+      6,
+      7,
+      8,
+      9,
+      4
+    ],
+    "selected_regions": [
+      5,
+      6,
+      7,
+      8,
+      9,
+      4
+    ],
+    "solver": "SCIP",
+    "solver_constraints": 2011,
+    "solver_dual_bound": 10.292534446815056,
+    "solver_has_incumbent": true,
+    "solver_license": "SCIP >=8.0.3 Apache-2.0; PySCIPOpt MIT; bundled libraries retain their licenses",
+    "solver_license_source": "https://www.scipopt.org/",
+    "solver_nodes": 196,
+    "solver_nonlinear_constraints": 10,
+    "solver_objective": 10.292534495879007,
+    "solver_optimize_seconds": 5.0583794778212905,
+    "solver_parameters": {
+      "limits/gap": 1e-06,
+      "limits/time": 59.94987363787368,
+      "lp/threads": 1,
+      "numerics/dualfeastol": 1e-09,
+      "numerics/feastol": 1e-09,
+      "parallel/maxnthreads": 1,
+      "randomization/randomseedshift": 0
+    },
+    "solver_primal_bound": 10.292534495879007,
+    "solver_quadratic_constraints": 0,
+    "solver_reported_seconds": 5.058232,
+    "solver_soc_constraints": 10,
+    "solver_status": "gaplimit",
+    "solver_success": true,
+    "solver_variables": 260,
+    "solver_version": [
+      10,
+      0,
+      2
+    ],
+    "source_sha256": "935c45fe4aa61343efac1480e5aa7ea7071ad9a285ff878793a7133af0fb6332",
+    "split_graph_edges": 36,
+    "split_graph_vertices": 22,
+    "total_lgcs_seconds": 5.1225426918827
+  },
+  "case": "dev-sparse_clutter-004-p01",
+  "independent_numpy_check": {
+    "continuous_collision_proof": false,
+    "goal_exact": true,
+    "physical_collision_checked": false,
+    "recomputed_pwl_length": 10.292534499996847,
+    "segment_membership_max": 3.774758283725532e-15,
+    "start_exact": true
+  },
+  "observed_cpu_probe_seconds": 5.125129223335534,
+  "original": {
+    "error": "GurobiError(10010, 'Model too large for size-limited license; visit https://gurobi.com/unrestricted for more information')",
+    "formulation": "GCS_Eq5.5_split_vertex_exact_projection",
+    "graph_edges": 26,
+    "graph_vertices": 10,
+    "kind": "polygon",
+    "method": "LGCS",
+    "numerical_variant": "strict_gurobi_tolerances_v1",
+    "perspective_membership_rows": 1919,
+    "provenance": "local_paper_GCS_MISOCP_reconstruction_with_Gurobi",
+    "reproduction_status": "adapted",
+    "requested_time_limit_seconds": 56.31395636871457,
+    "solver": "Gurobi",
+    "solver_constraints": 2011,
+    "solver_error_number": 10010,
+    "solver_optimize_seconds": 8.3905179053545e-05,
+    "solver_parameters": {
+      "BarQCPConvTol": 1e-09,
+      "FeasibilityTol": 1e-09,
+      "IntFeasTol": 1e-09,
+      "MIPGap": 1e-06,
+      "NonConvex": 0,
+      "OptimalityTol": 1e-09,
+      "Presolve": 0,
+      "Threads": 1,
+      "TimeLimit": 56.27381266281009
+    },
+    "solver_quadratic_constraints": 10,
+    "solver_success": false,
+    "solver_variables": 260,
+    "solver_version": [
+      13,
+      0,
+      3
+    ],
+    "source_method": "reproduction.paper_completion.optimization.lgcs",
+    "source_sha256": "dbce28518dc6d94052391397fe42a84a75d4f647e4ec5fb893c0ac64c7a520ec",
+    "split_graph_edges": 36,
+    "split_graph_vertices": 22,
+    "status": "unsupported",
+    "total_lgcs_seconds": 0.04025881923735142
+  },
+  "program_dimensions_match_original": true,
+  "round": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-004-p01-LGCS-minimum_distance-bb4fecf4/attempts/0001/rounds/000",
+  "source_sha256": {
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-004-p01-LGCS-minimum_distance-bb4fecf4/attempts/0001/input.json": "48fea4da7f677a832af8da5118f73811fe873f4c5d79be5f4f74c5b8cf8f5883",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-004-p01-LGCS-minimum_distance-bb4fecf4/attempts/0001/rounds/000/regions.npz": "cc4e4eae0196697cf84f29d6a0fb4f2f071d4feda1886e622a7a68707eff9937"
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "recorded_utc": "2026-10-28T03:58:43.241249+00:00",
+  "original_paper_complete_reproduction": false,
+  "tracks": [
+    {
+      "track": "forest2d_reference",
+      "state": "historical_complete_grid_reaudited",
+      "cases": 400,
+      "methods": [
+        "LSCS",
+        "LGCS",
+        "SCSTO",
+        "NTO_distance",
+        "NTO_time"
+      ],
+      "limitation": "Reconstructed random scenes and local solver/software profile; original random inputs and exact author NTO transcription unavailable",
+      "evidence": "coverage_audit.md"
+    },
+    {
+      "track": "kinova7_generic_v1",
+      "state": "five_method_smoke_and_dev_completed",
+      "planned_jobs": 950,
+      "formal_test_executed": false,
+      "limitation": "Different robot, obstacles, fixed joint endpoints and evaluation protocol; not original FR3 experiment",
+      "completed_jobs": 950,
+      "smoke_jobs": 50,
+      "dev_jobs": 900,
+      "development_status_counts": [
+        {
+          "method": "EI_ZO",
+          "objective": "minimum_distance",
+          "status_counts": {
+            "frontend_failed": 69,
+            "success_validated_numerical": 110,
+            "infrastructure_error": 1
+          }
+        },
+        {
+          "method": "EI_ZO",
+          "objective": "minimum_time",
+          "status_counts": {
+            "frontend_failed": 69,
+            "success_validated_numerical": 110,
+            "infrastructure_error": 1
+          }
+        },
+        {
+          "method": "LGCS",
+          "objective": "minimum_distance",
+          "status_counts": {
+            "frontend_failed": 69,
+            "success_validated_numerical": 94,
+            "unsupported": 16,
+            "infrastructure_error": 1
+          }
+        },
+        {
+          "method": "NTO_PAPER",
+          "objective": "minimum_distance",
+          "status_counts": {
+            "frontend_failed": 69,
+            "collision_failed": 45,
+            "solver_failed": 30,
+            "success_validated_numerical": 35,
+            "infrastructure_error": 1
+          }
+        },
+        {
+          "method": "NTO_PAPER",
+          "objective": "minimum_time",
+          "status_counts": {
+            "frontend_failed": 69,
+            "success_validated_numerical": 88,
+            "collision_failed": 18,
+            "timeout": 3,
+            "infrastructure_error": 1,
+            "solver_failed": 1
+          }
+        }
+      ]
+    },
+    {
+      "track": "fr3_paper_fidelity",
+      "state": "unsupported_original_assets",
+      "historical_diagnostic_cases": 400,
+      "reason": "Original33spherecentres/radii/filter/tablemodel and original tasks absent; previous33spherefit has independently demonstrated false link5-hand collisions",
+      "scores_admissible_as_original_baseline": false,
+      "evidence": "../../../../reproduction/reports/paper_completion/reproduction_report.md"
+    },
+    {
+      "track": "paper_kuka_hardware",
+      "state": "unsupported_hardware_and_records",
+      "attempted_hardware_trials": 0,
+      "reason": "No available calibrated KUKA iiwa7R800+3RealSenseD415 setup or original15executionrecords; no simulated result substitutes a hardware run"
+    },
+    {
+      "track": "paper_exact_optimizer_backends",
+      "state": "partial_support",
+      "reason": "SNOPT/IPOPT and Gurobi smallmodels actually solve; currentGurobi restrictedlicense blocks largerQCPmodels; MOSEKunlicensed andLSCS usesauthorClarabelimplementation"
+    }
+  ]
+}

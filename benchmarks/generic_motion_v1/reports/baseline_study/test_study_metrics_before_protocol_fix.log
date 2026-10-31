@@ -1,0 +1,52 @@
+..............FF........F..............                                  [100%]
+=================================== FAILURES ===================================
+___ test_changed_algorithm_model_or_validator_source_is_rejected[roadmap.py] ___
+
+make_run = <function make_run.<locals>.make at 0x7c2bac96e050>
+source = 'roadmap.py'
+
+    @pytest.mark.parametrize("source", ["model.py", "roadmap.py", "batch.py", "runners/csdecomp_baseline.py",
+        "runners/native_handoff.py", "runners/paper_nto.py", "runners/paper_lgcs.py",
+        "runners/paper_graph.py", "runners/validate.py", "runners/optimization.py"])
+    def test_changed_algorithm_model_or_validator_source_is_rejected(make_run, source):
+        left = make_run("left-source", [_case("p0")], methods=DISTANCE[:1], sources={source: "v1"})
+        right = make_run("right-source", [_case("p1")], methods=DISTANCE[:1], sources={source: "v2"})
+>       with pytest.raises(ValueError, match="Different algorithm/model/validator source protocols"):
+E       Failed: DID NOT RAISE ValueError
+
+benchmarks/generic_motion_v1/tests/test_study_metrics.py:239: Failed
+____ test_changed_algorithm_model_or_validator_source_is_rejected[batch.py] ____
+
+make_run = <function make_run.<locals>.make at 0x7c2bac96e5f0>
+source = 'batch.py'
+
+    @pytest.mark.parametrize("source", ["model.py", "roadmap.py", "batch.py", "runners/csdecomp_baseline.py",
+        "runners/native_handoff.py", "runners/paper_nto.py", "runners/paper_lgcs.py",
+        "runners/paper_graph.py", "runners/validate.py", "runners/optimization.py"])
+    def test_changed_algorithm_model_or_validator_source_is_rejected(make_run, source):
+        left = make_run("left-source", [_case("p0")], methods=DISTANCE[:1], sources={source: "v1"})
+        right = make_run("right-source", [_case("p1")], methods=DISTANCE[:1], sources={source: "v2"})
+>       with pytest.raises(ValueError, match="Different algorithm/model/validator source protocols"):
+E       Failed: DID NOT RAISE ValueError
+
+benchmarks/generic_motion_v1/tests/test_study_metrics.py:239: Failed
+_______ test_disjoint_cases_with_different_wall_budgets_cannot_be_pooled _______
+
+make_run = <function make_run.<locals>.make at 0x7c2bac96c160>
+tmp_path = PosixPath('/tmp/pytest-of-eric/pytest-272/test_disjoint_cases_with_diffe0')
+
+    def test_disjoint_cases_with_different_wall_budgets_cannot_be_pooled(make_run, tmp_path):
+        left = make_run("left-budget", [_case("p0")])
+        right = make_run("right-budget", [_case("p1")])
+        manifest = _read(right / "run_manifest.json")
+        manifest["timeout_seconds"] = 10.
+        _write(right / "run_manifest.json", manifest)
+>       with pytest.raises(ValueError, match="[Bb]udget"):
+E       Failed: DID NOT RAISE ValueError
+
+benchmarks/generic_motion_v1/tests/test_study_metrics.py:258: Failed
+=========================== short test summary info ============================
+FAILED benchmarks/generic_motion_v1/tests/test_study_metrics.py::test_changed_algorithm_model_or_validator_source_is_rejected[roadmap.py]
+FAILED benchmarks/generic_motion_v1/tests/test_study_metrics.py::test_changed_algorithm_model_or_validator_source_is_rejected[batch.py]
+FAILED benchmarks/generic_motion_v1/tests/test_study_metrics.py::test_disjoint_cases_with_different_wall_budgets_cannot_be_pooled
+3 failed, 36 passed in 0.30s

@@ -1,0 +1,75 @@
+{
+  "schema": "benchmark_design_audit_receipt_v1",
+  "sealed_utc": "2026-10-30T11:45:38.479259+00:00",
+  "source_head": "c8b91f310c77e58eabdbed466ffdd4d751be7c6f",
+  "branch": "benchmark/generic-motion-v1",
+  "scope": "Literature research, frozen-input audit, geometry diagnostics, derived annotations, report; no new benchmark planning evaluation",
+  "frozen_inputs_runtime_model_and_historical_results_modified": false,
+  "environment": "Existing Conda via bash local/python.sh; no dependency installs",
+  "registered_cases": 490,
+  "valid_cases": 463,
+  "generation_failures_preserved": 27,
+  "checks": {
+    "input_and_replay": 8617,
+    "independent_geometry_arrays": 7156,
+    "report_data": 16452,
+    "report_literature": 19,
+    "pytest_passed": 603,
+    "pytest_warnings": 292
+  },
+  "raw_geometry": {
+    "scenes": 109,
+    "scene_configuration_checks": 13952,
+    "accepted_endpoints": 926,
+    "fine_straight_line_samples": 483187,
+    "line_label_changes": 0
+  },
+  "source_scope": "Ten distinct primary paper works plus author repositories and official docs; not an exhaustive systematic review",
+  "limits": [
+    "Finite collision sampling is not continuous safety proof",
+    "Literature GPU subreview includes declared self-review of its earlier notes",
+    "Clutter independent reread timed out; main research evidence remains preserved",
+    "Existing v1 test is exposed, not an untouched holdout",
+    "Geometry conservatism and scene/endpoint design limit broad task-general conclusions"
+  ],
+  "known_failed_artifacts": [
+    {
+      "path": "openalex_discovery.json",
+      "state": "Preserved zero-byte stdout from failed HTTP429 request; not a structured result",
+      "log": "openalex_discovery.log"
+    },
+    {
+      "path": "geometry_run_v1.log",
+      "state": "Initial audit script lifecycle failure preserved; corrected v3 completed"
+    },
+    {
+      "path": "execution.json",
+      "state": "Initial product-builder SyntaxError and subsequent successful execution preserved"
+    }
+  ],
+  "preseal_json_validation": {
+    "valid_json_files_before_receipt": 23,
+    "only_nonparseable_json": "openalex_discovery.json (0 bytes, known failed retrieval stdout)",
+    "blanket_parse_attempt": "failed on the preserved empty stdout; subsequent complete scan confirmed no other JSON parsing errors"
+  },
+  "nested_sha256_checks": {
+    "geometry_run_v2": 111,
+    "geometry_run_v3": 574,
+    "literature_mbm": 34,
+    "local_design": 8,
+    "all_passed": true
+  },
+  "readme_sha256": "94c7435a154807ecec4d56356529db5f547f3fc57389f4a2d84e5536414b2a92",
+  "annotations_sha256": "e07f4322eb12bb5d22ea8961d351d87cf26c802971204c622aad96e595d5c9ba",
+  "verify_command": "cd benchmarks/generic_motion_v1/reports/benchmark_design_audit_v2 && sha256sum --quiet -c SHA256SUMS",
+  "push_performed": false,
+  "git_whitespace_validation": {
+    "authored_audit_files": "passed",
+    "verbatim_upstream_evidence": "7 pre-existing trailing-whitespace lines in 2 archived MotionBenchMaker launch files; retained byte-for-byte to preserve source hashes"
+  },
+  "seal_verification": {
+    "command_in_audit_directory": "sha256sum --quiet -c SHA256SUMS",
+    "result": "passed",
+    "initial_invocation": "ran in repo root and returned missing SHA256SUMS; repeated in correct audit directory successfully"
+  }
+}

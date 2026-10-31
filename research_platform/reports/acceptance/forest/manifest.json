@@ -1,0 +1,228 @@
+{
+  "schema_version": 1,
+  "name": "forest_smoke",
+  "created_utc": "20261026T103040.733712Z",
+  "config": {
+    "version": 1,
+    "name": "forest_smoke",
+    "environment": "forest",
+    "environment_seeds": [
+      0
+    ],
+    "roadmap_seeds": [
+      0
+    ],
+    "roadmap_sizes": [
+      200
+    ],
+    "methods": [
+      "DRM",
+      "LSCS",
+      "LGCS",
+      "SCSTO",
+      "NTO_distance",
+      "NTO_time"
+    ],
+    "scene_profile": "figure6",
+    "limits": {
+      "job_timeout_seconds": 120.0,
+      "solver_seconds": 30.0
+    },
+    "planning": {
+      "lazy_edge_step": 0.01,
+      "validation_step": 0.002
+    },
+    "method_options": {}
+  },
+  "config_sha256": "532995ff2e853bc152362869bbd4fcd1344f5eb8fddf3cb973bc3926eb68cddf",
+  "resolved_sha256": "2ae84b7938d0e9415800471d8ebdec3dd4778deb378fa4e228a1f17386dba23d",
+  "cases": [
+    {
+      "id": "e000_r000_n00200",
+      "environment_seed": 0,
+      "roadmap_seed": 0,
+      "roadmap_size": 200
+    }
+  ],
+  "jobs": [
+    {
+      "id": "scene-e000",
+      "kind": "scene",
+      "environment_seed": 0,
+      "dependencies": {}
+    },
+    {
+      "id": "map-r000-n00200",
+      "kind": "roadmap",
+      "roadmap_seed": 0,
+      "roadmap_size": 200,
+      "dependencies": {}
+    },
+    {
+      "environment_seed": 0,
+      "roadmap_seed": 0,
+      "roadmap_size": 200,
+      "id": "plan-e000_r000_n00200",
+      "kind": "plan",
+      "case_id": "e000_r000_n00200",
+      "dependencies": {
+        "scene": "scene-e000",
+        "roadmap": "map-r000-n00200"
+      }
+    },
+    {
+      "environment_seed": 0,
+      "roadmap_seed": 0,
+      "roadmap_size": 200,
+      "id": "method-e000_r000_n00200-DRM",
+      "kind": "method",
+      "case_id": "e000_r000_n00200",
+      "method": "DRM",
+      "dependencies": {
+        "scene": "scene-e000",
+        "roadmap": "map-r000-n00200",
+        "plan": "plan-e000_r000_n00200"
+      }
+    },
+    {
+      "environment_seed": 0,
+      "roadmap_seed": 0,
+      "roadmap_size": 200,
+      "id": "method-e000_r000_n00200-LSCS",
+      "kind": "method",
+      "case_id": "e000_r000_n00200",
+      "method": "LSCS",
+      "dependencies": {
+        "scene": "scene-e000",
+        "roadmap": "map-r000-n00200",
+        "plan": "plan-e000_r000_n00200"
+      }
+    },
+    {
+      "environment_seed": 0,
+      "roadmap_seed": 0,
+      "roadmap_size": 200,
+      "id": "method-e000_r000_n00200-LGCS",
+      "kind": "method",
+      "case_id": "e000_r000_n00200",
+      "method": "LGCS",
+      "dependencies": {
+        "scene": "scene-e000",
+        "roadmap": "map-r000-n00200",
+        "plan": "plan-e000_r000_n00200"
+      }
+    },
+    {
+      "environment_seed": 0,
+      "roadmap_seed": 0,
+      "roadmap_size": 200,
+      "id": "method-e000_r000_n00200-SCSTO",
+      "kind": "method",
+      "case_id": "e000_r000_n00200",
+      "method": "SCSTO",
+      "dependencies": {
+        "scene": "scene-e000",
+        "roadmap": "map-r000-n00200",
+        "plan": "plan-e000_r000_n00200"
+      }
+    },
+    {
+      "environment_seed": 0,
+      "roadmap_seed": 0,
+      "roadmap_size": 200,
+      "id": "method-e000_r000_n00200-NTO_distance",
+      "kind": "method",
+      "case_id": "e000_r000_n00200",
+      "method": "NTO_distance",
+      "dependencies": {
+        "scene": "scene-e000",
+        "roadmap": "map-r000-n00200",
+        "plan": "plan-e000_r000_n00200"
+      }
+    },
+    {
+      "environment_seed": 0,
+      "roadmap_seed": 0,
+      "roadmap_size": 200,
+      "id": "method-e000_r000_n00200-NTO_time",
+      "kind": "method",
+      "case_id": "e000_r000_n00200",
+      "method": "NTO_time",
+      "dependencies": {
+        "scene": "scene-e000",
+        "roadmap": "map-r000-n00200",
+        "plan": "plan-e000_r000_n00200"
+      }
+    }
+  ],
+  "source_hashes": {
+    "csdecomp/tests/test_assets/table.obj": "3e2f605cf4fbe58f0c4d3b23a5c9a7bba65781aad759e088d4d0d6fe9879107b",
+    "csdecomp/tests/test_assets/table.urdf": "af6db04235e8d67f550c2f97e734a4282d15da7a0ca543d24ef0267e9f97ea7c",
+    "local/python.sh": "cda99fd218a27640997e18b95705918b67c2d2bcba4a051755e41b1d27000005",
+    "reproduction/__init__.py": "f32ef0e765f1c23b0312a9c154339f191d3319039d425e6afa1e95237b6a7d86",
+    "reproduction/alignment_diagnosis/__init__.py": "9d25127fca3dcec967f96fa7c2e8008e328ebd73457b8ce577074b5ddec6e30b",
+    "reproduction/alignment_diagnosis/ablation.py": "0af078c491ffa6f2d6b892f9583f4d3a2bc2c6c4ec8e103118da3e07b8ebb869",
+    "reproduction/alignment_diagnosis/bundle.py": "e1b7da2cdc36ef07b6cc98bb7fe3624eca7472767a684c3973b96d429bbe3d19",
+    "reproduction/alignment_diagnosis/collocation.py": "6e78b40908ebf8756c119d750dd25ee1bd8329c1c6ff9f6e25d40bf3928310b6",
+    "reproduction/alignment_diagnosis/forest_oracle.py": "3ee016faafbd6c6517df320ce5bd5efe5e3dee0bc9f5560bd0fdbdab861de7f0",
+    "reproduction/alignment_diagnosis/fr3_collocation.py": "cddf77ec90bfbdb13e010579b3908df8590d860d2f2f34f73758ada795f0de1e",
+    "reproduction/alignment_diagnosis/geometric_replay.py": "d6facd3a75acb9c94bde6775c2b78c047a8ffa113aa9e14c150d61073f56ee00",
+    "reproduction/alignment_diagnosis/geometric_solvers.py": "e2a222d76e3fd709c82ec7f95df93efc697e1893ac06188e368aaaf3d223e6bc",
+    "reproduction/alignment_diagnosis/summarize.py": "2802800ab20e3cd4847e07b35a69537abe76f57766817fcd255afde0c5ee3718",
+    "reproduction/alignment_diagnosis/transcription.py": "a211b6c456dfff203202cba63c6a86b9574fe331c4828648cf5b3aba5604b900",
+    "reproduction/common.py": "db20b4edefc194b8bfbc790f3f6ce5717e61e277e0ffe41c8746a49ef2a1d3d3",
+    "reproduction/conda-explicit.txt": "8edd1d62f30f343a7ef54219a42c9a09ed42e38a3be1ffc0d96010cadd0f5db4",
+    "reproduction/configs/forest.json": "394cf763dc2ed3dabf93284ccf7c02bd7337fa0fa86d76c9bd9468fdd02ba463",
+    "reproduction/environment_reconstruction/__init__.py": "a7573c590ed475b1ba4b0561820e60a0d9b449215b4c214cd657db57a9346fc0",
+    "reproduction/environment_reconstruction/bundle.py": "69d06d3774aad151429b862bb3f78cf215073b9b0eeaf20d796684201497cc17",
+    "reproduction/environment_reconstruction/forest_reference.py": "2780254045b3fbb3ff448c92c70debc83b573b47f72e2493c7a2a64d45be043c",
+    "reproduction/environment_reconstruction/model.py": "91de11a0dbb7a6416d08c5da6a730dfbee14545774218b09f1c807ed00f7010a",
+    "reproduction/environment_reconstruction/profile.json": "2a31decab05eba6fd6d1f52777b2061351554cda67152ce76c78a31816740266",
+    "reproduction/environment_reconstruction/render.py": "bf6dbce6cf922b737cd9956cae0af20ea4956ab5c62c05c11f7dd11b91538b07",
+    "reproduction/environment_reconstruction/run.py": "8338ada6f7fecfb1b70b9d6e793cce3cbb2af0c5365aa2713a43b51469081ae3",
+    "reproduction/environment_reconstruction/test_fixed_forest.py": "0b5e8fb68374452712d39cdd260d721c455264f028fcb2a4076b36f0844bb01b",
+    "reproduction/environment_reconstruction/test_run_integrity.py": "0dde3a551fa9ddf5e0a93e843ca3b8d060e27327b4b719f997ab17cb2eb54846",
+    "reproduction/forest.py": "4074e20bf900155a5caa7d016ebc39fe8e6e74c120e1354887c8cbb24a11b6ce",
+    "reproduction/optimization.py": "3891b2e4798b344ac63b0d8cc9f6331965cd1346cdd5263b85fb103012bbd015",
+    "reproduction/paper_constructed/__init__.py": "2244aeb59c1eaa95f437b1458b5dcb1084ff4856784e34750f0d097e842a1bd9",
+    "reproduction/paper_constructed/analyze.py": "7353a912f51171edbfcda32a6bc97b89e7c65acc806a3e61504c114f16636f7b",
+    "reproduction/paper_constructed/assets/fr3_33.json": "77b602396d93004c0aef6cf3776ef5783ed6fff9b08c0734829d3b9d2c1bd120",
+    "reproduction/paper_constructed/build_assets.py": "f0f0f10e29a91d7af65f80c8ebca733821a595840e28e22470dfd81a9ad80bc3",
+    "reproduction/paper_constructed/config.json": "bd0818510657d8f8d32b2cc4b96f5fab5bc08cfa1544dc5cd4fb5c701c5ea553",
+    "reproduction/paper_constructed/data.py": "10b3cc2ea64043f4b019c7b13986d7c60b2ae420185140a1e4987c231c050cef",
+    "reproduction/paper_constructed/forest.py": "8dbb44d6c0fbeea949d7d6266a317f562cf3d871aaf07c7f55119843321b8155",
+    "reproduction/paper_constructed/model.py": "de0db93b8c4d957bfb2118b38e3d6127d08db8268a271347fc601975d01289c2",
+    "reproduction/paper_constructed/optimization.py": "63f8fc82bd3adeb1401de743f12807d1f6a0e1b75865dff1b62d2196b4a0d71c",
+    "reproduction/paper_constructed/pipeline.py": "df393741f9a7c03c5464b32edf07393f4c8572858d28af171e1df41e296407a0",
+    "reproduction/paper_constructed/plot.py": "ced15f8d468536734e2cfc37e48454edcdc292f4e4bd6827a202aaeecc2ccc22",
+    "reproduction/paper_constructed/run.py": "a5a1c857bb06d599317e2912d1d4793de2cbe579589d32942fdda451ed00884c",
+    "reproduction/paper_constructed/throughput.py": "331aae36daae022b0fe088a37b7a4035a5738564ebbc428a4d546dc051c36ffb",
+    "reproduction/paper_constructed/validation.py": "9a829204583d10b0a6bb90beecea2bca36fe16b0cfc267b823896e474d90d630",
+    "reproduction/pipeline.py": "fab76c996b80faa8dca2d22b7b720cec6d82def13896c7eb97d91e0ae7d1a189",
+    "reproduction/reports/environment_reconstruction/forest_evidence/scene.json": "192b9852c5a242dc3cef0d5db1c2eb0ed20217d83c50b2ecb693ee308deef1cd",
+    "reproduction/requirements.lock.txt": "cc6f9ab114567461f95727e14fad427bffb51db020df62858cc3daf772634960",
+    "reproduction/run.py": "621707637cd312afd02c6e28a3028504dd3c42c118df9bb292747b00c427b6eb",
+    "research_platform/__init__.py": "c1ab155b9027c458bcfbeec1a1cd5fd06e39514d21e273c95300f1e7dafe0566",
+    "research_platform/__main__.py": "7894ba9bdf248fabf05799169b5e8f97700b9d45c9fc976210d5baeaef41377f",
+    "research_platform/backend.py": "41ee10d19c07aeae0dde4c3d6d09481538d38b65a99dd7300a680cfceff930ea",
+    "research_platform/config.py": "23d4d2fd94933ec2c924425e573d95ad3e40e356020a1c4317c9fb19a162c00a",
+    "research_platform/diagnostics.py": "549dc554c09cfcf72d7e4aaac73bcb7ee674813cbb0186aeda3c6cb3c5f7caef",
+    "research_platform/reporting.py": "8a791d9d1a78682ab28eea86f66599957931d6d060e9212a59a858be73434d59",
+    "research_platform/runner.py": "2f8e93f5bf97bfdf88c2038a9dd4348b5d3be29ad204f69c5668ed3de09e5702",
+    "research_platform/storage.py": "0a9000aa96b43956206fb8cef4d5b144d5653b144b7d4ebc58d87fdde6b6acdf",
+    "research_platform/worker.py": "300458c8bb873ad9c3dcf769dbc7dab155bf87c0c8df76eb06b2645ea7b77f9b"
+  },
+  "environment_sha256": "c697d6182a635af21649d66db2c0e8d1c43e91b9899fad556de159c406854080",
+  "git_head": "9b869cb335d2077816bbf0b0fa36bc6c49ccbcf5",
+  "git_dirty": true,
+  "command": [
+    "/home/eric/wjg/wd/csdecomp/research_platform/__main__.py",
+    "run",
+    "--config",
+    "configs/research/forest_smoke.json",
+    "--output",
+    "/home/eric/wjg/wd/csdecomp/runs/platform_final_v4_forest"
+  ],
+  "semantics": "All declared tasks stay in denominator; newest explicit attempt is reported; all attempts retained",
+  "clock": "per-job monotonic wall time; shared preparation, method solver and validation reported separately"
+}

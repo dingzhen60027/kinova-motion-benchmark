@@ -1,0 +1,42 @@
+{
+  "reason": "Clarify 9900 as distinct registered slots: 9300 legal planning calls and 600 invalid-input slots, avoiding any claim of 9900 legal planner calls. No numerical statistic changed.",
+  "authorized_by": "Parent task explicitly authorized this single wording repair and prior-output preservation.",
+  "initial_report": {
+    "path": "benchmarks/generic_motion_v1/reports/baseline_study/formal_report_initial_render.md",
+    "sha256": "e401544a1eea40ea9ad05343a0e5af6208a8fa3e612b09cf1e656fd1f5ed9b14"
+  },
+  "repaired_report": {
+    "path": "benchmarks/generic_motion_v1/reports/benchmark_v1_formal_baselines.md",
+    "sha256": "05249a2e1e75cb870614574d708cc1b282e35583faa6b4e895fbf843ae4b041c"
+  },
+  "initial_renderer_sha256": "3561722605721f30ae8901e22769f05bbfa73f6f884a24f3dfc4d1af6af6f780",
+  "repaired_renderer_sha256": "a1e56db0dec349dea1e3b476bdb4f0191c7f32be122e25be63290aa810610bc2",
+  "unchanged_metric_sha256": {
+    "benchmarks/generic_motion_v1/reports/baseline_study/formal_main_metrics/metrics.json": "dde3098ac6efa4fb7d7913a22cdd0c9093d6d6de74da4e304e93a1088075d1db",
+    "benchmarks/generic_motion_v1/reports/baseline_study/formal_size_metrics/metrics.json": "a0a34410ef1e8f4f1bada972af1fed5167c4663a8048b2c8957b567ce3ba89c7"
+  },
+  "all_numerical_tables_unchanged": true,
+  "review_passed": true,
+  "review_sha256": "e6d895ba267838aa5caf0046c5ebc8ce19b1b1b959fa2c3f702505f2bea4956c",
+  "actual_rerender_exit_code": 0,
+  "new_report_diff": [
+    "--- initial",
+    "+++ repaired",
+    "@@ -1,6 +1,6 @@",
+    " # Kinova 通用规划：正式论文方法 baseline",
+    " ",
+    "-本报告仅消费完整运行和已通过的输入、完整性及独立审计。冻结运行源码为 `c8adbd8cef44db25b41559e8fbf2b38e120b624a`。主评测 6300 个登记槽位，规模分析 4800 条记录，其中 1200 条复用主评测；独立运行总数为 9900，不能把两表直接相加。",
+    "+本报告仅消费完整运行和已通过的输入、完整性及独立审计。冻结运行源码为 `c8adbd8cef44db25b41559e8fbf2b38e120b624a`。主评测 6300 个登记槽位，规模分析 4800 条记录，其中 1200 条复用主评测；去重后为 9900 个登记槽位，其中 9300 个合法规划调用、600 个无效输入槽位。不能把两表直接相加。",
+    " ",
+    " 这是固定 Kinova 模型和公开环境上的论文方法适配；LGCS/NTO 含已公开标注的数学转写，不宣称重现作者私有 FR3/实机数据。有限采样验证不是连续无碰撞证明，DRM 失败也不证明全局不可行。",
+    " ",
+    "@@ -314,5 +314,5 @@",
+    " | /home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/reports/baseline_study/formal_audit/audit_bundle.json | 2624e23d470c51b8b2e3bd067c34814d138a718550651783676189d6af65b9f9 |",
+    " | /home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/reports/baseline_study/formal_protocol_v1.json | 8d152ac237cf39fe9602bcf54d47fbe8e30471dd5e3096ff05375ff4b3fcd7d7 |",
+    " | /home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/reports/baseline_study/formal_run_index.json | 5997323db2158080ba1c9456b3b3fdf43304da14dc39d828dcc1dfff39748926 |",
+    "-| /home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/reports/baseline_study/render_formal_report.py | 3561722605721f30ae8901e22769f05bbfa73f6f884a24f3dfc4d1af6af6f780 |",
+    "-",
+    "+| /home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/reports/baseline_study/render_formal_report.py | a1e56db0dec349dea1e3b476bdb4f0191c7f32be122e25be63290aa810610bc2 |",
+    "+"
+  ]
+}

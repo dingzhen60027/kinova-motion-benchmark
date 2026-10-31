@@ -1,0 +1,182 @@
+{
+  "schema": "benchmark_design_audit_summary_v1",
+  "new_planner_calls": 0,
+  "original_manifests_unchanged": true,
+  "registered_cases": 490,
+  "valid_cases": 463,
+  "split_counts": {
+    "smoke": {
+      "registered": 10,
+      "statuses": {
+        "valid_input": 8,
+        "invalid_endpoint": 2
+      },
+      "valid_distance_bins": {
+        "short": 4,
+        "medium": 4
+      }
+    },
+    "dev": {
+      "registered": 60,
+      "statuses": {
+        "valid_input": 60
+      },
+      "valid_distance_bins": {
+        "short": 20,
+        "medium": 20,
+        "long": 20
+      }
+    },
+    "test": {
+      "registered": 420,
+      "statuses": {
+        "valid_input": 395,
+        "invalid_endpoint": 25
+      },
+      "valid_distance_bins": {
+        "short": 158,
+        "medium": 158,
+        "long": 79
+      }
+    }
+  },
+  "integrity_checks": 8617,
+  "geometry_scene_count": 109,
+  "checked_endpoint_count": 926,
+  "straight_line_valid_case_count": 463,
+  "straight_line_fine_sample_count": 483187,
+  "straight_line_changed_labels": 0,
+  "scene_configuration_checks": 13952,
+  "cover_misses_source_samples": 0,
+  "cuda_drake_disagreement_outside_band": 0,
+  "representation_effects": [
+    {
+      "split": "smoke",
+      "family": "bottleneck",
+      "q_count": 128,
+      "source_free": 86,
+      "cover_free": 81,
+      "source_free_cover_colliding": 5
+    },
+    {
+      "split": "smoke",
+      "family": "dense_clutter",
+      "q_count": 128,
+      "source_free": 0,
+      "cover_free": 0,
+      "source_free_cover_colliding": 0
+    },
+    {
+      "split": "smoke",
+      "family": "open_control",
+      "q_count": 128,
+      "source_free": 128,
+      "cover_free": 128,
+      "source_free_cover_colliding": 0
+    },
+    {
+      "split": "smoke",
+      "family": "route_choice",
+      "q_count": 128,
+      "source_free": 78,
+      "cover_free": 64,
+      "source_free_cover_colliding": 14
+    },
+    {
+      "split": "smoke",
+      "family": "sparse_clutter",
+      "q_count": 128,
+      "source_free": 89,
+      "cover_free": 72,
+      "source_free_cover_colliding": 17
+    },
+    {
+      "split": "dev",
+      "family": "bottleneck",
+      "q_count": 640,
+      "source_free": 483,
+      "cover_free": 458,
+      "source_free_cover_colliding": 25
+    },
+    {
+      "split": "dev",
+      "family": "dense_clutter",
+      "q_count": 640,
+      "source_free": 381,
+      "cover_free": 213,
+      "source_free_cover_colliding": 168
+    },
+    {
+      "split": "dev",
+      "family": "route_choice",
+      "q_count": 640,
+      "source_free": 503,
+      "cover_free": 459,
+      "source_free_cover_colliding": 44
+    },
+    {
+      "split": "dev",
+      "family": "sparse_clutter",
+      "q_count": 640,
+      "source_free": 456,
+      "cover_free": 303,
+      "source_free_cover_colliding": 153
+    },
+    {
+      "split": "test",
+      "family": "bottleneck",
+      "q_count": 2560,
+      "source_free": 1654,
+      "cover_free": 1473,
+      "source_free_cover_colliding": 181
+    },
+    {
+      "split": "test",
+      "family": "dense_clutter",
+      "q_count": 2560,
+      "source_free": 1195,
+      "cover_free": 703,
+      "source_free_cover_colliding": 492
+    },
+    {
+      "split": "test",
+      "family": "open_control",
+      "q_count": 512,
+      "source_free": 512,
+      "cover_free": 512,
+      "source_free_cover_colliding": 0
+    },
+    {
+      "split": "test",
+      "family": "route_choice",
+      "q_count": 2560,
+      "source_free": 2055,
+      "cover_free": 1746,
+      "source_free_cover_colliding": 309
+    },
+    {
+      "split": "test",
+      "family": "sparse_clutter",
+      "q_count": 2560,
+      "source_free": 2008,
+      "cover_free": 1760,
+      "source_free_cover_colliding": 248
+    }
+  ],
+  "source_sha256": {
+    "manifests/smoke.jsonl": "92e19a293861fa1b93a2dba3919ae3bc3eec584f3845709dc99f2ce98e453720",
+    "manifests/dev.jsonl": "32de21ac2474846ae3cdc9867a3f41585cf80e7d0d4531e26285de216ef56000",
+    "manifests/test.jsonl": "9fcbe5ccae28d8681586b1ac6c9986f51f7cc7b5cdc19352c101910e3b6ed03b",
+    "reports/benchmark_design_audit_v2/local_design/audit.json": "d4d6efbc19bf046c217c15c17ecd13161104c002800ff9606c4943e41d01bd0d",
+    "reports/benchmark_design_audit_v2/geometry_run_v3/report.json": "3cbdd39ac5a7e1420be2259e3780bf0c72c668fd76bcb9655beb8d26b9155c2b",
+    "reports/benchmark_design_audit_v2/build_audit_products.py": "97da8846be641d7a7cba1850380abe0a8da622d651b6252b9df17f84fbb5c4b3"
+  },
+  "readiness": {
+    "controlled_frozen_protocol_use": "supported_by_current_numerical_audits",
+    "universal_manipulator_benchmark_claim": "not_established",
+    "mandatory_narrow_passage_claim": "not_established",
+    "untouched_test_claim": "false_test_previously_evaluated",
+    "continuous_collision_certificate": "not_provided",
+    "external_public_suite": "not_yet_integrated_in_this_turn"
+  }
+}

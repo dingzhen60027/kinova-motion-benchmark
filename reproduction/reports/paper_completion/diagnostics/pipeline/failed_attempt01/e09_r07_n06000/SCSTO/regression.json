@@ -1,0 +1,20 @@
+{
+  "case": "e09_r07_n06000",
+  "method": "SCSTO",
+  "original_result": {
+    "status": "error",
+    "solver_success": false,
+    "validation_passed": false,
+    "collision_free": null,
+    "cost": null,
+    "total_seconds": 0.11020199721679091,
+    "reason": "RuntimeError('line start is not contained in region 0')",
+    "traceback": "Traceback (most recent call last):\n  File \"/home/eric/wjg/wd/csdecomp/reproduction/paper_protocol/run.py\", line 374, in case_worker\n    answer = pipe.solve(method, path, drm, out)\n  File \"/home/eric/wjg/wd/csdecomp/reproduction/paper_protocol/pipeline.py\", line 181, in solve\n    fixed, _ = csd.EditRegionsCuda(\nRuntimeError: line start is not contained in region 0\n",
+    "method": "SCSTO",
+    "case_id": "e09_r07_n06000",
+    "elapsed_wall_seconds": 0.11024155607447028
+  },
+  "status": "error",
+  "exception": "TypeError('PointInSet(): incompatible function arguments. The following argument types are supported:\\n    1. (self: csdecomp.pycsdecomp_bindings.HPolyhedron, arg0: numpy.ndarray[numpy.float32[m, 1]], arg1: float) -> bool\\n\\nInvoked with: <csdecomp.pycsdecomp_bindings.HPolyhedron object at 0x75bdd41f3c30>, array([-2.1538572 , -1.279868  ,  2.152577  , -0.43973064, -1.4623457 ,\\n        0.481304  ,  1.65766   ], dtype=float32)')",
+  "traceback": "Traceback (most recent call last):\n  File \"/home/eric/wjg/wd/csdecomp/reproduction/check_completion_pipeline.py\", line 43, in run\n    answer=Pipeline(env,1337).solve(method,path,drm,destination)\n  File \"/home/eric/wjg/wd/csdecomp/reproduction/paper_completion/pipeline.py\", line 254, in solve\n    [native_region(r, seed, self.region_representation_audit)\n  File \"/home/eric/wjg/wd/csdecomp/reproduction/paper_completion/pipeline.py\", line 254, in <listcomp>\n    [native_region(r, seed, self.region_representation_audit)\n  File \"/home/eric/wjg/wd/csdecomp/reproduction/paper_completion/pipeline.py\", line 23, in native_region\n    if not (native.PointInSet(u) and native.PointInSet(v)):\nTypeError: PointInSet(): incompatible function arguments. The following argument types are supported:\n    1. (self: csdecomp.pycsdecomp_bindings.HPolyhedron, arg0: numpy.ndarray[numpy.float32[m, 1]], arg1: float) -> bool\n\nInvoked with: <csdecomp.pycsdecomp_bindings.HPolyhedron object at 0x75bdd41f3c30>, array([-2.1538572 , -1.279868  ,  2.152577  , -0.43973064, -1.4623457 ,\n        0.481304  ,  1.65766   ], dtype=float32)\n"
+}

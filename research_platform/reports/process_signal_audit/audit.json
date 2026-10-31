@@ -1,0 +1,17 @@
+{
+  "started_utc": "2026-10-26T10:25:45.543626+00:00",
+  "kind": "real_CPU_SIGTERM_coordinator_with_parent_death_worker",
+  "runner_sha256": "1ff975b5fc16c7eb3568d5420cf2251cc0b96e6776858601d06bf17fa9210259",
+  "command": [
+    "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/bin/python",
+    "-c",
+    "from research_platform.runner import execute_process; execute_process(['/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/bin/python', '-c', 'import os,subprocess,sys,time\\nfrom research_platform.runner import parent_death_signal\\nparent_death_signal()\\nprint(\"worker-ready\",os.getpid(),flush=True)\\nsubprocess.Popen([sys.executable,\"-c\",\"import os,time; print(\\'grandchild-ready\\',os.getpid(),flush=True); time.sleep(30)\"])\\ntime.sleep(30)\\n'],'/home/eric/wjg/wd/csdecomp/research_platform/reports/process_signal_audit/worker',30)"
+  ],
+  "gpu_used": false,
+  "worker_pgid": 3613631,
+  "coordinator_exit_code": -15,
+  "alive_group_after_SIGTERM": [
+    3613632
+  ],
+  "alive_group_after_test_cleanup": []
+}

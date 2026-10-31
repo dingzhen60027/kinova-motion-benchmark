@@ -1,0 +1,21 @@
+......F.........                                                         [100%]
+=================================== FAILURES ===================================
+______ test_independent_search_cannot_claim_shared_drm[drm_success-False] ______
+
+extended_run = <function extended_run.<locals>.make at 0x7a7171771ea0>
+tmp_path = PosixPath('/tmp/pytest-of-eric/pytest-332/test_independent_search_cannot3')
+field = 'drm_success', value = False
+
+    @pytest.mark.parametrize("field,value", [("roadmap_used", True), ("frontend_success", False),
+                                             ("frontend_native_success", False), ("drm_success", False)])
+    def test_independent_search_cannot_claim_shared_drm(extended_run, tmp_path, field, value):
+        run = extended_run()
+        path = _attempt(run, "RRTConnect") / "result.json"
+        result = _read(path); result[field] = value; _write(path, result)
+>       with pytest.raises(ValueError, match="Independent OMPL"):
+E       Failed: DID NOT RAISE ValueError
+
+benchmarks/generic_motion_v1/tests/test_extended_metrics.py:84: Failed
+=========================== short test summary info ============================
+FAILED benchmarks/generic_motion_v1/tests/test_extended_metrics.py::test_independent_search_cannot_claim_shared_drm[drm_success-False]
+1 failed, 15 passed in 0.47s

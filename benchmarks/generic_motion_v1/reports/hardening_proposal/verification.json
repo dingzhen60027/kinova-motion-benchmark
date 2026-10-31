@@ -1,0 +1,11 @@
+{
+  "tests_passed": 35,
+  "live_source_unchanged": true,
+  "source_sha256": "a33d65e5e427043eef0f082abc65881ba40f0000ea8b5e11cec09dd20f14fb2b",
+  "commands": [
+    "bash local/python.sh benchmarks/generic_motion_v1/reports/hardening_proposal/prepare_runner_patch.py",
+    "bash local/python.sh -m pytest -q benchmarks/generic_motion_v1/reports/hardening_proposal/test_runner_hardening_candidate.py"
+  ],
+  "apply_after_active_run_completes": "git apply benchmarks/generic_motion_v1/reports/hardening_proposal/hardening.patch",
+  "post_apply_test": "bash local/python.sh -m pytest -q benchmarks/generic_motion_v1/tests/test_baseline_input_contract.py"
+}

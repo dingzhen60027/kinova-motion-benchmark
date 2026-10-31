@@ -1,0 +1,8 @@
+# Preserve raw evidence bytes; avoid rendering multi-megabyte runtime logs.
+*.log -text -diff
+*.npz binary
+*.npy binary
+*.map binary
+*.csv whitespace=cr-at-eol
+# Archived patch context lines intentionally contain one space.
+reports/hardening_proposal/*.patch -text -diff

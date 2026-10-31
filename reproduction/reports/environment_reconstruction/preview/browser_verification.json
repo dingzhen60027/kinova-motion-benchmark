@@ -1,0 +1,43 @@
+{
+  "final_html_sha256": "ea4d48b744c376ebbeea4c639b9e5db822ed19909369b73ec2f00c345f7bf220",
+  "browser": "Codex in-app browser through cua_repl",
+  "delivery": "self-contained local HTML, no external CDN",
+  "successful_actions": [
+    "Open final HTML",
+    "Switch e00 to e07 and observe validation_failed status",
+    "Toggle visual table",
+    "Toggle actual collision box",
+    "Toggle saved start",
+    "Toggle online IK goal",
+    "Toggle DRM path",
+    "Toggle TCP sampling boxes",
+    "Toggle official mesh context",
+    "Toggle planner spheres",
+    "Dispatch pointer drag orbit",
+    "Dispatch scroll zoom",
+    "Click reset view"
+  ],
+  "observed_ui": {
+    "scene": "e07",
+    "case_status": "validation_failed",
+    "robot_spheres": {
+      "start": 33,
+      "goal": 33
+    },
+    "obstacles": 20
+  },
+  "console_errors": [],
+  "screenshots": {
+    "status": "failed",
+    "attempts": 2,
+    "error": "CDP Page.captureScreenshot timeout during initial viewer verification"
+  },
+  "screenshot_limitation": "HTML controls and case status verified through accessibility state; orbit/zoom actions dispatched without a captured visual screenshot. Static PNG geometry was visually inspected.",
+  "static_png_visual_checks": [
+    "fr3_e00_geometry.png",
+    "fr3_e00_official_mesh_context.png",
+    "fr3_all_scenes.png"
+  ],
+  "failed_path_style_verified_from_payload_and_png": "e07 red dashed; accepted cases gold",
+  "local_server_stopped": true
+}

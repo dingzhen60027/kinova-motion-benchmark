@@ -1,0 +1,139 @@
+{
+  "date": "2026-10-30",
+  "sources": [
+    {
+      "id": "CSDECOMP_RSS2025",
+      "title": "Superfast Configuration-Space Convex Set Computation on GPUs for Online Motion Planning",
+      "doi": "10.15607/RSS.2025.XXI.045",
+      "publication_url": "https://www.roboticsproceedings.org/rss21/p045.html",
+      "read_url": "https://arxiv.org/html/2504.10783v1",
+      "read_locations": [
+        "VII-A1",
+        "VII-A5 / Table I",
+        "Appendix D"
+      ],
+      "verified": [
+        "FR3 model with33 spheres,20 spherical obstacles,table box; start right and target left",
+        "10 environment seeds x10 roadmap seeds x4 sizes;400 combinations not400 independent environments",
+        "TableI backend statistics conditional on DRM success",
+        "Minimum-distance and minimum-time tracks are separate"
+      ],
+      "unverified": [
+        "Complete original scene generation seed/asset manifest not obtained; does not establish our Kinova distribution matches FR3"
+      ]
+    },
+    {
+      "id": "TRAJOPT_IJRR2014",
+      "title": "Motion Planning with Sequential Convex Optimization and Convex Collision Checking",
+      "doi": "10.1177/0278364914528132",
+      "url": "https://rll.berkeley.edu/~sachin/papers/Schulman-IJRR2014.pdf",
+      "read_locations": [
+        "V Motion planning benchmark",
+        "Tables I/II"
+      ],
+      "verified": [
+        "Four MoveIt scenes plus one living room; diverse configurations paired",
+        "198 arm and96 fullbody problems; fixed scenes not198 independent layouts",
+        "Single and multiple initialization variants reported separately",
+        "Sampling planner output could fail subsequent collision verification"
+      ],
+      "retrieval": {
+        "url": "https://rll.berkeley.edu/~sachin/papers/Schulman-IJRR2014.pdf",
+        "type": "author-hosted original manuscript",
+        "purpose": "Section V motion-planning benchmark construction",
+        "status": "retrieved",
+        "bytes": 12651080,
+        "sha256": "6da932a2d7c8af89077c8b7909fc4bc0c84e74df206557cb020b29e3e65f3381",
+        "local_reading_path": "/tmp/trajopt-literature-aoxlyn8z/paper.txt",
+        "fulltext_read": true
+      }
+    },
+    {
+      "id": "CLUTTER_ICAC2023",
+      "title": "Benchmarking of Robot Arm Motion Planning in Cluttered Environments",
+      "doi": "10.1109/ICAC57885.2023.10275283",
+      "url": "https://eprints.whiterose.ac.uk/200729/1/benchmarking_of_robot_arm_motion_planning_in_cluttered_environments.pdf",
+      "read_locations": [
+        "IV-A/B Variation and Scenarios",
+        "V Experiments"
+      ],
+      "verified": [
+        "MBM-style Gaussian perturbations;open tabletop,semi-enclosed box,drawer-like configurations",
+        "Three robots,twelve planners;100 runs with30-second timeout",
+        "Range parameter sensitivity reported"
+      ],
+      "not_adopted": [
+        "Artificial scenario weights are not a universal metric",
+        "Robot/application descriptions do not license semantic tasks in this benchmark"
+      ]
+    },
+    {
+      "id": "OMPL_OFFICIAL_DOC",
+      "title": "How to Benchmark Planners",
+      "url": "https://ompl.kavrakilab.org/benchmark.html",
+      "verified": [
+        "Separate planning and simplification time/quality",
+        "Approximate goal solutions not exact",
+        "Finer strict post-solution checks",
+        "Defaults/example budgets not grounds for universal ranking"
+      ]
+    },
+    {
+      "id": "ORTHEY_REVIEW_SCREENED",
+      "title": "Sampling-Based Motion Planning: A Comparative Review",
+      "url": "https://www.annualreviews.org/content/journals/10.1146/annurev-control-061623-094742",
+      "screening_only": true,
+      "scope": "Publisher abstract and metadata read; not counted among ten benchmark construction fulltext studies",
+      "verified": [
+        "Publisher abstract says24 challenging planning problems"
+      ],
+      "unverified": [
+        "Detailed benchmark generation and repetitions not extracted in this turn"
+      ]
+    }
+  ],
+  "search_method": {
+    "skill": "nature-academic-search multi-source-search",
+    "academic_mcp": "not available in enabled tool catalog",
+    "openalex_fallback": "actual HTTP429; error persisted in openalex_discovery.log",
+    "completed_fallback": "Web search of primary papers,author repositories,official docs; no secondary-summary claims used as construction evidence",
+    "coverage": "Targeted broad primary-source review,not an exhaustive systematic review"
+  },
+  "queries": [
+    "Superfast Configuration-Space Convex Set Appendix benchmark Franka",
+    "robot motion planning benchmark construction evaluation pitfalls collision checking MotionBenchMaker",
+    "robot manipulator motion planning benchmark7 dof OMPL VAMP cuRobo dataset collision validity",
+    "motion planning benchmarking validation resolution independently collision checking benchmark robot arm reproducibility",
+    "MotionBenchMaker benchmark endpoint valid solvable60 seconds discard",
+    "benchmark pRRTC800",
+    "Benchmarking robot sampling-based Orthey40 25 planners survey",
+    "site:rll.berkeley.edu trajopt ijrr2014 pdf Schulman benchmark198"
+  ],
+  "failed_or_limited_retrievals": [
+    {
+      "url": "https://arxiv.org/html/2504.10783v2",
+      "error": "404",
+      "recovery": "read actual v1 and official RSS proceedings metadata"
+    },
+    {
+      "url": "https://www.roboticsproceedings.org/rss21/p045.pdf",
+      "error": "web timeout",
+      "recovery": "arXivv1 sections and prior repository archived RSS evidence; versions distinguished"
+    },
+    {
+      "url": "https://escholarship.org/uc/item/6km506db",
+      "error": "JS verification page",
+      "recovery": "author-hosted TrajOpt PDF directly retrieved"
+    },
+    {
+      "url": "https://cal-mr.berkeley.edu/papers/Schulman-IJRR-June-2014.pdf",
+      "error": "web timeout",
+      "recovery": "rll.berkeley.edu author copy"
+    },
+    {
+      "tool": "pdftotext",
+      "warning": "xref num574 not found; reconstruction succeeded; exited0",
+      "recovery": "benchmark section text extracted and inspected"
+    }
+  ]
+}

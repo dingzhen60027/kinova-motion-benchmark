@@ -1,0 +1,2924 @@
+{
+  "audit_script_sha256": "dc870ac40d0e2e9242d6b15f9ecd45c4e8562eb518e8c18a2f14dbb0e7831a97",
+  "audit_type": "Independent CPU artifact audit with SciPy BSpline; no GPU/solver invocation",
+  "created_unix_seconds": 1793196107.3786678,
+  "environment": {
+    "numpy": "2.2.6",
+    "python": "3.10.22 | packaged by conda-forge | (main, Oct  6 2026, 23:02:24) [GCC 14.4.0]",
+    "scipy": "1.15.3"
+  },
+  "frozen_planning_commit": "c8adbd8cef44db25b41559e8fbf2b38e120b624a",
+  "issues": [],
+  "limitations": [
+    "Audits existing collision arrays/hashes; does not recompute geometry collisions.",
+    "Failed solvers remain failures even if their numerical candidate validation passes.",
+    "Nc150 uses149 internal k/Nc locations from unpublished TeX comments; paper prose says150 points.",
+    "Kinova adaptation; not original FR3 or hardware reproduction.",
+    "Finite collision sampling is not a mathematical continuous-safety certificate."
+  ],
+  "maximum_scipy_sample_error_rad": 2.220446049250313e-15,
+  "native_solver_status_counts": [
+    {
+      "count": 1,
+      "solver": "IPOPT",
+      "status": "SolutionResult.kIterationLimit"
+    },
+    {
+      "count": 19,
+      "solver": "IPOPT",
+      "status": "SolutionResult.kSolutionFound"
+    },
+    {
+      "count": 19,
+      "solver": "SNOPT",
+      "status": "SolutionResult.kSolutionFound"
+    },
+    {
+      "count": 1,
+      "solver": "SNOPT",
+      "status": "SolutionResult.kSolverSpecificError"
+    }
+  ],
+  "nto_jobs": 40,
+  "nto_status_counts": {
+    "collision_failed": 9,
+    "solver_failed": 2,
+    "success_validated_numerical": 29
+  },
+  "numerical_validation_artifacts": 40,
+  "passed": true,
+  "planned_jobs": 100,
+  "receipts_verified": 100,
+  "reconstructed_finite_candidates": 40,
+  "recorded_model_disagreements": 1,
+  "records": [
+    {
+      "accepted_frontend": true,
+      "artifacts": "finite_candidate_and_validation_audited",
+      "attempt": "jobs/test-open_control-000-p00-NTO_PAPER-minimum_distance-0c087c2b/attempts/0001",
+      "case_id": "test-open_control-000-p00",
+      "collocation_bindings": 149,
+      "finite_reconstructable_candidate": true,
+      "initial_original_path_equals_native_path": true,
+      "job_id": "test-open_control-000-p00-NTO_PAPER-minimum_distance-0c087c2b",
+      "native_path_sha256": "fc39d2b09ef025ed5aafca5f73dd29516f85f8d9b111f26e6e9342e4be61bc73",
+      "native_solver_status": "SolutionResult.kSolutionFound",
+      "native_solver_success": true,
+      "objective": "minimum_distance",
+      "order": 2,
+      "permitted_solver_seconds": 59.479572667740285,
+      "recorded_independent_collisions": 0,
+      "recorded_minimum_clearance_m": 0.019025026584333114,
+      "recorded_model_disagreements": 0,
+      "recorded_native_collisions": 0,
+      "result_sha256": "1328f94402f37908a88dfc560296b1adc0ecb992f0d2f4bb3c7c8ac8cb221720",
+      "samples": 816,
+      "scipy_cost": 4.071124958903811,
+      "scipy_endpoint_error_rad": 0.0,
+      "scipy_maximum_sample_error_rad": 0.0,
+      "scipy_maximum_sample_step_rad": 0.004995245348348788,
+      "solver": "SNOPT",
+      "status": "success_validated_numerical",
+      "validation_status": "success_validated_numerical",
+      "warm_start_controls": 2,
+      "warm_start_nodes": 2
+    },
+    {
+      "accepted_frontend": true,
+      "artifacts": "finite_candidate_and_validation_audited",
+      "attempt": "jobs/test-open_control-000-p00-NTO_PAPER-minimum_time-6e4d813c/attempts/0001",
+      "case_id": "test-open_control-000-p00",
+      "collocation_bindings": 149,
+      "finite_reconstructable_candidate": true,
+      "initial_original_path_equals_native_path": true,
+      "job_id": "test-open_control-000-p00-NTO_PAPER-minimum_time-6e4d813c",
+      "native_path_sha256": "fc39d2b09ef025ed5aafca5f73dd29516f85f8d9b111f26e6e9342e4be61bc73",
+      "native_solver_status": "SolutionResult.kSolutionFound",
+      "native_solver_success": true,
+      "objective": "minimum_time",
+      "order": 4,
+      "permitted_solver_seconds": 59.454782960005105,
+      "recorded_independent_collisions": 0,
+      "recorded_minimum_clearance_m": 0.01902502658433321,
+      "recorded_model_disagreements": 0,
+      "recorded_native_collisions": 0,
+      "result_sha256": "7a7594da19dd6feed4e93ed1d860437d26605bd2b56a8c4328eef58aa6fe4c7f",
+      "samples": 2444,
+      "scipy_cost": 9.79492718052071,
+      "scipy_derivative_control_bounds": {
+        "acceleration_per_joint": [
+          0.04997981235452831,
+          0.011601980857717598,
+          0.04106589709170433,
+          0.0858692751643123,
+          0.20418732729516412,
+          0.10406089687503353,
+          0.024676875045848555
+        ],
+        "endpoint_velocity": 0.0,
+        "velocity_per_joint": [
+          0.24477431125434707,
+          0.056820278825569545,
+          0.20111873580800058,
+          0.42054164863926724,
+          1.0000000010206407,
+          0.5096344536153143,
+          0.12085409705844763
+        ]
+      },
+      "scipy_endpoint_error_rad": 0.0,
+      "scipy_maximum_sample_error_rad": 2.220446049250313e-15,
+      "scipy_maximum_sample_step_rad": 0.002499667252267895,
+      "solver": "IPOPT",
+      "status": "success_validated_numerical",
+      "validation_status": "success_validated_numerical",
+      "warm_start_controls": 4,
+      "warm_start_nodes": 2
+    },
+    {
+      "accepted_frontend": true,
+      "artifacts": "finite_candidate_and_validation_audited",
+      "attempt": "jobs/test-open_control-000-p01-NTO_PAPER-minimum_distance-4bac2584/attempts/0001",
+      "case_id": "test-open_control-000-p01",
+      "collocation_bindings": 149,
+      "finite_reconstructable_candidate": true,
+      "initial_original_path_equals_native_path": true,
+      "job_id": "test-open_control-000-p01-NTO_PAPER-minimum_distance-4bac2584",
+      "native_path_sha256": "785685fefa94dca0f2be17a7e1e3daba8f7d43e422cda4cecfb0467c1d0018fb",
+      "native_solver_status": "SolutionResult.kSolutionFound",
+      "native_solver_success": true,
+      "objective": "minimum_distance",
+      "order": 2,
+      "permitted_solver_seconds": 59.404685464221984,
+      "recorded_independent_collisions": 10,
+      "recorded_minimum_clearance_m": -0.006179868478601428,
+      "recorded_model_disagreements": 0,
+      "recorded_native_collisions": 10,
+      "result_sha256": "695f56e8cd35c3c927e2516f030e14c68353f40761bda3e1dd801ac980d61152",
+      "samples": 1651,
+      "scipy_cost": 5.540338840788384,
+      "scipy_endpoint_error_rad": 0.0,
+      "scipy_maximum_sample_error_rad": 0.0,
+      "scipy_maximum_sample_step_rad": 0.004997828773699138,
+      "solver": "SNOPT",
+      "status": "collision_failed",
+      "validation_status": "collision_failed",
+      "warm_start_controls": 3,
+      "warm_start_nodes": 3
+    },
+    {
+      "accepted_frontend": true,
+      "artifacts": "finite_candidate_and_validation_audited",
+      "attempt": "jobs/test-open_control-000-p01-NTO_PAPER-minimum_time-a5a51d12/attempts/0001",
+      "case_id": "test-open_control-000-p01",
+      "collocation_bindings": 149,
+      "finite_reconstructable_candidate": true,
+      "initial_original_path_equals_native_path": true,
+      "job_id": "test-open_control-000-p01-NTO_PAPER-minimum_time-a5a51d12",
+      "native_path_sha256": "785685fefa94dca0f2be17a7e1e3daba8f7d43e422cda4cecfb0467c1d0018fb",
+      "native_solver_status": "SolutionResult.kSolutionFound",
+      "native_solver_success": true,
+      "objective": "minimum_time",
+      "order": 4,
+      "permitted_solver_seconds": 59.40983928600326,
+      "recorded_independent_collisions": 2,
+      "recorded_minimum_clearance_m": -0.0003933894612239939,
+      "recorded_model_disagreements": 0,
+      "recorded_native_collisions": 2,
+      "result_sha256": "02403eda18c61ea9dcb74aaa0fdcc693f0cc8e2161f86d13639d59ad01c22979",
+      "samples": 2065,
+      "scipy_cost": 5.277134718061652,
+      "scipy_derivative_control_bounds": {
+        "acceleration_per_joint": [
+          0.7579870936151458,
+          0.757987093598767,
+          0.757987093604283,
+          0.7579870934474832,
+          0.6508674222179301,
+          0.7579870936153357,
+          0.7579870935997237
+        ],
+        "endpoint_velocity": 0.0,
+        "velocity_per_joint": [
+          1.0000000018897834,
+          1.0000000018681752,
+          1.0000000018754522,
+          1.0000000016685888,
+          0.8586787676603828,
+          1.000000001890034,
+          1.0000000018694373
+        ]
+      },
+      "scipy_endpoint_error_rad": 0.0,
+      "scipy_maximum_sample_error_rad": 1.7763568394002505e-15,
+      "scipy_maximum_sample_step_rad": 0.003539810565728912,
+      "solver": "IPOPT",
+      "status": "collision_failed",
+      "validation_status": "collision_failed",
+      "warm_start_controls": 5,
+      "warm_start_nodes": 3
+    },
+    {
+      "accepted_frontend": true,
+      "artifacts": "finite_candidate_and_validation_audited",
+      "attempt": "jobs/test-open_control-000-p02-NTO_PAPER-minimum_distance-3b425d3c/attempts/0001",
+      "case_id": "test-open_control-000-p02",
+      "collocation_bindings": 149,
+      "finite_reconstructable_candidate": true,
+      "initial_original_path_equals_native_path": true,
+      "job_id": "test-open_control-000-p02-NTO_PAPER-minimum_distance-3b425d3c",
+      "native_path_sha256": "fac507ec803eb27d3140bc245c19f649fbc036ca1763b2b1fe1d68228a983620",
+      "native_solver_status": "SolutionResult.kSolutionFound",
+      "native_solver_success": true,
+      "objective": "minimum_distance",
+      "order": 2,
+      "permitted_solver_seconds": 59.37442896794528,
+      "recorded_independent_collisions": 16,
+      "recorded_minimum_clearance_m": -2.0718093462712694e-05,
+      "recorded_model_disagreements": 0,
+      "recorded_native_collisions": 16,
+      "result_sha256": "2b0f1b68e7808b8c6e05150a2e60f9365f7e1b893c539cef74f29ae429f4967a",
+      "samples": 1985,
+      "scipy_cost": 6.887476866020947,
+      "scipy_endpoint_error_rad": 0.0,
+      "scipy_maximum_sample_error_rad": 0.0,
+      "scipy_maximum_sample_step_rad": 0.004997559494209051,
+      "solver": "SNOPT",
+      "status": "collision_failed",
+      "validation_status": "collision_failed",
+      "warm_start_controls": 3,
+      "warm_start_nodes": 3
+    },
+    {
+      "accepted_frontend": true,
+      "artifacts": "finite_candidate_and_validation_audited",
+      "attempt": "jobs/test-open_control-000-p02-NTO_PAPER-minimum_time-cab4b9b5/attempts/0001",
+      "case_id": "test-open_control-000-p02",
+      "collocation_bindings": 149,
+      "finite_reconstructable_candidate": true,
+      "initial_original_path_equals_native_path": true,
+      "job_id": "test-open_control-000-p02-NTO_PAPER-minimum_time-cab4b9b5",
+      "native_path_sha256": "fac507ec803eb27d3140bc245c19f649fbc036ca1763b2b1fe1d68228a983620",
+      "native_solver_status": "SolutionResult.kSolutionFound",
+      "native_solver_success": true,
+      "objective": "minimum_time",
+      "order": 4,
+      "permitted_solver_seconds": 59.35004057222977,
+      "recorded_independent_collisions": 0,
+      "recorded_minimum_clearance_m": 0.0179621350494271,
+      "recorded_model_disagreements": 0,
+      "recorded_native_collisions": 0,
+      "result_sha256": "1baf99e9637721af2594b7944b6fd7be268e07c9253a9d840502b4d0e449f81b",
+      "samples": 2243,
+      "scipy_cost": 6.006642687386871,
+      "scipy_derivative_control_bounds": {
+        "acceleration_per_joint": [
+          0.644898912460212,
+          0.4489913440871523,
+          0.2540673636585614,
+          0.408802055464922,
+          0.3653735442630615,
+          0.3436582878314162,
+          0.6659294076265049
+        ],
+        "endpoint_velocity": 0.0,
+        "velocity_per_joint": [
+          0.9684193341582197,
+          0.674232643415274,
+          0.3815229680058397,
+          0.613881969261774,
+          0.5486670819530854,
+          0.5160581353906172,
+          1.0000000016589041
+        ]
+      },
+      "scipy_endpoint_error_rad": 0.0,
+      "scipy_maximum_sample_error_rad": 1.3322676295501878e-15,
+      "scipy_maximum_sample_step_rad": 0.00461642899836682,
+      "solver": "IPOPT",
+      "status": "success_validated_numerical",
+      "validation_status": "success_validated_numerical",
+      "warm_start_controls": 5,
+      "warm_start_nodes": 3
+    },
+    {
+      "accepted_frontend": true,
+      "artifacts": "finite_candidate_and_validation_audited",
+      "attempt": "jobs/test-open_control-000-p03-NTO_PAPER-minimum_distance-6d5292a0/attempts/0001",
+      "case_id": "test-open_control-000-p03",
+      "collocation_bindings": 149,
+      "finite_reconstructable_candidate": true,
+      "initial_original_path_equals_native_path": true,
+      "job_id": "test-open_control-000-p03-NTO_PAPER-minimum_distance-6d5292a0",
+      "native_path_sha256": "4a9e889a74672a145dc88b7f3724a24562a8adf0af561e6d3eae979acc5916e6",
+      "native_solver_status": "SolutionResult.kSolutionFound",
+      "native_solver_success": true,
+      "objective": "minimum_distance",
+      "order": 2,
+      "permitted_solver_seconds": 59.47295947279781,
+      "recorded_independent_collisions": 0,
+      "recorded_minimum_clearance_m": 0.0029820960385851802,
+      "recorded_model_disagreements": 0,
+      "recorded_native_collisions": 0,
+      "result_sha256": "12cfebe6cd32a9b03aa673f45fb5e7a447d380f13d04970f02685f71b731d30d",
+      "samples": 812,
+      "scipy_cost": 4.051141017105396,
+      "scipy_endpoint_error_rad": 0.0,
+      "scipy_maximum_sample_error_rad": 0.0,
+      "scipy_maximum_sample_step_rad": 0.004995241698034428,
+      "solver": "SNOPT",
+      "status": "success_validated_numerical",
+      "validation_status": "success_validated_numerical",
+      "warm_start_controls": 2,
+      "warm_start_nodes": 2
+    },
+    {
+      "accepted_frontend": true,
+      "artifacts": "finite_candidate_and_validation_audited",
+      "attempt": "jobs/test-open_control-000-p03-NTO_PAPER-minimum_time-124295e0/attempts/0001",
+      "case_id": "test-open_control-000-p03",
+      "collocation_bindings": 149,
+      "finite_reconstructable_candidate": true,
+      "initial_original_path_equals_native_path": true,
+      "job_id": "test-open_control-000-p03-NTO_PAPER-minimum_time-124295e0",
+      "native_path_sha256": "4a9e889a74672a145dc88b7f3724a24562a8adf0af561e6d3eae979acc5916e6",
+      "native_solver_status": "SolutionResult.kSolutionFound",
+      "native_solver_success": true,
+      "objective": "minimum_time",
+      "order": 4,
+      "permitted_solver_seconds": 59.46606356929988,
+      "recorded_independent_collisions": 0,
+      "recorded_minimum_clearance_m": 0.0029818473672209578,
+      "recorded_model_disagreements": 0,
+      "recorded_native_collisions": 0,
+      "result_sha256": "eb188ddf55544047ae68bdb87914d85aa070fb2f3ea96af6caeab97f6a47fa39",
+      "samples": 2432,
+      "scipy_cost": 10.377586140106613,
+      "scipy_derivative_control_bounds": {
+        "acceleration_per_joint": [
+          0.19272304512081667,
+          0.01041513151105605,
+          0.002008765747167085,
+          0.06209016086179029,
+          0.038833479766773975,
+          0.09056258463964695,
+          0.011046321946384408
+        ],
+        "endpoint_velocity": 0.0,
+        "velocity_per_joint": [
+          1.0000000009624643,
+          0.054041962208261456,
+          0.010423069788261024,
+          0.3221729963981525,
+          0.2014988906998921,
+          0.4699105115843161,
+          0.05731707876497717
+        ]
+      },
+      "scipy_endpoint_error_rad": 0.0,
+      "scipy_maximum_sample_error_rad": 1.7763568394002505e-15,
+      "scipy_maximum_sample_step_rad": 0.0024996755174440523,
+      "solver": "IPOPT",
+      "status": "success_validated_numerical",
+      "validation_status": "success_validated_numerical",
+      "warm_start_controls": 4,
+      "warm_start_nodes": 2
+    },
+    {
+      "accepted_frontend": true,
+      "artifacts": "finite_candidate_and_validation_audited",
+      "attempt": "jobs/test-open_control-000-p04-NTO_PAPER-minimum_distance-6b8134ae/attempts/0001",
+      "case_id": "test-open_control-000-p04",
+      "collocation_bindings": 149,
+      "finite_reconstructable_candidate": true,
+      "initial_original_path_equals_native_path": true,
+      "job_id": "test-open_control-000-p04-NTO_PAPER-minimum_distance-6b8134ae",
+      "native_path_sha256": "e6f2aa7a8ddca3462b5bb5054892a1ad5b5904f081899352de0b1db05e12c043",
+      "native_solver_status": "SolutionResult.kSolutionFound",
+      "native_solver_success": true,
+      "objective": "minimum_distance",
+      "order": 2,
+      "permitted_solver_seconds": 59.42473964672536,
+      "recorded_independent_collisions": 0,
+      "recorded_minimum_clearance_m": 0.019025026584333218,
+      "recorded_model_disagreements": 0,
+      "recorded_native_collisions": 0,
+      "result_sha256": "86ad007706d10859c6cd94b5a0c9e9296458b05adbe5e75fa3c19472d49d5f97",
+      "samples": 1305,
+      "scipy_cost": 6.516484462294931,
+      "scipy_endpoint_error_rad": 0.0,
+      "scipy_maximum_sample_error_rad": 0.0,
+      "scipy_maximum_sample_step_rad": 0.004997304035503154,
+      "solver": "SNOPT",
+      "status": "success_validated_numerical",
+      "validation_status": "success_validated_numerical",
+      "warm_start_controls": 2,
+      "warm_start_nodes": 2
+    },
+    {
+      "accepted_frontend": true,
+      "artifacts": "finite_candidate_and_validation_audited",
+      "attempt": "jobs/test-open_control-000-p04-NTO_PAPER-minimum_time-98906b48/attempts/0001",
+      "case_id": "test-open_control-000-p04",
+      "collocation_bindings": 149,
+      "finite_reconstructable_candidate": true,
+      "initial_original_path_equals_native_path": true,
+      "job_id": "test-open_control-000-p04-NTO_PAPER-minimum_time-98906b48",
+      "native_path_sha256": "e6f2aa7a8ddca3462b5bb5054892a1ad5b5904f081899352de0b1db05e12c043",
+      "native_solver_status": "SolutionResult.kSolutionFound",
+      "native_solver_success": true,
+      "objective": "minimum_time",
+      "order": 4,
+      "permitted_solver_seconds": 59.40105254994705,
+      "recorded_independent_collisions": 0,
+      "recorded_minimum_clearance_m": 0.01902502658433324,
+      "recorded_model_disagreements": 0,
+      "recorded_native_collisions": 0,
+      "result_sha256": "5a4a25360636e8b64020a00589efd7010ebd6075e999861e0138aeb283cc17a0",
+      "samples": 3911,
+      "scipy_cost": 15.496747846572829,
+      "scipy_derivative_control_bounds": {
+        "acceleration_per_joint": [
+          0.008760086171063657,
+          0.02066654564926571,
+          0.005240421527336791,
+          0.04088612768816603,
+          0.0684647486020926,
+          0.05441206467396396,
+          0.12905933687795357
+        ],
+        "endpoint_velocity": 0.0,
+        "velocity_per_joint": [
+          0.06787642325361157,
+          0.16013212339317873,
+          0.04060474550944516,
+          0.31680100560314434,
+          0.5304904727328144,
+          0.4216050230319162,
+          1.0000000004217722
+        ]
+      },
+      "scipy_endpoint_error_rad": 0.0,
+      "scipy_maximum_sample_error_rad": 2.220446049250313e-15,
+      "scipy_maximum_sample_step_rad": 0.0024999298825961374,
+      "solver": "IPOPT",
+      "status": "success_validated_numerical",
+      "validation_status": "success_validated_numerical",
+      "warm_start_controls": 4,
+      "warm_start_nodes": 2
+    },
+    {
+      "accepted_frontend": true,
+      "artifacts": "finite_candidate_and_validation_audited",
+      "attempt": "jobs/test-open_control-001-p00-NTO_PAPER-minimum_distance-95b0c3b3/attempts/0001",
+      "case_id": "test-open_control-001-p00",
+      "collocation_bindings": 149,
+      "finite_reconstructable_candidate": true,
+      "initial_original_path_equals_native_path": true,
+      "job_id": "test-open_control-001-p00-NTO_PAPER-minimum_distance-95b0c3b3",
+      "native_path_sha256": "8e8397350ecc2ced1011e603e9d5f37560deaf99102d57f0c44c57b6701f3e60",
+      "native_solver_status": "SolutionResult.kSolutionFound",
+      "native_solver_success": true,
+      "objective": "minimum_distance",
+      "order": 2,
+      "permitted_solver_seconds": 59.474160524085164,
+      "recorded_independent_collisions": 0,
+      "recorded_minimum_clearance_m": 0.019025026584333332,
+      "recorded_model_disagreements": 0,
+      "recorded_native_collisions": 0,
+      "result_sha256": "93dab68ed7d94ec7abbcdac5b19b2ad53e5c47ef23de84c8334a06e81945bc51",
+      "samples": 633,
+      "scipy_cost": 3.1562943375096664,
+      "scipy_endpoint_error_rad": 0.0,
+      "scipy_maximum_sample_error_rad": 0.0,
+      "scipy_maximum_sample_step_rad": 0.004994136609984231,
+      "solver": "SNOPT",
+      "status": "success_validated_numerical",
+      "validation_status": "success_validated_numerical",
+      "warm_start_controls": 2,
+      "warm_start_nodes": 2
+    },
+    {
+      "accepted_frontend": true,
+      "artifacts": "finite_candidate_and_validation_audited",
+      "attempt": "jobs/test-open_control-001-p00-NTO_PAPER-minimum_time-379769e8/attempts/0001",
+      "case_id": "test-open_control-001-p00",
+      "collocation_bindings": 149,
+      "finite_reconstructable_candidate": true,
+      "initial_original_path_equals_native_path": true,
+      "job_id": "test-open_control-001-p00-NTO_PAPER-minimum_time-379769e8",
+      "native_path_sha256": "8e8397350ecc2ced1011e603e9d5f37560deaf99102d57f0c44c57b6701f3e60",
+      "native_solver_status": "SolutionResult.kSolutionFound",
+      "native_solver_success": true,
+      "objective": "minimum_time",
+      "order": 4,
+      "permitted_solver_seconds": 59.49057635106146,
+      "recorded_independent_collisions": 0,
+      "recorded_minimum_clearance_m": 0.01902502658433333,
+      "recorded_model_disagreements": 0,
+      "recorded_native_collisions": 0,
+      "result_sha256": "963084b36a6d2799ea48d07e025728ad17166ca78da73a78157057380549cf78",
+      "samples": 1895,
+      "scipy_cost": 6.20402091797871,
+      "scipy_derivative_control_bounds": {
+        "acceleration_per_joint": [
+          0.08548664424799836,
+          0.036194930730923856,
+          0.32237157637958,
+          0.105798498336171,
+          0.04631561906149699,
+          0.2979066812737712,
+          0.16569484563916476
+        ],
+        "endpoint_velocity": 0.0,
+        "velocity_per_joint": [
+          0.2651804645611931,
+          0.11227705368972102,
+          1.000000001610343,
+          0.3281880483841703,
+          0.1436715347433304,
+          0.9241096411140464,
+          0.5139871441733158
+        ]
+      },
+      "scipy_endpoint_error_rad": 0.0,
+      "scipy_maximum_sample_error_rad": 2.220446049250313e-15,
+      "scipy_maximum_sample_step_rad": 0.002499704195633087,
+      "solver": "IPOPT",
+      "status": "success_validated_numerical",
+      "validation_status": "success_validated_numerical",
+      "warm_start_controls": 4,
+      "warm_start_nodes": 2
+    },
+    {
+      "accepted_frontend": true,
+      "artifacts": "finite_candidate_and_validation_audited",
+      "attempt": "jobs/test-open_control-001-p01-NTO_PAPER-minimum_distance-e2657bb7/attempts/0001",
+      "case_id": "test-open_control-001-p01",
+      "collocation_bindings": 149,
+      "finite_reconstructable_candidate": true,
+      "initial_original_path_equals_native_path": true,
+      "job_id": "test-open_control-001-p01-NTO_PAPER-minimum_distance-e2657bb7",
+      "native_path_sha256": "abc267fcfa391387bf904bba9a866063ea0c5f03731944d6a0d8b1bd3b87d159",
+      "native_solver_status": "SolutionResult.kSolutionFound",
+      "native_solver_success": true,
+      "objective": "minimum_distance",
+      "order": 2,
+      "permitted_solver_seconds": 59.45305892918259,
+      "recorded_independent_collisions": 0,
+      "recorded_minimum_clearance_m": 0.019025026584333436,
+      "recorded_model_disagreements": 0,
+      "recorded_native_collisions": 0,
+      "result_sha256": "135275ad5ed3437f8b1f8aa9e23c7c893074718c44750243d668b647f8b99eb8",
+      "samples": 980,
+      "scipy_cost": 4.894463567042161,
+      "scipy_endpoint_error_rad": 0.0,
+      "scipy_maximum_sample_error_rad": 0.0,
+      "scipy_maximum_sample_step_rad": 0.004999452060309387,
+      "solver": "SNOPT",
+      "status": "success_validated_numerical",
+      "validation_status": "success_validated_numerical",
+      "warm_start_controls": 2,
+      "warm_start_nodes": 2
+    },
+    {
+      "accepted_frontend": true,
+      "artifacts": "finite_candidate_and_validation_audited",
+      "attempt": "jobs/test-open_control-001-p01-NTO_PAPER-minimum_time-333b88ee/attempts/0001",
+      "case_id": "test-open_control-001-p01",
+      "collocation_bindings": 149,
+      "finite_reconstructable_candidate": true,
+      "initial_original_path_equals_native_path": true,
+      "job_id": "test-open_control-001-p01-NTO_PAPER-minimum_time-333b88ee",
+      "native_path_sha256": "abc267fcfa391387bf904bba9a866063ea0c5f03731944d6a0d8b1bd3b87d159",
+      "native_solver_status": "SolutionResult.kSolutionFound",
+      "native_solver_success": true,
+      "objective": "minimum_time",
+      "order": 4,
+      "permitted_solver_seconds": 59.4285402437672,
+      "recorded_independent_collisions": 0,
+      "recorded_minimum_clearance_m": 0.019025026584333412,
+      "recorded_model_disagreements": 0,
+      "recorded_native_collisions": 0,
+      "result_sha256": "d76954c14ce0f893aa5e2a8f3cdfe21c362e6bc10b398cb9a15fc1a64fbc8e67",
+      "samples": 2938,
+      "scipy_cost": 11.915311731028497,
+      "scipy_derivative_control_bounds": {
+        "acceleration_per_joint": [
+          0.03255270373846227,
+          0.04298263108765503,
+          0.1678512523066541,
+          0.004385697740568018,
+          0.0126294724337602,
+          0.029283148967569894,
+          0.10328351687182616
+        ],
+        "endpoint_velocity": 0.0,
+        "velocity_per_joint": [
+          0.19393780636579735,
+          0.25607572421460306,
+          0.9999999978386499,
+          0.026128477868467642,
+          0.07524205052334197,
+          0.1744589242073703,
+          0.615327650102375
+        ]
+      },
+      "scipy_endpoint_error_rad": 0.0,
+      "scipy_maximum_sample_error_rad": 1.7763568394002505e-15,
+      "scipy_maximum_sample_step_rad": 0.0024997259335577554,
+      "solver": "IPOPT",
+      "status": "success_validated_numerical",
+      "validation_status": "success_validated_numerical",
+      "warm_start_controls": 4,
+      "warm_start_nodes": 2
+    },
+    {
+      "accepted_frontend": true,
+      "artifacts": "finite_candidate_and_validation_audited",
+      "attempt": "jobs/test-open_control-001-p02-NTO_PAPER-minimum_distance-7d85914c/attempts/0001",
+      "case_id": "test-open_control-001-p02",
+      "collocation_bindings": 149,
+      "finite_reconstructable_candidate": true,
+      "initial_original_path_equals_native_path": true,
+      "job_id": "test-open_control-001-p02-NTO_PAPER-minimum_distance-7d85914c",
+      "native_path_sha256": "57441048782fb83b48c514bd1bb15cdcee602f6f1387e449e48624846bf2f367",
+      "native_solver_status": "SolutionResult.kSolutionFound",
+      "native_solver_success": true,
+      "objective": "minimum_distance",
+      "order": 2,
+      "permitted_solver_seconds": 59.41620435612276,
+      "recorded_independent_collisions": 0,
+      "recorded_minimum_clearance_m": 0.019025026584333297,
+      "recorded_model_disagreements": 0,
+      "recorded_native_collisions": 0,
+      "result_sha256": "c334febbeb30e17a8f7e344fa816a73a5ca54e37ab80b5a7ff2ec5ec96f04a59",
+      "samples": 1320,
+      "scipy_cost": 6.5915087234505405,
+      "scipy_endpoint_error_rad": 0.0,
+      "scipy_maximum_sample_error_rad": 0.0,
+      "scipy_maximum_sample_step_rad": 0.004997353088287802,
+      "solver": "SNOPT",
+      "status": "success_validated_numerical",
+      "validation_status": "success_validated_numerical",
+      "warm_start_controls": 2,
+      "warm_start_nodes": 2
+    },
+    {
+      "accepted_frontend": true,
+      "artifacts": "finite_candidate_and_validation_audited",
+      "attempt": "jobs/test-open_control-001-p02-NTO_PAPER-minimum_time-7ccf08b6/attempts/0001",
+      "case_id": "test-open_control-001-p02",
+      "collocation_bindings": 149,
+      "finite_reconstructable_candidate": true,
+      "initial_original_path_equals_native_path": true,
+      "job_id": "test-open_control-001-p02-NTO_PAPER-minimum_time-7ccf08b6",
+      "native_path_sha256": "57441048782fb83b48c514bd1bb15cdcee602f6f1387e449e48624846bf2f367",
+      "native_solver_status": "SolutionResult.kSolutionFound",
+      "native_solver_success": true,
+      "objective": "minimum_time",
+      "order": 4,
+      "permitted_solver_seconds": 59.41229607909918,
+      "recorded_independent_collisions": 0,
+      "recorded_minimum_clearance_m": 0.019025026584333266,
+      "recorded_model_disagreements": 0,
+      "recorded_native_collisions": 0,
+      "result_sha256": "b758198fb817bbaf745d644fe45891841e9bd541cc2a94b8f007d7d757469a60",
+      "samples": 3956,
+      "scipy_cost": 11.23800650820564,
+      "scipy_derivative_control_bounds": {
+        "acceleration_per_joint": [
+          0.11529408400133542,
+          0.04588688782946799,
+          0.1779675069878869,
+          0.11583004093649917,
+          0.023829982351968936,
+          0.15391479189390528,
+          0.11541331549170443
+        ],
+        "endpoint_velocity": 0.0,
+        "velocity_per_joint": [
+          0.6478378331823076,
+          0.2578385720344317,
+          1.000000000889503,
+          0.6508493769450516,
+          0.13390074838092622,
+          0.864847716506412,
+          0.6485077953146826
+        ]
+      },
+      "scipy_endpoint_error_rad": 8.671119018262734e-16,
+      "scipy_maximum_sample_error_rad": 2.220446049250313e-15,
+      "scipy_maximum_sample_step_rad": 0.0024999400441158806,
+      "solver": "IPOPT",
+      "status": "success_validated_numerical",
+      "validation_status": "success_validated_numerical",
+      "warm_start_controls": 4,
+      "warm_start_nodes": 2
+    },
+    {
+      "accepted_frontend": true,
+      "artifacts": "finite_candidate_and_validation_audited",
+      "attempt": "jobs/test-open_control-001-p03-NTO_PAPER-minimum_distance-09ffea51/attempts/0001",
+      "case_id": "test-open_control-001-p03",
+      "collocation_bindings": 149,
+      "finite_reconstructable_candidate": true,
+      "initial_original_path_equals_native_path": true,
+      "job_id": "test-open_control-001-p03-NTO_PAPER-minimum_distance-09ffea51",
+      "native_path_sha256": "2d07a1dd67e996a22c2789cdfdd308d6c3f77341c057e951983490f370c0ed17",
+      "native_solver_status": "SolutionResult.kSolutionFound",
+      "native_solver_success": true,
+      "objective": "minimum_distance",
+      "order": 2,
+      "permitted_solver_seconds": 59.43135971901938,
+      "recorded_independent_collisions": 8,
+      "recorded_minimum_clearance_m": -6.0855954529648315e-05,
+      "recorded_model_disagreements": 0,
+      "recorded_native_collisions": 8,
+      "result_sha256": "42417f6e0eb5a282df997957afec550f8c93e05580d22c72effb571ce115c46d",
+      "samples": 1131,
+      "scipy_cost": 3.9512024976971127,
+      "scipy_endpoint_error_rad": 0.0,
+      "scipy_maximum_sample_error_rad": 0.0,
+      "scipy_maximum_sample_step_rad": 0.0049966353214900665,
+      "solver": "SNOPT",
+      "status": "collision_failed",
+      "validation_status": "collision_failed",
+      "warm_start_controls": 3,
+      "warm_start_nodes": 3
+    },
+    {
+      "accepted_frontend": true,
+      "artifacts": "finite_candidate_and_validation_audited",
+      "attempt": "jobs/test-open_control-001-p03-NTO_PAPER-minimum_time-f56a4a36/attempts/0001",
+      "case_id": "test-open_control-001-p03",
+      "collocation_bindings": 149,
+      "finite_reconstructable_candidate": true,
+      "initial_original_path_equals_native_path": true,
+      "job_id": "test-open_control-001-p03-NTO_PAPER-minimum_time-f56a4a36",
+      "native_path_sha256": "2d07a1dd67e996a22c2789cdfdd308d6c3f77341c057e951983490f370c0ed17",
+      "native_solver_status": "SolutionResult.kSolutionFound",
+      "native_solver_success": true,
+      "objective": "minimum_time",
+      "order": 4,
+      "permitted_solver_seconds": 59.4245571619831,
+      "recorded_independent_collisions": 0,
+      "recorded_minimum_clearance_m": 0.019025026584333273,
+      "recorded_model_disagreements": 0,
+      "recorded_native_collisions": 0,
+      "result_sha256": "f33a9cd9489b12ebe2d8b48f382e73cc8928b8c002a5cc178695ca19f963ff31",
+      "samples": 1389,
+      "scipy_cost": 3.7927681617340903,
+      "scipy_derivative_control_bounds": {
+        "acceleration_per_joint": [
+          0.2515472704065495,
+          0.8424848914693283,
+          0.992564154777719,
+          0.9618515604136134,
+          1.0000000099978925,
+          0.8572239978667,
+          0.4684500323749935
+        ],
+        "endpoint_velocity": 0.0,
+        "velocity_per_joint": [
+          0.23851511959226923,
+          0.7988374682767172,
+          0.94114143117986,
+          0.9120199936627517,
+          0.9481920499134447,
+          0.8128129716458079,
+          0.4441805920387948
+        ]
+      },
+      "scipy_endpoint_error_rad": 0.0,
+      "scipy_maximum_sample_error_rad": 1.3322676295501878e-15,
+      "scipy_maximum_sample_step_rad": 0.004274830610689627,
+      "solver": "IPOPT",
+      "status": "success_validated_numerical",
+      "validation_status": "success_validated_numerical",
+      "warm_start_controls": 5,
+      "warm_start_nodes": 3
+    },
+    {
+      "accepted_frontend": true,
+      "artifacts": "finite_candidate_and_validation_audited",
+      "attempt": "jobs/test-open_control-001-p04-NTO_PAPER-minimum_distance-9a12e156/attempts/0001",
+      "case_id": "test-open_control-001-p04",
+      "collocation_bindings": 149,
+      "finite_reconstructable_candidate": true,
+      "initial_original_path_equals_native_path": true,
+      "job_id": "test-open_control-001-p04-NTO_PAPER-minimum_distance-9a12e156",
+      "native_path_sha256": "b88a444afc6490678597b29988eeb73abcaab3c03ff291a823a2f5df0f6a8ca4",
+      "native_solver_status": "SolutionResult.kSolutionFound",
+      "native_solver_success": true,
+      "objective": "minimum_distance",
+      "order": 2,
+      "permitted_solver_seconds": 59.445087620057166,
+      "recorded_independent_collisions": 0,
+      "recorded_minimum_clearance_m": 0.014747110259234808,
+      "recorded_model_disagreements": 0,
+      "recorded_native_collisions": 0,
+      "result_sha256": "cfa6dcb0edebeffa4232dce6045fa0a5d46f2babb614b4f991a9cd833f41f1f7",
+      "samples": 1110,
+      "scipy_cost": 5.54190164621074,
+      "scipy_endpoint_error_rad": 0.0,
+      "scipy_maximum_sample_error_rad": 0.0,
+      "scipy_maximum_sample_step_rad": 0.004997206173319861,
+      "solver": "SNOPT",
+      "status": "success_validated_numerical",
+      "validation_status": "success_validated_numerical",
+      "warm_start_controls": 2,
+      "warm_start_nodes": 2
+    },
+    {
+      "accepted_frontend": true,
+      "artifacts": "finite_candidate_and_validation_audited",
+      "attempt": "jobs/test-open_control-001-p04-NTO_PAPER-minimum_time-8f79b581/attempts/0001",
+      "case_id": "test-open_control-001-p04",
+      "collocation_bindings": 149,
+      "finite_reconstructable_candidate": true,
+      "initial_original_path_equals_native_path": true,
+      "job_id": "test-open_control-001-p04-NTO_PAPER-minimum_time-8f79b581",
+      "native_path_sha256": "b88a444afc6490678597b29988eeb73abcaab3c03ff291a823a2f5df0f6a8ca4",
+      "native_solver_status": "SolutionResult.kSolutionFound",
+      "native_solver_success": true,
+      "objective": "minimum_time",
+      "order": 4,
+      "permitted_solver_seconds": 59.441868542693555,
+      "recorded_independent_collisions": 0,
+      "recorded_minimum_clearance_m": 0.01474650944896927,
+      "recorded_model_disagreements": 0,
+      "recorded_native_collisions": 0,
+      "result_sha256": "31ba3f7aaac698206fe42cd394ea995ce7c3dd4e58e4e887bdef1cb1d28442a0",
+      "samples": 3327,
+      "scipy_cost": 11.280535867116027,
+      "scipy_derivative_control_bounds": {
+        "acceleration_per_joint": [
+          0.13505133898384078,
+          0.026711876338564172,
+          0.17729654205535947,
+          0.011710863962586499,
+          0.12845174122517647,
+          0.0354311068708827,
+          0.0015491105327547013
+        ],
+        "endpoint_velocity": 0.0,
+        "velocity_per_joint": [
+          0.7617257366546305,
+          0.15066213955757055,
+          1.0000000008855638,
+          0.06605241048243676,
+          0.7245022370420547,
+          0.1998409359343067,
+          0.008737398463433313
+        ]
+      },
+      "scipy_endpoint_error_rad": 0.0,
+      "scipy_maximum_sample_error_rad": 2.220446049250313e-15,
+      "scipy_maximum_sample_step_rad": 0.0024993540190525673,
+      "solver": "IPOPT",
+      "status": "success_validated_numerical",
+      "validation_status": "success_validated_numerical",
+      "warm_start_controls": 4,
+      "warm_start_nodes": 2
+    },
+    {
+      "accepted_frontend": true,
+      "artifacts": "finite_candidate_and_validation_audited",
+      "attempt": "jobs/test-open_control-002-p00-NTO_PAPER-minimum_distance-2354269d/attempts/0001",
+      "case_id": "test-open_control-002-p00",
+      "collocation_bindings": 149,
+      "finite_reconstructable_candidate": true,
+      "initial_original_path_equals_native_path": true,
+      "job_id": "test-open_control-002-p00-NTO_PAPER-minimum_distance-2354269d",
+      "native_path_sha256": "0de90b59c754fa09ab6e434da1b09fe0a00f833efc08f1defb53099ef42e60c3",
+      "native_solver_status": "SolutionResult.kSolutionFound",
+      "native_solver_success": true,
+      "objective": "minimum_distance",
+      "order": 2,
+      "permitted_solver_seconds": 59.473702889401466,
+      "recorded_independent_collisions": 0,
+      "recorded_minimum_clearance_m": 0.01902502658433322,
+      "recorded_model_disagreements": 0,
+      "recorded_native_collisions": 0,
+      "result_sha256": "90e712cbd3c317bda4eb2f13d91e3d082e011260c5995a97a573693058db9c43",
+      "samples": 806,
+      "scipy_cost": 4.023661476107568,
+      "scipy_endpoint_error_rad": 0.0,
+      "scipy_maximum_sample_error_rad": 0.0,
+      "scipy_maximum_sample_step_rad": 0.004998337237401171,
+      "solver": "SNOPT",
+      "status": "success_validated_numerical",
+      "validation_status": "success_validated_numerical",
+      "warm_start_controls": 2,
+      "warm_start_nodes": 2
+    },
+    {
+      "accepted_frontend": true,
+      "artifacts": "finite_candidate_and_validation_audited",
+      "attempt": "jobs/test-open_control-002-p00-NTO_PAPER-minimum_time-87353e0e/attempts/0001",
+      "case_id": "test-open_control-002-p00",
+      "collocation_bindings": 149,
+      "finite_reconstructable_candidate": true,
+      "initial_original_path_equals_native_path": true,
+      "job_id": "test-open_control-002-p00-NTO_PAPER-minimum_time-87353e0e",
+      "native_path_sha256": "0de90b59c754fa09ab6e434da1b09fe0a00f833efc08f1defb53099ef42e60c3",
+      "native_solver_status": "SolutionResult.kSolutionFound",
+      "native_solver_success": true,
+      "objective": "minimum_time",
+      "order": 4,
+      "permitted_solver_seconds": 59.45360183902085,
+      "recorded_independent_collisions": 0,
+      "recorded_minimum_clearance_m": 0.01902502658433315,
+      "recorded_model_disagreements": 0,
+      "recorded_native_collisions": 0,
+      "result_sha256": "2d440d63556ffb2b75889ebb051149e83118ca0e4ed3da653f19f582dbd1e49f",
+      "samples": 2416,
+      "scipy_cost": 5.9772457231610705,
+      "scipy_derivative_control_bounds": {
+        "acceleration_per_joint": [
+          0.26347798187184596,
+          0.0882800721308092,
+          0.19826728353251377,
+          0.24132225729972293,
+          0.3149573247421567,
+          0.33460227244994595,
+          0.26587237354752713
+        ],
+        "endpoint_velocity": 0.0,
+        "velocity_per_joint": [
+          0.7874363201453006,
+          0.26383584179211506,
+          0.5925461362687406,
+          0.7212212151741721,
+          0.9412886611466542,
+          1.0000000009807073,
+          0.7945922538468195
+        ]
+      },
+      "scipy_endpoint_error_rad": 0.0,
+      "scipy_maximum_sample_error_rad": 1.7763568394002505e-15,
+      "scipy_maximum_sample_step_rad": 0.0024991684758633075,
+      "solver": "IPOPT",
+      "status": "success_validated_numerical",
+      "validation_status": "success_validated_numerical",
+      "warm_start_controls": 4,
+      "warm_start_nodes": 2
+    },
+    {
+      "accepted_frontend": true,
+      "artifacts": "finite_candidate_and_validation_audited",
+      "attempt": "jobs/test-open_control-002-p01-NTO_PAPER-minimum_distance-5c1c4ffe/attempts/0001",
+      "case_id": "test-open_control-002-p01",
+      "collocation_bindings": 149,
+      "finite_reconstructable_candidate": true,
+      "initial_original_path_equals_native_path": true,
+      "job_id": "test-open_control-002-p01-NTO_PAPER-minimum_distance-5c1c4ffe",
+      "native_path_sha256": "f3b8859a7b8cf587110153ec94e1c88bd89671e8a29467f185511e4a2b93f9e6",
+      "native_solver_status": "SolutionResult.kSolutionFound",
+      "native_solver_success": true,
+      "objective": "minimum_distance",
+      "order": 2,
+      "permitted_solver_seconds": 59.4078673273325,
+      "recorded_independent_collisions": 0,
+      "recorded_minimum_clearance_m": 0.01576617892719895,
+      "recorded_model_disagreements": 0,
+      "recorded_native_collisions": 0,
+      "result_sha256": "bd25ba8e130ed579e85f549aaae228732582f059c2e7600b449ca78d1c52a117",
+      "samples": 1310,
+      "scipy_cost": 6.543548551693895,
+      "scipy_endpoint_error_rad": 0.0,
+      "scipy_maximum_sample_error_rad": 0.0,
+      "scipy_maximum_sample_step_rad": 0.004998891177765764,
+      "solver": "SNOPT",
+      "status": "success_validated_numerical",
+      "validation_status": "success_validated_numerical",
+      "warm_start_controls": 2,
+      "warm_start_nodes": 2
+    },
+    {
+      "accepted_frontend": true,
+      "artifacts": "finite_candidate_and_validation_audited",
+      "attempt": "jobs/test-open_control-002-p01-NTO_PAPER-minimum_time-0406ad67/attempts/0001",
+      "case_id": "test-open_control-002-p01",
+      "collocation_bindings": 149,
+      "finite_reconstructable_candidate": true,
+      "initial_original_path_equals_native_path": true,
+      "job_id": "test-open_control-002-p01-NTO_PAPER-minimum_time-0406ad67",
+      "native_path_sha256": "f3b8859a7b8cf587110153ec94e1c88bd89671e8a29467f185511e4a2b93f9e6",
+      "native_solver_status": "SolutionResult.kSolutionFound",
+      "native_solver_success": true,
+      "objective": "minimum_time",
+      "order": 4,
+      "permitted_solver_seconds": 59.403126313816756,
+      "recorded_independent_collisions": 0,
+      "recorded_minimum_clearance_m": 0.01576617892719895,
+      "recorded_model_disagreements": 0,
+      "recorded_native_collisions": 0,
+      "result_sha256": "eb79f814341e702972134b971616810e806496f6494618118fc312c9f452733b",
+      "samples": 3928,
+      "scipy_cost": 15.597807617581944,
+      "scipy_derivative_control_bounds": {
+        "acceleration_per_joint": [
+          0.128223148416867,
+          0.06880924608321892,
+          0.05708654071240379,
+          0.010119449139097347,
+          0.017096871131484677,
+          0.030999432737021628,
+          0.01586199299808866
+        ],
+        "endpoint_velocity": 0.0,
+        "velocity_per_joint": [
+          1.0000000005634742,
+          0.5366366913584514,
+          0.4452124397926668,
+          0.07892061043377283,
+          0.13333685338574428,
+          0.24176159404311753,
+          0.12370615760780937
+        ]
+      },
+      "scipy_endpoint_error_rad": 0.0,
+      "scipy_maximum_sample_error_rad": 1.7763568394002505e-15,
+      "scipy_maximum_sample_step_rad": 0.002499445534856597,
+      "solver": "IPOPT",
+      "status": "success_validated_numerical",
+      "validation_status": "success_validated_numerical",
+      "warm_start_controls": 4,
+      "warm_start_nodes": 2
+    },
+    {
+      "accepted_frontend": true,
+      "artifacts": "finite_candidate_and_validation_audited",
+      "attempt": "jobs/test-open_control-002-p02-NTO_PAPER-minimum_distance-5230a631/attempts/0001",
+      "case_id": "test-open_control-002-p02",
+      "collocation_bindings": 149,
+      "finite_reconstructable_candidate": true,
+      "initial_original_path_equals_native_path": true,
+      "job_id": "test-open_control-002-p02-NTO_PAPER-minimum_distance-5230a631",
+      "native_path_sha256": "14ca83993edea124b495115b82353d10d3dd56e293806f7ea551d0fad3168b03",
+      "native_solver_status": "SolutionResult.kSolverSpecificError",
+      "native_solver_success": false,
+      "objective": "minimum_distance",
+      "order": 2,
+      "permitted_solver_seconds": 59.337643935810775,
+      "recorded_independent_collisions": 447,
+      "recorded_minimum_clearance_m": -0.17747304822591847,
+      "recorded_model_disagreements": 0,
+      "recorded_native_collisions": 447,
+      "result_sha256": "3bc0913f8c785a6007db0a9abb2baaecfc0b557bcc4ecabb5a00d93ebbd206f1",
+      "samples": 3521,
+      "scipy_cost": 14.868068937726765,
+      "scipy_endpoint_error_rad": 0.0,
+      "scipy_maximum_sample_error_rad": 0.0,
+      "scipy_maximum_sample_step_rad": 0.004999515931839152,
+      "solver": "SNOPT",
+      "status": "solver_failed",
+      "validation_status": "collision_failed",
+      "warm_start_controls": 3,
+      "warm_start_nodes": 3
+    },
+    {
+      "accepted_frontend": true,
+      "artifacts": "finite_candidate_and_validation_audited",
+      "attempt": "jobs/test-open_control-002-p02-NTO_PAPER-minimum_time-3fb75f82/attempts/0001",
+      "case_id": "test-open_control-002-p02",
+      "collocation_bindings": 149,
+      "finite_reconstructable_candidate": true,
+      "initial_original_path_equals_native_path": true,
+      "job_id": "test-open_control-002-p02-NTO_PAPER-minimum_time-3fb75f82",
+      "native_path_sha256": "14ca83993edea124b495115b82353d10d3dd56e293806f7ea551d0fad3168b03",
+      "native_solver_status": "SolutionResult.kSolutionFound",
+      "native_solver_success": true,
+      "objective": "minimum_time",
+      "order": 4,
+      "permitted_solver_seconds": 59.32439281186089,
+      "recorded_independent_collisions": 0,
+      "recorded_minimum_clearance_m": 0.01482363114623897,
+      "recorded_model_disagreements": 0,
+      "recorded_native_collisions": 0,
+      "result_sha256": "cce762a3d93da6f9b0670b44597d94006c57277f674ae806a12ffd8d9ee8ec9f",
+      "samples": 2627,
+      "scipy_cost": 5.889717769308345,
+      "scipy_derivative_control_bounds": {
+        "acceleration_per_joint": [
+          0.6693692133751518,
+          0.6384718182573345,
+          0.635754528765683,
+          0.6665755959671472,
+          0.6791496763730293,
+          0.464270756433587,
+          0.40902355859775374
+        ],
+        "endpoint_velocity": 0.0,
+        "velocity_per_joint": [
+          0.9855989375608951,
+          0.9401047032982078,
+          0.9361036862473741,
+          0.9814855330387517,
+          0.9999999792385607,
+          0.683605930984281,
+          0.6022583302847309
+        ]
+      },
+      "scipy_endpoint_error_rad": 0.0,
+      "scipy_maximum_sample_error_rad": 1.7763568394002505e-15,
+      "scipy_maximum_sample_step_rad": 0.0043377254624031225,
+      "solver": "IPOPT",
+      "status": "success_validated_numerical",
+      "validation_status": "success_validated_numerical",
+      "warm_start_controls": 5,
+      "warm_start_nodes": 3
+    },
+    {
+      "accepted_frontend": true,
+      "artifacts": "finite_candidate_and_validation_audited",
+      "attempt": "jobs/test-open_control-002-p03-NTO_PAPER-minimum_distance-e3e57648/attempts/0001",
+      "case_id": "test-open_control-002-p03",
+      "collocation_bindings": 149,
+      "finite_reconstructable_candidate": true,
+      "initial_original_path_equals_native_path": true,
+      "job_id": "test-open_control-002-p03-NTO_PAPER-minimum_distance-e3e57648",
+      "native_path_sha256": "3745711b0d34c2d72f15820293ddfeb102968c4205f647cc3852c2b20c1d042f",
+      "native_solver_status": "SolutionResult.kSolutionFound",
+      "native_solver_success": true,
+      "objective": "minimum_distance",
+      "order": 2,
+      "permitted_solver_seconds": 59.437932847067714,
+      "recorded_independent_collisions": 5,
+      "recorded_minimum_clearance_m": -0.00038621858076237636,
+      "recorded_model_disagreements": 1,
+      "recorded_native_collisions": 6,
+      "result_sha256": "48b89f53c108de31e10c48653dcaf6125b3f321ec3c8868cdb831d61e4c52a88",
+      "samples": 861,
+      "scipy_cost": 4.29370424470576,
+      "scipy_endpoint_error_rad": 0.0,
+      "scipy_maximum_sample_error_rad": 0.0,
+      "scipy_maximum_sample_step_rad": 0.004996954767644067,
+      "solver": "SNOPT",
+      "status": "collision_failed",
+      "validation_status": "collision_failed",
+      "warm_start_controls": 3,
+      "warm_start_nodes": 3
+    },
+    {
+      "accepted_frontend": true,
+      "artifacts": "finite_candidate_and_validation_audited",
+      "attempt": "jobs/test-open_control-002-p03-NTO_PAPER-minimum_time-ad6f41b3/attempts/0001",
+      "case_id": "test-open_control-002-p03",
+      "collocation_bindings": 149,
+      "finite_reconstructable_candidate": true,
+      "initial_original_path_equals_native_path": true,
+      "job_id": "test-open_control-002-p03-NTO_PAPER-minimum_time-ad6f41b3",
+      "native_path_sha256": "3745711b0d34c2d72f15820293ddfeb102968c4205f647cc3852c2b20c1d042f",
+      "native_solver_status": "SolutionResult.kSolutionFound",
+      "native_solver_success": true,
+      "objective": "minimum_time",
+      "order": 4,
+      "permitted_solver_seconds": 59.430742234922945,
+      "recorded_independent_collisions": 0,
+      "recorded_minimum_clearance_m": 0.019025026584333197,
+      "recorded_model_disagreements": 0,
+      "recorded_native_collisions": 0,
+      "result_sha256": "84ebaa2b81915df910d168af90540181580a2a3ce5fad8a5fdde9fc215969e6e",
+      "samples": 1367,
+      "scipy_cost": 5.191189456516985,
+      "scipy_derivative_control_bounds": {
+        "acceleration_per_joint": [
+          0.2392193935589074,
+          0.5480771936319948,
+          0.770536317565108,
+          0.2416349796022425,
+          0.14937111130472044,
+          0.22499379763300986,
+          0.10939280897111697
+        ],
+        "endpoint_velocity": 0.0,
+        "velocity_per_joint": [
+          0.3104582984093468,
+          0.7112931372349574,
+          1.000000001901853,
+          0.3135932396092145,
+          0.19385343452832243,
+          0.29199635751354924,
+          0.14196969913740975
+        ]
+      },
+      "scipy_endpoint_error_rad": 0.0,
+      "scipy_maximum_sample_error_rad": 1.7763568394002505e-15,
+      "scipy_maximum_sample_step_rad": 0.004719096221729067,
+      "solver": "IPOPT",
+      "status": "success_validated_numerical",
+      "validation_status": "success_validated_numerical",
+      "warm_start_controls": 5,
+      "warm_start_nodes": 3
+    },
+    {
+      "accepted_frontend": true,
+      "artifacts": "finite_candidate_and_validation_audited",
+      "attempt": "jobs/test-open_control-002-p04-NTO_PAPER-minimum_distance-407f2ccc/attempts/0001",
+      "case_id": "test-open_control-002-p04",
+      "collocation_bindings": 149,
+      "finite_reconstructable_candidate": true,
+      "initial_original_path_equals_native_path": true,
+      "job_id": "test-open_control-002-p04-NTO_PAPER-minimum_distance-407f2ccc",
+      "native_path_sha256": "99d4b77ac9be7895e7e56dcf6feb867b20f2292a1e7bb207abefcfade9fbeb16",
+      "native_solver_status": "SolutionResult.kSolutionFound",
+      "native_solver_success": true,
+      "objective": "minimum_distance",
+      "order": 2,
+      "permitted_solver_seconds": 59.387908494099975,
+      "recorded_independent_collisions": 7,
+      "recorded_minimum_clearance_m": -1.3444511395399594e-05,
+      "recorded_model_disagreements": 0,
+      "recorded_native_collisions": 7,
+      "result_sha256": "cba3670864f42ec1ed68e8a33ed674e24c7add9b73cf723b137919005f7e9e26",
+      "samples": 1281,
+      "scipy_cost": 5.016758063528679,
+      "scipy_endpoint_error_rad": 0.0,
+      "scipy_maximum_sample_error_rad": 0.0,
+      "scipy_maximum_sample_step_rad": 0.004997005736935117,
+      "solver": "SNOPT",
+      "status": "collision_failed",
+      "validation_status": "collision_failed",
+      "warm_start_controls": 3,
+      "warm_start_nodes": 3
+    },
+    {
+      "accepted_frontend": true,
+      "artifacts": "finite_candidate_and_validation_audited",
+      "attempt": "jobs/test-open_control-002-p04-NTO_PAPER-minimum_time-a7ae0587/attempts/0001",
+      "case_id": "test-open_control-002-p04",
+      "collocation_bindings": 149,
+      "finite_reconstructable_candidate": true,
+      "initial_original_path_equals_native_path": true,
+      "job_id": "test-open_control-002-p04-NTO_PAPER-minimum_time-a7ae0587",
+      "native_path_sha256": "99d4b77ac9be7895e7e56dcf6feb867b20f2292a1e7bb207abefcfade9fbeb16",
+      "native_solver_status": "SolutionResult.kSolutionFound",
+      "native_solver_success": true,
+      "objective": "minimum_time",
+      "order": 4,
+      "permitted_solver_seconds": 59.37954837596044,
+      "recorded_independent_collisions": 0,
+      "recorded_minimum_clearance_m": 0.019025026584333356,
+      "recorded_model_disagreements": 0,
+      "recorded_native_collisions": 0,
+      "result_sha256": "b6508ba1a92b98db3f0309b3401f5a8e2dca9660d3eefcded3ee373c20ba7e87",
+      "samples": 2219,
+      "scipy_cost": 6.410508058988664,
+      "scipy_derivative_control_bounds": {
+        "acceleration_per_joint": [
+          0.23030665905894976,
+          0.567772419310321,
+          0.6239755052983017,
+          0.33056522539125627,
+          0.47350253347844595,
+          0.31560492493384035,
+          0.32864793925353114
+        ],
+        "endpoint_velocity": 0.0,
+        "velocity_per_joint": [
+          0.369095673484038,
+          0.9099274174150758,
+          1.0000000013315717,
+          0.5297727603480131,
+          0.7588479517037818,
+          0.505796978686224,
+          0.5267000657886945
+        ]
+      },
+      "scipy_endpoint_error_rad": 0.0,
+      "scipy_maximum_sample_error_rad": 1.3322676295501878e-15,
+      "scipy_maximum_sample_step_rad": 0.0035916950443041253,
+      "solver": "IPOPT",
+      "status": "success_validated_numerical",
+      "validation_status": "success_validated_numerical",
+      "warm_start_controls": 5,
+      "warm_start_nodes": 3
+    },
+    {
+      "accepted_frontend": true,
+      "artifacts": "finite_candidate_and_validation_audited",
+      "attempt": "jobs/test-open_control-003-p00-NTO_PAPER-minimum_distance-92eed4c1/attempts/0001",
+      "case_id": "test-open_control-003-p00",
+      "collocation_bindings": 149,
+      "finite_reconstructable_candidate": true,
+      "initial_original_path_equals_native_path": true,
+      "job_id": "test-open_control-003-p00-NTO_PAPER-minimum_distance-92eed4c1",
+      "native_path_sha256": "353d6b0ea669931a5dbfa79df67f2773d85d751c951b27abf34c9a174d5f3543",
+      "native_solver_status": "SolutionResult.kSolutionFound",
+      "native_solver_success": true,
+      "objective": "minimum_distance",
+      "order": 2,
+      "permitted_solver_seconds": 59.4994880752638,
+      "recorded_independent_collisions": 0,
+      "recorded_minimum_clearance_m": 0.019025026584333107,
+      "recorded_model_disagreements": 0,
+      "recorded_native_collisions": 0,
+      "result_sha256": "4d83ac314a68ceb13080f1e7b06dc4735e991a442e62bca4692da9c0cb583b47",
+      "samples": 651,
+      "scipy_cost": 3.2478374606776255,
+      "scipy_endpoint_error_rad": 0.0,
+      "scipy_maximum_sample_error_rad": 0.0,
+      "scipy_maximum_sample_step_rad": 0.004996673016427444,
+      "solver": "SNOPT",
+      "status": "success_validated_numerical",
+      "validation_status": "success_validated_numerical",
+      "warm_start_controls": 2,
+      "warm_start_nodes": 2
+    },
+    {
+      "accepted_frontend": true,
+      "artifacts": "finite_candidate_and_validation_audited",
+      "attempt": "jobs/test-open_control-003-p00-NTO_PAPER-minimum_time-688128d8/attempts/0001",
+      "case_id": "test-open_control-003-p00",
+      "collocation_bindings": 149,
+      "finite_reconstructable_candidate": true,
+      "initial_original_path_equals_native_path": true,
+      "job_id": "test-open_control-003-p00-NTO_PAPER-minimum_time-688128d8",
+      "native_path_sha256": "353d6b0ea669931a5dbfa79df67f2773d85d751c951b27abf34c9a174d5f3543",
+      "native_solver_status": "SolutionResult.kSolutionFound",
+      "native_solver_success": true,
+      "objective": "minimum_time",
+      "order": 4,
+      "permitted_solver_seconds": 59.50646289391443,
+      "recorded_independent_collisions": 0,
+      "recorded_minimum_clearance_m": 0.01902502658433309,
+      "recorded_model_disagreements": 0,
+      "recorded_native_collisions": 0,
+      "result_sha256": "1c37e063dd014fabfeabe13271a788f84030b7dadbe39e64d72a7f33822fa7f8",
+      "samples": 1950,
+      "scipy_cost": 8.079869366744147,
+      "scipy_derivative_control_bounds": {
+        "acceleration_per_joint": [
+          0.017747272657436093,
+          0.15692924162967142,
+          0.24752875469551486,
+          0.043136075949533996,
+          0.02014570086374604,
+          0.020269522904084132,
+          0.014474846877102997
+        ],
+        "endpoint_velocity": 0.0,
+        "velocity_per_joint": [
+          0.07169782234403693,
+          0.6339838860949862,
+          1.0000000012263084,
+          0.17426692933309432,
+          0.08138731564028635,
+          0.08188754859561412,
+          0.05847743593530834
+        ]
+      },
+      "scipy_endpoint_error_rad": 0.0,
+      "scipy_maximum_sample_error_rad": 1.7763568394002505e-15,
+      "scipy_maximum_sample_step_rad": 0.002499618144439358,
+      "solver": "IPOPT",
+      "status": "success_validated_numerical",
+      "validation_status": "success_validated_numerical",
+      "warm_start_controls": 4,
+      "warm_start_nodes": 2
+    },
+    {
+      "accepted_frontend": true,
+      "artifacts": "finite_candidate_and_validation_audited",
+      "attempt": "jobs/test-open_control-003-p01-NTO_PAPER-minimum_distance-f2bf6ac7/attempts/0001",
+      "case_id": "test-open_control-003-p01",
+      "collocation_bindings": 149,
+      "finite_reconstructable_candidate": true,
+      "initial_original_path_equals_native_path": true,
+      "job_id": "test-open_control-003-p01-NTO_PAPER-minimum_distance-f2bf6ac7",
+      "native_path_sha256": "5891c87b700ea5447233199d18fa3e900115d0fcbf392183528f4ba0524342cb",
+      "native_solver_status": "SolutionResult.kSolutionFound",
+      "native_solver_success": true,
+      "objective": "minimum_distance",
+      "order": 2,
+      "permitted_solver_seconds": 59.33213497605175,
+      "recorded_independent_collisions": 17,
+      "recorded_minimum_clearance_m": -0.0002946014680882403,
+      "recorded_model_disagreements": 0,
+      "recorded_native_collisions": 17,
+      "result_sha256": "bc7f8437f534ec26afd96e59e5e2e6b450ad92231469ad94450177afe6a69990",
+      "samples": 1822,
+      "scipy_cost": 7.099156220802812,
+      "scipy_endpoint_error_rad": 2.7755575615628914e-16,
+      "scipy_maximum_sample_error_rad": 8.881784197001252e-16,
+      "scipy_maximum_sample_step_rad": 0.004997654600719315,
+      "solver": "SNOPT",
+      "status": "collision_failed",
+      "validation_status": "collision_failed",
+      "warm_start_controls": 4,
+      "warm_start_nodes": 4
+    },
+    {
+      "accepted_frontend": true,
+      "artifacts": "finite_candidate_and_validation_audited",
+      "attempt": "jobs/test-open_control-003-p01-NTO_PAPER-minimum_time-d136cf0c/attempts/0001",
+      "case_id": "test-open_control-003-p01",
+      "collocation_bindings": 149,
+      "finite_reconstructable_candidate": true,
+      "initial_original_path_equals_native_path": true,
+      "job_id": "test-open_control-003-p01-NTO_PAPER-minimum_time-d136cf0c",
+      "native_path_sha256": "5891c87b700ea5447233199d18fa3e900115d0fcbf392183528f4ba0524342cb",
+      "native_solver_status": "SolutionResult.kSolutionFound",
+      "native_solver_success": true,
+      "objective": "minimum_time",
+      "order": 4,
+      "permitted_solver_seconds": 59.319858335889876,
+      "recorded_independent_collisions": 0,
+      "recorded_minimum_clearance_m": 0.004877815078016712,
+      "recorded_model_disagreements": 0,
+      "recorded_native_collisions": 0,
+      "result_sha256": "ac59df1f48313b0490bfe28024461a1857f7e9efab7e16a6425683e9e1a86fc2",
+      "samples": 2476,
+      "scipy_cost": 5.776081229483616,
+      "scipy_derivative_control_bounds": {
+        "acceleration_per_joint": [
+          0.9418870064196017,
+          0.9142153427917185,
+          1.0000000099892943,
+          0.9044049256554376,
+          0.9149395581135428,
+          0.9561821346441925,
+          0.7311621444818828
+        ],
+        "endpoint_velocity": 0.0,
+        "velocity_per_joint": [
+          0.9793426441666125,
+          0.8800970135341956,
+          1.0000000017213733,
+          0.8706527191551495,
+          0.8899754172512757,
+          0.9204976133143158,
+          0.7038753230751317
+        ]
+      },
+      "scipy_endpoint_error_rad": 9.18873053048877e-16,
+      "scipy_maximum_sample_error_rad": 1.7763568394002505e-15,
+      "scipy_maximum_sample_step_rad": 0.0041840369070365434,
+      "solver": "IPOPT",
+      "status": "success_validated_numerical",
+      "validation_status": "success_validated_numerical",
+      "warm_start_controls": 6,
+      "warm_start_nodes": 4
+    },
+    {
+      "accepted_frontend": true,
+      "artifacts": "finite_candidate_and_validation_audited",
+      "attempt": "jobs/test-open_control-003-p02-NTO_PAPER-minimum_distance-0b94371f/attempts/0001",
+      "case_id": "test-open_control-003-p02",
+      "collocation_bindings": 149,
+      "finite_reconstructable_candidate": true,
+      "initial_original_path_equals_native_path": true,
+      "job_id": "test-open_control-003-p02-NTO_PAPER-minimum_distance-0b94371f",
+      "native_path_sha256": "6a44f5b1da9c2a8258b2579dc0746ffd684a4720be11e47470a928fec0117ade",
+      "native_solver_status": "SolutionResult.kSolutionFound",
+      "native_solver_success": true,
+      "objective": "minimum_distance",
+      "order": 2,
+      "permitted_solver_seconds": 59.332425931002945,
+      "recorded_independent_collisions": 75,
+      "recorded_minimum_clearance_m": -0.0032581851247222016,
+      "recorded_model_disagreements": 0,
+      "recorded_native_collisions": 75,
+      "result_sha256": "d7055244ad6d89b6161917e3b4fe0d992446ad31fe2338e803cb80986545c693",
+      "samples": 3754,
+      "scipy_cost": 7.877334351880723,
+      "scipy_endpoint_error_rad": 4.190705895488584e-14,
+      "scipy_maximum_sample_error_rad": 8.881784197001252e-16,
+      "scipy_maximum_sample_step_rad": 0.004999179390718932,
+      "solver": "SNOPT",
+      "status": "collision_failed",
+      "validation_status": "collision_failed",
+      "warm_start_controls": 4,
+      "warm_start_nodes": 4
+    },
+    {
+      "accepted_frontend": true,
+      "artifacts": "finite_candidate_and_validation_audited",
+      "attempt": "jobs/test-open_control-003-p02-NTO_PAPER-minimum_time-e74cc76a/attempts/0001",
+      "case_id": "test-open_control-003-p02",
+      "collocation_bindings": 149,
+      "finite_reconstructable_candidate": true,
+      "initial_original_path_equals_native_path": true,
+      "job_id": "test-open_control-003-p02-NTO_PAPER-minimum_time-e74cc76a",
+      "native_path_sha256": "6a44f5b1da9c2a8258b2579dc0746ffd684a4720be11e47470a928fec0117ade",
+      "native_solver_status": "SolutionResult.kIterationLimit",
+      "native_solver_success": false,
+      "objective": "minimum_time",
+      "order": 4,
+      "permitted_solver_seconds": 59.32750551169738,
+      "recorded_independent_collisions": 687,
+      "recorded_minimum_clearance_m": -0.0895243608695162,
+      "recorded_model_disagreements": 0,
+      "recorded_native_collisions": 687,
+      "result_sha256": "4fc52cb046f8423213c21e8bcf7f82262f70dd013dcf2348983893213217e44e",
+      "samples": 5884,
+      "scipy_cost": 39.92517990410128,
+      "scipy_derivative_control_bounds": {
+        "acceleration_per_joint": [
+          0.03808210945079354,
+          0.03981604210694327,
+          0.0626897723711012,
+          0.02347559458834296,
+          0.01544927197819767,
+          0.049515640635846854,
+          0.01675626967128687
+        ],
+        "endpoint_velocity": 0.0020308215866990478,
+        "velocity_per_joint": [
+          0.4565987332011819,
+          0.2649436745019547,
+          0.45913313610370843,
+          0.31242226314420823,
+          0.10327674237416451,
+          0.32745598848880314,
+          0.11149951620215863
+        ]
+      },
+      "scipy_endpoint_error_rad": 1.4928261258900395,
+      "scipy_maximum_sample_error_rad": 1.7763568394002505e-15,
+      "scipy_maximum_sample_step_rad": 0.0034922930334298826,
+      "solver": "IPOPT",
+      "status": "solver_failed",
+      "validation_status": "invalid_endpoint",
+      "warm_start_controls": 6,
+      "warm_start_nodes": 4
+    },
+    {
+      "accepted_frontend": true,
+      "artifacts": "finite_candidate_and_validation_audited",
+      "attempt": "jobs/test-open_control-003-p03-NTO_PAPER-minimum_distance-1f7edd01/attempts/0001",
+      "case_id": "test-open_control-003-p03",
+      "collocation_bindings": 149,
+      "finite_reconstructable_candidate": true,
+      "initial_original_path_equals_native_path": true,
+      "job_id": "test-open_control-003-p03-NTO_PAPER-minimum_distance-1f7edd01",
+      "native_path_sha256": "2172893f73478effaf023f7fb9184ce4b7f1259680d103b3a4ec63226804b1bf",
+      "native_solver_status": "SolutionResult.kSolutionFound",
+      "native_solver_success": true,
+      "objective": "minimum_distance",
+      "order": 2,
+      "permitted_solver_seconds": 59.478311432059854,
+      "recorded_independent_collisions": 0,
+      "recorded_minimum_clearance_m": 0.012031596339568023,
+      "recorded_model_disagreements": 0,
+      "recorded_native_collisions": 0,
+      "result_sha256": "424468b5cdce083c223bacd1a237ff5ad69a790fe493e3a22d84bbc0a859b512",
+      "samples": 730,
+      "scipy_cost": 3.644963332120428,
+      "scipy_endpoint_error_rad": 0.0,
+      "scipy_maximum_sample_error_rad": 0.0,
+      "scipy_maximum_sample_step_rad": 0.004999949701125873,
+      "solver": "SNOPT",
+      "status": "success_validated_numerical",
+      "validation_status": "success_validated_numerical",
+      "warm_start_controls": 2,
+      "warm_start_nodes": 2
+    },
+    {
+      "accepted_frontend": true,
+      "artifacts": "finite_candidate_and_validation_audited",
+      "attempt": "jobs/test-open_control-003-p03-NTO_PAPER-minimum_time-f5a13bed/attempts/0001",
+      "case_id": "test-open_control-003-p03",
+      "collocation_bindings": 149,
+      "finite_reconstructable_candidate": true,
+      "initial_original_path_equals_native_path": true,
+      "job_id": "test-open_control-003-p03-NTO_PAPER-minimum_time-f5a13bed",
+      "native_path_sha256": "2172893f73478effaf023f7fb9184ce4b7f1259680d103b3a4ec63226804b1bf",
+      "native_solver_status": "SolutionResult.kSolutionFound",
+      "native_solver_success": true,
+      "objective": "minimum_time",
+      "order": 4,
+      "permitted_solver_seconds": 59.47192295873538,
+      "recorded_independent_collisions": 0,
+      "recorded_minimum_clearance_m": 0.012031596339568023,
+      "recorded_model_disagreements": 0,
+      "recorded_native_collisions": 0,
+      "result_sha256": "6366f5773273900ce81076a14220538f9afe7e5278657bb1b18e625d12cb012a",
+      "samples": 2188,
+      "scipy_cost": 7.182093560668389,
+      "scipy_derivative_control_bounds": {
+        "acceleration_per_joint": [
+          0.023444699211881158,
+          0.1509563786614154,
+          0.0931705172955867,
+          0.10184287557085982,
+          0.12018080544324741,
+          0.21301911640458646,
+          0.27847033540399957
+        ],
+        "endpoint_velocity": 0.0,
+        "velocity_per_joint": [
+          0.08419101162072946,
+          0.5420914175629853,
+          0.334579686156388,
+          0.36572253041871217,
+          0.43157489444494385,
+          0.7649616121143252,
+          1.0000000013711159
+        ]
+      },
+      "scipy_endpoint_error_rad": 7.390492082589766e-16,
+      "scipy_maximum_sample_error_rad": 2.220446049250313e-15,
+      "scipy_maximum_sample_step_rad": 0.0024999746763355334,
+      "solver": "IPOPT",
+      "status": "success_validated_numerical",
+      "validation_status": "success_validated_numerical",
+      "warm_start_controls": 4,
+      "warm_start_nodes": 2
+    },
+    {
+      "accepted_frontend": true,
+      "artifacts": "finite_candidate_and_validation_audited",
+      "attempt": "jobs/test-open_control-003-p04-NTO_PAPER-minimum_distance-a8be60de/attempts/0001",
+      "case_id": "test-open_control-003-p04",
+      "collocation_bindings": 149,
+      "finite_reconstructable_candidate": true,
+      "initial_original_path_equals_native_path": true,
+      "job_id": "test-open_control-003-p04-NTO_PAPER-minimum_distance-a8be60de",
+      "native_path_sha256": "45f70f4239b092a125edbb985416da6042555d63ae2b1e86cbbc35ee5a6a15c8",
+      "native_solver_status": "SolutionResult.kSolutionFound",
+      "native_solver_success": true,
+      "objective": "minimum_distance",
+      "order": 2,
+      "permitted_solver_seconds": 59.381522982846946,
+      "recorded_independent_collisions": 22,
+      "recorded_minimum_clearance_m": -3.1271815914224455e-05,
+      "recorded_model_disagreements": 0,
+      "recorded_native_collisions": 22,
+      "result_sha256": "dbb7e1cdeca4c627b8c9bea6f49a022b43284c14640498fa8ed72ee1989f20be",
+      "samples": 1407,
+      "scipy_cost": 5.626209412798962,
+      "scipy_endpoint_error_rad": 2.7589883551072787e-14,
+      "scipy_maximum_sample_error_rad": 8.881784197001252e-16,
+      "scipy_maximum_sample_step_rad": 0.004998359179195773,
+      "solver": "SNOPT",
+      "status": "collision_failed",
+      "validation_status": "collision_failed",
+      "warm_start_controls": 4,
+      "warm_start_nodes": 4
+    },
+    {
+      "accepted_frontend": true,
+      "artifacts": "finite_candidate_and_validation_audited",
+      "attempt": "jobs/test-open_control-003-p04-NTO_PAPER-minimum_time-32c71fa2/attempts/0001",
+      "case_id": "test-open_control-003-p04",
+      "collocation_bindings": 149,
+      "finite_reconstructable_candidate": true,
+      "initial_original_path_equals_native_path": true,
+      "job_id": "test-open_control-003-p04-NTO_PAPER-minimum_time-32c71fa2",
+      "native_path_sha256": "45f70f4239b092a125edbb985416da6042555d63ae2b1e86cbbc35ee5a6a15c8",
+      "native_solver_status": "SolutionResult.kSolutionFound",
+      "native_solver_success": true,
+      "objective": "minimum_time",
+      "order": 4,
+      "permitted_solver_seconds": 59.36759330006316,
+      "recorded_independent_collisions": 0,
+      "recorded_minimum_clearance_m": 0.007847600210655448,
+      "recorded_model_disagreements": 0,
+      "recorded_native_collisions": 0,
+      "result_sha256": "bfc061099ce843d7aad43b52e1259ef96d3931137dd15caa0982cb6619eae3fc",
+      "samples": 1775,
+      "scipy_cost": 4.856897707159268,
+      "scipy_derivative_control_bounds": {
+        "acceleration_per_joint": [
+          1.0000000099917261,
+          0.31022480443693273,
+          0.9622939199794543,
+          0.8652208884664792,
+          0.7475663438412492,
+          0.6102602962204314,
+          0.5124236109370287
+        ],
+        "endpoint_velocity": 0.0,
+        "velocity_per_joint": [
+          1.0000000020533932,
+          0.2511216902289451,
+          0.9626432451120428,
+          0.7003815582298577,
+          0.6051422102253334,
+          0.60970256163999,
+          0.6874550393342419
+        ]
+      },
+      "scipy_endpoint_error_rad": 0.0,
+      "scipy_maximum_sample_error_rad": 1.3322676295501878e-15,
+      "scipy_maximum_sample_step_rad": 0.004608241894476151,
+      "solver": "IPOPT",
+      "status": "success_validated_numerical",
+      "validation_status": "success_validated_numerical",
+      "warm_start_controls": 6,
+      "warm_start_nodes": 4
+    }
+  ],
+  "run": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/rss2025_formal_v1_main_s000_open_control",
+  "run_manifest_sha256": "3e6c89a6fb03a6a0e2a57623a59e3f6d861e64702361c10991ed922650bfa616",
+  "sealed_files_verified": 3476,
+  "shared_fixed_input_and_seed_path_checks": [
+    {
+      "accepted_seed_path_hashes": [
+        "fc39d2b09ef025ed5aafca5f73dd29516f85f8d9b111f26e6e9342e4be61bc73"
+      ],
+      "case_id": "test-open_control-000-p00",
+      "entries": [
+        {
+          "accepted_frontend": true,
+          "job_id": "test-open_control-000-p00-EI_ZO-minimum_distance-07d07312",
+          "method": "EI_ZO",
+          "objective": "minimum_distance",
+          "path_sha256": "fc39d2b09ef025ed5aafca5f73dd29516f85f8d9b111f26e6e9342e4be61bc73",
+          "task_sha256": "af0bef763a297bfcb9634f1badaadab0f6e634e1a14440a8bb366281bd248727"
+        },
+        {
+          "accepted_frontend": true,
+          "job_id": "test-open_control-000-p00-LGCS-minimum_distance-5df5284a",
+          "method": "LGCS",
+          "objective": "minimum_distance",
+          "path_sha256": "fc39d2b09ef025ed5aafca5f73dd29516f85f8d9b111f26e6e9342e4be61bc73",
+          "task_sha256": "af0bef763a297bfcb9634f1badaadab0f6e634e1a14440a8bb366281bd248727"
+        },
+        {
+          "accepted_frontend": true,
+          "job_id": "test-open_control-000-p00-NTO_PAPER-minimum_distance-0c087c2b",
+          "method": "NTO_PAPER",
+          "objective": "minimum_distance",
+          "path_sha256": "fc39d2b09ef025ed5aafca5f73dd29516f85f8d9b111f26e6e9342e4be61bc73",
+          "task_sha256": "af0bef763a297bfcb9634f1badaadab0f6e634e1a14440a8bb366281bd248727"
+        },
+        {
+          "accepted_frontend": true,
+          "job_id": "test-open_control-000-p00-EI_ZO-minimum_time-523246fe",
+          "method": "EI_ZO",
+          "objective": "minimum_time",
+          "path_sha256": "fc39d2b09ef025ed5aafca5f73dd29516f85f8d9b111f26e6e9342e4be61bc73",
+          "task_sha256": "af0bef763a297bfcb9634f1badaadab0f6e634e1a14440a8bb366281bd248727"
+        },
+        {
+          "accepted_frontend": true,
+          "job_id": "test-open_control-000-p00-NTO_PAPER-minimum_time-6e4d813c",
+          "method": "NTO_PAPER",
+          "objective": "minimum_time",
+          "path_sha256": "fc39d2b09ef025ed5aafca5f73dd29516f85f8d9b111f26e6e9342e4be61bc73",
+          "task_sha256": "af0bef763a297bfcb9634f1badaadab0f6e634e1a14440a8bb366281bd248727"
+        }
+      ],
+      "fixed_task_hashes": [
+        "af0bef763a297bfcb9634f1badaadab0f6e634e1a14440a8bb366281bd248727"
+      ],
+      "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c"
+    },
+    {
+      "accepted_seed_path_hashes": [
+        "785685fefa94dca0f2be17a7e1e3daba8f7d43e422cda4cecfb0467c1d0018fb"
+      ],
+      "case_id": "test-open_control-000-p01",
+      "entries": [
+        {
+          "accepted_frontend": true,
+          "job_id": "test-open_control-000-p01-EI_ZO-minimum_distance-c01d84cb",
+          "method": "EI_ZO",
+          "objective": "minimum_distance",
+          "path_sha256": "785685fefa94dca0f2be17a7e1e3daba8f7d43e422cda4cecfb0467c1d0018fb",
+          "task_sha256": "db998abbfc4cdf01e7b3a3cd79511c1c9ef6888f97ea172f011806821c85d4da"
+        },
+        {
+          "accepted_frontend": true,
+          "job_id": "test-open_control-000-p01-LGCS-minimum_distance-18145651",
+          "method": "LGCS",
+          "objective": "minimum_distance",
+          "path_sha256": "785685fefa94dca0f2be17a7e1e3daba8f7d43e422cda4cecfb0467c1d0018fb",
+          "task_sha256": "db998abbfc4cdf01e7b3a3cd79511c1c9ef6888f97ea172f011806821c85d4da"
+        },
+        {
+          "accepted_frontend": true,
+          "job_id": "test-open_control-000-p01-NTO_PAPER-minimum_distance-4bac2584",
+          "method": "NTO_PAPER",
+          "objective": "minimum_distance",
+          "path_sha256": "785685fefa94dca0f2be17a7e1e3daba8f7d43e422cda4cecfb0467c1d0018fb",
+          "task_sha256": "db998abbfc4cdf01e7b3a3cd79511c1c9ef6888f97ea172f011806821c85d4da"
+        },
+        {
+          "accepted_frontend": true,
+          "job_id": "test-open_control-000-p01-EI_ZO-minimum_time-fe145952",
+          "method": "EI_ZO",
+          "objective": "minimum_time",
+          "path_sha256": "785685fefa94dca0f2be17a7e1e3daba8f7d43e422cda4cecfb0467c1d0018fb",
+          "task_sha256": "db998abbfc4cdf01e7b3a3cd79511c1c9ef6888f97ea172f011806821c85d4da"
+        },
+        {
+          "accepted_frontend": true,
+          "job_id": "test-open_control-000-p01-NTO_PAPER-minimum_time-a5a51d12",
+          "method": "NTO_PAPER",
+          "objective": "minimum_time",
+          "path_sha256": "785685fefa94dca0f2be17a7e1e3daba8f7d43e422cda4cecfb0467c1d0018fb",
+          "task_sha256": "db998abbfc4cdf01e7b3a3cd79511c1c9ef6888f97ea172f011806821c85d4da"
+        }
+      ],
+      "fixed_task_hashes": [
+        "db998abbfc4cdf01e7b3a3cd79511c1c9ef6888f97ea172f011806821c85d4da"
+      ],
+      "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c"
+    },
+    {
+      "accepted_seed_path_hashes": [
+        "fac507ec803eb27d3140bc245c19f649fbc036ca1763b2b1fe1d68228a983620"
+      ],
+      "case_id": "test-open_control-000-p02",
+      "entries": [
+        {
+          "accepted_frontend": true,
+          "job_id": "test-open_control-000-p02-EI_ZO-minimum_distance-fd66e0cf",
+          "method": "EI_ZO",
+          "objective": "minimum_distance",
+          "path_sha256": "fac507ec803eb27d3140bc245c19f649fbc036ca1763b2b1fe1d68228a983620",
+          "task_sha256": "33cea09ac3ff13b359abfcef347142db93fd1179e59d6e281abcf107bf08f693"
+        },
+        {
+          "accepted_frontend": true,
+          "job_id": "test-open_control-000-p02-LGCS-minimum_distance-bcfdd747",
+          "method": "LGCS",
+          "objective": "minimum_distance",
+          "path_sha256": "fac507ec803eb27d3140bc245c19f649fbc036ca1763b2b1fe1d68228a983620",
+          "task_sha256": "33cea09ac3ff13b359abfcef347142db93fd1179e59d6e281abcf107bf08f693"
+        },
+        {
+          "accepted_frontend": true,
+          "job_id": "test-open_control-000-p02-NTO_PAPER-minimum_distance-3b425d3c",
+          "method": "NTO_PAPER",
+          "objective": "minimum_distance",
+          "path_sha256": "fac507ec803eb27d3140bc245c19f649fbc036ca1763b2b1fe1d68228a983620",
+          "task_sha256": "33cea09ac3ff13b359abfcef347142db93fd1179e59d6e281abcf107bf08f693"
+        },
+        {
+          "accepted_frontend": true,
+          "job_id": "test-open_control-000-p02-EI_ZO-minimum_time-bbc4665e",
+          "method": "EI_ZO",
+          "objective": "minimum_time",
+          "path_sha256": "fac507ec803eb27d3140bc245c19f649fbc036ca1763b2b1fe1d68228a983620",
+          "task_sha256": "33cea09ac3ff13b359abfcef347142db93fd1179e59d6e281abcf107bf08f693"
+        },
+        {
+          "accepted_frontend": true,
+          "job_id": "test-open_control-000-p02-NTO_PAPER-minimum_time-cab4b9b5",
+          "method": "NTO_PAPER",
+          "objective": "minimum_time",
+          "path_sha256": "fac507ec803eb27d3140bc245c19f649fbc036ca1763b2b1fe1d68228a983620",
+          "task_sha256": "33cea09ac3ff13b359abfcef347142db93fd1179e59d6e281abcf107bf08f693"
+        }
+      ],
+      "fixed_task_hashes": [
+        "33cea09ac3ff13b359abfcef347142db93fd1179e59d6e281abcf107bf08f693"
+      ],
+      "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c"
+    },
+    {
+      "accepted_seed_path_hashes": [
+        "4a9e889a74672a145dc88b7f3724a24562a8adf0af561e6d3eae979acc5916e6"
+      ],
+      "case_id": "test-open_control-000-p03",
+      "entries": [
+        {
+          "accepted_frontend": true,
+          "job_id": "test-open_control-000-p03-EI_ZO-minimum_distance-7f3252ca",
+          "method": "EI_ZO",
+          "objective": "minimum_distance",
+          "path_sha256": "4a9e889a74672a145dc88b7f3724a24562a8adf0af561e6d3eae979acc5916e6",
+          "task_sha256": "c6244a90579d6d5be9d2ddcd322a78b0b8bf5459d86175cac0fff26ac7bbc434"
+        },
+        {
+          "accepted_frontend": true,
+          "job_id": "test-open_control-000-p03-LGCS-minimum_distance-7d2f5417",
+          "method": "LGCS",
+          "objective": "minimum_distance",
+          "path_sha256": "4a9e889a74672a145dc88b7f3724a24562a8adf0af561e6d3eae979acc5916e6",
+          "task_sha256": "c6244a90579d6d5be9d2ddcd322a78b0b8bf5459d86175cac0fff26ac7bbc434"
+        },
+        {
+          "accepted_frontend": true,
+          "job_id": "test-open_control-000-p03-NTO_PAPER-minimum_distance-6d5292a0",
+          "method": "NTO_PAPER",
+          "objective": "minimum_distance",
+          "path_sha256": "4a9e889a74672a145dc88b7f3724a24562a8adf0af561e6d3eae979acc5916e6",
+          "task_sha256": "c6244a90579d6d5be9d2ddcd322a78b0b8bf5459d86175cac0fff26ac7bbc434"
+        },
+        {
+          "accepted_frontend": true,
+          "job_id": "test-open_control-000-p03-EI_ZO-minimum_time-6a661593",
+          "method": "EI_ZO",
+          "objective": "minimum_time",
+          "path_sha256": "4a9e889a74672a145dc88b7f3724a24562a8adf0af561e6d3eae979acc5916e6",
+          "task_sha256": "c6244a90579d6d5be9d2ddcd322a78b0b8bf5459d86175cac0fff26ac7bbc434"
+        },
+        {
+          "accepted_frontend": true,
+          "job_id": "test-open_control-000-p03-NTO_PAPER-minimum_time-124295e0",
+          "method": "NTO_PAPER",
+          "objective": "minimum_time",
+          "path_sha256": "4a9e889a74672a145dc88b7f3724a24562a8adf0af561e6d3eae979acc5916e6",
+          "task_sha256": "c6244a90579d6d5be9d2ddcd322a78b0b8bf5459d86175cac0fff26ac7bbc434"
+        }
+      ],
+      "fixed_task_hashes": [
+        "c6244a90579d6d5be9d2ddcd322a78b0b8bf5459d86175cac0fff26ac7bbc434"
+      ],
+      "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c"
+    },
+    {
+      "accepted_seed_path_hashes": [
+        "e6f2aa7a8ddca3462b5bb5054892a1ad5b5904f081899352de0b1db05e12c043"
+      ],
+      "case_id": "test-open_control-000-p04",
+      "entries": [
+        {
+          "accepted_frontend": true,
+          "job_id": "test-open_control-000-p04-EI_ZO-minimum_distance-a2553c43",
+          "method": "EI_ZO",
+          "objective": "minimum_distance",
+          "path_sha256": "e6f2aa7a8ddca3462b5bb5054892a1ad5b5904f081899352de0b1db05e12c043",
+          "task_sha256": "8c78c33255b9515c1106618190f97439bb90c153d411c4f883d703ab92a6c252"
+        },
+        {
+          "accepted_frontend": true,
+          "job_id": "test-open_control-000-p04-LGCS-minimum_distance-e8643cee",
+          "method": "LGCS",
+          "objective": "minimum_distance",
+          "path_sha256": "e6f2aa7a8ddca3462b5bb5054892a1ad5b5904f081899352de0b1db05e12c043",
+          "task_sha256": "8c78c33255b9515c1106618190f97439bb90c153d411c4f883d703ab92a6c252"
+        },
+        {
+          "accepted_frontend": true,
+          "job_id": "test-open_control-000-p04-NTO_PAPER-minimum_distance-6b8134ae",
+          "method": "NTO_PAPER",
+          "objective": "minimum_distance",
+          "path_sha256": "e6f2aa7a8ddca3462b5bb5054892a1ad5b5904f081899352de0b1db05e12c043",
+          "task_sha256": "8c78c33255b9515c1106618190f97439bb90c153d411c4f883d703ab92a6c252"
+        },
+        {
+          "accepted_frontend": true,
+          "job_id": "test-open_control-000-p04-EI_ZO-minimum_time-8767a32f",
+          "method": "EI_ZO",
+          "objective": "minimum_time",
+          "path_sha256": "e6f2aa7a8ddca3462b5bb5054892a1ad5b5904f081899352de0b1db05e12c043",
+          "task_sha256": "8c78c33255b9515c1106618190f97439bb90c153d411c4f883d703ab92a6c252"
+        },
+        {
+          "accepted_frontend": true,
+          "job_id": "test-open_control-000-p04-NTO_PAPER-minimum_time-98906b48",
+          "method": "NTO_PAPER",
+          "objective": "minimum_time",
+          "path_sha256": "e6f2aa7a8ddca3462b5bb5054892a1ad5b5904f081899352de0b1db05e12c043",
+          "task_sha256": "8c78c33255b9515c1106618190f97439bb90c153d411c4f883d703ab92a6c252"
+        }
+      ],
+      "fixed_task_hashes": [
+        "8c78c33255b9515c1106618190f97439bb90c153d411c4f883d703ab92a6c252"
+      ],
+      "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c"
+    },
+    {
+      "accepted_seed_path_hashes": [
+        "8e8397350ecc2ced1011e603e9d5f37560deaf99102d57f0c44c57b6701f3e60"
+      ],
+      "case_id": "test-open_control-001-p00",
+      "entries": [
+        {
+          "accepted_frontend": true,
+          "job_id": "test-open_control-001-p00-EI_ZO-minimum_distance-b2fcff0e",
+          "method": "EI_ZO",
+          "objective": "minimum_distance",
+          "path_sha256": "8e8397350ecc2ced1011e603e9d5f37560deaf99102d57f0c44c57b6701f3e60",
+          "task_sha256": "058f1d30af94cf44e627a5be9e3abbbcddb32cbb47702144c96233495ee94f49"
+        },
+        {
+          "accepted_frontend": true,
+          "job_id": "test-open_control-001-p00-LGCS-minimum_distance-d99b9ef6",
+          "method": "LGCS",
+          "objective": "minimum_distance",
+          "path_sha256": "8e8397350ecc2ced1011e603e9d5f37560deaf99102d57f0c44c57b6701f3e60",
+          "task_sha256": "058f1d30af94cf44e627a5be9e3abbbcddb32cbb47702144c96233495ee94f49"
+        },
+        {
+          "accepted_frontend": true,
+          "job_id": "test-open_control-001-p00-NTO_PAPER-minimum_distance-95b0c3b3",
+          "method": "NTO_PAPER",
+          "objective": "minimum_distance",
+          "path_sha256": "8e8397350ecc2ced1011e603e9d5f37560deaf99102d57f0c44c57b6701f3e60",
+          "task_sha256": "058f1d30af94cf44e627a5be9e3abbbcddb32cbb47702144c96233495ee94f49"
+        },
+        {
+          "accepted_frontend": true,
+          "job_id": "test-open_control-001-p00-EI_ZO-minimum_time-281f616f",
+          "method": "EI_ZO",
+          "objective": "minimum_time",
+          "path_sha256": "8e8397350ecc2ced1011e603e9d5f37560deaf99102d57f0c44c57b6701f3e60",
+          "task_sha256": "058f1d30af94cf44e627a5be9e3abbbcddb32cbb47702144c96233495ee94f49"
+        },
+        {
+          "accepted_frontend": true,
+          "job_id": "test-open_control-001-p00-NTO_PAPER-minimum_time-379769e8",
+          "method": "NTO_PAPER",
+          "objective": "minimum_time",
+          "path_sha256": "8e8397350ecc2ced1011e603e9d5f37560deaf99102d57f0c44c57b6701f3e60",
+          "task_sha256": "058f1d30af94cf44e627a5be9e3abbbcddb32cbb47702144c96233495ee94f49"
+        }
+      ],
+      "fixed_task_hashes": [
+        "058f1d30af94cf44e627a5be9e3abbbcddb32cbb47702144c96233495ee94f49"
+      ],
+      "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c"
+    },
+    {
+      "accepted_seed_path_hashes": [
+        "abc267fcfa391387bf904bba9a866063ea0c5f03731944d6a0d8b1bd3b87d159"
+      ],
+      "case_id": "test-open_control-001-p01",
+      "entries": [
+        {
+          "accepted_frontend": true,
+          "job_id": "test-open_control-001-p01-EI_ZO-minimum_distance-355f47f1",
+          "method": "EI_ZO",
+          "objective": "minimum_distance",
+          "path_sha256": "abc267fcfa391387bf904bba9a866063ea0c5f03731944d6a0d8b1bd3b87d159",
+          "task_sha256": "760227456b256507980ede2372ca03b2e84399d9326f4866bfb43ff956249cdb"
+        },
+        {
+          "accepted_frontend": true,
+          "job_id": "test-open_control-001-p01-LGCS-minimum_distance-d555a197",
+          "method": "LGCS",
+          "objective": "minimum_distance",
+          "path_sha256": "abc267fcfa391387bf904bba9a866063ea0c5f03731944d6a0d8b1bd3b87d159",
+          "task_sha256": "760227456b256507980ede2372ca03b2e84399d9326f4866bfb43ff956249cdb"
+        },
+        {
+          "accepted_frontend": true,
+          "job_id": "test-open_control-001-p01-NTO_PAPER-minimum_distance-e2657bb7",
+          "method": "NTO_PAPER",
+          "objective": "minimum_distance",
+          "path_sha256": "abc267fcfa391387bf904bba9a866063ea0c5f03731944d6a0d8b1bd3b87d159",
+          "task_sha256": "760227456b256507980ede2372ca03b2e84399d9326f4866bfb43ff956249cdb"
+        },
+        {
+          "accepted_frontend": true,
+          "job_id": "test-open_control-001-p01-EI_ZO-minimum_time-62886cb9",
+          "method": "EI_ZO",
+          "objective": "minimum_time",
+          "path_sha256": "abc267fcfa391387bf904bba9a866063ea0c5f03731944d6a0d8b1bd3b87d159",
+          "task_sha256": "760227456b256507980ede2372ca03b2e84399d9326f4866bfb43ff956249cdb"
+        },
+        {
+          "accepted_frontend": true,
+          "job_id": "test-open_control-001-p01-NTO_PAPER-minimum_time-333b88ee",
+          "method": "NTO_PAPER",
+          "objective": "minimum_time",
+          "path_sha256": "abc267fcfa391387bf904bba9a866063ea0c5f03731944d6a0d8b1bd3b87d159",
+          "task_sha256": "760227456b256507980ede2372ca03b2e84399d9326f4866bfb43ff956249cdb"
+        }
+      ],
+      "fixed_task_hashes": [
+        "760227456b256507980ede2372ca03b2e84399d9326f4866bfb43ff956249cdb"
+      ],
+      "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c"
+    },
+    {
+      "accepted_seed_path_hashes": [
+        "57441048782fb83b48c514bd1bb15cdcee602f6f1387e449e48624846bf2f367"
+      ],
+      "case_id": "test-open_control-001-p02",
+      "entries": [
+        {
+          "accepted_frontend": true,
+          "job_id": "test-open_control-001-p02-EI_ZO-minimum_distance-6c3bdfcd",
+          "method": "EI_ZO",
+          "objective": "minimum_distance",
+          "path_sha256": "57441048782fb83b48c514bd1bb15cdcee602f6f1387e449e48624846bf2f367",
+          "task_sha256": "5a012f2e78b0244c0ee7f091c330686e4ad32753c9a79d6a4d9c5ab25ce850b7"
+        },
+        {
+          "accepted_frontend": true,
+          "job_id": "test-open_control-001-p02-LGCS-minimum_distance-689670ee",
+          "method": "LGCS",
+          "objective": "minimum_distance",
+          "path_sha256": "57441048782fb83b48c514bd1bb15cdcee602f6f1387e449e48624846bf2f367",
+          "task_sha256": "5a012f2e78b0244c0ee7f091c330686e4ad32753c9a79d6a4d9c5ab25ce850b7"
+        },
+        {
+          "accepted_frontend": true,
+          "job_id": "test-open_control-001-p02-NTO_PAPER-minimum_distance-7d85914c",
+          "method": "NTO_PAPER",
+          "objective": "minimum_distance",
+          "path_sha256": "57441048782fb83b48c514bd1bb15cdcee602f6f1387e449e48624846bf2f367",
+          "task_sha256": "5a012f2e78b0244c0ee7f091c330686e4ad32753c9a79d6a4d9c5ab25ce850b7"
+        },
+        {
+          "accepted_frontend": true,
+          "job_id": "test-open_control-001-p02-EI_ZO-minimum_time-a218b067",
+          "method": "EI_ZO",
+          "objective": "minimum_time",
+          "path_sha256": "57441048782fb83b48c514bd1bb15cdcee602f6f1387e449e48624846bf2f367",
+          "task_sha256": "5a012f2e78b0244c0ee7f091c330686e4ad32753c9a79d6a4d9c5ab25ce850b7"
+        },
+        {
+          "accepted_frontend": true,
+          "job_id": "test-open_control-001-p02-NTO_PAPER-minimum_time-7ccf08b6",
+          "method": "NTO_PAPER",
+          "objective": "minimum_time",
+          "path_sha256": "57441048782fb83b48c514bd1bb15cdcee602f6f1387e449e48624846bf2f367",
+          "task_sha256": "5a012f2e78b0244c0ee7f091c330686e4ad32753c9a79d6a4d9c5ab25ce850b7"
+        }
+      ],
+      "fixed_task_hashes": [
+        "5a012f2e78b0244c0ee7f091c330686e4ad32753c9a79d6a4d9c5ab25ce850b7"
+      ],
+      "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c"
+    },
+    {
+      "accepted_seed_path_hashes": [
+        "2d07a1dd67e996a22c2789cdfdd308d6c3f77341c057e951983490f370c0ed17"
+      ],
+      "case_id": "test-open_control-001-p03",
+      "entries": [
+        {
+          "accepted_frontend": true,
+          "job_id": "test-open_control-001-p03-EI_ZO-minimum_distance-2a82330c",
+          "method": "EI_ZO",
+          "objective": "minimum_distance",
+          "path_sha256": "2d07a1dd67e996a22c2789cdfdd308d6c3f77341c057e951983490f370c0ed17",
+          "task_sha256": "7308c8cfd09f583120eb70619ffd9bbec0045df4c772a11cedf093066a10b977"
+        },
+        {
+          "accepted_frontend": true,
+          "job_id": "test-open_control-001-p03-LGCS-minimum_distance-5211e78a",
+          "method": "LGCS",
+          "objective": "minimum_distance",
+          "path_sha256": "2d07a1dd67e996a22c2789cdfdd308d6c3f77341c057e951983490f370c0ed17",
+          "task_sha256": "7308c8cfd09f583120eb70619ffd9bbec0045df4c772a11cedf093066a10b977"
+        },
+        {
+          "accepted_frontend": true,
+          "job_id": "test-open_control-001-p03-NTO_PAPER-minimum_distance-09ffea51",
+          "method": "NTO_PAPER",
+          "objective": "minimum_distance",
+          "path_sha256": "2d07a1dd67e996a22c2789cdfdd308d6c3f77341c057e951983490f370c0ed17",
+          "task_sha256": "7308c8cfd09f583120eb70619ffd9bbec0045df4c772a11cedf093066a10b977"
+        },
+        {
+          "accepted_frontend": true,
+          "job_id": "test-open_control-001-p03-EI_ZO-minimum_time-ec3e1eca",
+          "method": "EI_ZO",
+          "objective": "minimum_time",
+          "path_sha256": "2d07a1dd67e996a22c2789cdfdd308d6c3f77341c057e951983490f370c0ed17",
+          "task_sha256": "7308c8cfd09f583120eb70619ffd9bbec0045df4c772a11cedf093066a10b977"
+        },
+        {
+          "accepted_frontend": true,
+          "job_id": "test-open_control-001-p03-NTO_PAPER-minimum_time-f56a4a36",
+          "method": "NTO_PAPER",
+          "objective": "minimum_time",
+          "path_sha256": "2d07a1dd67e996a22c2789cdfdd308d6c3f77341c057e951983490f370c0ed17",
+          "task_sha256": "7308c8cfd09f583120eb70619ffd9bbec0045df4c772a11cedf093066a10b977"
+        }
+      ],
+      "fixed_task_hashes": [
+        "7308c8cfd09f583120eb70619ffd9bbec0045df4c772a11cedf093066a10b977"
+      ],
+      "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c"
+    },
+    {
+      "accepted_seed_path_hashes": [
+        "b88a444afc6490678597b29988eeb73abcaab3c03ff291a823a2f5df0f6a8ca4"
+      ],
+      "case_id": "test-open_control-001-p04",
+      "entries": [
+        {
+          "accepted_frontend": true,
+          "job_id": "test-open_control-001-p04-EI_ZO-minimum_distance-acae040a",
+          "method": "EI_ZO",
+          "objective": "minimum_distance",
+          "path_sha256": "b88a444afc6490678597b29988eeb73abcaab3c03ff291a823a2f5df0f6a8ca4",
+          "task_sha256": "aefe64b48796cda46cba1ac8828cd08eb8f0a521d6f8e962bade433868a8cde8"
+        },
+        {
+          "accepted_frontend": true,
+          "job_id": "test-open_control-001-p04-LGCS-minimum_distance-a3435597",
+          "method": "LGCS",
+          "objective": "minimum_distance",
+          "path_sha256": "b88a444afc6490678597b29988eeb73abcaab3c03ff291a823a2f5df0f6a8ca4",
+          "task_sha256": "aefe64b48796cda46cba1ac8828cd08eb8f0a521d6f8e962bade433868a8cde8"
+        },
+        {
+          "accepted_frontend": true,
+          "job_id": "test-open_control-001-p04-NTO_PAPER-minimum_distance-9a12e156",
+          "method": "NTO_PAPER",
+          "objective": "minimum_distance",
+          "path_sha256": "b88a444afc6490678597b29988eeb73abcaab3c03ff291a823a2f5df0f6a8ca4",
+          "task_sha256": "aefe64b48796cda46cba1ac8828cd08eb8f0a521d6f8e962bade433868a8cde8"
+        },
+        {
+          "accepted_frontend": true,
+          "job_id": "test-open_control-001-p04-EI_ZO-minimum_time-fd537a05",
+          "method": "EI_ZO",
+          "objective": "minimum_time",
+          "path_sha256": "b88a444afc6490678597b29988eeb73abcaab3c03ff291a823a2f5df0f6a8ca4",
+          "task_sha256": "aefe64b48796cda46cba1ac8828cd08eb8f0a521d6f8e962bade433868a8cde8"
+        },
+        {
+          "accepted_frontend": true,
+          "job_id": "test-open_control-001-p04-NTO_PAPER-minimum_time-8f79b581",
+          "method": "NTO_PAPER",
+          "objective": "minimum_time",
+          "path_sha256": "b88a444afc6490678597b29988eeb73abcaab3c03ff291a823a2f5df0f6a8ca4",
+          "task_sha256": "aefe64b48796cda46cba1ac8828cd08eb8f0a521d6f8e962bade433868a8cde8"
+        }
+      ],
+      "fixed_task_hashes": [
+        "aefe64b48796cda46cba1ac8828cd08eb8f0a521d6f8e962bade433868a8cde8"
+      ],
+      "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c"
+    },
+    {
+      "accepted_seed_path_hashes": [
+        "0de90b59c754fa09ab6e434da1b09fe0a00f833efc08f1defb53099ef42e60c3"
+      ],
+      "case_id": "test-open_control-002-p00",
+      "entries": [
+        {
+          "accepted_frontend": true,
+          "job_id": "test-open_control-002-p00-EI_ZO-minimum_distance-32c50b7e",
+          "method": "EI_ZO",
+          "objective": "minimum_distance",
+          "path_sha256": "0de90b59c754fa09ab6e434da1b09fe0a00f833efc08f1defb53099ef42e60c3",
+          "task_sha256": "5f96f5684e68d6c2728b312ae5ffca880df5bd18ed8e1fb524ec8ded19c06011"
+        },
+        {
+          "accepted_frontend": true,
+          "job_id": "test-open_control-002-p00-LGCS-minimum_distance-8a5b3221",
+          "method": "LGCS",
+          "objective": "minimum_distance",
+          "path_sha256": "0de90b59c754fa09ab6e434da1b09fe0a00f833efc08f1defb53099ef42e60c3",
+          "task_sha256": "5f96f5684e68d6c2728b312ae5ffca880df5bd18ed8e1fb524ec8ded19c06011"
+        },
+        {
+          "accepted_frontend": true,
+          "job_id": "test-open_control-002-p00-NTO_PAPER-minimum_distance-2354269d",
+          "method": "NTO_PAPER",
+          "objective": "minimum_distance",
+          "path_sha256": "0de90b59c754fa09ab6e434da1b09fe0a00f833efc08f1defb53099ef42e60c3",
+          "task_sha256": "5f96f5684e68d6c2728b312ae5ffca880df5bd18ed8e1fb524ec8ded19c06011"
+        },
+        {
+          "accepted_frontend": true,
+          "job_id": "test-open_control-002-p00-EI_ZO-minimum_time-42c74e1f",
+          "method": "EI_ZO",
+          "objective": "minimum_time",
+          "path_sha256": "0de90b59c754fa09ab6e434da1b09fe0a00f833efc08f1defb53099ef42e60c3",
+          "task_sha256": "5f96f5684e68d6c2728b312ae5ffca880df5bd18ed8e1fb524ec8ded19c06011"
+        },
+        {
+          "accepted_frontend": true,
+          "job_id": "test-open_control-002-p00-NTO_PAPER-minimum_time-87353e0e",
+          "method": "NTO_PAPER",
+          "objective": "minimum_time",
+          "path_sha256": "0de90b59c754fa09ab6e434da1b09fe0a00f833efc08f1defb53099ef42e60c3",
+          "task_sha256": "5f96f5684e68d6c2728b312ae5ffca880df5bd18ed8e1fb524ec8ded19c06011"
+        }
+      ],
+      "fixed_task_hashes": [
+        "5f96f5684e68d6c2728b312ae5ffca880df5bd18ed8e1fb524ec8ded19c06011"
+      ],
+      "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c"
+    },
+    {
+      "accepted_seed_path_hashes": [
+        "f3b8859a7b8cf587110153ec94e1c88bd89671e8a29467f185511e4a2b93f9e6"
+      ],
+      "case_id": "test-open_control-002-p01",
+      "entries": [
+        {
+          "accepted_frontend": true,
+          "job_id": "test-open_control-002-p01-EI_ZO-minimum_distance-94161019",
+          "method": "EI_ZO",
+          "objective": "minimum_distance",
+          "path_sha256": "f3b8859a7b8cf587110153ec94e1c88bd89671e8a29467f185511e4a2b93f9e6",
+          "task_sha256": "760c7f4251ff4e8a62814d0218bb7ec80385625b0961ca7210c080ef84038a30"
+        },
+        {
+          "accepted_frontend": true,
+          "job_id": "test-open_control-002-p01-LGCS-minimum_distance-9dacd708",
+          "method": "LGCS",
+          "objective": "minimum_distance",
+          "path_sha256": "f3b8859a7b8cf587110153ec94e1c88bd89671e8a29467f185511e4a2b93f9e6",
+          "task_sha256": "760c7f4251ff4e8a62814d0218bb7ec80385625b0961ca7210c080ef84038a30"
+        },
+        {
+          "accepted_frontend": true,
+          "job_id": "test-open_control-002-p01-NTO_PAPER-minimum_distance-5c1c4ffe",
+          "method": "NTO_PAPER",
+          "objective": "minimum_distance",
+          "path_sha256": "f3b8859a7b8cf587110153ec94e1c88bd89671e8a29467f185511e4a2b93f9e6",
+          "task_sha256": "760c7f4251ff4e8a62814d0218bb7ec80385625b0961ca7210c080ef84038a30"
+        },
+        {
+          "accepted_frontend": true,
+          "job_id": "test-open_control-002-p01-EI_ZO-minimum_time-0e3f9ddd",
+          "method": "EI_ZO",
+          "objective": "minimum_time",
+          "path_sha256": "f3b8859a7b8cf587110153ec94e1c88bd89671e8a29467f185511e4a2b93f9e6",
+          "task_sha256": "760c7f4251ff4e8a62814d0218bb7ec80385625b0961ca7210c080ef84038a30"
+        },
+        {
+          "accepted_frontend": true,
+          "job_id": "test-open_control-002-p01-NTO_PAPER-minimum_time-0406ad67",
+          "method": "NTO_PAPER",
+          "objective": "minimum_time",
+          "path_sha256": "f3b8859a7b8cf587110153ec94e1c88bd89671e8a29467f185511e4a2b93f9e6",
+          "task_sha256": "760c7f4251ff4e8a62814d0218bb7ec80385625b0961ca7210c080ef84038a30"
+        }
+      ],
+      "fixed_task_hashes": [
+        "760c7f4251ff4e8a62814d0218bb7ec80385625b0961ca7210c080ef84038a30"
+      ],
+      "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c"
+    },
+    {
+      "accepted_seed_path_hashes": [
+        "14ca83993edea124b495115b82353d10d3dd56e293806f7ea551d0fad3168b03"
+      ],
+      "case_id": "test-open_control-002-p02",
+      "entries": [
+        {
+          "accepted_frontend": true,
+          "job_id": "test-open_control-002-p02-EI_ZO-minimum_distance-3b0b21c9",
+          "method": "EI_ZO",
+          "objective": "minimum_distance",
+          "path_sha256": "14ca83993edea124b495115b82353d10d3dd56e293806f7ea551d0fad3168b03",
+          "task_sha256": "d3e965bd5845de4065d90f88b6b7288e71899e4072d0c2746957d53cb6192380"
+        },
+        {
+          "accepted_frontend": true,
+          "job_id": "test-open_control-002-p02-LGCS-minimum_distance-efe447c6",
+          "method": "LGCS",
+          "objective": "minimum_distance",
+          "path_sha256": "14ca83993edea124b495115b82353d10d3dd56e293806f7ea551d0fad3168b03",
+          "task_sha256": "d3e965bd5845de4065d90f88b6b7288e71899e4072d0c2746957d53cb6192380"
+        },
+        {
+          "accepted_frontend": true,
+          "job_id": "test-open_control-002-p02-NTO_PAPER-minimum_distance-5230a631",
+          "method": "NTO_PAPER",
+          "objective": "minimum_distance",
+          "path_sha256": "14ca83993edea124b495115b82353d10d3dd56e293806f7ea551d0fad3168b03",
+          "task_sha256": "d3e965bd5845de4065d90f88b6b7288e71899e4072d0c2746957d53cb6192380"
+        },
+        {
+          "accepted_frontend": true,
+          "job_id": "test-open_control-002-p02-EI_ZO-minimum_time-4fe14d3e",
+          "method": "EI_ZO",
+          "objective": "minimum_time",
+          "path_sha256": "14ca83993edea124b495115b82353d10d3dd56e293806f7ea551d0fad3168b03",
+          "task_sha256": "d3e965bd5845de4065d90f88b6b7288e71899e4072d0c2746957d53cb6192380"
+        },
+        {
+          "accepted_frontend": true,
+          "job_id": "test-open_control-002-p02-NTO_PAPER-minimum_time-3fb75f82",
+          "method": "NTO_PAPER",
+          "objective": "minimum_time",
+          "path_sha256": "14ca83993edea124b495115b82353d10d3dd56e293806f7ea551d0fad3168b03",
+          "task_sha256": "d3e965bd5845de4065d90f88b6b7288e71899e4072d0c2746957d53cb6192380"
+        }
+      ],
+      "fixed_task_hashes": [
+        "d3e965bd5845de4065d90f88b6b7288e71899e4072d0c2746957d53cb6192380"
+      ],
+      "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c"
+    },
+    {
+      "accepted_seed_path_hashes": [
+        "3745711b0d34c2d72f15820293ddfeb102968c4205f647cc3852c2b20c1d042f"
+      ],
+      "case_id": "test-open_control-002-p03",
+      "entries": [
+        {
+          "accepted_frontend": true,
+          "job_id": "test-open_control-002-p03-EI_ZO-minimum_distance-d5b356ee",
+          "method": "EI_ZO",
+          "objective": "minimum_distance",
+          "path_sha256": "3745711b0d34c2d72f15820293ddfeb102968c4205f647cc3852c2b20c1d042f",
+          "task_sha256": "ac6bce7af3726517328983e816bd3540ef820f3f46c376a7b315dc7b06f84bcb"
+        },
+        {
+          "accepted_frontend": true,
+          "job_id": "test-open_control-002-p03-LGCS-minimum_distance-4e97418e",
+          "method": "LGCS",
+          "objective": "minimum_distance",
+          "path_sha256": "3745711b0d34c2d72f15820293ddfeb102968c4205f647cc3852c2b20c1d042f",
+          "task_sha256": "ac6bce7af3726517328983e816bd3540ef820f3f46c376a7b315dc7b06f84bcb"
+        },
+        {
+          "accepted_frontend": true,
+          "job_id": "test-open_control-002-p03-NTO_PAPER-minimum_distance-e3e57648",
+          "method": "NTO_PAPER",
+          "objective": "minimum_distance",
+          "path_sha256": "3745711b0d34c2d72f15820293ddfeb102968c4205f647cc3852c2b20c1d042f",
+          "task_sha256": "ac6bce7af3726517328983e816bd3540ef820f3f46c376a7b315dc7b06f84bcb"
+        },
+        {
+          "accepted_frontend": true,
+          "job_id": "test-open_control-002-p03-EI_ZO-minimum_time-0ed6310b",
+          "method": "EI_ZO",
+          "objective": "minimum_time",
+          "path_sha256": "3745711b0d34c2d72f15820293ddfeb102968c4205f647cc3852c2b20c1d042f",
+          "task_sha256": "ac6bce7af3726517328983e816bd3540ef820f3f46c376a7b315dc7b06f84bcb"
+        },
+        {
+          "accepted_frontend": true,
+          "job_id": "test-open_control-002-p03-NTO_PAPER-minimum_time-ad6f41b3",
+          "method": "NTO_PAPER",
+          "objective": "minimum_time",
+          "path_sha256": "3745711b0d34c2d72f15820293ddfeb102968c4205f647cc3852c2b20c1d042f",
+          "task_sha256": "ac6bce7af3726517328983e816bd3540ef820f3f46c376a7b315dc7b06f84bcb"
+        }
+      ],
+      "fixed_task_hashes": [
+        "ac6bce7af3726517328983e816bd3540ef820f3f46c376a7b315dc7b06f84bcb"
+      ],
+      "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c"
+    },
+    {
+      "accepted_seed_path_hashes": [
+        "99d4b77ac9be7895e7e56dcf6feb867b20f2292a1e7bb207abefcfade9fbeb16"
+      ],
+      "case_id": "test-open_control-002-p04",
+      "entries": [
+        {
+          "accepted_frontend": true,
+          "job_id": "test-open_control-002-p04-EI_ZO-minimum_distance-aeabb66d",
+          "method": "EI_ZO",
+          "objective": "minimum_distance",
+          "path_sha256": "99d4b77ac9be7895e7e56dcf6feb867b20f2292a1e7bb207abefcfade9fbeb16",
+          "task_sha256": "b2899c2e9aaadc173e5484969908a2db461c98dcb6e40409bb4735e134a3ee1d"
+        },
+        {
+          "accepted_frontend": true,
+          "job_id": "test-open_control-002-p04-LGCS-minimum_distance-531e01bb",
+          "method": "LGCS",
+          "objective": "minimum_distance",
+          "path_sha256": "99d4b77ac9be7895e7e56dcf6feb867b20f2292a1e7bb207abefcfade9fbeb16",
+          "task_sha256": "b2899c2e9aaadc173e5484969908a2db461c98dcb6e40409bb4735e134a3ee1d"
+        },
+        {
+          "accepted_frontend": true,
+          "job_id": "test-open_control-002-p04-NTO_PAPER-minimum_distance-407f2ccc",
+          "method": "NTO_PAPER",
+          "objective": "minimum_distance",
+          "path_sha256": "99d4b77ac9be7895e7e56dcf6feb867b20f2292a1e7bb207abefcfade9fbeb16",
+          "task_sha256": "b2899c2e9aaadc173e5484969908a2db461c98dcb6e40409bb4735e134a3ee1d"
+        },
+        {
+          "accepted_frontend": true,
+          "job_id": "test-open_control-002-p04-EI_ZO-minimum_time-49c9110d",
+          "method": "EI_ZO",
+          "objective": "minimum_time",
+          "path_sha256": "99d4b77ac9be7895e7e56dcf6feb867b20f2292a1e7bb207abefcfade9fbeb16",
+          "task_sha256": "b2899c2e9aaadc173e5484969908a2db461c98dcb6e40409bb4735e134a3ee1d"
+        },
+        {
+          "accepted_frontend": true,
+          "job_id": "test-open_control-002-p04-NTO_PAPER-minimum_time-a7ae0587",
+          "method": "NTO_PAPER",
+          "objective": "minimum_time",
+          "path_sha256": "99d4b77ac9be7895e7e56dcf6feb867b20f2292a1e7bb207abefcfade9fbeb16",
+          "task_sha256": "b2899c2e9aaadc173e5484969908a2db461c98dcb6e40409bb4735e134a3ee1d"
+        }
+      ],
+      "fixed_task_hashes": [
+        "b2899c2e9aaadc173e5484969908a2db461c98dcb6e40409bb4735e134a3ee1d"
+      ],
+      "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c"
+    },
+    {
+      "accepted_seed_path_hashes": [
+        "353d6b0ea669931a5dbfa79df67f2773d85d751c951b27abf34c9a174d5f3543"
+      ],
+      "case_id": "test-open_control-003-p00",
+      "entries": [
+        {
+          "accepted_frontend": true,
+          "job_id": "test-open_control-003-p00-EI_ZO-minimum_distance-b4cd055f",
+          "method": "EI_ZO",
+          "objective": "minimum_distance",
+          "path_sha256": "353d6b0ea669931a5dbfa79df67f2773d85d751c951b27abf34c9a174d5f3543",
+          "task_sha256": "b1ba389f186231931468f3ca8c89bfb3927ac2062701e44f755c475d8e961725"
+        },
+        {
+          "accepted_frontend": true,
+          "job_id": "test-open_control-003-p00-LGCS-minimum_distance-248fd6a9",
+          "method": "LGCS",
+          "objective": "minimum_distance",
+          "path_sha256": "353d6b0ea669931a5dbfa79df67f2773d85d751c951b27abf34c9a174d5f3543",
+          "task_sha256": "b1ba389f186231931468f3ca8c89bfb3927ac2062701e44f755c475d8e961725"
+        },
+        {
+          "accepted_frontend": true,
+          "job_id": "test-open_control-003-p00-NTO_PAPER-minimum_distance-92eed4c1",
+          "method": "NTO_PAPER",
+          "objective": "minimum_distance",
+          "path_sha256": "353d6b0ea669931a5dbfa79df67f2773d85d751c951b27abf34c9a174d5f3543",
+          "task_sha256": "b1ba389f186231931468f3ca8c89bfb3927ac2062701e44f755c475d8e961725"
+        },
+        {
+          "accepted_frontend": true,
+          "job_id": "test-open_control-003-p00-EI_ZO-minimum_time-5ef68567",
+          "method": "EI_ZO",
+          "objective": "minimum_time",
+          "path_sha256": "353d6b0ea669931a5dbfa79df67f2773d85d751c951b27abf34c9a174d5f3543",
+          "task_sha256": "b1ba389f186231931468f3ca8c89bfb3927ac2062701e44f755c475d8e961725"
+        },
+        {
+          "accepted_frontend": true,
+          "job_id": "test-open_control-003-p00-NTO_PAPER-minimum_time-688128d8",
+          "method": "NTO_PAPER",
+          "objective": "minimum_time",
+          "path_sha256": "353d6b0ea669931a5dbfa79df67f2773d85d751c951b27abf34c9a174d5f3543",
+          "task_sha256": "b1ba389f186231931468f3ca8c89bfb3927ac2062701e44f755c475d8e961725"
+        }
+      ],
+      "fixed_task_hashes": [
+        "b1ba389f186231931468f3ca8c89bfb3927ac2062701e44f755c475d8e961725"
+      ],
+      "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c"
+    },
+    {
+      "accepted_seed_path_hashes": [
+        "5891c87b700ea5447233199d18fa3e900115d0fcbf392183528f4ba0524342cb"
+      ],
+      "case_id": "test-open_control-003-p01",
+      "entries": [
+        {
+          "accepted_frontend": true,
+          "job_id": "test-open_control-003-p01-EI_ZO-minimum_distance-6544d1e1",
+          "method": "EI_ZO",
+          "objective": "minimum_distance",
+          "path_sha256": "5891c87b700ea5447233199d18fa3e900115d0fcbf392183528f4ba0524342cb",
+          "task_sha256": "8f37470d46a16e211a14991c0d5c2b70e7601b765e2ca9998c5c1bfe33beb633"
+        },
+        {
+          "accepted_frontend": true,
+          "job_id": "test-open_control-003-p01-LGCS-minimum_distance-9a2e645a",
+          "method": "LGCS",
+          "objective": "minimum_distance",
+          "path_sha256": "5891c87b700ea5447233199d18fa3e900115d0fcbf392183528f4ba0524342cb",
+          "task_sha256": "8f37470d46a16e211a14991c0d5c2b70e7601b765e2ca9998c5c1bfe33beb633"
+        },
+        {
+          "accepted_frontend": true,
+          "job_id": "test-open_control-003-p01-NTO_PAPER-minimum_distance-f2bf6ac7",
+          "method": "NTO_PAPER",
+          "objective": "minimum_distance",
+          "path_sha256": "5891c87b700ea5447233199d18fa3e900115d0fcbf392183528f4ba0524342cb",
+          "task_sha256": "8f37470d46a16e211a14991c0d5c2b70e7601b765e2ca9998c5c1bfe33beb633"
+        },
+        {
+          "accepted_frontend": true,
+          "job_id": "test-open_control-003-p01-EI_ZO-minimum_time-845ad48f",
+          "method": "EI_ZO",
+          "objective": "minimum_time",
+          "path_sha256": "5891c87b700ea5447233199d18fa3e900115d0fcbf392183528f4ba0524342cb",
+          "task_sha256": "8f37470d46a16e211a14991c0d5c2b70e7601b765e2ca9998c5c1bfe33beb633"
+        },
+        {
+          "accepted_frontend": true,
+          "job_id": "test-open_control-003-p01-NTO_PAPER-minimum_time-d136cf0c",
+          "method": "NTO_PAPER",
+          "objective": "minimum_time",
+          "path_sha256": "5891c87b700ea5447233199d18fa3e900115d0fcbf392183528f4ba0524342cb",
+          "task_sha256": "8f37470d46a16e211a14991c0d5c2b70e7601b765e2ca9998c5c1bfe33beb633"
+        }
+      ],
+      "fixed_task_hashes": [
+        "8f37470d46a16e211a14991c0d5c2b70e7601b765e2ca9998c5c1bfe33beb633"
+      ],
+      "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c"
+    },
+    {
+      "accepted_seed_path_hashes": [
+        "6a44f5b1da9c2a8258b2579dc0746ffd684a4720be11e47470a928fec0117ade"
+      ],
+      "case_id": "test-open_control-003-p02",
+      "entries": [
+        {
+          "accepted_frontend": true,
+          "job_id": "test-open_control-003-p02-EI_ZO-minimum_distance-35c7f33e",
+          "method": "EI_ZO",
+          "objective": "minimum_distance",
+          "path_sha256": "6a44f5b1da9c2a8258b2579dc0746ffd684a4720be11e47470a928fec0117ade",
+          "task_sha256": "39fa042be766e4ad858fd15999de4bd3e72f42a1cdba4c2679c996b030e3e247"
+        },
+        {
+          "accepted_frontend": true,
+          "job_id": "test-open_control-003-p02-LGCS-minimum_distance-80aedc8e",
+          "method": "LGCS",
+          "objective": "minimum_distance",
+          "path_sha256": "6a44f5b1da9c2a8258b2579dc0746ffd684a4720be11e47470a928fec0117ade",
+          "task_sha256": "39fa042be766e4ad858fd15999de4bd3e72f42a1cdba4c2679c996b030e3e247"
+        },
+        {
+          "accepted_frontend": true,
+          "job_id": "test-open_control-003-p02-NTO_PAPER-minimum_distance-0b94371f",
+          "method": "NTO_PAPER",
+          "objective": "minimum_distance",
+          "path_sha256": "6a44f5b1da9c2a8258b2579dc0746ffd684a4720be11e47470a928fec0117ade",
+          "task_sha256": "39fa042be766e4ad858fd15999de4bd3e72f42a1cdba4c2679c996b030e3e247"
+        },
+        {
+          "accepted_frontend": true,
+          "job_id": "test-open_control-003-p02-EI_ZO-minimum_time-291aaafe",
+          "method": "EI_ZO",
+          "objective": "minimum_time",
+          "path_sha256": "6a44f5b1da9c2a8258b2579dc0746ffd684a4720be11e47470a928fec0117ade",
+          "task_sha256": "39fa042be766e4ad858fd15999de4bd3e72f42a1cdba4c2679c996b030e3e247"
+        },
+        {
+          "accepted_frontend": true,
+          "job_id": "test-open_control-003-p02-NTO_PAPER-minimum_time-e74cc76a",
+          "method": "NTO_PAPER",
+          "objective": "minimum_time",
+          "path_sha256": "6a44f5b1da9c2a8258b2579dc0746ffd684a4720be11e47470a928fec0117ade",
+          "task_sha256": "39fa042be766e4ad858fd15999de4bd3e72f42a1cdba4c2679c996b030e3e247"
+        }
+      ],
+      "fixed_task_hashes": [
+        "39fa042be766e4ad858fd15999de4bd3e72f42a1cdba4c2679c996b030e3e247"
+      ],
+      "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c"
+    },
+    {
+      "accepted_seed_path_hashes": [
+        "2172893f73478effaf023f7fb9184ce4b7f1259680d103b3a4ec63226804b1bf"
+      ],
+      "case_id": "test-open_control-003-p03",
+      "entries": [
+        {
+          "accepted_frontend": true,
+          "job_id": "test-open_control-003-p03-EI_ZO-minimum_distance-7301e880",
+          "method": "EI_ZO",
+          "objective": "minimum_distance",
+          "path_sha256": "2172893f73478effaf023f7fb9184ce4b7f1259680d103b3a4ec63226804b1bf",
+          "task_sha256": "e70d7bd60253eec60f2bc0bb3b3601017b472c1552cbf3c0d15f002fee1d0576"
+        },
+        {
+          "accepted_frontend": true,
+          "job_id": "test-open_control-003-p03-LGCS-minimum_distance-3bc7a7fd",
+          "method": "LGCS",
+          "objective": "minimum_distance",
+          "path_sha256": "2172893f73478effaf023f7fb9184ce4b7f1259680d103b3a4ec63226804b1bf",
+          "task_sha256": "e70d7bd60253eec60f2bc0bb3b3601017b472c1552cbf3c0d15f002fee1d0576"
+        },
+        {
+          "accepted_frontend": true,
+          "job_id": "test-open_control-003-p03-NTO_PAPER-minimum_distance-1f7edd01",
+          "method": "NTO_PAPER",
+          "objective": "minimum_distance",
+          "path_sha256": "2172893f73478effaf023f7fb9184ce4b7f1259680d103b3a4ec63226804b1bf",
+          "task_sha256": "e70d7bd60253eec60f2bc0bb3b3601017b472c1552cbf3c0d15f002fee1d0576"
+        },
+        {
+          "accepted_frontend": true,
+          "job_id": "test-open_control-003-p03-EI_ZO-minimum_time-cf1fba25",
+          "method": "EI_ZO",
+          "objective": "minimum_time",
+          "path_sha256": "2172893f73478effaf023f7fb9184ce4b7f1259680d103b3a4ec63226804b1bf",
+          "task_sha256": "e70d7bd60253eec60f2bc0bb3b3601017b472c1552cbf3c0d15f002fee1d0576"
+        },
+        {
+          "accepted_frontend": true,
+          "job_id": "test-open_control-003-p03-NTO_PAPER-minimum_time-f5a13bed",
+          "method": "NTO_PAPER",
+          "objective": "minimum_time",
+          "path_sha256": "2172893f73478effaf023f7fb9184ce4b7f1259680d103b3a4ec63226804b1bf",
+          "task_sha256": "e70d7bd60253eec60f2bc0bb3b3601017b472c1552cbf3c0d15f002fee1d0576"
+        }
+      ],
+      "fixed_task_hashes": [
+        "e70d7bd60253eec60f2bc0bb3b3601017b472c1552cbf3c0d15f002fee1d0576"
+      ],
+      "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c"
+    },
+    {
+      "accepted_seed_path_hashes": [
+        "45f70f4239b092a125edbb985416da6042555d63ae2b1e86cbbc35ee5a6a15c8"
+      ],
+      "case_id": "test-open_control-003-p04",
+      "entries": [
+        {
+          "accepted_frontend": true,
+          "job_id": "test-open_control-003-p04-EI_ZO-minimum_distance-62f576f8",
+          "method": "EI_ZO",
+          "objective": "minimum_distance",
+          "path_sha256": "45f70f4239b092a125edbb985416da6042555d63ae2b1e86cbbc35ee5a6a15c8",
+          "task_sha256": "5839c54ac5f75888b53f3320552101f28e9311a604f7a3cd3303af591c96f0ea"
+        },
+        {
+          "accepted_frontend": true,
+          "job_id": "test-open_control-003-p04-LGCS-minimum_distance-12bfd016",
+          "method": "LGCS",
+          "objective": "minimum_distance",
+          "path_sha256": "45f70f4239b092a125edbb985416da6042555d63ae2b1e86cbbc35ee5a6a15c8",
+          "task_sha256": "5839c54ac5f75888b53f3320552101f28e9311a604f7a3cd3303af591c96f0ea"
+        },
+        {
+          "accepted_frontend": true,
+          "job_id": "test-open_control-003-p04-NTO_PAPER-minimum_distance-a8be60de",
+          "method": "NTO_PAPER",
+          "objective": "minimum_distance",
+          "path_sha256": "45f70f4239b092a125edbb985416da6042555d63ae2b1e86cbbc35ee5a6a15c8",
+          "task_sha256": "5839c54ac5f75888b53f3320552101f28e9311a604f7a3cd3303af591c96f0ea"
+        },
+        {
+          "accepted_frontend": true,
+          "job_id": "test-open_control-003-p04-EI_ZO-minimum_time-a0018a20",
+          "method": "EI_ZO",
+          "objective": "minimum_time",
+          "path_sha256": "45f70f4239b092a125edbb985416da6042555d63ae2b1e86cbbc35ee5a6a15c8",
+          "task_sha256": "5839c54ac5f75888b53f3320552101f28e9311a604f7a3cd3303af591c96f0ea"
+        },
+        {
+          "accepted_frontend": true,
+          "job_id": "test-open_control-003-p04-NTO_PAPER-minimum_time-32c71fa2",
+          "method": "NTO_PAPER",
+          "objective": "minimum_time",
+          "path_sha256": "45f70f4239b092a125edbb985416da6042555d63ae2b1e86cbbc35ee5a6a15c8",
+          "task_sha256": "5839c54ac5f75888b53f3320552101f28e9311a604f7a3cd3303af591c96f0ea"
+        }
+      ],
+      "fixed_task_hashes": [
+        "5839c54ac5f75888b53f3320552101f28e9311a604f7a3cd3303af591c96f0ea"
+      ],
+      "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c"
+    }
+  ],
+  "source_snapshot_checks": [
+    {
+      "expected_sha256": "5f99ed1dec9fccf393d637905dedf494de69db95f0cffedc75e608c6519f78f0",
+      "path": "benchmarks/generic_motion_v1/__main__.py",
+      "sha256": "5f99ed1dec9fccf393d637905dedf494de69db95f0cffedc75e608c6519f78f0"
+    },
+    {
+      "expected_sha256": "012ae05c9ecf7b0fc461659c2050161b9a9053f0b4dcdbd530a8bf42ef606007",
+      "path": "benchmarks/generic_motion_v1/batch.py",
+      "sha256": "012ae05c9ecf7b0fc461659c2050161b9a9053f0b4dcdbd530a8bf42ef606007"
+    },
+    {
+      "expected_sha256": "63e2d16d49ff7b316c0547eac3ee305f401ffb7fab6018ed3c8d7bfb32139022",
+      "path": "benchmarks/generic_motion_v1/common.py",
+      "sha256": "63e2d16d49ff7b316c0547eac3ee305f401ffb7fab6018ed3c8d7bfb32139022"
+    },
+    {
+      "expected_sha256": "ac60e554b442d10bf820b642fc4425d4619f12fd8c2d236f1cee10c7c91a0f8f",
+      "path": "benchmarks/generic_motion_v1/configs/dev_generator.json",
+      "sha256": "ac60e554b442d10bf820b642fc4425d4619f12fd8c2d236f1cee10c7c91a0f8f"
+    },
+    {
+      "expected_sha256": "147fc627b192130ef51b34a959eb1082de8883b0c8cc253d4f855ce28fc530a0",
+      "path": "benchmarks/generic_motion_v1/configs/evaluation.json",
+      "sha256": "147fc627b192130ef51b34a959eb1082de8883b0c8cc253d4f855ce28fc530a0"
+    },
+    {
+      "expected_sha256": "ac60e554b442d10bf820b642fc4425d4619f12fd8c2d236f1cee10c7c91a0f8f",
+      "path": "benchmarks/generic_motion_v1/configs/generator.json",
+      "sha256": "ac60e554b442d10bf820b642fc4425d4619f12fd8c2d236f1cee10c7c91a0f8f"
+    },
+    {
+      "expected_sha256": "af89a0de7988658a88a5696d5aae37ca4321fdc6f8a5bf2db5cb87c079807ce2",
+      "path": "benchmarks/generic_motion_v1/configs/robot.json",
+      "sha256": "af89a0de7988658a88a5696d5aae37ca4321fdc6f8a5bf2db5cb87c079807ce2"
+    },
+    {
+      "expected_sha256": "8c58d9430b82ca92c80b68e0aa11a5886d876f8d838cb9d3a9cb74ce450b9eba",
+      "path": "benchmarks/generic_motion_v1/configs/rss2025_eizo.json",
+      "sha256": "8c58d9430b82ca92c80b68e0aa11a5886d876f8d838cb9d3a9cb74ce450b9eba"
+    },
+    {
+      "expected_sha256": "ac60e554b442d10bf820b642fc4425d4619f12fd8c2d236f1cee10c7c91a0f8f",
+      "path": "benchmarks/generic_motion_v1/configs/smoke_generator.json",
+      "sha256": "ac60e554b442d10bf820b642fc4425d4619f12fd8c2d236f1cee10c7c91a0f8f"
+    },
+    {
+      "expected_sha256": "ac60e554b442d10bf820b642fc4425d4619f12fd8c2d236f1cee10c7c91a0f8f",
+      "path": "benchmarks/generic_motion_v1/configs/test_generator.json",
+      "sha256": "ac60e554b442d10bf820b642fc4425d4619f12fd8c2d236f1cee10c7c91a0f8f"
+    },
+    {
+      "expected_sha256": "b73fa031be4d0c3c14aa4549e11cd634dcc2428fb786367a81b67ab9bc4b9e2e",
+      "path": "benchmarks/generic_motion_v1/generator/__init__.py",
+      "sha256": "b73fa031be4d0c3c14aa4549e11cd634dcc2428fb786367a81b67ab9bc4b9e2e"
+    },
+    {
+      "expected_sha256": "3436ad76c1fcf5c32f949475075d8437f7b5a0f3464be4ec317a5e2451d69fd7",
+      "path": "benchmarks/generic_motion_v1/generator/audit.py",
+      "sha256": "3436ad76c1fcf5c32f949475075d8437f7b5a0f3464be4ec317a5e2451d69fd7"
+    },
+    {
+      "expected_sha256": "9e9c4e44d1593474213233214e6cc82a727cfa761979a80a2f9d1701b21321fe",
+      "path": "benchmarks/generic_motion_v1/generator/configuration.py",
+      "sha256": "9e9c4e44d1593474213233214e6cc82a727cfa761979a80a2f9d1701b21321fe"
+    },
+    {
+      "expected_sha256": "37174be436cfdd2313e7ea35d39120709316c701550c248a8672291ac5853cac",
+      "path": "benchmarks/generic_motion_v1/generator/endpoints.py",
+      "sha256": "37174be436cfdd2313e7ea35d39120709316c701550c248a8672291ac5853cac"
+    },
+    {
+      "expected_sha256": "53a582deee17cc2222e1d52558578a08979045ec489b0406611760d7932722f2",
+      "path": "benchmarks/generic_motion_v1/generator/integrity.py",
+      "sha256": "53a582deee17cc2222e1d52558578a08979045ec489b0406611760d7932722f2"
+    },
+    {
+      "expected_sha256": "a5da5e21c82984dd775adbcd8e88732be88082ac2d2818603cceab5cef560d5d",
+      "path": "benchmarks/generic_motion_v1/generator/manifest.py",
+      "sha256": "a5da5e21c82984dd775adbcd8e88732be88082ac2d2818603cceab5cef560d5d"
+    },
+    {
+      "expected_sha256": "bcf4b159cea50ebd4984298f0825c70cacdf6dfb16ab963b02da03744128c650",
+      "path": "benchmarks/generic_motion_v1/generator/scene.py",
+      "sha256": "bcf4b159cea50ebd4984298f0825c70cacdf6dfb16ab963b02da03744128c650"
+    },
+    {
+      "expected_sha256": "377a8f020a9b635daadfe01622d901efb327ff4146b0cd7383bd83a8ef5e0ff1",
+      "path": "benchmarks/generic_motion_v1/generator/voxelize.py",
+      "sha256": "377a8f020a9b635daadfe01622d901efb327ff4146b0cd7383bd83a8ef5e0ff1"
+    },
+    {
+      "expected_sha256": "5b152e3e5ca484e5378856de11747c45826653df8a1183582fe90e0958fc5116",
+      "path": "benchmarks/generic_motion_v1/model.py",
+      "sha256": "5b152e3e5ca484e5378856de11747c45826653df8a1183582fe90e0958fc5116"
+    },
+    {
+      "expected_sha256": "460b799f6fc85c89ec8300858644154b3e51764573433b91c45681ac1bd1dc7c",
+      "path": "benchmarks/generic_motion_v1/roadmap.py",
+      "sha256": "460b799f6fc85c89ec8300858644154b3e51764573433b91c45681ac1bd1dc7c"
+    },
+    {
+      "expected_sha256": "5068d18002a81335127caa4284c2a5ce60aa1dc9c4338568b3c2a5f29c69f81d",
+      "path": "benchmarks/generic_motion_v1/runners/csdecomp_baseline.py",
+      "sha256": "5068d18002a81335127caa4284c2a5ce60aa1dc9c4338568b3c2a5f29c69f81d"
+    },
+    {
+      "expected_sha256": "5eb45ca2f96b5dd5c727c4afca0b94b00f58ab06ec618073d3089f0ea668b01c",
+      "path": "benchmarks/generic_motion_v1/runners/native_handoff.py",
+      "sha256": "5eb45ca2f96b5dd5c727c4afca0b94b00f58ab06ec618073d3089f0ea668b01c"
+    },
+    {
+      "expected_sha256": "cb26df9783dc97646ff06a1600125d90a0259f2151b3db56e39be365926a90d9",
+      "path": "benchmarks/generic_motion_v1/runners/paper_graph.py",
+      "sha256": "cb26df9783dc97646ff06a1600125d90a0259f2151b3db56e39be365926a90d9"
+    },
+    {
+      "expected_sha256": "51882030b2564aabb2904e45c8ebeda6827d086db45b45e722962f76895a0900",
+      "path": "benchmarks/generic_motion_v1/runners/paper_lgcs.py",
+      "sha256": "51882030b2564aabb2904e45c8ebeda6827d086db45b45e722962f76895a0900"
+    },
+    {
+      "expected_sha256": "e525d4abc12d24615a53078b88427895d370d57723a320cf7f16517ffed5271b",
+      "path": "benchmarks/generic_motion_v1/runners/paper_nto.py",
+      "sha256": "e525d4abc12d24615a53078b88427895d370d57723a320cf7f16517ffed5271b"
+    },
+    {
+      "expected_sha256": "35579fcf1079e73fdd742005bfc1a3475d814cdf72a7b7cfa897f8ede7ff742b",
+      "path": "benchmarks/generic_motion_v1/runners/replay.py",
+      "sha256": "35579fcf1079e73fdd742005bfc1a3475d814cdf72a7b7cfa897f8ede7ff742b"
+    },
+    {
+      "expected_sha256": "d2a99fc8090017503fe272f5dcf4b4168b72ee5582576fa19be96fca2323a0b1",
+      "path": "benchmarks/generic_motion_v1/runners/study_metrics.py",
+      "sha256": "d2a99fc8090017503fe272f5dcf4b4168b72ee5582576fa19be96fca2323a0b1"
+    },
+    {
+      "expected_sha256": "0e0e499a95d649beae5d4f849d122ade08c03e705a2c38dd810560c73da5daa8",
+      "path": "benchmarks/generic_motion_v1/runners/summarize.py",
+      "sha256": "0e0e499a95d649beae5d4f849d122ade08c03e705a2c38dd810560c73da5daa8"
+    },
+    {
+      "expected_sha256": "12086b43b1735ab8455b260235eb0c92b336cb2b2cbaef6c286d1d2f5f376b43",
+      "path": "benchmarks/generic_motion_v1/runners/validate.py",
+      "sha256": "12086b43b1735ab8455b260235eb0c92b336cb2b2cbaef6c286d1d2f5f376b43"
+    },
+    {
+      "expected_sha256": "1d52ac53596e572efed3aba51381f004847c935ac0a6fc46782588405bf996b2",
+      "path": "benchmarks/generic_motion_v1/study_protocol.py",
+      "sha256": "1d52ac53596e572efed3aba51381f004847c935ac0a6fc46782588405bf996b2"
+    },
+    {
+      "expected_sha256": "e2a222d76e3fd709c82ec7f95df93efc697e1893ac06188e368aaaf3d223e6bc",
+      "path": "reproduction/alignment_diagnosis/geometric_solvers.py",
+      "sha256": "e2a222d76e3fd709c82ec7f95df93efc697e1893ac06188e368aaaf3d223e6bc"
+    },
+    {
+      "expected_sha256": "dbce28518dc6d94052391397fe42a84a75d4f647e4ec5fb893c0ac64c7a520ec",
+      "path": "reproduction/paper_completion/optimization.py",
+      "sha256": "dbce28518dc6d94052391397fe42a84a75d4f647e4ec5fb893c0ac64c7a520ec"
+    }
+  ],
+  "warnings": []
+}

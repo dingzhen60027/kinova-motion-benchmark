@@ -1,0 +1,43 @@
+{
+  "created_utc": "2026-10-30T11:36:54.351684+00:00",
+  "working_directory": "/home/eric/wjg/wd/csdecomp",
+  "environment": "existing bash local/python.sh Conda environment; no dependency install",
+  "new_planner_calls": 0,
+  "initial_head": "c8b91f310c77e58eabdbed466ffdd4d751be7c6f",
+  "runs": [
+    {
+      "command": "bash local/python.sh -m benchmarks.generic_motion_v1.reports.benchmark_design_audit_v2.geometry_probe --output benchmarks/generic_motion_v1/reports/benchmark_design_audit_v2/geometry_run_v1",
+      "exit_code": 1,
+      "reason": "Audit script builder lifetime error; failed source and full log saved"
+    },
+    {
+      "command": "same module, output geometry_run_v2",
+      "exit_code": 0,
+      "elapsed_seconds": 15.371414319146425
+    },
+    {
+      "command": "same module, output geometry_run_v3",
+      "exit_code": 0,
+      "elapsed_seconds": 16.254096777178347,
+      "change": "Add exact pair identity assertion and all raw straight-line arrays; no planner or dataset changes"
+    },
+    {
+      "command": "bash local/python.sh -m benchmarks.generic_motion_v1.reports.benchmark_design_audit_v2.build_audit_products",
+      "attempt": 1,
+      "exit_code": 1,
+      "error": "SyntaxError: unmatched ')' at line49; no outputs created"
+    },
+    {
+      "command": "same build_audit_products command after removing extra closing parenthesis",
+      "attempt": 2,
+      "exit_code": 0,
+      "result": "490 annotations,463 legal cases,483187 fine line samples"
+    },
+    {
+      "command": "bash local/python.sh -m pytest benchmarks/generic_motion_v1/tests -q",
+      "exit_code": 0,
+      "result": "603 passed,292 warnings in11.00s",
+      "log": "pytest.log"
+    }
+  ]
+}

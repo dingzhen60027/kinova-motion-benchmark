@@ -1,0 +1,77 @@
+{
+  "version": 1,
+  "scope": "Development integration; frozen smoke and dev only; zero new test planner calls",
+  "methods": [
+    [
+      "EI_ZO",
+      "minimum_distance"
+    ],
+    [
+      "RRTCONNECT",
+      "minimum_distance"
+    ],
+    [
+      "RRTSTAR",
+      "minimum_distance"
+    ],
+    [
+      "CHOMP",
+      "minimum_distance"
+    ],
+    [
+      "STOMP",
+      "minimum_distance"
+    ],
+    [
+      "TRAJOPT",
+      "minimum_distance"
+    ]
+  ],
+  "comparison": {
+    "reused_runs": [],
+    "reference": "Fresh LSCS on exactly the same runtime/configuration; historical studies remain separate"
+  },
+  "matrix": {
+    "smoke": {
+      "registered_inputs": 10,
+      "legal_inputs": 8,
+      "roadmap_or_replica_seeds": [
+        0
+      ]
+    },
+    "dev": {
+      "registered_inputs": 60,
+      "legal_inputs": 60,
+      "roadmap_or_replica_seeds": [
+        0,
+        1,
+        2
+      ]
+    }
+  },
+  "planned_slots": 1140,
+  "timeout_seconds": 60.0,
+  "gpu_workers": 1,
+  "common_evaluation": {
+    "objective": "Euclidean PWL arc length [rad]",
+    "collision_step_rad": 0.005,
+    "endpoint_tolerance_rad": 1e-05,
+    "validation_reserve_seconds": 5.0,
+    "success": "Common numerical validator passes and solver returns an accepted candidate within external deadline"
+  },
+  "native_objectives": "Distinct method-native costs retained; smoothness/obstacle objectives are not relabeled as Euclidean arclength objectives",
+  "initialization": {
+    "EI_ZO": "Native DRM -> EI-ZO -> LSCS",
+    "CHOMP": "same validated native DRM -> covariant descent with canonical C-space obstacle integral",
+    "STOMP": "same validated native DRM -> official STOMP core",
+    "TRAJOPT": "same validated native DRM -> author trust-region SQP",
+    "RRTCONNECT": "Independent official OMPL tree search from frozen endpoints; roadmap label only pairs repetition seed",
+    "RRTSTAR": "Independent official OMPL tree search from frozen endpoints; roadmap label only pairs repetition seed"
+  },
+  "randomization": "Frozen method_seed; paired roadmap seed is an independent-repeat key, not a new environment; model and inputs never resampled",
+  "statistics": "All legal inputs denominator; open control separate; common-success paired length; all-status cold latency; scene-cluster bootstrap2000PCG64replicates seed45827",
+  "unsupported_objective": "Extended methods expose geometric/PWL track only; no fabricated continuous minimum-time optimizer",
+  "no_test_tuning": true,
+  "no_success_based_selection": true,
+  "finite_collision_sampling_not_continuous_proof": true
+}

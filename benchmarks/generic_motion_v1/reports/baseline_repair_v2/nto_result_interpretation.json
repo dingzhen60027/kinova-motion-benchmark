@@ -1,0 +1,2003 @@
+{
+  "audit_passed": true,
+  "audit_sha256": "5d02055d65ab6d798092c8c0251481e9a99ef9f24254d191aa763657c89b61bf",
+  "source_commit": "e6b7e372e091ce5b01417073e0880e7c3068910c",
+  "summary": [
+    {
+      "objective": "minimum_distance",
+      "paired_n": 180,
+      "old_counts": {
+        "frontend_failed": 69,
+        "collision_failed": 45,
+        "solver_failed": 30,
+        "success_validated_numerical": 35,
+        "infrastructure_error": 1
+      },
+      "new_counts": {
+        "frontend_failed": 70,
+        "success_validated_numerical": 87,
+        "timeout": 11,
+        "solver_failed": 11,
+        "collision_failed": 1
+      },
+      "blocked_n": 141,
+      "old_blocked_success": 0,
+      "new_blocked_success": 52,
+      "old_and_new_accepted_path_differences": 0
+    },
+    {
+      "objective": "minimum_time",
+      "paired_n": 180,
+      "old_counts": {
+        "frontend_failed": 69,
+        "success_validated_numerical": 88,
+        "collision_failed": 18,
+        "timeout": 3,
+        "infrastructure_error": 1,
+        "solver_failed": 1
+      },
+      "new_counts": {
+        "frontend_failed": 70,
+        "success_validated_numerical": 100,
+        "timeout": 8,
+        "collision_failed": 2
+      },
+      "blocked_n": 141,
+      "old_blocked_success": 53,
+      "new_blocked_success": 65,
+      "old_and_new_accepted_path_differences": 0
+    }
+  ],
+  "new_solver_failed_final_snopt_info_counts": {
+    "13": 7,
+    "41": 4
+  },
+  "native_exception_results": [],
+  "BoxBoxGradient_saved_log_or_json_hits": [],
+  "final_collision_checks": {
+    "model_disagreement_samples": 0,
+    "validated_candidates": 205
+  },
+  "failures": [
+    {
+      "case_id": "smoke-bottleneck-000-p00",
+      "split": "smoke",
+      "job_id": "smoke-bottleneck-000-p00-NTO_REFINED-minimum_distance-d4727f2e",
+      "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c",
+      "objective": "minimum_distance",
+      "status": "timeout",
+      "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/rss2025_reliable_v2_smoke_s000/jobs/smoke-bottleneck-000-p00-NTO_REFINED-minimum_distance-d4727f2e/attempts/0001",
+      "last_native_result": {
+        "native_solver_details": {
+          "info": 32,
+          "solve_time": 57.933058269
+        },
+        "raw_solution": "nto_solver_raw.npz",
+        "returned_controls_finite": true,
+        "returned_duration_finite": true,
+        "solve_seconds": 57.934693060815334,
+        "solver_objective": 5.344637956650587,
+        "solver_status": "SolutionResult.kIterationLimit",
+        "solver_success": false
+      },
+      "rounds": [
+        {
+          "index": 0,
+          "status": "running",
+          "collocation_points": 149
+        }
+      ],
+      "stopping_reason": "running",
+      "validation": {
+        "status": null,
+        "passed": null,
+        "samples": null,
+        "minimum_sampled_clearance_m": null,
+        "native_collisions": null,
+        "independent_collisions": null,
+        "model_disagreements": null,
+        "contact_band_samples": null,
+        "joint_limits_passed": null,
+        "derivative_limits_passed": null
+      },
+      "evidence_sha256": {
+        "receipt.json": "65d344cf921f34c4b3cbad38e4f6b08f1231bfa7757dd28679debc9df403647e",
+        "result.json": "9e937c74e4e20985376fd15a98d42837570de8fc09de9ef8132460b813712eae",
+        "refinement/round_00/nto_solver_result.json": "a7b3ff3fc50e8229aa1277637bce110fd521e4f186b396cd802dee692d9b20f5"
+      }
+    },
+    {
+      "case_id": "smoke-route_choice-000-p01",
+      "split": "smoke",
+      "job_id": "smoke-route_choice-000-p01-NTO_REFINED-minimum_distance-9c2f380a",
+      "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c",
+      "objective": "minimum_distance",
+      "status": "timeout",
+      "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/rss2025_reliable_v2_smoke_s000/jobs/smoke-route_choice-000-p01-NTO_REFINED-minimum_distance-9c2f380a/attempts/0001",
+      "last_native_result": {
+        "native_solver_details": {
+          "info": 41,
+          "solve_time": 10.136855383
+        },
+        "raw_solution": "nto_solver_raw.npz",
+        "returned_controls_finite": true,
+        "returned_duration_finite": true,
+        "solve_seconds": 10.138351337984204,
+        "solver_objective": 19.69273979727529,
+        "solver_status": "SolutionResult.kSolverSpecificError",
+        "solver_success": false
+      },
+      "rounds": [
+        {
+          "index": 0,
+          "status": "completed",
+          "collocation_points": 149
+        },
+        {
+          "index": 1,
+          "status": "completed",
+          "collocation_points": 186
+        },
+        {
+          "index": 2,
+          "status": "completed",
+          "collocation_points": 254
+        },
+        {
+          "index": 3,
+          "status": "running",
+          "collocation_points": 306
+        }
+      ],
+      "stopping_reason": "running",
+      "validation": {
+        "status": null,
+        "passed": null,
+        "samples": null,
+        "minimum_sampled_clearance_m": null,
+        "native_collisions": null,
+        "independent_collisions": null,
+        "model_disagreements": null,
+        "contact_band_samples": null,
+        "joint_limits_passed": null,
+        "derivative_limits_passed": null
+      },
+      "evidence_sha256": {
+        "receipt.json": "5f7e372b439b75c432bc24ee53e3b80fb4d705444d7b53cb7767bf3c09e49647",
+        "result.json": "edd73dc6ab383ef5353146cca9a439f9ff30088f9125ecc41555b82f8ca24ac4",
+        "refinement/round_02/nto_solver_result.json": "f8a87ef7089dc2738aa9b237808ea4c7d1fc97810b3b3a0e18c9eeee85450f76"
+      }
+    },
+    {
+      "case_id": "dev-sparse_clutter-004-p02",
+      "split": "dev",
+      "job_id": "dev-sparse_clutter-004-p02-NTO_REFINED-minimum_distance-cccf93a8",
+      "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c",
+      "objective": "minimum_distance",
+      "status": "timeout",
+      "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/rss2025_reliable_v2_dev_s000/jobs/dev-sparse_clutter-004-p02-NTO_REFINED-minimum_distance-cccf93a8/attempts/0001",
+      "last_native_result": {
+        "native_solver_details": {
+          "info": 32,
+          "solve_time": 46.450104689
+        },
+        "raw_solution": "nto_solver_raw.npz",
+        "returned_controls_finite": true,
+        "returned_duration_finite": true,
+        "solve_seconds": 46.4518027883023,
+        "solver_objective": 39.41998168309037,
+        "solver_status": "SolutionResult.kIterationLimit",
+        "solver_success": false
+      },
+      "rounds": [
+        {
+          "index": 0,
+          "status": "completed",
+          "collocation_points": 149
+        },
+        {
+          "index": 1,
+          "status": "running",
+          "collocation_points": 173
+        }
+      ],
+      "stopping_reason": "running",
+      "validation": {
+        "status": null,
+        "passed": null,
+        "samples": null,
+        "minimum_sampled_clearance_m": null,
+        "native_collisions": null,
+        "independent_collisions": null,
+        "model_disagreements": null,
+        "contact_band_samples": null,
+        "joint_limits_passed": null,
+        "derivative_limits_passed": null
+      },
+      "evidence_sha256": {
+        "receipt.json": "b51913efd27a84df38d1090883c395dc76eb0185d806d80afc0d625080ce18f5",
+        "result.json": "e9a97d63fcc9b4816babfd55a0d4539772c40e9784972fd9be02af082adfb856",
+        "refinement/round_00/nto_solver_result.json": "4f7d52831d4aea708fed8804ef491484e602c53bddbf7fce72638148ad70bb82"
+      }
+    },
+    {
+      "case_id": "dev-dense_clutter-002-p00",
+      "split": "dev",
+      "job_id": "dev-dense_clutter-002-p00-NTO_REFINED-minimum_distance-f9bda55e",
+      "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c",
+      "objective": "minimum_distance",
+      "status": "solver_failed",
+      "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/rss2025_reliable_v2_dev_s000/jobs/dev-dense_clutter-002-p00-NTO_REFINED-minimum_distance-f9bda55e/attempts/0001",
+      "last_native_result": {
+        "native_solver_details": {
+          "info": 13,
+          "solve_time": 0.863985733
+        },
+        "raw_solution": "nto_solver_raw.npz",
+        "returned_controls_finite": true,
+        "returned_duration_finite": true,
+        "solve_seconds": 0.8665812597610056,
+        "solver_objective": 8.858957602908088,
+        "solver_status": "SolutionResult.kInfeasibleConstraints",
+        "solver_success": false
+      },
+      "rounds": [
+        {
+          "index": 0,
+          "status": "completed",
+          "collocation_points": 149
+        },
+        {
+          "index": 1,
+          "status": "completed",
+          "collocation_points": 186
+        },
+        {
+          "index": 2,
+          "status": "completed",
+          "collocation_points": 251
+        },
+        {
+          "index": 3,
+          "status": "completed",
+          "collocation_points": 337
+        }
+      ],
+      "stopping_reason": "native_solve_limit",
+      "validation": {
+        "status": "collision_failed",
+        "passed": false,
+        "samples": 1829,
+        "minimum_sampled_clearance_m": -0.061315331643739965,
+        "native_collisions": 459,
+        "independent_collisions": 459,
+        "model_disagreements": 0,
+        "contact_band_samples": 0,
+        "joint_limits_passed": true,
+        "derivative_limits_passed": true
+      },
+      "evidence_sha256": {
+        "receipt.json": "17215ed366b7232468678492189ce00bb5ea490fa24540e120a9bc38ee8b49bf",
+        "result.json": "2995e46134139b4c352fdfd7202861172dfb55c83e978711523c68d2edeafaf0",
+        "refinement/round_03/nto_solver_result.json": "7a44c36388ffc1a4a8bf6da4e50e5686fd4cc56c80ec16d9857724bd18ef5bbb",
+        "validation.json": "aa8c5ce107db0cfa504e4b738661570621b3835020dd00ef9a1f73cdc947eb1b"
+      }
+    },
+    {
+      "case_id": "dev-dense_clutter-002-p01",
+      "split": "dev",
+      "job_id": "dev-dense_clutter-002-p01-NTO_REFINED-minimum_distance-6d599a3c",
+      "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c",
+      "objective": "minimum_distance",
+      "status": "solver_failed",
+      "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/rss2025_reliable_v2_dev_s000/jobs/dev-dense_clutter-002-p01-NTO_REFINED-minimum_distance-6d599a3c/attempts/0001",
+      "last_native_result": {
+        "native_solver_details": {
+          "info": 13,
+          "solve_time": 8.859550617
+        },
+        "raw_solution": "nto_solver_raw.npz",
+        "returned_controls_finite": true,
+        "returned_duration_finite": true,
+        "solve_seconds": 8.861312420107424,
+        "solver_objective": 30.629865725097233,
+        "solver_status": "SolutionResult.kInfeasibleConstraints",
+        "solver_success": false
+      },
+      "rounds": [
+        {
+          "index": 0,
+          "status": "completed",
+          "collocation_points": 149
+        },
+        {
+          "index": 1,
+          "status": "completed",
+          "collocation_points": 197
+        },
+        {
+          "index": 2,
+          "status": "completed",
+          "collocation_points": 274
+        },
+        {
+          "index": 3,
+          "status": "completed",
+          "collocation_points": 384
+        }
+      ],
+      "stopping_reason": "native_solve_limit",
+      "validation": {
+        "status": "collision_failed",
+        "passed": false,
+        "samples": 7611,
+        "minimum_sampled_clearance_m": -0.08698369578146675,
+        "native_collisions": 2735,
+        "independent_collisions": 2735,
+        "model_disagreements": 0,
+        "contact_band_samples": 0,
+        "joint_limits_passed": true,
+        "derivative_limits_passed": true
+      },
+      "evidence_sha256": {
+        "receipt.json": "063a301e395022ad97b761fd563e0c2e3061f66bb79efda51d7424997a1d0e77",
+        "result.json": "27ee6a9d1c47a3fcbb1e526fa6f3c413bf03031469b2b451ef7a4ec731f836c7",
+        "refinement/round_03/nto_solver_result.json": "139f024f795fad4a7878e1d70b41a7e62c9c6f74d6ab237dcfb4e114d486844e",
+        "validation.json": "2e76bfd3f3f9973165eccd04f6b6ed63fc537300e60a7daf1a785b167b125d15"
+      }
+    },
+    {
+      "case_id": "dev-bottleneck-000-p01",
+      "split": "dev",
+      "job_id": "dev-bottleneck-000-p01-NTO_REFINED-minimum_distance-87e5d388",
+      "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c",
+      "objective": "minimum_distance",
+      "status": "timeout",
+      "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/rss2025_reliable_v2_dev_s000/jobs/dev-bottleneck-000-p01-NTO_REFINED-minimum_distance-87e5d388/attempts/0001",
+      "last_native_result": {
+        "native_solver_details": {
+          "info": 13,
+          "solve_time": 0.958073536
+        },
+        "raw_solution": "nto_solver_raw.npz",
+        "returned_controls_finite": true,
+        "returned_duration_finite": true,
+        "solve_seconds": 0.9593076878227293,
+        "solver_objective": 17.442268068882814,
+        "solver_status": "SolutionResult.kInfeasibleConstraints",
+        "solver_success": false
+      },
+      "rounds": [
+        {
+          "index": 0,
+          "status": "completed",
+          "collocation_points": 149
+        },
+        {
+          "index": 1,
+          "status": "completed",
+          "collocation_points": 160
+        },
+        {
+          "index": 2,
+          "status": "running",
+          "collocation_points": 177
+        }
+      ],
+      "stopping_reason": "running",
+      "validation": {
+        "status": null,
+        "passed": null,
+        "samples": null,
+        "minimum_sampled_clearance_m": null,
+        "native_collisions": null,
+        "independent_collisions": null,
+        "model_disagreements": null,
+        "contact_band_samples": null,
+        "joint_limits_passed": null,
+        "derivative_limits_passed": null
+      },
+      "evidence_sha256": {
+        "receipt.json": "a67f8d59312072a86b2eca0a67a894e32cead9d631668f73e06fe11e93788d35",
+        "result.json": "998728e8ff6806d4f6597678f61d154d4464f27f482570d9c1399a2aa1af9871",
+        "refinement/round_01/nto_solver_result.json": "8cbb132b4d4110af0b0a414df02c7591d7491d8ea033350ac3c0397bc165d888"
+      }
+    },
+    {
+      "case_id": "dev-bottleneck-000-p02",
+      "split": "dev",
+      "job_id": "dev-bottleneck-000-p02-NTO_REFINED-minimum_distance-ab016699",
+      "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c",
+      "objective": "minimum_distance",
+      "status": "timeout",
+      "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/rss2025_reliable_v2_dev_s000/jobs/dev-bottleneck-000-p02-NTO_REFINED-minimum_distance-ab016699/attempts/0001",
+      "last_native_result": {
+        "native_solver_details": {
+          "info": 13,
+          "solve_time": 6.817434021
+        },
+        "raw_solution": "nto_solver_raw.npz",
+        "returned_controls_finite": true,
+        "returned_duration_finite": true,
+        "solve_seconds": 6.8192326058633626,
+        "solver_objective": 27.627718633329298,
+        "solver_status": "SolutionResult.kInfeasibleConstraints",
+        "solver_success": false
+      },
+      "rounds": [
+        {
+          "index": 0,
+          "status": "completed",
+          "collocation_points": 149
+        },
+        {
+          "index": 1,
+          "status": "completed",
+          "collocation_points": 222
+        },
+        {
+          "index": 2,
+          "status": "running",
+          "collocation_points": 238
+        }
+      ],
+      "stopping_reason": "running",
+      "validation": {
+        "status": null,
+        "passed": null,
+        "samples": null,
+        "minimum_sampled_clearance_m": null,
+        "native_collisions": null,
+        "independent_collisions": null,
+        "model_disagreements": null,
+        "contact_band_samples": null,
+        "joint_limits_passed": null,
+        "derivative_limits_passed": null
+      },
+      "evidence_sha256": {
+        "receipt.json": "8f1e0622a5bf87e1fdf3a588c748c274da7d9c09d66a4e4685d4abc6ed515b15",
+        "result.json": "c0cfd5e0dfb7bf43f0ebbefa63b4902e773392000e564b393112825cc46a2129",
+        "refinement/round_01/nto_solver_result.json": "d5036ee4d054f84faef3fc38cb5d46641481c4ad56466ccc678a4306ef08937d"
+      }
+    },
+    {
+      "case_id": "dev-bottleneck-001-p02",
+      "split": "dev",
+      "job_id": "dev-bottleneck-001-p02-NTO_REFINED-minimum_distance-ca2a4997",
+      "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c",
+      "objective": "minimum_distance",
+      "status": "solver_failed",
+      "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/rss2025_reliable_v2_dev_s000/jobs/dev-bottleneck-001-p02-NTO_REFINED-minimum_distance-ca2a4997/attempts/0001",
+      "last_native_result": {
+        "native_solver_details": {
+          "info": 41,
+          "solve_time": 7.454225156
+        },
+        "raw_solution": "nto_solver_raw.npz",
+        "returned_controls_finite": true,
+        "returned_duration_finite": true,
+        "solve_seconds": 7.455876806285232,
+        "solver_objective": 21.97965856648746,
+        "solver_status": "SolutionResult.kSolverSpecificError",
+        "solver_success": false
+      },
+      "rounds": [
+        {
+          "index": 0,
+          "status": "completed",
+          "collocation_points": 149
+        },
+        {
+          "index": 1,
+          "status": "completed",
+          "collocation_points": 189
+        },
+        {
+          "index": 2,
+          "status": "completed",
+          "collocation_points": 250
+        },
+        {
+          "index": 3,
+          "status": "completed",
+          "collocation_points": 305
+        }
+      ],
+      "stopping_reason": "native_solve_limit",
+      "validation": {
+        "status": "collision_failed",
+        "passed": false,
+        "samples": 5038,
+        "minimum_sampled_clearance_m": -0.06170925621522818,
+        "native_collisions": 876,
+        "independent_collisions": 876,
+        "model_disagreements": 0,
+        "contact_band_samples": 0,
+        "joint_limits_passed": true,
+        "derivative_limits_passed": true
+      },
+      "evidence_sha256": {
+        "receipt.json": "044d2bfacc811f11abf15b61f1a6ccbed590a915618a60eca8cacf9e4689529a",
+        "result.json": "44e16fc0a26d2fe1f8aa1a35ee58bd97ee64576a346f861e921fa83a3d610647",
+        "refinement/round_03/nto_solver_result.json": "203d2812d76b3cf25a139617461876e269757a30ce32b7f06b6a2d768ff6471d",
+        "validation.json": "a76a15ad527186a548f2c9aeb102318fc9b75f76327e030394686a2f1c6d9836"
+      }
+    },
+    {
+      "case_id": "dev-bottleneck-004-p01",
+      "split": "dev",
+      "job_id": "dev-bottleneck-004-p01-NTO_REFINED-minimum_distance-cb4d19ae",
+      "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c",
+      "objective": "minimum_distance",
+      "status": "timeout",
+      "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/rss2025_reliable_v2_dev_s000/jobs/dev-bottleneck-004-p01-NTO_REFINED-minimum_distance-cb4d19ae/attempts/0001",
+      "last_native_result": {
+        "native_solver_details": {
+          "info": 13,
+          "solve_time": 1.339946326
+        },
+        "raw_solution": "nto_solver_raw.npz",
+        "returned_controls_finite": true,
+        "returned_duration_finite": true,
+        "solve_seconds": 1.3412790461443365,
+        "solver_objective": 24.96388704195156,
+        "solver_status": "SolutionResult.kInfeasibleConstraints",
+        "solver_success": false
+      },
+      "rounds": [
+        {
+          "index": 0,
+          "status": "completed",
+          "collocation_points": 149
+        },
+        {
+          "index": 1,
+          "status": "completed",
+          "collocation_points": 150
+        },
+        {
+          "index": 2,
+          "status": "running",
+          "collocation_points": 173
+        }
+      ],
+      "stopping_reason": "running",
+      "validation": {
+        "status": null,
+        "passed": null,
+        "samples": null,
+        "minimum_sampled_clearance_m": null,
+        "native_collisions": null,
+        "independent_collisions": null,
+        "model_disagreements": null,
+        "contact_band_samples": null,
+        "joint_limits_passed": null,
+        "derivative_limits_passed": null
+      },
+      "evidence_sha256": {
+        "receipt.json": "f1601ffdcb74ee021f4731ed3e63a0fcefc41af458bf8c0805bbaa999219cacb",
+        "result.json": "c06d2df9d805ca2dbf672cf5c8b961f0200fb4dba3039c94e3265d71de3bc6a9",
+        "refinement/round_01/nto_solver_result.json": "6c6810989029ee677f3478fca24f399ea7a6a2858b8f554f84a61b981e6c05a6"
+      }
+    },
+    {
+      "case_id": "dev-bottleneck-004-p01",
+      "split": "dev",
+      "job_id": "dev-bottleneck-004-p01-NTO_REFINED-minimum_time-28d6a648",
+      "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c",
+      "objective": "minimum_time",
+      "status": "timeout",
+      "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/rss2025_reliable_v2_dev_s000/jobs/dev-bottleneck-004-p01-NTO_REFINED-minimum_time-28d6a648/attempts/0001",
+      "last_native_result": {
+        "native_solver_details": {
+          "status": 6
+        },
+        "native_status_description": "Local infeasibility",
+        "raw_solution": "nto_solver_raw.npz",
+        "returned_controls_finite": true,
+        "returned_duration_finite": true,
+        "solve_seconds": 4.364067534916103,
+        "solver_objective": 80.64959159580208,
+        "solver_status": "SolutionResult.kInfeasibleConstraints",
+        "solver_success": false
+      },
+      "rounds": [
+        {
+          "index": 0,
+          "status": "completed",
+          "collocation_points": 149
+        },
+        {
+          "index": 1,
+          "status": "completed",
+          "collocation_points": 150
+        },
+        {
+          "index": 2,
+          "status": "completed",
+          "collocation_points": 151
+        },
+        {
+          "index": 3,
+          "status": "running",
+          "collocation_points": 152
+        }
+      ],
+      "stopping_reason": "running",
+      "validation": {
+        "status": null,
+        "passed": null,
+        "samples": null,
+        "minimum_sampled_clearance_m": null,
+        "native_collisions": null,
+        "independent_collisions": null,
+        "model_disagreements": null,
+        "contact_band_samples": null,
+        "joint_limits_passed": null,
+        "derivative_limits_passed": null
+      },
+      "evidence_sha256": {
+        "receipt.json": "2509675a710c07939409459f74dc25f93c56150e1b28788343cda1d192f3eae8",
+        "result.json": "7cc1eb675f0af4c1c64654fb56b6279a91e9c077440aff5e85f6399f7284272e",
+        "refinement/round_02/nto_solver_result.json": "3b6c565baf5a2e9a89c0dda4db6789b9cb727a145284b89afc8e1e4c459944b3"
+      }
+    },
+    {
+      "case_id": "dev-route_choice-002-p00",
+      "split": "dev",
+      "job_id": "dev-route_choice-002-p00-NTO_REFINED-minimum_distance-f47f8514",
+      "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c",
+      "objective": "minimum_distance",
+      "status": "timeout",
+      "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/rss2025_reliable_v2_dev_s000/jobs/dev-route_choice-002-p00-NTO_REFINED-minimum_distance-f47f8514/attempts/0001",
+      "last_native_result": {
+        "native_solver_details": {
+          "info": 13,
+          "solve_time": 16.015217329
+        },
+        "raw_solution": "nto_solver_raw.npz",
+        "returned_controls_finite": true,
+        "returned_duration_finite": true,
+        "solve_seconds": 16.016649016179144,
+        "solver_objective": 25.406078828944132,
+        "solver_status": "SolutionResult.kInfeasibleConstraints",
+        "solver_success": false
+      },
+      "rounds": [
+        {
+          "index": 0,
+          "status": "completed",
+          "collocation_points": 149
+        },
+        {
+          "index": 1,
+          "status": "completed",
+          "collocation_points": 160
+        },
+        {
+          "index": 2,
+          "status": "running",
+          "collocation_points": 202
+        }
+      ],
+      "stopping_reason": "running",
+      "validation": {
+        "status": null,
+        "passed": null,
+        "samples": null,
+        "minimum_sampled_clearance_m": null,
+        "native_collisions": null,
+        "independent_collisions": null,
+        "model_disagreements": null,
+        "contact_band_samples": null,
+        "joint_limits_passed": null,
+        "derivative_limits_passed": null
+      },
+      "evidence_sha256": {
+        "receipt.json": "afc05d903e3155eb1a259643f23cc14ed3551fcea53ebb8268884dd10717af67",
+        "result.json": "10de7efe2028976ad6df41f70278f9373a23b769af9b6393cacbb6cf25412a96",
+        "refinement/round_01/nto_solver_result.json": "8b240ad5917f052b0a9b8d8ee2918d3274b845cfa0f8071773d5725778cb1606"
+      }
+    },
+    {
+      "case_id": "dev-route_choice-002-p01",
+      "split": "dev",
+      "job_id": "dev-route_choice-002-p01-NTO_REFINED-minimum_distance-60fb6dbf",
+      "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c",
+      "objective": "minimum_distance",
+      "status": "timeout",
+      "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/rss2025_reliable_v2_dev_s000/jobs/dev-route_choice-002-p01-NTO_REFINED-minimum_distance-60fb6dbf/attempts/0001",
+      "last_native_result": {},
+      "rounds": [
+        {
+          "index": 0,
+          "status": "running",
+          "collocation_points": 149
+        }
+      ],
+      "stopping_reason": "running",
+      "validation": {
+        "status": null,
+        "passed": null,
+        "samples": null,
+        "minimum_sampled_clearance_m": null,
+        "native_collisions": null,
+        "independent_collisions": null,
+        "model_disagreements": null,
+        "contact_band_samples": null,
+        "joint_limits_passed": null,
+        "derivative_limits_passed": null
+      },
+      "evidence_sha256": {
+        "receipt.json": "7d415872cdc3bcdb9fcc5c5d97b07af5b2632e6738c8bc13995de38ecbe24a47",
+        "result.json": "3517f9b3189ff4343332419872d660f44df6bceab4ad623c3d058ba29e456762"
+      }
+    },
+    {
+      "case_id": "dev-route_choice-003-p01",
+      "split": "dev",
+      "job_id": "dev-route_choice-003-p01-NTO_REFINED-minimum_distance-8f2519e3",
+      "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c",
+      "objective": "minimum_distance",
+      "status": "solver_failed",
+      "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/rss2025_reliable_v2_dev_s000/jobs/dev-route_choice-003-p01-NTO_REFINED-minimum_distance-8f2519e3/attempts/0001",
+      "last_native_result": {
+        "native_solver_details": {
+          "info": 13,
+          "solve_time": 3.182483594
+        },
+        "raw_solution": "nto_solver_raw.npz",
+        "returned_controls_finite": true,
+        "returned_duration_finite": true,
+        "solve_seconds": 3.184144643135369,
+        "solver_objective": 29.893202838665758,
+        "solver_status": "SolutionResult.kInfeasibleConstraints",
+        "solver_success": false
+      },
+      "rounds": [
+        {
+          "index": 0,
+          "status": "completed",
+          "collocation_points": 149
+        },
+        {
+          "index": 1,
+          "status": "completed",
+          "collocation_points": 183
+        },
+        {
+          "index": 2,
+          "status": "completed",
+          "collocation_points": 231
+        },
+        {
+          "index": 3,
+          "status": "completed",
+          "collocation_points": 302
+        }
+      ],
+      "stopping_reason": "native_solve_limit",
+      "validation": {
+        "status": "collision_failed",
+        "passed": false,
+        "samples": 7122,
+        "minimum_sampled_clearance_m": -0.08518274621412011,
+        "native_collisions": 1198,
+        "independent_collisions": 1198,
+        "model_disagreements": 0,
+        "contact_band_samples": 1,
+        "joint_limits_passed": true,
+        "derivative_limits_passed": true
+      },
+      "evidence_sha256": {
+        "receipt.json": "ae8c5c43ac3baa25b85ae8ff2f7ff29703281ac7650427269dce8e420f44cb59",
+        "result.json": "44c02207261c1558ef40733d499bbae8e25e7e70b54ecf59a2f644bbe7261012",
+        "refinement/round_03/nto_solver_result.json": "767be75581f5cabb440eac17ea464360a2287dc750bbe58ead74251a1ff09460",
+        "validation.json": "bdf0fe3a57a616d42365ff68072a0b0b5495d15046a1d6cafedd0f40314db67a"
+      }
+    },
+    {
+      "case_id": "dev-route_choice-004-p00",
+      "split": "dev",
+      "job_id": "dev-route_choice-004-p00-NTO_REFINED-minimum_time-e0b00095",
+      "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c",
+      "objective": "minimum_time",
+      "status": "timeout",
+      "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/rss2025_reliable_v2_dev_s000/jobs/dev-route_choice-004-p00-NTO_REFINED-minimum_time-e0b00095/attempts/0001",
+      "last_native_result": {
+        "native_solver_details": {
+          "status": 1
+        },
+        "native_status_description": "Max iteration exceeded",
+        "raw_solution": "nto_solver_raw.npz",
+        "returned_controls_finite": true,
+        "returned_duration_finite": true,
+        "solve_seconds": 49.558317362796515,
+        "solver_objective": 41.16161829394932,
+        "solver_status": "SolutionResult.kIterationLimit",
+        "solver_success": false
+      },
+      "rounds": [
+        {
+          "index": 0,
+          "status": "completed",
+          "collocation_points": 149
+        },
+        {
+          "index": 1,
+          "status": "running",
+          "collocation_points": 178
+        }
+      ],
+      "stopping_reason": "running",
+      "validation": {
+        "status": null,
+        "passed": null,
+        "samples": null,
+        "minimum_sampled_clearance_m": null,
+        "native_collisions": null,
+        "independent_collisions": null,
+        "model_disagreements": null,
+        "contact_band_samples": null,
+        "joint_limits_passed": null,
+        "derivative_limits_passed": null
+      },
+      "evidence_sha256": {
+        "receipt.json": "aa170394209d39e08888adeb8c61e9413628e60171f593208efe9485ba50e028",
+        "result.json": "c0584e50343b52f3d5d25366d160215339f3fe276795a2331e8de1976344fb02",
+        "refinement/round_00/nto_solver_result.json": "7f4de8830c9de34511d9d108231c476e0f49cd8b1ef4874dfe0f70abe0d83108"
+      }
+    },
+    {
+      "case_id": "dev-sparse_clutter-003-p01",
+      "split": "dev",
+      "job_id": "dev-sparse_clutter-003-p01-NTO_REFINED-minimum_distance-28953eac",
+      "roadmap_id": "kinova7-full-n6000-s1-e258c5f9914c",
+      "objective": "minimum_distance",
+      "status": "solver_failed",
+      "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/rss2025_reliable_v2_dev_s001/jobs/dev-sparse_clutter-003-p01-NTO_REFINED-minimum_distance-28953eac/attempts/0001",
+      "last_native_result": {
+        "native_solver_details": {
+          "info": 41,
+          "solve_time": 2.624719805
+        },
+        "raw_solution": "nto_solver_raw.npz",
+        "returned_controls_finite": true,
+        "returned_duration_finite": true,
+        "solve_seconds": 2.626732632983476,
+        "solver_objective": 6.009861888211836,
+        "solver_status": "SolutionResult.kSolverSpecificError",
+        "solver_success": false
+      },
+      "rounds": [
+        {
+          "index": 0,
+          "status": "completed",
+          "collocation_points": 149
+        },
+        {
+          "index": 1,
+          "status": "completed",
+          "collocation_points": 150
+        }
+      ],
+      "stopping_reason": "geometry_guard_passed",
+      "validation": {
+        "status": "success_validated_numerical",
+        "passed": true,
+        "samples": 2165,
+        "minimum_sampled_clearance_m": 0.0007136331306296165,
+        "native_collisions": 0,
+        "independent_collisions": 0,
+        "model_disagreements": 0,
+        "contact_band_samples": 0,
+        "joint_limits_passed": true,
+        "derivative_limits_passed": true
+      },
+      "evidence_sha256": {
+        "receipt.json": "d8dd120acfde2a2ffa95be850d3a929fdc207f0a0a3758db5c318e4ef3f0bd55",
+        "result.json": "7ee2971b8b1755bc94a264d05834f2737c01f8e0d8d5198cddbf72daf5c98398",
+        "refinement/round_01/nto_solver_result.json": "6249e94778daa462e24b0de3e9231e738ffed26a4e04dd8773cb7f6046ce3503",
+        "validation.json": "81963b048800597cb3cfe6c8e38dbcccd6122cd1cbd77b658cb678a9354f49e9"
+      }
+    },
+    {
+      "case_id": "dev-dense_clutter-002-p01",
+      "split": "dev",
+      "job_id": "dev-dense_clutter-002-p01-NTO_REFINED-minimum_distance-b71896cf",
+      "roadmap_id": "kinova7-full-n6000-s1-e258c5f9914c",
+      "objective": "minimum_distance",
+      "status": "timeout",
+      "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/rss2025_reliable_v2_dev_s001/jobs/dev-dense_clutter-002-p01-NTO_REFINED-minimum_distance-b71896cf/attempts/0001",
+      "last_native_result": {
+        "native_solver_details": {
+          "info": 13,
+          "solve_time": 5.360861952
+        },
+        "raw_solution": "nto_solver_raw.npz",
+        "returned_controls_finite": true,
+        "returned_duration_finite": true,
+        "solve_seconds": 5.362616349942982,
+        "solver_objective": 58.97252644082255,
+        "solver_status": "SolutionResult.kInfeasibleConstraints",
+        "solver_success": false
+      },
+      "rounds": [
+        {
+          "index": 0,
+          "status": "completed",
+          "collocation_points": 149
+        },
+        {
+          "index": 1,
+          "status": "completed",
+          "collocation_points": 207
+        },
+        {
+          "index": 2,
+          "status": "running",
+          "collocation_points": 282
+        }
+      ],
+      "stopping_reason": "running",
+      "validation": {
+        "status": null,
+        "passed": null,
+        "samples": null,
+        "minimum_sampled_clearance_m": null,
+        "native_collisions": null,
+        "independent_collisions": null,
+        "model_disagreements": null,
+        "contact_band_samples": null,
+        "joint_limits_passed": null,
+        "derivative_limits_passed": null
+      },
+      "evidence_sha256": {
+        "receipt.json": "5e924ac99232458537613c4d6110cfa4524404fe55e49bc9b62751d2c5c86da4",
+        "result.json": "1e682b641030d1878c530b1fe8790797979a6783ab4276ec4addc52eec2a7c37",
+        "refinement/round_02/nto_solver_result.json": "577f706f8137c4048eb1e8aa5c98970dad52737d54abf69c159b330efe0c76f1"
+      }
+    },
+    {
+      "case_id": "dev-bottleneck-001-p02",
+      "split": "dev",
+      "job_id": "dev-bottleneck-001-p02-NTO_REFINED-minimum_distance-43285b31",
+      "roadmap_id": "kinova7-full-n6000-s1-e258c5f9914c",
+      "objective": "minimum_distance",
+      "status": "solver_failed",
+      "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/rss2025_reliable_v2_dev_s001/jobs/dev-bottleneck-001-p02-NTO_REFINED-minimum_distance-43285b31/attempts/0001",
+      "last_native_result": {
+        "native_solver_details": {
+          "info": 13,
+          "solve_time": 0.953602197
+        },
+        "raw_solution": "nto_solver_raw.npz",
+        "returned_controls_finite": true,
+        "returned_duration_finite": true,
+        "solve_seconds": 0.9556066379882395,
+        "solver_objective": 11.445314977755643,
+        "solver_status": "SolutionResult.kInfeasibleConstraints",
+        "solver_success": false
+      },
+      "rounds": [
+        {
+          "index": 0,
+          "status": "completed",
+          "collocation_points": 149
+        },
+        {
+          "index": 1,
+          "status": "completed",
+          "collocation_points": 177
+        },
+        {
+          "index": 2,
+          "status": "completed",
+          "collocation_points": 226
+        },
+        {
+          "index": 3,
+          "status": "completed",
+          "collocation_points": 303
+        }
+      ],
+      "stopping_reason": "native_solve_limit",
+      "validation": {
+        "status": "collision_failed",
+        "passed": false,
+        "samples": 2831,
+        "minimum_sampled_clearance_m": -0.08108297492748393,
+        "native_collisions": 518,
+        "independent_collisions": 518,
+        "model_disagreements": 0,
+        "contact_band_samples": 1,
+        "joint_limits_passed": true,
+        "derivative_limits_passed": true
+      },
+      "evidence_sha256": {
+        "receipt.json": "a21a2c69a494e4d0c8c366465b405491acc7b9ef85a10b4d0b3961710f70a757",
+        "result.json": "a467ea8fecf40c83dea79a91421165d87b58f402a296dfd8f049e6eef7334b5e",
+        "refinement/round_03/nto_solver_result.json": "446ab1bb86107e87ad831868b66397a344781dd2dbd7c1672908792a25be4e0c",
+        "validation.json": "e30eaf23ec69566eff9ca1190cdbf5c64c4e9cd2693a092107340ee52cc41b77"
+      }
+    },
+    {
+      "case_id": "dev-bottleneck-004-p01",
+      "split": "dev",
+      "job_id": "dev-bottleneck-004-p01-NTO_REFINED-minimum_distance-aee3d340",
+      "roadmap_id": "kinova7-full-n6000-s1-e258c5f9914c",
+      "objective": "minimum_distance",
+      "status": "timeout",
+      "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/rss2025_reliable_v2_dev_s001/jobs/dev-bottleneck-004-p01-NTO_REFINED-minimum_distance-aee3d340/attempts/0001",
+      "last_native_result": {
+        "native_solver_details": {
+          "info": 13,
+          "solve_time": 35.808037611
+        },
+        "raw_solution": "nto_solver_raw.npz",
+        "returned_controls_finite": true,
+        "returned_duration_finite": true,
+        "solve_seconds": 35.8094722176902,
+        "solver_objective": 29.746964020598732,
+        "solver_status": "SolutionResult.kInfeasibleConstraints",
+        "solver_success": false
+      },
+      "rounds": [
+        {
+          "index": 0,
+          "status": "completed",
+          "collocation_points": 149
+        },
+        {
+          "index": 1,
+          "status": "running",
+          "collocation_points": 170
+        }
+      ],
+      "stopping_reason": "running",
+      "validation": {
+        "status": null,
+        "passed": null,
+        "samples": null,
+        "minimum_sampled_clearance_m": null,
+        "native_collisions": null,
+        "independent_collisions": null,
+        "model_disagreements": null,
+        "contact_band_samples": null,
+        "joint_limits_passed": null,
+        "derivative_limits_passed": null
+      },
+      "evidence_sha256": {
+        "receipt.json": "e07bf30bd0ee76df9ab2795cc3e158357f36b2cf797c1dd0c0a9a2b5ce2a7c7d",
+        "result.json": "2e839651d0f4883bed3d501f2b776e419d5ba8ddda60d543563ac1a60fb22be0",
+        "refinement/round_00/nto_solver_result.json": "915e7f44570be54c3899bc947dd68ce86be801773a05a57b50d6816314919b42"
+      }
+    },
+    {
+      "case_id": "dev-bottleneck-004-p02",
+      "split": "dev",
+      "job_id": "dev-bottleneck-004-p02-NTO_REFINED-minimum_distance-4fa7dc12",
+      "roadmap_id": "kinova7-full-n6000-s1-e258c5f9914c",
+      "objective": "minimum_distance",
+      "status": "timeout",
+      "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/rss2025_reliable_v2_dev_s001/jobs/dev-bottleneck-004-p02-NTO_REFINED-minimum_distance-4fa7dc12/attempts/0001",
+      "last_native_result": {
+        "native_solver_details": {
+          "info": 41,
+          "solve_time": 17.06154447
+        },
+        "raw_solution": "nto_solver_raw.npz",
+        "returned_controls_finite": true,
+        "returned_duration_finite": true,
+        "solve_seconds": 17.063418203033507,
+        "solver_objective": 31.844912601532084,
+        "solver_status": "SolutionResult.kSolverSpecificError",
+        "solver_success": false
+      },
+      "rounds": [
+        {
+          "index": 0,
+          "status": "completed",
+          "collocation_points": 149
+        },
+        {
+          "index": 1,
+          "status": "completed",
+          "collocation_points": 163
+        },
+        {
+          "index": 2,
+          "status": "running",
+          "collocation_points": 192
+        }
+      ],
+      "stopping_reason": "running",
+      "validation": {
+        "status": null,
+        "passed": null,
+        "samples": null,
+        "minimum_sampled_clearance_m": null,
+        "native_collisions": null,
+        "independent_collisions": null,
+        "model_disagreements": null,
+        "contact_band_samples": null,
+        "joint_limits_passed": null,
+        "derivative_limits_passed": null
+      },
+      "evidence_sha256": {
+        "receipt.json": "7763af21ef11d183c4a277425d78950b50239fc34def81316494280dd7ad735b",
+        "result.json": "32b5c8fe243c979260b2be59a2ab316937bcf0a32faff736aa4e4e4a7bae9804",
+        "refinement/round_01/nto_solver_result.json": "94936df60cf12e4df93dc28bfc363ca3f9767a30ce1b16157b354bcb085bd782"
+      }
+    },
+    {
+      "case_id": "dev-route_choice-002-p00",
+      "split": "dev",
+      "job_id": "dev-route_choice-002-p00-NTO_REFINED-minimum_time-9f09c1a0",
+      "roadmap_id": "kinova7-full-n6000-s1-e258c5f9914c",
+      "objective": "minimum_time",
+      "status": "collision_failed",
+      "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/rss2025_reliable_v2_dev_s001/jobs/dev-route_choice-002-p00-NTO_REFINED-minimum_time-9f09c1a0/attempts/0001",
+      "last_native_result": {
+        "native_solver_details": {
+          "status": 0
+        },
+        "native_status_description": "Success",
+        "raw_solution": "nto_solver_raw.npz",
+        "returned_controls_finite": true,
+        "returned_duration_finite": true,
+        "solve_seconds": 1.0911367130465806,
+        "solver_objective": 5.063043550697619,
+        "solver_status": "SolutionResult.kSolutionFound",
+        "solver_success": true
+      },
+      "rounds": [
+        {
+          "index": 0,
+          "status": "completed",
+          "collocation_points": 149
+        },
+        {
+          "index": 1,
+          "status": "completed",
+          "collocation_points": 151
+        },
+        {
+          "index": 2,
+          "status": "completed",
+          "collocation_points": 153
+        },
+        {
+          "index": 3,
+          "status": "completed",
+          "collocation_points": 154
+        }
+      ],
+      "stopping_reason": "native_solve_limit",
+      "validation": {
+        "status": "collision_failed",
+        "passed": false,
+        "samples": 1941,
+        "minimum_sampled_clearance_m": -0.0009526180435059234,
+        "native_collisions": 10,
+        "independent_collisions": 10,
+        "model_disagreements": 0,
+        "contact_band_samples": 0,
+        "joint_limits_passed": true,
+        "derivative_limits_passed": true
+      },
+      "evidence_sha256": {
+        "receipt.json": "9a75c48bd0517ce061f9787a06994ab5983866d415c648258f229f5005f96f22",
+        "result.json": "4848ccf97d1575ed4054403c513311578baec1a079b8c7adb184897da7f4198c",
+        "refinement/round_03/nto_solver_result.json": "e534b9b52809d5d1b2c472343936c5cb38580e07c7230e13b32114f8bbd8c785",
+        "validation.json": "dd45d6cb59f374d819fee9d49c585fda329e42398b6b2cd6beb9ae753b316f49"
+      }
+    },
+    {
+      "case_id": "dev-route_choice-003-p01",
+      "split": "dev",
+      "job_id": "dev-route_choice-003-p01-NTO_REFINED-minimum_time-bb3a39b1",
+      "roadmap_id": "kinova7-full-n6000-s1-e258c5f9914c",
+      "objective": "minimum_time",
+      "status": "timeout",
+      "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/rss2025_reliable_v2_dev_s001/jobs/dev-route_choice-003-p01-NTO_REFINED-minimum_time-bb3a39b1/attempts/0001",
+      "last_native_result": {},
+      "rounds": [
+        {
+          "index": 0,
+          "status": "running",
+          "collocation_points": 149
+        }
+      ],
+      "stopping_reason": "running",
+      "validation": {
+        "status": null,
+        "passed": null,
+        "samples": null,
+        "minimum_sampled_clearance_m": null,
+        "native_collisions": null,
+        "independent_collisions": null,
+        "model_disagreements": null,
+        "contact_band_samples": null,
+        "joint_limits_passed": null,
+        "derivative_limits_passed": null
+      },
+      "evidence_sha256": {
+        "receipt.json": "9a319e8d13272d8ffeb9ebdb298a9dd5ac9044ee89ae4389147b1815e807ef84",
+        "result.json": "4b5a532fc89254ca2b23c61e2a0a674f46e0ae1c87383bf029bb03e684a2efa1"
+      }
+    },
+    {
+      "case_id": "dev-sparse_clutter-003-p01",
+      "split": "dev",
+      "job_id": "dev-sparse_clutter-003-p01-NTO_REFINED-minimum_distance-40693e9d",
+      "roadmap_id": "kinova7-full-n6000-s2-e258c5f9914c",
+      "objective": "minimum_distance",
+      "status": "solver_failed",
+      "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/rss2025_reliable_v2_dev_s002/jobs/dev-sparse_clutter-003-p01-NTO_REFINED-minimum_distance-40693e9d/attempts/0001",
+      "last_native_result": {
+        "native_solver_details": {
+          "info": 13,
+          "solve_time": 0.361143005
+        },
+        "raw_solution": "nto_solver_raw.npz",
+        "returned_controls_finite": true,
+        "returned_duration_finite": true,
+        "solve_seconds": 0.3630415298976004,
+        "solver_objective": 12.882403442112489,
+        "solver_status": "SolutionResult.kInfeasibleConstraints",
+        "solver_success": false
+      },
+      "rounds": [
+        {
+          "index": 0,
+          "status": "completed",
+          "collocation_points": 149
+        },
+        {
+          "index": 1,
+          "status": "completed",
+          "collocation_points": 171
+        },
+        {
+          "index": 2,
+          "status": "completed",
+          "collocation_points": 197
+        },
+        {
+          "index": 3,
+          "status": "completed",
+          "collocation_points": 235
+        }
+      ],
+      "stopping_reason": "native_solve_limit",
+      "validation": {
+        "status": "collision_failed",
+        "passed": false,
+        "samples": 2761,
+        "minimum_sampled_clearance_m": -0.03111137550429563,
+        "native_collisions": 272,
+        "independent_collisions": 272,
+        "model_disagreements": 0,
+        "contact_band_samples": 0,
+        "joint_limits_passed": true,
+        "derivative_limits_passed": true
+      },
+      "evidence_sha256": {
+        "receipt.json": "4c96564f76aa58e302dfc66398f763b82b4e43d3f1df3553aedd0a71c38e4524",
+        "result.json": "7d907aaf7cdbf01465b18086f9daed50fca55d96e3105073a42ab37336969e26",
+        "refinement/round_03/nto_solver_result.json": "00154ab36025c682b5d8d9e137f0fe3af820214d2e918d289eb0dcbae54cc7ad",
+        "validation.json": "61bb8483e73e5e5fa9ff2b50af7f555ce230ac4e6ed846533d70d29e1d13975a"
+      }
+    },
+    {
+      "case_id": "dev-sparse_clutter-004-p01",
+      "split": "dev",
+      "job_id": "dev-sparse_clutter-004-p01-NTO_REFINED-minimum_distance-39591b2a",
+      "roadmap_id": "kinova7-full-n6000-s2-e258c5f9914c",
+      "objective": "minimum_distance",
+      "status": "timeout",
+      "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/rss2025_reliable_v2_dev_s002/jobs/dev-sparse_clutter-004-p01-NTO_REFINED-minimum_distance-39591b2a/attempts/0001",
+      "last_native_result": {
+        "native_solver_details": {
+          "info": 13,
+          "solve_time": 0.491201814
+        },
+        "raw_solution": "nto_solver_raw.npz",
+        "returned_controls_finite": true,
+        "returned_duration_finite": true,
+        "solve_seconds": 0.4927844381891191,
+        "solver_objective": 28.97586233980829,
+        "solver_status": "SolutionResult.kInfeasibleConstraints",
+        "solver_success": false
+      },
+      "rounds": [
+        {
+          "index": 0,
+          "status": "completed",
+          "collocation_points": 149
+        },
+        {
+          "index": 1,
+          "status": "completed",
+          "collocation_points": 220
+        },
+        {
+          "index": 2,
+          "status": "running",
+          "collocation_points": 240
+        }
+      ],
+      "stopping_reason": "running",
+      "validation": {
+        "status": null,
+        "passed": null,
+        "samples": null,
+        "minimum_sampled_clearance_m": null,
+        "native_collisions": null,
+        "independent_collisions": null,
+        "model_disagreements": null,
+        "contact_band_samples": null,
+        "joint_limits_passed": null,
+        "derivative_limits_passed": null
+      },
+      "evidence_sha256": {
+        "receipt.json": "512dffff38dda7e087d1043a31c6d11ec1e80a2cc68addb127e6ebb0ac8c8c0d",
+        "result.json": "4948143b8e4fb50ebe6466cd16f82b16a5c56c7f7da50fa6ef98f23a9af9f67c",
+        "refinement/round_01/nto_solver_result.json": "2ab92d249828df07a49f57bbfa8e1f8bc3ddaa1968ca3875af4d3e8af43b4584"
+      }
+    },
+    {
+      "case_id": "dev-sparse_clutter-004-p01",
+      "split": "dev",
+      "job_id": "dev-sparse_clutter-004-p01-NTO_REFINED-minimum_time-b680a1c5",
+      "roadmap_id": "kinova7-full-n6000-s2-e258c5f9914c",
+      "objective": "minimum_time",
+      "status": "timeout",
+      "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/rss2025_reliable_v2_dev_s002/jobs/dev-sparse_clutter-004-p01-NTO_REFINED-minimum_time-b680a1c5/attempts/0001",
+      "last_native_result": {
+        "native_solver_details": {
+          "status": 0
+        },
+        "native_status_description": "Success",
+        "raw_solution": "nto_solver_raw.npz",
+        "returned_controls_finite": true,
+        "returned_duration_finite": true,
+        "solve_seconds": 11.868754752911627,
+        "solver_objective": 5.96836092029447,
+        "solver_status": "SolutionResult.kSolutionFound",
+        "solver_success": true
+      },
+      "rounds": [
+        {
+          "index": 0,
+          "status": "completed",
+          "collocation_points": 149
+        },
+        {
+          "index": 1,
+          "status": "completed",
+          "collocation_points": 150
+        },
+        {
+          "index": 2,
+          "status": "running",
+          "collocation_points": 152
+        }
+      ],
+      "stopping_reason": "running",
+      "validation": {
+        "status": null,
+        "passed": null,
+        "samples": null,
+        "minimum_sampled_clearance_m": null,
+        "native_collisions": null,
+        "independent_collisions": null,
+        "model_disagreements": null,
+        "contact_band_samples": null,
+        "joint_limits_passed": null,
+        "derivative_limits_passed": null
+      },
+      "evidence_sha256": {
+        "receipt.json": "9164ae49a424bf8435fa3e410bbbdf66fd71eb380abf495afcc0414ba261b276",
+        "result.json": "5460883672f783db008a68943fd618472bbc539d9c84458c7da0dbdd053a7c76",
+        "refinement/round_01/nto_solver_result.json": "3dbb851cacfab129b8e9dce0b2564f22f484e00b1ed47c2beb611c124332260c"
+      }
+    },
+    {
+      "case_id": "dev-sparse_clutter-004-p02",
+      "split": "dev",
+      "job_id": "dev-sparse_clutter-004-p02-NTO_REFINED-minimum_distance-c02731bc",
+      "roadmap_id": "kinova7-full-n6000-s2-e258c5f9914c",
+      "objective": "minimum_distance",
+      "status": "solver_failed",
+      "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/rss2025_reliable_v2_dev_s002/jobs/dev-sparse_clutter-004-p02-NTO_REFINED-minimum_distance-c02731bc/attempts/0001",
+      "last_native_result": {
+        "native_solver_details": {
+          "info": 41,
+          "solve_time": 0.103324552
+        },
+        "raw_solution": "nto_solver_raw.npz",
+        "returned_controls_finite": true,
+        "returned_duration_finite": true,
+        "solve_seconds": 0.10502284904941916,
+        "solver_objective": 7.610499623497924,
+        "solver_status": "SolutionResult.kSolverSpecificError",
+        "solver_success": false
+      },
+      "rounds": [
+        {
+          "index": 0,
+          "status": "completed",
+          "collocation_points": 149
+        },
+        {
+          "index": 1,
+          "status": "completed",
+          "collocation_points": 150
+        },
+        {
+          "index": 2,
+          "status": "completed",
+          "collocation_points": 152
+        },
+        {
+          "index": 3,
+          "status": "completed",
+          "collocation_points": 153
+        }
+      ],
+      "stopping_reason": "native_solve_limit",
+      "validation": {
+        "status": "collision_failed",
+        "passed": false,
+        "samples": 3821,
+        "minimum_sampled_clearance_m": -0.0016510756342866832,
+        "native_collisions": 5,
+        "independent_collisions": 5,
+        "model_disagreements": 0,
+        "contact_band_samples": 0,
+        "joint_limits_passed": true,
+        "derivative_limits_passed": true
+      },
+      "evidence_sha256": {
+        "receipt.json": "b332a5f849bd546e8d749011b7f65b12cc209298c212363f734c264eb3cf3bd3",
+        "result.json": "73497240336199aea089d1c18aba3f298bf8c2f1de6457828279422d196a7589",
+        "refinement/round_03/nto_solver_result.json": "0b8a52eb7ec059632ea9fd9b406c61d8c9292244ed10bc85728129c31d65895d",
+        "validation.json": "9c7d5e609c198b1619d4cb9b9ea5bce2dd98588e302e74110ebee5ff1dcebdea"
+      }
+    },
+    {
+      "case_id": "dev-sparse_clutter-004-p02",
+      "split": "dev",
+      "job_id": "dev-sparse_clutter-004-p02-NTO_REFINED-minimum_time-b023c935",
+      "roadmap_id": "kinova7-full-n6000-s2-e258c5f9914c",
+      "objective": "minimum_time",
+      "status": "collision_failed",
+      "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/rss2025_reliable_v2_dev_s002/jobs/dev-sparse_clutter-004-p02-NTO_REFINED-minimum_time-b023c935/attempts/0001",
+      "last_native_result": {
+        "native_solver_details": {
+          "status": 0
+        },
+        "native_status_description": "Success",
+        "raw_solution": "nto_solver_raw.npz",
+        "returned_controls_finite": true,
+        "returned_duration_finite": true,
+        "solve_seconds": 20.35819579521194,
+        "solver_objective": 8.329310000373773,
+        "solver_status": "SolutionResult.kSolutionFound",
+        "solver_success": true
+      },
+      "rounds": [
+        {
+          "index": 0,
+          "status": "completed",
+          "collocation_points": 149
+        },
+        {
+          "index": 1,
+          "status": "completed",
+          "collocation_points": 155
+        },
+        {
+          "index": 2,
+          "status": "completed",
+          "collocation_points": 160
+        },
+        {
+          "index": 3,
+          "status": "completed",
+          "collocation_points": 162
+        }
+      ],
+      "stopping_reason": "native_solve_limit",
+      "validation": {
+        "status": "collision_failed",
+        "passed": false,
+        "samples": 3177,
+        "minimum_sampled_clearance_m": -0.001413984146539829,
+        "native_collisions": 36,
+        "independent_collisions": 36,
+        "model_disagreements": 0,
+        "contact_band_samples": 0,
+        "joint_limits_passed": true,
+        "derivative_limits_passed": true
+      },
+      "evidence_sha256": {
+        "receipt.json": "044a4669f2a98850f717af0feb61ae95e0713e5cee9567dce95cdba3fe2c7881",
+        "result.json": "8c47b34472e1968e1ee0508cbdaad281866ab97afa989768a324292b19f0bec2",
+        "refinement/round_03/nto_solver_result.json": "d72fbb165bf960eb9225d7c9562931a48bb064e6785ef01aad21021a3e49f97b",
+        "validation.json": "ab38df1240ed85b4304e12ea226c91f9b8e4a995e9d2f5890a3d221625acd269"
+      }
+    },
+    {
+      "case_id": "dev-dense_clutter-002-p00",
+      "split": "dev",
+      "job_id": "dev-dense_clutter-002-p00-NTO_REFINED-minimum_distance-3d2828de",
+      "roadmap_id": "kinova7-full-n6000-s2-e258c5f9914c",
+      "objective": "minimum_distance",
+      "status": "solver_failed",
+      "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/rss2025_reliable_v2_dev_s002/jobs/dev-dense_clutter-002-p00-NTO_REFINED-minimum_distance-3d2828de/attempts/0001",
+      "last_native_result": {
+        "native_solver_details": {
+          "info": 13,
+          "solve_time": 4.176030407
+        },
+        "raw_solution": "nto_solver_raw.npz",
+        "returned_controls_finite": true,
+        "returned_duration_finite": true,
+        "solve_seconds": 4.178369038272649,
+        "solver_objective": 14.385355322609353,
+        "solver_status": "SolutionResult.kInfeasibleConstraints",
+        "solver_success": false
+      },
+      "rounds": [
+        {
+          "index": 0,
+          "status": "completed",
+          "collocation_points": 149
+        },
+        {
+          "index": 1,
+          "status": "completed",
+          "collocation_points": 226
+        },
+        {
+          "index": 2,
+          "status": "completed",
+          "collocation_points": 346
+        },
+        {
+          "index": 3,
+          "status": "completed",
+          "collocation_points": 497
+        }
+      ],
+      "stopping_reason": "native_solve_limit",
+      "validation": {
+        "status": "collision_failed",
+        "passed": false,
+        "samples": 3169,
+        "minimum_sampled_clearance_m": -0.06756652827661991,
+        "native_collisions": 1672,
+        "independent_collisions": 1672,
+        "model_disagreements": 0,
+        "contact_band_samples": 1,
+        "joint_limits_passed": true,
+        "derivative_limits_passed": true
+      },
+      "evidence_sha256": {
+        "receipt.json": "fceb21ccd7735dd15cc42de2f51b6f3cd6c70f2c97006077e2417e1a3efac350",
+        "result.json": "a3b4645789c2478cb85b2d9a0e1d94040b4298237f67c3878b5927e7c491bbde",
+        "refinement/round_03/nto_solver_result.json": "c3baf3cfbcf91baf8ad778f56baf15a7bfe5d6f0ad73da31b8be7bfab032dd14",
+        "validation.json": "c98c1e11563affa9bae6ea7355a52741593273ed66571729372629be51901476"
+      }
+    },
+    {
+      "case_id": "dev-dense_clutter-002-p01",
+      "split": "dev",
+      "job_id": "dev-dense_clutter-002-p01-NTO_REFINED-minimum_distance-fbe1c40a",
+      "roadmap_id": "kinova7-full-n6000-s2-e258c5f9914c",
+      "objective": "minimum_distance",
+      "status": "solver_failed",
+      "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/rss2025_reliable_v2_dev_s002/jobs/dev-dense_clutter-002-p01-NTO_REFINED-minimum_distance-fbe1c40a/attempts/0001",
+      "last_native_result": {
+        "native_solver_details": {
+          "info": 13,
+          "solve_time": 1.813196879
+        },
+        "raw_solution": "nto_solver_raw.npz",
+        "returned_controls_finite": true,
+        "returned_duration_finite": true,
+        "solve_seconds": 1.814977697096765,
+        "solver_objective": 21.21570690592067,
+        "solver_status": "SolutionResult.kInfeasibleConstraints",
+        "solver_success": false
+      },
+      "rounds": [
+        {
+          "index": 0,
+          "status": "completed",
+          "collocation_points": 149
+        },
+        {
+          "index": 1,
+          "status": "completed",
+          "collocation_points": 206
+        },
+        {
+          "index": 2,
+          "status": "completed",
+          "collocation_points": 288
+        },
+        {
+          "index": 3,
+          "status": "completed",
+          "collocation_points": 415
+        }
+      ],
+      "stopping_reason": "native_solve_limit",
+      "validation": {
+        "status": "collision_failed",
+        "passed": false,
+        "samples": 4646,
+        "minimum_sampled_clearance_m": -0.08688448614518257,
+        "native_collisions": 1563,
+        "independent_collisions": 1563,
+        "model_disagreements": 0,
+        "contact_band_samples": 0,
+        "joint_limits_passed": true,
+        "derivative_limits_passed": true
+      },
+      "evidence_sha256": {
+        "receipt.json": "2295175b8e67c6e144a7afb6c3fa2cac906b271e4287036b9c164a9c92511ce0",
+        "result.json": "c4d9af0ddf9a15d47502a1c66f73ac33cbaa61fe6e7a6ab5ab5fc53e9a01acae",
+        "refinement/round_03/nto_solver_result.json": "652ffc3d293b6d1c11892ea51c4d9ccb960f6a8c7bf09a651469d4a61d85c11f",
+        "validation.json": "ee3bf723b59e529407c559d7cf871ce571f9220975a38f63788c7b60719fffc7"
+      }
+    },
+    {
+      "case_id": "dev-bottleneck-000-p02",
+      "split": "dev",
+      "job_id": "dev-bottleneck-000-p02-NTO_REFINED-minimum_distance-e1f1196e",
+      "roadmap_id": "kinova7-full-n6000-s2-e258c5f9914c",
+      "objective": "minimum_distance",
+      "status": "solver_failed",
+      "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/rss2025_reliable_v2_dev_s002/jobs/dev-bottleneck-000-p02-NTO_REFINED-minimum_distance-e1f1196e/attempts/0001",
+      "last_native_result": {
+        "native_solver_details": {
+          "info": 41,
+          "solve_time": 5.444926689
+        },
+        "raw_solution": "nto_solver_raw.npz",
+        "returned_controls_finite": true,
+        "returned_duration_finite": true,
+        "solve_seconds": 5.446233971044421,
+        "solver_objective": 30.193199548697468,
+        "solver_status": "SolutionResult.kSolverSpecificError",
+        "solver_success": false
+      },
+      "rounds": [
+        {
+          "index": 0,
+          "status": "completed",
+          "collocation_points": 149
+        },
+        {
+          "index": 1,
+          "status": "completed",
+          "collocation_points": 174
+        },
+        {
+          "index": 2,
+          "status": "completed",
+          "collocation_points": 184
+        },
+        {
+          "index": 3,
+          "status": "completed",
+          "collocation_points": 195
+        }
+      ],
+      "stopping_reason": "native_solve_limit",
+      "validation": {
+        "status": "collision_failed",
+        "passed": false,
+        "samples": 6809,
+        "minimum_sampled_clearance_m": -0.009093504795246982,
+        "native_collisions": 164,
+        "independent_collisions": 164,
+        "model_disagreements": 0,
+        "contact_band_samples": 0,
+        "joint_limits_passed": true,
+        "derivative_limits_passed": true
+      },
+      "evidence_sha256": {
+        "receipt.json": "a8e4293113ba8a0eac3804029e682de9566f5de5c3c39ed54406077bf94c247c",
+        "result.json": "640648daa2e02658bae99ff44862259c2836280160aeb543a59e0ac081bbfcae",
+        "refinement/round_03/nto_solver_result.json": "fef65ba9c8e1ed9dad4dfd3e04292f63922299bc0ac9423967247cdb64d0142f",
+        "validation.json": "7290dfb82d3d8ce9edf52e243dacdca6db60d49cb253a988f887eb0d85fec91c"
+      }
+    },
+    {
+      "case_id": "dev-bottleneck-000-p02",
+      "split": "dev",
+      "job_id": "dev-bottleneck-000-p02-NTO_REFINED-minimum_time-dc253f28",
+      "roadmap_id": "kinova7-full-n6000-s2-e258c5f9914c",
+      "objective": "minimum_time",
+      "status": "timeout",
+      "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/rss2025_reliable_v2_dev_s002/jobs/dev-bottleneck-000-p02-NTO_REFINED-minimum_time-dc253f28/attempts/0001",
+      "last_native_result": {},
+      "rounds": [
+        {
+          "index": 0,
+          "status": "running",
+          "collocation_points": 149
+        }
+      ],
+      "stopping_reason": "running",
+      "validation": {
+        "status": null,
+        "passed": null,
+        "samples": null,
+        "minimum_sampled_clearance_m": null,
+        "native_collisions": null,
+        "independent_collisions": null,
+        "model_disagreements": null,
+        "contact_band_samples": null,
+        "joint_limits_passed": null,
+        "derivative_limits_passed": null
+      },
+      "evidence_sha256": {
+        "receipt.json": "baedb8b17c2d94ab908335e427ff2b22babbc4df920fb1df10e74bb331fa6470",
+        "result.json": "af37cbbb22787ab43582a39542152db57aa0f62c46255f60d5f8123416d21579"
+      }
+    },
+    {
+      "case_id": "dev-route_choice-000-p02",
+      "split": "dev",
+      "job_id": "dev-route_choice-000-p02-NTO_REFINED-minimum_distance-4d0a5069",
+      "roadmap_id": "kinova7-full-n6000-s2-e258c5f9914c",
+      "objective": "minimum_distance",
+      "status": "timeout",
+      "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/rss2025_reliable_v2_dev_s002/jobs/dev-route_choice-000-p02-NTO_REFINED-minimum_distance-4d0a5069/attempts/0001",
+      "last_native_result": {
+        "native_solver_details": {
+          "info": 32,
+          "solve_time": 56.03076884
+        },
+        "raw_solution": "nto_solver_raw.npz",
+        "returned_controls_finite": true,
+        "returned_duration_finite": true,
+        "solve_seconds": 56.03243563789874,
+        "solver_objective": 7.285891419350483,
+        "solver_status": "SolutionResult.kIterationLimit",
+        "solver_success": false
+      },
+      "rounds": [
+        {
+          "index": 0,
+          "status": "completed",
+          "collocation_points": 149
+        }
+      ],
+      "stopping_reason": "geometry_guard_passed",
+      "validation": {
+        "status": null,
+        "passed": null,
+        "samples": null,
+        "minimum_sampled_clearance_m": null,
+        "native_collisions": null,
+        "independent_collisions": null,
+        "model_disagreements": null,
+        "contact_band_samples": null,
+        "joint_limits_passed": null,
+        "derivative_limits_passed": null
+      },
+      "evidence_sha256": {
+        "receipt.json": "293fc340ee8c61bb051a012771d510d82c759c2cff51ee26c8c742eec9aabddb",
+        "result.json": "180fba47d130f4eebb3ef7f876e0bf3d01c36418e85269ef4996114ea5582c66",
+        "refinement/round_00/nto_solver_result.json": "dd4a7a045144542e57449305ccc4cb5a841d1faf139febe816d596d9b3ee5a0d"
+      }
+    },
+    {
+      "case_id": "dev-route_choice-000-p02",
+      "split": "dev",
+      "job_id": "dev-route_choice-000-p02-NTO_REFINED-minimum_time-24c09a25",
+      "roadmap_id": "kinova7-full-n6000-s2-e258c5f9914c",
+      "objective": "minimum_time",
+      "status": "timeout",
+      "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/rss2025_reliable_v2_dev_s002/jobs/dev-route_choice-000-p02-NTO_REFINED-minimum_time-24c09a25/attempts/0001",
+      "last_native_result": {},
+      "rounds": [
+        {
+          "index": 0,
+          "status": "running",
+          "collocation_points": 149
+        }
+      ],
+      "stopping_reason": "running",
+      "validation": {
+        "status": null,
+        "passed": null,
+        "samples": null,
+        "minimum_sampled_clearance_m": null,
+        "native_collisions": null,
+        "independent_collisions": null,
+        "model_disagreements": null,
+        "contact_band_samples": null,
+        "joint_limits_passed": null,
+        "derivative_limits_passed": null
+      },
+      "evidence_sha256": {
+        "receipt.json": "78fddeb2c806c50219c4f18e998452b7c01b775b8224c1e7df0480759907ffd8",
+        "result.json": "f5d924a65b03978e415e1f31670d83e11251e7f97d21d8e9c0ddfb266481a129"
+      }
+    },
+    {
+      "case_id": "dev-route_choice-002-p00",
+      "split": "dev",
+      "job_id": "dev-route_choice-002-p00-NTO_REFINED-minimum_time-24b1f7ad",
+      "roadmap_id": "kinova7-full-n6000-s2-e258c5f9914c",
+      "objective": "minimum_time",
+      "status": "timeout",
+      "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/rss2025_reliable_v2_dev_s002/jobs/dev-route_choice-002-p00-NTO_REFINED-minimum_time-24b1f7ad/attempts/0001",
+      "last_native_result": {},
+      "rounds": [
+        {
+          "index": 0,
+          "status": "running",
+          "collocation_points": 149
+        }
+      ],
+      "stopping_reason": "running",
+      "validation": {
+        "status": null,
+        "passed": null,
+        "samples": null,
+        "minimum_sampled_clearance_m": null,
+        "native_collisions": null,
+        "independent_collisions": null,
+        "model_disagreements": null,
+        "contact_band_samples": null,
+        "joint_limits_passed": null,
+        "derivative_limits_passed": null
+      },
+      "evidence_sha256": {
+        "receipt.json": "5f158dec6cbe81d1744322bbcf164fce014b9465621082e8d761914483309eb0",
+        "result.json": "49243df85fc6b2f8ea6b839807f2dc6fab578b3590e9bab2e6e6528cb10ebbf7"
+      }
+    },
+    {
+      "case_id": "dev-route_choice-003-p01",
+      "split": "dev",
+      "job_id": "dev-route_choice-003-p01-NTO_REFINED-minimum_distance-2273f3c7",
+      "roadmap_id": "kinova7-full-n6000-s2-e258c5f9914c",
+      "objective": "minimum_distance",
+      "status": "collision_failed",
+      "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/rss2025_reliable_v2_dev_s002/jobs/dev-route_choice-003-p01-NTO_REFINED-minimum_distance-2273f3c7/attempts/0001",
+      "last_native_result": {
+        "native_solver_details": {
+          "info": 1,
+          "solve_time": 0.171439447
+        },
+        "raw_solution": "nto_solver_raw.npz",
+        "returned_controls_finite": true,
+        "returned_duration_finite": true,
+        "solve_seconds": 0.1733311261050403,
+        "solver_objective": 7.305372620427513,
+        "solver_status": "SolutionResult.kSolutionFound",
+        "solver_success": true
+      },
+      "rounds": [
+        {
+          "index": 0,
+          "status": "completed",
+          "collocation_points": 149
+        },
+        {
+          "index": 1,
+          "status": "completed",
+          "collocation_points": 151
+        },
+        {
+          "index": 2,
+          "status": "completed",
+          "collocation_points": 153
+        },
+        {
+          "index": 3,
+          "status": "completed",
+          "collocation_points": 154
+        }
+      ],
+      "stopping_reason": "native_solve_limit",
+      "validation": {
+        "status": "collision_failed",
+        "passed": false,
+        "samples": 1955,
+        "minimum_sampled_clearance_m": -0.0008532197398323227,
+        "native_collisions": 3,
+        "independent_collisions": 3,
+        "model_disagreements": 0,
+        "contact_band_samples": 0,
+        "joint_limits_passed": true,
+        "derivative_limits_passed": true
+      },
+      "evidence_sha256": {
+        "receipt.json": "a27ac1c8b836000a592fd888f5af9c6d5962588fb935fc26a3858a4a57f27db0",
+        "result.json": "7c9e6c19c8e62db0763ac44c80f818994477f396bd97a01b068e67b155e09809",
+        "refinement/round_03/nto_solver_result.json": "9b9dfb48447f212e1a310f4628a874ddc9b3a6e64abc8c06d5b77ec5bf0e0ee3",
+        "validation.json": "6e6247967e84889a60c4cbccb8a27419e4d8e48d57aace2ad8caa95f2092a44f"
+      }
+    },
+    {
+      "case_id": "dev-route_choice-003-p01",
+      "split": "dev",
+      "job_id": "dev-route_choice-003-p01-NTO_REFINED-minimum_time-ff52bfbe",
+      "roadmap_id": "kinova7-full-n6000-s2-e258c5f9914c",
+      "objective": "minimum_time",
+      "status": "timeout",
+      "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/rss2025_reliable_v2_dev_s002/jobs/dev-route_choice-003-p01-NTO_REFINED-minimum_time-ff52bfbe/attempts/0001",
+      "last_native_result": {
+        "native_solver_details": {
+          "status": 0
+        },
+        "native_status_description": "Success",
+        "raw_solution": "nto_solver_raw.npz",
+        "returned_controls_finite": true,
+        "returned_duration_finite": true,
+        "solve_seconds": 39.03373142937198,
+        "solver_objective": 15.419691633826886,
+        "solver_status": "SolutionResult.kSolutionFound",
+        "solver_success": true
+      },
+      "rounds": [
+        {
+          "index": 0,
+          "status": "completed",
+          "collocation_points": 149
+        },
+        {
+          "index": 1,
+          "status": "completed",
+          "collocation_points": 151
+        },
+        {
+          "index": 2,
+          "status": "completed",
+          "collocation_points": 154
+        },
+        {
+          "index": 3,
+          "status": "running",
+          "collocation_points": 156
+        }
+      ],
+      "stopping_reason": "running",
+      "validation": {
+        "status": null,
+        "passed": null,
+        "samples": null,
+        "minimum_sampled_clearance_m": null,
+        "native_collisions": null,
+        "independent_collisions": null,
+        "model_disagreements": null,
+        "contact_band_samples": null,
+        "joint_limits_passed": null,
+        "derivative_limits_passed": null
+      },
+      "evidence_sha256": {
+        "receipt.json": "f48f59242373548ec63845175629a54a21e1157a1bb3e76a75e3ae5154b0d541",
+        "result.json": "0157ea9b620fbe29885beab2de8f6b3237bc39e367347537bd3e2c9d7144f6a3",
+        "refinement/round_03/nto_solver_result.json": "5398a2aa32e69ed3e58eaef3a16cf19410105a85e4e6fa8cf315c7e81cc3bf5c"
+      }
+    }
+  ],
+  "limits": [
+    "NTO_PAPER and NTO_REFINED differ; no pooling, no best-of selection.",
+    "New safe DRM changes one infrastructure-error pair per objective to frontend_failed; all accepted old/new paths match.",
+    "No new recorded BoxBoxGradient exception is evidence of this batch only; prior same-model double-API failure remains unresolved.",
+    "Finite sampled collision validation is not a continuous proof."
+  ]
+}

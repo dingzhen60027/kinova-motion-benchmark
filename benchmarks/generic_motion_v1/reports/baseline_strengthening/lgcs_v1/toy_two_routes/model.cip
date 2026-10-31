@@ -1,0 +1,109 @@
+STATISTICS
+  Problem name     : LGCS_GCS_Eq5_5_projected_SCIP
+  Variables        : 38 (10 binary, 0 integer, 0 implicit integer, 28 continuous)
+  Constraints      : 0 initial, 62 maximal
+OBJECTIVE
+  Sense            : minimize
+VARIABLES
+  [binary] <phi_0_1>: obj=0, original bounds=[0,1]
+  [binary] <phi_1_0>: obj=0, original bounds=[0,1]
+  [binary] <phi_0_3>: obj=0, original bounds=[0,1]
+  [binary] <phi_3_0>: obj=0, original bounds=[0,1]
+  [binary] <phi_4_0>: obj=0, original bounds=[0,1]
+  [binary] <phi_1_2>: obj=0, original bounds=[0,1]
+  [binary] <phi_2_1>: obj=0, original bounds=[0,1]
+  [binary] <phi_2_3>: obj=0, original bounds=[0,1]
+  [binary] <phi_3_2>: obj=0, original bounds=[0,1]
+  [binary] <phi_2_5>: obj=0, original bounds=[0,1]
+  [continuous] <z_0_1_0>: obj=0, original bounds=[-inf,+inf]
+  [continuous] <z_0_1_1>: obj=0, original bounds=[-inf,+inf]
+  [continuous] <z_1_0_0>: obj=0, original bounds=[-inf,+inf]
+  [continuous] <z_1_0_1>: obj=0, original bounds=[-inf,+inf]
+  [continuous] <z_0_3_0>: obj=0, original bounds=[-inf,+inf]
+  [continuous] <z_0_3_1>: obj=0, original bounds=[-inf,+inf]
+  [continuous] <z_3_0_0>: obj=0, original bounds=[-inf,+inf]
+  [continuous] <z_3_0_1>: obj=0, original bounds=[-inf,+inf]
+  [continuous] <z_1_2_0>: obj=0, original bounds=[-inf,+inf]
+  [continuous] <z_1_2_1>: obj=0, original bounds=[-inf,+inf]
+  [continuous] <z_2_1_0>: obj=0, original bounds=[-inf,+inf]
+  [continuous] <z_2_1_1>: obj=0, original bounds=[-inf,+inf]
+  [continuous] <z_2_3_0>: obj=0, original bounds=[-inf,+inf]
+  [continuous] <z_2_3_1>: obj=0, original bounds=[-inf,+inf]
+  [continuous] <z_3_2_0>: obj=0, original bounds=[-inf,+inf]
+  [continuous] <z_3_2_1>: obj=0, original bounds=[-inf,+inf]
+  [continuous] <length_0>: obj=1, original bounds=[0,+inf]
+  [continuous] <length_1>: obj=1, original bounds=[0,+inf]
+  [continuous] <length_2>: obj=1, original bounds=[0,+inf]
+  [continuous] <length_3>: obj=1, original bounds=[0,+inf]
+  [continuous] <delta_0_0>: obj=0, original bounds=[-inf,+inf]
+  [continuous] <delta_0_1>: obj=0, original bounds=[-inf,+inf]
+  [continuous] <delta_1_0>: obj=0, original bounds=[-inf,+inf]
+  [continuous] <delta_1_1>: obj=0, original bounds=[-inf,+inf]
+  [continuous] <delta_2_0>: obj=0, original bounds=[-inf,+inf]
+  [continuous] <delta_2_1>: obj=0, original bounds=[-inf,+inf]
+  [continuous] <delta_3_0>: obj=0, original bounds=[-inf,+inf]
+  [continuous] <delta_3_1>: obj=0, original bounds=[-inf,+inf]
+CONSTRAINTS
+  [linear] <flow_0>: <phi_0_1>[B] +<phi_0_3>[B] -<phi_1_0>[B] -<phi_3_0>[B] -<phi_4_0>[B] == 0;
+  [linear] <degree_0>: <phi_0_1>[B] +<phi_0_3>[B] <= 1;
+  [linear] <vector_0_0>: <delta_0_0>[C] -<z_0_1_0>[C] -<z_0_3_0>[C] +<z_1_0_0>[C] +<z_3_0_0>[C] -2<phi_4_0>[B] == 0;
+  [linear] <vector_0_1>: <delta_0_1>[C] -<z_0_1_1>[C] -<z_0_3_1>[C] +<z_1_0_1>[C] +<z_3_0_1>[C] == 0;
+  [nonlinear] <soc_0>: <delta_0_0>*<delta_0_0>+<delta_0_1>*<delta_0_1>-<length_0>*<length_0> <= 0;
+  [linear] <flow_1>: <phi_1_0>[B] +<phi_1_2>[B] -<phi_0_1>[B] -<phi_2_1>[B] == 0;
+  [linear] <degree_1>: <phi_1_0>[B] +<phi_1_2>[B] <= 1;
+  [linear] <vector_1_0>: <delta_1_0>[C] -<z_1_0_0>[C] -<z_1_2_0>[C] +<z_0_1_0>[C] +<z_2_1_0>[C] == 0;
+  [linear] <vector_1_1>: <delta_1_1>[C] -<z_1_0_1>[C] -<z_1_2_1>[C] +<z_0_1_1>[C] +<z_2_1_1>[C] == 0;
+  [nonlinear] <soc_1>: <delta_1_0>*<delta_1_0>+<delta_1_1>*<delta_1_1>-<length_1>*<length_1> <= 0;
+  [linear] <flow_2>: <phi_2_1>[B] +<phi_2_3>[B] +<phi_2_5>[B] -<phi_1_2>[B] -<phi_3_2>[B] == 0;
+  [linear] <degree_2>: <phi_2_1>[B] +<phi_2_3>[B] +<phi_2_5>[B] <= 1;
+  [linear] <vector_2_0>: <delta_2_0>[C] -<z_2_1_0>[C] -<z_2_3_0>[C] -2<phi_2_5>[B] +<z_1_2_0>[C] +<z_3_2_0>[C] == 0;
+  [linear] <vector_2_1>: <delta_2_1>[C] -<z_2_1_1>[C] -<z_2_3_1>[C] +<z_1_2_1>[C] +<z_3_2_1>[C] == 0;
+  [nonlinear] <soc_2>: <delta_2_0>*<delta_2_0>+<delta_2_1>*<delta_2_1>-<length_2>*<length_2> <= 0;
+  [linear] <flow_3>: <phi_3_0>[B] +<phi_3_2>[B] -<phi_0_3>[B] -<phi_2_3>[B] == 0;
+  [linear] <degree_3>: <phi_3_0>[B] +<phi_3_2>[B] <= 1;
+  [linear] <vector_3_0>: <delta_3_0>[C] -<z_3_0_0>[C] -<z_3_2_0>[C] +<z_0_3_0>[C] +<z_2_3_0>[C] == 0;
+  [linear] <vector_3_1>: <delta_3_1>[C] -<z_3_0_1>[C] -<z_3_2_1>[C] +<z_0_3_1>[C] +<z_2_3_1>[C] == 0;
+  [nonlinear] <soc_3>: <delta_3_0>*<delta_3_0>+<delta_3_1>*<delta_3_1>-<length_3>*<length_3> <= 0;
+  [linear] <flow_4>: <phi_4_0>[B] == 1;
+  [linear] <flow_5>:  -<phi_2_5>[B] == -1;
+  [linear] <membership_0>: <z_0_1_0>[C] +0.8<phi_0_1>[B] <= 0;
+  [linear] <membership_1>: <z_0_1_1>[C] -<phi_0_1>[B] <= 0;
+  [linear] <membership_2>:  -<z_0_1_0>[C] -0.8<phi_0_1>[B] <= 0;
+  [linear] <membership_3>:  -<z_0_1_1>[C] +0.5<phi_0_1>[B] <= 0;
+  [linear] <membership_4>: <z_1_0_0>[C] +0.8<phi_1_0>[B] <= 0;
+  [linear] <membership_5>: <z_1_0_1>[C] -<phi_1_0>[B] <= 0;
+  [linear] <membership_6>:  -<z_1_0_0>[C] -0.8<phi_1_0>[B] <= 0;
+  [linear] <membership_7>:  -<z_1_0_1>[C] +0.5<phi_1_0>[B] <= 0;
+  [linear] <membership_8>: <z_0_3_0>[C] +0.8<phi_0_3>[B] <= 0;
+  [linear] <membership_9>: <z_0_3_1>[C] +0.8<phi_0_3>[B] <= 0;
+  [linear] <membership_10>:  -<z_0_3_0>[C] -3<phi_0_3>[B] <= 0;
+  [linear] <membership_11>:  -<z_0_3_1>[C] -<phi_0_3>[B] <= 0;
+  [linear] <membership_12>: <z_3_0_0>[C] +0.8<phi_3_0>[B] <= 0;
+  [linear] <membership_13>: <z_3_0_1>[C] +0.8<phi_3_0>[B] <= 0;
+  [linear] <membership_14>:  -<z_3_0_0>[C] -3<phi_3_0>[B] <= 0;
+  [linear] <membership_15>:  -<z_3_0_1>[C] -<phi_3_0>[B] <= 0;
+  [linear] <membership_16>:  -1.2<phi_4_0>[B] <= 0;
+  [linear] <membership_17>:  -<phi_4_0>[B] <= 0;
+  [linear] <membership_18>:  -<phi_4_0>[B] <= 0;
+  [linear] <membership_19>:  -<phi_4_0>[B] <= 0;
+  [linear] <membership_20>: <z_1_2_0>[C] -0.8<phi_1_2>[B] <= 0;
+  [linear] <membership_21>: <z_1_2_1>[C] -<phi_1_2>[B] <= 0;
+  [linear] <membership_22>:  -<z_1_2_0>[C] +0.8<phi_1_2>[B] <= 0;
+  [linear] <membership_23>:  -<z_1_2_1>[C] +0.5<phi_1_2>[B] <= 0;
+  [linear] <membership_24>: <z_2_1_0>[C] -0.8<phi_2_1>[B] <= 0;
+  [linear] <membership_25>: <z_2_1_1>[C] -<phi_2_1>[B] <= 0;
+  [linear] <membership_26>:  -<z_2_1_0>[C] +0.8<phi_2_1>[B] <= 0;
+  [linear] <membership_27>:  -<z_2_1_1>[C] +0.5<phi_2_1>[B] <= 0;
+  [linear] <membership_28>: <z_2_3_0>[C] -3<phi_2_3>[B] <= 0;
+  [linear] <membership_29>: <z_2_3_1>[C] +0.8<phi_2_3>[B] <= 0;
+  [linear] <membership_30>:  -<z_2_3_0>[C] +0.8<phi_2_3>[B] <= 0;
+  [linear] <membership_31>:  -<z_2_3_1>[C] -<phi_2_3>[B] <= 0;
+  [linear] <membership_32>: <z_3_2_0>[C] -3<phi_3_2>[B] <= 0;
+  [linear] <membership_33>: <z_3_2_1>[C] +0.8<phi_3_2>[B] <= 0;
+  [linear] <membership_34>:  -<z_3_2_0>[C] +0.8<phi_3_2>[B] <= 0;
+  [linear] <membership_35>:  -<z_3_2_1>[C] -<phi_3_2>[B] <= 0;
+  [linear] <membership_36>:  -<phi_2_5>[B] <= 0;
+  [linear] <membership_37>:  -<phi_2_5>[B] <= 0;
+  [linear] <membership_38>:  -1.2<phi_2_5>[B] <= 0;
+  [linear] <membership_39>:  -<phi_2_5>[B] <= 0;
+END

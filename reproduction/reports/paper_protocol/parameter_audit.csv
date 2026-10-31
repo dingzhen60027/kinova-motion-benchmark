@@ -1,0 +1,61 @@
+environment,parameter,paper,configured,source,classification
+forest,environment_seeds,10,10,VII-A5,published_value_matched
+forest,roadmap_seeds,10,10,VII-A5,published_value_matched
+forest,roadmap_sizes,"200,400,800,1600","200,400,800,1600",VII-A5,published_value_matched
+forest,roadmap_neighbors,10,10,Table V,published_value_matched
+forest,max_task_space_distance,10,10.0,Table V,published_value_matched
+forest,max_configuration_distance,10,10.0,Table V,published_value_matched
+forest,offline_voxel_side_m,0.06,0.06,Table V,configured_but_voxel_map_not_exercised_for_static_Forest_geometry
+forest,lazy_edge_step,0.1,0.1,Appendix D,published_value_matched
+forest,distance_solver,SNOPT,SNOPT,Appendix D,published_value_matched
+forest,time_solver,SNOPT,SNOPT,Appendix D,published_value_matched
+forest,distance_Nc,20,20,Appendix D,published_value_matched
+forest,time_Nc,100,100,Appendix D,published_value_matched
+forest,EI-ZO.delta,0.05,0.05,Table III,published_value_matched
+forest,EI-ZO.epsilon,0.01,0.01,Table III,published_value_matched
+forest,EI-ZO.num_particles,1000,1000,Table III,published_value_matched
+forest,EI-ZO.max_hyperplanes_per_iteration,10,10,Table III,published_value_matched
+forest,EI-ZO.mixing_steps,30,30,Table III,published_value_matched
+forest,EI-ZO.configuration_margin,0.01,0.01,Table III,published_value_matched
+fr3,environment_seeds,10,10,VII-A5,published_value_matched
+fr3,roadmap_seeds,10,10,VII-A5,published_value_matched
+fr3,roadmap_sizes,"3000,6000,9000,12000","3000,6000,9000,12000",VII-A5,published_value_matched
+fr3,roadmap_neighbors,10,10,Table V,published_value_matched
+fr3,max_task_space_distance,10,10.0,Table V,published_value_matched
+fr3,max_configuration_distance,10,10.0,Table V,published_value_matched
+fr3,offline_voxel_side_m,0.06,0.06,Table V,published_value_matched
+fr3,lazy_edge_step,0.1,0.1,Appendix D,published_value_matched
+fr3,distance_solver,SNOPT,SNOPT,Appendix D,published_value_matched
+fr3,time_solver,IPOPT,IPOPT,Appendix D,published_value_matched
+fr3,distance_Nc,150,150,Appendix D,published_value_matched
+fr3,time_Nc,150,150,Appendix D,published_value_matched
+fr3,EI-ZO.delta,0.005,0.005,Table IV,published_value_matched
+fr3,EI-ZO.epsilon,0.005,0.005,Table IV,published_value_matched
+fr3,EI-ZO.num_particles,10000,10000,Table IV,published_value_matched
+fr3,EI-ZO.max_hyperplanes_per_iteration,10,10,Table IV,published_value_matched
+fr3,EI-ZO.mixing_steps,60,60,Table IV,published_value_matched
+fr3,EI-ZO.configuration_margin,0.01,0.01,Table IV,published_value_matched
+fr3,configured_robot_spheres,33,33,VII-A1,count_matched_geometry_reconstructed
+fr3,collision_pairs_total,1187,851,VII-A1,does_not_match_original_model
+fr3,obstacle_spheres,20,20,VII-A1,published_count_matched_radius_distribution_unpublished
+both,LSCS_solver,MOSEK,Clarabel,VII-A4,substitution_no_MOSEK_license
+both,simulation_velocity_acceleration_and_Bezier_degree,not numerically published,unit bounds; degree 6,released example and hardware section,explicit_reconstruction_assumption
+both,random_seed_numbers_and_exact_inputs,not supplied,frozen 0..9 and recorded generated scenes,config.json assumptions,explicit_reconstruction_assumption
+both,NTO_time_minimum_controls,not published,8; order 4; arclength initialization,v2 structural transcription diagnosis; v3 frozen before primary runs,explicit_post_diagnostic_reconstruction_assumption
+both,EI-ZO.bisection_steps_max_iterations_tau,not numerically published,9;500;0.5,config.json + released options,explicit_reconstruction_choice_or_versioned_default
+both,EI-ZO.random_seed,not numerically published,1337,pipeline.py,explicit_reconstruction_choice_or_versioned_default
+fr3,DRM.expansion_attempts_shortcut_padding,not numerically published,20000;20;true;0,data.py planner,explicit_reconstruction_choice_or_versioned_default
+both,NTO.collision_bound_influence,not numerically published,0;0.01,config.json,explicit_reconstruction_choice_or_versioned_default
+both,NTO.collision_sampling,not numerically published,uniform including endpoints; no knot snapping,optimization.py,explicit_reconstruction_choice_or_versioned_default
+both,NTO.optimizer_iterations_tolerances,not numerically published,2000; feasibility/optimality 1e-6,optimization.py,explicit_reconstruction_choice_or_versioned_default
+both,NTO.time_initial_duration,not numerically published,"PWL length + 2; duration bounds [0.05,100]",optimization.py,explicit_reconstruction_choice_or_versioned_default
+both,Gurobi.threads_gap_time_limit,not numerically published,1;1e-6;60 seconds,optimization.py,explicit_reconstruction_choice_or_versioned_default
+both,Clarabel.numerical_settings,not numerically published,Drake / author library defaults at pinned versions,optimization.py,explicit_reconstruction_choice_or_versioned_default
+both,SCSTO.relative_tolerance,not numerically published,0.01,config.json,explicit_reconstruction_choice_or_versioned_default
+both,recovery_iteration_cap,not numerically published,20,config.json,explicit_reconstruction_choice_or_versioned_default
+both,solver_case_time_limits,not numerically published,60 s per optimizer; 240 s per case watchdog,config.json,explicit_reconstruction_choice_or_versioned_default
+both,independent_validation,not numerically published,0.005 max joint step; >=2001 curve samples; strict zero collision bound,validation.py,explicit_reconstruction_choice_or_versioned_default
+forest,numeric_start_goal,not numerically published,"[-4.0, -4.0]; [4.0, 3.0]",configs/forest.json retained from v1,explicit_reconstruction_choice_or_versioned_default
+fr3,unpublished_scene_geometry_and_distributions,not numerically published,"fr3_scene object in config.json, with uniform sampling and real pose IK",config.json + data.py,explicit_reconstruction_choice_or_versioned_default
+forest,LGCS_second_route,block internal region and search the DRM again,exact NetworkX graph search over the native DRM with line-circle edge checks,retained reproduction/forest.py alternate_path,algorithmic_reconstruction_different_planner_implementation
+fr3,LGCS_second_route,block internal region and search the DRM again,native DrmPlanner again on filtered copy of actual .map,paper_protocol/data.py alternate,native_procedure_reconstructed

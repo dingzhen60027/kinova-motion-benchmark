@@ -1,0 +1,95 @@
+--- /dev/null
++++ b/benchmarks/generic_motion_v1/tests/test_baseline_input_contract.py
+@@ -0,0 +1,92 @@
++"""Reject malformed endpoints and any silent change to frozen motion limits."""
++from pathlib import Path
++import json
++import numpy as np
++import pytest
++
++from benchmarks.generic_motion_v1.runners import csdecomp_baseline as module
++from benchmarks.generic_motion_v1.roadmap import ROOT
++
++
++class CpuOnlyMonitor:
++    def __enter__(self):return self
++    def __exit__(self,*args):pass
++    def report(self):return {'cpu_only_test':True}
++
++
++@pytest.fixture
++def runner(monkeypatch):
++    monkeypatch.setattr(module,'MemoryMonitor',CpuOnlyMonitor)
++    # No test invokes planning. Valid inputs are only checked by pure helpers;
++    # all full runner calls must fail closed before native/model imports.
++    return module
++
++
++def base_case():
++    return dict(problem_id='test-input',scene_id='scene',family='sparse_clutter',
++                validation_status='valid_input',q_start=[0.]*7,q_goal=[.1]*7,
++                velocity_limits_rad_s=[1.]*7,acceleration_limits_rad_s2=[1.]*7,
++                endpoint_velocity_rad_s=[0.]*7)
++
++
++def test_status_checked_before_numpy_conversion(runner):
++    assert runner._input_endpoints(dict(validation_status='invalid_endpoint',q_start=object(),q_goal=object())) is None
++
++
++@pytest.mark.parametrize('status',['invalid_endpoint','valid_input'])
++@pytest.mark.parametrize('start,goal',[
++    ([0.]*7,None),(None,[0.]*7),([0.]*6,[1.]*7),([0.]*7,[[1.]*7]),
++    ([0.]*7,['bad']*7),([0.]*7,[float('nan')]*7)])
++def test_malformed_endpoints_remain_invalid_input(runner,tmp_path,status,start,goal):
++    c=base_case();c.update(validation_status=status,q_start=start,q_goal=goal)
++    result=runner.run_case(c,tmp_path/'does-not-exist',tmp_path/'run')
++    assert result['status']=='invalid_endpoint'
++    assert result['frontend_success'] is False
++    assert 'model_setup_seconds' not in result['timing']
++    assert not (tmp_path/'run'/'dependencies.json').exists()
++
++
++def test_real_frozen_manifest_limits_match_default(runner):
++    case=json.loads(next(open(ROOT/'benchmarks/generic_motion_v1/manifests/dev.jsonl')))
++    expected=np.asarray([case['q_start'],case['q_goal']])
++    np.testing.assert_array_equal(runner._input_endpoints(case),expected)
++    runner._assert_motion_limits(case,runner.load_config())
++
++
++@pytest.mark.parametrize('config_key',['velocity_limit_rad_s','acceleration_limit_rad_s2'])
++@pytest.mark.parametrize('value',[.5,2.,0.,-1.])
++def test_config_cannot_change_frozen_task(runner,tmp_path,config_key,value):
++    result=runner.run_case(base_case(),tmp_path/'no-map',tmp_path/'run',config={config_key:value})
++    assert result['status']=='infrastructure_error'
++    assert result['error_category']=='input_protocol_mismatch'
++    assert result['failed_stage']=='input_contract'
++    assert 'model_setup_seconds' not in result['timing']
++    assert not (tmp_path/'run'/'dependencies.json').exists()
++
++
++@pytest.mark.parametrize('record_key',['velocity_limits_rad_s','acceleration_limits_rad_s2'])
++@pytest.mark.parametrize('value',[[1.]*6,[1.,1.,1.,2.,1.,1.,1.],None,[float('inf')]*7])
++def test_manifest_vector_shape_and_values_are_required(runner,record_key,value):
++    c=base_case();c[record_key]=value
++    with pytest.raises(ValueError,match='motion limits|differs'):
++        runner._assert_motion_limits(c,runner.load_config())
++
++
++def test_missing_limit_rejected(runner):
++    c=base_case();del c['velocity_limits_rad_s']
++    with pytest.raises(ValueError,match='Missing'):
++        runner._assert_motion_limits(c,runner.load_config())
++
++
++@pytest.mark.parametrize('velocity',[[.1]*7,[0.]*6,None])
++def test_endpoint_rest_contract_cannot_change(runner,velocity):
++    c=base_case();c['endpoint_velocity_rad_s']=velocity
++    with pytest.raises(ValueError,match='endpoint velocity|endpoint velocities'):
++        runner._assert_motion_limits(c,runner.load_config())
++
++
++def test_saved_generation_rejection_statistics(runner,tmp_path):
++    c=base_case();c.update(validation_status='invalid_endpoint',q_goal=None,
++                         endpoint_sampling={'rejected_collision':51,'draws':100})
++    result=runner.run_case(c,tmp_path/'no-map',tmp_path/'run')
++    assert result['generation_rejections']==c['endpoint_sampling']

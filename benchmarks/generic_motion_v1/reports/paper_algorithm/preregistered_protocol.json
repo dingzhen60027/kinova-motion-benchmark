@@ -1,0 +1,51 @@
+{
+  "created_utc": "2026-10-28T00:43:21.907409+00:00",
+  "source_commit_at_profile_freeze": "0c3028ee5b6d80e3901578e7abcb1385abcdf122",
+  "paper": "Werner et al., RSS 2025, doi:10.15607/RSS.2025.XXI.045",
+  "scope": "Native single-path DRM -> EI-ZO -> LSCS / SCSTO on frozen Kinova benchmark; author Clarabel solver adaptation",
+  "config_path": "benchmarks/generic_motion_v1/configs/rss2025_eizo.json",
+  "config_sha256": "9acba26da1f322094ce354cfc42b480a33b9811bd9acd0d33f20209d01875a8d",
+  "input_manifests_sha256": {
+    "smoke": "92e19a293861fa1b93a2dba3919ae3bc3eec584f3845709dc99f2ce98e453720",
+    "dev": "32de21ac2474846ae3cdc9867a3f41585cf80e7d0d4531e26285de216ef56000",
+    "test": "9fcbe5ccae28d8681586b1ac6c9986f51f7cc7b5cdc19352c101910e3b6ed03b"
+  },
+  "requested_roadmap_nodes": 6000,
+  "roadmap_seeds": [
+    0,
+    1,
+    2
+  ],
+  "smoke": {
+    "all_cases": 10,
+    "roadmap_seeds": [
+      0
+    ],
+    "objectives": [
+      "minimum_distance",
+      "minimum_time"
+    ],
+    "jobs": 20
+  },
+  "dev": {
+    "all_cases": 60,
+    "roadmap_seeds": [
+      0,
+      1,
+      2
+    ],
+    "objectives": [
+      "minimum_distance",
+      "minimum_time"
+    ],
+    "jobs": 360
+  },
+  "method": "EI_ZO",
+  "external_wall_budget_seconds": 60,
+  "tuning_after_observing_this_run": false,
+  "test_planning_authorized": false,
+  "formal_test_run": false,
+  "denominator": "All fixed legal inputs; retain every failure. No replacement or new endpoint sampling.",
+  "roadmap_profile": "Table V parameters with fixed Kinova model and workspace bounds; PCG64 offline sampling retained.",
+  "smoke_gate": "At least one numerically validated LSCS and SCSTO output, all 20 attempts sealed, integrity passes before starting dev."
+}

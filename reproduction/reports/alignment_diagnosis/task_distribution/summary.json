@@ -1,0 +1,240 @@
+{
+  "schema_version": 1,
+  "command": "reproduction/diagnose_task_distribution.py",
+  "controls": [
+    "diameter_entry_exit",
+    "tangency",
+    "separated_line"
+  ],
+  "execution": "CPU-only NumPy analysis of frozen artifacts; no native or optimizer calls",
+  "environments": {
+    "forest": {
+      "cases": 400,
+      "drm_successes": 400,
+      "valid_seeds": 388,
+      "segments": {
+        "count": 400,
+        "mean": 2.14,
+        "std_population": 1.02975725294848,
+        "minimum": 1.0,
+        "median": 2.0,
+        "maximum": 5.0
+      },
+      "vertices": {
+        "count": 400,
+        "mean": 3.14,
+        "std_population": 1.02975725294848,
+        "minimum": 2.0,
+        "median": 3.0,
+        "maximum": 6.0
+      },
+      "path_length": {
+        "count": 400,
+        "mean": 10.853279071314871,
+        "std_population": 0.28921241120411795,
+        "minimum": 10.63014581273465,
+        "median": 10.762787762010978,
+        "maximum": 12.43820507024353
+      },
+      "endpoint_distance": {
+        "count": 400,
+        "mean": 10.630145812734652,
+        "std_population": 1.7763568394002505e-15,
+        "minimum": 10.63014581273465,
+        "median": 10.63014581273465,
+        "maximum": 10.63014581273465
+      },
+      "segment_histogram": {
+        "1": 120,
+        "2": 165,
+        "3": 61,
+        "4": 47,
+        "5": 7
+      },
+      "nto_distance_by_seed_segments": {
+        "1": {
+          "success_numerical": 120
+        },
+        "2": {
+          "validation_failed": 162,
+          "optimization_failed": 3
+        },
+        "3": {
+          "validation_failed": 58,
+          "optimization_failed": 3
+        },
+        "4": {
+          "validation_failed": 40,
+          "optimization_failed": 7
+        },
+        "5": {
+          "validation_failed": 5,
+          "optimization_failed": 2
+        }
+      },
+      "method_statuses": {
+        "LSCS": {
+          "success_numerical": 388,
+          "invalid_seed_path": 12
+        },
+        "LGCS": {
+          "success_numerical": 385,
+          "invalid_seed_path": 12,
+          "validation_failed": 3
+        },
+        "SCSTO": {
+          "success_numerical": 387,
+          "invalid_seed_path": 12,
+          "error": 1
+        },
+        "NTO_distance": {
+          "validation_failed": 265,
+          "optimization_failed": 15,
+          "success_numerical": 120
+        },
+        "NTO_time": {
+          "optimization_failed": 73,
+          "validation_failed": 84,
+          "success_numerical": 243
+        }
+      }
+    },
+    "fr3": {
+      "cases": 400,
+      "drm_successes": 393,
+      "valid_seeds": 393,
+      "segments": {
+        "count": 393,
+        "mean": 1.8498727735368956,
+        "std_population": 0.9731019806420382,
+        "minimum": 1.0,
+        "median": 2.0,
+        "maximum": 5.0
+      },
+      "vertices": {
+        "count": 393,
+        "mean": 2.849872773536896,
+        "std_population": 0.9731019806420382,
+        "minimum": 2.0,
+        "median": 3.0,
+        "maximum": 6.0
+      },
+      "path_length": {
+        "count": 393,
+        "mean": 6.421390095434121,
+        "std_population": 1.7524442932565134,
+        "minimum": 2.044960948455899,
+        "median": 6.209892901979151,
+        "maximum": 11.794272088375678
+      },
+      "endpoint_distance": {
+        "count": 393,
+        "mean": 5.366409575675323,
+        "std_population": 1.32315031946243,
+        "minimum": 2.044960948455899,
+        "median": 5.4882285552999654,
+        "maximum": 8.397791302824801
+      },
+      "segment_histogram": {
+        "1": 188,
+        "2": 106,
+        "3": 71,
+        "4": 26,
+        "5": 2
+      },
+      "nto_distance_by_seed_segments": {
+        "1": {
+          "success_numerical": 188
+        },
+        "2": {
+          "validation_failed": 86,
+          "optimization_failed": 20
+        },
+        "3": {
+          "validation_failed": 51,
+          "optimization_failed": 20
+        },
+        "4": {
+          "validation_failed": 18,
+          "optimization_failed": 8
+        },
+        "5": {
+          "validation_failed": 2
+        }
+      },
+      "method_statuses": {
+        "LSCS": {
+          "success_numerical": 393,
+          "not_run": 7
+        },
+        "LGCS": {
+          "success_numerical": 338,
+          "blocked_license": 54,
+          "validation_failed": 1,
+          "not_run": 7
+        },
+        "SCSTO": {
+          "success_numerical": 393,
+          "not_run": 7
+        },
+        "NTO_distance": {
+          "success_numerical": 188,
+          "validation_failed": 157,
+          "optimization_failed": 48,
+          "not_run": 7
+        },
+        "NTO_time": {
+          "success_numerical": 344,
+          "validation_failed": 28,
+          "optimization_failed": 21,
+          "not_run": 7
+        }
+      }
+    }
+  },
+  "forest_invalid_seed_cases": 12,
+  "forest_invalid_seed_penetration_m": {
+    "count": 12,
+    "mean": 0.001336881669124675,
+    "std_population": 0.0008343618139215473,
+    "minimum": 0.00014672540077304008,
+    "median": 0.0014371591344650436,
+    "maximum": 0.0026064302288971164
+  },
+  "forest_invalid_seed_emulated_lazy_samples_all_clear": true,
+  "forest_invalid_seed_collision_arc_lengths_m": {
+    "count": 12,
+    "mean": 0.057183964439338326,
+    "std_population": 0.02152533230098102,
+    "minimum": 0.02026687402128878,
+    "median": 0.06334491583971172,
+    "maximum": 0.08526928859912719
+  },
+  "forest_nto_solver_success_but_validation_failed": 265,
+  "forest_nto_failed_collocation_clearance_m": {
+    "count": 265,
+    "mean": 0.014359015233191823,
+    "std_population": 0.02542027863374342,
+    "minimum": -2.3813792326965455e-08,
+    "median": 2.028884937832487e-08,
+    "maximum": 0.1545903874962254
+  },
+  "forest_nto_failed_all_constraint_points_within_1e_6_m": true,
+  "forest_nto_failed_continuous_penetration_m": {
+    "count": 265,
+    "mean": 0.13163713301103852,
+    "std_population": 0.11120358089048175,
+    "minimum": 0.009289956752243977,
+    "median": 0.0837920269631603,
+    "maximum": 0.34266176427281486
+  },
+  "forest_nto_failed_max_gap_arc_m": {
+    "count": 265,
+    "mean": 0.8953395454118944,
+    "std_population": 0.19840001658611198,
+    "minimum": 0.5071010203119384,
+    "median": 0.9358620091886927,
+    "maximum": 1.7363638110711843
+  },
+  "input_files_verified_unchanged": 3200
+}

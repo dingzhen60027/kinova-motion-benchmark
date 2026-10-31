@@ -1,0 +1,453 @@
+{
+  "schema_version": 1,
+  "config": {
+    "version": 1,
+    "name": "forest_baseline_regression",
+    "environment": "forest",
+    "environment_seeds": [
+      0
+    ],
+    "roadmap_seeds": [
+      0
+    ],
+    "roadmap_sizes": [
+      200
+    ],
+    "methods": [
+      "DRM",
+      "LSCS",
+      "LGCS",
+      "SCSTO",
+      "NTO_distance",
+      "NTO_distance_strong",
+      "NTO_time",
+      "NTO_time_strong"
+    ],
+    "scene_profile": "figure6",
+    "limits": {
+      "job_timeout_seconds": 120.0,
+      "solver_seconds": 30.0
+    },
+    "planning": {
+      "lazy_edge_step": 0.01,
+      "validation_step": 0.002
+    },
+    "method_options": {},
+    "strong_nto": {
+      "minimum_control_points": 16,
+      "maximum_control_points": 64,
+      "initial_collocation_points": 150,
+      "maximum_collocation_points": 1000,
+      "maximum_refinements": 5,
+      "maximum_new_points": 64,
+      "clearance": 0.001
+    }
+  },
+  "protocol": {
+    "protocol": "research_platform_v1:forest_baseline_regression",
+    "paper": "arXiv:2504.10783v1",
+    "fidelity": "constructed_public_paper_conditions_not_original_author_benchmark",
+    "environment_seeds": [
+      0
+    ],
+    "roadmap_seeds": [
+      0
+    ],
+    "roadmap_sizes": {
+      "forest": [
+        200
+      ],
+      "fr3": [
+        3000,
+        6000,
+        9000,
+        12000
+      ]
+    },
+    "method_order": [
+      "LSCS",
+      "LGCS",
+      "SCSTO",
+      "NTO_distance",
+      "NTO_distance_strong",
+      "NTO_time",
+      "NTO_time_strong"
+    ],
+    "roadmap_neighbors": 10,
+    "max_task_space_distance": 10.0,
+    "max_configuration_distance": 10.0,
+    "offline_voxel_side": 0.06,
+    "lazy_edge_step": 0.01,
+    "eizo": {
+      "forest": {
+        "delta": 0.05,
+        "epsilon": 0.01,
+        "num_particles": 1000,
+        "max_hyperplanes_per_iteration": 10,
+        "mixing_steps": 30,
+        "configuration_margin": 0.01,
+        "bisection_steps": 9,
+        "max_iterations": 30,
+        "tau": 0.5
+      },
+      "fr3": {
+        "delta": 0.005,
+        "epsilon": 0.005,
+        "num_particles": 10000,
+        "max_hyperplanes_per_iteration": 10,
+        "mixing_steps": 60,
+        "configuration_margin": 0.01,
+        "bisection_steps": 9,
+        "max_iterations": 30,
+        "tau": 0.5
+      }
+    },
+    "nto_solvers": {
+      "forest": {
+        "distance": "SNOPT",
+        "time": "SNOPT"
+      },
+      "fr3": {
+        "distance": "SNOPT",
+        "time": "IPOPT"
+      }
+    },
+    "nto_collocation": {
+      "forest": {
+        "distance": 20,
+        "time": 100
+      },
+      "fr3": {
+        "distance": 150,
+        "time": 150
+      }
+    },
+    "nto_collision_bound": 0.0,
+    "nto_influence_distance": 0.01,
+    "nto_repeat_initial_endpoints": true,
+    "nto_collocation_locations": "published_Nc_interior_uniform_points",
+    "nto_major_iterations": 2000,
+    "optimizer_time_limit_seconds": 30.0,
+    "velocity_limit": 1.0,
+    "acceleration_limit": 1.0,
+    "bezier_degree": 6,
+    "scsto_relative_tolerance": 0.01,
+    "maximum_recovery_iterations": 20,
+    "validation_step": 0.002,
+    "validation_minimum_samples": 2001,
+    "endpoint_tolerance": 1e-05,
+    "feasibility_tolerance": 1e-05,
+    "case_timeout_seconds": 120.0,
+    "fr3_scene": {
+      "obstacle_count": 20,
+      "obstacle_radius": 0.05,
+      "obstacle_lower": [
+        0.25,
+        -0.4,
+        0.15
+      ],
+      "obstacle_upper": [
+        0.75,
+        0.4,
+        0.8
+      ],
+      "right_ee_lower": [
+        0.2,
+        0.15,
+        0.2
+      ],
+      "right_ee_upper": [
+        0.8,
+        0.65,
+        1.0
+      ],
+      "left_ee_lower": [
+        0.2,
+        -0.65,
+        0.2
+      ],
+      "left_ee_upper": [
+        0.8,
+        -0.15,
+        1.0
+      ],
+      "table_size": [
+        1.4,
+        1.6,
+        0.1
+      ],
+      "table_center": [
+        0.5,
+        0.0,
+        -0.05
+      ],
+      "offline_map_size": [
+        1.5,
+        1.8,
+        1.2
+      ],
+      "offline_map_center": [
+        0.5,
+        0.0,
+        0.55
+      ],
+      "finger_opening": 0.04,
+      "endpoint_sampling_limit": 200000,
+      "ik_attempts": 10
+    },
+    "assumptions": {
+      "model": "New geometry-audited 33-sphere reconstruction; asset selection fixed before benchmark outcomes, not original author assets.",
+      "random_inputs": "Original task list, seeds, obstacle dimensions and pose distribution are unpublished. Fixed environment indices0..9 are declared constructed cases, not blind held-out tasks. Obstacle RNG SeedSequence[250410783,seed] retains fixed previous scenes. Independent start/target streams [250410783,5,seed,1 or2] select first collision-free joint-uniform point in each TCP box; target is its FK (not uniform Cartesian/SO3). Each side has a strict200000 sample cap. Goal joints are solved ONLINE per roadmap; no reselection after planner/optimizer failure.",
+      "velocity_acceleration": "Unit per-joint bounds as released example/hardware section; simulation limits and Bezier degree unpublished.",
+      "nto": "Original DRM nodes initialize order-2 distance splines; order-4 time splines repeat first/last control once for standstill. No arclength resampling. Use exactly Nc collision constraints to match the formal PDF; positions k/(Nc+1), k=1,...,Nc are declared construction choices. Draft TeX uses Nc-1 internal bindings and is preserved separately in v4.",
+      "solvers": "LSCS Clarabel substitutes for unlicensed MOSEK. LGCS exact Gurobi MISOCP; restricted-license failures retained. Native wheel and solver versions postdate paper.",
+      "budget": "60s solver limit and 240s case watchdog are reconstruction limits, not values supplied by paper.",
+      "validation": "Dense independent Drake checks with bounded step; no continuous collision certificate. Known-invalid DRM seeds are not inflated; NTO still receives them as warm starts. Native DRM success and independently valid DRM success are reported separately.",
+      "endpoint_margin": "1e-5 m IK margin is a declared numeric implementation choice to obtain collision-free float32-representable endpoints without changing target poses; the paper does not specify its numeric margin.",
+      "eizo_max_iterations": "30 from author arXiv TeX commented parameter blocks. Formal published Tables III/IV take precedence for all overlapping settings.",
+      "drm": "Offline native node, adjacency, pose and voxel collision maps for BOTH environments. Online goal IK is initialized by collision-free pose-map nearest nodes, per Section V-B. Native lazy step 0.1 retained. Unpublished native planner defaults are recorded.",
+      "forest_inputs": "Same fixed predeclared environment seeds and endpoints as v3; static point radius1e-6. Random endpoint coordinates and original seed list not released."
+    },
+    "endpoint_collision_margin": 1e-05,
+    "strong_nto": {
+      "minimum_control_points": 16,
+      "maximum_control_points": 64,
+      "initial_collocation_points": 150,
+      "maximum_collocation_points": 1000,
+      "maximum_refinements": 5,
+      "maximum_new_points": 64,
+      "clearance": 0.001
+    },
+    "research_platform": {
+      "config_version": 1,
+      "environment": "forest",
+      "scene_profile": "figure6",
+      "configured_methods": [
+        "DRM",
+        "LSCS",
+        "LGCS",
+        "SCSTO",
+        "NTO_distance",
+        "NTO_distance_strong",
+        "NTO_time",
+        "NTO_time_strong"
+      ],
+      "method_options": {},
+      "timing_scope": "per isolated job; solver cap strictly below external wall watchdog",
+      "scene_evidence": {
+        "forest_reference": "15 circles and displayed trajectory endpoints recovered from author Figure 6 vector artwork, frame affinely mapped to [-5,5]^2; original benchmark seed list remains unknown",
+        "forest_random": "Reuse v5's 10 obstacle realizations (default_rng seeds 0..9) under the paper's 15/r=.35/central7m/square10m parameters, with endpoints now taken from Figure 6. These are changed conditions on familiar scenes, not new seeds or held-out tasks",
+        "table": "Public author's table asset is a stronger source than prior arbitrary box. Its FR3 use and translation remain hypotheses. Visual is 1.5m; collision is deliberately the released 2.5m box, no colliding legs added",
+        "obstacle_height": "Figure 6 includes black spheres intersecting tabletop. Uniform center z support changed to [0,.8] to admit that relation. Law and numeric endpoints are inferred, not published",
+        "obstacle_xy_radius": "20 from paper; r=.05 and x=[.25,.75], y=[-.4,.4] retained declared reconstruction choices, not measured 3D coordinates",
+        "robot": "Existing conservative 33-sphere fit of pinned official FR3 geometry and official pair filters retained; author sphere placement/filter unavailable",
+        "tasks": "First collision-free joint-uniform configuration in right TCP box; independent joint-uniform FK pushforward pose in left box. No downward-orientation restriction, no selection by planner/optimizer outcome. Target witness is not the online IK initial guess",
+        "streams": "Reuse declared v5 obstacle and endpoint PRNG stream identifiers for paired environment changes. These are not author seeds",
+        "unknowns": [
+          "author 33-sphere centers and radii",
+          "author 527 static collision pairs",
+          "original 10 environment seeds and task list",
+          "FR3 original table directive",
+          "sphere radius and exact sampling volume",
+          "pose distribution",
+          "original KUKA/RealSense physical scene and records"
+        ]
+      }
+    },
+    "domain_lower": [
+      -5.0,
+      -5.0
+    ],
+    "domain_upper": [
+      5.0,
+      5.0
+    ],
+    "obstacles": 15,
+    "obstacle_radius": 0.35,
+    "obstacle_center_lower": [
+      -3.5,
+      -3.5
+    ],
+    "obstacle_center_upper": [
+      3.5,
+      3.5
+    ],
+    "point_radius": 1e-06,
+    "start": [
+      -3.999865903882334,
+      -3.9999047860695693
+    ],
+    "goal": [
+      3.772164163498463,
+      3.021549625851529
+    ]
+  },
+  "scene_definition": {
+    "kind": "forest",
+    "profile": "figure6",
+    "domain_lower": [
+      -5.0,
+      -5.0
+    ],
+    "domain_upper": [
+      5.0,
+      5.0
+    ],
+    "obstacles": 15,
+    "obstacle_radius": 0.35,
+    "obstacle_center_lower": [
+      -3.5,
+      -3.5
+    ],
+    "obstacle_center_upper": [
+      3.5,
+      3.5
+    ],
+    "point_radius": 1e-06,
+    "start": [
+      -3.999865903882334,
+      -3.9999047860695693
+    ],
+    "goal": [
+      3.772164163498463,
+      3.021549625851529
+    ],
+    "scene_id": "forest_paper_figure6_vector",
+    "centers": [
+      [
+        1.8999298563498828,
+        -3.354553238374808
+      ],
+      [
+        -1.9997008716395395,
+        1.333945154446977
+      ],
+      [
+        2.000680779438224,
+        -3.1109165740833493
+      ],
+      [
+        -2.1132680782356252,
+        1.8243922265458998
+      ],
+      [
+        1.000598256720921,
+        2.2229598192609554
+      ],
+      [
+        -0.9996183555181428,
+        -2.221954801383637
+      ],
+      [
+        3.0007890855577557,
+        0.4449833952885145
+      ],
+      [
+        2.1890569017050003,
+        0.7882751807873047
+      ],
+      [
+        1.5529361366075438,
+        -1.4565040303574408
+      ],
+      [
+        -1.499633823580707,
+        -1.0366195546972548
+      ],
+      [
+        2.500747827497058,
+        1.630265749860631
+      ],
+      [
+        -2.499767919698373,
+        -2.8145959786696952
+      ],
+      [
+        -0.40671707611802166,
+        -0.46143388550172926
+      ],
+      [
+        -0.49955130745930987,
+        2.5192804011333605
+      ],
+      [
+        1.0533590523419152,
+        0.7078211293125589
+      ]
+    ],
+    "obstacle_centers": [
+      [
+        1.8999298563498828,
+        -3.354553238374808
+      ],
+      [
+        -1.9997008716395395,
+        1.333945154446977
+      ],
+      [
+        2.000680779438224,
+        -3.1109165740833493
+      ],
+      [
+        -2.1132680782356252,
+        1.8243922265458998
+      ],
+      [
+        1.000598256720921,
+        2.2229598192609554
+      ],
+      [
+        -0.9996183555181428,
+        -2.221954801383637
+      ],
+      [
+        3.0007890855577557,
+        0.4449833952885145
+      ],
+      [
+        2.1890569017050003,
+        0.7882751807873047
+      ],
+      [
+        1.5529361366075438,
+        -1.4565040303574408
+      ],
+      [
+        -1.499633823580707,
+        -1.0366195546972548
+      ],
+      [
+        2.500747827497058,
+        1.630265749860631
+      ],
+      [
+        -2.499767919698373,
+        -2.8145959786696952
+      ],
+      [
+        -0.40671707611802166,
+        -0.46143388550172926
+      ],
+      [
+        -0.49955130745930987,
+        2.5192804011333605
+      ],
+      [
+        1.0533590523419152,
+        0.7078211293125589
+      ]
+    ],
+    "evidence_class": "author_illustration_reconstruction_not_original_benchmark_tasks",
+    "source_member": "figures/franka_benchmark_gradient.pdf",
+    "source_url": "https://arxiv.org/src/2504.10783v1",
+    "endpoint_semantics": "Endpoints of the published black trajectory; not evidence of endpoints used for every benchmark seed"
+  },
+  "source_hashes": {
+    "reproduction/paper_constructed/config.json": "bd0818510657d8f8d32b2cc4b96f5fab5bc08cfa1544dc5cd4fb5c701c5ea553",
+    "reproduction/environment_reconstruction/profile.json": "2a31decab05eba6fd6d1f52777b2061351554cda67152ce76c78a31816740266",
+    "reproduction/configs/forest.json": "394cf763dc2ed3dabf93284ccf7c02bd7337fa0fa86d76c9bd9468fdd02ba463",
+    "reproduction/reports/environment_reconstruction/forest_evidence/scene.json": "192b9852c5a242dc3cef0d5db1c2eb0ed20217d83c50b2ecb693ee308deef1cd"
+  },
+  "config_sha256": "58a83385790b8fae76908de3afa17bf54a61df61e5fd9a80da467319be4f0640",
+  "resolved_sha256": "5efc2b3a3c9a9c3ee628eae1518f664badc93d84de1ab6b2bcf8778805c72d93"
+}

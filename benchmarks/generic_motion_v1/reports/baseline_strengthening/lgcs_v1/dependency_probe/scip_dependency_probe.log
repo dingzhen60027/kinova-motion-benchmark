@@ -1,0 +1,37 @@
+STATISTICS
+  Problem name     : LGCS_SCIP_binary_SOC_dependency_probe
+  Variables        : 3 (1 binary, 0 integer, 0 implicit integer, 2 continuous)
+  Constraints      : 0 initial, 3 maximal
+OBJECTIVE
+  Sense            : minimize
+VARIABLES
+  [binary] <x>: obj=0, original bounds=[0,1]
+  [continuous] <y>: obj=0, original bounds=[-inf,+inf]
+  [continuous] <t>: obj=1, original bounds=[0,+inf]
+CONSTRAINTS
+  [linear] <c1>: <x>[B] == 1;
+  [linear] <c2>: <y>[C] -2<x>[B] == 0;
+  [nonlinear] <c3>: <y>*<y>-<t>*<t> <= 0;
+END
+presolving:
+(round 1, fast)       2 del vars, 2 del conss, 0 add conss, 4 chg bounds, 0 chg sides, 0 chg coeffs, 0 upgd conss, 0 impls, 0 clqs, 0 implints
+   (0.0s) symmetry computation started: requiring (bin +, int +, cont +), (fixed: bin -, int -, cont -)
+   (0.0s) no symmetry present (symcode time: 0.00)
+presolving (2 rounds: 2 fast, 1 medium, 1 exhaustive):
+ 2 deleted vars, 2 deleted constraints, 0 added constraints, 4 tightened bounds, 0 added holes, 0 changed sides, 0 changed coefficients
+ 0 implications, 0 cliques, 0 implied integral variables (0 bin, 0 int, 0 cont)
+presolved problem has 1 variables (0 bin, 0 int, 1 cont) and 1 constraints
+      1 constraints of type <nonlinear>
+Presolving Time: 0.00
+
+ time | node  | left  |LP iter|LP it/n|mem/heur|mdpt |vars |cons |rows |cuts |sepa|confs|strbr|  dualbound   | primalbound  |  gap   | compl. 
+t 0.0s|     1 |     0 |     0 |     - | trivial|   0 |   1 |   1 |   0 |   0 |  0 |   0 |   0 | 2.000000e+00 | 1.000000e+08 |  Large | unknown
+  0.0s|     1 |     0 |     0 |     - |   859k |   0 |   2 |   1 |   1 |   0 |  0 |   0 |   0 | 2.000000e+00 | 1.000000e+08 |  Large | unknown
+t 0.0s|     1 |     0 |     0 |     - | trivial|   0 |   2 |   1 |   1 |   0 |  0 |   0 |   0 | 2.000000e+00 | 2.000000e+00 |   0.00%| unknown
+
+SCIP Status        : solving was interrupted [gap limit reached]
+Solving Time (sec) : 0.01
+Solving Nodes      : 1
+Primal Bound       : +2.00000000075830e+00 (2 solutions)
+Dual Bound         : +1.99999999975000e+00
+Gap                : 0.00 %

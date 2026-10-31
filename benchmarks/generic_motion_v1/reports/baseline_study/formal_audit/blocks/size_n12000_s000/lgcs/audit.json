@@ -1,0 +1,4603 @@
+{
+  "passed": true,
+  "run": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/rss2025_formal_v1_size_n12000_s000",
+  "run_manifest_sha256": "85d0de62dcb8674fad0288e3ac026d911452696561eae8a72d0e38df4122e9bd",
+  "source_commit": "c8adbd8cef44db25b41559e8fbf2b38e120b624a",
+  "planned_lgcs_jobs": 80,
+  "audited_attempts": 80,
+  "source_snapshots_checked": 32,
+  "counts": {
+    "latest_status": {
+      "success_validated_numerical": 49,
+      "frontend_failed": 19,
+      "unsupported": 6,
+      "invalid_endpoint": 5,
+      "infrastructure_error": 1
+    },
+    "all_attempt_status": {
+      "success_validated_numerical": 49,
+      "frontend_failed": 19,
+      "unsupported": 6,
+      "invalid_endpoint": 5,
+      "infrastructure_error": 1
+    },
+    "latest_alternate_status": {
+      "found": 15,
+      "no_eligible_interior_region": 36,
+      "native_no_alternate_path": 3,
+      "alternate_path_validation_failed": 1
+    },
+    "accepted_second_routes": 15,
+    "recovery_rounds": 13,
+    "recovered_successes": 6,
+    "license_limit_failures": 6,
+    "unsupported_attempts": 6,
+    "native_process_aborts": 1,
+    "selected_segments_checked": 159,
+    "interpolated_samples_checked": 76116,
+    "accepted_pool_original_edges_checked": 232
+  },
+  "records": [
+    {
+      "job_id": "test-sparse_clutter-000-p00-LGCS-minimum_distance-9a226e9c",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 74,
+      "family": "sparse_clutter",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 7,
+          "original_paths": 2,
+          "original_edges_checked": 7,
+          "maximum_best_cover_residual": -0.019978161529874416,
+          "mps": {
+            "solver_variables": 188,
+            "solver_constraints": 1721,
+            "solver_quadratic_constraints": 7,
+            "binary_flow_variables": 20
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 5,
+            "selected_regions": [
+              0,
+              1,
+              6,
+              2
+            ],
+            "recovered_length_rad": 5.545987900450522,
+            "maximum_region_residual": 4.440892098500626e-16,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 1115,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "found",
+        "selected_region": 1,
+        "eligible_regions": [
+          1
+        ],
+        "accepted": true,
+        "blocked_nodes": 2,
+        "original_nodes": 12000,
+        "kept_nodes": 11998
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-sparse_clutter-001-p01-LGCS-minimum_distance-a24ea6d5",
+      "attempt": "0001",
+      "latest": true,
+      "status": "frontend_failed",
+      "error_category": null,
+      "files_checked": 12,
+      "family": "sparse_clutter",
+      "rounds": [],
+      "recoveries": [],
+      "alternate": null,
+      "final_stage": "drm_path"
+    },
+    {
+      "job_id": "test-sparse_clutter-002-p02-LGCS-minimum_distance-2e00b783",
+      "attempt": "0001",
+      "latest": true,
+      "status": "unsupported",
+      "error_category": "dependency_unsupported",
+      "files_checked": 68,
+      "family": "sparse_clutter",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 6,
+          "original_paths": 2,
+          "original_edges_checked": 6,
+          "maximum_best_cover_residual": -0.12318921089172363,
+          "mps": {
+            "solver_variables": 148,
+            "solver_constraints": 2160,
+            "solver_quadratic_constraints": 6,
+            "binary_flow_variables": 16
+          },
+          "solver_error_number": 10010,
+          "solver_status": null,
+          "solver_success": false
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "found",
+        "selected_region": 1,
+        "eligible_regions": [
+          1,
+          2
+        ],
+        "accepted": true,
+        "blocked_nodes": 2,
+        "original_nodes": 12000,
+        "kept_nodes": 11998
+      },
+      "final_stage": "trajectory_optimization"
+    },
+    {
+      "job_id": "test-sparse_clutter-003-p03-LGCS-minimum_distance-c0c7c4fe",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 71,
+      "family": "sparse_clutter",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 6,
+          "original_paths": 2,
+          "original_edges_checked": 6,
+          "maximum_best_cover_residual": -7.108906752151256e-08,
+          "mps": {
+            "solver_variables": 148,
+            "solver_constraints": 1072,
+            "solver_quadratic_constraints": 6,
+            "binary_flow_variables": 16
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 6,
+            "selected_regions": [
+              3,
+              0,
+              1,
+              2,
+              5
+            ],
+            "recovered_length_rad": 5.937928257708168,
+            "maximum_region_residual": 4.0243364196612674e-12,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 1195,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "found",
+        "selected_region": 1,
+        "eligible_regions": [
+          1
+        ],
+        "accepted": true,
+        "blocked_nodes": 2,
+        "original_nodes": 12000,
+        "kept_nodes": 11998
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-sparse_clutter-004-p04-LGCS-minimum_distance-74f0f125",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 248,
+      "family": "sparse_clutter",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 7,
+          "original_paths": 2,
+          "original_edges_checked": 7,
+          "maximum_best_cover_residual": -0.0017901255678980377,
+          "mps": {
+            "solver_variables": 172,
+            "solver_constraints": 1796,
+            "solver_quadratic_constraints": 7,
+            "binary_flow_variables": 18
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 6,
+            "selected_regions": [
+              3,
+              0,
+              1,
+              2,
+              6
+            ],
+            "recovered_length_rad": 7.259656796422582,
+            "maximum_region_residual": 2.438049762076844e-13,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 1460,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "collision_failed",
+            "passed": false,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 52,
+              "independent_collisions": 52,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        },
+        {
+          "round": "001",
+          "pool_regions": 7,
+          "original_paths": 2,
+          "original_edges_checked": 7,
+          "maximum_best_cover_residual": -0.0017901255678980377,
+          "mps": {
+            "solver_variables": 172,
+            "solver_constraints": 1800,
+            "solver_quadratic_constraints": 7,
+            "binary_flow_variables": 18
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 6,
+            "selected_regions": [
+              3,
+              0,
+              1,
+              2,
+              6
+            ],
+            "recovered_length_rad": 7.326245886860649,
+            "maximum_region_residual": 1.2680523298058688e-11,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 1472,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "collision_failed",
+            "passed": false,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 26,
+              "independent_collisions": 26,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        },
+        {
+          "round": "002",
+          "pool_regions": 7,
+          "original_paths": 2,
+          "original_edges_checked": 7,
+          "maximum_best_cover_residual": -0.0017901255678980377,
+          "mps": {
+            "solver_variables": 172,
+            "solver_constraints": 1804,
+            "solver_quadratic_constraints": 7,
+            "binary_flow_variables": 18
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 6,
+            "selected_regions": [
+              3,
+              0,
+              1,
+              2,
+              6
+            ],
+            "recovered_length_rad": 7.378350505429649,
+            "maximum_region_residual": 2.732778447978035e-10,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 1483,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [
+        {
+          "round": "000",
+          "witnesses": 52,
+          "mapping_verified": true,
+          "handoffs": [
+            {
+              "index": "0000",
+              "status": "passed",
+              "maximum_offset_change": 0.0
+            },
+            {
+              "index": "0001",
+              "status": "passed",
+              "maximum_offset_change": 0.0
+            },
+            {
+              "index": "0002",
+              "status": "passed",
+              "maximum_offset_change": 0.0
+            },
+            {
+              "index": "0003",
+              "status": "passed",
+              "maximum_offset_change": 0.0
+            },
+            {
+              "index": "0004",
+              "status": "passed",
+              "maximum_offset_change": 0.0
+            },
+            {
+              "index": "0005",
+              "status": "passed",
+              "maximum_offset_change": 0.0
+            },
+            {
+              "index": "0006",
+              "status": "passed",
+              "maximum_offset_change": 0.0
+            }
+          ],
+          "restored_cover_claim": true,
+          "note": "Raw edited pools may lose unprotected spans; only subsequent accepted optimizer pools are required to cover all original edges."
+        },
+        {
+          "round": "001",
+          "witnesses": 26,
+          "mapping_verified": true,
+          "handoffs": [
+            {
+              "index": "0000",
+              "status": "passed",
+              "maximum_offset_change": 0.0
+            },
+            {
+              "index": "0001",
+              "status": "passed",
+              "maximum_offset_change": 0.0
+            },
+            {
+              "index": "0002",
+              "status": "passed",
+              "maximum_offset_change": 0.0
+            },
+            {
+              "index": "0003",
+              "status": "passed",
+              "maximum_offset_change": 0.0
+            },
+            {
+              "index": "0004",
+              "status": "passed",
+              "maximum_offset_change": 0.0
+            },
+            {
+              "index": "0005",
+              "status": "passed",
+              "maximum_offset_change": 0.0
+            },
+            {
+              "index": "0006",
+              "status": "passed",
+              "maximum_offset_change": 0.0
+            }
+          ],
+          "restored_cover_claim": true,
+          "note": "Raw edited pools may lose unprotected spans; only subsequent accepted optimizer pools are required to cover all original edges."
+        }
+      ],
+      "alternate": {
+        "status": "found",
+        "selected_region": 1,
+        "eligible_regions": [
+          1
+        ],
+        "accepted": true,
+        "blocked_nodes": 3,
+        "original_nodes": 12000,
+        "kept_nodes": 11997
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-sparse_clutter-005-p00-LGCS-minimum_distance-e3c6d5ce",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 44,
+      "family": "sparse_clutter",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 1,
+          "original_paths": 1,
+          "original_edges_checked": 1,
+          "maximum_best_cover_residual": -0.016831348793188372,
+          "mps": {
+            "solver_variables": 10,
+            "solver_constraints": 109,
+            "solver_quadratic_constraints": 1,
+            "binary_flow_variables": 2
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 2,
+            "selected_regions": [
+              0
+            ],
+            "recovered_length_rad": 3.9314743521552704,
+            "maximum_region_residual": -0.016831348793188372,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 788,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "no_eligible_interior_region",
+        "selected_region": null,
+        "eligible_regions": [],
+        "accepted": false
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-sparse_clutter-006-p01-LGCS-minimum_distance-6c1e686c",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 50,
+      "family": "sparse_clutter",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 2,
+          "original_paths": 1,
+          "original_edges_checked": 2,
+          "maximum_best_cover_residual": -0.021558004142809617,
+          "mps": {
+            "solver_variables": 34,
+            "solver_constraints": 256,
+            "solver_quadratic_constraints": 2,
+            "binary_flow_variables": 4
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 3,
+            "selected_regions": [
+              0,
+              1
+            ],
+            "recovered_length_rad": 7.44034760486592,
+            "maximum_region_residual": 6.085354442575408e-12,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 1491,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "no_eligible_interior_region",
+        "selected_region": null,
+        "eligible_regions": [],
+        "accepted": false
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-sparse_clutter-007-p02-LGCS-minimum_distance-d11cdfd6",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 77,
+      "family": "sparse_clutter",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 6,
+          "original_paths": 2,
+          "original_edges_checked": 7,
+          "maximum_best_cover_residual": -0.017773866653442383,
+          "mps": {
+            "solver_variables": 179,
+            "solver_constraints": 1766,
+            "solver_quadratic_constraints": 6,
+            "binary_flow_variables": 19
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 5,
+            "selected_regions": [
+              0,
+              4,
+              5,
+              3
+            ],
+            "recovered_length_rad": 9.178399219035589,
+            "maximum_region_residual": 4.0670578016488435e-11,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 1842,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "found",
+        "selected_region": 1,
+        "eligible_regions": [
+          1,
+          2
+        ],
+        "accepted": true,
+        "blocked_nodes": 2,
+        "original_nodes": 12000,
+        "kept_nodes": 11998
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-sparse_clutter-008-p03-LGCS-minimum_distance-166d3381",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 65,
+      "family": "sparse_clutter",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 4,
+          "original_paths": 1,
+          "original_edges_checked": 4,
+          "maximum_best_cover_residual": -0.031182419349496213,
+          "mps": {
+            "solver_variables": 82,
+            "solver_constraints": 958,
+            "solver_quadratic_constraints": 4,
+            "binary_flow_variables": 8
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 5,
+            "selected_regions": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "recovered_length_rad": 6.337937068851871,
+            "maximum_region_residual": 2.496669537777052e-12,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 1274,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "native_no_alternate_path",
+        "selected_region": 1,
+        "eligible_regions": [
+          1,
+          2
+        ],
+        "accepted": false,
+        "blocked_nodes": 2,
+        "original_nodes": 12000,
+        "kept_nodes": 11998
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-sparse_clutter-009-p04-LGCS-minimum_distance-2c42ed78",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 44,
+      "family": "sparse_clutter",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 1,
+          "original_paths": 1,
+          "original_edges_checked": 1,
+          "maximum_best_cover_residual": -0.16391622362615088,
+          "mps": {
+            "solver_variables": 10,
+            "solver_constraints": 139,
+            "solver_quadratic_constraints": 1,
+            "binary_flow_variables": 2
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 2,
+            "selected_regions": [
+              0
+            ],
+            "recovered_length_rad": 6.136351215895011,
+            "maximum_region_residual": -0.16391623167318248,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 1229,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "no_eligible_interior_region",
+        "selected_region": null,
+        "eligible_regions": [],
+        "accepted": false
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-sparse_clutter-010-p00-LGCS-minimum_distance-88cad51a",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 161,
+      "family": "sparse_clutter",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 2,
+          "original_paths": 1,
+          "original_edges_checked": 2,
+          "maximum_best_cover_residual": -0.13428592391788752,
+          "mps": {
+            "solver_variables": 34,
+            "solver_constraints": 346,
+            "solver_quadratic_constraints": 2,
+            "binary_flow_variables": 4
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 3,
+            "selected_regions": [
+              0,
+              1
+            ],
+            "recovered_length_rad": 5.688393573721653,
+            "maximum_region_residual": -3.807141268907799e-10,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 1140,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "collision_failed",
+            "passed": false,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 59,
+              "independent_collisions": 59,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        },
+        {
+          "round": "001",
+          "pool_regions": 2,
+          "original_paths": 1,
+          "original_edges_checked": 2,
+          "maximum_best_cover_residual": -0.13428592391788752,
+          "mps": {
+            "solver_variables": 34,
+            "solver_constraints": 349,
+            "solver_quadratic_constraints": 2,
+            "binary_flow_variables": 4
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 3,
+            "selected_regions": [
+              0,
+              1
+            ],
+            "recovered_length_rad": 5.804137681663315,
+            "maximum_region_residual": -2.871924920100355e-12,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 1163,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "collision_failed",
+            "passed": false,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 65,
+              "independent_collisions": 65,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        },
+        {
+          "round": "002",
+          "pool_regions": 2,
+          "original_paths": 1,
+          "original_edges_checked": 2,
+          "maximum_best_cover_residual": -0.13428592391788752,
+          "mps": {
+            "solver_variables": 34,
+            "solver_constraints": 352,
+            "solver_quadratic_constraints": 2,
+            "binary_flow_variables": 4
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 3,
+            "selected_regions": [
+              0,
+              1
+            ],
+            "recovered_length_rad": 5.9163709118934475,
+            "maximum_region_residual": 1.1431827706687159e-10,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 1186,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "collision_failed",
+            "passed": false,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 59,
+              "independent_collisions": 59,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        },
+        {
+          "round": "003",
+          "pool_regions": 2,
+          "original_paths": 1,
+          "original_edges_checked": 2,
+          "maximum_best_cover_residual": -0.12072284239191289,
+          "mps": {
+            "solver_variables": 34,
+            "solver_constraints": 355,
+            "solver_quadratic_constraints": 2,
+            "binary_flow_variables": 4
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 3,
+            "selected_regions": [
+              0,
+              1
+            ],
+            "recovered_length_rad": 5.976320727052008,
+            "maximum_region_residual": 4.440892098500626e-16,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 1199,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [
+        {
+          "round": "000",
+          "witnesses": 59,
+          "mapping_verified": true,
+          "handoffs": [
+            {
+              "index": "0000",
+              "status": "passed",
+              "maximum_offset_change": 0.0
+            },
+            {
+              "index": "0001",
+              "status": "passed",
+              "maximum_offset_change": 0.0
+            }
+          ],
+          "restored_cover_claim": true,
+          "note": "Raw edited pools may lose unprotected spans; only subsequent accepted optimizer pools are required to cover all original edges."
+        },
+        {
+          "round": "001",
+          "witnesses": 65,
+          "mapping_verified": true,
+          "handoffs": [
+            {
+              "index": "0000",
+              "status": "passed",
+              "maximum_offset_change": 0.0
+            },
+            {
+              "index": "0001",
+              "status": "passed",
+              "maximum_offset_change": 0.0
+            }
+          ],
+          "restored_cover_claim": true,
+          "note": "Raw edited pools may lose unprotected spans; only subsequent accepted optimizer pools are required to cover all original edges."
+        },
+        {
+          "round": "002",
+          "witnesses": 59,
+          "mapping_verified": true,
+          "handoffs": [
+            {
+              "index": "0000",
+              "status": "passed",
+              "maximum_offset_change": 0.0
+            },
+            {
+              "index": "0001",
+              "status": "passed",
+              "maximum_offset_change": 0.0
+            }
+          ],
+          "restored_cover_claim": true,
+          "note": "Raw edited pools may lose unprotected spans; only subsequent accepted optimizer pools are required to cover all original edges."
+        }
+      ],
+      "alternate": {
+        "status": "no_eligible_interior_region",
+        "selected_region": null,
+        "eligible_regions": [],
+        "accepted": false
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-sparse_clutter-011-p01-LGCS-minimum_distance-d2896292",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 50,
+      "family": "sparse_clutter",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 2,
+          "original_paths": 1,
+          "original_edges_checked": 2,
+          "maximum_best_cover_residual": -0.01395638210513539,
+          "mps": {
+            "solver_variables": 34,
+            "solver_constraints": 316,
+            "solver_quadratic_constraints": 2,
+            "binary_flow_variables": 4
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 3,
+            "selected_regions": [
+              0,
+              1
+            ],
+            "recovered_length_rad": 6.972733057001667,
+            "maximum_region_residual": 2.298161660974074e-12,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 1398,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "no_eligible_interior_region",
+        "selected_region": null,
+        "eligible_regions": [],
+        "accepted": false
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-sparse_clutter-012-p02-LGCS-minimum_distance-46c96c21",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 50,
+      "family": "sparse_clutter",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 2,
+          "original_paths": 1,
+          "original_edges_checked": 2,
+          "maximum_best_cover_residual": -0.06025351917388999,
+          "mps": {
+            "solver_variables": 34,
+            "solver_constraints": 334,
+            "solver_quadratic_constraints": 2,
+            "binary_flow_variables": 4
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 3,
+            "selected_regions": [
+              0,
+              1
+            ],
+            "recovered_length_rad": 7.869714502872931,
+            "maximum_region_residual": -4.084732552200876e-12,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 1577,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "no_eligible_interior_region",
+        "selected_region": null,
+        "eligible_regions": [],
+        "accepted": false
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-sparse_clutter-013-p03-LGCS-minimum_distance-30c6f2b1",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 44,
+      "family": "sparse_clutter",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 1,
+          "original_paths": 1,
+          "original_edges_checked": 1,
+          "maximum_best_cover_residual": -0.16772694390781773,
+          "mps": {
+            "solver_variables": 10,
+            "solver_constraints": 139,
+            "solver_quadratic_constraints": 1,
+            "binary_flow_variables": 2
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 2,
+            "selected_regions": [
+              0
+            ],
+            "recovered_length_rad": 4.130273583719746,
+            "maximum_region_residual": -0.16772694390781773,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 828,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "no_eligible_interior_region",
+        "selected_region": null,
+        "eligible_regions": [],
+        "accepted": false
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-sparse_clutter-014-p04-LGCS-minimum_distance-c712d9ec",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 50,
+      "family": "sparse_clutter",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 2,
+          "original_paths": 1,
+          "original_edges_checked": 2,
+          "maximum_best_cover_residual": -0.04150748252868652,
+          "mps": {
+            "solver_variables": 34,
+            "solver_constraints": 463,
+            "solver_quadratic_constraints": 2,
+            "binary_flow_variables": 4
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 3,
+            "selected_regions": [
+              0,
+              1
+            ],
+            "recovered_length_rad": 4.184444488942115,
+            "maximum_region_residual": 1.0399059391374976e-10,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 840,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "no_eligible_interior_region",
+        "selected_region": null,
+        "eligible_regions": [],
+        "accepted": false
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-sparse_clutter-015-p00-LGCS-minimum_distance-a67b3bbf",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 44,
+      "family": "sparse_clutter",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 1,
+          "original_paths": 1,
+          "original_edges_checked": 1,
+          "maximum_best_cover_residual": -0.1864008025097097,
+          "mps": {
+            "solver_variables": 10,
+            "solver_constraints": 119,
+            "solver_quadratic_constraints": 1,
+            "binary_flow_variables": 2
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 2,
+            "selected_regions": [
+              0
+            ],
+            "recovered_length_rad": 3.233182380441575,
+            "maximum_region_residual": -0.1864008025097097,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 648,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "no_eligible_interior_region",
+        "selected_region": null,
+        "eligible_regions": [],
+        "accepted": false
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-sparse_clutter-016-p01-LGCS-minimum_distance-d21f3996",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 44,
+      "family": "sparse_clutter",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 1,
+          "original_paths": 1,
+          "original_edges_checked": 1,
+          "maximum_best_cover_residual": -0.09524153199368612,
+          "mps": {
+            "solver_variables": 10,
+            "solver_constraints": 139,
+            "solver_quadratic_constraints": 1,
+            "binary_flow_variables": 2
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 2,
+            "selected_regions": [
+              0
+            ],
+            "recovered_length_rad": 4.494464486880522,
+            "maximum_region_residual": -0.09524154185091005,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 900,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "no_eligible_interior_region",
+        "selected_region": null,
+        "eligible_regions": [],
+        "accepted": false
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-sparse_clutter-017-p02-LGCS-minimum_distance-8c207f97",
+      "attempt": "0001",
+      "latest": true,
+      "status": "invalid_endpoint",
+      "error_category": null,
+      "files_checked": 8,
+      "family": "sparse_clutter",
+      "rounds": [],
+      "recoveries": [],
+      "alternate": null,
+      "final_stage": "initializing"
+    },
+    {
+      "job_id": "test-sparse_clutter-018-p03-LGCS-minimum_distance-644efb8b",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 50,
+      "family": "sparse_clutter",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 2,
+          "original_paths": 1,
+          "original_edges_checked": 2,
+          "maximum_best_cover_residual": 0.0,
+          "mps": {
+            "solver_variables": 34,
+            "solver_constraints": 280,
+            "solver_quadratic_constraints": 2,
+            "binary_flow_variables": 4
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 3,
+            "selected_regions": [
+              0,
+              1
+            ],
+            "recovered_length_rad": 3.6273801220784447,
+            "maximum_region_residual": 4.440892098500626e-16,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 728,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "no_eligible_interior_region",
+        "selected_region": null,
+        "eligible_regions": [],
+        "accepted": false
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-sparse_clutter-019-p04-LGCS-minimum_distance-b82ef65d",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 44,
+      "family": "sparse_clutter",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 1,
+          "original_paths": 1,
+          "original_edges_checked": 1,
+          "maximum_best_cover_residual": -0.1422557830810547,
+          "mps": {
+            "solver_variables": 10,
+            "solver_constraints": 139,
+            "solver_quadratic_constraints": 1,
+            "binary_flow_variables": 2
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 2,
+            "selected_regions": [
+              0
+            ],
+            "recovered_length_rad": 5.084986520096794,
+            "maximum_region_residual": -0.14225582432493056,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 1018,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "no_eligible_interior_region",
+        "selected_region": null,
+        "eligible_regions": [],
+        "accepted": false
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-dense_clutter-000-p00-LGCS-minimum_distance-f94144cc",
+      "attempt": "0001",
+      "latest": true,
+      "status": "frontend_failed",
+      "error_category": null,
+      "files_checked": 12,
+      "family": "dense_clutter",
+      "rounds": [],
+      "recoveries": [],
+      "alternate": null,
+      "final_stage": "drm_path"
+    },
+    {
+      "job_id": "test-dense_clutter-001-p01-LGCS-minimum_distance-1fce179c",
+      "attempt": "0001",
+      "latest": true,
+      "status": "frontend_failed",
+      "error_category": null,
+      "files_checked": 12,
+      "family": "dense_clutter",
+      "rounds": [],
+      "recoveries": [],
+      "alternate": null,
+      "final_stage": "drm_path"
+    },
+    {
+      "job_id": "test-dense_clutter-002-p02-LGCS-minimum_distance-81ed534a",
+      "attempt": "0001",
+      "latest": true,
+      "status": "invalid_endpoint",
+      "error_category": null,
+      "files_checked": 8,
+      "family": "dense_clutter",
+      "rounds": [],
+      "recoveries": [],
+      "alternate": null,
+      "final_stage": "initializing"
+    },
+    {
+      "job_id": "test-dense_clutter-003-p03-LGCS-minimum_distance-980f8605",
+      "attempt": "0001",
+      "latest": true,
+      "status": "frontend_failed",
+      "error_category": null,
+      "files_checked": 12,
+      "family": "dense_clutter",
+      "rounds": [],
+      "recoveries": [],
+      "alternate": null,
+      "final_stage": "drm_path"
+    },
+    {
+      "job_id": "test-dense_clutter-004-p04-LGCS-minimum_distance-9d0fe007",
+      "attempt": "0001",
+      "latest": true,
+      "status": "frontend_failed",
+      "error_category": null,
+      "files_checked": 13,
+      "family": "dense_clutter",
+      "rounds": [],
+      "recoveries": [],
+      "alternate": null,
+      "final_stage": "drm_path"
+    },
+    {
+      "job_id": "test-dense_clutter-005-p00-LGCS-minimum_distance-56af7259",
+      "attempt": "0001",
+      "latest": true,
+      "status": "frontend_failed",
+      "error_category": null,
+      "files_checked": 12,
+      "family": "dense_clutter",
+      "rounds": [],
+      "recoveries": [],
+      "alternate": null,
+      "final_stage": "drm_path"
+    },
+    {
+      "job_id": "test-dense_clutter-006-p01-LGCS-minimum_distance-41da7695",
+      "attempt": "0001",
+      "latest": true,
+      "status": "frontend_failed",
+      "error_category": null,
+      "files_checked": 12,
+      "family": "dense_clutter",
+      "rounds": [],
+      "recoveries": [],
+      "alternate": null,
+      "final_stage": "drm_path"
+    },
+    {
+      "job_id": "test-dense_clutter-007-p02-LGCS-minimum_distance-cdfd257b",
+      "attempt": "0001",
+      "latest": true,
+      "status": "frontend_failed",
+      "error_category": null,
+      "files_checked": 12,
+      "family": "dense_clutter",
+      "rounds": [],
+      "recoveries": [],
+      "alternate": null,
+      "final_stage": "drm_path"
+    },
+    {
+      "job_id": "test-dense_clutter-008-p03-LGCS-minimum_distance-8dfe89e5",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 90,
+      "family": "dense_clutter",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 8,
+          "original_paths": 1,
+          "original_edges_checked": 8,
+          "maximum_best_cover_residual": -0.012069806643538072,
+          "mps": {
+            "solver_variables": 178,
+            "solver_constraints": 1586,
+            "solver_quadratic_constraints": 8,
+            "binary_flow_variables": 16
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 9,
+            "selected_regions": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7
+            ],
+            "recovered_length_rad": 11.8299994793065,
+            "maximum_region_residual": 2.5726087926614127e-12,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 2378,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "native_no_alternate_path",
+        "selected_region": 2,
+        "eligible_regions": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "accepted": false,
+        "blocked_nodes": 2,
+        "original_nodes": 12000,
+        "kept_nodes": 11998
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-dense_clutter-009-p04-LGCS-minimum_distance-6197a84a",
+      "attempt": "0001",
+      "latest": true,
+      "status": "invalid_endpoint",
+      "error_category": null,
+      "files_checked": 8,
+      "family": "dense_clutter",
+      "rounds": [],
+      "recoveries": [],
+      "alternate": null,
+      "final_stage": "initializing"
+    },
+    {
+      "job_id": "test-dense_clutter-010-p00-LGCS-minimum_distance-c417aa88",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 50,
+      "family": "dense_clutter",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 2,
+          "original_paths": 1,
+          "original_edges_checked": 2,
+          "maximum_best_cover_residual": -0.0008839982045723005,
+          "mps": {
+            "solver_variables": 34,
+            "solver_constraints": 214,
+            "solver_quadratic_constraints": 2,
+            "binary_flow_variables": 4
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 3,
+            "selected_regions": [
+              0,
+              1
+            ],
+            "recovered_length_rad": 5.197831056239988,
+            "maximum_region_residual": -2.41140440948584e-12,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 1042,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "no_eligible_interior_region",
+        "selected_region": null,
+        "eligible_regions": [],
+        "accepted": false
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-dense_clutter-011-p01-LGCS-minimum_distance-efe9452f",
+      "attempt": "0001",
+      "latest": true,
+      "status": "unsupported",
+      "error_category": "dependency_unsupported",
+      "files_checked": 86,
+      "family": "dense_clutter",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 10,
+          "original_paths": 2,
+          "original_edges_checked": 10,
+          "maximum_best_cover_residual": -0.008074794051787348,
+          "mps": {
+            "solver_variables": 260,
+            "solver_constraints": 2212,
+            "solver_quadratic_constraints": 10,
+            "binary_flow_variables": 26
+          },
+          "solver_error_number": 10010,
+          "solver_status": null,
+          "solver_success": false
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "found",
+        "selected_region": 1,
+        "eligible_regions": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "accepted": true,
+        "blocked_nodes": 2,
+        "original_nodes": 12000,
+        "kept_nodes": 11998
+      },
+      "final_stage": "trajectory_optimization"
+    },
+    {
+      "job_id": "test-dense_clutter-012-p02-LGCS-minimum_distance-9e14fc81",
+      "attempt": "0001",
+      "latest": true,
+      "status": "frontend_failed",
+      "error_category": null,
+      "files_checked": 12,
+      "family": "dense_clutter",
+      "rounds": [],
+      "recoveries": [],
+      "alternate": null,
+      "final_stage": "drm_path"
+    },
+    {
+      "job_id": "test-dense_clutter-013-p03-LGCS-minimum_distance-4d4b8510",
+      "attempt": "0001",
+      "latest": true,
+      "status": "invalid_endpoint",
+      "error_category": null,
+      "files_checked": 8,
+      "family": "dense_clutter",
+      "rounds": [],
+      "recoveries": [],
+      "alternate": null,
+      "final_stage": "initializing"
+    },
+    {
+      "job_id": "test-dense_clutter-014-p04-LGCS-minimum_distance-11aeb2f4",
+      "attempt": "0001",
+      "latest": true,
+      "status": "frontend_failed",
+      "error_category": null,
+      "files_checked": 12,
+      "family": "dense_clutter",
+      "rounds": [],
+      "recoveries": [],
+      "alternate": null,
+      "final_stage": "drm_path"
+    },
+    {
+      "job_id": "test-dense_clutter-015-p00-LGCS-minimum_distance-fed079b7",
+      "attempt": "0001",
+      "latest": true,
+      "status": "frontend_failed",
+      "error_category": null,
+      "files_checked": 12,
+      "family": "dense_clutter",
+      "rounds": [],
+      "recoveries": [],
+      "alternate": null,
+      "final_stage": "drm_path"
+    },
+    {
+      "job_id": "test-dense_clutter-016-p01-LGCS-minimum_distance-fbd06eb8",
+      "attempt": "0001",
+      "latest": true,
+      "status": "frontend_failed",
+      "error_category": null,
+      "files_checked": 12,
+      "family": "dense_clutter",
+      "rounds": [],
+      "recoveries": [],
+      "alternate": null,
+      "final_stage": "drm_path"
+    },
+    {
+      "job_id": "test-dense_clutter-017-p02-LGCS-minimum_distance-64df3966",
+      "attempt": "0001",
+      "latest": true,
+      "status": "frontend_failed",
+      "error_category": null,
+      "files_checked": 13,
+      "family": "dense_clutter",
+      "rounds": [],
+      "recoveries": [],
+      "alternate": null,
+      "final_stage": "drm_path"
+    },
+    {
+      "job_id": "test-dense_clutter-018-p03-LGCS-minimum_distance-476802fe",
+      "attempt": "0001",
+      "latest": true,
+      "status": "frontend_failed",
+      "error_category": null,
+      "files_checked": 12,
+      "family": "dense_clutter",
+      "rounds": [],
+      "recoveries": [],
+      "alternate": null,
+      "final_stage": "drm_path"
+    },
+    {
+      "job_id": "test-dense_clutter-019-p04-LGCS-minimum_distance-3eb0519c",
+      "attempt": "0001",
+      "latest": true,
+      "status": "frontend_failed",
+      "error_category": null,
+      "files_checked": 12,
+      "family": "dense_clutter",
+      "rounds": [],
+      "recoveries": [],
+      "alternate": null,
+      "final_stage": "drm_path"
+    },
+    {
+      "job_id": "test-bottleneck-000-p00-LGCS-minimum_distance-69f623fb",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 44,
+      "family": "bottleneck",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 1,
+          "original_paths": 1,
+          "original_edges_checked": 1,
+          "maximum_best_cover_residual": -0.03225179605078443,
+          "mps": {
+            "solver_variables": 10,
+            "solver_constraints": 119,
+            "solver_quadratic_constraints": 1,
+            "binary_flow_variables": 2
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 2,
+            "selected_regions": [
+              0
+            ],
+            "recovered_length_rad": 3.144177059898834,
+            "maximum_region_residual": -0.03225179605078443,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 630,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "no_eligible_interior_region",
+        "selected_region": null,
+        "eligible_regions": [],
+        "accepted": false
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-bottleneck-001-p01-LGCS-minimum_distance-a8f789e0",
+      "attempt": "0001",
+      "latest": true,
+      "status": "unsupported",
+      "error_category": "dependency_unsupported",
+      "files_checked": 65,
+      "family": "bottleneck",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 6,
+          "original_paths": 2,
+          "original_edges_checked": 6,
+          "maximum_best_cover_residual": -0.013981452631242064,
+          "mps": {
+            "solver_variables": 212,
+            "solver_constraints": 2170,
+            "solver_quadratic_constraints": 6,
+            "binary_flow_variables": 24
+          },
+          "solver_error_number": 10010,
+          "solver_status": null,
+          "solver_success": false
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "found",
+        "selected_region": 1,
+        "eligible_regions": [
+          1
+        ],
+        "accepted": true,
+        "blocked_nodes": 2,
+        "original_nodes": 12000,
+        "kept_nodes": 11998
+      },
+      "final_stage": "trajectory_optimization"
+    },
+    {
+      "job_id": "test-bottleneck-002-p02-LGCS-minimum_distance-81614364",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 68,
+      "family": "bottleneck",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 5,
+          "original_paths": 2,
+          "original_edges_checked": 5,
+          "maximum_best_cover_residual": -0.005069732666015625,
+          "mps": {
+            "solver_variables": 188,
+            "solver_constraints": 1527,
+            "solver_quadratic_constraints": 5,
+            "binary_flow_variables": 22
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 6,
+            "selected_regions": [
+              0,
+              3,
+              1,
+              4,
+              2
+            ],
+            "recovered_length_rad": 7.594309926720347,
+            "maximum_region_residual": 4.548700305306852e-11,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 1526,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "found",
+        "selected_region": 1,
+        "eligible_regions": [
+          1
+        ],
+        "accepted": true,
+        "blocked_nodes": 2,
+        "original_nodes": 12000,
+        "kept_nodes": 11998
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-bottleneck-003-p03-LGCS-minimum_distance-bd4d92b2",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 44,
+      "family": "bottleneck",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 1,
+          "original_paths": 1,
+          "original_edges_checked": 1,
+          "maximum_best_cover_residual": -0.052704611725772565,
+          "mps": {
+            "solver_variables": 10,
+            "solver_constraints": 99,
+            "solver_quadratic_constraints": 1,
+            "binary_flow_variables": 2
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 2,
+            "selected_regions": [
+              0
+            ],
+            "recovered_length_rad": 3.5833913100966415,
+            "maximum_region_residual": -0.05270465048099014,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 718,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "no_eligible_interior_region",
+        "selected_region": null,
+        "eligible_regions": [],
+        "accepted": false
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-bottleneck-004-p04-LGCS-minimum_distance-0ceb32e5",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 50,
+      "family": "bottleneck",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 2,
+          "original_paths": 1,
+          "original_edges_checked": 2,
+          "maximum_best_cover_residual": -0.053220090074070026,
+          "mps": {
+            "solver_variables": 34,
+            "solver_constraints": 367,
+            "solver_quadratic_constraints": 2,
+            "binary_flow_variables": 4
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 3,
+            "selected_regions": [
+              0,
+              1
+            ],
+            "recovered_length_rad": 5.303325537933552,
+            "maximum_region_residual": 4.860950530982677e-11,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 1064,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "no_eligible_interior_region",
+        "selected_region": null,
+        "eligible_regions": [],
+        "accepted": false
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-bottleneck-005-p00-LGCS-minimum_distance-79e01c28",
+      "attempt": "0001",
+      "latest": true,
+      "status": "frontend_failed",
+      "error_category": null,
+      "files_checked": 12,
+      "family": "bottleneck",
+      "rounds": [],
+      "recoveries": [],
+      "alternate": null,
+      "final_stage": "drm_path"
+    },
+    {
+      "job_id": "test-bottleneck-006-p01-LGCS-minimum_distance-3cddd581",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 44,
+      "family": "bottleneck",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 1,
+          "original_paths": 1,
+          "original_edges_checked": 1,
+          "maximum_best_cover_residual": -0.05066262229220864,
+          "mps": {
+            "solver_variables": 10,
+            "solver_constraints": 79,
+            "solver_quadratic_constraints": 1,
+            "binary_flow_variables": 2
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 2,
+            "selected_regions": [
+              0
+            ],
+            "recovered_length_rad": 6.150774270453031,
+            "maximum_region_residual": -0.05066264355741845,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 1232,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "no_eligible_interior_region",
+        "selected_region": null,
+        "eligible_regions": [],
+        "accepted": false
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-bottleneck-007-p02-LGCS-minimum_distance-979fb09e",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 50,
+      "family": "bottleneck",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 2,
+          "original_paths": 1,
+          "original_edges_checked": 2,
+          "maximum_best_cover_residual": -0.045582954819844534,
+          "mps": {
+            "solver_variables": 34,
+            "solver_constraints": 394,
+            "solver_quadratic_constraints": 2,
+            "binary_flow_variables": 4
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 3,
+            "selected_regions": [
+              0,
+              1
+            ],
+            "recovered_length_rad": 7.943964625250505,
+            "maximum_region_residual": -8.825817854329898e-11,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 1592,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "no_eligible_interior_region",
+        "selected_region": null,
+        "eligible_regions": [],
+        "accepted": false
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-bottleneck-008-p03-LGCS-minimum_distance-9f2eba61",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 161,
+      "family": "bottleneck",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 7,
+          "original_paths": 2,
+          "original_edges_checked": 7,
+          "maximum_best_cover_residual": -0.0029126229771805345,
+          "mps": {
+            "solver_variables": 188,
+            "solver_constraints": 1910,
+            "solver_quadratic_constraints": 7,
+            "binary_flow_variables": 20
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 6,
+            "selected_regions": [
+              3,
+              0,
+              1,
+              2,
+              6
+            ],
+            "recovered_length_rad": 7.044694280443124,
+            "maximum_region_residual": 1.238649627310906e-09,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 1417,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "collision_failed",
+            "passed": false,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 73,
+              "independent_collisions": 73,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        },
+        {
+          "round": "001",
+          "pool_regions": 7,
+          "original_paths": 2,
+          "original_edges_checked": 7,
+          "maximum_best_cover_residual": -0.0029126229771805345,
+          "mps": {
+            "solver_variables": 188,
+            "solver_constraints": 1915,
+            "solver_quadratic_constraints": 7,
+            "binary_flow_variables": 20
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 6,
+            "selected_regions": [
+              3,
+              0,
+              1,
+              2,
+              6
+            ],
+            "recovered_length_rad": 7.086652908733803,
+            "maximum_region_residual": 3.951963756243515e-12,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 1424,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [
+        {
+          "round": "000",
+          "witnesses": 73,
+          "mapping_verified": true,
+          "handoffs": [
+            {
+              "index": "0000",
+              "status": "passed",
+              "maximum_offset_change": 0.0
+            },
+            {
+              "index": "0001",
+              "status": "passed",
+              "maximum_offset_change": 0.0
+            },
+            {
+              "index": "0002",
+              "status": "passed",
+              "maximum_offset_change": 0.0
+            },
+            {
+              "index": "0003",
+              "status": "passed",
+              "maximum_offset_change": 0.0
+            },
+            {
+              "index": "0004",
+              "status": "passed",
+              "maximum_offset_change": 0.0
+            },
+            {
+              "index": "0005",
+              "status": "passed",
+              "maximum_offset_change": 0.0
+            },
+            {
+              "index": "0006",
+              "status": "passed",
+              "maximum_offset_change": 0.0
+            }
+          ],
+          "restored_cover_claim": true,
+          "note": "Raw edited pools may lose unprotected spans; only subsequent accepted optimizer pools are required to cover all original edges."
+        }
+      ],
+      "alternate": {
+        "status": "found",
+        "selected_region": 1,
+        "eligible_regions": [
+          1
+        ],
+        "accepted": true,
+        "blocked_nodes": 2,
+        "original_nodes": 12000,
+        "kept_nodes": 11998
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-bottleneck-009-p04-LGCS-minimum_distance-7a78c405",
+      "attempt": "0001",
+      "latest": true,
+      "status": "frontend_failed",
+      "error_category": null,
+      "files_checked": 13,
+      "family": "bottleneck",
+      "rounds": [],
+      "recoveries": [],
+      "alternate": null,
+      "final_stage": "drm_path"
+    },
+    {
+      "job_id": "test-bottleneck-010-p00-LGCS-minimum_distance-2c07c262",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 44,
+      "family": "bottleneck",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 1,
+          "original_paths": 1,
+          "original_edges_checked": 1,
+          "maximum_best_cover_residual": -0.06314604926075607,
+          "mps": {
+            "solver_variables": 10,
+            "solver_constraints": 139,
+            "solver_quadratic_constraints": 1,
+            "binary_flow_variables": 2
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 2,
+            "selected_regions": [
+              0
+            ],
+            "recovered_length_rad": 2.8751410295519726,
+            "maximum_region_residual": -0.06314604926075607,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 577,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "no_eligible_interior_region",
+        "selected_region": null,
+        "eligible_regions": [],
+        "accepted": false
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-bottleneck-011-p01-LGCS-minimum_distance-4c4147e1",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 44,
+      "family": "bottleneck",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 1,
+          "original_paths": 1,
+          "original_edges_checked": 1,
+          "maximum_best_cover_residual": -0.07101171730280198,
+          "mps": {
+            "solver_variables": 10,
+            "solver_constraints": 199,
+            "solver_quadratic_constraints": 1,
+            "binary_flow_variables": 2
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 2,
+            "selected_regions": [
+              0
+            ],
+            "recovered_length_rad": 5.328901830033802,
+            "maximum_region_residual": -0.07101171730280198,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 1067,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "no_eligible_interior_region",
+        "selected_region": null,
+        "eligible_regions": [],
+        "accepted": false
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-bottleneck-012-p02-LGCS-minimum_distance-ff52f1cd",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 50,
+      "family": "bottleneck",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 2,
+          "original_paths": 1,
+          "original_edges_checked": 2,
+          "maximum_best_cover_residual": -0.06719459629532576,
+          "mps": {
+            "solver_variables": 34,
+            "solver_constraints": 286,
+            "solver_quadratic_constraints": 2,
+            "binary_flow_variables": 4
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 3,
+            "selected_regions": [
+              0,
+              1
+            ],
+            "recovered_length_rad": 7.651784985245941,
+            "maximum_region_residual": 1.5367651595710186e-11,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 1534,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "no_eligible_interior_region",
+        "selected_region": null,
+        "eligible_regions": [],
+        "accepted": false
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-bottleneck-013-p03-LGCS-minimum_distance-35a9c01e",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 156,
+      "family": "bottleneck",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 3,
+          "original_paths": 1,
+          "original_edges_checked": 3,
+          "maximum_best_cover_residual": -0.008652541653234369,
+          "mps": {
+            "solver_variables": 58,
+            "solver_constraints": 452,
+            "solver_quadratic_constraints": 3,
+            "binary_flow_variables": 6
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 4,
+            "selected_regions": [
+              0,
+              1,
+              2
+            ],
+            "recovered_length_rad": 5.667262498108066,
+            "maximum_region_residual": 2.8674840280018543e-11,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 1138,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "collision_failed",
+            "passed": false,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 2,
+              "independent_collisions": 2,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        },
+        {
+          "round": "001",
+          "pool_regions": 3,
+          "original_paths": 1,
+          "original_edges_checked": 3,
+          "maximum_best_cover_residual": -0.008652541653234369,
+          "mps": {
+            "solver_variables": 58,
+            "solver_constraints": 456,
+            "solver_quadratic_constraints": 3,
+            "binary_flow_variables": 6
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 4,
+            "selected_regions": [
+              0,
+              1,
+              2
+            ],
+            "recovered_length_rad": 5.703239456996243,
+            "maximum_region_residual": -1.3888890038060708e-12,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 1146,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "collision_failed",
+            "passed": false,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 3,
+              "independent_collisions": 3,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        },
+        {
+          "round": "002",
+          "pool_regions": 3,
+          "original_paths": 1,
+          "original_edges_checked": 3,
+          "maximum_best_cover_residual": -0.008652541653234369,
+          "mps": {
+            "solver_variables": 58,
+            "solver_constraints": 460,
+            "solver_quadratic_constraints": 3,
+            "binary_flow_variables": 6
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 4,
+            "selected_regions": [
+              0,
+              1,
+              2
+            ],
+            "recovered_length_rad": 5.748984020765629,
+            "maximum_region_residual": 2.2631896356983816e-11,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 1155,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [
+        {
+          "round": "000",
+          "witnesses": 2,
+          "mapping_verified": true,
+          "handoffs": [
+            {
+              "index": "0000",
+              "status": "passed",
+              "maximum_offset_change": 0.0
+            },
+            {
+              "index": "0001",
+              "status": "passed",
+              "maximum_offset_change": 0.0
+            },
+            {
+              "index": "0002",
+              "status": "passed",
+              "maximum_offset_change": 0.0
+            }
+          ],
+          "restored_cover_claim": true,
+          "note": "Raw edited pools may lose unprotected spans; only subsequent accepted optimizer pools are required to cover all original edges."
+        },
+        {
+          "round": "001",
+          "witnesses": 3,
+          "mapping_verified": true,
+          "handoffs": [
+            {
+              "index": "0000",
+              "status": "passed",
+              "maximum_offset_change": 0.0
+            },
+            {
+              "index": "0001",
+              "status": "passed",
+              "maximum_offset_change": 0.0
+            },
+            {
+              "index": "0002",
+              "status": "passed",
+              "maximum_offset_change": 0.0
+            }
+          ],
+          "restored_cover_claim": true,
+          "note": "Raw edited pools may lose unprotected spans; only subsequent accepted optimizer pools are required to cover all original edges."
+        }
+      ],
+      "alternate": {
+        "status": "alternate_path_validation_failed",
+        "selected_region": 1,
+        "eligible_regions": [
+          1
+        ],
+        "accepted": false,
+        "blocked_nodes": 2,
+        "original_nodes": 12000,
+        "kept_nodes": 11998
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-bottleneck-014-p04-LGCS-minimum_distance-c17816ac",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 50,
+      "family": "bottleneck",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 2,
+          "original_paths": 1,
+          "original_edges_checked": 2,
+          "maximum_best_cover_residual": -0.008380394183001849,
+          "mps": {
+            "solver_variables": 34,
+            "solver_constraints": 286,
+            "solver_quadratic_constraints": 2,
+            "binary_flow_variables": 4
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 3,
+            "selected_regions": [
+              0,
+              1
+            ],
+            "recovered_length_rad": 6.258046685313247,
+            "maximum_region_residual": -2.2397361743031752e-13,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 1254,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "no_eligible_interior_region",
+        "selected_region": null,
+        "eligible_regions": [],
+        "accepted": false
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-bottleneck-015-p00-LGCS-minimum_distance-9a624474",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 65,
+      "family": "bottleneck",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 4,
+          "original_paths": 1,
+          "original_edges_checked": 4,
+          "maximum_best_cover_residual": 0.0,
+          "mps": {
+            "solver_variables": 82,
+            "solver_constraints": 677,
+            "solver_quadratic_constraints": 4,
+            "binary_flow_variables": 8
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 5,
+            "selected_regions": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "recovered_length_rad": 7.496965456292809,
+            "maximum_region_residual": 1.9726220656934856e-11,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 1505,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "native_no_alternate_path",
+        "selected_region": 2,
+        "eligible_regions": [
+          1,
+          2
+        ],
+        "accepted": false,
+        "blocked_nodes": 2,
+        "original_nodes": 12000,
+        "kept_nodes": 11998
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-bottleneck-016-p01-LGCS-minimum_distance-ebfd4450",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 44,
+      "family": "bottleneck",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 1,
+          "original_paths": 1,
+          "original_edges_checked": 1,
+          "maximum_best_cover_residual": -0.21284103393554688,
+          "mps": {
+            "solver_variables": 10,
+            "solver_constraints": 119,
+            "solver_quadratic_constraints": 1,
+            "binary_flow_variables": 2
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 2,
+            "selected_regions": [
+              0
+            ],
+            "recovered_length_rad": 4.54735489707003,
+            "maximum_region_residual": -0.2128410505944216,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 911,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "no_eligible_interior_region",
+        "selected_region": null,
+        "eligible_regions": [],
+        "accepted": false
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-bottleneck-017-p02-LGCS-minimum_distance-72bf0a8f",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 44,
+      "family": "bottleneck",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 1,
+          "original_paths": 1,
+          "original_edges_checked": 1,
+          "maximum_best_cover_residual": -0.01445924560968459,
+          "mps": {
+            "solver_variables": 10,
+            "solver_constraints": 79,
+            "solver_quadratic_constraints": 1,
+            "binary_flow_variables": 2
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 2,
+            "selected_regions": [
+              0
+            ],
+            "recovered_length_rad": 6.698852581708912,
+            "maximum_region_residual": -0.014459306127196037,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 1341,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "no_eligible_interior_region",
+        "selected_region": null,
+        "eligible_regions": [],
+        "accepted": false
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-bottleneck-018-p03-LGCS-minimum_distance-3a3d2810",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 50,
+      "family": "bottleneck",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 2,
+          "original_paths": 1,
+          "original_edges_checked": 2,
+          "maximum_best_cover_residual": -0.1530895233154297,
+          "mps": {
+            "solver_variables": 34,
+            "solver_constraints": 436,
+            "solver_quadratic_constraints": 2,
+            "binary_flow_variables": 4
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 3,
+            "selected_regions": [
+              0,
+              1
+            ],
+            "recovered_length_rad": 4.256347230018639,
+            "maximum_region_residual": 5.288931514968453e-10,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 854,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "no_eligible_interior_region",
+        "selected_region": null,
+        "eligible_regions": [],
+        "accepted": false
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-bottleneck-019-p04-LGCS-minimum_distance-6177552c",
+      "attempt": "0001",
+      "latest": true,
+      "status": "infrastructure_error",
+      "error_category": "native_process_signal",
+      "files_checked": 12,
+      "family": "bottleneck",
+      "rounds": [],
+      "recoveries": [],
+      "alternate": null,
+      "final_stage": null
+    },
+    {
+      "job_id": "test-route_choice-000-p00-LGCS-minimum_distance-9c5e0dc8",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 44,
+      "family": "route_choice",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 1,
+          "original_paths": 1,
+          "original_edges_checked": 1,
+          "maximum_best_cover_residual": 0.0,
+          "mps": {
+            "solver_variables": 10,
+            "solver_constraints": 75,
+            "solver_quadratic_constraints": 1,
+            "binary_flow_variables": 2
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 2,
+            "selected_regions": [
+              0
+            ],
+            "recovered_length_rad": 2.348268603331477,
+            "maximum_region_residual": 0.0,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 471,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "no_eligible_interior_region",
+        "selected_region": null,
+        "eligible_regions": [],
+        "accepted": false
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-route_choice-001-p01-LGCS-minimum_distance-bf2fe110",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 50,
+      "family": "route_choice",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 2,
+          "original_paths": 1,
+          "original_edges_checked": 2,
+          "maximum_best_cover_residual": -0.026250161498479585,
+          "mps": {
+            "solver_variables": 34,
+            "solver_constraints": 292,
+            "solver_quadratic_constraints": 2,
+            "binary_flow_variables": 4
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 3,
+            "selected_regions": [
+              0,
+              1
+            ],
+            "recovered_length_rad": 7.0127558287543845,
+            "maximum_region_residual": 1.886846234810946e-11,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 1405,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "no_eligible_interior_region",
+        "selected_region": null,
+        "eligible_regions": [],
+        "accepted": false
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-route_choice-002-p02-LGCS-minimum_distance-7c99d53a",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 225,
+      "family": "route_choice",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 6,
+          "original_paths": 2,
+          "original_edges_checked": 6,
+          "maximum_best_cover_residual": -0.004664897918701172,
+          "mps": {
+            "solver_variables": 148,
+            "solver_constraints": 1307,
+            "solver_quadratic_constraints": 6,
+            "binary_flow_variables": 16
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 5,
+            "selected_regions": [
+              3,
+              0,
+              1,
+              2
+            ],
+            "recovered_length_rad": 9.228486329498022,
+            "maximum_region_residual": 6.893534632013143e-10,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 1852,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "collision_failed",
+            "passed": false,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 104,
+              "independent_collisions": 104,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        },
+        {
+          "round": "001",
+          "pool_regions": 6,
+          "original_paths": 2,
+          "original_edges_checked": 6,
+          "maximum_best_cover_residual": -0.004664897918701172,
+          "mps": {
+            "solver_variables": 148,
+            "solver_constraints": 1312,
+            "solver_quadratic_constraints": 6,
+            "binary_flow_variables": 16
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 6,
+            "selected_regions": [
+              3,
+              0,
+              1,
+              2,
+              5
+            ],
+            "recovered_length_rad": 9.242547266979066,
+            "maximum_region_residual": 5.144940029566669e-12,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 1857,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "collision_failed",
+            "passed": false,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 21,
+              "independent_collisions": 21,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        },
+        {
+          "round": "002",
+          "pool_regions": 6,
+          "original_paths": 2,
+          "original_edges_checked": 6,
+          "maximum_best_cover_residual": -0.004664897918701172,
+          "mps": {
+            "solver_variables": 148,
+            "solver_constraints": 1317,
+            "solver_quadratic_constraints": 6,
+            "binary_flow_variables": 16
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 6,
+            "selected_regions": [
+              3,
+              0,
+              1,
+              2,
+              5
+            ],
+            "recovered_length_rad": 9.25174465164264,
+            "maximum_region_residual": 7.252154432535463e-11,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 1858,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [
+        {
+          "round": "000",
+          "witnesses": 104,
+          "mapping_verified": true,
+          "handoffs": [
+            {
+              "index": "0000",
+              "status": "passed",
+              "maximum_offset_change": 0.0
+            },
+            {
+              "index": "0001",
+              "status": "passed",
+              "maximum_offset_change": 0.0
+            },
+            {
+              "index": "0002",
+              "status": "passed",
+              "maximum_offset_change": 0.0
+            },
+            {
+              "index": "0003",
+              "status": "passed",
+              "maximum_offset_change": 0.0
+            },
+            {
+              "index": "0004",
+              "status": "passed",
+              "maximum_offset_change": 0.0
+            },
+            {
+              "index": "0005",
+              "status": "passed",
+              "maximum_offset_change": 0.0
+            }
+          ],
+          "restored_cover_claim": true,
+          "note": "Raw edited pools may lose unprotected spans; only subsequent accepted optimizer pools are required to cover all original edges."
+        },
+        {
+          "round": "001",
+          "witnesses": 21,
+          "mapping_verified": true,
+          "handoffs": [
+            {
+              "index": "0000",
+              "status": "passed",
+              "maximum_offset_change": 0.0
+            },
+            {
+              "index": "0001",
+              "status": "passed",
+              "maximum_offset_change": 0.0
+            },
+            {
+              "index": "0002",
+              "status": "passed",
+              "maximum_offset_change": 0.0
+            },
+            {
+              "index": "0003",
+              "status": "passed",
+              "maximum_offset_change": 0.0
+            },
+            {
+              "index": "0004",
+              "status": "passed",
+              "maximum_offset_change": 0.0
+            },
+            {
+              "index": "0005",
+              "status": "passed",
+              "maximum_offset_change": 0.0
+            }
+          ],
+          "restored_cover_claim": true,
+          "note": "Raw edited pools may lose unprotected spans; only subsequent accepted optimizer pools are required to cover all original edges."
+        }
+      ],
+      "alternate": {
+        "status": "found",
+        "selected_region": 1,
+        "eligible_regions": [
+          1
+        ],
+        "accepted": true,
+        "blocked_nodes": 2,
+        "original_nodes": 12000,
+        "kept_nodes": 11998
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-route_choice-003-p03-LGCS-minimum_distance-f958ec1d",
+      "attempt": "0001",
+      "latest": true,
+      "status": "frontend_failed",
+      "error_category": null,
+      "files_checked": 12,
+      "family": "route_choice",
+      "rounds": [],
+      "recoveries": [],
+      "alternate": null,
+      "final_stage": "drm_path"
+    },
+    {
+      "job_id": "test-route_choice-004-p04-LGCS-minimum_distance-4c801cd6",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 50,
+      "family": "route_choice",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 2,
+          "original_paths": 1,
+          "original_edges_checked": 2,
+          "maximum_best_cover_residual": -0.10396504554316977,
+          "mps": {
+            "solver_variables": 34,
+            "solver_constraints": 316,
+            "solver_quadratic_constraints": 2,
+            "binary_flow_variables": 4
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 3,
+            "selected_regions": [
+              0,
+              1
+            ],
+            "recovered_length_rad": 5.263012046334106,
+            "maximum_region_residual": -6.5634164769790004e-12,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 1056,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "no_eligible_interior_region",
+        "selected_region": null,
+        "eligible_regions": [],
+        "accepted": false
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-route_choice-005-p00-LGCS-minimum_distance-0bb04890",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 50,
+      "family": "route_choice",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 2,
+          "original_paths": 1,
+          "original_edges_checked": 2,
+          "maximum_best_cover_residual": -0.03876131832478569,
+          "mps": {
+            "solver_variables": 34,
+            "solver_constraints": 226,
+            "solver_quadratic_constraints": 2,
+            "binary_flow_variables": 4
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 3,
+            "selected_regions": [
+              0,
+              1
+            ],
+            "recovered_length_rad": 3.9826241416840484,
+            "maximum_region_residual": -3.530509218307998e-14,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 800,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "no_eligible_interior_region",
+        "selected_region": null,
+        "eligible_regions": [],
+        "accepted": false
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-route_choice-006-p01-LGCS-minimum_distance-fe9fc55c",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 44,
+      "family": "route_choice",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 1,
+          "original_paths": 1,
+          "original_edges_checked": 1,
+          "maximum_best_cover_residual": -0.10328102111816406,
+          "mps": {
+            "solver_variables": 10,
+            "solver_constraints": 129,
+            "solver_quadratic_constraints": 1,
+            "binary_flow_variables": 2
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 2,
+            "selected_regions": [
+              0
+            ],
+            "recovered_length_rad": 5.197791258952398,
+            "maximum_region_residual": -0.10328111439407639,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 1041,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "no_eligible_interior_region",
+        "selected_region": null,
+        "eligible_regions": [],
+        "accepted": false
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-route_choice-007-p02-LGCS-minimum_distance-4ea2c478",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 269,
+      "family": "route_choice",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 5,
+          "original_paths": 2,
+          "original_edges_checked": 5,
+          "maximum_best_cover_residual": -0.029946908568079245,
+          "mps": {
+            "solver_variables": 124,
+            "solver_constraints": 1785,
+            "solver_quadratic_constraints": 5,
+            "binary_flow_variables": 14
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 5,
+            "selected_regions": [
+              0,
+              3,
+              4,
+              2
+            ],
+            "recovered_length_rad": 9.027554196719963,
+            "maximum_region_residual": -3.301470208327828e-12,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 1811,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "collision_failed",
+            "passed": false,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 108,
+              "independent_collisions": 108,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        },
+        {
+          "round": "001",
+          "pool_regions": 5,
+          "original_paths": 2,
+          "original_edges_checked": 5,
+          "maximum_best_cover_residual": -0.029946908568079245,
+          "mps": {
+            "solver_variables": 124,
+            "solver_constraints": 1790,
+            "solver_quadratic_constraints": 5,
+            "binary_flow_variables": 14
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 3,
+            "selected_regions": [
+              3,
+              4
+            ],
+            "recovered_length_rad": 9.031888550094862,
+            "maximum_region_residual": 4.440892098500626e-16,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 1809,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "collision_failed",
+            "passed": false,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 109,
+              "independent_collisions": 109,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        },
+        {
+          "round": "002",
+          "pool_regions": 5,
+          "original_paths": 2,
+          "original_edges_checked": 5,
+          "maximum_best_cover_residual": -0.029946908568079245,
+          "mps": {
+            "solver_variables": 124,
+            "solver_constraints": 1795,
+            "solver_quadratic_constraints": 5,
+            "binary_flow_variables": 14
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 5,
+            "selected_regions": [
+              0,
+              3,
+              4,
+              2
+            ],
+            "recovered_length_rad": 9.052034930591157,
+            "maximum_region_residual": -5.902500710419645e-13,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 1816,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "collision_failed",
+            "passed": false,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 76,
+              "independent_collisions": 76,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        },
+        {
+          "round": "003",
+          "pool_regions": 5,
+          "original_paths": 2,
+          "original_edges_checked": 5,
+          "maximum_best_cover_residual": -0.029946908568079245,
+          "mps": {
+            "solver_variables": 124,
+            "solver_constraints": 1800,
+            "solver_quadratic_constraints": 5,
+            "binary_flow_variables": 14
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 5,
+            "selected_regions": [
+              0,
+              3,
+              4,
+              2
+            ],
+            "recovered_length_rad": 9.06510497177723,
+            "maximum_region_residual": -5.154987547939527e-12,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 1819,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [
+        {
+          "round": "000",
+          "witnesses": 108,
+          "mapping_verified": true,
+          "handoffs": [
+            {
+              "index": "0000",
+              "status": "passed",
+              "maximum_offset_change": 0.0
+            },
+            {
+              "index": "0001",
+              "status": "passed",
+              "maximum_offset_change": 0.0
+            },
+            {
+              "index": "0002",
+              "status": "passed",
+              "maximum_offset_change": 0.0
+            },
+            {
+              "index": "0003",
+              "status": "passed",
+              "maximum_offset_change": 0.0
+            },
+            {
+              "index": "0004",
+              "status": "passed",
+              "maximum_offset_change": 0.0
+            }
+          ],
+          "restored_cover_claim": true,
+          "note": "Raw edited pools may lose unprotected spans; only subsequent accepted optimizer pools are required to cover all original edges."
+        },
+        {
+          "round": "001",
+          "witnesses": 109,
+          "mapping_verified": true,
+          "handoffs": [
+            {
+              "index": "0000",
+              "status": "passed",
+              "maximum_offset_change": 0.0
+            },
+            {
+              "index": "0001",
+              "status": "passed",
+              "maximum_offset_change": 0.0
+            },
+            {
+              "index": "0002",
+              "status": "passed",
+              "maximum_offset_change": 0.0
+            },
+            {
+              "index": "0003",
+              "status": "passed",
+              "maximum_offset_change": 0.0
+            },
+            {
+              "index": "0004",
+              "status": "passed",
+              "maximum_offset_change": 0.0
+            }
+          ],
+          "restored_cover_claim": true,
+          "note": "Raw edited pools may lose unprotected spans; only subsequent accepted optimizer pools are required to cover all original edges."
+        },
+        {
+          "round": "002",
+          "witnesses": 76,
+          "mapping_verified": true,
+          "handoffs": [
+            {
+              "index": "0000",
+              "status": "passed",
+              "maximum_offset_change": 0.0
+            },
+            {
+              "index": "0001",
+              "status": "passed",
+              "maximum_offset_change": 0.0
+            },
+            {
+              "index": "0002",
+              "status": "passed",
+              "maximum_offset_change": 0.0
+            },
+            {
+              "index": "0003",
+              "status": "passed",
+              "maximum_offset_change": 0.0
+            },
+            {
+              "index": "0004",
+              "status": "passed",
+              "maximum_offset_change": 0.0
+            }
+          ],
+          "restored_cover_claim": true,
+          "note": "Raw edited pools may lose unprotected spans; only subsequent accepted optimizer pools are required to cover all original edges."
+        }
+      ],
+      "alternate": {
+        "status": "found",
+        "selected_region": 1,
+        "eligible_regions": [
+          1
+        ],
+        "accepted": true,
+        "blocked_nodes": 2,
+        "original_nodes": 12000,
+        "kept_nodes": 11998
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-route_choice-008-p03-LGCS-minimum_distance-947dadb0",
+      "attempt": "0001",
+      "latest": true,
+      "status": "unsupported",
+      "error_category": "dependency_unsupported",
+      "files_checked": 68,
+      "family": "route_choice",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 7,
+          "original_paths": 2,
+          "original_edges_checked": 7,
+          "maximum_best_cover_residual": -0.003331316309754584,
+          "mps": {
+            "solver_variables": 284,
+            "solver_constraints": 3693,
+            "solver_quadratic_constraints": 7,
+            "binary_flow_variables": 32
+          },
+          "solver_error_number": 10010,
+          "solver_status": null,
+          "solver_success": false
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "found",
+        "selected_region": 1,
+        "eligible_regions": [
+          1
+        ],
+        "accepted": true,
+        "blocked_nodes": 2,
+        "original_nodes": 12000,
+        "kept_nodes": 11998
+      },
+      "final_stage": "trajectory_optimization"
+    },
+    {
+      "job_id": "test-route_choice-009-p04-LGCS-minimum_distance-a1af701f",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 44,
+      "family": "route_choice",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 1,
+          "original_paths": 1,
+          "original_edges_checked": 1,
+          "maximum_best_cover_residual": -0.0993950366973877,
+          "mps": {
+            "solver_variables": 10,
+            "solver_constraints": 179,
+            "solver_quadratic_constraints": 1,
+            "binary_flow_variables": 2
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 2,
+            "selected_regions": [
+              0
+            ],
+            "recovered_length_rad": 5.560721902731377,
+            "maximum_region_residual": -0.09939509594162299,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 1114,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "no_eligible_interior_region",
+        "selected_region": null,
+        "eligible_regions": [],
+        "accepted": false
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-route_choice-010-p00-LGCS-minimum_distance-ac5acd07",
+      "attempt": "0001",
+      "latest": true,
+      "status": "unsupported",
+      "error_category": "dependency_unsupported",
+      "files_checked": 68,
+      "family": "route_choice",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 6,
+          "original_paths": 2,
+          "original_edges_checked": 6,
+          "maximum_best_cover_residual": -0.002257842901043361,
+          "mps": {
+            "solver_variables": 292,
+            "solver_constraints": 3528,
+            "solver_quadratic_constraints": 6,
+            "binary_flow_variables": 34
+          },
+          "solver_error_number": 10010,
+          "solver_status": null,
+          "solver_success": false
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "found",
+        "selected_region": 1,
+        "eligible_regions": [
+          1,
+          2
+        ],
+        "accepted": true,
+        "blocked_nodes": 4,
+        "original_nodes": 12000,
+        "kept_nodes": 11996
+      },
+      "final_stage": "trajectory_optimization"
+    },
+    {
+      "job_id": "test-route_choice-011-p01-LGCS-minimum_distance-e07a7719",
+      "attempt": "0001",
+      "latest": true,
+      "status": "invalid_endpoint",
+      "error_category": null,
+      "files_checked": 8,
+      "family": "route_choice",
+      "rounds": [],
+      "recoveries": [],
+      "alternate": null,
+      "final_stage": "initializing"
+    },
+    {
+      "job_id": "test-route_choice-012-p02-LGCS-minimum_distance-9f21e519",
+      "attempt": "0001",
+      "latest": true,
+      "status": "unsupported",
+      "error_category": "dependency_unsupported",
+      "files_checked": 83,
+      "family": "route_choice",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 9,
+          "original_paths": 2,
+          "original_edges_checked": 10,
+          "maximum_best_cover_residual": -0.0004029560567442303,
+          "mps": {
+            "solver_variables": 235,
+            "solver_constraints": 1767,
+            "solver_quadratic_constraints": 9,
+            "binary_flow_variables": 23
+          },
+          "solver_error_number": 10010,
+          "solver_status": null,
+          "solver_success": false
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "found",
+        "selected_region": 2,
+        "eligible_regions": [
+          1,
+          2,
+          3
+        ],
+        "accepted": true,
+        "blocked_nodes": 2,
+        "original_nodes": 12000,
+        "kept_nodes": 11998
+      },
+      "final_stage": "trajectory_optimization"
+    },
+    {
+      "job_id": "test-route_choice-013-p03-LGCS-minimum_distance-6079c594",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 44,
+      "family": "route_choice",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 1,
+          "original_paths": 1,
+          "original_edges_checked": 1,
+          "maximum_best_cover_residual": -0.03316926956176758,
+          "mps": {
+            "solver_variables": 10,
+            "solver_constraints": 91,
+            "solver_quadratic_constraints": 1,
+            "binary_flow_variables": 2
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 2,
+            "selected_regions": [
+              0
+            ],
+            "recovered_length_rad": 3.7968092103292372,
+            "maximum_region_residual": -0.033169353349686403,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 761,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "no_eligible_interior_region",
+        "selected_region": null,
+        "eligible_regions": [],
+        "accepted": false
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-route_choice-014-p04-LGCS-minimum_distance-ac2d1477",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 50,
+      "family": "route_choice",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 2,
+          "original_paths": 1,
+          "original_edges_checked": 2,
+          "maximum_best_cover_residual": 0.0,
+          "mps": {
+            "solver_variables": 34,
+            "solver_constraints": 241,
+            "solver_quadratic_constraints": 2,
+            "binary_flow_variables": 4
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 3,
+            "selected_regions": [
+              0,
+              1
+            ],
+            "recovered_length_rad": 6.281653044711192,
+            "maximum_region_residual": 2.064339810203819e-10,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 1259,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "no_eligible_interior_region",
+        "selected_region": null,
+        "eligible_regions": [],
+        "accepted": false
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-route_choice-015-p00-LGCS-minimum_distance-fdf3f376",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 44,
+      "family": "route_choice",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 1,
+          "original_paths": 1,
+          "original_edges_checked": 1,
+          "maximum_best_cover_residual": -0.31002039796697733,
+          "mps": {
+            "solver_variables": 10,
+            "solver_constraints": 199,
+            "solver_quadratic_constraints": 1,
+            "binary_flow_variables": 2
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 2,
+            "selected_regions": [
+              0
+            ],
+            "recovered_length_rad": 2.5094879596065685,
+            "maximum_region_residual": -0.31002040956764665,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 503,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "no_eligible_interior_region",
+        "selected_region": null,
+        "eligible_regions": [],
+        "accepted": false
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-route_choice-016-p01-LGCS-minimum_distance-7acb865e",
+      "attempt": "0001",
+      "latest": true,
+      "status": "frontend_failed",
+      "error_category": null,
+      "files_checked": 13,
+      "family": "route_choice",
+      "rounds": [],
+      "recoveries": [],
+      "alternate": null,
+      "final_stage": "drm_path"
+    },
+    {
+      "job_id": "test-route_choice-017-p02-LGCS-minimum_distance-f9a56276",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 44,
+      "family": "route_choice",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 1,
+          "original_paths": 1,
+          "original_edges_checked": 1,
+          "maximum_best_cover_residual": -0.0649387413977256,
+          "mps": {
+            "solver_variables": 10,
+            "solver_constraints": 99,
+            "solver_quadratic_constraints": 1,
+            "binary_flow_variables": 2
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 2,
+            "selected_regions": [
+              0
+            ],
+            "recovered_length_rad": 7.396256775019532,
+            "maximum_region_residual": -0.0649387413977256,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 1481,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "no_eligible_interior_region",
+        "selected_region": null,
+        "eligible_regions": [],
+        "accepted": false
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-route_choice-018-p03-LGCS-minimum_distance-d9086136",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 44,
+      "family": "route_choice",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 1,
+          "original_paths": 1,
+          "original_edges_checked": 1,
+          "maximum_best_cover_residual": -0.05976041776307617,
+          "mps": {
+            "solver_variables": 10,
+            "solver_constraints": 99,
+            "solver_quadratic_constraints": 1,
+            "binary_flow_variables": 2
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 2,
+            "selected_regions": [
+              0
+            ],
+            "recovered_length_rad": 2.6390883975551076,
+            "maximum_region_residual": -0.05976041776307617,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 529,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "no_eligible_interior_region",
+        "selected_region": null,
+        "eligible_regions": [],
+        "accepted": false
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    },
+    {
+      "job_id": "test-route_choice-019-p04-LGCS-minimum_distance-a8f262c3",
+      "attempt": "0001",
+      "latest": true,
+      "status": "success_validated_numerical",
+      "error_category": null,
+      "files_checked": 71,
+      "family": "route_choice",
+      "rounds": [
+        {
+          "round": "000",
+          "pool_regions": 6,
+          "original_paths": 2,
+          "original_edges_checked": 6,
+          "maximum_best_cover_residual": -0.07004742851124401,
+          "mps": {
+            "solver_variables": 180,
+            "solver_constraints": 1675,
+            "solver_quadratic_constraints": 6,
+            "binary_flow_variables": 20
+          },
+          "solver_error_number": null,
+          "solver_status": 2,
+          "solver_success": true,
+          "candidate": {
+            "solver_success": true,
+            "points": 6,
+            "selected_regions": [
+              0,
+              3,
+              1,
+              2,
+              5
+            ],
+            "recovered_length_rad": 6.938028286630895,
+            "maximum_region_residual": 3.2357450052700187e-12,
+            "selected_membership_passed": true,
+            "endpoint_error": 0.0,
+            "samples": 1395,
+            "maximum_interpolation_error": 0.0,
+            "validation_status": "success_validated_numerical",
+            "passed": true,
+            "saved_collision_labels_consistent": true,
+            "collision_counts": {
+              "native_collisions": 0,
+              "independent_collisions": 0,
+              "model_disagreements": 0,
+              "contact_band_samples": 0
+            }
+          }
+        }
+      ],
+      "recoveries": [],
+      "alternate": {
+        "status": "found",
+        "selected_region": 1,
+        "eligible_regions": [
+          1
+        ],
+        "accepted": true,
+        "blocked_nodes": 2,
+        "original_nodes": 12000,
+        "kept_nodes": 11998
+      },
+      "final_stage": "validation",
+      "root_validation_scope": "final_round",
+      "success_solver_and_frontend_gates_verified": true
+    }
+  ],
+  "errors": [],
+  "audit_source_sha256": "6e5accd8c1f3b26763a022d0a0f7319a539891848fdbcee87b60f3945326e1fe",
+  "limitations": [
+    "No GPU, planner, solver or runtime validator was called.",
+    "Membership and interpolation are independently recomputed from saved arrays; this is not a continuous collision proof.",
+    "Actual collision labels are preserved evidence from the original run and are not recomputed in this CPU audit.",
+    "Saved native/independent labels, signed clearances, ambiguity counts and passed flags are checked for consistency; every success also requires solver success and both frontend gates.",
+    "Same-robot/scene checks use immutable case/model hashes and frozen call sites. The native alternate-roadmap binary is hash-checked; its serializer is not independently decoded.",
+    "Raw cut pools may temporarily lose original path coverage; complete original-edge coverage is independently checked for every subsequent optimizer input pool.",
+    "A final failed solve may retain prior-round top-level validation; this audit labels its scope and never counts it as final success."
+  ]
+}

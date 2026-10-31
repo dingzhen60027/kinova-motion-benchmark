@@ -1,0 +1,267 @@
+{
+  "verification_source_commit": "fd60db3ce768738912aa731984ded941c05ef782",
+  "source_hashes": {
+    "benchmarks/generic_motion_v1/__main__.py": "2f1035b54a2a3b1a3fbd5fc4c5ef359b840622761e8fac2804995edd95e84eff",
+    "benchmarks/generic_motion_v1/batch.py": "98bdbf6f25ddb73456fd97fbe191cc95d658dc2f78fc7c275059a4c0b3112b54",
+    "benchmarks/generic_motion_v1/common.py": "3df3df72c226c495a285c36857b862b939cd919347c7ab5dcff1725727dd741f",
+    "benchmarks/generic_motion_v1/configs/dev_generator.json": "ac60e554b442d10bf820b642fc4425d4619f12fd8c2d236f1cee10c7c91a0f8f",
+    "benchmarks/generic_motion_v1/configs/evaluation.json": "147fc627b192130ef51b34a959eb1082de8883b0c8cc253d4f855ce28fc530a0",
+    "benchmarks/generic_motion_v1/configs/generator.json": "ac60e554b442d10bf820b642fc4425d4619f12fd8c2d236f1cee10c7c91a0f8f",
+    "benchmarks/generic_motion_v1/configs/robot.json": "af89a0de7988658a88a5696d5aae37ca4321fdc6f8a5bf2db5cb87c079807ce2",
+    "benchmarks/generic_motion_v1/configs/smoke_generator.json": "ac60e554b442d10bf820b642fc4425d4619f12fd8c2d236f1cee10c7c91a0f8f",
+    "benchmarks/generic_motion_v1/configs/test_generator.json": "ac60e554b442d10bf820b642fc4425d4619f12fd8c2d236f1cee10c7c91a0f8f",
+    "benchmarks/generic_motion_v1/generator/__init__.py": "b73fa031be4d0c3c14aa4549e11cd634dcc2428fb786367a81b67ab9bc4b9e2e",
+    "benchmarks/generic_motion_v1/generator/audit.py": "3436ad76c1fcf5c32f949475075d8437f7b5a0f3464be4ec317a5e2451d69fd7",
+    "benchmarks/generic_motion_v1/generator/configuration.py": "9e9c4e44d1593474213233214e6cc82a727cfa761979a80a2f9d1701b21321fe",
+    "benchmarks/generic_motion_v1/generator/endpoints.py": "37174be436cfdd2313e7ea35d39120709316c701550c248a8672291ac5853cac",
+    "benchmarks/generic_motion_v1/generator/integrity.py": "53a582deee17cc2222e1d52558578a08979045ec489b0406611760d7932722f2",
+    "benchmarks/generic_motion_v1/generator/manifest.py": "a5da5e21c82984dd775adbcd8e88732be88082ac2d2818603cceab5cef560d5d",
+    "benchmarks/generic_motion_v1/generator/scene.py": "bcf4b159cea50ebd4984298f0825c70cacdf6dfb16ab963b02da03744128c650",
+    "benchmarks/generic_motion_v1/generator/voxelize.py": "377a8f020a9b635daadfe01622d901efb327ff4146b0cd7383bd83a8ef5e0ff1",
+    "benchmarks/generic_motion_v1/model.py": "5b152e3e5ca484e5378856de11747c45826653df8a1183582fe90e0958fc5116",
+    "benchmarks/generic_motion_v1/roadmap.py": "e8aa386b0241af6642a1c1daf04053ced2201ae22e951f0e452d266070981c92",
+    "benchmarks/generic_motion_v1/runners/csdecomp_baseline.py": "dc891db134fbb91701595b02450b97cb717675de2e7db61a48d811a7d846d04d",
+    "benchmarks/generic_motion_v1/runners/replay.py": "35579fcf1079e73fdd742005bfc1a3475d814cdf72a7b7cfa897f8ede7ff742b",
+    "benchmarks/generic_motion_v1/runners/summarize.py": "892f47b9dd617618efdb346230832ddc5917a2518e7d3f5c3e7565656cc018a0",
+    "benchmarks/generic_motion_v1/runners/validate.py": "12086b43b1735ab8455b260235eb0c92b336cb2b2cbaef6c286d1d2f5f376b43"
+  },
+  "engineering_checks_passed": true,
+  "checks": {
+    "input_audit": true,
+    "freeze": true,
+    "model": true,
+    "cross_split": true,
+    "candidate_contracts": true,
+    "unit_tests": true,
+    "current_integration": true
+  },
+  "qualification_scope": "Canonical Kinova static geometric planning inputs and bounded numerical checks; controlled development use only.",
+  "formal_test_execution_enabled": false,
+  "publication_comparison_ready": false,
+  "reason": "Formal test execution was not authorized. Public benchmark external validity, native assertion root causes and equal collision-query budgets remain unresolved; family labels are workspace geometry only.",
+  "runtime_integration_source_commit": "c6649d92bc9b840f25c76f0671f3a8b204fbe68f",
+  "runtime_integration": [
+    {
+      "attempt": "results/qualification_integration_v2/jobs/dev-bottleneck-000-p01-EI_ZO-minimum_distance-18b2a13f/attempts/0001",
+      "method": "EI_ZO",
+      "objective": "minimum_distance",
+      "status": "success_validated_numerical",
+      "cold_e2e_seconds": 1.816652437672019,
+      "metrics": {
+        "recovery_attempts": 0,
+        "cost": 7.308662312514075,
+        "cost_unit": "rad",
+        "path_length_rad": 7.308662312514075,
+        "normalized_path_length": 1.3193580042204294,
+        "minimum_sampled_clearance_m": 0.017143857880003638,
+        "duration_s": null,
+        "regions": 3,
+        "facets": 113
+      },
+      "result_sha256": "f74ef0ce36d6d7af100f3834c2965ab5dc2e92dcfa546b5a34bf0b90eadaa220",
+      "process_sha256": "2bacfbb261b2ce3f0adbb5754eb947e32614b910ea0873b098fe2ec8dcba8db4"
+    },
+    {
+      "attempt": "results/qualification_integration_v2/jobs/dev-bottleneck-000-p01-EI_ZO-minimum_time-79019c3f/attempts/0001",
+      "method": "EI_ZO",
+      "objective": "minimum_time",
+      "status": "success_validated_numerical",
+      "cold_e2e_seconds": 2.2185957389883697,
+      "metrics": {
+        "recovery_attempts": 0,
+        "cost": 6.230160588472744,
+        "cost_unit": "s",
+        "path_length_rad": 8.0416483519195,
+        "normalized_path_length": 1.4534613943792833,
+        "minimum_sampled_clearance_m": 0.01833626728522513,
+        "duration_s": 6.230160588472744,
+        "regions": 3,
+        "facets": 113
+      },
+      "result_sha256": "bc695debcc088e957b7489fea0b052bad81b0cb5ebf2fdb4ddb3f29a58b62eba",
+      "process_sha256": "8974c01e0f974d1f023e5be2a7731d661f91b3ea5fa53abd9fa814a927fe6676"
+    },
+    {
+      "attempt": "results/qualification_integration_v2/jobs/dev-bottleneck-000-p01-NTO-minimum_distance-ea7af0b4/attempts/0001",
+      "method": "NTO",
+      "objective": "minimum_distance",
+      "status": "solver_failed",
+      "cold_e2e_seconds": 13.135750322137028,
+      "metrics": {
+        "cost": 12.709580590524626,
+        "cost_unit": "rad",
+        "path_length_rad": 12.709580590524624,
+        "normalized_path_length": 2.2058603542672395,
+        "minimum_sampled_clearance_m": -0.1067658278347734,
+        "duration_s": null,
+        "regions": 0,
+        "facets": 0
+      },
+      "result_sha256": "3c4a91a599e3a63d888e14d40435e14c5cdd45897fc3fc3d4739364e1efb4b22",
+      "process_sha256": "3cb3c4c984f956ce5b59758b99bc6d2f6170c66c1500d1196ba9e82a8e4d2fe1"
+    },
+    {
+      "attempt": "results/qualification_integration_v2/jobs/dev-bottleneck-000-p01-NTO-minimum_time-6964a0bc/attempts/0001",
+      "method": "NTO",
+      "objective": "minimum_time",
+      "status": "success_validated_numerical",
+      "cold_e2e_seconds": 2.7674416680820286,
+      "metrics": {
+        "cost": 4.967794888693187,
+        "cost_unit": "s",
+        "path_length_rad": 6.570457386119033,
+        "normalized_path_length": 1.1864409984265873,
+        "minimum_sampled_clearance_m": 0.0031647888667435953,
+        "duration_s": 4.967794888693187,
+        "regions": 0,
+        "facets": 0
+      },
+      "result_sha256": "7eef4d3c5c3b700409c3bff3c4b8aedfb1c298e3d61884a8b1afe0d73c623853",
+      "process_sha256": "43d71f28457cf87656e3a74ed33e4ac4e62b62c412481e0978817bb8fafb2c2c"
+    }
+  ],
+  "tests": {
+    "passed": 238,
+    "log": "reports/qualification/final_pytest.log",
+    "log_sha256": "b67aa159466f5a0289a7dc62a391ee18f273755ef27e895e357d083c383c3680"
+  },
+  "input_only_reaudit": {
+    "command": "bash local/python.sh -m benchmarks.generic_motion_v1.reports.qualification.generator_reaudit",
+    "input_only": true,
+    "passed": true,
+    "splits": {
+      "dev": {
+        "elapsed_seconds": 11.647286670282483,
+        "endpoint_proposals_replayed": 4544,
+        "errors": [],
+        "input_manifest_unchanged": true,
+        "invalid_input_count": 0,
+        "manifest_sha256_after": "32de21ac2474846ae3cdc9867a3f41585cf80e7d0d4531e26285de216ef56000",
+        "manifest_sha256_before": "32de21ac2474846ae3cdc9867a3f41585cf80e7d0d4531e26285de216ef56000",
+        "passed": true,
+        "problem_count": 60,
+        "proposal_collision_checks_repeated": true,
+        "report_file": "reports/qualification/generator_dev_audit.json",
+        "report_sha256": "f56df0cd6c70b56ec678358b4b763f6cffcb04c18e0890b794b17275f2a77b38",
+        "scene_count": 20,
+        "valid_input_count": 60
+      },
+      "smoke": {
+        "elapsed_seconds": 5.583869379013777,
+        "endpoint_proposals_replayed": 8768,
+        "errors": [],
+        "input_manifest_unchanged": true,
+        "invalid_input_count": 2,
+        "manifest_sha256_after": "92e19a293861fa1b93a2dba3919ae3bc3eec584f3845709dc99f2ce98e453720",
+        "manifest_sha256_before": "92e19a293861fa1b93a2dba3919ae3bc3eec584f3845709dc99f2ce98e453720",
+        "passed": true,
+        "problem_count": 10,
+        "proposal_collision_checks_repeated": true,
+        "report_file": "reports/qualification/generator_smoke_audit.json",
+        "report_sha256": "6dad7545bde87c838870a068698f0e0343508d4ba506cf987c357e6f914c032b",
+        "scene_count": 5,
+        "valid_input_count": 8
+      },
+      "test": {
+        "elapsed_seconds": 123.13839076412842,
+        "endpoint_proposals_replayed": 133504,
+        "errors": [],
+        "input_manifest_unchanged": true,
+        "invalid_input_count": 25,
+        "manifest_sha256_after": "9fcbe5ccae28d8681586b1ac6c9986f51f7cc7b5cdc19352c101910e3b6ed03b",
+        "manifest_sha256_before": "9fcbe5ccae28d8681586b1ac6c9986f51f7cc7b5cdc19352c101910e3b6ed03b",
+        "passed": true,
+        "problem_count": 420,
+        "proposal_collision_checks_repeated": true,
+        "report_file": "reports/qualification/generator_test_audit.json",
+        "report_sha256": "4c4450ed4d6816b6b2f205542af0dd03c1e3dafde27625b61a304ab1ee15639f",
+        "scene_count": 84,
+        "valid_input_count": 395
+      }
+    },
+    "test_planning_executed": false
+  },
+  "freeze_integrity_passed": true,
+  "historical_integrity": {
+    "dev_eizo_v1": {
+      "integrity_passed": true,
+      "complete": true,
+      "completed_jobs": 360,
+      "planned_jobs": 360,
+      "errors": []
+    },
+    "dev_eizo_v2": {
+      "integrity_passed": true,
+      "complete": true,
+      "completed_jobs": 360,
+      "planned_jobs": 360,
+      "errors": []
+    },
+    "dev_paired_v1": {
+      "integrity_passed": true,
+      "complete": false,
+      "completed_jobs": 2,
+      "planned_jobs": 48,
+      "errors": []
+    },
+    "dev_paired_v2": {
+      "integrity_passed": true,
+      "complete": true,
+      "completed_jobs": 48,
+      "planned_jobs": 48,
+      "errors": []
+    },
+    "qualification_integration_v1": {
+      "integrity_passed": true,
+      "complete": false,
+      "completed_jobs": 3,
+      "planned_jobs": 4,
+      "errors": []
+    },
+    "qualification_integration_v2": {
+      "integrity_passed": true,
+      "complete": true,
+      "completed_jobs": 4,
+      "planned_jobs": 4,
+      "errors": []
+    },
+    "smoke_preflight_v1": {
+      "integrity_passed": false,
+      "complete": false,
+      "completed_jobs": 2,
+      "planned_jobs": 2,
+      "errors": [
+        "missing or malformed run identity"
+      ]
+    },
+    "smoke_v1": {
+      "integrity_passed": true,
+      "complete": true,
+      "completed_jobs": 20,
+      "planned_jobs": 20,
+      "errors": []
+    },
+    "smoke_v2_clean": {
+      "integrity_passed": true,
+      "complete": true,
+      "completed_jobs": 20,
+      "planned_jobs": 20,
+      "errors": []
+    },
+    "smoke_v3_fixed": {
+      "integrity_passed": true,
+      "complete": true,
+      "completed_jobs": 20,
+      "planned_jobs": 20,
+      "errors": []
+    }
+  },
+  "immutable_evidence_sha256": {
+    "reports/qualification/model_audit_current.json": "96275ebd8ba2540a37855aaa95a7e3a818540885eddb2a172bac19e24c7438eb",
+    "reports/qualification/model_audit_current_raw.npz": "2a5e49b5566939c3c7e8b2cd1096e148fcc5e1b83e85be978b95264f14fc8f65",
+    "reports/qualification/baseline_saved_candidate_reaudit.json": "30fb81765d49d274fd37118549fff898330ddf69591517f88cdbb379fba32f3c",
+    "reports/qualification/generator_reaudit_receipt.json": "75665be0325a03f52f6ceaf9ed32b8a1bc2c509d82c151604a5093bfd428e0fa",
+    "reports/qualification/cross_split_audit.json": "9bafb7a2cb8e7d0bd3d534135e6e2866058c6e340224dff4a07826fcaae3695d",
+    "reports/qualification/historical_deadlines.json": "646ee73d17a560c0810f62749a7d8f3672ff158638b9d82efcddffedc82844bc"
+  }
+}

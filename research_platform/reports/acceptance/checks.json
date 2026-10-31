@@ -1,0 +1,40 @@
+{
+  "passed": true,
+  "runs": {
+    "forest": "/home/eric/wjg/wd/csdecomp/runs/platform_final_v4_forest",
+    "fr3": "/home/eric/wjg/wd/csdecomp/runs/platform_final_v4_fr3",
+    "batch": "/home/eric/wjg/wd/csdecomp/runs/platform_final_v4_batch"
+  },
+  "checks": [
+    {
+      "check": "forest_complete",
+      "passed": true,
+      "all_valid": false
+    },
+    {
+      "check": "fr3_complete",
+      "passed": true,
+      "all_valid": true
+    },
+    {
+      "check": "single_case_to_batch_preserves_existing_bytes",
+      "passed": true,
+      "preserved_files": 130,
+      "initial_missing": 25,
+      "after_single_case_missing": 16,
+      "completed_jobs": 25
+    },
+    {
+      "check": "default_resume_is_noop_for_completed_successes_and_failures",
+      "passed": true,
+      "unchanged_files": 380
+    },
+    {
+      "check": "explicit_retry_preserves_every_prior_attempt",
+      "passed": true,
+      "preserved_files": 144,
+      "old_status": "validation_failed",
+      "new_status": "validation_failed"
+    }
+  ]
+}

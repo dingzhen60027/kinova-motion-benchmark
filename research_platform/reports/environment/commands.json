@@ -1,0 +1,48 @@
+[
+  {
+    "command": [
+      "conda",
+      "list",
+      "--prefix",
+      "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp",
+      "--explicit"
+    ],
+    "exit_code": 0,
+    "output": "conda-explicit.txt"
+  },
+  {
+    "command": [
+      "bash",
+      "local/python.sh",
+      "-m",
+      "pip",
+      "freeze"
+    ],
+    "exit_code": 0,
+    "output": "pip-freeze.txt"
+  },
+  {
+    "command": [
+      "nvidia-smi",
+      "--query-gpu=name,driver_version,memory.total",
+      "--format=csv"
+    ],
+    "exit_code": 0,
+    "output": "gpu.txt"
+  },
+  {
+    "command": [
+      "lscpu"
+    ],
+    "exit_code": 0,
+    "output": "cpu.txt"
+  },
+  {
+    "command": [
+      "cat",
+      "/etc/os-release"
+    ],
+    "exit_code": 0,
+    "output": "os.txt"
+  }
+]

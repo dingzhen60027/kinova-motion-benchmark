@@ -1,0 +1,112 @@
+{
+  "schema_version": 1,
+  "fidelity": "paper_protocol_reconstruction_not_original_artifact",
+  "environment_seeds": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "roadmap_seeds": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "roadmap_sizes": [
+    200,
+    400,
+    800,
+    1600
+  ],
+  "domain_lower": [
+    -5.0,
+    -5.0
+  ],
+  "domain_upper": [
+    5.0,
+    5.0
+  ],
+  "obstacles": 15,
+  "obstacle_center_lower": [
+    -3.5,
+    -3.5
+  ],
+  "obstacle_center_upper": [
+    3.5,
+    3.5
+  ],
+  "obstacle_radius": 0.35,
+  "point_radius": 1e-06,
+  "start": [
+    -4.0,
+    -4.0
+  ],
+  "goal": [
+    4.0,
+    3.0
+  ],
+  "roadmap_neighbors": 10,
+  "max_task_space_distance": 10.0,
+  "max_configuration_distance": 10.0,
+  "offline_voxel_side": 0.06,
+  "lazy_edge_step": 0.1,
+  "validation_step": 0.002,
+  "validation_minimum_samples": 2001,
+  "endpoint_tolerance": 1e-05,
+  "feasibility_tolerance": 1e-05,
+  "eizo": {
+    "delta": 0.05,
+    "epsilon": 0.01,
+    "num_particles": 1000,
+    "max_hyperplanes_per_iteration": 10,
+    "mixing_steps": 30,
+    "configuration_margin": 0.01,
+    "bisection_steps": 9,
+    "max_iterations": 500,
+    "tau": 0.5
+  },
+  "velocity_limit": 1.0,
+  "acceleration_limit": 1.0,
+  "bezier_degree": 6,
+  "scsto_relative_tolerance": 0.01,
+  "nto_distance_collocation": 20,
+  "nto_time_collocation": 100,
+  "nto_major_iterations": 2000,
+  "maximum_recovery_iterations": 20,
+  "case_timeout_seconds": 180,
+  "method_order": [
+    "LSCS",
+    "LGCS",
+    "SCSTO",
+    "NTO_distance",
+    "NTO_time"
+  ],
+  "assumptions": {
+    "random_generator": "NumPy default_rng; seed numbers not provided by paper, fixed to 0..9 before runs",
+    "endpoints": "[-4,-4] -> [4,3], inferred from unlabelled Fig.6; numeric endpoints not published",
+    "robot": "point implemented as 1e-6 m sphere; analytic checks use obstacle_radius + point_radius",
+    "limits_and_degree": "unit velocity/acceleration and degree 6, matching released Kinova example; simulation values not stated",
+    "LSCS_solver": "Clarabel substitutes for unavailable MOSEK license; same SOCP objective and constraints",
+    "LGCS_solver": "Gurobi Python MISOCP with bounded big-M flow; same convex-set graph path objective, not Drake's unavailable Gurobi binding",
+    "roadmap": "released CSDecomp RoadmapBuilder and DrmPlanner; Forest circles in static scene per environment seed; no perception/IK needed in 2D",
+    "validation": "exact line-circle closest distances for polygonal paths; derivative-controlled dense sampling for splines; not continuous certification",
+    "unpublished_settings": "NTO time uses at least 8 controls (4 controls plus rest endpoints forces a straight line); both NTO variants use a 0.01 m collocation clearance to avoid numerical tangencies. These settings are not specified in the paper; no equality with published success rates is claimed.",
+    "nto_warm_start": "PWL warm start resampled to at least 8 time controls, with repeated first/last controls to satisfy standstill. Nc is unchanged; nearest uniform collocation locations are snapped to internal spline knots to avoid leaving PWL vertices unchecked. Original code/locations not released.",
+    "recovery_limit": "20 iterations, from the released example; paper does not state a maximum"
+  },
+  "nto_time_minimum_controls": 8,
+  "nto_collision_margin": 0.01
+}

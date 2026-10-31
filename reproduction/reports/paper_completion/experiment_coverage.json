@@ -1,0 +1,1174 @@
+{
+  "schema_version": 1,
+  "protocol": "paper_completion_v4",
+  "prepared_utc": "2026-10-25T09:27:38.598191+00:00",
+  "scope": "Source/parameter ledger with observed v4 main runs, throughput, saved-input diagnostics and original-public-core probes; original experiment assets and physical data remain absent",
+  "exact_reproduction": false,
+  "original_author_assets_recovered": false,
+  "evidence_classes": {
+    "exact_published": "Value/procedure explicitly in published paper; matching configuration alone is not a successful experiment.",
+    "draft_source": "Archived author TeX comment; unpublished and possibly inconsistent with formal prose.",
+    "reconstruction_choice": "Declared implementation or dataset choice not recovered from author runner.",
+    "missing": "Required original asset, license, measurement or physical experiment absent."
+  },
+  "parameter_trace": {
+    "path": "reproduction/reports/paper_completion/parameter_trace.csv",
+    "rows": 144,
+    "sha256": "57ade72565e0c8e07b0c67ec3d09e0bd8d2b300527918cc08f6204767cefb0a5",
+    "classifications": {
+      "exact_published": 65,
+      "draft_source": 4,
+      "reconstruction_choice": 58,
+      "missing": 17
+    }
+  },
+  "experiment_groups": [
+    {
+      "id": "table_I_forest",
+      "paper_reference": "VII-A;Table I;Appendix D",
+      "status": "completed_reconstruction_with_recorded_failures",
+      "planned_cases": 400,
+      "planned_method_slots": 2000,
+      "methods": [
+        "LSCS",
+        "LGCS",
+        "SCSTO",
+        "NTO_distance",
+        "NTO_time"
+      ],
+      "actual_terminal_cases": 400,
+      "actual_method_attempts": 1964,
+      "actual_validated_successes": 1511,
+      "exact_reproduction": false,
+      "run_directory": "reproduction/runs/20261025T092109.664874Z_paper_completion_forest",
+      "driver_ledger": "reproduction/reports/paper_completion/20261025T092109Z_full_commands.json",
+      "required_acceptance": [
+        "final driver exit",
+        "400 terminal case records including failures",
+        "raw method status and solver metadata",
+        "native and independent collision predicates",
+        "source identity and resume audit",
+        "denominator-explicit Table I comparison"
+      ],
+      "cfr_field_mapping": {
+        "author_native_predicate_rate": "native_cuda_cfr_given_drm",
+        "collision_free_candidate_count": "native_cuda_free_trajectories",
+        "solver_success_and_free_count": "native_cuda_validated_successes",
+        "solver_success_and_free_rate": "solver_success_and_native_cuda_free_rate_given_drm",
+        "failed_solver_but_free_count": "solver_failed_but_native_cuda_free",
+        "denominator": "native DRM success; include saved CUDA-free candidates even when solver fails",
+        "source": "source_evidence/arxiv_text/figures/benchmarks/benchmark_results.tex:35 comment and sections/experiments.tex:65 published text"
+      },
+      "actual_native_drm_successes": 400,
+      "actual_independently_valid_seed_cases": 388,
+      "actual_case_status_counts": {
+        "completed": 400
+      },
+      "actual_methods": {
+        "LSCS": {
+          "attempted": 388,
+          "solver_successes": 388,
+          "validated_successes": 388,
+          "native_cuda_free_trajectories": 388,
+          "native_cuda_cfr_given_drm": 0.97,
+          "solver_failed_but_native_cuda_free": 0,
+          "status_counts": {
+            "success_numerical": 388,
+            "invalid_seed_path": 12
+          }
+        },
+        "LGCS": {
+          "attempted": 388,
+          "solver_successes": 388,
+          "validated_successes": 385,
+          "native_cuda_free_trajectories": 388,
+          "native_cuda_cfr_given_drm": 0.97,
+          "solver_failed_but_native_cuda_free": 0,
+          "status_counts": {
+            "success_numerical": 385,
+            "invalid_seed_path": 12,
+            "validation_failed": 3
+          }
+        },
+        "SCSTO": {
+          "attempted": 388,
+          "solver_successes": 387,
+          "validated_successes": 387,
+          "native_cuda_free_trajectories": 387,
+          "native_cuda_cfr_given_drm": 0.9675,
+          "solver_failed_but_native_cuda_free": 0,
+          "status_counts": {
+            "success_numerical": 387,
+            "invalid_seed_path": 12,
+            "error": 1
+          }
+        },
+        "NTO_distance": {
+          "attempted": 400,
+          "solver_successes": 390,
+          "validated_successes": 120,
+          "native_cuda_free_trajectories": 120,
+          "native_cuda_cfr_given_drm": 0.3,
+          "solver_failed_but_native_cuda_free": 0,
+          "status_counts": {
+            "validation_failed": 270,
+            "success_numerical": 120,
+            "optimization_failed": 10
+          }
+        },
+        "NTO_time": {
+          "attempted": 400,
+          "solver_successes": 316,
+          "validated_successes": 231,
+          "native_cuda_free_trajectories": 231,
+          "native_cuda_cfr_given_drm": 0.5775,
+          "solver_failed_but_native_cuda_free": 0,
+          "status_counts": {
+            "optimization_failed": 84,
+            "validation_failed": 85,
+            "success_numerical": 231
+          }
+        }
+      },
+      "summary_path": "reproduction/reports/paper_completion/forest/summary.json",
+      "summary_sha256": "704e258c9cc5a3ebbe563914c90d7828e2bc611d76dfe65f1c7861f220a514e4",
+      "driver_exit_code": 0,
+      "source_integrity_issues": [],
+      "artifact_issues": [],
+      "audit_path": "reproduction/reports/paper_completion/audit/forest/audit.json",
+      "actual_audit": {
+        "environment": "forest",
+        "run_dir": "/home/eric/wjg/wd/csdecomp/reproduction/runs/20261025T092109.664874Z_paper_completion_forest",
+        "cases": 400,
+        "replayed_trajectories": 1963,
+        "independently_rechecked_fixed_points": 33371,
+        "full_saved_model_disagreements": 96,
+        "maximum_absolute_independent_clearance_on_disagreements": 1.6229563898351174e-07,
+        "maximum_saved_sample_step": 0.004999997766904694,
+        "exact_forest_NTO_segment_checks": 400,
+        "exact_collision_free_NTO_paths": 120,
+        "case_files": 22147,
+        "case_bytes": 153495364,
+        "case_inventory_hash": "643b81998f35a600235d52b586c053c081eb4bd54c6f87d6767960f70620bb66",
+        "failure_counts": {
+          "validation_failed": 358,
+          "optimization_failed": 94,
+          "invalid_seed_path": 36,
+          "error": 1
+        },
+        "case_failure_counts": {},
+        "seed_failure_mechanisms": {
+          "valid_seed": 388,
+          "interior_collision_or_native_boundary_disagreement": 12
+        },
+        "lgcs_solver_status_counts": {
+          "2": 388
+        },
+        "lgcs_maximum_recorded_gap": 9.721980429274361e-07,
+        "verification_scope": "17 fixed evenly spaced samples per saved candidate rechecked in independent geometry; all original dense flags and metadata reconciled; Forest order-2 NTO additionally checked by exact segments",
+        "issues": []
+      },
+      "completed_run_resume_check": {
+        "path": "reproduction/reports/paper_completion/audit/forest/resume_check.json",
+        "exit_code": 0,
+        "case_files": 22147,
+        "changed_case_files": []
+      }
+    },
+    {
+      "id": "table_I_fr3",
+      "paper_reference": "VII-A;Table I;Appendix D",
+      "status": "completed_reconstruction_with_recorded_failures",
+      "planned_cases": 400,
+      "planned_method_slots": 2000,
+      "methods": [
+        "LSCS",
+        "LGCS",
+        "SCSTO",
+        "NTO_distance",
+        "NTO_time"
+      ],
+      "actual_terminal_cases": 400,
+      "actual_method_attempts": 1202,
+      "actual_validated_successes": 932,
+      "exact_reproduction": false,
+      "run_directory": "reproduction/runs/20261025T092858.440656Z_paper_completion_fr3",
+      "driver_ledger": "reproduction/reports/paper_completion/20261025T092109Z_full_commands.json",
+      "required_acceptance": [
+        "final driver exit",
+        "400 terminal case records including failures",
+        "raw method status and solver metadata",
+        "native and independent collision predicates",
+        "source identity and resume audit",
+        "denominator-explicit Table I comparison"
+      ],
+      "cfr_field_mapping": {
+        "author_native_predicate_rate": "native_cuda_cfr_given_drm",
+        "collision_free_candidate_count": "native_cuda_free_trajectories",
+        "solver_success_and_free_count": "native_cuda_validated_successes",
+        "solver_success_and_free_rate": "solver_success_and_native_cuda_free_rate_given_drm",
+        "failed_solver_but_free_count": "solver_failed_but_native_cuda_free",
+        "denominator": "native DRM success; include saved CUDA-free candidates even when solver fails",
+        "source": "source_evidence/arxiv_text/figures/benchmarks/benchmark_results.tex:35 comment and sections/experiments.tex:65 published text"
+      },
+      "actual_native_drm_successes": 241,
+      "actual_independently_valid_seed_cases": 240,
+      "actual_case_status_counts": {
+        "drm_failed": 157,
+        "ik_failed": 2,
+        "completed": 241
+      },
+      "actual_methods": {
+        "LSCS": {
+          "attempted": 240,
+          "solver_successes": 240,
+          "validated_successes": 240,
+          "native_cuda_free_trajectories": 240,
+          "native_cuda_cfr_given_drm": 0.995850622406639,
+          "solver_failed_but_native_cuda_free": 0,
+          "status_counts": {
+            "not_run_due_to_drm_failed": 157,
+            "not_run_due_to_ik_failed": 2,
+            "success_numerical": 240,
+            "invalid_seed_path": 1
+          }
+        },
+        "LGCS": {
+          "attempted": 240,
+          "solver_successes": 208,
+          "validated_successes": 208,
+          "native_cuda_free_trajectories": 208,
+          "native_cuda_cfr_given_drm": 0.8630705394190872,
+          "solver_failed_but_native_cuda_free": 0,
+          "status_counts": {
+            "not_run_due_to_drm_failed": 157,
+            "not_run_due_to_ik_failed": 2,
+            "blocked_license": 32,
+            "success_numerical": 208,
+            "invalid_seed_path": 1
+          }
+        },
+        "SCSTO": {
+          "attempted": 240,
+          "solver_successes": 240,
+          "validated_successes": 240,
+          "native_cuda_free_trajectories": 240,
+          "native_cuda_cfr_given_drm": 0.995850622406639,
+          "solver_failed_but_native_cuda_free": 0,
+          "status_counts": {
+            "not_run_due_to_drm_failed": 157,
+            "not_run_due_to_ik_failed": 2,
+            "success_numerical": 240,
+            "invalid_seed_path": 1
+          }
+        },
+        "NTO_distance": {
+          "attempted": 241,
+          "solver_successes": 195,
+          "validated_successes": 74,
+          "native_cuda_free_trajectories": 75,
+          "native_cuda_cfr_given_drm": 0.3112033195020747,
+          "solver_failed_but_native_cuda_free": 1,
+          "status_counts": {
+            "not_run_due_to_drm_failed": 157,
+            "not_run_due_to_ik_failed": 2,
+            "validation_failed": 121,
+            "optimization_failed": 46,
+            "success_numerical": 74
+          }
+        },
+        "NTO_time": {
+          "attempted": 241,
+          "solver_successes": 220,
+          "validated_successes": 170,
+          "native_cuda_free_trajectories": 170,
+          "native_cuda_cfr_given_drm": 0.7053941908713693,
+          "solver_failed_but_native_cuda_free": 0,
+          "status_counts": {
+            "not_run_due_to_drm_failed": 157,
+            "not_run_due_to_ik_failed": 2,
+            "success_numerical": 170,
+            "optimization_failed": 21,
+            "validation_failed": 50
+          }
+        }
+      },
+      "summary_path": "reproduction/reports/paper_completion/fr3/summary.json",
+      "summary_sha256": "e2acb001a0f760e3f2aea88f9153f3ca5f038872b2621c1b0865a12eb3dd8162",
+      "driver_exit_code": 0,
+      "source_integrity_issues": [],
+      "artifact_issues": [],
+      "audit_path": "reproduction/reports/paper_completion/audit/fr3/audit.json",
+      "actual_audit": {
+        "environment": "fr3",
+        "run_dir": "/home/eric/wjg/wd/csdecomp/reproduction/runs/20261025T092858.440656Z_paper_completion_fr3",
+        "cases": 400,
+        "replayed_trajectories": 1170,
+        "independently_rechecked_fixed_points": 19890,
+        "full_saved_model_disagreements": 163,
+        "maximum_absolute_independent_clearance_on_disagreements": 1.1407102053218043e-07,
+        "maximum_saved_sample_step": 0.0049999923905532356,
+        "exact_forest_NTO_segment_checks": 0,
+        "exact_collision_free_NTO_paths": 0,
+        "case_files": 15234,
+        "case_bytes": 879970467,
+        "case_inventory_hash": "c4c2530cff6a293021e45f87c1027d6c0f98dd47548d4677b7536045349a9054",
+        "failure_counts": {
+          "blocked_license": 32,
+          "validation_failed": 171,
+          "optimization_failed": 67,
+          "invalid_seed_path": 3
+        },
+        "case_failure_counts": {
+          "drm_failed": 157,
+          "ik_failed": 2
+        },
+        "seed_failure_mechanisms": {
+          "valid_seed": 240,
+          "interior_collision_or_native_boundary_disagreement": 1
+        },
+        "lgcs_solver_status_counts": {
+          "2": 208
+        },
+        "lgcs_maximum_recorded_gap": 9.656099561546092e-07,
+        "verification_scope": "17 fixed evenly spaced samples per saved candidate rechecked in independent geometry; all original dense flags and metadata reconciled; Forest order-2 NTO additionally checked by exact segments",
+        "issues": []
+      },
+      "completed_run_resume_check": {
+        "path": "reproduction/reports/paper_completion/audit/fr3/resume_check.json",
+        "exit_code": 0,
+        "case_files": 15234,
+        "changed_case_files": []
+      }
+    },
+    {
+      "id": "appendix_D_throughput_forest",
+      "paper_reference": "Appendix D simulation throughput",
+      "status": "completed_reconstruction_throughput",
+      "configurations_per_batch": 2000000,
+      "paper_reference_Mconfig_per_s": 19.9,
+      "actual_measurement": {
+        "batches": 50,
+        "configurations_per_batch": 2000000,
+        "mean_million_configurations_per_second": 23.489012556469355,
+        "sample_sd": 0.2528495368892434,
+        "verified_points": 200000,
+        "model_disagreements": 0,
+        "original_paper_reference_million_per_second": 19.9,
+        "comparison": "different hardware and reconstructed collision geometry; no direct speedup claim"
+      },
+      "prior_v3_measurement_is_current_result": false,
+      "exact_reproduction": false,
+      "required_acceptance": [
+        "actual synchronous timed batches and warmup",
+        "batch arrays or hashes",
+        "collision-pair count",
+        "independent checker comparison",
+        "hardware and wrapper timing scope"
+      ],
+      "run_directory": "reproduction/runs/20261025T100621.531991Z_paper_completion_forest_throughput",
+      "source_manifest_status": "completed",
+      "source_summary_sha256": "dce1bd2b7ba7d239b641531b788c6a66784331e61015f1f4821a48aa5b0db74c",
+      "source_manifest_sha256": "a0a926cdd229663f17d3c01aa0dd578049868f3263339131033d6bd6ee67b0f6",
+      "index_path": "reproduction/reports/paper_completion/throughput_index.json"
+    },
+    {
+      "id": "appendix_D_throughput_fr3",
+      "paper_reference": "Appendix D simulation throughput",
+      "status": "completed_reconstruction_throughput",
+      "configurations_per_batch": 2000000,
+      "paper_reference_Mconfig_per_s": 8.6,
+      "actual_measurement": {
+        "batches": 50,
+        "configurations_per_batch": 2000000,
+        "mean_million_configurations_per_second": 7.5742366954943545,
+        "sample_sd": 0.06571621546537025,
+        "verified_points": 200000,
+        "model_disagreements": 0,
+        "original_paper_reference_million_per_second": 8.6,
+        "comparison": "different hardware and reconstructed collision geometry; no direct speedup claim"
+      },
+      "prior_v3_measurement_is_current_result": false,
+      "exact_reproduction": false,
+      "required_acceptance": [
+        "actual synchronous timed batches and warmup",
+        "batch arrays or hashes",
+        "collision-pair count",
+        "independent checker comparison",
+        "hardware and wrapper timing scope"
+      ],
+      "run_directory": "reproduction/runs/20261025T100637.390695Z_paper_completion_fr3_throughput",
+      "source_manifest_status": "completed",
+      "source_summary_sha256": "e828e2319f766c8114c4d1cb653fdaea5f7237de28a1864f8414119d626146ee",
+      "source_manifest_sha256": "c62a3d9bc5105e685e1eedd6ecc853fbde3388488246709a625ae30474d936d8",
+      "index_path": "reproduction/reports/paper_completion/throughput_index.json"
+    },
+    {
+      "id": "solver_adapter_regressions",
+      "paper_reference": "Appendix C;VII-A3/4;Marcucci Eq.5.5",
+      "status": "completed_diagnostic",
+      "actual_tests_passed": 4,
+      "evidence": [
+        "reproduction/reports/paper_completion/optimization_tests_ready.log",
+        "reproduction/reports/paper_completion/optimization_checks/results.json"
+      ],
+      "details": "2/3 preselected archived FR3 GCS problems hit license10010; third optimal with cost agreement1.07e-6; not pooled into new benchmark.",
+      "exact_reproduction": false
+    },
+    {
+      "id": "pipeline_adapter_regressions",
+      "paper_reference": "V-B;VI-B/C",
+      "status": "completed_diagnostic",
+      "evidence": [
+        "reproduction/reports/paper_completion/pipeline_audit.md",
+        "reproduction/reports/paper_completion/diagnostics/pipeline/final_regressions/regression_summary.json"
+      ],
+      "details": "Saved native alternate-path and region float32 regressions; fixed old e08 endpoint failure retained; graph-component diagnostic does not prove continuous disconnection.",
+      "exact_reproduction": false
+    },
+    {
+      "id": "pre_run_environment_tests",
+      "paper_reference": "Reproduction verification",
+      "status": "completed_diagnostic",
+      "actual_tests_passed": 18,
+      "evidence": [
+        "reproduction/logs/completion_verification_tests_before_full.log",
+        "reproduction/reports/paper_completion/verification_commands.json"
+      ],
+      "details": "Existing Conda; tests exit0; not full benchmark completion.",
+      "exact_reproduction": false
+    },
+    {
+      "id": "hardware_public_asset_probe",
+      "paper_reference": "VII-B robot geometry",
+      "status": "completed_model_probe_only",
+      "evidence": [
+        "reproduction/reports/paper_completion/source_evidence/hardware_probe_pinned/summary.json"
+      ],
+      "original_author_asset_recovered": false,
+      "physical_experiment": false,
+      "geometry_count": 11,
+      "robot_only_pairs": 42,
+      "robot_with_example_table_pairs": 52,
+      "exact_reproduction": false
+    },
+    {
+      "id": "table_II_physical_hardware",
+      "paper_reference": "VII-B;Table II;Appendix D;Table VI;Figs1/7",
+      "status": "missing_physical_assets",
+      "paper_trajectory_count": 15,
+      "actual_physical_trajectories": 0,
+      "paper_total_time_ms": {
+        "mean": 823.4,
+        "sd": 122.6
+      },
+      "actual_physical_timing": null,
+      "exact_reproduction": false,
+      "evidence": [
+        "reproduction/reports/paper_completion/source_evidence/targeted_assets.json",
+        "reproduction/reports/paper_completion/source_evidence/hardware_probe_pinned/summary.json"
+      ],
+      "missing": [
+        "KUKA iiwa7 R800 execution hardware or original15trajectory logs",
+        "three D415 depth camera streams and calibration",
+        "original obstacle changes and voxel streams",
+        "author105self-pair filter/model details"
+      ],
+      "limitations": "Public model assembly and simulation do not reproduce physical perception/control timings."
+    },
+    {
+      "id": "headline_speedup",
+      "paper_reference": "Abstract;VII-A5",
+      "status": "not_established",
+      "exact_reproduction": false,
+      "actual_headline_ratio": null,
+      "limitations": "Do not infer headline17.1x from ratios with different models, denominators, timing scopes or failed methods."
+    },
+    {
+      "id": "main_benchmark_recovery_rates",
+      "paper_reference": "VII-A5;VI-B",
+      "status": "completed_denominator_explicit_reconstruction_analysis",
+      "published_experiment": true,
+      "requires_additional_run": false,
+      "parent_groups": [
+        "table_I_forest",
+        "table_I_fr3"
+      ],
+      "paper_reference_percent": {
+        "forest_distance": 5.6,
+        "forest_time": 0.46,
+        "fr3_distance": 40.22,
+        "fr3_time": 21.36
+      },
+      "actual_rates": {
+        "forest": {
+          "LSCS": {
+            "attempted": 388,
+            "native_drm_successes": 400,
+            "strict_seed_valid": 388,
+            "solver_successes": 388,
+            "recovery_triggered": 19,
+            "recovery_rate_given_attempt": 0.04896907216494845,
+            "recovery_rate_given_native_drm": 0.0475,
+            "recovery_rate_given_valid_seed": 0.04896907216494845,
+            "recovery_rate_given_solver_success": 0.04896907216494845,
+            "completed_recovery_iterations": 20
+          },
+          "LGCS": {
+            "attempted": 388,
+            "native_drm_successes": 400,
+            "strict_seed_valid": 388,
+            "solver_successes": 388,
+            "recovery_triggered": 15,
+            "recovery_rate_given_attempt": 0.03865979381443299,
+            "recovery_rate_given_native_drm": 0.0375,
+            "recovery_rate_given_valid_seed": 0.03865979381443299,
+            "recovery_rate_given_solver_success": 0.03865979381443299,
+            "completed_recovery_iterations": 16
+          },
+          "SCSTO": {
+            "attempted": 388,
+            "native_drm_successes": 400,
+            "strict_seed_valid": 388,
+            "solver_successes": 387,
+            "recovery_triggered": 1,
+            "recovery_rate_given_attempt": 0.002577319587628866,
+            "recovery_rate_given_native_drm": 0.0025,
+            "recovery_rate_given_valid_seed": 0.002577319587628866,
+            "recovery_rate_given_solver_success": 0.002583979328165375,
+            "completed_recovery_iterations": 1
+          }
+        },
+        "fr3": {
+          "LSCS": {
+            "attempted": 240,
+            "native_drm_successes": 241,
+            "strict_seed_valid": 240,
+            "solver_successes": 240,
+            "recovery_triggered": 19,
+            "recovery_rate_given_attempt": 0.07916666666666666,
+            "recovery_rate_given_native_drm": 0.07883817427385892,
+            "recovery_rate_given_valid_seed": 0.07916666666666666,
+            "recovery_rate_given_solver_success": 0.07916666666666666,
+            "completed_recovery_iterations": 50
+          },
+          "LGCS": {
+            "attempted": 240,
+            "native_drm_successes": 241,
+            "strict_seed_valid": 240,
+            "solver_successes": 208,
+            "recovery_triggered": 8,
+            "recovery_rate_given_attempt": 0.03333333333333333,
+            "recovery_rate_given_native_drm": 0.03319502074688797,
+            "recovery_rate_given_valid_seed": 0.03333333333333333,
+            "recovery_rate_given_solver_success": 0.038461538461538464,
+            "completed_recovery_iterations": 17
+          },
+          "SCSTO": {
+            "attempted": 240,
+            "native_drm_successes": 241,
+            "strict_seed_valid": 240,
+            "solver_successes": 240,
+            "recovery_triggered": 0,
+            "recovery_rate_given_attempt": 0.0,
+            "recovery_rate_given_native_drm": 0.0,
+            "recovery_rate_given_valid_seed": 0.0,
+            "recovery_rate_given_solver_success": 0.0,
+            "completed_recovery_iterations": 0
+          }
+        }
+      },
+      "required_acceptance": [
+        "preserved recovery counts and failures",
+        "explicit conditioning and denominator",
+        "distance LSCS/LGCS pooling rule declared rather than inferred"
+      ],
+      "exact_reproduction": false,
+      "evidence": [
+        "reproduction/reports/paper_completion/source_evidence/arxiv_text/sections/experiments.tex"
+      ],
+      "summary_field_mapping": {
+        "by_method": [
+          "recovery_triggered",
+          "recovery_rate_given_attempt",
+          "recovery_rate_given_native_drm",
+          "recovery_rate_given_valid_seed",
+          "recovery_rate_given_solver_success",
+          "completed_recovery_iterations"
+        ],
+        "source": "reproduction/paper_completion/analyze.py",
+        "author_denominator": "Exact LSCS/LGCS pooling and denominators unavailable; declared implementation rates must not be labeled exact author rates."
+      },
+      "actual_analysis_paths": [
+        "reproduction/reports/paper_completion/forest/summary.json",
+        "reproduction/reports/paper_completion/fr3/summary.json"
+      ],
+      "author_distance_pooling_recovered": false
+    },
+    {
+      "id": "main_benchmark_one_vs_two_path_comparison",
+      "paper_reference": "VI-C;VII-A4/5;Table I",
+      "status": "completed_denominator_explicit_reconstruction_analysis",
+      "published_experiment": true,
+      "requires_additional_run": false,
+      "parent_groups": [
+        "table_I_forest",
+        "table_I_fr3"
+      ],
+      "methods": [
+        "LSCS",
+        "LGCS"
+      ],
+      "actual_comparison": {
+        "forest": {
+          "paired": {
+            "alternative": "LGCS",
+            "baseline": "LSCS",
+            "common_validated": 385,
+            "mean_cost_difference": -0.019009342298927995,
+            "mean_cost_ratio": 0.9983122960998451,
+            "runtime_pairs": 388,
+            "mean_paired_time_ratio": 0.19712041431872693
+          },
+          "region_counts": {
+            "LSCS": {
+              "records_with_region_count": 388,
+              "mean": 2.1108247422680413,
+              "minimum": 1.0,
+              "maximum": 5.0,
+              "selection": "all method records with a stored finite region count; excludes pre-solve exceptions without this field"
+            },
+            "LGCS": {
+              "records_with_region_count": 388,
+              "mean": 2.7268041237113403,
+              "minimum": 1.0,
+              "maximum": 8.0,
+              "selection": "all method records with a stored finite region count; excludes pre-solve exceptions without this field"
+            }
+          },
+          "primary_only": true,
+          "enumeration_diagnostic_excluded": true
+        },
+        "fr3": {
+          "paired": {
+            "alternative": "LGCS",
+            "baseline": "LSCS",
+            "common_validated": 208,
+            "mean_cost_difference": -0.04479853764883353,
+            "mean_cost_ratio": 0.9921262649913134,
+            "runtime_pairs": 240,
+            "mean_paired_time_ratio": 0.5766507214421173
+          },
+          "region_counts": {
+            "LSCS": {
+              "records_with_region_count": 240,
+              "mean": 2.095833333333333,
+              "minimum": 1.0,
+              "maximum": 5.0,
+              "selection": "all method records with a stored finite region count; excludes pre-solve exceptions without this field"
+            },
+            "LGCS": {
+              "records_with_region_count": 208,
+              "mean": 2.125,
+              "minimum": 1.0,
+              "maximum": 7.0,
+              "selection": "all method records with a stored finite region count; excludes pre-solve exceptions without this field"
+            }
+          },
+          "primary_only": true,
+          "enumeration_diagnostic_excluded": true
+        }
+      },
+      "required_acceptance": [
+        "cost/runtime/region counts for both methods",
+        "alternate-path absence and license failures retained",
+        "paired comparisons on explicit common cases"
+      ],
+      "exact_reproduction": false,
+      "evidence": [
+        "reproduction/reports/paper_completion/source_evidence/arxiv_text/sections/experiments.tex",
+        "reproduction/reports/paper_completion/source_evidence/arxiv_text/figures/benchmarks/benchmark_results.tex"
+      ],
+      "actual_analysis_paths": [
+        "reproduction/reports/paper_completion/forest/summary.json",
+        "reproduction/reports/paper_completion/fr3/summary.json"
+      ]
+    },
+    {
+      "id": "appendix_A_convex_distance_proof",
+      "paper_reference": "IV-A;Appendix A Eqs16-18",
+      "status": "theory_not_empirical_experiment",
+      "published_experiment": false,
+      "requires_additional_run": false,
+      "claim": "Distance to a convex set is convex, shown via triangle inequality and convex combination of nearest points.",
+      "evidence": [
+        "reproduction/reports/paper_completion/source_evidence/arxiv_text/sections/appendix.tex"
+      ],
+      "notes": "No empirical benchmark or ablation is specified in Appendix A."
+    },
+    {
+      "id": "delta_epsilon_safety_calibration",
+      "paper_reference": "II;IV-B/C;Tables III/IV",
+      "status": "not_reported_as_empirical_experiment",
+      "published_experiment": false,
+      "requires_additional_run": false,
+      "source_scope": "Probability guarantee and statistical acceptance formula, plus fixed experimental parameters; no independent frequency-calibration sweep reported.",
+      "implementation_claim_limit": "max_iterations30 may terminate before statistical acceptance; cannot certify every region. Dense trajectory checks do not measure region volume or delta-level repeated-run calibration.",
+      "actual_calibration_measurements": null,
+      "probabilistic_guarantee_for_all_returned_regions": false,
+      "evidence": [
+        "reproduction/reports/paper_completion/source_evidence/arxiv_text/sections/fci.tex",
+        "reproduction/reports/paper_completion/source_evidence/arxiv_text/sections/appendix.tex"
+      ],
+      "separate_diagnostic_note": "The historical public-core probe sampled 2000 points in one constructed EI-ZO region with zero collisions. This is a local mechanism check, not a delta/epsilon calibration sweep or certificate of all primary regions.",
+      "separate_diagnostic_evidence": "reproduction/reports/paper_completion/paperdate_core_result.json"
+    },
+    {
+      "id": "parallel_scaling_ablation",
+      "paper_reference": "IV-D;Appendix D;VIII-B/C",
+      "status": "not_reported_as_empirical_experiment",
+      "published_experiment": false,
+      "requires_additional_run": false,
+      "source_scope": "CUDA thread mapping is implementation description. Fixed two-million-configuration throughput is reported; no CPU/GPU scaling curve, thread-count or batch-size sweep is supplied.",
+      "actual_scaling_measurements": null,
+      "evidence": [
+        "reproduction/reports/paper_completion/source_evidence/arxiv_text/sections/fci.tex",
+        "reproduction/reports/paper_completion/source_evidence/arxiv_text/sections/appendix.tex",
+        "reproduction/reports/paper_completion/source_evidence/arxiv_text/sections/limitations.tex"
+      ]
+    },
+    {
+      "id": "higher_dimensional_scaling",
+      "paper_reference": "VIII-C",
+      "status": "explicitly_not_studied_in_paper",
+      "published_experiment": false,
+      "requires_additional_run": false,
+      "source_scope": "Published experiments stop at7DOF; mobile/bimanual scaling identified as future work.",
+      "actual_measurements": null,
+      "evidence": [
+        "reproduction/reports/paper_completion/source_evidence/arxiv_text/sections/limitations.tex"
+      ]
+    },
+    {
+      "id": "IRIS_ZO_and_parameter_ablation",
+      "paper_reference": "Commented appendix.tex:26;commented experiments.tex:127-145",
+      "status": "draft_idea_not_published_experiment",
+      "published_experiment": false,
+      "requires_additional_run": false,
+      "source_scope": "Comments mention an IRIS-ZO vs EI-ZO subsection and an ablation-study heading, but provide no performed run protocol, data or result table. Referenced prior papers are not extra experiments of this paper.",
+      "actual_measurements": null,
+      "evidence": [
+        "reproduction/reports/paper_completion/source_evidence/arxiv_text/sections/appendix.tex",
+        "reproduction/reports/paper_completion/source_evidence/arxiv_text/sections/experiments.tex"
+      ]
+    },
+    {
+      "id": "algorithm_illustration_figures",
+      "paper_reference": "Figs2-5;IV-VI",
+      "status": "algorithm_explanation_not_separate_empirical_dataset",
+      "published_experiment": false,
+      "requires_additional_run": false,
+      "source_scope": "EI-ZO iteration illustration, DRM lookup illustration, pipeline cartoon and recovery flowchart. Fig6 shows benchmark scenes;Figs1/7 depict hardware covered separately.",
+      "existing_mechanism_evidence": [
+        "reproduction/reports/paper_completion/pipeline_audit.md",
+        "reproduction/reports/paper_completion/diagnostics/pipeline/final_regressions/regression_summary.json"
+      ],
+      "evidence": [
+        "reproduction/reports/paper_completion/source_evidence/arxiv_text/sections/fci.tex",
+        "reproduction/reports/paper_completion/source_evidence/arxiv_text/sections/drm_preliminary.tex",
+        "reproduction/reports/paper_completion/source_evidence/arxiv_text/sections/pipeline.tex"
+      ]
+    },
+    {
+      "id": "appendix_D_hardware_throughput",
+      "paper_reference": "Appendix D Hardware",
+      "status": "missing_original_hardware_model",
+      "published_experiment": true,
+      "requires_additional_run": true,
+      "configurations_per_batch": 2000000,
+      "paper_reference_Mconfig_per_s": 6.9,
+      "actual_measurement": null,
+      "exact_reproduction": false,
+      "limitations": "Published reference is on i9-7900X/RTX2080Ti/CUDA12.5 hardware and original105-self-pair model. Public model probe is not this throughput measurement.",
+      "evidence": [
+        "reproduction/reports/paper_completion/source_evidence/arxiv_text/sections/appendix.tex",
+        "reproduction/reports/paper_completion/source_evidence/hardware_probe_pinned/summary.json"
+      ]
+    },
+    {
+      "id": "public_iiwa_throughput_diagnostic",
+      "paper_reference": "Appendix D batch size; different public geometry",
+      "status": "completed_diagnostic",
+      "published_experiment": false,
+      "original_paper_protocol": false,
+      "driver": "reproduction/throughput_public_iiwa.py",
+      "configurations_per_batch": 2000000,
+      "warmups": 1,
+      "repeats": 5,
+      "minimum_independent_drake_points": 2000,
+      "actual_measurement": {
+        "scope": "public_11_box_iiwa_plus_declared_table_collision_throughput_diagnostic",
+        "original_author_model_recovered": false,
+        "physical_experiment": false,
+        "direct_reference_speed_ratio_permitted": false,
+        "measured_batches": 5,
+        "configurations_per_batch": 2000000,
+        "mean_million_configurations_per_second": 11.636990391076386,
+        "sample_sd_million_configurations_per_second": 0.18357538187804687,
+        "median_million_configurations_per_second": 11.652105080585201,
+        "independently_verified_points": 2000,
+        "model_disagreements": 0,
+        "static_pairs_including_table": 52,
+        "robot_robot_pairs": 42,
+        "robot_table_pairs": 10,
+        "verification_file_sha256": "53841c02a29ccc078d190f8aa8acc5d58ea8dc248dc1c82013949ab7e366e941",
+        "batches": 5,
+        "sample_sd": 0.18357538187804687,
+        "verified_points": 2000
+      },
+      "physical_experiment": false,
+      "original_author_model_recovered": false,
+      "direct_reference_speed_ratio_permitted": false,
+      "required_acceptance": [
+        "saved full float32 configurations and SHA256",
+        "all warmup/repeat collision flags and hashes",
+        "actual synchronous wrapper timings",
+        "candidate pair names/count separated into robot-robot and robot-table",
+        "at least 2000 exact-input Drake signed-distance checks",
+        "binary/source/runtime identities and declared unavailable build flags",
+        "all failures and mismatches retained"
+      ],
+      "evidence": [
+        "reproduction/reports/paper_completion/public_iiwa_throughput.md"
+      ],
+      "exact_reproduction": false,
+      "run_directory": "reproduction/runs/20261025T100718.382125Z_public_iiwa_throughput",
+      "source_manifest_status": "completed_diagnostic",
+      "source_summary_sha256": "7d8a77bf43e2e05fc89ef74e6c0704308b98f6af354d5e7212e847f17b8b57b3",
+      "source_manifest_sha256": "c0411a52544f91b9c42a86f89a28ded5cc3dd6dce137064c92a2dbafbf65a4b7",
+      "index_path": "reproduction/reports/paper_completion/throughput_index.json"
+    },
+    {
+      "id": "LGCS_license_independent_saved_input_diagnostic",
+      "paper_reference": "VII-A4;GCS Eq5.5 saved-region objective",
+      "status": "completed_diagnostic_with_numeric_and_geometry_failures",
+      "published_experiment": false,
+      "original_paper_algorithm": false,
+      "primary_results_replaced": false,
+      "driver": "reproduction/enumerate_blocked_lgcs.py",
+      "actual_cases": 32,
+      "actual_solver_calls": 2898,
+      "actual_gpu_calls": 0,
+      "default_case_timeout_seconds": 120,
+      "default_simple_path_cap": 10000,
+      "exact_enumeration_claim_requires": [
+        "every simple source-to-target path enumerated",
+        "every corridor solve resolved within stated numerical tolerances",
+        "no timeout or path-cap truncation"
+      ],
+      "required_acceptance": [
+        "select every actual blocked_license case after primary run completes",
+        "saved original input hashes",
+        "all corridor statuses/objectives/candidate arrays",
+        "independent collision validation of selected candidate",
+        "all process timeouts and failures retained",
+        "separate diagnostic timing without Gurobi speed claim"
+      ],
+      "evidence": [
+        "reproduction/reports/paper_completion/enumeration_driver_static_checks.json",
+        "reproduction/reports/paper_completion/lgcs_enumeration_diagnostic.md"
+      ],
+      "exact_reproduction": false,
+      "actual_solver_call_scope": "corridor SOCP calls; separate graph feasibility/boundedness LP calls not counted here",
+      "run_directory": "reproduction/runs/20261025T100744.754623Z_LGCS_enumeration_diagnostic",
+      "actual_summary_path": "reproduction/reports/paper_completion/lgcs_enumeration_summary.json",
+      "actual_summary": {
+        "status": "completed_diagnostic_with_failures_retained",
+        "run_directory": "reproduction/runs/20261025T100744.754623Z_LGCS_enumeration_diagnostic",
+        "command": "bash local/python.sh -m reproduction.enumerate_blocked_lgcs --run-dir reproduction/runs/20261025T092858.440656Z_paper_completion_fr3 --execute --case-timeout 120 --path-limit 10000",
+        "driver_exit_code": 0,
+        "blocked_inputs": 32,
+        "attempted_cases": 32,
+        "worker_exit_codes": {
+          "0": 32
+        },
+        "timed_out": 0,
+        "enumeration_complete_cases": 32,
+        "numerically_optimal_cases": 31,
+        "independently_validated_candidates": 24,
+        "numerically_optimal_and_independently_validated": 23,
+        "collision_invalid_candidates": 8,
+        "corridors_attempted": 2898,
+        "independent_validation_points": 37800,
+        "independent_collision_samples": 425,
+        "sum_case_wall_seconds": 41.662133073434234,
+        "sum_enumeration_and_SOCP_seconds": 23.774620438925922,
+        "primary_source_inputs_unchanged": true,
+        "not_Gurobi_timing": true,
+        "primary_LGCS_blocked_license_replaced": false,
+        "gpu_calls": 0,
+        "limitations": [
+          "SOCP numerical statuses and feasibility tolerances are not exact arithmetic certificates",
+          "Independent dense FR3 check is not a continuous collision certificate",
+          "No inflation/recovery after the initial saved licensed-solver problem",
+          "One best independently valid candidate lacks a global-optimum conclusion because two corridor solves returned kSolverSpecificError"
+        ]
+      },
+      "unresolved_corridors": [
+        {
+          "case_id": "e04_r07_n12000",
+          "index": 48,
+          "sequence": [
+            0,
+            5,
+            6,
+            1,
+            2,
+            3,
+            4,
+            8
+          ],
+          "seconds": 0.006314405240118504,
+          "solver_success": false,
+          "solver_status": "SolutionResult.kSolverSpecificError",
+          "objective": null
+        },
+        {
+          "case_id": "e04_r07_n12000",
+          "index": 144,
+          "sequence": [
+            5,
+            6,
+            1,
+            2,
+            3,
+            4,
+            8
+          ],
+          "seconds": 0.004798925947397947,
+          "solver_success": false,
+          "solver_status": "SolutionResult.kSolverSpecificError",
+          "objective": null
+        }
+      ],
+      "stable_results_path": "reproduction/reports/paper_completion/lgcs_enumeration_results.json",
+      "raw_hashes": {
+        "reproduction/runs/20261025T100744.754623Z_LGCS_enumeration_diagnostic/manifest.json": "1b6c5b5c10f1d04c6de3f121cb42b6fdd4ef911c6febe261718127fbf2941553",
+        "reproduction/runs/20261025T100744.754623Z_LGCS_enumeration_diagnostic/inventory.json": "2b0ac59f4be1dfb21d025a70cc1b84e2e4f9ac480aef540f449ea17029e3d3ab",
+        "reproduction/runs/20261025T100744.754623Z_LGCS_enumeration_diagnostic/results.json": "1a28f8a4458678cc676aef4446d6470f9c32d110c16df2a84bf6d8eb11b7bc1a",
+        "reproduction/reports/paper_completion/lgcs_enumeration_summary.json": "b75be15cef82c73c510516e1841d42103ed10e9caced7c684f7015ecfd2df600",
+        "reproduction/reports/paper_completion/lgcs_enumeration_cases.csv": "992ec83671c00d1b65af8822ffbe58af295366634ca3c70a74c3876240c55949",
+        "reproduction/reports/paper_completion/lgcs_enumeration_raw_inventory.json": "8089b2916051b2bdd9fb705e1b1fd4835faa27b90e6253e2e12ce8e10ad102ab",
+        "reproduction/reports/paper_completion/lgcs_enumeration_execution.log": "2616e04b24e821f5d391c4b67a0742e8f7493084ed3f14a156b93a398366c3c3"
+      }
+    },
+    {
+      "id": "paperdate_public_core_build_and_probes",
+      "paper_reference": "IV-V;public core revision preceding arXiv submission",
+      "status": "completed_original_public_core_diagnostic",
+      "published_experiment": false,
+      "source_revision": "ee94f8145bb32ef6c08b1e575218335b9daf533f",
+      "build_elapsed_seconds": 20.549021692946553,
+      "original_source_files": 179,
+      "original_source_files_unchanged": true,
+      "installed_conda_wheel_unchanged": true,
+      "checks": {
+        "collision": {
+          "section": "collision",
+          "native_library": "/home/eric/wjg/wd/csdecomp/reproduction/vendor/paperdate_python/pycsdecomp/pycsdecomp_bindings.so",
+          "native_library_sha256": "d81bbc060fa3ed51ae775499eb4e4a74ad96cbd00cbbd8cb3641080e1f6e5d6d",
+          "python_executable": "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/bin/python",
+          "numpy_version": "2.2.6",
+          "modern_core_loaded": false,
+          "source_revision": "ee94f8145bb32ef6c08b1e575218335b9daf533f",
+          "scene": "constructed 2D point plus 3 online sphere obstacles; not original paper data",
+          "configuration_dimension": 2,
+          "robot_geometry_count": 1,
+          "has_gpu_recovery_interface": false,
+          "has_eizo_seed_option": false,
+          "samples": 3000,
+          "cuda_analytic_disagreements": 0,
+          "drake_samples": 300,
+          "cuda_drake_disagreements": 0,
+          "bridge_drake_disagreements": 0,
+          "collision_free_samples": 2789,
+          "minimum_absolute_boundary_distance": 0.00020167648209245002,
+          "passed": true,
+          "elapsed_seconds": 0.1495390529744327,
+          "returncode": 0,
+          "process_elapsed_seconds": 0.7146943788975477,
+          "log": "reproduction/reports/paper_completion/source_evidence/paperdate_core/20261025T100730.351287Z/collision.log",
+          "log_sha256": "aca5da746eee0676fffd924e273b5f1e9cf9a71c1f14fd13ff11f60a90873604"
+        },
+        "drm": {
+          "section": "drm",
+          "native_library": "/home/eric/wjg/wd/csdecomp/reproduction/vendor/paperdate_python/pycsdecomp/pycsdecomp_bindings.so",
+          "native_library_sha256": "d81bbc060fa3ed51ae775499eb4e4a74ad96cbd00cbbd8cb3641080e1f6e5d6d",
+          "python_executable": "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/bin/python",
+          "numpy_version": "2.2.6",
+          "modern_core_loaded": false,
+          "source_revision": "ee94f8145bb32ef6c08b1e575218335b9daf533f",
+          "scene": "constructed 2D point plus 3 online sphere obstacles; not original paper data",
+          "configuration_dimension": 2,
+          "robot_geometry_count": 1,
+          "has_gpu_recovery_interface": false,
+          "has_eizo_seed_option": false,
+          "requested_nodes": 300,
+          "actual_nodes": 300,
+          "directed_edges": 6832,
+          "collision_map_entries": 100,
+          "blocked_nodes": 15,
+          "plan_success": true,
+          "path_nodes": 3,
+          "endpoint_error": 4.768371586472142e-08,
+          "exact_segment_minimum_clearance": 0.06464542863347326,
+          "map_sha256": "d88422a5ed7121f4050800718a02fab6c554f292847feb1dded30641cc71fa06",
+          "original_offline_voxel_half_side": 0.2,
+          "original_offline_voxel_radius": 0.3464101552963257,
+          "passed": true,
+          "elapsed_seconds": 0.3419724511913955,
+          "returncode": 0,
+          "process_elapsed_seconds": 0.9153846669942141,
+          "log": "reproduction/reports/paper_completion/source_evidence/paperdate_core/20261025T100730.351287Z/drm.log",
+          "log_sha256": "aeb5a8066a2dc2945b6976daf88b978c98f136f70ff144decf38bf57108ca617"
+        },
+        "eizo": {
+          "section": "eizo",
+          "native_library": "/home/eric/wjg/wd/csdecomp/reproduction/vendor/paperdate_python/pycsdecomp/pycsdecomp_bindings.so",
+          "native_library_sha256": "d81bbc060fa3ed51ae775499eb4e4a74ad96cbd00cbbd8cb3641080e1f6e5d6d",
+          "python_executable": "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/bin/python",
+          "numpy_version": "2.2.6",
+          "modern_core_loaded": false,
+          "source_revision": "ee94f8145bb32ef6c08b1e575218335b9daf533f",
+          "scene": "constructed 2D point plus 3 online sphere obstacles; not original paper data",
+          "configuration_dimension": 2,
+          "robot_geometry_count": 1,
+          "has_gpu_recovery_interface": false,
+          "has_eizo_seed_option": false,
+          "faces": 5,
+          "seed_maximum_constraint_excess": -0.19999999999999996,
+          "independent_validation_samples": 2000,
+          "independent_collisions": 0,
+          "empirical_collision_fraction": 0.0,
+          "minimum_sample_clearance": 0.01718081680725213,
+          "original_eizo_sampling_seed": 1337,
+          "validation_sampling_seed": 20250415,
+          "options": {
+            "configuration_margin": 0.004999999888241291,
+            "tau": 0.5,
+            "delta": 0.05000000074505806,
+            "epsilon": 0.009999999776482582,
+            "bisection_steps": 5,
+            "num_particles": 1000,
+            "max_hyperplanes_per_iteration": 10,
+            "max_iterations": 30,
+            "mixing_steps": 50
+          },
+          "passed": true,
+          "validation_limit": "Empirical sampling and seed containment; not a deterministic certificate of the full region.",
+          "elapsed_seconds": 0.1177196647040546,
+          "returncode": 0,
+          "process_elapsed_seconds": 0.6651731757447124,
+          "log": "reproduction/reports/paper_completion/source_evidence/paperdate_core/20261025T100730.351287Z/eizo.log",
+          "log_sha256": "e60f39782bec118a378e4d273d9ff55266c82c76116306c90e707cf37694a80f"
+        }
+      },
+      "evidence": [
+        "reproduction/reports/paper_completion/paperdate_core_result.json"
+      ],
+      "primary_benchmarks_use_this_core": false,
+      "original_experiment_assets_recovered": false,
+      "exact_reproduction": false
+    },
+    {
+      "id": "final_verification_suite",
+      "paper_reference": "Reproduction verification, not a published benchmark",
+      "status": "completed_diagnostic",
+      "actual_tests_passed": 26,
+      "actual_warnings": 61,
+      "pytest_reported_seconds": 1.76,
+      "driver_elapsed_seconds": 2.1037681908346713,
+      "driver_exit_code": 0,
+      "includes_cpu_only_recording_tests": 8,
+      "evidence": [
+        "reproduction/reports/paper_completion/verification_commands.json",
+        "reproduction/logs/completion_verification_tests_final.log",
+        "reproduction/reports/paper_completion/throughput_recording_verification.json"
+      ],
+      "warning_scope": "One NumPy invalid-reduce warning from a regression infeasibility case; 60 Drake deprecated bridge API warnings retained.",
+      "exact_reproduction": false
+    }
+  ],
+  "blocking_exactness_gaps": [
+    "Original FR3 33-sphere centers/radii and filters absent: local33 total/32 active/211 static+640 dynamic=851 vs paper1187, paper527 self collisions.",
+    "Official prepublication joint limits were restored; authors actual limits still unconfirmed.",
+    "Original random scenes, pose tasks and seed lists absent.",
+    "Original NTO time transcription absent; endpoint copies inferred; formal Nc points conflicts with commented Nc-1 bindings.",
+    "MOSEK disabled, replaced by Clarabel; restricted Gurobi limits some actual MISOCPs.",
+    "Hardware15-trajectory execution,3camera recordings,calibration and original logs unavailable.",
+    "Different CPU/GPU/CUDA/solver versions; paper headline speedup is not established.",
+    "With max_iterations30 and no per-region statistical-acceptance certificate, do not claim all returned EI-ZO sets satisfy the theoretical delta/epsilon guarantee; trajectory collision validation is a different property."
+  ],
+  "source_evidence": {
+    "paper_pdf": "reproduction/paper/2504.10783v1.pdf",
+    "arxiv_source_inventory": "reproduction/reports/paper_completion/source_evidence/arxiv_source_inventory.json",
+    "optimization_audit": "reproduction/reports/paper_completion/optimization_audit.md",
+    "pipeline_audit": "reproduction/reports/paper_completion/pipeline_audit.md",
+    "runtime": "reproduction/environment.json"
+  },
+  "status_update_rule": "Only replace pending_run with completed/failed after reading final exit status, manifest, all requested terminal case records, method failures and independent audit. Planned400 is never an observed success count.",
+  "scope_audit": {
+    "checked_utc": "2026-10-25T09:31:13.957034+00:00",
+    "method": "Read active main.tex input graph plus all included sections and benchmark table; distinguish active published prose from comments and unreferenced draft files.",
+    "included_sections": [
+      "introduction",
+      "assumptions",
+      "relatedworks",
+      "fci",
+      "drm_preliminary",
+      "pipeline",
+      "experiments",
+      "limitations",
+      "conclusion",
+      "appendix"
+    ],
+    "unreferenced_draft_sections": [
+      "drm.tex",
+      "multiple_paths.tex"
+    ],
+    "explicitly_commented_draft_items": [
+      "experiments.tex:127 Simulation Benchmark and Ablation Study heading and plot TODO list",
+      "appendix.tex:26 IRIS-ZO vs EI-ZO heading",
+      "appendix.tex:29 additional recovery illustration"
+    ],
+    "conclusion": "No additional published delta/epsilon calibration sweep, CPU/GPU parallel-scaling experiment, IRIS-ZO baseline ablation, or >7DOF experiment is omitted. Recovery rates and one-path/two-path comparisons are analyses of the main benchmark, not separate run families. Appendix A is a proof. Hardware throughput6.9Mconfig/s is an additional published measurement whose original hardware/model are unavailable.",
+    "not_claimed": [
+      "empirical calibration of region-volume epsilon/delta confidence",
+      "reproduction of CPU/GPU scaling curves",
+      "continuous collision certification",
+      "15 physical hardware trajectories"
+    ],
+    "no_new_solver_or_GPU_runs": true,
+    "evidence": [
+      "reproduction/reports/paper_completion/source_evidence/arxiv_text/main.tex",
+      "reproduction/reports/paper_completion/source_evidence/arxiv_text/sections/appendix.tex",
+      "reproduction/reports/paper_completion/source_evidence/arxiv_text/sections/fci.tex",
+      "reproduction/reports/paper_completion/source_evidence/arxiv_text/sections/experiments.tex",
+      "reproduction/reports/paper_completion/source_evidence/arxiv_text/sections/limitations.tex",
+      "reproduction/reports/paper_completion/source_evidence/arxiv_text/figures/benchmarks/benchmark_results.tex"
+    ],
+    "no_new_solver_or_GPU_runs_scope": "True for the source-text scope audit itself; later actual executions are separately recorded in experiment_groups."
+  },
+  "updated_utc": "2026-10-25T10:14:35.702598+00:00",
+  "actual_evidence_index": {
+    "reproduction/reports/paper_completion/forest/summary.json": "704e258c9cc5a3ebbe563914c90d7828e2bc611d76dfe65f1c7861f220a514e4",
+    "reproduction/reports/paper_completion/fr3/summary.json": "e2acb001a0f760e3f2aea88f9153f3ca5f038872b2621c1b0865a12eb3dd8162",
+    "reproduction/reports/paper_completion/audit/forest/audit.json": "6e4cbdee7c0e0ef29e6dc212a9bada4e85a843d818b71e3a7f913ebe75f9c3e9",
+    "reproduction/reports/paper_completion/audit/fr3/audit.json": "12bbb6d2b0bf996d9ea84bad2303a90eab349ad49873d58f3545c9322f10ed42",
+    "reproduction/reports/paper_completion/throughput_index.json": "359f22ac7b3ba37beb405f3c1ad49e3e8b071216157c5b08bbae3f8b9cce32c0",
+    "reproduction/reports/paper_completion/lgcs_enumeration_summary.json": "b75be15cef82c73c510516e1841d42103ed10e9caced7c684f7015ecfd2df600",
+    "reproduction/reports/paper_completion/paperdate_core_result.json": "b42b15af7f224bb637b282d29883879943ad5a9f5292dad903471768460c927b",
+    "reproduction/reports/paper_completion/lgcs_enumeration_results.json": "8a9c33b8f1feae357c9c0dd7d8fc6ee81b8ba37a30ce8420abed57c42565c655",
+    "reproduction/logs/completion_verification_tests_final.log": "bf8315b20e3d864abf8048ea522a25036b78883dc6494b821fe215dc44944d52"
+  }
+}

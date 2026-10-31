@@ -1,0 +1,53 @@
+{
+  "backend": "Python/matplotlib",
+  "core_conclusion": "Compare actual paper-parameter reconstructions without implying access to original unreleased geometry, inputs or headline claim.",
+  "figures": [
+    {
+      "name": "paper_results",
+      "panels": [
+        "Forest full-denominator validation",
+        "FR3 full-denominator validation",
+        "Forest all-attempt runtime CDF",
+        "FR3 all-attempt runtime CDF",
+        "Forest common-validated paired cost ratios",
+        "FR3 common-validated paired cost ratios"
+      ],
+      "dimensions_inches": [
+        7.2,
+        8.7
+      ]
+    },
+    {
+      "name": "paper_case_statuses",
+      "panels": [
+        "all 400 Forest cases for each of five methods",
+        "all 400 FR3 cases for each of five methods"
+      ],
+      "dimensions_inches": [
+        9.4,
+        7.5
+      ]
+    },
+    {
+      "name": "fr3_scene_replay",
+      "selection": "lexicographically first FR3 case regardless of result",
+      "content": "actual 33-sphere start/goal geometries, all 20 obstacle spheres, saved TCP trajectories including invalid candidate",
+      "dimensions_inches": [
+        7.5,
+        5.2
+      ]
+    }
+  ],
+  "denominators": "every requested case, including invalid DRM seeds, solver/validation/license failures and absent outputs",
+  "uncertainty": "full observed CDFs and proportions; paired scatter shows all common validated observations with median and IQR, not an iid confidence interval",
+  "exports": [
+    "editable PDF",
+    "editable SVG",
+    "600dpi LZW TIFF",
+    "300dpi PNG"
+  ],
+  "minimum_font_points": 5,
+  "timing": "Recorded construction + optimization for all attempted solves; caught exceptions retain separately flagged method-wall-time fallbacks. Independent validation, offline maps, warmup and IO otherwise excluded. CDF labels disclose observed n; unattempted cases have no invented zero time.",
+  "fidelity_limit": "official-geometry sphere fit, reconstructed inputs, solver/hardware changes; exact author model and original results unavailable",
+  "minimum_body_and_legend_font_points": 6
+}

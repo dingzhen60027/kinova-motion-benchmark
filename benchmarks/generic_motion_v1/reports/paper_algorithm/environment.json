@@ -1,0 +1,95 @@
+{
+  "python": "3.10.22 | packaged by conda-forge | (main, Oct  6 2026, 23:02:24) [GCC 14.4.0]",
+  "executable": "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/bin/python",
+  "platform": "Linux-6.8.0-48-generic-x86_64-with-glibc2.35",
+  "os_release": "PRETTY_NAME=\"Ubuntu 22.04.5 LTS\"\nNAME=\"Ubuntu\"\nVERSION_ID=\"22.04\"\nVERSION=\"22.04.5 LTS (Jammy Jellyfish)\"\nVERSION_CODENAME=jammy\nID=ubuntu\nID_LIKE=debian\nHOME_URL=\"https://www.ubuntu.com/\"\nSUPPORT_URL=\"https://help.ubuntu.com/\"\nBUG_REPORT_URL=\"https://bugs.launchpad.net/ubuntu/\"\nPRIVACY_POLICY_URL=\"https://www.ubuntu.com/legal/terms-and-policies/privacy-policy\"\nUBUNTU_CODENAME=jammy\n",
+  "gpu": "Quadro RTX 8000, 570.211.01, 49152 MiB\n",
+  "packages": {
+    "csdecomp": {
+      "version": "0.1.2",
+      "direct_url": null
+    },
+    "scsplanning": {
+      "version": "0.1.0",
+      "direct_url": "{\"dir_info\": {}, \"url\": \"file:///home/eric/wjg/wd/csdecomp/reproduction/vendor/scsplanning\"}"
+    },
+    "pybezier": {
+      "version": "0.1.4",
+      "direct_url": null
+    },
+    "numpy": {
+      "version": "2.2.6",
+      "direct_url": null
+    },
+    "scipy": {
+      "version": "1.15.3",
+      "direct_url": null
+    },
+    "drake": {
+      "version": "1.51.1",
+      "direct_url": null
+    },
+    "clarabel": {
+      "version": "0.11.1",
+      "direct_url": null
+    }
+  },
+  "modules": {
+    "csdecomp": {
+      "file": "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/lib/python3.10/site-packages/csdecomp/__init__.py",
+      "sha256": "2af061c48a4f67f923f8ae134d4252c0a7bb1dea76a310439d8066714a504c6d"
+    },
+    "scsplanning": {
+      "file": "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/lib/python3.10/site-packages/scsplanning/__init__.py",
+      "sha256": "98ab504bddc50333e3b17ac5ff1fdb5c5124f573ffd30743a84c898e5b52b375"
+    },
+    "scsplanning.polygonal": {
+      "file": "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/lib/python3.10/site-packages/scsplanning/polygonal.py",
+      "sha256": "a8b44ede8e553a87451871dc4f59fc90fb98e26c04adc709ffbfb7d8eb1d1473"
+    },
+    "scsplanning.base_program": {
+      "file": "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/lib/python3.10/site-packages/scsplanning/base_program.py",
+      "sha256": "3cebf7b9590c1113e33e3658dde473e760484db2503cfdf40bc5857addc4cb06"
+    },
+    "pybezier": {
+      "file": "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/lib/python3.10/site-packages/pybezier/__init__.py",
+      "sha256": "431ad493db8d9ff76ec5f646c422fead0221f628d8f7931770a5c4508df3a560"
+    },
+    "numpy": {
+      "file": "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/lib/python3.10/site-packages/numpy/__init__.py",
+      "sha256": "6ae17b070c0f70a8e3cad89a510a256942e5a1f37ea5feb120cec167ed2a6236"
+    },
+    "scipy": {
+      "file": "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/lib/python3.10/site-packages/scipy/__init__.py",
+      "sha256": "185913aa107512fafd5cf89dfd452a8719b45a6eba833e2dcee2cbfd18b4bbe5"
+    }
+  },
+  "actual_solver_probes": {
+    "ClarabelSolver": {
+      "returncode": 0,
+      "stdout": "{\"available\": true, \"enabled\": true, \"success\": true, \"status\": \"SolutionResult.kSolutionFound\"}\n",
+      "stderr": ""
+    },
+    "MosekSolver": {
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "Traceback (most recent call last):\n  File \"<string>\", line 1, in <module>\nValueError: MosekSolver cannot Solve because MosekSolver::enabled() is false, i.e., MosekSolver has not been properly configured for use. Typically this means that an environment variable has not been set. Refer to the MosekSolver class overview documentation for how to enable it.\n"
+    },
+    "GurobiSolver": {
+      "returncode": 1,
+      "stdout": "",
+      "stderr": "Traceback (most recent call last):\n  File \"<string>\", line 1, in <module>\nValueError: GurobiSolver cannot Solve because GurobiSolver::available() is false, i.e., GurobiSolver has not been compiled as part of this binary. Refer to the GurobiSolver class overview documentation for how to compile it.\n"
+    },
+    "SnoptSolver": {
+      "returncode": 0,
+      "stdout": "{\"available\": true, \"enabled\": true, \"success\": true, \"status\": \"SolutionResult.kSolutionFound\"}\n",
+      "stderr": ""
+    },
+    "IpoptSolver": {
+      "returncode": 0,
+      "stdout": "{\"available\": true, \"enabled\": true, \"success\": true, \"status\": \"SolutionResult.kSolutionFound\"}\n",
+      "stderr": ""
+    }
+  },
+  "environment_rebuilt": false
+}

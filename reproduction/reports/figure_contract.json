@@ -1,0 +1,55 @@
+{
+  "core_conclusion": "Show the actual Forest reconstruction's validated reliability, cost, and runtime while making incomplete original-artifact coverage visible; do not imply replication of 17.1x or 100% reliability.",
+  "archetype": "quantitative grid with a geometry example",
+  "backend": "Python/matplotlib, matching the existing Python experiment workflow",
+  "figure_1": {
+    "panels": [
+      "A: lexicographically first frozen Forest case with all 15 obstacles and saved candidate paths",
+      "B: independent validation pass counts over the full requested denominator",
+      "C: actual distance-problem runtime distributions, all recorded attempts",
+      "D: actual time-problem runtime distributions, all recorded attempts"
+    ],
+    "dimensions_inches": [
+      7.2,
+      6.2
+    ]
+  },
+  "figure_2": {
+    "purpose": "show every case's result and failures without selecting favourable seeds",
+    "layout": "one status heatmap per method, environment seed by roadmap seed/node count",
+    "dimensions_inches": [
+      9.0,
+      8.0
+    ]
+  },
+  "selection": {
+    "quantitative": "all requested cases and methods; absent outputs retained as not_run",
+    "geometry_example": "lexicographically first case, an illustration only; not selected by outcome"
+  },
+  "uncertainty": "main figures are full observed ECDFs and full-denominator proportions; report empirical SD and environment-clustered bootstrap intervals in tables, no iid significance claim over repeated seeds",
+  "fonts": {
+    "family": "DejaVu Sans",
+    "minimum_points": 6,
+    "editable_svg_text": true
+  },
+  "exports": [
+    "SVG with editable text",
+    "PDF with editable text",
+    "TIFF 600dpi LZW",
+    "PNG preview 300dpi"
+  ],
+  "source_data": [
+    "jobs.csv",
+    "methods.csv",
+    "status_counts.csv",
+    "paired_comparisons.csv"
+  ],
+  "risk_checks": [
+    "published values kept in reference-only table",
+    "hardware differences explicit",
+    "Franka and KUKA are marked unavailable rather than replaced by Kinova",
+    "solver success separated from independent collision validation",
+    "paired costs only on common validated successes",
+    "no discarded timeouts or solver errors"
+  ]
+}

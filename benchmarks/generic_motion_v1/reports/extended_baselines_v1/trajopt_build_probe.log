@@ -1,0 +1,51 @@
+{
+  "fingerprint": {
+    "author_commit": "9c634c060f7e2d61c4a888b0a5700d668a5d16f8",
+    "archive_sha256": "87d1d9246334530db6b5219e2852148b201259f7f3b38cc4fdf9f4e214f3ad09",
+    "bridge_sha256": "08b7d4fb2b90bda6d612371a6f7d43220fbc5919621aebdc4ea06ceeb6cc4399"
+  },
+  "commands": [
+    [
+      "g++",
+      "-std=c++11",
+      "-O2",
+      "-no-pie",
+      "-I/home/eric/wjg/wd/csdecomp/.local_setup/solver_probes/trajopt_native_v1/source/src",
+      "-I/usr/include/eigen3",
+      "-DBPMPD_WORKING_DIR=getenv(\"TRAJOPT_BPMPD_LOG_DIR\")",
+      "/home/eric/wjg/wd/csdecomp/.local_setup/solver_probes/trajopt_native_v1/source/src/sco/bpmpd_caller.cpp",
+      "/home/eric/wjg/wd/csdecomp/.local_setup/solver_probes/trajopt_native_v1/source/3rdpartylib/bpmpd_linux64.a",
+      "-o",
+      "/home/eric/wjg/wd/csdecomp/.local_setup/solver_probes/trajopt_native_v1/bpmpd_caller"
+    ],
+    [
+      "g++",
+      "-std=c++11",
+      "-O2",
+      "-shared",
+      "-fPIC",
+      "-I/home/eric/wjg/wd/csdecomp/.local_setup/solver_probes/trajopt_native_v1/source/src",
+      "-I/usr/include/eigen3",
+      "-DHAVE_BPMPD",
+      "-DBPMPD_CALLER=\"/home/eric/wjg/wd/csdecomp/.local_setup/solver_probes/trajopt_native_v1/bpmpd_caller\"",
+      "/home/eric/wjg/wd/csdecomp/.local_setup/solver_probes/trajopt_native_v1/source/src/sco/solver_interface.cpp",
+      "/home/eric/wjg/wd/csdecomp/.local_setup/solver_probes/trajopt_native_v1/source/src/sco/modeling.cpp",
+      "/home/eric/wjg/wd/csdecomp/.local_setup/solver_probes/trajopt_native_v1/source/src/sco/expr_ops.cpp",
+      "/home/eric/wjg/wd/csdecomp/.local_setup/solver_probes/trajopt_native_v1/source/src/sco/expr_vec_ops.cpp",
+      "/home/eric/wjg/wd/csdecomp/.local_setup/solver_probes/trajopt_native_v1/source/src/sco/optimizers.cpp",
+      "/home/eric/wjg/wd/csdecomp/.local_setup/solver_probes/trajopt_native_v1/source/src/sco/modeling_utils.cpp",
+      "/home/eric/wjg/wd/csdecomp/.local_setup/solver_probes/trajopt_native_v1/source/src/sco/num_diff.cpp",
+      "/home/eric/wjg/wd/csdecomp/.local_setup/solver_probes/trajopt_native_v1/source/src/sco/bpmpd_interface.cpp",
+      "/home/eric/wjg/wd/csdecomp/.local_setup/solver_probes/trajopt_native_v1/source/src/utils/logging.cpp",
+      "/home/eric/wjg/wd/csdecomp/.local_setup/solver_probes/trajopt_native_v1/source/src/utils/stl_to_string.cpp",
+      "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/native/trajopt_bridge.cpp",
+      "-o",
+      "/home/eric/wjg/wd/csdecomp/.local_setup/solver_probes/trajopt_native_v1/libtrajopt_benchmark.so"
+    ]
+  ],
+  "status": "ready",
+  "binaries": {
+    "bpmpd_caller": "9f0d0023fa485b54407681d5ced2ad6cf7ca28de03916733ebf9b7a2cae9d1a7",
+    "libtrajopt_benchmark.so": "8ad6947f9287b37b80b936b41e0d927a1ba28357ae3b2aeccd89c74c1261c604"
+  }
+}

@@ -1,0 +1,151 @@
+{
+  "sample_id": "joint_0673",
+  "configuration": [
+    0.6794938994358155,
+    0.0976612114748685,
+    1.2689017534068427,
+    -1.4209263179006586,
+    -2.1865462323902545,
+    0.6687422430031038,
+    -0.5166310662752425
+  ],
+  "occurrences": [
+    {
+      "condition": "static_table",
+      "reference_collisions": [
+        {
+          "first_geometry": "fr3::fr3_link5_official_convex_hull",
+          "second_geometry": "fr3::fr3_hand_official_convex_hull",
+          "first_link": "fr3_link5",
+          "second_link": "fr3_hand",
+          "first_kind": "official_mesh_convex_hull",
+          "second_kind": "official_mesh_convex_hull",
+          "distance": -0.0005418788432862131
+        }
+      ],
+      "sphere_minimum_distance": 0.009428557205115304
+    },
+    {
+      "condition": "online_20_spheres",
+      "reference_collisions": [
+        {
+          "first_geometry": "fr3::fr3_link5_official_convex_hull",
+          "second_geometry": "fr3::fr3_hand_official_convex_hull",
+          "first_link": "fr3_link5",
+          "second_link": "fr3_hand",
+          "first_kind": "official_mesh_convex_hull",
+          "second_kind": "official_mesh_convex_hull",
+          "distance": -0.0005418788432862131
+        }
+      ],
+      "sphere_minimum_distance": 0.009428557205115304
+    }
+  ],
+  "status": "evaluated",
+  "conclusion": "numerically_separated_original_triangle_meshes",
+  "surface_distance": {
+    "distance": 0.03441026573427353,
+    "kind": "vertex_face_or_edge_distance",
+    "point_A": [
+      -0.08472365559105116,
+      0.42140271616709685,
+      0.7597908335580462
+    ],
+    "point_B": [
+      -0.05571758064433435,
+      0.40745355767257074,
+      0.7719619050549752
+    ],
+    "triangle_A": 171,
+    "triangle_B": 195,
+    "total_triangle_pairs": 53200,
+    "tested_triangle_pairs": 530,
+    "search": "AABB distance lower-bound pruning; early exit only after proper transverse witness"
+  },
+  "containment": [
+    {
+      "direction": "A_in_B",
+      "component": 0,
+      "representative_triangle": 0,
+      "representative_point": [
+        -0.07396568683520632,
+        0.34198049405131653,
+        0.6675057100859986
+      ],
+      "status": "outside",
+      "winding_number": 7.178335218580853e-18,
+      "nearest_integer": 0,
+      "integer_residual": 7.178335218580853e-18,
+      "minimum_vertex_distance": 0.11036601520276797
+    },
+    {
+      "direction": "B_in_A",
+      "component": 0,
+      "representative_triangle": 0,
+      "representative_point": [
+        0.038137124131098044,
+        0.43753378280815575,
+        0.8303368391241052
+      ],
+      "status": "outside",
+      "winding_number": -8.834874115176436e-18,
+      "nearest_integer": 0,
+      "integer_residual": 8.834874115176436e-18,
+      "minimum_vertex_distance": 0.1305153704687123
+    }
+  ],
+  "mesh_topology_and_self_screen_pass": true,
+  "link5_world_transform": [
+    [
+      0.8311491032529789,
+      0.42854071971707475,
+      -0.3543219153624857,
+      -0.1318566432758587
+    ],
+    [
+      0.25355044548460415,
+      0.2750269036072919,
+      0.9274008701132128,
+      0.4456577814641005
+    ],
+    [
+      0.4948770956069069,
+      -0.8606468810357457,
+      0.11993167391108692,
+      0.772699830409785
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "hand_world_transform": [
+    [
+      0.5279875972448945,
+      0.3031207927480813,
+      0.7933138610659324,
+      -0.008917175738908881
+    ],
+    [
+      0.47066337737947483,
+      0.6731083000545178,
+      -0.5704394810945883,
+      0.452726105539251
+    ],
+    [
+      -0.7068982121559717,
+      0.6745687521679994,
+      0.2127249779626245,
+      0.8361736527029154
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "limitation": "Custom float64 numerical diagnostic, not exact predicates or a formal certificate. AABB pruning, triangle distances, topology/self-intersection screens and winding containment tests are all recorded. Near contact, invalid topology or ambiguous winding remain unresolved. Meshes are not repaired, welded by tolerance, reoriented, inflated, decomposed or refitted. No benchmark collision flags are changed."
+}

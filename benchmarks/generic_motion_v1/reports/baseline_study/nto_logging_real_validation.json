@@ -1,0 +1,1769 @@
+{
+  "additional_cpu_backend_diagnostic": {
+    "autodiff_direct_box_box_supported": false,
+    "conclusion": "The captured q independently reproduces the same BoxBoxGradient backend assertion in a single double query for left inner finger versus table. No backend fix has been applied; this is not a planning infeasibility certificate.",
+    "evidence_files_sha256": {
+      "benchmarks/generic_motion_v1/reports/baseline_study/nto_backend_last_q_double_pairs.log": "0ca021c495edebe78169c855723406aa7988d6aea9b3e26c7938ec9238954e58",
+      "benchmarks/generic_motion_v1/reports/baseline_study/nto_backend_last_q_isolated_pair.log": "9b017273014eb9607022f7105af5edc3d67ea56557d9324f99dc1bb7a1d61b4d",
+      "benchmarks/generic_motion_v1/reports/baseline_study/nto_backend_last_q_pair_probe.log": "3170cf196e7f3dfbed430e19557997ad8455d08561bcb4d450123f4a217f67fa",
+      "benchmarks/generic_motion_v1/reports/baseline_study/nto_backend_last_q_probe.log": "0ca021c495edebe78169c855723406aa7988d6aea9b3e26c7938ec9238954e58",
+      "benchmarks/generic_motion_v1/reports/baseline_study/nto_backend_last_q_probe/diagnosis.json": "edbf332e863ddf739085ede10ab54e9fee0c24c36ee72f65553f0ebe6eabe768",
+      "benchmarks/generic_motion_v1/reports/baseline_study/nto_backend_last_q_probe/double_pair_probe_progress.json": "50438e72f515124094ed1f780d0df7730a02076ec32ec2a904264cf371ad314e",
+      "benchmarks/generic_motion_v1/reports/baseline_study/nto_backend_last_q_probe/isolated_pair_probe.json": "ec2168983f4c0f3b182759977a3b076eb98fd98c9489698e3c64df748e4a9d32",
+      "benchmarks/generic_motion_v1/reports/baseline_study/nto_backend_last_q_probe/last_evaluated_q.npy": "46faf400094085a1474cd9cfb3729d1eecb48143bcd4a5474e34741247ddcbb4",
+      "benchmarks/generic_motion_v1/reports/baseline_study/nto_backend_last_q_probe/nto_initial.npz": "5878b88faf29e3d400650d112616463ca989a8dd861679278b6a234d7a180383",
+      "benchmarks/generic_motion_v1/reports/baseline_study/nto_backend_last_q_probe/nto_parameters.json": "75f73dfbe6a47e006dc67ce01405ab52126c1ad8b78c68ce983ee29f3be60343",
+      "benchmarks/generic_motion_v1/reports/baseline_study/nto_backend_last_q_probe/nto_solver_result.json": "e93eb6370d8614627a74dd2c8af09866f388a32eebee5ec92afdcc6554314155",
+      "benchmarks/generic_motion_v1/reports/baseline_study/nto_backend_last_q_probe/pair_probe_progress.json": "cfc533d7fb81398e69cc06e103adcfde76a533e317102aaa27e263b9f4d01fd8",
+      "benchmarks/generic_motion_v1/reports/baseline_study/nto_backend_last_q_probe/reproduce_isolated_pair.py": "783b6f74dbb3d9473c3aea048d3b572c6aad2a5cfe369888240ce2f5cfe2f657",
+      "benchmarks/generic_motion_v1/reports/baseline_study/nto_backend_last_q_probe/snopt.log": "d03bef869603b05c73673ac6c3ecbced231c006c04f71fd77f631d003ddf1140"
+    },
+    "execution_note": "Standalone reproduction file preserves the executed inline operation; no further solver/probe run after the diagnostic completed.",
+    "isolated_double_pair": [
+      "robotiq::left_inner_finger_collision",
+      "table::Box"
+    ],
+    "isolated_query_reproduced_assertion": true,
+    "last_evaluated_q": [
+      2.0755408865839566,
+      2.0011936907854526,
+      -1.8898095919170692,
+      1.9083356598539885,
+      -1.4039254524900748,
+      -1.0345121069462058,
+      1.9903692918549658
+    ],
+    "last_q_caveat": "Context positions after exception; not guaranteed to be the failing callback position or collocation point",
+    "original_solver_call_exact_failure_q_proven": false,
+    "pair_scan_completed_before_fatal": 18,
+    "process_exit_codes": {
+      "autodiff_pair_probe": 1,
+      "capture_then_direct_constraint": 1,
+      "double_pair_scan": 1,
+      "isolated_double_pair": 1
+    },
+    "same_solver_exception_reproduced": true,
+    "scope": "One fixed prior dev path solve, followed by bounded CPU distance probes; no runtime or geometry modification",
+    "solver_call_capture_seconds": 6.569768124260008
+  },
+  "audit_scope_after_addendum": "Read-only paired logging audit plus explicitly authorized bounded CPU backend diagnosis; no GPU or formal-test query",
+  "checked_files": 285,
+  "checked_source_files_sha256": {
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-bottleneck-000-p00/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_distance-f6178f84/attempts/0001/candidate.json": "d2561a90184b7acb09c4a8541b5141f8ef1ed048c1cd63e8a0f8891af20d2f90",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-bottleneck-000-p00/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_distance-f6178f84/attempts/0001/candidate.npz": "1f157b09e2fa72f98d8ef6d3825d65ae7fe08ac8891fa0ccf52c00a089efa554",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-bottleneck-000-p00/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_distance-f6178f84/attempts/0001/endpoint_audit.json": "308ea22f61e6f3f480019fee8547b2eeb574609feee2f7088c8fb51c2ad7b2fa",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-bottleneck-000-p00/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_distance-f6178f84/attempts/0001/evaluation.json": "372ae73a7a1f41af9e91117391f81eadf156682bbfb30f4a1bbbcf53ca748a24",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-bottleneck-000-p00/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_distance-f6178f84/attempts/0001/frontend_validation/trajectory_samples.npz": "7eaca181474da6209b9eaa2b95924549cbfb8b3215f058d0dd68fb263959b4f1",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-bottleneck-000-p00/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_distance-f6178f84/attempts/0001/frontend_validation/validation.json": "38f8e8b0a982aaf23ff9b731416c9bc526badedb0698bc38e214a5f0fa1c1764",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-bottleneck-000-p00/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_distance-f6178f84/attempts/0001/input.json": "42f30bb4920032b1f81decde42b8113dc8677637990046b8ee695d62a0c005c8",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-bottleneck-000-p00/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_distance-f6178f84/attempts/0001/nto_initial.npz": "f41efecbfea3141b1356efe832d5da5ed7386af0e0814ca555f8901a0af2f42f",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-bottleneck-000-p00/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_distance-f6178f84/attempts/0001/nto_parameters.json": "b38b5260cbb5bf081dfbd4638a72bfba3931f49febc79cda24374b5a05419767",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-bottleneck-000-p00/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_distance-f6178f84/attempts/0001/nto_solver_raw.npz": "ab98abffbea2b8e3f78132297f6f3c2e4202329e8b65954441d97bcda41c7fdb",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-bottleneck-000-p00/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_distance-f6178f84/attempts/0001/nto_solver_result.json": "5fb1d467ed87ce0489060ce14bab6b307f97a9c9e6e4b637732da7e3890c3aaa",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-bottleneck-000-p00/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_distance-f6178f84/attempts/0001/paper_nto_dependencies.json": "ebb139dc737a89efd3cb02f5a514676a02833a6db97d7204af16dc0e3bd2d2a9",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-bottleneck-000-p00/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_distance-f6178f84/attempts/0001/path.npy": "f3bcd3cc42d93c124cba90798181e0f37c504a888739308eca593c8a68bc303c",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-bottleneck-000-p00/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_distance-f6178f84/attempts/0001/path_provenance.json": "43c2a0e8da99857f36ac3a27b7787910290132ab2faed1ab387e53fa5bf1b598",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-bottleneck-000-p00/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_distance-f6178f84/attempts/0001/phase.json": "83f0c921c3b6678669139f8645811437a1cd2980b8364f27de70707fa34fcc8f",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-bottleneck-000-p00/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_distance-f6178f84/attempts/0001/process.json": "cd59d2de0a7aaf0a9f5bceba52545429d0a1abb90df86d6902ddff973dbffd86",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-bottleneck-000-p00/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_distance-f6178f84/attempts/0001/receipt.json": "1824d1f03a0cffa7c0870179df6092c87f35231ebef940dc6e618d3440ce6760",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-bottleneck-000-p00/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_distance-f6178f84/attempts/0001/request.json": "91c5ec2fb48a63f652fcb16f03c2997e6d4d60914b381f7ea151da8d7daeb457",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-bottleneck-000-p00/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_distance-f6178f84/attempts/0001/result.json": "398a957a801e49dcac23aae5ccb2bf75ba348e6d8ae578979a04ac1a28ccdca4",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-bottleneck-000-p00/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_distance-f6178f84/attempts/0001/runtime_sources.json": "2b43ec7e54d57391f52594b4e98a85fd683b93032c9458891d47c5eed0666fee",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-bottleneck-000-p00/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_distance-f6178f84/attempts/0001/snopt.log": "d9d585e80e1f74d8b8a8c9e66400569d57618d985258bfdf198f7dddb5675fe2",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-bottleneck-000-p00/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_distance-f6178f84/attempts/0001/stderr.log": "ace6258e0a63870c4f03bc433b7939e703a2930e1b658f47cea6da62f077056b",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-bottleneck-000-p00/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_distance-f6178f84/attempts/0001/stdout.log": "276518ad02b8841c5d59ed8c8583a3927c7d4afba79a70df680dc5461b570c4e",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-bottleneck-000-p00/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_distance-f6178f84/attempts/0001/trajectory_samples.npz": "0f3bc32ecbbe64ceda8630f75c98d0793c4761e47c3f1c62c75b067336866ccc",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-bottleneck-000-p00/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_distance-f6178f84/attempts/0001/validation.json": "e51264a14f0909347c854c1ae34be8061af4ed78dc33ada207b108f3a6eb6833",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-bottleneck-000-p00/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_time-9c55cb47/attempts/0001/candidate.json": "b93b6d35a91b8dd15877f5d0c724b9e72c7eef3f5abc2acdb0704bf5fab96c31",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-bottleneck-000-p00/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_time-9c55cb47/attempts/0001/candidate.npz": "f8f953f1b2a70c4a19e3b6f15f6309afd7a2d1207bb2a36138af65b6007f4bfb",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-bottleneck-000-p00/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_time-9c55cb47/attempts/0001/endpoint_audit.json": "308ea22f61e6f3f480019fee8547b2eeb574609feee2f7088c8fb51c2ad7b2fa",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-bottleneck-000-p00/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_time-9c55cb47/attempts/0001/evaluation.json": "372ae73a7a1f41af9e91117391f81eadf156682bbfb30f4a1bbbcf53ca748a24",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-bottleneck-000-p00/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_time-9c55cb47/attempts/0001/frontend_validation/trajectory_samples.npz": "7eaca181474da6209b9eaa2b95924549cbfb8b3215f058d0dd68fb263959b4f1",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-bottleneck-000-p00/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_time-9c55cb47/attempts/0001/frontend_validation/validation.json": "38f8e8b0a982aaf23ff9b731416c9bc526badedb0698bc38e214a5f0fa1c1764",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-bottleneck-000-p00/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_time-9c55cb47/attempts/0001/input.json": "4e0a176b8a6d8a1ce95d75e1481bfcae895502debf5858c5d7e65521dcae58c5",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-bottleneck-000-p00/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_time-9c55cb47/attempts/0001/ipopt.log": "376f772bb6d3a196b1093b22397f69bc77d61a40e76abbe227819c551cda500d",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-bottleneck-000-p00/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_time-9c55cb47/attempts/0001/nto_initial.npz": "6d3e4ed592e7951140fadd79c4d4b835989567a805a53051a4b63f59cace313f",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-bottleneck-000-p00/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_time-9c55cb47/attempts/0001/nto_parameters.json": "c9a3b449f9069a74fdd156c50b2126a65403b2d155335ae2436a6ec64587b388",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-bottleneck-000-p00/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_time-9c55cb47/attempts/0001/nto_solver_raw.npz": "d7fffdff4601c38a7badf0e30db359a0854163d52e0e303ef2d37f82764c4df7",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-bottleneck-000-p00/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_time-9c55cb47/attempts/0001/nto_solver_result.json": "2c9113ba539e3c39de46bf48b679cc62515710c22e064a0f39b39228e68dc427",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-bottleneck-000-p00/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_time-9c55cb47/attempts/0001/paper_nto_dependencies.json": "7862d9ee296d1265cfdaa40efebcec1fa224cc14d5f95f3858d6e4b6faeffe20",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-bottleneck-000-p00/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_time-9c55cb47/attempts/0001/path.npy": "f3bcd3cc42d93c124cba90798181e0f37c504a888739308eca593c8a68bc303c",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-bottleneck-000-p00/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_time-9c55cb47/attempts/0001/path_provenance.json": "43c2a0e8da99857f36ac3a27b7787910290132ab2faed1ab387e53fa5bf1b598",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-bottleneck-000-p00/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_time-9c55cb47/attempts/0001/phase.json": "62d37229a278fe77a1839a185a9c1073aa1116f09c6837d1906e6730478e1a54",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-bottleneck-000-p00/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_time-9c55cb47/attempts/0001/process.json": "cb393831b0eb5b38df58b70f0758764f7bd60ac740baa5065951ebe4c4417373",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-bottleneck-000-p00/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_time-9c55cb47/attempts/0001/receipt.json": "b05941af514c583cbaad79a2ce0558a5bf6719047c93583c31ad909dd02ee54d",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-bottleneck-000-p00/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_time-9c55cb47/attempts/0001/request.json": "55429969c74988b78bd5a20cc5dfab83003ad7e1842fe7fb7357759e95def4b9",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-bottleneck-000-p00/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_time-9c55cb47/attempts/0001/result.json": "2988ad3b4152205c4888d4b9f8c0950082749349f617c502b967ef15a763d242",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-bottleneck-000-p00/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_time-9c55cb47/attempts/0001/runtime_sources.json": "2b43ec7e54d57391f52594b4e98a85fd683b93032c9458891d47c5eed0666fee",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-bottleneck-000-p00/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_time-9c55cb47/attempts/0001/stderr.log": "ace6258e0a63870c4f03bc433b7939e703a2930e1b658f47cea6da62f077056b",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-bottleneck-000-p00/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_time-9c55cb47/attempts/0001/stdout.log": "273cad9beb002e7f63a77141846f42fba6126357828f1a883ffdf4044490aae1",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-bottleneck-000-p00/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_time-9c55cb47/attempts/0001/trajectory_samples.npz": "b3698cfd9272d3fa6fd279efbc34282228db55a5d501809daf92fe64ff17a20d",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-bottleneck-000-p00/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_time-9c55cb47/attempts/0001/validation.json": "8c6bb0e0e483273b7fc9699ee7ee1a013ac1572888e1f9c81b7b6abb438af9e9",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-bottleneck-000-p00/run_manifest.json": "4aeb695baa610b12d18c629be380c7fc5cbfcbc28f3c260aeaeb9ffc605d2740",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-route_choice-002-p00/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_distance-48b608ce/attempts/0001/endpoint_audit.json": "ddbf8adf88f6492d4447f02454217b8ce07b535d119a0dfcf0a810e85e28cb0c",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-route_choice-002-p00/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_distance-48b608ce/attempts/0001/evaluation.json": "372ae73a7a1f41af9e91117391f81eadf156682bbfb30f4a1bbbcf53ca748a24",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-route_choice-002-p00/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_distance-48b608ce/attempts/0001/exception.txt": "7b6602fde67cf221d3ef7e70dc03b89f4e621d7c6025f7b2b222796b39f798a6",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-route_choice-002-p00/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_distance-48b608ce/attempts/0001/frontend_validation/trajectory_samples.npz": "3eefd6b23c7a20f5b51115fcac0c3af68822a03cee188b9548bd74823907ea92",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-route_choice-002-p00/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_distance-48b608ce/attempts/0001/frontend_validation/validation.json": "87bebb25e8a92d58cb6c4d92258b64c54a480bca8c26f34f90f6439145b119ea",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-route_choice-002-p00/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_distance-48b608ce/attempts/0001/input.json": "ad45f2ed9731516f32c427aa9504950b11990a13a1c6db5037f97ae4bd3a61d6",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-route_choice-002-p00/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_distance-48b608ce/attempts/0001/nto_initial.npz": "5878b88faf29e3d400650d112616463ca989a8dd861679278b6a234d7a180383",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-route_choice-002-p00/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_distance-48b608ce/attempts/0001/nto_parameters.json": "43f866786fc18190995c58a78d6a6fdf2eb2d98ab37749802dc13f0fb42a6212",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-route_choice-002-p00/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_distance-48b608ce/attempts/0001/nto_solver_result.json": "30b0b44169361c777b171c36f7554e489d6d839fe431111c74d6535aca0d2311",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-route_choice-002-p00/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_distance-48b608ce/attempts/0001/paper_nto_dependencies.json": "13f629aad262c9ff595f38d2c11b8512b06bd428700e61e75a80b9fe1f4275e7",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-route_choice-002-p00/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_distance-48b608ce/attempts/0001/path.npy": "7f2f1a7f3aa77027aee364ab4b05930e76d3c4c94b4e5eca1346e79ec3fa38ce",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-route_choice-002-p00/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_distance-48b608ce/attempts/0001/path_provenance.json": "43c2a0e8da99857f36ac3a27b7787910290132ab2faed1ab387e53fa5bf1b598",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-route_choice-002-p00/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_distance-48b608ce/attempts/0001/phase.json": "58fd275d8d8d32ad4fba8479aa9f2ea130048dc4c17bee70e0c103bd8938124d",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-route_choice-002-p00/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_distance-48b608ce/attempts/0001/process.json": "5fa67916a754ffed4a8162e88c37de4f69215af29758ef65b7a2d969220d60ae",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-route_choice-002-p00/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_distance-48b608ce/attempts/0001/receipt.json": "8bdc51aecfe6d1adccddc97fa1243eac16ebd3444bc2cc91e44298e8f9b209a5",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-route_choice-002-p00/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_distance-48b608ce/attempts/0001/request.json": "d35f4dc3a35f91dd72c883d8c281275b90c1c581e677422d25145141e136587a",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-route_choice-002-p00/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_distance-48b608ce/attempts/0001/result.json": "0e350078293f38d8de43e63ff0789029dc4252c0a1bcb7fa7dcb762910e383ca",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-route_choice-002-p00/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_distance-48b608ce/attempts/0001/runtime_sources.json": "2b43ec7e54d57391f52594b4e98a85fd683b93032c9458891d47c5eed0666fee",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-route_choice-002-p00/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_distance-48b608ce/attempts/0001/snopt.log": "0d8a025a92f0858b29c71334d0c1432bd70f9a2b1bd790337ef0fc59f196ad64",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-route_choice-002-p00/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_distance-48b608ce/attempts/0001/stderr.log": "ace6258e0a63870c4f03bc433b7939e703a2930e1b658f47cea6da62f077056b",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-route_choice-002-p00/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_distance-48b608ce/attempts/0001/stdout.log": "7467da7b1d6280b7e493e0b896b32145c51657176f73f870c941b18aa7b5384a",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-route_choice-002-p00/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_time-d530d955/attempts/0001/endpoint_audit.json": "ddbf8adf88f6492d4447f02454217b8ce07b535d119a0dfcf0a810e85e28cb0c",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-route_choice-002-p00/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_time-d530d955/attempts/0001/evaluation.json": "372ae73a7a1f41af9e91117391f81eadf156682bbfb30f4a1bbbcf53ca748a24",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-route_choice-002-p00/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_time-d530d955/attempts/0001/frontend_validation/trajectory_samples.npz": "3eefd6b23c7a20f5b51115fcac0c3af68822a03cee188b9548bd74823907ea92",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-route_choice-002-p00/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_time-d530d955/attempts/0001/frontend_validation/validation.json": "87bebb25e8a92d58cb6c4d92258b64c54a480bca8c26f34f90f6439145b119ea",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-route_choice-002-p00/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_time-d530d955/attempts/0001/input.json": "7a8ab156f29f00c880c126355358a91d0bae88c710a741b479acd677d2903ae3",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-route_choice-002-p00/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_time-d530d955/attempts/0001/ipopt.log": "8a05ee317cb27f28fd348e87ab32b37af00fe44e92513c70b3e5aeaaf069a140",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-route_choice-002-p00/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_time-d530d955/attempts/0001/nto_initial.npz": "12fd39437e3f5ec543b2480770c2be4afbfea02fa8caf1cfb8444c7330abe422",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-route_choice-002-p00/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_time-d530d955/attempts/0001/nto_parameters.json": "eef101e9f799f33f4e51c43766025199afe44a695b5185c9de13809b68147615",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-route_choice-002-p00/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_time-d530d955/attempts/0001/paper_nto_dependencies.json": "20fc8b4342e7c5ba3bfaf9093497687b07836c60c4ea7b36d4001e7a77726774",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-route_choice-002-p00/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_time-d530d955/attempts/0001/path.npy": "7f2f1a7f3aa77027aee364ab4b05930e76d3c4c94b4e5eca1346e79ec3fa38ce",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-route_choice-002-p00/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_time-d530d955/attempts/0001/path_provenance.json": "43c2a0e8da99857f36ac3a27b7787910290132ab2faed1ab387e53fa5bf1b598",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-route_choice-002-p00/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_time-d530d955/attempts/0001/phase.json": "307b48fdb0b0aad8d39be0d1f421b176f1d00bf2b788a35ecf42d7687faa53ec",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-route_choice-002-p00/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_time-d530d955/attempts/0001/process.json": "12d8b9f3caffd91d1e19b9c528897436d8926ef1aa64395dc198635e512070ca",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-route_choice-002-p00/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_time-d530d955/attempts/0001/receipt.json": "a91a6f967628f7c7c4f9f14d041776023d1d6ebe4ab0536445e1692486b1a947",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-route_choice-002-p00/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_time-d530d955/attempts/0001/request.json": "99fdf82290d248bec40e708dea6561eaf9a51fd1a51b81414c96131d1757218e",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-route_choice-002-p00/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_time-d530d955/attempts/0001/result.json": "9954d9defec215aeeb250fab26c8af00e30d623cefe1b76a27001bf2b4faee83",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-route_choice-002-p00/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_time-d530d955/attempts/0001/result_before_external_stop.json": "4e313fd5becf9f4fa8746ee4e1e20f0ed113124a1b838e1bb2697781a187e0b5",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-route_choice-002-p00/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_time-d530d955/attempts/0001/runtime_sources.json": "2b43ec7e54d57391f52594b4e98a85fd683b93032c9458891d47c5eed0666fee",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-route_choice-002-p00/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_time-d530d955/attempts/0001/stderr.log": "ace6258e0a63870c4f03bc433b7939e703a2930e1b658f47cea6da62f077056b",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-route_choice-002-p00/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_time-d530d955/attempts/0001/stdout.log": "7467da7b1d6280b7e493e0b896b32145c51657176f73f870c941b18aa7b5384a",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-route_choice-002-p00/run_manifest.json": "97b3aecddf356550902cff23114e3d209cc206869e354a7c64ab29acff801f9b",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-sparse_clutter-002-p02/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_distance-462e42b6/attempts/0001/candidate.json": "b06a29cc8649d63c03c6e47dbde3338f16186e3ca45335101fda8e0a1e25ba60",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-sparse_clutter-002-p02/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_distance-462e42b6/attempts/0001/candidate.npz": "d6d459b51d8497e81f6ffb18b4098d7d570a25d05205d08d5eb494e55037960e",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-sparse_clutter-002-p02/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_distance-462e42b6/attempts/0001/endpoint_audit.json": "b9133be336e9c10964380fdf5b492c203984e86a54267cd047790fc523572e3a",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-sparse_clutter-002-p02/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_distance-462e42b6/attempts/0001/evaluation.json": "372ae73a7a1f41af9e91117391f81eadf156682bbfb30f4a1bbbcf53ca748a24",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-sparse_clutter-002-p02/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_distance-462e42b6/attempts/0001/frontend_validation/trajectory_samples.npz": "942bba0c704137888e64b3cdfd064152ff3defdd6c0509d67f8e91790f89aa9d",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-sparse_clutter-002-p02/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_distance-462e42b6/attempts/0001/frontend_validation/validation.json": "cd54788dc1c65c5a1716b84d8e1d8db2de58fba24cc90210b192903ceec06269",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-sparse_clutter-002-p02/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_distance-462e42b6/attempts/0001/input.json": "7a7fd8ae08cdb43618d08aae3af14425a81749dc7cd8163bd77327eb92ebceee",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-sparse_clutter-002-p02/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_distance-462e42b6/attempts/0001/nto_initial.npz": "fbc97554380c076a46237a18e843d62bee4dc156e6de27b86370e5bce3f47143",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-sparse_clutter-002-p02/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_distance-462e42b6/attempts/0001/nto_parameters.json": "a19aab96cec65ef2b9119a484ec06321fd4ea7725a7bc3e8cef61ad1d3da7a92",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-sparse_clutter-002-p02/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_distance-462e42b6/attempts/0001/nto_solver_raw.npz": "2cf0c64550e5aaf5d858fe9d7574bc721d1f057a11d547bbc75defc78d536206",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-sparse_clutter-002-p02/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_distance-462e42b6/attempts/0001/nto_solver_result.json": "8be7f0fda4eca4b283ad10b4b74939303c945eb061728a298b1f1831312a78b0",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-sparse_clutter-002-p02/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_distance-462e42b6/attempts/0001/paper_nto_dependencies.json": "a6816378bbcf8a1fd48e01a360f5f2ec0210e2e6215a11d0e583053fe00effcb",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-sparse_clutter-002-p02/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_distance-462e42b6/attempts/0001/path.npy": "d08e425c6095ebfca882cf6d78a419e64e0f7d33a72ee09a12f63a2c2a99a215",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-sparse_clutter-002-p02/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_distance-462e42b6/attempts/0001/path_provenance.json": "43c2a0e8da99857f36ac3a27b7787910290132ab2faed1ab387e53fa5bf1b598",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-sparse_clutter-002-p02/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_distance-462e42b6/attempts/0001/phase.json": "356e7af422a2cc2e3823c189f28bd8baae6ca8f1d4c7dee26923ccfe8a3f2355",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-sparse_clutter-002-p02/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_distance-462e42b6/attempts/0001/process.json": "755aa2cee3881b2d8b9618575af59286ace6766a53055ff913777ca7764de3a1",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-sparse_clutter-002-p02/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_distance-462e42b6/attempts/0001/receipt.json": "28cbde698d75eba48c4c43733c516ff5f93b9b9cc60c45cd0e55226371830fe9",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-sparse_clutter-002-p02/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_distance-462e42b6/attempts/0001/request.json": "86423e0df03aca4c90829e7d9a664048eedf14a91c48cacfc102cfce7c285ea6",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-sparse_clutter-002-p02/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_distance-462e42b6/attempts/0001/result.json": "614d8c1abfee050b69ba3770a3b1fd7d052fdc80b2ce883e68b79653e377fab8",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-sparse_clutter-002-p02/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_distance-462e42b6/attempts/0001/runtime_sources.json": "2b43ec7e54d57391f52594b4e98a85fd683b93032c9458891d47c5eed0666fee",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-sparse_clutter-002-p02/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_distance-462e42b6/attempts/0001/snopt.log": "98fd880c16973568db3a9e76151c567dc0cb2cb1e919b56647855e954d7ca968",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-sparse_clutter-002-p02/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_distance-462e42b6/attempts/0001/stderr.log": "ace6258e0a63870c4f03bc433b7939e703a2930e1b658f47cea6da62f077056b",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-sparse_clutter-002-p02/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_distance-462e42b6/attempts/0001/stdout.log": "b9403569cf68e9b14a3a348727bcb980c3fc5ccbd9b24993172b483ac60aef9f",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-sparse_clutter-002-p02/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_distance-462e42b6/attempts/0001/trajectory_samples.npz": "bf686912ea94653d744488bc0649137add8c593c30ac0d12104cbfa0b8c1b051",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-sparse_clutter-002-p02/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_distance-462e42b6/attempts/0001/validation.json": "44b976186d5a7ae4b1065b9fde187c9d168db79d87e4886e42bdcd19693dfbc9",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-sparse_clutter-002-p02/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_time-3995c61d/attempts/0001/candidate.json": "775c735966f4d5b9f4a8adede397d3eca19727215a53a89ed01071627a2fa0f8",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-sparse_clutter-002-p02/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_time-3995c61d/attempts/0001/candidate.npz": "e0b35a9939f96ca8d95dad9c37ac2817761236a328752560eafec6b70fa17802",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-sparse_clutter-002-p02/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_time-3995c61d/attempts/0001/endpoint_audit.json": "b9133be336e9c10964380fdf5b492c203984e86a54267cd047790fc523572e3a",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-sparse_clutter-002-p02/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_time-3995c61d/attempts/0001/evaluation.json": "372ae73a7a1f41af9e91117391f81eadf156682bbfb30f4a1bbbcf53ca748a24",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-sparse_clutter-002-p02/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_time-3995c61d/attempts/0001/frontend_validation/trajectory_samples.npz": "942bba0c704137888e64b3cdfd064152ff3defdd6c0509d67f8e91790f89aa9d",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-sparse_clutter-002-p02/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_time-3995c61d/attempts/0001/frontend_validation/validation.json": "cd54788dc1c65c5a1716b84d8e1d8db2de58fba24cc90210b192903ceec06269",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-sparse_clutter-002-p02/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_time-3995c61d/attempts/0001/input.json": "e9d23f6c36a1ba9ea050b52ce5a92548637427e87f6ccb988d08e97fac3d1847",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-sparse_clutter-002-p02/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_time-3995c61d/attempts/0001/ipopt.log": "2258ecaedfd72d2c40ade04f187e1d6a51a90fa05ce2ac2acbb88fa1276a93d1",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-sparse_clutter-002-p02/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_time-3995c61d/attempts/0001/nto_initial.npz": "feea6e7132f37a3febe3ce03aceaac8cfe55193bb8fc7b4e36a20ff50bdfc140",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-sparse_clutter-002-p02/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_time-3995c61d/attempts/0001/nto_parameters.json": "f82f6f789f17bff59abcb15634451ce09d49c43a4122a573fdeb214143afdd1c",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-sparse_clutter-002-p02/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_time-3995c61d/attempts/0001/nto_solver_raw.npz": "ecf9cccca3a138253d17fb8f495e7b2862b4393765e96cd16674fb780604fbbb",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-sparse_clutter-002-p02/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_time-3995c61d/attempts/0001/nto_solver_result.json": "dcd9413189481b89fad69ddedc0addbd33727f636f47bbdc8edb774543e6886b",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-sparse_clutter-002-p02/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_time-3995c61d/attempts/0001/paper_nto_dependencies.json": "7588cbcdf9dffd4fa8ddc5f96849fa01172b7d880bd3fab7dea3e5c0bf94d4b8",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-sparse_clutter-002-p02/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_time-3995c61d/attempts/0001/path.npy": "d08e425c6095ebfca882cf6d78a419e64e0f7d33a72ee09a12f63a2c2a99a215",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-sparse_clutter-002-p02/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_time-3995c61d/attempts/0001/path_provenance.json": "43c2a0e8da99857f36ac3a27b7787910290132ab2faed1ab387e53fa5bf1b598",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-sparse_clutter-002-p02/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_time-3995c61d/attempts/0001/phase.json": "b91cb0245bab0a7a2c341db8e433752dc599ab37f2abcee2a3ecbb5e836e50a9",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-sparse_clutter-002-p02/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_time-3995c61d/attempts/0001/process.json": "f452f57f49ad36790cc030500935d6da6329b5348289f8798434bcef1498e6c3",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-sparse_clutter-002-p02/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_time-3995c61d/attempts/0001/receipt.json": "93e76248c9324fe98de7c30a7497d698c4706b11f7898467251bca67d63d5d68",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-sparse_clutter-002-p02/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_time-3995c61d/attempts/0001/request.json": "2eff2d9e30aa6f02ddb0d057889983ba9013f55cf41336f26c81167386a35b52",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-sparse_clutter-002-p02/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_time-3995c61d/attempts/0001/result.json": "0b38d23fcfc4fa305eb74ba45c12cab8cf309d34fb00ba6ec119bdfb314af99a",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-sparse_clutter-002-p02/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_time-3995c61d/attempts/0001/runtime_sources.json": "2b43ec7e54d57391f52594b4e98a85fd683b93032c9458891d47c5eed0666fee",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-sparse_clutter-002-p02/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_time-3995c61d/attempts/0001/stderr.log": "ace6258e0a63870c4f03bc433b7939e703a2930e1b658f47cea6da62f077056b",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-sparse_clutter-002-p02/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_time-3995c61d/attempts/0001/stdout.log": "017366dd3247d46f58db5ce67252beed5db6336cddf7ec6b3354e51d671ecb1d",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-sparse_clutter-002-p02/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_time-3995c61d/attempts/0001/trajectory_samples.npz": "be6c2c0ca3db1615de14031b52a923df83c25a768e8a73bc518c54ba3efb7670",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-sparse_clutter-002-p02/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_time-3995c61d/attempts/0001/validation.json": "af710bee58568f3b6314a142ef3bbfd5282d69f94444e0de70ca8c2e3a7ae5ea",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-sparse_clutter-002-p02/run_manifest.json": "88253a521f1467424a1c9be9637db904e82bbb3bdefbb243f1898e0a3a7889d0",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_distance-f6178f84/attempts/0001/candidate.json": "d2561a90184b7acb09c4a8541b5141f8ef1ed048c1cd63e8a0f8891af20d2f90",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_distance-f6178f84/attempts/0001/candidate.npz": "1f157b09e2fa72f98d8ef6d3825d65ae7fe08ac8891fa0ccf52c00a089efa554",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_distance-f6178f84/attempts/0001/endpoint_audit.json": "308ea22f61e6f3f480019fee8547b2eeb574609feee2f7088c8fb51c2ad7b2fa",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_distance-f6178f84/attempts/0001/evaluation.json": "372ae73a7a1f41af9e91117391f81eadf156682bbfb30f4a1bbbcf53ca748a24",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_distance-f6178f84/attempts/0001/frontend_validation/trajectory_samples.npz": "7eaca181474da6209b9eaa2b95924549cbfb8b3215f058d0dd68fb263959b4f1",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_distance-f6178f84/attempts/0001/frontend_validation/validation.json": "38f8e8b0a982aaf23ff9b731416c9bc526badedb0698bc38e214a5f0fa1c1764",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_distance-f6178f84/attempts/0001/input.json": "42f30bb4920032b1f81decde42b8113dc8677637990046b8ee695d62a0c005c8",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_distance-f6178f84/attempts/0001/nto_initial.npz": "f41efecbfea3141b1356efe832d5da5ed7386af0e0814ca555f8901a0af2f42f",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_distance-f6178f84/attempts/0001/nto_parameters.json": "23dc9baf51340c94c3697dbec7c155a7e1f6a9a5a43c1f1d06a40bdf6137aae8",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_distance-f6178f84/attempts/0001/nto_solver_raw.npz": "ab98abffbea2b8e3f78132297f6f3c2e4202329e8b65954441d97bcda41c7fdb",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_distance-f6178f84/attempts/0001/nto_solver_result.json": "b54f18a1e46f5a672b82e9db53168c2ba5c22726579d99662f2bbfdbfa717898",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_distance-f6178f84/attempts/0001/paper_nto_dependencies.json": "6b5d9292c28f5b373660d7debbacefd2b3474c5f785f99c12a53b8042653f1d3",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_distance-f6178f84/attempts/0001/path.npy": "f3bcd3cc42d93c124cba90798181e0f37c504a888739308eca593c8a68bc303c",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_distance-f6178f84/attempts/0001/path_provenance.json": "43c2a0e8da99857f36ac3a27b7787910290132ab2faed1ab387e53fa5bf1b598",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_distance-f6178f84/attempts/0001/phase.json": "16048cc239fdf6c15476737fa2e63fac60ec0da848b89eb059d00b62032e8e7f",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_distance-f6178f84/attempts/0001/process.json": "4d5023a7702dfbb235d6840f7512441c496de704ea6492f948fe7d6c311bfb3f",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_distance-f6178f84/attempts/0001/receipt.json": "7d23ad8f63e5ee2ee2f9444eac57bb08c6aef35723f83e421dff9c44a4252ec5",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_distance-f6178f84/attempts/0001/request.json": "91c5ec2fb48a63f652fcb16f03c2997e6d4d60914b381f7ea151da8d7daeb457",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_distance-f6178f84/attempts/0001/result.json": "ffec1b8946daf01b9fac87d1fe7fa32450b02f5352d06f3be8a9ad177eff011c",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_distance-f6178f84/attempts/0001/runtime_sources.json": "7b8d18dab3ac50f03b73a64415ad8ac7a17e02149bd8b35560aaeeeea0f70ff8",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_distance-f6178f84/attempts/0001/snopt.log": "c0664f8134f11ccd11e495cb7d6b0fbd913ff58dc837f91daa83bdd92ff81d42",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_distance-f6178f84/attempts/0001/stderr.log": "ace6258e0a63870c4f03bc433b7939e703a2930e1b658f47cea6da62f077056b",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_distance-f6178f84/attempts/0001/stdout.log": "273cad9beb002e7f63a77141846f42fba6126357828f1a883ffdf4044490aae1",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_distance-f6178f84/attempts/0001/trajectory_samples.npz": "0f3bc32ecbbe64ceda8630f75c98d0793c4761e47c3f1c62c75b067336866ccc",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_distance-f6178f84/attempts/0001/validation.json": "e51264a14f0909347c854c1ae34be8061af4ed78dc33ada207b108f3a6eb6833",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_time-9c55cb47/attempts/0001/candidate.json": "b93b6d35a91b8dd15877f5d0c724b9e72c7eef3f5abc2acdb0704bf5fab96c31",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_time-9c55cb47/attempts/0001/candidate.npz": "f8f953f1b2a70c4a19e3b6f15f6309afd7a2d1207bb2a36138af65b6007f4bfb",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_time-9c55cb47/attempts/0001/endpoint_audit.json": "308ea22f61e6f3f480019fee8547b2eeb574609feee2f7088c8fb51c2ad7b2fa",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_time-9c55cb47/attempts/0001/evaluation.json": "372ae73a7a1f41af9e91117391f81eadf156682bbfb30f4a1bbbcf53ca748a24",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_time-9c55cb47/attempts/0001/frontend_validation/trajectory_samples.npz": "7eaca181474da6209b9eaa2b95924549cbfb8b3215f058d0dd68fb263959b4f1",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_time-9c55cb47/attempts/0001/frontend_validation/validation.json": "38f8e8b0a982aaf23ff9b731416c9bc526badedb0698bc38e214a5f0fa1c1764",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_time-9c55cb47/attempts/0001/input.json": "4e0a176b8a6d8a1ce95d75e1481bfcae895502debf5858c5d7e65521dcae58c5",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_time-9c55cb47/attempts/0001/ipopt.log": "05d4abc36bdef2b4fc391274778482a4c2c9cfacdfd940b1b37e42981c0357e3",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_time-9c55cb47/attempts/0001/nto_initial.npz": "6d3e4ed592e7951140fadd79c4d4b835989567a805a53051a4b63f59cace313f",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_time-9c55cb47/attempts/0001/nto_parameters.json": "6b6520875a0a7133ec4cf81e230bdf505e3ac9ac5dd79ce9dd0ad0ee37d15aec",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_time-9c55cb47/attempts/0001/nto_solver_raw.npz": "d7fffdff4601c38a7badf0e30db359a0854163d52e0e303ef2d37f82764c4df7",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_time-9c55cb47/attempts/0001/nto_solver_result.json": "1e60290167cfb69bdb9d1078b32667a7d8b4ae58bf39cfcc78afd740841725ad",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_time-9c55cb47/attempts/0001/paper_nto_dependencies.json": "2638bd419d71187a8e81a9401966ec621783d55bcc4548eaa48f1b42da5689ad",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_time-9c55cb47/attempts/0001/path.npy": "f3bcd3cc42d93c124cba90798181e0f37c504a888739308eca593c8a68bc303c",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_time-9c55cb47/attempts/0001/path_provenance.json": "43c2a0e8da99857f36ac3a27b7787910290132ab2faed1ab387e53fa5bf1b598",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_time-9c55cb47/attempts/0001/phase.json": "79b29f3d63d77c2a870f364ae153ee188abc1e6b09e4c90e834b7e6ab3dc1fcb",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_time-9c55cb47/attempts/0001/process.json": "919e0425c86d63194e52de08d98b8a0c5f712a7460cddf2576e55784bb61b094",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_time-9c55cb47/attempts/0001/receipt.json": "1a6c78c4d6b5315123bd293ef0024c851d1d33d835cbb36152b4ef103f37894e",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_time-9c55cb47/attempts/0001/request.json": "55429969c74988b78bd5a20cc5dfab83003ad7e1842fe7fb7357759e95def4b9",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_time-9c55cb47/attempts/0001/result.json": "a3460ac15cb459d48d1a3e3e7ed36946a8ce398aed901cb45a1e2c25449c3a91",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_time-9c55cb47/attempts/0001/runtime_sources.json": "7b8d18dab3ac50f03b73a64415ad8ac7a17e02149bd8b35560aaeeeea0f70ff8",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_time-9c55cb47/attempts/0001/stderr.log": "ace6258e0a63870c4f03bc433b7939e703a2930e1b658f47cea6da62f077056b",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_time-9c55cb47/attempts/0001/stdout.log": "273cad9beb002e7f63a77141846f42fba6126357828f1a883ffdf4044490aae1",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_time-9c55cb47/attempts/0001/trajectory_samples.npz": "b3698cfd9272d3fa6fd279efbc34282228db55a5d501809daf92fe64ff17a20d",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_time-9c55cb47/attempts/0001/validation.json": "8c6bb0e0e483273b7fc9699ee7ee1a013ac1572888e1f9c81b7b6abb438af9e9",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_distance-48b608ce/attempts/0001/endpoint_audit.json": "ddbf8adf88f6492d4447f02454217b8ce07b535d119a0dfcf0a810e85e28cb0c",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_distance-48b608ce/attempts/0001/evaluation.json": "372ae73a7a1f41af9e91117391f81eadf156682bbfb30f4a1bbbcf53ca748a24",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_distance-48b608ce/attempts/0001/exception.txt": "dfebc81404ff6876e68ea33e7859884f0c3edc692ba4171b9725c3eba1d64bee",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_distance-48b608ce/attempts/0001/frontend_validation/trajectory_samples.npz": "3eefd6b23c7a20f5b51115fcac0c3af68822a03cee188b9548bd74823907ea92",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_distance-48b608ce/attempts/0001/frontend_validation/validation.json": "87bebb25e8a92d58cb6c4d92258b64c54a480bca8c26f34f90f6439145b119ea",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_distance-48b608ce/attempts/0001/input.json": "ad45f2ed9731516f32c427aa9504950b11990a13a1c6db5037f97ae4bd3a61d6",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_distance-48b608ce/attempts/0001/nto_initial.npz": "5878b88faf29e3d400650d112616463ca989a8dd861679278b6a234d7a180383",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_distance-48b608ce/attempts/0001/nto_parameters.json": "64eb945bd4695a26648bef2da88f3e41be046ee2e211da9f71b8a082843b8b2f",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_distance-48b608ce/attempts/0001/nto_solver_result.json": "be3b35beea88967cdf45fda95d3515e1cc5b16b8f1816a636ef0dc62b28e92dc",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_distance-48b608ce/attempts/0001/paper_nto_dependencies.json": "abf9a612f4628826da06b3fc2b6e601b88f60f56bc46db04df6d0bdc214e0bb8",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_distance-48b608ce/attempts/0001/path.npy": "7f2f1a7f3aa77027aee364ab4b05930e76d3c4c94b4e5eca1346e79ec3fa38ce",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_distance-48b608ce/attempts/0001/path_provenance.json": "43c2a0e8da99857f36ac3a27b7787910290132ab2faed1ab387e53fa5bf1b598",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_distance-48b608ce/attempts/0001/phase.json": "b6409c19db71a9d15556f895007098eb6c88d67d3b9f7a09e76fea31dcfcecc2",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_distance-48b608ce/attempts/0001/process.json": "efe3dc910b2845cbe1a802fb292846104937a7793e51faa684b08fa5c5f8e93b",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_distance-48b608ce/attempts/0001/receipt.json": "f6132b435e00c312deb439e988d6d999d847a41ce6adeef2eed1c91747ee59dd",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_distance-48b608ce/attempts/0001/request.json": "d35f4dc3a35f91dd72c883d8c281275b90c1c581e677422d25145141e136587a",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_distance-48b608ce/attempts/0001/result.json": "ee2b35936d713388b784213e531ade77dba09121d82825e53c2e8c2ce21b5ced",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_distance-48b608ce/attempts/0001/runtime_sources.json": "7b8d18dab3ac50f03b73a64415ad8ac7a17e02149bd8b35560aaeeeea0f70ff8",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_distance-48b608ce/attempts/0001/snopt.log": "c0664f8134f11ccd11e495cb7d6b0fbd913ff58dc837f91daa83bdd92ff81d42",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_distance-48b608ce/attempts/0001/stderr.log": "ace6258e0a63870c4f03bc433b7939e703a2930e1b658f47cea6da62f077056b",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_distance-48b608ce/attempts/0001/stdout.log": "5f21b616f905d84577662acf42cb2753edf158c18897acce79328c7a2059b9ee",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_time-d530d955/attempts/0001/endpoint_audit.json": "ddbf8adf88f6492d4447f02454217b8ce07b535d119a0dfcf0a810e85e28cb0c",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_time-d530d955/attempts/0001/evaluation.json": "372ae73a7a1f41af9e91117391f81eadf156682bbfb30f4a1bbbcf53ca748a24",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_time-d530d955/attempts/0001/frontend_validation/trajectory_samples.npz": "3eefd6b23c7a20f5b51115fcac0c3af68822a03cee188b9548bd74823907ea92",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_time-d530d955/attempts/0001/frontend_validation/validation.json": "87bebb25e8a92d58cb6c4d92258b64c54a480bca8c26f34f90f6439145b119ea",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_time-d530d955/attempts/0001/input.json": "7a8ab156f29f00c880c126355358a91d0bae88c710a741b479acd677d2903ae3",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_time-d530d955/attempts/0001/ipopt.log": "c88d7420c09b72e5dab5a8b42bd43ffb21918f61e7e2c079a34d33d05bf2a3bb",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_time-d530d955/attempts/0001/nto_initial.npz": "12fd39437e3f5ec543b2480770c2be4afbfea02fa8caf1cfb8444c7330abe422",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_time-d530d955/attempts/0001/nto_parameters.json": "5a7be51b526c96793f5ac3de43868ac64841d779f84e90459cb428ca9926d2a6",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_time-d530d955/attempts/0001/paper_nto_dependencies.json": "43b62b68bee367cd44aceb1f86a878d637a1dbd21ff8b248346392555e0d65d6",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_time-d530d955/attempts/0001/path.npy": "7f2f1a7f3aa77027aee364ab4b05930e76d3c4c94b4e5eca1346e79ec3fa38ce",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_time-d530d955/attempts/0001/path_provenance.json": "43c2a0e8da99857f36ac3a27b7787910290132ab2faed1ab387e53fa5bf1b598",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_time-d530d955/attempts/0001/phase.json": "fc7edda5308a9063c81433259e248699b57cdc6062428296572b7065eec9b67f",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_time-d530d955/attempts/0001/process.json": "7ecbe90c9988d88f92d11166632f335d9291002e1142e210e9fd628d6a6b39e7",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_time-d530d955/attempts/0001/receipt.json": "f455dcbace12e1396a741aac1f29f20b94a875117f81769275f2e0e1909a8dbc",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_time-d530d955/attempts/0001/request.json": "99fdf82290d248bec40e708dea6561eaf9a51fd1a51b81414c96131d1757218e",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_time-d530d955/attempts/0001/result.json": "2c5334cd84cd7e8da1fdf53529209865df09e5efa9bbd9c63a10fa06f018b662",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_time-d530d955/attempts/0001/result_before_external_stop.json": "79eb6b67a430cbf584d5cdf962c0461c0a1092d91f485d7cd2718aa17d53470f",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_time-d530d955/attempts/0001/runtime_sources.json": "7b8d18dab3ac50f03b73a64415ad8ac7a17e02149bd8b35560aaeeeea0f70ff8",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_time-d530d955/attempts/0001/stderr.log": "ace6258e0a63870c4f03bc433b7939e703a2930e1b658f47cea6da62f077056b",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_time-d530d955/attempts/0001/stdout.log": "65284cce432150e5d2eb2d928abddc3a797be958df03780323f99025efeb3af0",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_distance-462e42b6/attempts/0001/candidate.json": "b06a29cc8649d63c03c6e47dbde3338f16186e3ca45335101fda8e0a1e25ba60",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_distance-462e42b6/attempts/0001/candidate.npz": "d6d459b51d8497e81f6ffb18b4098d7d570a25d05205d08d5eb494e55037960e",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_distance-462e42b6/attempts/0001/endpoint_audit.json": "b9133be336e9c10964380fdf5b492c203984e86a54267cd047790fc523572e3a",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_distance-462e42b6/attempts/0001/evaluation.json": "372ae73a7a1f41af9e91117391f81eadf156682bbfb30f4a1bbbcf53ca748a24",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_distance-462e42b6/attempts/0001/frontend_validation/trajectory_samples.npz": "942bba0c704137888e64b3cdfd064152ff3defdd6c0509d67f8e91790f89aa9d",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_distance-462e42b6/attempts/0001/frontend_validation/validation.json": "cd54788dc1c65c5a1716b84d8e1d8db2de58fba24cc90210b192903ceec06269",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_distance-462e42b6/attempts/0001/input.json": "7a7fd8ae08cdb43618d08aae3af14425a81749dc7cd8163bd77327eb92ebceee",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_distance-462e42b6/attempts/0001/nto_initial.npz": "fbc97554380c076a46237a18e843d62bee4dc156e6de27b86370e5bce3f47143",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_distance-462e42b6/attempts/0001/nto_parameters.json": "d292c69c0cccf403b54e909fb72991217eee28ce62272eceee36801622ec5330",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_distance-462e42b6/attempts/0001/nto_solver_raw.npz": "2cf0c64550e5aaf5d858fe9d7574bc721d1f057a11d547bbc75defc78d536206",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_distance-462e42b6/attempts/0001/nto_solver_result.json": "b5cb272b7279537b109b9e902acc4d1a58d738e8800ef44cd48748ca319ee6d8",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_distance-462e42b6/attempts/0001/paper_nto_dependencies.json": "af59938cf03ed081f872413a3ff98513de9e958655726d57a50f58a122364854",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_distance-462e42b6/attempts/0001/path.npy": "d08e425c6095ebfca882cf6d78a419e64e0f7d33a72ee09a12f63a2c2a99a215",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_distance-462e42b6/attempts/0001/path_provenance.json": "43c2a0e8da99857f36ac3a27b7787910290132ab2faed1ab387e53fa5bf1b598",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_distance-462e42b6/attempts/0001/phase.json": "11fdefa2eb306f229f5fe5db063c34c9ad1fb956710c36124780738559a34527",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_distance-462e42b6/attempts/0001/process.json": "4f3d9f583e739a2aae7787717619b2053648d615fda5181c88a41d0607b3c541",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_distance-462e42b6/attempts/0001/receipt.json": "8183c786544bbce1b16a6c029cc311cf5c111a0fb96aa6f3685142bccd08a355",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_distance-462e42b6/attempts/0001/request.json": "86423e0df03aca4c90829e7d9a664048eedf14a91c48cacfc102cfce7c285ea6",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_distance-462e42b6/attempts/0001/result.json": "041d1b04abe8b813bf4d0253f6ffff9f471a16e6f5994bd9b05b2ea476b7083d",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_distance-462e42b6/attempts/0001/runtime_sources.json": "7b8d18dab3ac50f03b73a64415ad8ac7a17e02149bd8b35560aaeeeea0f70ff8",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_distance-462e42b6/attempts/0001/snopt.log": "c0664f8134f11ccd11e495cb7d6b0fbd913ff58dc837f91daa83bdd92ff81d42",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_distance-462e42b6/attempts/0001/stderr.log": "ace6258e0a63870c4f03bc433b7939e703a2930e1b658f47cea6da62f077056b",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_distance-462e42b6/attempts/0001/stdout.log": "017366dd3247d46f58db5ce67252beed5db6336cddf7ec6b3354e51d671ecb1d",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_distance-462e42b6/attempts/0001/trajectory_samples.npz": "bf686912ea94653d744488bc0649137add8c593c30ac0d12104cbfa0b8c1b051",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_distance-462e42b6/attempts/0001/validation.json": "44b976186d5a7ae4b1065b9fde187c9d168db79d87e4886e42bdcd19693dfbc9",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_time-3995c61d/attempts/0001/candidate.json": "775c735966f4d5b9f4a8adede397d3eca19727215a53a89ed01071627a2fa0f8",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_time-3995c61d/attempts/0001/candidate.npz": "e0b35a9939f96ca8d95dad9c37ac2817761236a328752560eafec6b70fa17802",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_time-3995c61d/attempts/0001/endpoint_audit.json": "b9133be336e9c10964380fdf5b492c203984e86a54267cd047790fc523572e3a",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_time-3995c61d/attempts/0001/evaluation.json": "372ae73a7a1f41af9e91117391f81eadf156682bbfb30f4a1bbbcf53ca748a24",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_time-3995c61d/attempts/0001/frontend_validation/trajectory_samples.npz": "942bba0c704137888e64b3cdfd064152ff3defdd6c0509d67f8e91790f89aa9d",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_time-3995c61d/attempts/0001/frontend_validation/validation.json": "cd54788dc1c65c5a1716b84d8e1d8db2de58fba24cc90210b192903ceec06269",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_time-3995c61d/attempts/0001/input.json": "e9d23f6c36a1ba9ea050b52ce5a92548637427e87f6ccb988d08e97fac3d1847",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_time-3995c61d/attempts/0001/ipopt.log": "e410ccb17d3aa7c4eef27f659704453c047705879d20ddacee1cad6d8cd48783",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_time-3995c61d/attempts/0001/nto_initial.npz": "feea6e7132f37a3febe3ce03aceaac8cfe55193bb8fc7b4e36a20ff50bdfc140",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_time-3995c61d/attempts/0001/nto_parameters.json": "057886c5621960a027b16edace7743ea19012e32ee95ac46bdb7472a16045d32",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_time-3995c61d/attempts/0001/nto_solver_raw.npz": "ecf9cccca3a138253d17fb8f495e7b2862b4393765e96cd16674fb780604fbbb",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_time-3995c61d/attempts/0001/nto_solver_result.json": "b9b616203f837170355887822d0272cbff3786a7ace1c741b5614b761edacc5f",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_time-3995c61d/attempts/0001/paper_nto_dependencies.json": "6a2bf67ec20efc7981f309d2a66f10f49c14b263f5205e4ca0ac50d0b7a80982",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_time-3995c61d/attempts/0001/path.npy": "d08e425c6095ebfca882cf6d78a419e64e0f7d33a72ee09a12f63a2c2a99a215",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_time-3995c61d/attempts/0001/path_provenance.json": "43c2a0e8da99857f36ac3a27b7787910290132ab2faed1ab387e53fa5bf1b598",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_time-3995c61d/attempts/0001/phase.json": "b283db5031f714be01ede37a5c460245555a36319bd1fef7ca15dd9efad00c3c",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_time-3995c61d/attempts/0001/process.json": "4b0421305e61e36ce57b7f8c296e06818fb14db9de1724913ad452ee2cd39501",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_time-3995c61d/attempts/0001/receipt.json": "f1d3d216d9344e33c35390ed96ad155cd447cfa326c971b37dabcab2e4c22dfb",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_time-3995c61d/attempts/0001/request.json": "2eff2d9e30aa6f02ddb0d057889983ba9013f55cf41336f26c81167386a35b52",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_time-3995c61d/attempts/0001/result.json": "dfcb41dccf918585717e0a10b53b5390ae56321944ccc3ab1b27699edf5a82a5",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_time-3995c61d/attempts/0001/runtime_sources.json": "7b8d18dab3ac50f03b73a64415ad8ac7a17e02149bd8b35560aaeeeea0f70ff8",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_time-3995c61d/attempts/0001/stderr.log": "ace6258e0a63870c4f03bc433b7939e703a2930e1b658f47cea6da62f077056b",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_time-3995c61d/attempts/0001/stdout.log": "d23556815d668d3d1a3c064811c0410214de06bfd7f44a659543d06a0448be5a",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_time-3995c61d/attempts/0001/trajectory_samples.npz": "be6c2c0ca3db1615de14031b52a923df83c25a768e8a73bc518c54ba3efb7670",
+    "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_time-3995c61d/attempts/0001/validation.json": "af710bee58568f3b6314a142ef3bbfd5282d69f94444e0de70ca8c2e3a7ae5ea"
+  },
+  "created_unix_seconds": 1793163231.4619842,
+  "historical_run_manifest_sha256": "44452e26ea4e0eacee15e4df12e9cf183b48c561c6fd1ddf73ab86631a75919c",
+  "issues": [],
+  "limitations": [
+    "Six fixed diagnostic dev queries, not replacement baseline scores or a new success-rate estimate.",
+    "Remaining solver time is recomputed within the same 60-second end-to-end budget; small run-to-run differences are expected.",
+    "Backend native termination text does not replace Drake wrapper exception status or invent a returned candidate.",
+    "Timeout has no returned solver solution or final IPOPT footer; last-written iteration is not proof of its last executed iteration."
+  ],
+  "parent_execution_receipt": "benchmarks/generic_motion_v1/reports/baseline_study/nto_logging_actual_dev_checks.json",
+  "parent_execution_receipt_sha256": "e93457e62b6c55c0926f486864ff8e555ba6bc65bca7b07b7a0a42b27fe1db09",
+  "passed": true,
+  "queries": 6,
+  "records": [
+    {
+      "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-bottleneck-000-p00/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_distance-f6178f84/attempts/0001",
+      "candidate_arrays": {
+        "all_exactly_equal": true,
+        "arrays": {
+          "controls": {
+            "maximum_absolute_difference": 0.0,
+            "new_shape": [
+              2,
+              7
+            ],
+            "old_shape": [
+              2,
+              7
+            ],
+            "same": true
+          },
+          "knots": {
+            "maximum_absolute_difference": 0.0,
+            "new_shape": [
+              4
+            ],
+            "old_shape": [
+              4
+            ],
+            "same": true
+          }
+        },
+        "compared": true
+      },
+      "case_id": "dev-bottleneck-000-p00",
+      "fixed_numerical_solver_options": {
+        "Major feasibility tolerance": 1e-06,
+        "Major iterations limit": 2000,
+        "Major optimality tolerance": 1e-06,
+        "Major print level": 1,
+        "Minor print level": 0
+      },
+      "historical_attempt": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_distance-f6178f84/attempts/0001",
+      "historical_source_commit": "72984027030175b7bca78e2dcf592b38f0c1864b",
+      "historical_status": "success_validated_numerical",
+      "initial_arrays": {
+        "all_exactly_equal": true,
+        "arrays": {
+          "controls": {
+            "maximum_absolute_difference": 0.0,
+            "new_shape": [
+              2,
+              7
+            ],
+            "old_shape": [
+              2,
+              7
+            ],
+            "same": true
+          },
+          "duration": {
+            "maximum_absolute_difference": 0.0,
+            "new_shape": [],
+            "old_shape": [],
+            "same": true
+          },
+          "knots": {
+            "maximum_absolute_difference": 0.0,
+            "new_shape": [
+              4
+            ],
+            "old_shape": [
+              4
+            ],
+            "same": true
+          },
+          "original_path": {
+            "maximum_absolute_difference": 0.0,
+            "new_shape": [
+              2,
+              7
+            ],
+            "old_shape": [
+              2,
+              7
+            ],
+            "same": true
+          }
+        },
+        "compared": true
+      },
+      "job_id": "dev-bottleneck-000-p00-NTO_PAPER-minimum_distance-f6178f84",
+      "log": {
+        "bytes": 26264,
+        "effective_iteration_limits": {
+          "Iteration limit": [
+            10000
+          ],
+          "Major iterations limit": [
+            2000
+          ],
+          "Minor iterations limit": [
+            500
+          ]
+        },
+        "has_native_termination_footer": true,
+        "historical_bytes": 121,
+        "major_iterations": [
+          0
+        ],
+        "path": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-bottleneck-000-p00/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_distance-f6178f84/attempts/0001/snopt.log",
+        "sha256": "d9d585e80e1f74d8b8a8c9e66400569d57618d985258bfdf198f7dddb5675fe2",
+        "snopt_exit": [
+          {
+            "code": 0,
+            "description": "finished successfully"
+          }
+        ],
+        "snopt_info": [
+          {
+            "code": 1,
+            "description": "optimality conditions satisfied"
+          }
+        ],
+        "tail_lines": [
+          "       4  x      4    BS         0.71383        -0.40018        -2.57000         2.57000          .         168",
+          "       5  x      5    BS        -0.61794         0.83886        -3.10000         3.10000          .         169",
+          "       6  x      6    BS         0.44430        -0.00491        -2.09000         2.09000          .         170",
+          "       7  x      7    BS        -0.51704        -0.34563        -3.10000         3.10000          .         171",
+          "       8  x      8    BS         0.46099         0.10736        -3.10000         3.10000          .         172",
+          "       9  x      9    BS        -0.40874         0.01762        -2.24000         2.24000          .         173",
+          "      10  x     10    BS        -1.62233        -0.06967        -3.10000         3.10000          .         174",
+          "      11  x     11    BS         1.88626         0.40018        -2.57000         2.57000          .         175",
+          "      12  x     12    BS        -3.07559        -0.83886        -3.10000         3.10000          .         176",
+          "      13  x     13    BS         0.45868         0.00491        -2.09000         2.09000          .         177",
+          "      14  x     14    BS         0.49558         0.34563        -3.10000         3.10000          .         178",
+          "      15  x     15 A  EQ         1.0              .              1.0             1.0              .         179"
+        ],
+        "total_iterations": [
+          0
+        ]
+      },
+      "new_remaining_solver_budget_seconds": 59.15826929686591,
+      "new_solver_result": {
+        "native_solver_details": {
+          "info": 1,
+          "solve_time": 0.012198451
+        },
+        "raw_solution": "nto_solver_raw.npz",
+        "returned_controls_finite": true,
+        "returned_duration_finite": true,
+        "solve_seconds": 0.013250861782580614,
+        "solver_objective": 2.9297608639237556,
+        "solver_status": "SolutionResult.kSolutionFound",
+        "solver_success": true
+      },
+      "objective": "minimum_distance",
+      "old_remaining_solver_budget_seconds": 59.18752683000639,
+      "old_solver_result": {
+        "native_solver_details": {
+          "info": 1,
+          "solve_time": 0.011697666
+        },
+        "raw_solution": "nto_solver_raw.npz",
+        "returned_controls_finite": true,
+        "returned_duration_finite": true,
+        "solve_seconds": 0.012795974966138601,
+        "solver_objective": 2.9297608639237556,
+        "solver_status": "SolutionResult.kSolutionFound",
+        "solver_success": true
+      },
+      "raw_solver_arrays": {
+        "all_exactly_equal": true,
+        "arrays": {
+          "controls": {
+            "maximum_absolute_difference": 0.0,
+            "new_shape": [
+              2,
+              7
+            ],
+            "old_shape": [
+              2,
+              7
+            ],
+            "same": true
+          },
+          "decision_variables": {
+            "maximum_absolute_difference": 0.0,
+            "new_shape": [
+              15
+            ],
+            "old_shape": [
+              15
+            ],
+            "same": true
+          },
+          "duration": {
+            "maximum_absolute_difference": 0.0,
+            "new_shape": [],
+            "old_shape": [],
+            "same": true
+          },
+          "normalized_knots": {
+            "maximum_absolute_difference": 0.0,
+            "new_shape": [
+              4
+            ],
+            "old_shape": [
+              4
+            ],
+            "same": true
+          },
+          "solver_F": {
+            "maximum_absolute_difference": 0.0,
+            "new_shape": [
+              164
+            ],
+            "old_shape": [
+              164
+            ],
+            "same": true
+          },
+          "solver_Fmul": {
+            "maximum_absolute_difference": 0.0,
+            "new_shape": [
+              164
+            ],
+            "old_shape": [
+              164
+            ],
+            "same": true
+          },
+          "solver_xmul": {
+            "maximum_absolute_difference": 0.0,
+            "new_shape": [
+              15
+            ],
+            "old_shape": [
+              15
+            ],
+            "same": true
+          }
+        },
+        "compared": true
+      },
+      "reported_iteration_limits": {
+        "defaults_overridden": false,
+        "evidence": "benchmarks/generic_motion_v1/reports/baseline_study/snopt_option_probes_v3/common_file_rows164/snopt.log",
+        "explicitly_configured": [
+          "Major iterations limit"
+        ],
+        "observed_backend": "Drake 1.51.1 / SNOPT 7.4-1.2",
+        "reported_defaults_only": [
+          "Iterations limit",
+          "Minor iterations limit"
+        ],
+        "scope": "Previously observed CPU probe values, not a fresh runtime query; total/minor defaults are not overridden",
+        "values": {
+          "Iterations limit": 10000,
+          "Major iterations limit": 2000,
+          "Minor iterations limit": 500
+        }
+      },
+      "run": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-bottleneck-000-p00",
+      "same_case": true,
+      "same_evaluation_config": true,
+      "same_final_status": true,
+      "same_fixed_numerical_solver_options": true,
+      "same_input_json_sha256": true,
+      "same_method_seed": true,
+      "same_path_array": true,
+      "same_path_file_sha256": true,
+      "same_profile": true,
+      "same_roadmap_id": true,
+      "same_transcription_fields": {
+        "collision_pairs": true,
+        "collocation_locations": true,
+        "collocation_parameter_Nc": true,
+        "collocation_points": true,
+        "spline_order": true,
+        "warm_start_control_count": true,
+        "warm_start_duration_seconds": true,
+        "warm_start_endpoint_copies": true,
+        "warm_start_node_count": true,
+        "warm_start_resampled": true
+      },
+      "solver_logging": {
+        "interface": "SolverOptions/CommonSolverOption.kPrintFileName",
+        "numerical_solver_options_changed": false,
+        "path": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-bottleneck-000-p00/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_distance-f6178f84/attempts/0001/snopt.log"
+      },
+      "source_commit": "3edaca8fc5fd57fd8c4f25fbfe054ab80d4490d3",
+      "status": "success_validated_numerical"
+    },
+    {
+      "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-bottleneck-000-p00/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_time-9c55cb47/attempts/0001",
+      "candidate_arrays": {
+        "all_exactly_equal": true,
+        "arrays": {
+          "controls": {
+            "maximum_absolute_difference": 0.0,
+            "new_shape": [
+              4,
+              7
+            ],
+            "old_shape": [
+              4,
+              7
+            ],
+            "same": true
+          },
+          "knots": {
+            "maximum_absolute_difference": 0.0,
+            "new_shape": [
+              8
+            ],
+            "old_shape": [
+              8
+            ],
+            "same": true
+          }
+        },
+        "compared": true
+      },
+      "case_id": "dev-bottleneck-000-p00",
+      "fixed_numerical_solver_options": {
+        "file_print_level": 5,
+        "max_iter": 2000,
+        "print_level": 0,
+        "tol": 1e-06
+      },
+      "historical_attempt": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_time-9c55cb47/attempts/0001",
+      "historical_source_commit": "72984027030175b7bca78e2dcf592b38f0c1864b",
+      "historical_status": "success_validated_numerical",
+      "initial_arrays": {
+        "all_exactly_equal": true,
+        "arrays": {
+          "controls": {
+            "maximum_absolute_difference": 0.0,
+            "new_shape": [
+              4,
+              7
+            ],
+            "old_shape": [
+              4,
+              7
+            ],
+            "same": true
+          },
+          "duration": {
+            "maximum_absolute_difference": 0.0,
+            "new_shape": [],
+            "old_shape": [],
+            "same": true
+          },
+          "knots": {
+            "maximum_absolute_difference": 0.0,
+            "new_shape": [
+              8
+            ],
+            "old_shape": [
+              8
+            ],
+            "same": true
+          },
+          "original_path": {
+            "maximum_absolute_difference": 0.0,
+            "new_shape": [
+              2,
+              7
+            ],
+            "old_shape": [
+              2,
+              7
+            ],
+            "same": true
+          }
+        },
+        "compared": true
+      },
+      "job_id": "dev-bottleneck-000-p00-NTO_PAPER-minimum_time-9c55cb47",
+      "log": {
+        "bytes": 2545,
+        "has_native_termination_footer": true,
+        "historical_bytes": 2545,
+        "ipopt_exit": [
+          "Optimal Solution Found."
+        ],
+        "last_written_iteration": 6,
+        "path": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-bottleneck-000-p00/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_time-9c55cb47/attempts/0001/ipopt.log",
+        "sha256": "376f772bb6d3a196b1093b22397f69bc77d61a40e76abbe227819c551cda500d",
+        "tail_lines": [
+          "",
+          "",
+          "Number of objective function evaluations             = 7",
+          "Number of objective gradient evaluations             = 7",
+          "Number of equality constraint evaluations            = 7",
+          "Number of inequality constraint evaluations          = 7",
+          "Number of equality constraint Jacobian evaluations   = 7",
+          "Number of inequality constraint Jacobian evaluations = 7",
+          "Number of Lagrangian Hessian evaluations             = 0",
+          "Total seconds in IPOPT                               = 0.124",
+          "",
+          "EXIT: Optimal Solution Found."
+        ]
+      },
+      "new_remaining_solver_budget_seconds": 59.18224245775491,
+      "new_solver_result": {
+        "native_solver_details": {
+          "status": 0
+        },
+        "native_status_description": "Success",
+        "raw_solution": "nto_solver_raw.npz",
+        "returned_controls_finite": true,
+        "returned_duration_finite": true,
+        "solve_seconds": 0.12551040994003415,
+        "solver_objective": 7.372937839519059,
+        "solver_status": "SolutionResult.kSolutionFound",
+        "solver_success": true
+      },
+      "objective": "minimum_time",
+      "old_remaining_solver_budget_seconds": 59.17933395085856,
+      "old_solver_result": {
+        "native_solver_details": {
+          "status": 0
+        },
+        "native_status_description": "Success",
+        "raw_solution": "nto_solver_raw.npz",
+        "returned_controls_finite": true,
+        "returned_duration_finite": true,
+        "solve_seconds": 0.12690333276987076,
+        "solver_objective": 7.372937839519059,
+        "solver_status": "SolutionResult.kSolutionFound",
+        "solver_success": true
+      },
+      "raw_solver_arrays": {
+        "all_exactly_equal": true,
+        "arrays": {
+          "controls": {
+            "maximum_absolute_difference": 0.0,
+            "new_shape": [
+              4,
+              7
+            ],
+            "old_shape": [
+              4,
+              7
+            ],
+            "same": true
+          },
+          "decision_variables": {
+            "maximum_absolute_difference": 0.0,
+            "new_shape": [
+              29
+            ],
+            "old_shape": [
+              29
+            ],
+            "same": true
+          },
+          "duration": {
+            "maximum_absolute_difference": 0.0,
+            "new_shape": [],
+            "old_shape": [],
+            "same": true
+          },
+          "normalized_knots": {
+            "maximum_absolute_difference": 0.0,
+            "new_shape": [
+              8
+            ],
+            "old_shape": [
+              8
+            ],
+            "same": true
+          },
+          "solver_g": {
+            "maximum_absolute_difference": 0.0,
+            "new_shape": [
+              233
+            ],
+            "old_shape": [
+              233
+            ],
+            "same": true
+          },
+          "solver_lambda_val": {
+            "maximum_absolute_difference": 0.0,
+            "new_shape": [
+              233
+            ],
+            "old_shape": [
+              233
+            ],
+            "same": true
+          },
+          "solver_z_L": {
+            "maximum_absolute_difference": 0.0,
+            "new_shape": [
+              29
+            ],
+            "old_shape": [
+              29
+            ],
+            "same": true
+          },
+          "solver_z_U": {
+            "maximum_absolute_difference": 0.0,
+            "new_shape": [
+              29
+            ],
+            "old_shape": [
+              29
+            ],
+            "same": true
+          }
+        },
+        "compared": true
+      },
+      "reported_iteration_limits": null,
+      "run": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-bottleneck-000-p00",
+      "same_case": true,
+      "same_evaluation_config": true,
+      "same_final_status": true,
+      "same_fixed_numerical_solver_options": true,
+      "same_input_json_sha256": true,
+      "same_method_seed": true,
+      "same_path_array": true,
+      "same_path_file_sha256": true,
+      "same_profile": true,
+      "same_roadmap_id": true,
+      "same_transcription_fields": {
+        "collision_pairs": true,
+        "collocation_locations": true,
+        "collocation_parameter_Nc": true,
+        "collocation_points": true,
+        "spline_order": true,
+        "warm_start_control_count": true,
+        "warm_start_duration_seconds": true,
+        "warm_start_endpoint_copies": true,
+        "warm_start_node_count": true,
+        "warm_start_resampled": true
+      },
+      "solver_logging": {
+        "interface": "IPOPT output_file",
+        "path": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-bottleneck-000-p00/jobs/dev-bottleneck-000-p00-NTO_PAPER-minimum_time-9c55cb47/attempts/0001/ipopt.log"
+      },
+      "source_commit": "3edaca8fc5fd57fd8c4f25fbfe054ab80d4490d3",
+      "status": "success_validated_numerical"
+    },
+    {
+      "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-sparse_clutter-002-p02/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_distance-462e42b6/attempts/0001",
+      "candidate_arrays": {
+        "all_exactly_equal": true,
+        "arrays": {
+          "controls": {
+            "maximum_absolute_difference": 0.0,
+            "new_shape": [
+              4,
+              7
+            ],
+            "old_shape": [
+              4,
+              7
+            ],
+            "same": true
+          },
+          "knots": {
+            "maximum_absolute_difference": 0.0,
+            "new_shape": [
+              6
+            ],
+            "old_shape": [
+              6
+            ],
+            "same": true
+          }
+        },
+        "compared": true
+      },
+      "case_id": "dev-sparse_clutter-002-p02",
+      "fixed_numerical_solver_options": {
+        "Major feasibility tolerance": 1e-06,
+        "Major iterations limit": 2000,
+        "Major optimality tolerance": 1e-06,
+        "Major print level": 1,
+        "Minor print level": 0
+      },
+      "historical_attempt": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_distance-462e42b6/attempts/0001",
+      "historical_source_commit": "72984027030175b7bca78e2dcf592b38f0c1864b",
+      "historical_status": "solver_failed",
+      "initial_arrays": {
+        "all_exactly_equal": true,
+        "arrays": {
+          "controls": {
+            "maximum_absolute_difference": 0.0,
+            "new_shape": [
+              4,
+              7
+            ],
+            "old_shape": [
+              4,
+              7
+            ],
+            "same": true
+          },
+          "duration": {
+            "maximum_absolute_difference": 0.0,
+            "new_shape": [],
+            "old_shape": [],
+            "same": true
+          },
+          "knots": {
+            "maximum_absolute_difference": 0.0,
+            "new_shape": [
+              6
+            ],
+            "old_shape": [
+              6
+            ],
+            "same": true
+          },
+          "original_path": {
+            "maximum_absolute_difference": 0.0,
+            "new_shape": [
+              4,
+              7
+            ],
+            "old_shape": [
+              4,
+              7
+            ],
+            "same": true
+          }
+        },
+        "compared": true
+      },
+      "job_id": "dev-sparse_clutter-002-p02-NTO_PAPER-minimum_distance-462e42b6",
+      "log": {
+        "bytes": 106387,
+        "effective_iteration_limits": {
+          "Iteration limit": [
+            10000
+          ],
+          "Major iterations limit": [
+            2000
+          ],
+          "Minor iterations limit": [
+            500
+          ]
+        },
+        "has_native_termination_footer": true,
+        "historical_bytes": 121,
+        "major_iterations": [
+          630
+        ],
+        "path": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-sparse_clutter-002-p02/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_distance-462e42b6/attempts/0001/snopt.log",
+        "sha256": "98fd880c16973568db3a9e76151c567dc0cb2cb1e919b56647855e954d7ca968",
+        "snopt_exit": [
+          {
+            "code": 30,
+            "description": "resource limit error"
+          }
+        ],
+        "snopt_info": [
+          {
+            "code": 31,
+            "description": "iteration limit reached"
+          }
+        ],
+        "tail_lines": [
+          "      18  x     18    BS        -1.39372        -0.98294        -2.57000         2.57000        -0.13645    182",
+          "      19  x     19    BS        -0.31908        -0.28194        -3.10000         3.10000         0.10614    183",
+          "      20  x     20 N SBS         0.98176        -0.03107        -2.09000         2.09000   1748224.38053    184",
+          "      21  x     21    UL         3.10000         0.51290        -3.10000         3.10000 -91343463.28980    185",
+          "      22  x     22    BS         0.32932         0.02589        -3.10000         3.10000          .         186",
+          "      23  x     23    BS         1.37125         0.49757        -2.24000         2.24000          .         187",
+          "      24  x     24    BS        -2.57333         0.11262        -3.10000         3.10000          .         188",
+          "      25  x     25    BS         1.82183         0.68756        -2.57000         2.57000          .         189",
+          "      26  x     26    BS        -0.22423         0.02028        -3.10000         3.10000          .         190",
+          "      27  x     27    BS         1.23187         0.05348        -2.09000         2.09000          .         191",
+          "      28  x     28    BS         0.70131        -0.51290        -3.10000         3.10000          .         192",
+          "      29  x     29 A  EQ         1.0              .              1.0             1.0              .         193"
+        ],
+        "total_iterations": [
+          10000
+        ]
+      },
+      "new_remaining_solver_budget_seconds": 58.720582818146795,
+      "new_solver_result": {
+        "native_solver_details": {
+          "info": 31,
+          "solve_time": 8.494457555
+        },
+        "raw_solution": "nto_solver_raw.npz",
+        "returned_controls_finite": true,
+        "returned_duration_finite": true,
+        "solve_seconds": 8.496182901784778,
+        "solver_objective": 20.4007806649674,
+        "solver_status": "SolutionResult.kIterationLimit",
+        "solver_success": false
+      },
+      "objective": "minimum_distance",
+      "old_remaining_solver_budget_seconds": 58.73579212510958,
+      "old_solver_result": {
+        "native_solver_details": {
+          "info": 31,
+          "solve_time": 8.543169143
+        },
+        "raw_solution": "nto_solver_raw.npz",
+        "returned_controls_finite": true,
+        "returned_duration_finite": true,
+        "solve_seconds": 8.54487331211567,
+        "solver_objective": 20.4007806649674,
+        "solver_status": "SolutionResult.kIterationLimit",
+        "solver_success": false
+      },
+      "raw_solver_arrays": {
+        "all_exactly_equal": true,
+        "arrays": {
+          "controls": {
+            "maximum_absolute_difference": 0.0,
+            "new_shape": [
+              4,
+              7
+            ],
+            "old_shape": [
+              4,
+              7
+            ],
+            "same": true
+          },
+          "decision_variables": {
+            "maximum_absolute_difference": 0.0,
+            "new_shape": [
+              29
+            ],
+            "old_shape": [
+              29
+            ],
+            "same": true
+          },
+          "duration": {
+            "maximum_absolute_difference": 0.0,
+            "new_shape": [],
+            "old_shape": [],
+            "same": true
+          },
+          "normalized_knots": {
+            "maximum_absolute_difference": 0.0,
+            "new_shape": [
+              6
+            ],
+            "old_shape": [
+              6
+            ],
+            "same": true
+          },
+          "solver_F": {
+            "maximum_absolute_difference": 0.0,
+            "new_shape": [
+              164
+            ],
+            "old_shape": [
+              164
+            ],
+            "same": true
+          },
+          "solver_Fmul": {
+            "maximum_absolute_difference": 0.0,
+            "new_shape": [
+              164
+            ],
+            "old_shape": [
+              164
+            ],
+            "same": true
+          },
+          "solver_xmul": {
+            "maximum_absolute_difference": 0.0,
+            "new_shape": [
+              29
+            ],
+            "old_shape": [
+              29
+            ],
+            "same": true
+          }
+        },
+        "compared": true
+      },
+      "reported_iteration_limits": {
+        "defaults_overridden": false,
+        "evidence": "benchmarks/generic_motion_v1/reports/baseline_study/snopt_option_probes_v3/common_file_rows164/snopt.log",
+        "explicitly_configured": [
+          "Major iterations limit"
+        ],
+        "observed_backend": "Drake 1.51.1 / SNOPT 7.4-1.2",
+        "reported_defaults_only": [
+          "Iterations limit",
+          "Minor iterations limit"
+        ],
+        "scope": "Previously observed CPU probe values, not a fresh runtime query; total/minor defaults are not overridden",
+        "values": {
+          "Iterations limit": 10000,
+          "Major iterations limit": 2000,
+          "Minor iterations limit": 500
+        }
+      },
+      "run": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-sparse_clutter-002-p02",
+      "same_case": true,
+      "same_evaluation_config": true,
+      "same_final_status": true,
+      "same_fixed_numerical_solver_options": true,
+      "same_input_json_sha256": true,
+      "same_method_seed": true,
+      "same_path_array": true,
+      "same_path_file_sha256": true,
+      "same_profile": true,
+      "same_roadmap_id": true,
+      "same_transcription_fields": {
+        "collision_pairs": true,
+        "collocation_locations": true,
+        "collocation_parameter_Nc": true,
+        "collocation_points": true,
+        "spline_order": true,
+        "warm_start_control_count": true,
+        "warm_start_duration_seconds": true,
+        "warm_start_endpoint_copies": true,
+        "warm_start_node_count": true,
+        "warm_start_resampled": true
+      },
+      "solver_logging": {
+        "interface": "SolverOptions/CommonSolverOption.kPrintFileName",
+        "numerical_solver_options_changed": false,
+        "path": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-sparse_clutter-002-p02/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_distance-462e42b6/attempts/0001/snopt.log"
+      },
+      "source_commit": "3edaca8fc5fd57fd8c4f25fbfe054ab80d4490d3",
+      "status": "solver_failed"
+    },
+    {
+      "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-sparse_clutter-002-p02/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_time-3995c61d/attempts/0001",
+      "candidate_arrays": {
+        "all_exactly_equal": true,
+        "arrays": {
+          "controls": {
+            "maximum_absolute_difference": 0.0,
+            "new_shape": [
+              6,
+              7
+            ],
+            "old_shape": [
+              6,
+              7
+            ],
+            "same": true
+          },
+          "knots": {
+            "maximum_absolute_difference": 0.0,
+            "new_shape": [
+              10
+            ],
+            "old_shape": [
+              10
+            ],
+            "same": true
+          }
+        },
+        "compared": true
+      },
+      "case_id": "dev-sparse_clutter-002-p02",
+      "fixed_numerical_solver_options": {
+        "file_print_level": 5,
+        "max_iter": 2000,
+        "print_level": 0,
+        "tol": 1e-06
+      },
+      "historical_attempt": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_time-3995c61d/attempts/0001",
+      "historical_source_commit": "72984027030175b7bca78e2dcf592b38f0c1864b",
+      "historical_status": "success_validated_numerical",
+      "initial_arrays": {
+        "all_exactly_equal": true,
+        "arrays": {
+          "controls": {
+            "maximum_absolute_difference": 0.0,
+            "new_shape": [
+              6,
+              7
+            ],
+            "old_shape": [
+              6,
+              7
+            ],
+            "same": true
+          },
+          "duration": {
+            "maximum_absolute_difference": 0.0,
+            "new_shape": [],
+            "old_shape": [],
+            "same": true
+          },
+          "knots": {
+            "maximum_absolute_difference": 0.0,
+            "new_shape": [
+              10
+            ],
+            "old_shape": [
+              10
+            ],
+            "same": true
+          },
+          "original_path": {
+            "maximum_absolute_difference": 0.0,
+            "new_shape": [
+              4,
+              7
+            ],
+            "old_shape": [
+              4,
+              7
+            ],
+            "same": true
+          }
+        },
+        "compared": true
+      },
+      "job_id": "dev-sparse_clutter-002-p02-NTO_PAPER-minimum_time-3995c61d",
+      "log": {
+        "bytes": 25725,
+        "has_native_termination_footer": true,
+        "historical_bytes": 25725,
+        "ipopt_exit": [
+          "Optimal Solution Found."
+        ],
+        "last_written_iteration": 266,
+        "path": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-sparse_clutter-002-p02/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_time-3995c61d/attempts/0001/ipopt.log",
+        "sha256": "2258ecaedfd72d2c40ade04f187e1d6a51a90fa05ce2ac2acbb88fa1276a93d1",
+        "tail_lines": [
+          "",
+          "",
+          "Number of objective function evaluations             = 384",
+          "Number of objective gradient evaluations             = 233",
+          "Number of equality constraint evaluations            = 384",
+          "Number of inequality constraint evaluations          = 384",
+          "Number of equality constraint Jacobian evaluations   = 269",
+          "Number of inequality constraint Jacobian evaluations = 269",
+          "Number of Lagrangian Hessian evaluations             = 0",
+          "Total seconds in IPOPT                               = 5.874",
+          "",
+          "EXIT: Optimal Solution Found."
+        ]
+      },
+      "new_remaining_solver_budget_seconds": 58.71441192505881,
+      "new_solver_result": {
+        "native_solver_details": {
+          "status": 0
+        },
+        "native_status_description": "Success",
+        "raw_solution": "nto_solver_raw.npz",
+        "returned_controls_finite": true,
+        "returned_duration_finite": true,
+        "solve_seconds": 5.876411105040461,
+        "solver_objective": 5.727352795315908,
+        "solver_status": "SolutionResult.kSolutionFound",
+        "solver_success": true
+      },
+      "objective": "minimum_time",
+      "old_remaining_solver_budget_seconds": 58.748087282758206,
+      "old_solver_result": {
+        "native_solver_details": {
+          "status": 0
+        },
+        "native_status_description": "Success",
+        "raw_solution": "nto_solver_raw.npz",
+        "returned_controls_finite": true,
+        "returned_duration_finite": true,
+        "solve_seconds": 5.893395316787064,
+        "solver_objective": 5.727352795315908,
+        "solver_status": "SolutionResult.kSolutionFound",
+        "solver_success": true
+      },
+      "raw_solver_arrays": {
+        "all_exactly_equal": true,
+        "arrays": {
+          "controls": {
+            "maximum_absolute_difference": 0.0,
+            "new_shape": [
+              6,
+              7
+            ],
+            "old_shape": [
+              6,
+              7
+            ],
+            "same": true
+          },
+          "decision_variables": {
+            "maximum_absolute_difference": 0.0,
+            "new_shape": [
+              43
+            ],
+            "old_shape": [
+              43
+            ],
+            "same": true
+          },
+          "duration": {
+            "maximum_absolute_difference": 0.0,
+            "new_shape": [],
+            "old_shape": [],
+            "same": true
+          },
+          "normalized_knots": {
+            "maximum_absolute_difference": 0.0,
+            "new_shape": [
+              10
+            ],
+            "old_shape": [
+              10
+            ],
+            "same": true
+          },
+          "solver_g": {
+            "maximum_absolute_difference": 0.0,
+            "new_shape": [
+              275
+            ],
+            "old_shape": [
+              275
+            ],
+            "same": true
+          },
+          "solver_lambda_val": {
+            "maximum_absolute_difference": 0.0,
+            "new_shape": [
+              275
+            ],
+            "old_shape": [
+              275
+            ],
+            "same": true
+          },
+          "solver_z_L": {
+            "maximum_absolute_difference": 0.0,
+            "new_shape": [
+              43
+            ],
+            "old_shape": [
+              43
+            ],
+            "same": true
+          },
+          "solver_z_U": {
+            "maximum_absolute_difference": 0.0,
+            "new_shape": [
+              43
+            ],
+            "old_shape": [
+              43
+            ],
+            "same": true
+          }
+        },
+        "compared": true
+      },
+      "reported_iteration_limits": null,
+      "run": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-sparse_clutter-002-p02",
+      "same_case": true,
+      "same_evaluation_config": true,
+      "same_final_status": true,
+      "same_fixed_numerical_solver_options": true,
+      "same_input_json_sha256": true,
+      "same_method_seed": true,
+      "same_path_array": true,
+      "same_path_file_sha256": true,
+      "same_profile": true,
+      "same_roadmap_id": true,
+      "same_transcription_fields": {
+        "collision_pairs": true,
+        "collocation_locations": true,
+        "collocation_parameter_Nc": true,
+        "collocation_points": true,
+        "spline_order": true,
+        "warm_start_control_count": true,
+        "warm_start_duration_seconds": true,
+        "warm_start_endpoint_copies": true,
+        "warm_start_node_count": true,
+        "warm_start_resampled": true
+      },
+      "solver_logging": {
+        "interface": "IPOPT output_file",
+        "path": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-sparse_clutter-002-p02/jobs/dev-sparse_clutter-002-p02-NTO_PAPER-minimum_time-3995c61d/attempts/0001/ipopt.log"
+      },
+      "source_commit": "3edaca8fc5fd57fd8c4f25fbfe054ab80d4490d3",
+      "status": "success_validated_numerical"
+    },
+    {
+      "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-route_choice-002-p00/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_distance-48b608ce/attempts/0001",
+      "candidate_arrays": {
+        "compared": false,
+        "new_exists": false,
+        "old_exists": false
+      },
+      "case_id": "dev-route_choice-002-p00",
+      "fixed_numerical_solver_options": {
+        "Major feasibility tolerance": 1e-06,
+        "Major iterations limit": 2000,
+        "Major optimality tolerance": 1e-06,
+        "Major print level": 1,
+        "Minor print level": 0
+      },
+      "historical_attempt": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_distance-48b608ce/attempts/0001",
+      "historical_source_commit": "72984027030175b7bca78e2dcf592b38f0c1864b",
+      "historical_status": "solver_failed",
+      "initial_arrays": {
+        "all_exactly_equal": true,
+        "arrays": {
+          "controls": {
+            "maximum_absolute_difference": 0.0,
+            "new_shape": [
+              5,
+              7
+            ],
+            "old_shape": [
+              5,
+              7
+            ],
+            "same": true
+          },
+          "duration": {
+            "maximum_absolute_difference": 0.0,
+            "new_shape": [],
+            "old_shape": [],
+            "same": true
+          },
+          "knots": {
+            "maximum_absolute_difference": 0.0,
+            "new_shape": [
+              7
+            ],
+            "old_shape": [
+              7
+            ],
+            "same": true
+          },
+          "original_path": {
+            "maximum_absolute_difference": 0.0,
+            "new_shape": [
+              5,
+              7
+            ],
+            "old_shape": [
+              5,
+              7
+            ],
+            "same": true
+          }
+        },
+        "compared": true
+      },
+      "job_id": "dev-route_choice-002-p00-NTO_PAPER-minimum_distance-48b608ce",
+      "log": {
+        "bytes": 62597,
+        "effective_iteration_limits": {
+          "Iteration limit": [
+            10000
+          ],
+          "Major iterations limit": [
+            2000
+          ],
+          "Minor iterations limit": [
+            500
+          ]
+        },
+        "has_native_termination_footer": true,
+        "historical_bytes": 121,
+        "major_iterations": [
+          257
+        ],
+        "path": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-route_choice-002-p00/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_distance-48b608ce/attempts/0001/snopt.log",
+        "sha256": "0d8a025a92f0858b29c71334d0c1432bd70f9a2b1bd790337ef0fc59f196ad64",
+        "snopt_exit": [
+          {
+            "code": 70,
+            "description": "user requested termination"
+          }
+        ],
+        "snopt_info": [
+          {
+            "code": 71,
+            "description": "terminated during function evaluation"
+          }
+        ],
+        "tail_lines": [
+          "      25  x     25   SBS         0.42233        -0.12951        -2.57000         2.57000       -15.04059    189",
+          "      26  x     26    BS        -2.14661        -0.56535        -3.10000         3.10000        -5.36927    190",
+          "      27  x     27    UL         2.09000         0.68427        -2.09000         2.09000     -6873.64891    191",
+          "      28  x     28   SBS        -0.36457        -0.66394        -3.10000         3.10000        -0.10688    192",
+          "      29  x     29    BS         0.84713         0.33611        -3.10000         3.10000       -69.37005    193",
+          "      30  x     30    BS         1.40685         0.42341        -2.24000         2.24000        14.16268    194",
+          "      31  x     31    BS        -0.11599        -0.27155        -3.10000         3.10000       -19.66545    195",
+          "      32  x     32    BS         0.33840        -0.01164        -2.57000         2.57000        10.18018    196",
+          "      33  x     33    BS         2.73031         0.67644        -3.10000         3.10000         0.00703    197",
+          "      34  x     34    BS         0.38859        -0.23599        -2.09000         2.09000         0.00035    198",
+          "      35  x     35    BS         2.13932         0.34730        -3.10000         3.10000        -0.00734    199",
+          "      36  x     36 A  EQ         1.0              .              1.0             1.0              .         200"
+        ],
+        "total_iterations": [
+          8150
+        ]
+      },
+      "new_remaining_solver_budget_seconds": 58.20471086213365,
+      "new_solver_result": {
+        "error": "RuntimeError(\"Exception while evaluating SNOPT costs and constraints: 'Failure at external/drake+/geometry/proximity/distance_to_shape_touching.cc:122 in BoxBoxGradient(): condition '(X_WA * p_ACa - X_WB * p_BCb).norm() < kEps' failed.'\")",
+        "solve_seconds": 6.37973690405488,
+        "solver": "SNOPT",
+        "solver_status": "exception",
+        "solver_success": false,
+        "traceback": "Traceback (most recent call last):\n  File \"/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/runners/paper_nto.py\", line 244, in paper_nto\n    result = solver.Solve(prog, None, solve_options)\nRuntimeError: Exception while evaluating SNOPT costs and constraints: 'Failure at external/drake+/geometry/proximity/distance_to_shape_touching.cc:122 in BoxBoxGradient(): condition '(X_WA * p_ACa - X_WB * p_BCb).norm() < kEps' failed.'\n"
+      },
+      "objective": "minimum_distance",
+      "old_remaining_solver_budget_seconds": 58.24457128485665,
+      "old_solver_result": {
+        "error": "RuntimeError(\"Exception while evaluating SNOPT costs and constraints: 'Failure at external/drake+/geometry/proximity/distance_to_shape_touching.cc:122 in BoxBoxGradient(): condition '(X_WA * p_ACa - X_WB * p_BCb).norm() < kEps' failed.'\")",
+        "solve_seconds": 6.398992366157472,
+        "solver": "SNOPT",
+        "solver_status": "exception",
+        "solver_success": false,
+        "traceback": "Traceback (most recent call last):\n  File \"/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/runners/paper_nto.py\", line 222, in paper_nto\n    result = solver.Solve(prog)\nRuntimeError: Exception while evaluating SNOPT costs and constraints: 'Failure at external/drake+/geometry/proximity/distance_to_shape_touching.cc:122 in BoxBoxGradient(): condition '(X_WA * p_ACa - X_WB * p_BCb).norm() < kEps' failed.'\n"
+      },
+      "raw_solver_arrays": {
+        "compared": false,
+        "new_exists": false,
+        "old_exists": false
+      },
+      "reported_iteration_limits": {
+        "defaults_overridden": false,
+        "evidence": "benchmarks/generic_motion_v1/reports/baseline_study/snopt_option_probes_v3/common_file_rows164/snopt.log",
+        "explicitly_configured": [
+          "Major iterations limit"
+        ],
+        "observed_backend": "Drake 1.51.1 / SNOPT 7.4-1.2",
+        "reported_defaults_only": [
+          "Iterations limit",
+          "Minor iterations limit"
+        ],
+        "scope": "Previously observed CPU probe values, not a fresh runtime query; total/minor defaults are not overridden",
+        "values": {
+          "Iterations limit": 10000,
+          "Major iterations limit": 2000,
+          "Minor iterations limit": 500
+        }
+      },
+      "run": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-route_choice-002-p00",
+      "same_case": true,
+      "same_evaluation_config": true,
+      "same_final_status": true,
+      "same_fixed_numerical_solver_options": true,
+      "same_input_json_sha256": true,
+      "same_method_seed": true,
+      "same_path_array": true,
+      "same_path_file_sha256": true,
+      "same_profile": true,
+      "same_roadmap_id": true,
+      "same_transcription_fields": {
+        "collision_pairs": true,
+        "collocation_locations": true,
+        "collocation_parameter_Nc": true,
+        "collocation_points": true,
+        "spline_order": true,
+        "warm_start_control_count": true,
+        "warm_start_duration_seconds": true,
+        "warm_start_endpoint_copies": true,
+        "warm_start_node_count": true,
+        "warm_start_resampled": true
+      },
+      "solver_logging": {
+        "interface": "SolverOptions/CommonSolverOption.kPrintFileName",
+        "numerical_solver_options_changed": false,
+        "path": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-route_choice-002-p00/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_distance-48b608ce/attempts/0001/snopt.log"
+      },
+      "source_commit": "3edaca8fc5fd57fd8c4f25fbfe054ab80d4490d3",
+      "status": "solver_failed"
+    },
+    {
+      "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-route_choice-002-p00/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_time-d530d955/attempts/0001",
+      "candidate_arrays": {
+        "compared": false,
+        "new_exists": false,
+        "old_exists": false
+      },
+      "case_id": "dev-route_choice-002-p00",
+      "fixed_numerical_solver_options": {
+        "file_print_level": 5,
+        "max_iter": 2000,
+        "print_level": 0,
+        "tol": 1e-06
+      },
+      "historical_attempt": "benchmarks/generic_motion_v1/results/rss2025_full_dev_v1/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_time-d530d955/attempts/0001",
+      "historical_source_commit": "72984027030175b7bca78e2dcf592b38f0c1864b",
+      "historical_status": "timeout",
+      "initial_arrays": {
+        "all_exactly_equal": true,
+        "arrays": {
+          "controls": {
+            "maximum_absolute_difference": 0.0,
+            "new_shape": [
+              7,
+              7
+            ],
+            "old_shape": [
+              7,
+              7
+            ],
+            "same": true
+          },
+          "duration": {
+            "maximum_absolute_difference": 0.0,
+            "new_shape": [],
+            "old_shape": [],
+            "same": true
+          },
+          "knots": {
+            "maximum_absolute_difference": 0.0,
+            "new_shape": [
+              11
+            ],
+            "old_shape": [
+              11
+            ],
+            "same": true
+          },
+          "original_path": {
+            "maximum_absolute_difference": 0.0,
+            "new_shape": [
+              5,
+              7
+            ],
+            "old_shape": [
+              5,
+              7
+            ],
+            "same": true
+          }
+        },
+        "compared": true
+      },
+      "job_id": "dev-route_choice-002-p00-NTO_PAPER-minimum_time-d530d955",
+      "log": {
+        "bytes": 172318,
+        "has_native_termination_footer": false,
+        "historical_bytes": 172561,
+        "ipopt_exit": [],
+        "last_written_iteration": 1923,
+        "path": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-route_choice-002-p00/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_time-d530d955/attempts/0001/ipopt.log",
+        "sha256": "8a05ee317cb27f28fd348e87ab32b37af00fe44e92513c70b3e5aeaaf069a140",
+        "tail_lines": [
+          "1913  4.5309791e+01 2.38e+00 1.35e+03  -1.2 2.97e+01    -  1.41e-02 1.94e-03h  5",
+          "1914  4.5308474e+01 2.37e+00 3.89e+03  -1.2 3.78e+01    -  2.51e-02 3.60e-03h  4",
+          "1915  4.5306496e+01 2.36e+00 1.15e+04  -1.2 9.22e+01    -  4.92e-03 6.63e-03h  2",
+          "1916  4.5304745e+01 2.34e+00 1.05e+04  -1.2 6.49e+01    -  4.57e-05 7.99e-03f  2",
+          "1917  4.5294048e+01 2.31e+00 8.68e+03  -1.2 8.39e+01    -  1.69e-01 2.58e-02h  2",
+          "1918  4.5290336e+01 2.29e+00 1.04e+04  -1.2 5.50e+01    -  2.56e-02 7.83e-03h  4",
+          "1919  4.5250030e+01 1.43e+01 2.71e+04  -1.2 8.40e+01    -  2.26e-02 6.56e-02w  1",
+          "iter    objective    inf_pr   inf_du lg(mu)  ||d||  lg(rg) alpha_du alpha_pr  ls",
+          "1920  4.5255562e+01 1.43e+01 3.06e+04  -1.2 6.02e+01    -  4.10e-03 1.54e-02w  1",
+          "1921  4.5257389e+01 1.44e+01 3.39e+04  -1.2 3.00e+01    -  9.39e-02 1.01e-02w  1",
+          "1922  4.5290021e+01 2.29e+00 1.10e+04  -1.2 3.14e+01    -  2.26e-02 5.12e-04h  7",
+          "1923  4.5274958e+01 2.25e+00 2.14e+04  -1.2 1.05e+01    -  2.54e-02 1.96e-02h  5"
+        ]
+      },
+      "new_remaining_solver_budget_seconds": 58.193019576370716,
+      "new_solver_result": null,
+      "objective": "minimum_time",
+      "old_remaining_solver_budget_seconds": 58.20619210181758,
+      "old_solver_result": null,
+      "raw_solver_arrays": {
+        "compared": false,
+        "new_exists": false,
+        "old_exists": false
+      },
+      "reported_iteration_limits": null,
+      "run": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-route_choice-002-p00",
+      "same_case": true,
+      "same_evaluation_config": true,
+      "same_final_status": true,
+      "same_fixed_numerical_solver_options": true,
+      "same_input_json_sha256": true,
+      "same_method_seed": true,
+      "same_path_array": true,
+      "same_path_file_sha256": true,
+      "same_profile": true,
+      "same_roadmap_id": true,
+      "same_transcription_fields": {
+        "collision_pairs": true,
+        "collocation_locations": true,
+        "collocation_parameter_Nc": true,
+        "collocation_points": true,
+        "spline_order": true,
+        "warm_start_control_count": true,
+        "warm_start_duration_seconds": true,
+        "warm_start_endpoint_copies": true,
+        "warm_start_node_count": true,
+        "warm_start_resampled": true
+      },
+      "solver_logging": {
+        "interface": "IPOPT output_file",
+        "path": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/nto_logging_check_v1_dev-route_choice-002-p00/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_time-d530d955/attempts/0001/ipopt.log"
+      },
+      "source_commit": "3edaca8fc5fd57fd8c4f25fbfe054ab80d4490d3",
+      "status": "timeout"
+    }
+  ],
+  "same_final_status_count": 6,
+  "scope": "Read-only paired audit of six actual fixed-dev logging checks; no new solver, GPU, collision or test query",
+  "status_counts": {
+    "solver_failed": 2,
+    "success_validated_numerical": 3,
+    "timeout": 1
+  },
+  "verified_attempts": 12
+}

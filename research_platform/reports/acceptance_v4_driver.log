@@ -1,0 +1,21 @@
+1 bash local/research.sh run --config configs/research/forest_smoke.json --output /home/eric/wjg/wd/csdecomp/runs/platform_final_v4_forest -> 0
+2 bash local/research.sh verify --run /home/eric/wjg/wd/csdecomp/runs/platform_final_v4_forest -> 0
+3 bash local/research.sh run --config configs/research/fr3_smoke.json --output /home/eric/wjg/wd/csdecomp/runs/platform_final_v4_fr3 -> 0
+4 bash local/research.sh verify --run /home/eric/wjg/wd/csdecomp/runs/platform_final_v4_fr3 -> 0
+5 bash local/research.sh run --config configs/research/forest_batch.json --output /home/eric/wjg/wd/csdecomp/runs/platform_final_v4_batch --prepare-only -> 0
+6 bash local/research.sh verify --run /home/eric/wjg/wd/csdecomp/runs/platform_final_v4_batch -> 2
+7 bash local/research.sh resume --run /home/eric/wjg/wd/csdecomp/runs/platform_final_v4_batch --case e000_r000_n00200 -> 0
+8 bash local/research.sh verify --run /home/eric/wjg/wd/csdecomp/runs/platform_final_v4_batch -> 2
+9 bash local/research.sh resume --run /home/eric/wjg/wd/csdecomp/runs/platform_final_v4_batch -> 0
+10 bash local/research.sh verify --run /home/eric/wjg/wd/csdecomp/runs/platform_final_v4_batch -> 0
+11 bash local/research.sh resume --run /home/eric/wjg/wd/csdecomp/runs/platform_final_v4_batch -> 0
+12 bash local/research.sh resume --run /home/eric/wjg/wd/csdecomp/runs/platform_final_v4_forest --retry-job method-e000_r000_n00200-NTO_distance -> 0
+13 bash local/research.sh verify --run /home/eric/wjg/wd/csdecomp/runs/platform_final_v4_forest -> 0
+14 bash local/research.sh summarize --run /home/eric/wjg/wd/csdecomp/runs/platform_final_v4_forest -> 0
+15 bash local/research.sh replay --run /home/eric/wjg/wd/csdecomp/runs/platform_final_v4_forest --case e000_r000_n00200 -> 0
+16 bash local/research.sh verify --run /home/eric/wjg/wd/csdecomp/runs/platform_final_v4_fr3 -> 0
+17 bash local/research.sh summarize --run /home/eric/wjg/wd/csdecomp/runs/platform_final_v4_fr3 -> 0
+18 bash local/research.sh replay --run /home/eric/wjg/wd/csdecomp/runs/platform_final_v4_fr3 --case e000_r000_n03000 -> 0
+19 bash local/research.sh verify --run /home/eric/wjg/wd/csdecomp/runs/platform_final_v4_batch -> 0
+20 bash local/research.sh summarize --run /home/eric/wjg/wd/csdecomp/runs/platform_final_v4_batch -> 0
+21 bash local/research.sh replay --run /home/eric/wjg/wd/csdecomp/runs/platform_final_v4_batch --case e002_r000_n00200 -> 0

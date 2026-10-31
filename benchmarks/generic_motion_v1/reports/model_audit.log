@@ -1,0 +1,159 @@
+/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/lib/python3.10/site-packages/csdecomp/drake_csd_bridge.py:62: DrakeDeprecationWarning: (Deprecated.)
+
+Deprecated:
+    Use is_floating_base_body() instead. This will be removed from
+    Drake on or after 2026-06-01.
+  if all_drake_bodies[-1].is_floating():
+Successfully registered package 'test_assets' with path: /home/eric/wjg/wd/csdecomp/csdecomp/tests/test_assets
+{
+  "status": "passed_with_explicit_contact_band",
+  "passed": true,
+  "base_random": {
+    "count": 512,
+    "cuda_free": 307,
+    "independent_free": 307,
+    "disagreements": 0,
+    "outside_contact_band": 0,
+    "disagreement_indices": [],
+    "cuda_seconds": 0.14981981832534075,
+    "independent_seconds": 0.07101859664544463
+  },
+  "base_edges": {
+    "count": 528,
+    "cuda_free": 360,
+    "independent_free": 360,
+    "disagreements": 0,
+    "outside_contact_band": 0,
+    "disagreement_indices": [],
+    "cuda_seconds": 0.0006567030213773251,
+    "independent_seconds": 0.06880465382710099
+  },
+  "voxel_random": {
+    "count": 512,
+    "cuda_free": 128,
+    "independent_free": 128,
+    "disagreements": 0,
+    "outside_contact_band": 0,
+    "disagreement_indices": [],
+    "cuda_seconds": 0.0004916680045425892,
+    "independent_seconds": 0.1632534060627222
+  },
+  "voxel_edges": {
+    "count": 528,
+    "cuda_free": 152,
+    "independent_free": 152,
+    "disagreements": 0,
+    "outside_contact_band": 0,
+    "disagreement_indices": [],
+    "cuda_seconds": 0.0008231229148805141,
+    "independent_seconds": 0.16377292992547154
+  },
+  "upstream_model_difference": {
+    "offline_directive": "csdecomp/tests/test_assets/directives/simple_kinova_sens_on_table.yml",
+    "online_directive": "csdecomp/tests/test_assets/directives/kinova_sens_on_table.yml",
+    "reduced_geometry_count": 20,
+    "full_geometry_count": 20,
+    "reduced_robot_geometry_count": 15,
+    "full_robot_geometry_count": 15,
+    "reduced_pair_count": 137,
+    "full_pair_count": 137,
+    "reduced_lower": [
+      -3.0999999046325684,
+      -2.240000009536743,
+      -3.0999999046325684,
+      -2.569999933242798,
+      -3.0999999046325684,
+      -2.0899999141693115,
+      -3.0999999046325684
+    ],
+    "reduced_upper": [
+      3.0999999046325684,
+      2.240000009536743,
+      3.0999999046325684,
+      2.569999933242798,
+      3.0999999046325684,
+      2.0899999141693115,
+      3.0999999046325684
+    ],
+    "sampled_classification_disagreements": 0,
+    "reduced_free_full_colliding": 0,
+    "full_free_reduced_colliding": 0,
+    "remedy": "Build all new roadmaps from Model.csd_plant; never load upstream reduced-model roadmaps.",
+    "sources": {
+      "csdecomp/tests/test_assets/directives/simple_kinova_sens_on_table.yml": "8b10acb874679a75800338e8d5801e076fd5783a7b9e449b9614fd6ba8c93f07",
+      "csdecomp/tests/test_assets/reduced_kinova_sens.urdf": "f18c645e502464f38e720cadcf52e6cc8da55fd9548964ddca10c27373809a10",
+      "csdecomp/tests/test_assets/collapsed_robotiq.urdf": "939c57ee685eb15a16799e2e27c6c5dda01daba2b404c78e8e37575fdc3918a5"
+    },
+    "full_link_count": 29,
+    "reduced_link_count": 20,
+    "geometry_dimension_max_abs_difference": 0.0,
+    "collision_pairs_equal": true,
+    "forward_kinematics_test_configurations": 64,
+    "geometry_world_transform_max_abs_difference_per_geometry": [
+      0.0,
+      1.0642997949616984e-07,
+      1.275677732337499e-07,
+      1.341104507446289e-07,
+      1.7881393432617188e-07,
+      1.7881393432617188e-07,
+      2.384185791015625e-07,
+      2.384185791015625e-07,
+      2.384185791015625e-07,
+      3.5762786865234375e-07,
+      3.5762786865234375e-07,
+      3.5762786865234375e-07,
+      3.5762786865234375e-07,
+      3.5762786865234375e-07,
+      3.5762786865234375e-07,
+      3.5762786865234375e-07,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "tcp_transform_max_abs_difference": 3.5762786865234375e-07,
+    "full_csd_vs_drake_tcp_position_max_error_m": 1.3393199427280678e-07,
+    "conclusion": "The reduced file collapses fixed chains. Both supplied models agree in primitive dimensions, limits and collision pairs, and in sampled poses to float32 precision. Different source files alone are not evidence of a physical-model mismatch; the new suite nevertheless freezes a single full-model construction for offline and online use."
+  },
+  "workspace": {
+    "sampled_valid_configurations": 307,
+    "tcp_min": [
+      -0.3990577714751913,
+      -0.8710803995372229,
+      0.072500869014824
+    ],
+    "tcp_max": [
+      0.9107650718494241,
+      0.8637094097691548,
+      1.211899806216549
+    ],
+    "tcp_quantiles": [
+      [
+        -0.3056708674987541,
+        -0.5993318075263545,
+        0.18683638060609742
+      ],
+      [
+        0.0705330826201781,
+        -0.015058622448429936,
+        0.6023156799946447
+      ],
+      [
+        0.6582434026372143,
+        0.6207273019114583,
+        1.128174931725223
+      ]
+    ],
+    "moving_collision_geometry_min": [
+      -0.47335731147387194,
+      -1.0407504056996622,
+      0.0013384279016056544
+    ],
+    "moving_collision_geometry_max": [
+      1.0803377575529907,
+      1.0206000601584602,
+      1.3763804167126161
+    ],
+    "note": "Workspace samples audit the obstacle ROI; they do not prove reachability of every point."
+  }
+}

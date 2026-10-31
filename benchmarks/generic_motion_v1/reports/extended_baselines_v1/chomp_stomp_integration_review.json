@@ -1,0 +1,154 @@
+{
+  "review_scope": "read-only independent integration/source review; reviewed own CHOMP/STOMP adapter plus independently authored root/TrajOpt integration",
+  "findings": [
+    {
+      "id": "E1",
+      "severity": "high",
+      "issue": "TrajOpt endpoint guard used 1e-7 versus common 1e-5 and falsely rejects float32 DRM roundtrip",
+      "evidence": "110 previously validated dev frontends checked read-only; 70 exceed1e-7; max1.1757522377919827e-7",
+      "resolution": "Uses cfg endpoint_tolerance_rad and records per-endpoint errors; endpoints are not modified",
+      "status": "resolved"
+    },
+    {
+      "id": "E2",
+      "severity": "medium",
+      "issue": "TrajOpt time cap accepted changed incumbent while native iteration caps rejected equivalent incumbents",
+      "resolution": "Uniform usable-candidate policy for converged or actual changed SQP iterate at internal time/SQP/penalty limits; solver_converged/native_status/termination recorded separately; final common validator required",
+      "status": "resolved"
+    },
+    {
+      "id": "E3",
+      "severity": "medium",
+      "issue": "TrajOpt dependency probe ignored custom build dir and unavailable dependency could become solver_failed",
+      "resolution": "Shared dependency audit resolves profile build_dir and raises ImportError for unavailable backend before planner execution",
+      "status": "resolved"
+    },
+    {
+      "id": "E4",
+      "severity": "low",
+      "issue": "Empty list could masquerade as empty CHOMP/STOMP parameter object",
+      "resolution": "_profile now requires dict overrides",
+      "status": "resolved"
+    }
+  ],
+  "unresolved_blockers": 0,
+  "checks": [
+    {
+      "name": "official_stomp_core",
+      "passed": true,
+      "evidence": "Vendored source SHA matches pinned upstream; bridge delegates actual solve and smoothing matrix to core"
+    },
+    {
+      "name": "chomp_identity",
+      "passed": true,
+      "evidence": "Covariant descent and exact discrete objective gradient; C-space adaptation and no HMC explicitly stated"
+    },
+    {
+      "name": "trajopt_identity",
+      "passed": true,
+      "evidence": "Author BasicTrustRegionSQP and BPMPD numeric routines; exact transport-only repair separately hashed"
+    },
+    {
+      "name": "collision_geometry",
+      "passed": true,
+      "evidence": "Canonical Model primitives, static pairs and online spheres reused without radius changes"
+    },
+    {
+      "name": "clearance_gradient",
+      "passed": true,
+      "evidence": "Analytic active primitive Jacobians; tie policy and exact geometry probes saved"
+    },
+    {
+      "name": "initialization",
+      "passed": true,
+      "evidence": "Shared validated DRM path; added points retain every original corner"
+    },
+    {
+      "name": "fixed_endpoints",
+      "passed": true,
+      "evidence": "CHOMP/STOMP exact preservation of supplied endpoints; TrajOpt fixed native bounds and common manifest tolerance"
+    },
+    {
+      "name": "joint_limits",
+      "passed": true,
+      "evidence": "Canonical limits constrain all local optimizers; common validator checks candidate"
+    },
+    {
+      "name": "common_success_guard",
+      "passed": true,
+      "evidence": "Runner saves candidate then calls independent/CUDA validator; native return alone never grants benchmark success"
+    },
+    {
+      "name": "deadline_guard",
+      "passed": true,
+      "evidence": "Five-second validator reserve, callback guards, outer process-group watchdog and finally deadline recheck"
+    },
+    {
+      "name": "trajopt_accepted_iterates",
+      "passed": true,
+      "evidence": "Author callbacks execute on x_ after accepted SQP steps, not rejected trial QP; initial seed excluded from time-limit incumbent path"
+    },
+    {
+      "name": "iteration_convergence",
+      "passed": true,
+      "evidence": "Convergence flag and native termination separate from usable candidate and common success"
+    },
+    {
+      "name": "failure_evidence",
+      "passed": true,
+      "evidence": "Candidate/raw arrays and callback/optimizer failures retained; external signal/timeout receives terminal class"
+    },
+    {
+      "name": "native_objectives",
+      "passed": true,
+      "evidence": "Native smoothness/collision costs retained separately from common PWL radians"
+    },
+    {
+      "name": "no_minimum_time_relabel",
+      "passed": true,
+      "evidence": "Extension objective capabilities explicitly geometric-only"
+    },
+    {
+      "name": "snapshot_scope",
+      "passed": true,
+      "evidence": "Recursive C/C++ headers/licenses and TrajOpt archive included in runtime inventory"
+    },
+    {
+      "name": "dataset_preservation",
+      "passed": true,
+      "evidence": "New smoke/dev study; no mutation or tuning of frozen test input"
+    },
+    {
+      "name": "sampling_replicates",
+      "passed": true,
+      "evidence": "Independent OMPL identity remains sampling-only; same scene repeats not new environments"
+    }
+  ],
+  "test_count": 103,
+  "test_seconds": 1.34,
+  "test_warnings": 1,
+  "test_log": "chomp_stomp_integration_tests.log",
+  "tests_scope": "CPU numerical/native and mock integration regression; not a claim of completed development matrix",
+  "source_sha256": {
+    "benchmarks/generic_motion_v1/runners/csdecomp_baseline.py": "8e3d98bd484913bbd412590ec1e2344d84cc18fac19aaa316f84d4cb338d8e17",
+    "benchmarks/generic_motion_v1/runners/chomp_stomp.py": "b815f2b9e339ce8806bac7a60892dec4cfc17f21b0e2217eb8bb4e365efd1b47",
+    "benchmarks/generic_motion_v1/runners/trajopt_baseline.py": "063eb6923c52a94eba2b89265b6bbedb9eba2c73cf1b24628716cdbf86377388",
+    "benchmarks/generic_motion_v1/runners/canonical_distance.py": "0c7af835ebf6b916761b61e0af3ba1109fd6ecd744d1b3ecd4780e3d7dec4335",
+    "benchmarks/generic_motion_v1/runners/methods.py": "1bd7a50def7417d74ebdbc67fa7f3065838e8f61ca4f1546b35689b2bc1496de",
+    "benchmarks/generic_motion_v1/runners/study_metrics.py": "d1653b73e3393caa31b32032584af03ba601b4d668f60e065fe5620e57cfb956",
+    "benchmarks/generic_motion_v1/runners/extended_metrics.py": "a269a7e7f23341eb4d116664e3545ee5d03181eba9f2bec8f30d4f4cf9dbae9c",
+    "benchmarks/generic_motion_v1/batch.py": "961ad91b74e2489bef27e0e86129422d137813c8943afa0ec53ac0a691741cfe",
+    "benchmarks/generic_motion_v1/roadmap.py": "b093558f1c0903795ec8cf033a9c4848ae3e7b21d744033f34eaa1abe85868cb",
+    "benchmarks/generic_motion_v1/common.py": "8e951b114e5d2ad3e4113b413569058ee37ac01978e03e00b0de0a1197bdfe19",
+    "benchmarks/generic_motion_v1/native/stomp_python.cpp": "7823c2b7fbe7d3a7f2b3205175ee121eef5b6b7fe5b94ff13163992af7a3ebad",
+    "benchmarks/generic_motion_v1/native/trajopt_bridge.cpp": "08b7d4fb2b90bda6d612371a6f7d43220fbc5919621aebdc4ea06ceeb6cc4399",
+    "benchmarks/generic_motion_v1/native/trajopt_safe_io.hpp": "509a0e4fdd39174bf7c4af5f3d8ddc8bf3bf7f5ef417d55d9527ad75ad523769"
+  },
+  "endpoint_scan": "chomp_stomp_integration_endpoint_scan.json",
+  "remaining_limits": [
+    "Finite collision samples do not establish continuous collision freedom",
+    "CHOMP C-space functional is an explicit objective adaptation",
+    "TrajOpt sampled segment constraints do not implement the author OpenRAVE swept-volume checker",
+    "Full frozen smoke/dev execution remains root study task"
+  ]
+}

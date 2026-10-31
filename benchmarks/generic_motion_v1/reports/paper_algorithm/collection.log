@@ -1,0 +1,39 @@
+{
+  "complete": true,
+  "manifest_hashes_unchanged": {
+    "smoke": true,
+    "dev": true,
+    "test": true
+  },
+  "config_sha256": "8c58d9430b82ca92c80b68e0aa11a5886d876f8d838cb9d3a9cb74ce450b9eba",
+  "final_preregistered_config_unchanged": true,
+  "formal_test_run": false,
+  "total_jobs": 380,
+  "runs": [
+    {
+      "run": "rss2025_smoke_v1",
+      "status_counts": {
+        "frontend_failed": 10,
+        "invalid_endpoint": 4,
+        "success_validated_numerical": 6
+      },
+      "source_code_commit": "e1abf004b4347dff75b15a8868e14b732d3bf539"
+    },
+    {
+      "run": "rss2025_dev_v1",
+      "status_counts": {
+        "frontend_failed": 138,
+        "infrastructure_error": 2,
+        "success_validated_numerical": 220
+      },
+      "source_code_commit": "e1abf004b4347dff75b15a8868e14b732d3bf539"
+    }
+  ],
+  "collector_sha256": "a8be2e697145bf26d2c32961b7e7c1f1b571fe6bec8e4402575410b0c6a4fa23",
+  "limitations": [
+    "Kinova adaptation, not original FR3 experiments",
+    "Finite numerical collision validation, not continuous safety proof",
+    "Native EI-ZO Python API does not expose statistical-test acceptance",
+    "LGCS and paper performance ratios are not reproduced"
+  ]
+}

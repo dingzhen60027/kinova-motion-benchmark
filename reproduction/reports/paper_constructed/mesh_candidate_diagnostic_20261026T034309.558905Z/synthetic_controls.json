@@ -1,0 +1,437 @@
+{
+  "passed": true,
+  "tests": [
+    {
+      "name": "parallel_triangle_distance",
+      "expected": 0.5,
+      "actual": 0.5,
+      "passed": true
+    },
+    {
+      "name": "skew_interior_edge_distance",
+      "expected": 0.25,
+      "actual": 0.25,
+      "passed": true
+    },
+    {
+      "name": "parallel_edge_distance",
+      "expected": 0.5,
+      "actual": 0.5,
+      "passed": true
+    },
+    {
+      "name": "zero_length_edge_distance",
+      "expected": 1.0,
+      "actual": 1.0,
+      "passed": true
+    },
+    {
+      "name": "proper_segment_face_crossing",
+      "actual": {
+        "distance": 0.0,
+        "kind": "transverse_intersection",
+        "point": [
+          0.25,
+          0.25,
+          0.0
+        ],
+        "edge": 0,
+        "direction": "B_edge_A_face",
+        "edge_parameter": 0.5,
+        "face_barycentric": [
+          0.5,
+          0.25,
+          0.25
+        ],
+        "endpoint_plane_distances": [
+          -1.0,
+          1.0
+        ]
+      },
+      "passed": true
+    },
+    {
+      "name": "coplanar_positive_area_overlap",
+      "actual": {
+        "distance": 0.0,
+        "kind": "coplanar_overlap_candidate",
+        "overlap_area": 0.125
+      },
+      "passed": true
+    },
+    {
+      "name": "closed_tetrahedron_topology_and_self_screen",
+      "passed": true
+    },
+    {
+      "name": "positive_surface_distance_with_containment",
+      "surface": {
+        "distance": 0.1,
+        "kind": "vertex_face_or_edge_distance",
+        "point_A": [
+          0.1,
+          0.1,
+          0.1
+        ],
+        "point_B": [
+          0.0,
+          0.1,
+          0.1
+        ],
+        "triangle_A": 0,
+        "triangle_B": 2,
+        "total_triangle_pairs": 16,
+        "tested_triangle_pairs": 16,
+        "search": "AABB distance lower-bound pruning; early exit only after proper transverse witness"
+      },
+      "checks": [
+        {
+          "direction": "A_in_B",
+          "component": 0,
+          "representative_triangle": 0,
+          "representative_point": [
+            0.13333333333333333,
+            0.13333333333333333,
+            0.10000000000000002
+          ],
+          "status": "inside",
+          "winding_number": 0.9999999999999999,
+          "nearest_integer": 1,
+          "integer_residual": 1.1102230246251565e-16,
+          "minimum_vertex_distance": 0.21343747458109497
+        },
+        {
+          "direction": "B_in_A",
+          "component": 0,
+          "representative_triangle": 0,
+          "representative_point": [
+            0.6666666666666666,
+            0.6666666666666666,
+            0.0
+          ],
+          "status": "outside",
+          "winding_number": -2.760898160992636e-19,
+          "nearest_integer": 0,
+          "integer_residual": 2.760898160992636e-19,
+          "minimum_vertex_distance": 0.7408703590297622
+        }
+      ],
+      "passed": true
+    },
+    {
+      "name": "outside_winding",
+      "actual": {
+        "status": "outside",
+        "winding_number": 0.0,
+        "nearest_integer": 0,
+        "integer_residual": 0.0,
+        "minimum_vertex_distance": 4.358898943540674
+      },
+      "passed": true
+    },
+    {
+      "name": "open_mesh_rejected",
+      "passed": true
+    },
+    {
+      "name": "oppositely_oriented_components_remain_unresolved",
+      "actual": [
+        {
+          "status": "unresolved_component_solid_semantics",
+          "component_counts": [
+            1,
+            2
+          ],
+          "reason": "Multiple independently oriented closed components may cancel total winding; union/cavity semantics are not inferred"
+        }
+      ],
+      "passed": true
+    },
+    {
+      "name": "shared_vertex_does_not_hide_distant_boundary_intersection",
+      "actual": {
+        "passed": false,
+        "tested_pairs": 1,
+        "issues": [
+          {
+            "triangle_A": 0,
+            "triangle_B": 1,
+            "shared_vertex_indices": [
+              0
+            ],
+            "outside_shared_simplex_witnesses": [
+              {
+                "kind": "coplanar_edge_proximity",
+                "point": [
+                  0.5,
+                  0.0,
+                  0.0
+                ],
+                "second_point": [
+                  0.5,
+                  0.0,
+                  0.0
+                ],
+                "distance": 0.0,
+                "edge": 0,
+                "target_edge": 1,
+                "direction": "A_edge_B_face",
+                "distance_to_shared_simplex": 0.5
+              },
+              {
+                "kind": "boundary_intersection_candidate",
+                "point": [
+                  0.5,
+                  0.0,
+                  0.0
+                ],
+                "edge": 1,
+                "direction": "B_edge_A_face",
+                "edge_parameter": 0.5,
+                "face_barycentric": [
+                  0.5,
+                  0.5,
+                  -0.0
+                ],
+                "endpoint_plane_distances": [
+                  1.0,
+                  -1.0
+                ],
+                "distance_to_shared_simplex": 0.5
+              }
+            ],
+            "all_boundary_witnesses": [
+              {
+                "kind": "endpoint_face_proximity",
+                "point": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "projected_point": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "plane_distance": 0.0,
+                "edge": 0,
+                "direction": "A_edge_B_face",
+                "face_barycentric": [
+                  1.0,
+                  -0.0,
+                  -0.0
+                ]
+              },
+              {
+                "kind": "coplanar_edge_proximity",
+                "point": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "second_point": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "distance": 0.0,
+                "edge": 0,
+                "target_edge": 0,
+                "direction": "A_edge_B_face"
+              },
+              {
+                "kind": "coplanar_edge_proximity",
+                "point": [
+                  0.5,
+                  0.0,
+                  0.0
+                ],
+                "second_point": [
+                  0.5,
+                  0.0,
+                  0.0
+                ],
+                "distance": 0.0,
+                "edge": 0,
+                "target_edge": 1,
+                "direction": "A_edge_B_face"
+              },
+              {
+                "kind": "coplanar_edge_proximity",
+                "point": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "second_point": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "distance": 0.0,
+                "edge": 0,
+                "target_edge": 2,
+                "direction": "A_edge_B_face"
+              },
+              {
+                "kind": "endpoint_face_proximity",
+                "point": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "projected_point": [
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "plane_distance": 0.0,
+                "edge": 0,
+                "direction": "B_edge_A_face",
+                "face_barycentric": [
+                  1.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              {
+                "kind": "boundary_intersection_candidate",
+                "point": [
+                  0.5,
+                  0.0,
+                  0.0
+                ],
+                "edge": 1,
+                "direction": "B_edge_A_face",
+                "edge_parameter": 0.5,
+                "face_barycentric": [
+                  0.5,
+                  0.5,
+                  -0.0
+                ],
+                "endpoint_plane_distances": [
+                  1.0,
+                  -1.0
+                ]
+              }
+            ],
+            "distance": 0.0,
+            "kind": "boundary_intersection_candidate",
+            "point": [
+              0.5,
+              0.0,
+              0.0
+            ],
+            "edge": 1,
+            "direction": "B_edge_A_face",
+            "edge_parameter": 0.5,
+            "face_barycentric": [
+              0.5,
+              0.5,
+              -0.0
+            ],
+            "endpoint_plane_distances": [
+              1.0,
+              -1.0
+            ]
+          }
+        ],
+        "limitation": "All edge/face crossing, endpoint and coplanar-edge witnesses are checked. Shared-simplex-compatible contact alone is allowed; any other or ambiguous contact is unresolved. Numerical screen, not exact self-intersection certification."
+      },
+      "passed": true
+    },
+    {
+      "name": "legitimate_shared_edge_not_a_self_intersection",
+      "actual": {
+        "passed": true,
+        "tested_pairs": 1,
+        "issues": [],
+        "limitation": "All edge/face crossing, endpoint and coplanar-edge witnesses are checked. Shared-simplex-compatible contact alone is allowed; any other or ambiguous contact is unresolved. Numerical screen, not exact self-intersection certification."
+      },
+      "passed": true
+    },
+    {
+      "name": "slender_triangle_interior_crossing",
+      "actual": {
+        "distance": 0.0,
+        "kind": "transverse_intersection",
+        "point": [
+          0.2,
+          2e-09,
+          0.0
+        ],
+        "edge": 0,
+        "direction": "B_edge_A_face",
+        "edge_parameter": 0.5,
+        "face_barycentric": [
+          0.6000000000000001,
+          0.20000000000000004,
+          0.20000000000000004
+        ],
+        "endpoint_plane_distances": [
+          -1.0,
+          1.0
+        ]
+      },
+      "passed": true
+    },
+    {
+      "name": "ill_conditioned_triangle_is_not_silently_reliable",
+      "actual": {
+        "triangles": 1,
+        "exact_unique_vertices": 3,
+        "degenerate_faces": [],
+        "ill_conditioned_faces": [
+          0
+        ],
+        "minimum_area_to_squared_edge_ratio": 1e-14,
+        "nonmanifold_or_boundary_edges": [
+          {
+            "vertices": [
+              0,
+              2
+            ],
+            "incident_faces": [
+              0
+            ]
+          },
+          {
+            "vertices": [
+              1,
+              2
+            ],
+            "incident_faces": [
+              0
+            ]
+          },
+          {
+            "vertices": [
+              0,
+              1
+            ],
+            "incident_faces": [
+              0
+            ]
+          }
+        ],
+        "inconsistent_oriented_edges": [],
+        "nonmanifold_vertex_links": [
+          0,
+          2,
+          1
+        ],
+        "duplicate_faces": 0,
+        "connected_components": [
+          [
+            0
+          ]
+        ],
+        "signed_component_volumes": [
+          0.0
+        ],
+        "closed_oriented_manifold_checks_pass": false
+      },
+      "passed": true
+    }
+  ]
+}

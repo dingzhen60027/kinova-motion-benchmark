@@ -1,0 +1,33 @@
+你现在在用户本地已能运行的 wernerpe/csdecomp 项目环境中工作。你的任务是**真正实现和运行**一个通用七自由度机械臂运动规划基准，不是继续讨论idea，也不是复制一套未经证实的仿真环境。
+
+请首先读取当前工作目录下 BENCHMARK_SPEC.md（如果它位于导入的任务包目录，请先找到它并阅读），并以其为实现、数据格式、分布、实验统计和验收的规范。
+
+背景与目标：
+- 用户已有 Ubuntu 22.04 + 已安装可用的 csdecomp，保留用户现有环境与第三方依赖，不要重建/覆盖环境，不要要求将Conda改为uv；若 examples/README 使用uv，仅把它作为依赖信息，项目继续用现有Conda。
+- 目标是通用机械臂规划，不是夹爪抓取、装配、操作微调、奇异性或特定任务奖励。
+- 主套件是7DoF Kinova Gen3 + 静态已知三维障碍 + 固定q_start/q_goal。目标分别为 minimum-distance PWL 和 minimum-time continuous trajectory。
+- 参考 RSS 2025 Werner et al. 原论文VII-A与Appendix D的Forest/Franka随机benchmark，先把已有 Kinova 样例做成可重复的通用benchmark。Kinova适配不可冒称精确复现Franka/FR3实验。
+
+具体行动，不需要询问非关键小问题：
+1. 读取并审计上游原始源码 `examples/build_DRM.py`、`examples/kinova_mintime_planning.py`、`examples/test_eizo.py`、`examples/utils.py`、`csdecomp/tests/test_assets/directives/*kinova*`、roadmap和collision checker实现。尤其核查build_DRM所用的reduced模型与在线规划示例所用的另一URDF是否一致；选择并冻结唯一canonical机器人模型与模型校验散列。不一致必须修改实验管线以统一模型，不能悄悄忽略。
+2. 在独立的新目录`benchmarks/generic_motion_v1/`新增完全可配置的scene generator、endpoint generator、障碍体素化、统一JSONL manifest、离线DRM builder、原生csdecomp baseline runner、数值validator、实验aggregator及replay。不得覆盖CSDecomp已有测试、示例或用户历史结果，原始上游CUDA算法暂不修改。
+3. 先实现 `smoke` 的10个确定性题，四个通用障碍族与无新增障碍对照；用`--seed`可重复生成，另提供 `--split dev` 与 `--split test`；源随机数生成器要固定且场景和端点随机性彼此独立，dev/test没有共享场景。
+4. 四个族为sparse_clutter、dense_clutter、bottleneck、route_choice，均是一般几何路径规划类别，不能引入抓取/装配/末端修正语义。open_control单独作为无新增障碍对照。场景、起点和终点必须在任何方法运行前固定，不以 EI-ZO/NTO/ours成功作为保留条件。所谓bottleneck或route_choice是workspace几何描述，不得直接声称C-space同伦性质已知。
+5. 设计每个case的JSONL记录、实际障碍中心/形状/大小与csdecomp.Voxels坐标+半径，固定世界坐标系；确保用于CSDecomp的点云球模型保守覆盖几何障碍。不允许更换机器人碰撞模型以使某种算法更容易通过；实现CSD/Drake相同模型碰撞交叉测试并保存统计；处理一致性失败后再开展数据生成。
+6. 起终点直接采样全7个关节，检测关节限位、自碰撞、环境碰撞、规范化距离；额外标记直线连接是否碰撞和问题可行性unknown，但不能依赖某一个规划算法的成败判断是否把题保留。禁止重选每个方法的q_start/q_goal。对原始终点不合法任务明确无效输入并记录生成拒绝次数。
+7. 原生baseline使用 `DRM->EI-ZO->LSCS`（minimum-distance）或 `DRM->EI-ZO->SCSTO`（minimum-time），尽可能调用现有库而不是重写优化。对缺失的商业求解器、scsplanning/pybezier等可见依赖如实报告并寻找官方开源可用求解方案；如果不能原样复现，标记 adapted/unsupported，而不是宣称exact reproduction。
+8. 必须支持`generate`、`audit`、`build-roadmap`、`run`、`batch`、`resume`、`summarize`、`replay`等CLI入口，命令形式可自定但必须统一、可用、留实际命令。支持冷启动/热启动分开计时，cache/offline roadmap绝对不要计入/抹去错误的统计对象。
+9. 完成10个smoke和60个dev的真实环境生成及输入审计，在当前 GPU 上实际运行原生EI-ZO至少各一类真实问题（最短距离与最短时间），保留成功、超时、无解、求解失败、CUDA错误等分类。保存原始数组、控制点、多面体、日志、种子、hash和数值验证结果。不能造成功日志。
+10. 验收通过之后**只生成并冻结**420个test样本的 manifest 与配置、校验文件SHA；在没有用户明确进入正式测试阶段前不要拿正式test调参或刷完整分数。
+11. 写出 `reports/benchmark_v1_audit.md`，包含：实际上游commit、环境版本、固定几何模型与过滤对、数据集生成规则、各族分布、起终点距离及直连碰撞比例、实际开发baseline成功数/失败数、阶段耗时、离线/在线耗时、模型差异与未决问题、所有可复现命令。
+12. 新建独立git分支，全部保存为增量提交；保留历史结果，不强推main。若未被授权推送，则只创建本地提交并输出commit，不能声称已推送。
+
+关键禁止事项：
+- 不要引入视觉学习或任何抓取/语义任务。
+- 不要根据某算法的成功筛选测试题，不要为算法改变碰撞球半径、端点或任务目标。
+- 不要将大量独立场景相关的重复seed误当独立随机环境。
+- 不要将随机C-space可行性称为已证明可行。
+- 不要将有限碰撞采样通过称为数学连续无碰撞证明。
+- 不要只生成空白模板、图、文档，要实现并在本机真实运行。
+
+优先级：先让10个smoke真正完成至少一个原始EI-ZO端到端规划并能重放，再做60个dev，再冻结420个test。任何无法正常运行的功能，留下失败日志和明确原因，不能用未验证的替代实现冒充完成。

@@ -1,0 +1,250 @@
+{
+  "read_date": "2026-10-30",
+  "source_scope": "Primary papers and official code/data only",
+  "planning_calls": 0,
+  "sources": [
+    {
+      "id": "MBM_PAPER",
+      "title": "MotionBenchMaker: A Tool to Generate and Benchmark Motion Planning Datasets",
+      "year": 2022,
+      "kind": "author_hosted_original_paper",
+      "url": "https://www.kavrakilab.org/publications/chamzas2022-motion-bench-maker.pdf",
+      "read_locations": [
+        "Sec III A/C, pp3–4",
+        "Sec IV, p5",
+        "Sec V A/B, pp6–7"
+      ],
+      "verified": [
+        "40 datasets = 5 robots × 8 nominal scenes; 100 problems/dataset",
+        "SE(3) Gaussian/uniform or scene URDF perturbation; collision-aware IK queries; full joint states also supported",
+        "Published datasets filter out problems unsolved by tuned sampling planner within 60 seconds",
+        "Timing illustration: 100 scenes ×20 runs at60s; optimal-planning illustration:5 runs/problem at180s"
+      ],
+      "not_verified": [
+        "Exact full RNG seed manifest",
+        "Scene-disjoint dev/test release protocol",
+        "Global feasibility of rejected problems"
+      ],
+      "project_implication": "Reuse procedural geometry and fixed requests, not task semantics or success-based filtering."
+    },
+    {
+      "id": "MBM_CODE",
+      "title": "MotionBenchMaker generation and benchmark source",
+      "kind": "official_source_code",
+      "url": "https://github.com/KavrakiLab/motion_bench_maker",
+      "commit": "f50542777f4d1ae013b0de430bafbf51fdbdc40e",
+      "read_locations": [
+        "scripts/generate.cpp:95-174",
+        "scripts/benchmark.cpp:57-95",
+        "launch/generate.launch",
+        "configs/scenes/bookshelf/variation_small.yaml"
+      ],
+      "verified": [
+        "Generation sets allowedPlanningTime=60 and numPlanningAttempts=2; saves/increments only on SUCCESS",
+        "Default generation planner RRTConnectkConfigDefault",
+        "Benchmark loads fixed requests for each planner; simplification and interpolation disabled",
+        "Variation parameters separated from nominal scene"
+      ],
+      "not_verified": [
+        "Reconstructed release provenance of all historical prefabricated archives"
+      ],
+      "project_implication": "Explicitly version generation acceptance and postprocessing separately."
+    },
+    {
+      "id": "VAMP_PAPER",
+      "title": "Motions in Microseconds via Vectorized Sampling-Based Planning",
+      "year": 2024,
+      "kind": "author_hosted_original_paper",
+      "url": "https://www.kavrakilab.org/publications/thomason2024vamp.pdf",
+      "read_locations": [
+        "Sec III C/D, pp3–4",
+        "Sec IV, pp4–6",
+        "Table I"
+      ],
+      "verified": [
+        "7DoF Panda,8DoF Fetch,14DoF Baxter; reused MBM",
+        "Panda/Fetch seven environment classes with100 released problems each",
+        "5 trials/problem; OMPL timeout5minutes;VAMP limit1million iterations",
+        "Shared Halton samples and identical motion-validation resolution; MoveIt nearest-neighbor L1 metric noted as exception",
+        "Sphere robot approximations; raw and simplified quality/time reported separately"
+      ],
+      "not_verified": [
+        "Independent scene count of each historical Baxter archive",
+        "Same-wall-clock budget (not the paper protocol)",
+        "Continuous collision-free proof"
+      ],
+      "project_implication": "Fast RRTConnect plus shortcutting is an appropriate strong baseline; record backend and simplify costs."
+    },
+    {
+      "id": "VAMP_CODE",
+      "title": "VAMP resources and dataset conversion",
+      "kind": "official_source_code",
+      "url": "https://github.com/KavrakiLab/vamp",
+      "commit": "27cb9b66ebd8d101ce88d330f3b028398afc1cfa",
+      "read_locations": [
+        "resources/README.md:1-54",
+        "resources/robometrics_to_pkl_json.py",
+        "scripts/evaluate_mbm.py:60-118"
+      ],
+      "verified": [
+        "Current RRTConnect differs from paper defaults, including dynamic-domain option",
+        "README warns VAMP6.5cm Panda finger separation versus Robometrics2.5cm produces invalid problems",
+        "Conversion preserves multiple IK goals and labels validity; evaluator skips invalid problems",
+        "Baxter resources listed as3classes×600; class difficulty suffix refers scene variation, not established solve difficulty"
+      ],
+      "not_verified": [
+        "Current script numerically reproduces paper tables",
+        "Validity under this project Kinova geometry"
+      ],
+      "project_implication": "Never silently swap gripper geometry or endpoints; retain invalid input denominator separately."
+    },
+    {
+      "id": "ROBOMETRICS_DATA",
+      "title": "Robometrics pinned MBM and MPiNets data",
+      "kind": "official_data_directly_parsed",
+      "url": "https://github.com/fishbotics/robometrics/tree/81e3d1d605de84100d8ab880b43096aba221a48b/robometrics/content/dataset",
+      "commit": "81e3d1d605de84100d8ab880b43096aba221a48b",
+      "read_locations": [
+        "robometrics/content/dataset/mb_set.yaml",
+        "robometrics/content/dataset/mpinets_set.yaml",
+        "robometrics/datasets.py"
+      ],
+      "verified": [
+        "MBM800records,700unique exact obstacle records,201unique starts",
+        "MPiNets1800records,1800unique exact obstacle records and starts",
+        "All world frames panda_link0; goal_pose and1–20goal_ik per task",
+        "Obstacle forms cuboid and cylinder"
+      ],
+      "not_verified": [
+        "Exact upstream conversion acceptance history for every record",
+        "Statistical independence merely from differing hashes",
+        "Collision validity in canonical Kinova model"
+      ],
+      "project_implication": "Deduplicate layouts for counts and distinguish task-space/multi-IK targets from fixed joint goals."
+    },
+    {
+      "id": "ROBOMETRICS_VALIDATOR",
+      "title": "Robometrics evaluator and robot checker",
+      "kind": "official_source_code",
+      "url": "https://github.com/fishbotics/robometrics/blob/81e3d1d605de84100d8ab880b43096aba221a48b/robometrics/evaluator.py",
+      "commit": "81e3d1d605de84100d8ab880b43096aba221a48b",
+      "read_locations": [
+        "robometrics/evaluator.py:70-89",
+        "robometrics/robot.py:89-117,168-201",
+        "robometrics/metrics.py"
+      ],
+      "verified": [
+        "Records orientation error but current success checks only position_error<1cm and no physical violation",
+        "Sphere robot geometry, explicit self-collision ignores/buffers",
+        "Checks supplied trajectory states; metrics helper does not implement continuous collision proof"
+      ],
+      "not_verified": [
+        "Equivalence of current success predicate to original paper: does not match stated15degree criterion"
+      ],
+      "project_implication": "Inspect predicates instead of trusting library metric names; current project keeps fixed endpoint and dynamics checks."
+    },
+    {
+      "id": "MPINETS_PAPER",
+      "title": "Motion Policy Networks",
+      "year": 2023,
+      "venue_note": "CoRL2022;PMLR205 publication2023",
+      "kind": "publisher_original_paper",
+      "url": "https://proceedings.mlr.press/v205/fishman23a/fishman23a.pdf",
+      "read_locations": [
+        "Sec4.2–5,pp4–5"
+      ],
+      "verified": [
+        "Three1800problem testsets selected as Global-solvable,Hybrid-solvable,both-solvable;600/class",
+        "Test scene/start/target unseen in training; each testproblem uniqueenvironment",
+        "Hybrid Hindsight Goal Revision can replace target by expert finalposition",
+        "Success position<1cm,orientation<15deg,no physicalviolation;rollout20s cutoff"
+      ],
+      "not_verified": [
+        "Exact1:1mapping of robometrics mpinets_set to a named original testset",
+        "RNG seeds of each archived test scene"
+      ],
+      "project_implication": "Use only as external protocol-aware dataset reference, not visual-learning or goal-revision additions to current main task."
+    },
+    {
+      "id": "MPINETS_CODE",
+      "title": "MPiNets data generation documentation",
+      "kind": "official_source_code_documentation",
+      "url": "https://github.com/NVlabs/motion-policy-networks",
+      "commit": "42ff07bb95bd75f7c7752bf4300eb53698ae099d",
+      "read_locations": [
+        "README Data Cleaning",
+        "README Generating Inference Data"
+      ],
+      "verified": [
+        "Inference one problem/environment and selected expert-solvable",
+        "Hybrid and both-solvable generation can include hindsight revised goals",
+        "Training cleanup selects hybrid-solved data and balances scene categories"
+      ],
+      "not_verified": [
+        "All training pipeline behavior in source;not run"
+      ],
+      "project_implication": "Success-conditioned data and goal revision are explicit protocol choices, forbidden for current frozen primary suite."
+    },
+    {
+      "id": "OMPL_PAPER",
+      "title": "Benchmarking Motion Planning Algorithms: An Extensible Infrastructure for Analysis and Visualization",
+      "year": 2015,
+      "doi": "10.1109/MRA.2015.2448276",
+      "kind": "author_hosted_original_paper",
+      "url": "https://moll.ai/publications/moll2015benchmarking-motion-planning-algorithms.pdf",
+      "read_locations": [
+        "SecII,pp2–3",
+        "SecIII,pp4–5"
+      ],
+      "verified": [
+        "Fixedproblem sharedlowlevel collisionchecking;explicit budgets/repetitions",
+        "Version/hardware/seed/config/run status stored;bestcost progress table",
+        "Distinguishes firstfeasible solvers and optimizingplanners runningto budget",
+        "Warns against ranking successfulpathmean without missingcounts"
+      ],
+      "not_verified": [
+        "Universal required numberof scenes orrepetitions: no such rule established"
+      ],
+      "project_implication": "Report first solution,finalcost,budget curves,failurestates and scenecluster uncertainty."
+    },
+    {
+      "id": "OMPL_DOCS",
+      "title": "How to Benchmark Planners",
+      "kind": "official_documentation",
+      "url": "https://ompl.kavrakilab.org/core/benchmark.html",
+      "read_locations": [
+        "Collected benchmark data for each planner execution",
+        "Benchmark Request example"
+      ],
+      "verified": [
+        "Separate approximate solution,endpointdifference,correctsolution",
+        "Strict correctness uses finer resolution than planner",
+        "Separate simplificationtime/rawpath/simplifiedpath metrics",
+        "5s/50runs code is example,not universalstandard"
+      ],
+      "not_verified": [
+        "Continuous collisionproof from strictsample check"
+      ],
+      "project_implication": "Keep independent tighter validation and all raw/simplified outputs."
+    },
+    {
+      "id": "PLANNER_ARENA",
+      "title": "Planner Arena Help",
+      "kind": "official_documentation",
+      "url": "https://planner-arena.kavrakilab.rice.edu/",
+      "read_locations": [
+        "Plots of overall performance",
+        "Progress of planners over time"
+      ],
+      "verified": [
+        "Missingvalues excluded from qualityplots and counts shown",
+        "Qualitymean can be dominated by single successfulrun among100",
+        "Progressplots must display available datapoints over time"
+      ],
+      "not_verified": [
+        "Unconditional ranking from conditional successfulpath quality"
+      ],
+      "project_implication": "Paired common-success quality plus all-valid-task success,not unpaired means."
+    }
+  ]
+}

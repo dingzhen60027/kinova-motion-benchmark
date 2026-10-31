@@ -1,0 +1,43 @@
+{
+  "status": "implemented_pending_runtime_check",
+  "physical_experiment": false,
+  "main_grid_statistics_separate": true,
+  "validation_so_far": [
+    "Python AST syntax checks",
+    "pinned public URDF SHA256 checks",
+    "XML confirms 8+3=11 box geometries"
+  ],
+  "asset_checks": [
+    {
+      "path": "reproduction/hardware_constructed/assets/iiwa7_box_collision.urdf",
+      "sha256": "49683af3d03522be81795cb1a1b23e04c2cbdd9595f9a02d8eb4c6ca59cfe7c1",
+      "collision_geometries": 8,
+      "box_geometries": 8,
+      "revolute_joints": 7
+    },
+    {
+      "path": "reproduction/hardware_constructed/assets/wsg50_110_welded_fingers_box_collision.urdf",
+      "sha256": "cae1db4f5219acae7e6e941ae019f0822d42ddeccdf9602cfecf95fc06a5fd19",
+      "collision_geometries": 3,
+      "box_geometries": 3,
+      "revolute_joints": 0
+    }
+  ],
+  "runtime_model_check": "not_run",
+  "roadmap": "not_run",
+  "fifteen_trials": "not_run",
+  "commands": [
+    "bash local/python.sh -m reproduction.hardware_constructed.run check --output reproduction/reports/paper_constructed/hardware_simulation/check_01",
+    "bash local/python.sh -m reproduction.hardware_constructed.run run --nodes 800 --trials 0 1",
+    "bash local/python.sh -m reproduction.hardware_constructed.run run"
+  ],
+  "replay": "implemented_pending_render_after_run",
+  "static_review_notes": [
+    "Table dimensions/center follow cfg, not hardcoded assembly defaults",
+    "All eleven robot boxes enabled for online voxel collisions",
+    "Solid-box independent check gates virtual state update",
+    "Invalid fixed anchor makes model/task preflight fail before roadmap/planning",
+    "plot/report/analyze excluded from computational source identity; plot provenance recorded separately",
+    "All requested trials/failures included in static replay"
+  ]
+}

@@ -1,0 +1,108 @@
+{
+  "lazy_edge_step": 0.1,
+  "velocity_limit": 1.0,
+  "acceleration_limit": 1.0,
+  "bezier_degree": 6,
+  "scsto_relative_tolerance": 0.01,
+  "maximum_recovery_iterations": 20,
+  "validation_step": 0.005,
+  "validation_minimum_samples": 2001,
+  "endpoint_tolerance": 1e-05,
+  "feasibility_tolerance": 1e-05,
+  "nto_collision_bound": 0.0,
+  "nto_influence_distance": 0.01,
+  "endpoint_collision_margin": 1e-05,
+  "protocol": "hardware_conditions_constructed_simulation_v1",
+  "paper": "arXiv:2504.10783v1 Section VII-B, Appendix D Hardware, Table VI",
+  "physical_experiment": false,
+  "sensor_measurements": false,
+  "roadmap_nodes": 35000,
+  "roadmap_neighbors": 10,
+  "max_task_space_distance": 0.45,
+  "max_configuration_distance": 4.5,
+  "offline_voxel_side": 0.06,
+  "online_voxel_side": 0.08,
+  "online_voxel_radius": 0.06928203230275509,
+  "cloud_surface_grid": 0.04,
+  "roadmap_seed": 250410783,
+  "roadmap_sampling_limit": 2000000,
+  "offline_map_size": [
+    1.8,
+    1.8,
+    1.4
+  ],
+  "offline_map_center": [
+    0.4,
+    0,
+    0.65
+  ],
+  "eizo": {
+    "delta": 0.005,
+    "epsilon": 0.005,
+    "num_particles": 10000,
+    "max_hyperplanes_per_iteration": 20,
+    "mixing_steps": 60,
+    "configuration_margin": 0.01,
+    "bisection_steps": 9,
+    "max_iterations": 30,
+    "tau": 0.5
+  },
+  "fr3_scene": {
+    "ik_attempts": 10
+  },
+  "initial_right_configuration": [
+    -0.8,
+    0.6,
+    0,
+    -1.3,
+    0,
+    1,
+    0
+  ],
+  "left_target_generating_configuration": [
+    0.8,
+    0.6,
+    0,
+    -1.3,
+    0,
+    1,
+    0
+  ],
+  "right_target_generating_configuration": [
+    -0.8,
+    0.6,
+    0,
+    -1.3,
+    0,
+    1,
+    0
+  ],
+  "tcp_link": "hardware_tcp",
+  "tcp_from_gripper": [
+    0,
+    -0.12,
+    0
+  ],
+  "trial_timeout_seconds": 240,
+  "offline_timeout_seconds": 1800,
+  "table": {
+    "center": [
+      0.5,
+      0,
+      -0.05
+    ],
+    "size": [
+      1.4,
+      1.6,
+      0.1
+    ]
+  },
+  "assumptions": {
+    "targets": "Fixed FK targets from declared configurations; no outcome-based resampling. Virtual state advances only after strict candidate validation.",
+    "cloud": "Deterministic noiseless box surface samples; no camera ray tracing, occlusion, depth noise, calibration or device latency. Static table points are saved but excluded from online voxels as known background.",
+    "mount": "Public WSG frame adaptation and TCP offset are declared constructions, not author calibration.",
+    "pairs": "Record actual Drake/native candidates; do not add artificial pairs to match 105.",
+    "budget": "240s trial/1800s offline watchdogs are construction limits, not paper parameters.",
+    "limits": "Published velocity/acceleration \u00b11; other spline/validation tolerances reused from declared v5 profile."
+  }
+}

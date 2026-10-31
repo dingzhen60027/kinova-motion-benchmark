@@ -1,0 +1,25 @@
+..F                                                                      [100%]
+=================================== FAILURES ===================================
+_______ test_finite_voxel_coordinates_that_overflow_float32_are_rejected _______
+
+    def test_finite_voxel_coordinates_that_overflow_float32_are_rejected():
+        model = Model()
+        with warnings.catch_warnings():
+            warnings.simplefilter("ignore", RuntimeWarning)
+>           with pytest.raises(ValueError, match="finite|representable|float32|overflow"):
+E           Failed: DID NOT RAISE ValueError
+
+benchmarks/generic_motion_v1/tests/test_model_qualification.py:44: Failed
+=============================== warnings summary ===============================
+benchmarks/generic_motion_v1/tests/test_model_qualification.py: 29 warnings
+  /home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/lib/python3.10/site-packages/csdecomp/drake_csd_bridge.py:62: DrakeDeprecationWarning: (Deprecated.)
+  
+  Deprecated:
+      Use is_floating_base_body() instead. This will be removed from
+      Drake on or after 2026-06-01.
+    if all_drake_bodies[-1].is_floating():
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED benchmarks/generic_motion_v1/tests/test_model_qualification.py::test_finite_voxel_coordinates_that_overflow_float32_are_rejected
+1 failed, 2 passed, 29 warnings in 0.42s

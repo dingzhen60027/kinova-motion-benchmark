@@ -1,0 +1,46 @@
+{
+  "passed": true,
+  "checks": [
+    "actual pilot source snapshot, manifest source digest and configuration digest agree",
+    "mutated in-memory config is detected",
+    "mutated in-memory source manifest is detected",
+    "actual pilot keeps fixed pose and recovers nonzero raw-double to canonical-goal difference",
+    "mutated in-memory IK target is detected",
+    "completed real 400-case Forest summary reconciles source and artifacts",
+    "synthetic bookkeeping: failed solver plus CUDA-free counts in CFR, not solver conjunction",
+    "synthetic bookkeeping: interrupted method counts as an attempt without fabricated elapsed time"
+  ],
+  "real_forest_method_counts": [
+    {
+      "method": "LSCS",
+      "native_cuda_free": 388,
+      "solver_and_cuda_free": 388,
+      "recovery_triggered": 19
+    },
+    {
+      "method": "LGCS",
+      "native_cuda_free": 388,
+      "solver_and_cuda_free": 388,
+      "recovery_triggered": 15
+    },
+    {
+      "method": "SCSTO",
+      "native_cuda_free": 387,
+      "solver_and_cuda_free": 387,
+      "recovery_triggered": 1
+    },
+    {
+      "method": "NTO_distance",
+      "native_cuda_free": 120,
+      "solver_and_cuda_free": 120,
+      "recovery_triggered": 0
+    },
+    {
+      "method": "NTO_time",
+      "native_cuda_free": 231,
+      "solver_and_cuda_free": 231,
+      "recovery_triggered": 0
+    }
+  ],
+  "raw_goal_roundtrip_error": 4.623960956854552e-08
+}

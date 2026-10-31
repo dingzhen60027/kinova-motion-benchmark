@@ -1,0 +1,68 @@
+{
+  "recorded_utc": "2026-10-25T09:36:55.286462+00:00",
+  "operations": [
+    {
+      "operation": "query_attempt1",
+      "argv": [
+        "reproduction/vendor/paperdate_build_tools/bazel-7.2.1-linux-x86_64",
+        "--ignore_all_rc_files",
+        "--output_base=/home/eric/wjg/wd/csdecomp/reproduction/vendor/paperdate_bazel_output",
+        "query",
+        "//csdecomp/src/pybind/pycsdecomp:pycsdecomp_bindings",
+        "--distdir=/home/eric/wjg/wd/csdecomp/reproduction/vendor/paperdate_distdir",
+        "--repo_env=CUDA_PATH=/usr/local/cuda-12.8",
+        "--loading_phase_threads=1"
+      ],
+      "cwd": "/home/eric/wjg/wd/csdecomp/reproduction/vendor/csdecomp_paperdate",
+      "returncode": 127,
+      "log": "reproduction/reports/paper_completion/source_evidence/paperdate_query_attempt1.log",
+      "log_sha256": "b3486a107d380b313856e503bc6207c8f70859ed0bef0903c6018c5a2af84ffd"
+    },
+    {
+      "operation": "query_attempt2",
+      "argv": [
+        "/home/eric/wjg/wd/csdecomp/reproduction/vendor/paperdate_build_tools/bazel-7.2.1-linux-x86_64",
+        "--ignore_all_rc_files",
+        "--output_base=/home/eric/wjg/wd/csdecomp/reproduction/vendor/paperdate_bazel_output",
+        "query",
+        "//csdecomp/src/pybind/pycsdecomp:pycsdecomp_bindings",
+        "--distdir=/home/eric/wjg/wd/csdecomp/reproduction/vendor/paperdate_distdir",
+        "--repo_env=CUDA_PATH=/usr/local/cuda-12.8",
+        "--loading_phase_threads=1"
+      ],
+      "cwd": "/home/eric/wjg/wd/csdecomp/reproduction/vendor/csdecomp_paperdate",
+      "returncode": 0,
+      "log": "reproduction/reports/paper_completion/source_evidence/paperdate_query_attempt2.log",
+      "log_sha256": "75cd143002690c16369d979b735a24fb92451d2cba08d97d2be9f2f75b38f974"
+    },
+    {
+      "operation": "fetch_attempt1",
+      "argv": [
+        "/home/eric/wjg/wd/csdecomp/reproduction/vendor/paperdate_build_tools/bazel-7.2.1-linux-x86_64",
+        "--ignore_all_rc_files",
+        "--output_base=/home/eric/wjg/wd/csdecomp/reproduction/vendor/paperdate_bazel_output",
+        "fetch",
+        "//csdecomp/src/pybind/pycsdecomp:pycsdecomp_bindings",
+        "--distdir=/home/eric/wjg/wd/csdecomp/reproduction/vendor/paperdate_distdir",
+        "--repo_env=CUDA_PATH=/usr/local/cuda-12.8",
+        "--jobs=1",
+        "--loading_phase_threads=1"
+      ],
+      "cwd": "/home/eric/wjg/wd/csdecomp/reproduction/vendor/csdecomp_paperdate",
+      "returncode": 0,
+      "log": "reproduction/reports/paper_completion/source_evidence/paperdate_fetch_attempt1.log",
+      "log_sha256": "e90cd85aa985d5f6a9a2374b0fe69a74eba05d1ce9934407475ba28bc5ed402f"
+    }
+  ],
+  "compiled": false,
+  "gpu_executed": false,
+  "algorithm_source_modified": false,
+  "original_files_after_fetch": 179,
+  "original_files_all_match_after_fetch": true,
+  "resolved_pybind11": "2.12.0",
+  "resolved_cuda_toolkit": "/usr/local/cuda-12.8",
+  "fetch_configured_targets": 3541,
+  "fetch_total_actions": 0,
+  "fetch_processes": 0,
+  "fetch_elapsed_seconds": 22.406
+}

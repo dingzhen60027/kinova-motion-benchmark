@@ -1,0 +1,52 @@
+--- author/bpmpd_io.hpp
++++ build/bpmpd_io.hpp
+@@ -1,3 +1,4 @@
++#include "trajopt_safe_io.hpp"
+ #include <vector>
+ #include <string>
+ using std::string;
+@@ -24,12 +25,12 @@
+   switch (mode) {
+     case SER: {
+       T xcopy=x;
+-      int n = write(fp, &xcopy, sizeof(T));
++      int n = trajopt_io::write_full(fp, &xcopy, sizeof(T));
+       assert (n == sizeof(T));
+       break;
+     }
+     case DESER: {
+-      int n = read(fp, &x, sizeof(T));
++      int n = trajopt_io::read_full(fp, &x, sizeof(T));
+       assert (n == sizeof(T));
+       break;
+     }
+@@ -42,13 +43,13 @@
+   ser(fp, size, mode);
+   switch (mode) {
+     case SER: {
+-      int n = write(fp, x.data(), sizeof(T)*size);
++      int n = trajopt_io::write_full(fp, x.data(), sizeof(T)*size);
+       assert (n == sizeof(T)*size);      
+       break;
+     }
+     case DESER: {
+       x.resize(size);
+-      int n = read(fp, x.data(), sizeof(T)*size);    
++      int n = trajopt_io::read_full(fp, x.data(), sizeof(T)*size);    
+       assert (n == sizeof(T)*size);            
+       break;
+     }
+--- author/bpmpd_interface.cpp
++++ build/bpmpd_interface.cpp
+@@ -189,7 +189,10 @@
+         exit(1);
+     }
+ 
+-    if (infp == NULL)
++    close(p_stdin[READ]);
++  close(p_stdout[WRITE]);
++
++  if (infp == NULL)
+         close(p_stdin[WRITE]);
+     else
+         *infp = p_stdin[WRITE];

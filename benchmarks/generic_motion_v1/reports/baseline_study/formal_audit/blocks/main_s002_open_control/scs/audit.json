@@ -1,0 +1,2252 @@
+{
+  "audit_script_sha256": "b0a63aa0c928e6487bd823c7a42554840dce4046a1e3aa5235c3f3954b3cd287",
+  "audit_type": "Independent CPU LSCS/SCSTO artifact audit using NumPy and SciPy BPoly; no GPU/solver/runtime-validator invocation",
+  "audited_bezier_rounds": 20,
+  "audited_candidate_validation_rounds": 44,
+  "audited_polygon_rounds": 24,
+  "complete": true,
+  "completed_latest_jobs": 100,
+  "created_unix_seconds": 1793196149.9937906,
+  "environment": {
+    "numpy": "2.2.6",
+    "python": "3.10.22 | packaged by conda-forge | (main, Oct  6 2026, 23:02:24) [GCC 14.4.0]",
+    "scipy": "1.15.3"
+  },
+  "expected_source_commit": "c8adbd8cef44db25b41559e8fbf2b38e120b624a",
+  "frozen_planning_commit": "c8adbd8cef44db25b41559e8fbf2b38e120b624a",
+  "issues": [],
+  "limitations": [
+    "Existing collision signs/clearances are checked for accounting and interpolation consistency; no new geometry collision queries.",
+    "Derivative control-hull bounds are sufficient numerical bounds; finite collision samples are not a continuous collision proof.",
+    "All returned rounds, including colliding/failed candidates, are kept; partial interrupted optimizer inputs are explicitly labeled.",
+    "Author LSCS/SCSTO return exposes no separate native solver iteration receipt; solver-success flag is checked against the preserved candidate and final independent numerical validation.",
+    "Kinova adaptation, not original FR3 geometry or hardware reproduction."
+  ],
+  "maximum_independent_sample_error_rad": 2.6645352591003757e-15,
+  "original_auditor_sha256": "3c2cb64f50ecb52cad34e5ef53afa147b9c8fc59cd1798978722ba333abc537e",
+  "original_auditor_source_commit": "72984027030175b7bca78e2dcf592b38f0c1864b",
+  "passed": true,
+  "planned_jobs": 100,
+  "receipts_verified": 100,
+  "records": [
+    {
+      "attempt": "0001",
+      "family": "open_control",
+      "job_id": "test-open_control-000-p00-EI_ZO-minimum_distance-8ce7958c",
+      "latest": true,
+      "objective": "minimum_distance",
+      "root_candidate_rounds": [
+        "000"
+      ],
+      "rounds": [
+        {
+          "candidate_sha256": "625c739e71483e8946e62673474527768407e1e2938d598901436653cf6051b7",
+          "contact_band_samples": 0,
+          "degree": null,
+          "derivative_control_bounds": {},
+          "directory": "jobs/test-open_control-000-p00-EI_ZO-minimum_distance-8ce7958c/attempts/0001/rounds/000",
+          "endpoint_error_rad": 3.188872858294072e-16,
+          "independent_collisions": 0,
+          "independently_reconstructed_cost": 4.071124958903811,
+          "maximum_sample_error_rad": 4.440892098500626e-16,
+          "maximum_sample_joint_step_rad": 0.0049952453483489145,
+          "minimum_sampled_clearance_m": 0.019025026584333166,
+          "model_disagreements": 0,
+          "native_collisions": 0,
+          "normalized_path_length": 0.7353476010187083,
+          "objective": "minimum_distance",
+          "reconstructed_kind": "polygon",
+          "region_residual": -0.35152230239232346,
+          "samples": 816,
+          "scope": "candidate_and_validation_audited",
+          "solver_status": "author_scsplanning_get_points_returned",
+          "solver_success": true,
+          "validation_status": "success_validated_numerical"
+        }
+      ],
+      "status": "success_validated_numerical",
+      "successful_final_round": "000"
+    },
+    {
+      "attempt": "0001",
+      "family": "open_control",
+      "job_id": "test-open_control-000-p00-EI_ZO-minimum_time-a513113e",
+      "latest": true,
+      "objective": "minimum_time",
+      "root_candidate_rounds": [
+        "000"
+      ],
+      "rounds": [
+        {
+          "candidate_sha256": "55a5cb9ba853704608aaf8f6b532646de9473a18d3a19d1360cb4395dabd4108",
+          "contact_band_samples": 0,
+          "degree": 6,
+          "derivative_control_bounds": {
+            "acceleration_per_joint": [
+              0.47599769103075606,
+              0.28390534674635554,
+              0.21998395312933625,
+              0.5997163378580882,
+              0.9999999999198254,
+              0.5591275586129744,
+              0.11268634940521653
+            ],
+            "continuity_residual": 0.0,
+            "endpoint_velocity": 9.299047179056314e-13,
+            "velocity_per_joint": [
+              0.46946014917963563,
+              0.2800060776509692,
+              0.2277904277408026,
+              0.5914795948414198,
+              0.9999999995057686,
+              0.5977195066077167,
+              0.14398420650328356
+            ]
+          },
+          "directory": "jobs/test-open_control-000-p00-EI_ZO-minimum_time-a513113e/attempts/0001/rounds/000",
+          "endpoint_error_rad": 3.1433725497758416e-15,
+          "independent_collisions": 0,
+          "independently_reconstructed_cost": 4.931328008787572,
+          "maximum_sample_error_rad": 1.7763568394002505e-15,
+          "maximum_sample_joint_step_rad": 0.004442342890640938,
+          "minimum_sampled_clearance_m": 0.019025026584333176,
+          "model_disagreements": 0,
+          "native_collisions": 0,
+          "normalized_path_length": 0.748672250260837,
+          "objective": "minimum_time",
+          "reconstructed_kind": "bezier",
+          "region_residual": -0.35152230239232424,
+          "samples": 1307,
+          "scope": "candidate_and_validation_audited",
+          "solver_status": "author_scsplanning_biconvex_returned",
+          "solver_success": true,
+          "validation_status": "success_validated_numerical"
+        }
+      ],
+      "status": "success_validated_numerical",
+      "successful_final_round": "000"
+    },
+    {
+      "attempt": "0001",
+      "family": "open_control",
+      "job_id": "test-open_control-000-p01-EI_ZO-minimum_distance-6457af83",
+      "latest": true,
+      "objective": "minimum_distance",
+      "root_candidate_rounds": [
+        "000"
+      ],
+      "rounds": [
+        {
+          "candidate_sha256": "413ac5023271d5e84a40a98faad45003714a282edb44732375a746238484a2cd",
+          "contact_band_samples": 0,
+          "degree": null,
+          "derivative_control_bounds": {},
+          "directory": "jobs/test-open_control-000-p01-EI_ZO-minimum_distance-6457af83/attempts/0001/rounds/000",
+          "endpoint_error_rad": 4.965068306494546e-16,
+          "independent_collisions": 0,
+          "independently_reconstructed_cost": 5.736213353471523,
+          "maximum_sample_error_rad": 4.440892098500626e-16,
+          "maximum_sample_joint_step_rad": 0.004997684875078986,
+          "minimum_sampled_clearance_m": 0.019025026584333114,
+          "model_disagreements": 0,
+          "native_collisions": 0,
+          "normalized_path_length": 1.1503845224487352,
+          "objective": "minimum_distance",
+          "reconstructed_kind": "polygon",
+          "region_residual": 8.449441146751724e-11,
+          "samples": 1150,
+          "scope": "candidate_and_validation_audited",
+          "solver_status": "author_scsplanning_get_points_returned",
+          "solver_success": true,
+          "validation_status": "success_validated_numerical"
+        }
+      ],
+      "status": "success_validated_numerical",
+      "successful_final_round": "000"
+    },
+    {
+      "attempt": "0001",
+      "family": "open_control",
+      "job_id": "test-open_control-000-p01-EI_ZO-minimum_time-dea0f08b",
+      "latest": true,
+      "objective": "minimum_time",
+      "root_candidate_rounds": [
+        "000"
+      ],
+      "rounds": [
+        {
+          "candidate_sha256": "7d79da2de0996602cf1bfb94bdc62137064b89f04e56bf057abd4eda52646929",
+          "contact_band_samples": 0,
+          "degree": 6,
+          "derivative_control_bounds": {
+            "acceleration_per_joint": [
+              0.5872720472176168,
+              0.967683683385337,
+              0.6814438070862121,
+              0.9999999874331273,
+              0.7875059259351781,
+              0.9999999874893077,
+              0.7928665697776006
+            ],
+            "continuity_residual": 4.719811208531155e-10,
+            "endpoint_velocity": 3.8878868981855697e-13,
+            "velocity_per_joint": [
+              0.7373964014329066,
+              0.9623241315489001,
+              0.6523964099040415,
+              0.9999999999723382,
+              0.5614228811521439,
+              0.9999999998476603,
+              0.7872351014299223
+            ]
+          },
+          "directory": "jobs/test-open_control-000-p01-EI_ZO-minimum_time-dea0f08b/attempts/0001/rounds/000",
+          "endpoint_error_rad": 2.336845501132698e-09,
+          "independent_collisions": 0,
+          "independently_reconstructed_cost": 5.467572281049174,
+          "maximum_sample_error_rad": 2.220446049250313e-15,
+          "maximum_sample_joint_step_rad": 0.004996407505384473,
+          "minimum_sampled_clearance_m": 0.019025026584333218,
+          "model_disagreements": 0,
+          "native_collisions": 0,
+          "normalized_path_length": 1.2338161574572037,
+          "objective": "minimum_time",
+          "reconstructed_kind": "bezier",
+          "region_residual": 5.795193214197525e-10,
+          "samples": 2026,
+          "scope": "candidate_and_validation_audited",
+          "solver_status": "author_scsplanning_biconvex_returned",
+          "solver_success": true,
+          "validation_status": "success_validated_numerical"
+        }
+      ],
+      "status": "success_validated_numerical",
+      "successful_final_round": "000"
+    },
+    {
+      "attempt": "0001",
+      "family": "open_control",
+      "job_id": "test-open_control-000-p02-EI_ZO-minimum_distance-571700c4",
+      "latest": true,
+      "objective": "minimum_distance",
+      "root_candidate_rounds": [],
+      "root_validation_scope": "Last completed validation may precede an interrupted/failed later solve; never upgraded to success",
+      "rounds": [],
+      "status": "frontend_failed"
+    },
+    {
+      "attempt": "0001",
+      "family": "open_control",
+      "job_id": "test-open_control-000-p02-EI_ZO-minimum_time-2e43f35d",
+      "latest": true,
+      "objective": "minimum_time",
+      "root_candidate_rounds": [],
+      "root_validation_scope": "Last completed validation may precede an interrupted/failed later solve; never upgraded to success",
+      "rounds": [],
+      "status": "frontend_failed"
+    },
+    {
+      "attempt": "0001",
+      "family": "open_control",
+      "job_id": "test-open_control-000-p03-EI_ZO-minimum_distance-abd0a707",
+      "latest": true,
+      "objective": "minimum_distance",
+      "root_candidate_rounds": [
+        "000"
+      ],
+      "rounds": [
+        {
+          "candidate_sha256": "fb7d213287e53822305847f40c1288ff64e543adca669c0b40ac79f704939c8a",
+          "contact_band_samples": 0,
+          "degree": null,
+          "derivative_control_bounds": {},
+          "directory": "jobs/test-open_control-000-p03-EI_ZO-minimum_distance-abd0a707/attempts/0001/rounds/000",
+          "endpoint_error_rad": 2.7194799110210365e-16,
+          "independent_collisions": 0,
+          "independently_reconstructed_cost": 4.051141017105396,
+          "maximum_sample_error_rad": 4.440892098500626e-16,
+          "maximum_sample_joint_step_rad": 0.004995241698034422,
+          "minimum_sampled_clearance_m": 0.0029820960385851802,
+          "model_disagreements": 0,
+          "native_collisions": 0,
+          "normalized_path_length": 0.7245451805581689,
+          "objective": "minimum_distance",
+          "reconstructed_kind": "polygon",
+          "region_residual": -0.0006215036576253663,
+          "samples": 812,
+          "scope": "candidate_and_validation_audited",
+          "solver_status": "author_scsplanning_get_points_returned",
+          "solver_success": true,
+          "validation_status": "success_validated_numerical"
+        }
+      ],
+      "status": "success_validated_numerical",
+      "successful_final_round": "000"
+    },
+    {
+      "attempt": "0001",
+      "family": "open_control",
+      "job_id": "test-open_control-000-p03-EI_ZO-minimum_time-b6f408cf",
+      "latest": true,
+      "objective": "minimum_time",
+      "root_candidate_rounds": [
+        "000"
+      ],
+      "rounds": [
+        {
+          "candidate_sha256": "79bb296d6e8796f239d5be959a549b125518f3978ff8ddc31b7beeec45381b5a",
+          "contact_band_samples": 0,
+          "degree": 6,
+          "derivative_control_bounds": {
+            "acceleration_per_joint": [
+              0.9636152222593374,
+              0.4504898764417735,
+              0.20616096091511957,
+              0.5192666825499174,
+              0.3008723689556723,
+              0.5368182222321842,
+              0.0985897072896619
+            ],
+            "continuity_residual": 0.0,
+            "endpoint_velocity": 6.099302292394741e-13,
+            "velocity_per_joint": [
+              0.999999999798894,
+              0.4674997508807868,
+              0.21394531355605148,
+              0.5388734740283465,
+              0.3122328933220084,
+              0.5618957567653916,
+              0.10231231822871822
+            ]
+          },
+          "directory": "jobs/test-open_control-000-p03-EI_ZO-minimum_time-b6f408cf/attempts/0001/rounds/000",
+          "endpoint_error_rad": 1.5697257610022447e-12,
+          "independent_collisions": 0,
+          "independently_reconstructed_cost": 5.188793082026255,
+          "maximum_sample_error_rad": 1.7763568394002505e-15,
+          "maximum_sample_joint_step_rad": 0.004191463863097836,
+          "minimum_sampled_clearance_m": 0.019025026584333044,
+          "model_disagreements": 0,
+          "native_collisions": 0,
+          "normalized_path_length": 0.7552737695105654,
+          "objective": "minimum_time",
+          "reconstructed_kind": "bezier",
+          "region_residual": -0.0006215036576269206,
+          "samples": 1375,
+          "scope": "candidate_and_validation_audited",
+          "solver_status": "author_scsplanning_biconvex_returned",
+          "solver_success": true,
+          "validation_status": "success_validated_numerical"
+        }
+      ],
+      "status": "success_validated_numerical",
+      "successful_final_round": "000"
+    },
+    {
+      "attempt": "0001",
+      "family": "open_control",
+      "job_id": "test-open_control-000-p04-EI_ZO-minimum_distance-cc58d8fa",
+      "latest": true,
+      "objective": "minimum_distance",
+      "root_candidate_rounds": [
+        "000"
+      ],
+      "rounds": [
+        {
+          "candidate_sha256": "44c51018c2fbf7282baef4985432cae3634ddd9779e8bc8164c661c98cb5ffc8",
+          "contact_band_samples": 0,
+          "degree": null,
+          "derivative_control_bounds": {},
+          "directory": "jobs/test-open_control-000-p04-EI_ZO-minimum_distance-cc58d8fa/attempts/0001/rounds/000",
+          "endpoint_error_rad": 4.577566798522237e-16,
+          "independent_collisions": 0,
+          "independently_reconstructed_cost": 6.5164844622949305,
+          "maximum_sample_error_rad": 8.881784197001252e-16,
+          "maximum_sample_joint_step_rad": 0.004997304035503173,
+          "minimum_sampled_clearance_m": 0.01902502658433322,
+          "model_disagreements": 0,
+          "native_collisions": 0,
+          "normalized_path_length": 1.1405063064098653,
+          "objective": "minimum_distance",
+          "reconstructed_kind": "polygon",
+          "region_residual": -0.16172745569423919,
+          "samples": 1305,
+          "scope": "candidate_and_validation_audited",
+          "solver_status": "author_scsplanning_get_points_returned",
+          "solver_success": true,
+          "validation_status": "success_validated_numerical"
+        }
+      ],
+      "status": "success_validated_numerical",
+      "successful_final_round": "000"
+    },
+    {
+      "attempt": "0001",
+      "family": "open_control",
+      "job_id": "test-open_control-000-p04-EI_ZO-minimum_time-01e1e481",
+      "latest": true,
+      "objective": "minimum_time",
+      "root_candidate_rounds": [
+        "000"
+      ],
+      "rounds": [
+        {
+          "candidate_sha256": "60623ba6ea2eaf1ec5e88fca0b91a91e8091e2c69b10c24330634de7bf1c1029",
+          "contact_band_samples": 0,
+          "degree": 6,
+          "derivative_control_bounds": {
+            "acceleration_per_joint": [
+              0.24065427839189313,
+              0.3377791726535579,
+              0.254719797656517,
+              0.3405695860543869,
+              0.4012958178852372,
+              0.34841402923193904,
+              0.6452966836548886
+            ],
+            "continuity_residual": 0.0,
+            "endpoint_velocity": 2.49005791283147e-12,
+            "velocity_per_joint": [
+              0.3729358672736223,
+              0.5234478669661807,
+              0.3947328478245541,
+              0.52777210025488,
+              0.6218780105483919,
+              0.5399284360543001,
+              0.9999999999016673
+            ]
+          },
+          "directory": "jobs/test-open_control-000-p04-EI_ZO-minimum_time-01e1e481/attempts/0001/rounds/000",
+          "endpoint_error_rad": 1.159106867033638e-15,
+          "independent_collisions": 0,
+          "independently_reconstructed_cost": 7.748373928061188,
+          "maximum_sample_error_rad": 1.7763568394002505e-15,
+          "maximum_sample_joint_step_rad": 0.004022458563115119,
+          "minimum_sampled_clearance_m": 0.019025026584333377,
+          "model_disagreements": 0,
+          "native_collisions": 0,
+          "normalized_path_length": 1.177218451167048,
+          "objective": "minimum_time",
+          "reconstructed_kind": "bezier",
+          "region_residual": -0.16172745569423785,
+          "samples": 2268,
+          "scope": "candidate_and_validation_audited",
+          "solver_status": "author_scsplanning_biconvex_returned",
+          "solver_success": true,
+          "validation_status": "success_validated_numerical"
+        }
+      ],
+      "status": "success_validated_numerical",
+      "successful_final_round": "000"
+    },
+    {
+      "attempt": "0001",
+      "family": "open_control",
+      "job_id": "test-open_control-001-p00-EI_ZO-minimum_distance-c9e689a3",
+      "latest": true,
+      "objective": "minimum_distance",
+      "root_candidate_rounds": [
+        "000"
+      ],
+      "rounds": [
+        {
+          "candidate_sha256": "c85dd85e147363257420ecbb7624e69bf01960caa461d839b5ac8b6a5bf55ace",
+          "contact_band_samples": 0,
+          "degree": null,
+          "derivative_control_bounds": {},
+          "directory": "jobs/test-open_control-001-p00-EI_ZO-minimum_distance-c9e689a3/attempts/0001/rounds/000",
+          "endpoint_error_rad": 5.551115123125783e-16,
+          "independent_collisions": 0,
+          "independently_reconstructed_cost": 3.1562943375096664,
+          "maximum_sample_error_rad": 4.440892098500626e-16,
+          "maximum_sample_joint_step_rad": 0.004994136609984017,
+          "minimum_sampled_clearance_m": 0.019025026584333363,
+          "model_disagreements": 0,
+          "native_collisions": 0,
+          "normalized_path_length": 0.6163711193019681,
+          "objective": "minimum_distance",
+          "reconstructed_kind": "polygon",
+          "region_residual": -0.18260512254562272,
+          "samples": 633,
+          "scope": "candidate_and_validation_audited",
+          "solver_status": "author_scsplanning_get_points_returned",
+          "solver_success": true,
+          "validation_status": "success_validated_numerical"
+        }
+      ],
+      "status": "success_validated_numerical",
+      "successful_final_round": "000"
+    },
+    {
+      "attempt": "0001",
+      "family": "open_control",
+      "job_id": "test-open_control-001-p00-EI_ZO-minimum_time-171860d6",
+      "latest": true,
+      "objective": "minimum_time",
+      "root_candidate_rounds": [
+        "000"
+      ],
+      "rounds": [
+        {
+          "candidate_sha256": "d3ec857a4474ea309862c895f123d096c3d2d8523a31e3fa248bb9baecc6b94e",
+          "contact_band_samples": 0,
+          "degree": 6,
+          "derivative_control_bounds": {
+            "acceleration_per_joint": [
+              0.5824152127462483,
+              0.7423896266898312,
+              0.9999999973684621,
+              0.5227681221270858,
+              0.26331664867433924,
+              0.9006512063129953,
+              0.5479879052532067
+            ],
+            "continuity_residual": 0.0,
+            "endpoint_velocity": 1.9956714617284823e-13,
+            "velocity_per_joint": [
+              0.41991258870112524,
+              0.5352517296006984,
+              0.9999999991634076,
+              0.3990501242136214,
+              0.18984733429537082,
+              0.9441628487194071,
+              0.5238287249590861
+            ]
+          },
+          "directory": "jobs/test-open_control-001-p00-EI_ZO-minimum_time-171860d6/attempts/0001/rounds/000",
+          "endpoint_error_rad": 6.2380308864540915e-15,
+          "independent_collisions": 0,
+          "independently_reconstructed_cost": 3.604924626892227,
+          "maximum_sample_error_rad": 1.7763568394002505e-15,
+          "maximum_sample_joint_step_rad": 0.004140411337126309,
+          "minimum_sampled_clearance_m": 0.01902502658433334,
+          "model_disagreements": 0,
+          "native_collisions": 0,
+          "normalized_path_length": 0.6340648494308736,
+          "objective": "minimum_time",
+          "reconstructed_kind": "bezier",
+          "region_residual": -0.1826051225456068,
+          "samples": 1135,
+          "scope": "candidate_and_validation_audited",
+          "solver_status": "author_scsplanning_biconvex_returned",
+          "solver_success": true,
+          "validation_status": "success_validated_numerical"
+        }
+      ],
+      "status": "success_validated_numerical",
+      "successful_final_round": "000"
+    },
+    {
+      "attempt": "0001",
+      "family": "open_control",
+      "job_id": "test-open_control-001-p01-EI_ZO-minimum_distance-50511918",
+      "latest": true,
+      "objective": "minimum_distance",
+      "root_candidate_rounds": [
+        "000"
+      ],
+      "rounds": [
+        {
+          "candidate_sha256": "5f18dcb4e9f84d67ceeecaa1c0d0b36b9bf1b7471c1f7424ce89fac0c936833b",
+          "contact_band_samples": 0,
+          "degree": null,
+          "derivative_control_bounds": {},
+          "directory": "jobs/test-open_control-001-p01-EI_ZO-minimum_distance-50511918/attempts/0001/rounds/000",
+          "endpoint_error_rad": 4.585973723508303e-16,
+          "independent_collisions": 0,
+          "independently_reconstructed_cost": 4.894463567042161,
+          "maximum_sample_error_rad": 4.440892098500626e-16,
+          "maximum_sample_joint_step_rad": 0.004999452060309105,
+          "minimum_sampled_clearance_m": 0.019025026584333405,
+          "model_disagreements": 0,
+          "native_collisions": 0,
+          "normalized_path_length": 0.8142146464507822,
+          "objective": "minimum_distance",
+          "reconstructed_kind": "polygon",
+          "region_residual": -0.06796633381293926,
+          "samples": 980,
+          "scope": "candidate_and_validation_audited",
+          "solver_status": "author_scsplanning_get_points_returned",
+          "solver_success": true,
+          "validation_status": "success_validated_numerical"
+        }
+      ],
+      "status": "success_validated_numerical",
+      "successful_final_round": "000"
+    },
+    {
+      "attempt": "0001",
+      "family": "open_control",
+      "job_id": "test-open_control-001-p01-EI_ZO-minimum_time-f8d6f52e",
+      "latest": true,
+      "objective": "minimum_time",
+      "root_candidate_rounds": [
+        "000"
+      ],
+      "rounds": [
+        {
+          "candidate_sha256": "9630aaf8a03bd7d5bb74b143e59db0d3b07c0171e2d3a4f61ee6b54c8b339149",
+          "contact_band_samples": 0,
+          "degree": 6,
+          "derivative_control_bounds": {
+            "acceleration_per_joint": [
+              0.3640111849064931,
+              0.2827577323983933,
+              0.8392562647929833,
+              0.0716452944554087,
+              0.41108090613100756,
+              0.14722275043289418,
+              0.5268438425433679
+            ],
+            "continuity_residual": 0.0,
+            "endpoint_velocity": 1.118113954547938e-15,
+            "velocity_per_joint": [
+              0.43373067340099664,
+              0.33691465198795423,
+              0.9999999999400382,
+              0.07854457440575881,
+              0.489815713449286,
+              0.23153031806560279,
+              0.6991837335523183
+            ]
+          },
+          "directory": "jobs/test-open_control-001-p01-EI_ZO-minimum_time-f8d6f52e/attempts/0001/rounds/000",
+          "endpoint_error_rad": 9.992007221626409e-16,
+          "independent_collisions": 0,
+          "independently_reconstructed_cost": 5.957655854893761,
+          "maximum_sample_error_rad": 1.7763568394002505e-15,
+          "maximum_sample_joint_step_rad": 0.004191941770080484,
+          "minimum_sampled_clearance_m": 0.019025026584333436,
+          "model_disagreements": 0,
+          "native_collisions": 0,
+          "normalized_path_length": 0.8289675998579915,
+          "objective": "minimum_time",
+          "reconstructed_kind": "bezier",
+          "region_residual": -0.06796633381293926,
+          "samples": 1664,
+          "scope": "candidate_and_validation_audited",
+          "solver_status": "author_scsplanning_biconvex_returned",
+          "solver_success": true,
+          "validation_status": "success_validated_numerical"
+        }
+      ],
+      "status": "success_validated_numerical",
+      "successful_final_round": "000"
+    },
+    {
+      "attempt": "0001",
+      "family": "open_control",
+      "job_id": "test-open_control-001-p02-EI_ZO-minimum_distance-fe3dbbec",
+      "latest": true,
+      "objective": "minimum_distance",
+      "root_candidate_rounds": [
+        "000"
+      ],
+      "rounds": [
+        {
+          "candidate_sha256": "f4eb3a4c1d1588d4166dc5719487aca078fb9e7dda64f0e3e07f82bbc6e48843",
+          "contact_band_samples": 0,
+          "degree": null,
+          "derivative_control_bounds": {},
+          "directory": "jobs/test-open_control-001-p02-EI_ZO-minimum_distance-fe3dbbec/attempts/0001/rounds/000",
+          "endpoint_error_rad": 6.280369834735101e-16,
+          "independent_collisions": 0,
+          "independently_reconstructed_cost": 6.5915087234505405,
+          "maximum_sample_error_rad": 8.881784197001252e-16,
+          "maximum_sample_joint_step_rad": 0.004997353088288211,
+          "minimum_sampled_clearance_m": 0.01902502658433328,
+          "model_disagreements": 0,
+          "native_collisions": 0,
+          "normalized_path_length": 1.245196103192038,
+          "objective": "minimum_distance",
+          "reconstructed_kind": "polygon",
+          "region_residual": -0.07545507044871114,
+          "samples": 1320,
+          "scope": "candidate_and_validation_audited",
+          "solver_status": "author_scsplanning_get_points_returned",
+          "solver_success": true,
+          "validation_status": "success_validated_numerical"
+        }
+      ],
+      "status": "success_validated_numerical",
+      "successful_final_round": "000"
+    },
+    {
+      "attempt": "0001",
+      "family": "open_control",
+      "job_id": "test-open_control-001-p02-EI_ZO-minimum_time-e701ad03",
+      "latest": true,
+      "objective": "minimum_time",
+      "root_candidate_rounds": [
+        "000"
+      ],
+      "rounds": [
+        {
+          "candidate_sha256": "864811631954dbabc57a4882c30527cd7dfba9d71a0dd3e9e39829be7526678e",
+          "contact_band_samples": 0,
+          "degree": 6,
+          "derivative_control_bounds": {
+            "acceleration_per_joint": [
+              0.7304740722514617,
+              0.31616206852565776,
+              0.889837533131732,
+              0.6582895644725949,
+              0.14337791441384343,
+              0.7818185784247152,
+              0.600148223463324
+            ],
+            "continuity_residual": 0.0,
+            "endpoint_velocity": 1.2239119974666478e-12,
+            "velocity_per_joint": [
+              0.8209072386676581,
+              0.35530313874782826,
+              0.9999999999091765,
+              0.7465618078636763,
+              0.16112819370114284,
+              0.8963983713834182,
+              0.7218842162377486
+            ]
+          },
+          "directory": "jobs/test-open_control-001-p02-EI_ZO-minimum_time-e701ad03/attempts/0001/rounds/000",
+          "endpoint_error_rad": 1.5202354861220295e-15,
+          "independent_collisions": 0,
+          "independently_reconstructed_cost": 5.61900326001623,
+          "maximum_sample_error_rad": 1.7763568394002505e-15,
+          "maximum_sample_joint_step_rad": 0.004508211422734011,
+          "minimum_sampled_clearance_m": 0.01902502658433325,
+          "model_disagreements": 0,
+          "native_collisions": 0,
+          "normalized_path_length": 1.2498237395631777,
+          "objective": "minimum_time",
+          "reconstructed_kind": "bezier",
+          "region_residual": -0.07545507044870758,
+          "samples": 2088,
+          "scope": "candidate_and_validation_audited",
+          "solver_status": "author_scsplanning_biconvex_returned",
+          "solver_success": true,
+          "validation_status": "success_validated_numerical"
+        }
+      ],
+      "status": "success_validated_numerical",
+      "successful_final_round": "000"
+    },
+    {
+      "attempt": "0001",
+      "family": "open_control",
+      "job_id": "test-open_control-001-p03-EI_ZO-minimum_distance-aa7a5d64",
+      "latest": true,
+      "objective": "minimum_distance",
+      "root_candidate_rounds": [
+        "000"
+      ],
+      "rounds": [
+        {
+          "candidate_sha256": "0d1011fa50eee61f93a405bc3f05836c1170ed90343d3e76f3bbd32754494907",
+          "contact_band_samples": 0,
+          "degree": null,
+          "derivative_control_bounds": {},
+          "directory": "jobs/test-open_control-001-p03-EI_ZO-minimum_distance-aa7a5d64/attempts/0001/rounds/000",
+          "endpoint_error_rad": 2.4712483458506407e-13,
+          "independent_collisions": 0,
+          "independently_reconstructed_cost": 4.499464670746923,
+          "maximum_sample_error_rad": 4.440892098500626e-16,
+          "maximum_sample_joint_step_rad": 0.00499941021114802,
+          "minimum_sampled_clearance_m": 0.006632557228082561,
+          "model_disagreements": 0,
+          "native_collisions": 0,
+          "normalized_path_length": 0.8127389148055737,
+          "objective": "minimum_distance",
+          "reconstructed_kind": "polygon",
+          "region_residual": 7.320588579773357e-11,
+          "samples": 902,
+          "scope": "candidate_and_validation_audited",
+          "solver_status": "author_scsplanning_get_points_returned",
+          "solver_success": true,
+          "validation_status": "success_validated_numerical"
+        }
+      ],
+      "status": "success_validated_numerical",
+      "successful_final_round": "000"
+    },
+    {
+      "attempt": "0001",
+      "family": "open_control",
+      "job_id": "test-open_control-001-p03-EI_ZO-minimum_time-2d3dbc8d",
+      "latest": true,
+      "objective": "minimum_time",
+      "root_candidate_rounds": [
+        "000"
+      ],
+      "rounds": [
+        {
+          "candidate_sha256": "8e324dc6dede9478f00507529a5d32a891ab1631814c962196c385370196a3e4",
+          "contact_band_samples": 0,
+          "degree": 6,
+          "derivative_control_bounds": {
+            "acceleration_per_joint": [
+              0.9999991952555362,
+              0.9999967295829342,
+              0.9999991976286035,
+              0.999996729559289,
+              0.9999991974541687,
+              0.9604770587029171,
+              0.8519577630437877
+            ],
+            "continuity_residual": 5.0237591864288333e-14,
+            "endpoint_velocity": 7.39429888567222e-13,
+            "velocity_per_joint": [
+              0.6707600805309433,
+              0.999999999874559,
+              0.999999999909031,
+              0.9999999998535501,
+              0.9999999999646811,
+              0.6948788574077337,
+              0.4231484128426662
+            ]
+          },
+          "directory": "jobs/test-open_control-001-p03-EI_ZO-minimum_time-2d3dbc8d/attempts/0001/rounds/000",
+          "endpoint_error_rad": 2.6333840126716566e-14,
+          "independent_collisions": 0,
+          "independently_reconstructed_cost": 4.526529686247071,
+          "maximum_sample_error_rad": 2.6645352591003757e-15,
+          "maximum_sample_joint_step_rad": 0.004996634337883518,
+          "minimum_sampled_clearance_m": 0.0001823341787316002,
+          "model_disagreements": 0,
+          "native_collisions": 0,
+          "normalized_path_length": 0.9276317655729778,
+          "objective": "minimum_time",
+          "reconstructed_kind": "bezier",
+          "region_residual": -1.2414846928265888e-11,
+          "samples": 1616,
+          "scope": "candidate_and_validation_audited",
+          "solver_status": "author_scsplanning_biconvex_returned",
+          "solver_success": true,
+          "validation_status": "success_validated_numerical"
+        }
+      ],
+      "status": "success_validated_numerical",
+      "successful_final_round": "000"
+    },
+    {
+      "attempt": "0001",
+      "family": "open_control",
+      "job_id": "test-open_control-001-p04-EI_ZO-minimum_distance-e56357e4",
+      "latest": true,
+      "objective": "minimum_distance",
+      "root_candidate_rounds": [
+        "000"
+      ],
+      "rounds": [
+        {
+          "candidate_sha256": "5282c53fce6ecc0af84b79201556197a6cd1941c9d8842d2b7f3802797abc3c0",
+          "contact_band_samples": 0,
+          "degree": null,
+          "derivative_control_bounds": {},
+          "directory": "jobs/test-open_control-001-p04-EI_ZO-minimum_distance-e56357e4/attempts/0001/rounds/000",
+          "endpoint_error_rad": 6.661338147750939e-16,
+          "independent_collisions": 0,
+          "independently_reconstructed_cost": 5.54190164621074,
+          "maximum_sample_error_rad": 4.440892098500626e-16,
+          "maximum_sample_joint_step_rad": 0.004997206173319792,
+          "minimum_sampled_clearance_m": 0.014747110259234864,
+          "model_disagreements": 0,
+          "native_collisions": 0,
+          "normalized_path_length": 0.9082822116448303,
+          "objective": "minimum_distance",
+          "reconstructed_kind": "polygon",
+          "region_residual": -0.0427081788161634,
+          "samples": 1110,
+          "scope": "candidate_and_validation_audited",
+          "solver_status": "author_scsplanning_get_points_returned",
+          "solver_success": true,
+          "validation_status": "success_validated_numerical"
+        }
+      ],
+      "status": "success_validated_numerical",
+      "successful_final_round": "000"
+    },
+    {
+      "attempt": "0001",
+      "family": "open_control",
+      "job_id": "test-open_control-001-p04-EI_ZO-minimum_time-f1887cd4",
+      "latest": true,
+      "objective": "minimum_time",
+      "root_candidate_rounds": [
+        "000"
+      ],
+      "rounds": [
+        {
+          "candidate_sha256": "1df8f9cdf6a0586a02651e068aec047afe25cacc279f859aae1f15b4d37e280c",
+          "contact_band_samples": 0,
+          "degree": 6,
+          "derivative_control_bounds": {
+            "acceleration_per_joint": [
+              0.668727015493275,
+              0.1601962699309039,
+              0.8864827085742694,
+              0.28659812196127094,
+              0.7509673344919886,
+              0.5267516312682042,
+              0.052149846196192604
+            ],
+            "continuity_residual": 0.0,
+            "endpoint_velocity": 1.0204118353441977e-13,
+            "velocity_per_joint": [
+              0.7870525733994017,
+              0.22436846425386445,
+              0.9999999999625658,
+              0.3232980397457583,
+              0.8471313960220775,
+              0.5942040675510912,
+              0.05882782110676289
+            ]
+          },
+          "directory": "jobs/test-open_control-001-p04-EI_ZO-minimum_time-f1887cd4/attempts/0001/rounds/000",
+          "endpoint_error_rad": 1.56542430709323e-15,
+          "independent_collisions": 0,
+          "independently_reconstructed_cost": 5.6402679391850095,
+          "maximum_sample_error_rad": 2.220446049250313e-15,
+          "maximum_sample_joint_step_rad": 0.004255902451790783,
+          "minimum_sampled_clearance_m": 0.019025026584333308,
+          "model_disagreements": 0,
+          "native_collisions": 0,
+          "normalized_path_length": 0.9274012488163825,
+          "objective": "minimum_time",
+          "reconstructed_kind": "bezier",
+          "region_residual": -0.042708178816164066,
+          "samples": 1856,
+          "scope": "candidate_and_validation_audited",
+          "solver_status": "author_scsplanning_biconvex_returned",
+          "solver_success": true,
+          "validation_status": "success_validated_numerical"
+        }
+      ],
+      "status": "success_validated_numerical",
+      "successful_final_round": "000"
+    },
+    {
+      "attempt": "0001",
+      "family": "open_control",
+      "job_id": "test-open_control-002-p00-EI_ZO-minimum_distance-a79b00f7",
+      "latest": true,
+      "objective": "minimum_distance",
+      "root_candidate_rounds": [
+        "000"
+      ],
+      "rounds": [
+        {
+          "candidate_sha256": "0cbd880c969438e2b50a568e9aea991cfcb5aab0d9db1d9ea96010a30cfd1559",
+          "contact_band_samples": 0,
+          "degree": null,
+          "derivative_control_bounds": {},
+          "directory": "jobs/test-open_control-002-p00-EI_ZO-minimum_distance-a79b00f7/attempts/0001/rounds/000",
+          "endpoint_error_rad": 3.2871980004599107e-16,
+          "independent_collisions": 0,
+          "independently_reconstructed_cost": 4.023661476107568,
+          "maximum_sample_error_rad": 4.440892098500626e-16,
+          "maximum_sample_joint_step_rad": 0.00499833723740117,
+          "minimum_sampled_clearance_m": 0.019025026584333197,
+          "model_disagreements": 0,
+          "native_collisions": 0,
+          "normalized_path_length": 0.7590260855485751,
+          "objective": "minimum_distance",
+          "reconstructed_kind": "polygon",
+          "region_residual": -0.1274631924769556,
+          "samples": 806,
+          "scope": "candidate_and_validation_audited",
+          "solver_status": "author_scsplanning_get_points_returned",
+          "solver_success": true,
+          "validation_status": "success_validated_numerical"
+        }
+      ],
+      "status": "success_validated_numerical",
+      "successful_final_round": "000"
+    },
+    {
+      "attempt": "0001",
+      "family": "open_control",
+      "job_id": "test-open_control-002-p00-EI_ZO-minimum_time-81eb658f",
+      "latest": true,
+      "objective": "minimum_time",
+      "root_candidate_rounds": [
+        "000"
+      ],
+      "rounds": [
+        {
+          "candidate_sha256": "fd7b4000753fffecbd3b8d35f9c7b6069d5b22b87eb730c6ac6927b479fe3f10",
+          "contact_band_samples": 0,
+          "degree": 6,
+          "derivative_control_bounds": {
+            "acceleration_per_joint": [
+              0.7837890139932754,
+              0.5311373900927464,
+              0.6287719594474779,
+              0.778919092476768,
+              0.9215168738507197,
+              0.9999999998199719,
+              0.7688583465068163
+            ],
+            "continuity_residual": 0.0,
+            "endpoint_velocity": 5.2466450309141126e-15,
+            "velocity_per_joint": [
+              0.8137288781871223,
+              0.37300096986563547,
+              0.6061033796946547,
+              0.7691076938056307,
+              0.9589384327996341,
+              0.9999999999562913,
+              0.8133412799892056
+            ]
+          },
+          "directory": "jobs/test-open_control-002-p00-EI_ZO-minimum_time-81eb658f/attempts/0001/rounds/000",
+          "endpoint_error_rad": 3.965335027714917e-15,
+          "independent_collisions": 0,
+          "independently_reconstructed_cost": 3.5113416681181366,
+          "maximum_sample_error_rad": 1.5543122344752192e-15,
+          "maximum_sample_joint_step_rad": 0.00417767416815401,
+          "minimum_sampled_clearance_m": 0.019025026584333138,
+          "model_disagreements": 0,
+          "native_collisions": 0,
+          "normalized_path_length": 0.7612110467036878,
+          "objective": "minimum_time",
+          "reconstructed_kind": "bezier",
+          "region_residual": -0.12746319247695825,
+          "samples": 1442,
+          "scope": "candidate_and_validation_audited",
+          "solver_status": "author_scsplanning_biconvex_returned",
+          "solver_success": true,
+          "validation_status": "success_validated_numerical"
+        }
+      ],
+      "status": "success_validated_numerical",
+      "successful_final_round": "000"
+    },
+    {
+      "attempt": "0001",
+      "family": "open_control",
+      "job_id": "test-open_control-002-p01-EI_ZO-minimum_distance-4344c496",
+      "latest": true,
+      "objective": "minimum_distance",
+      "root_candidate_rounds": [
+        "000"
+      ],
+      "rounds": [
+        {
+          "candidate_sha256": "896fa282bd0622b5a73253db7f6b2f777437508ae2cae88feb0cd22e0c3d123c",
+          "contact_band_samples": 0,
+          "degree": null,
+          "derivative_control_bounds": {},
+          "directory": "jobs/test-open_control-002-p01-EI_ZO-minimum_distance-4344c496/attempts/0001/rounds/000",
+          "endpoint_error_rad": 2.220446049250313e-16,
+          "independent_collisions": 0,
+          "independently_reconstructed_cost": 6.543548551693895,
+          "maximum_sample_error_rad": 8.881784197001252e-16,
+          "maximum_sample_joint_step_rad": 0.0049988911777659635,
+          "minimum_sampled_clearance_m": 0.015766178927199004,
+          "model_disagreements": 0,
+          "native_collisions": 0,
+          "normalized_path_length": 1.1621387741008988,
+          "objective": "minimum_distance",
+          "reconstructed_kind": "polygon",
+          "region_residual": -0.04041089751725824,
+          "samples": 1310,
+          "scope": "candidate_and_validation_audited",
+          "solver_status": "author_scsplanning_get_points_returned",
+          "solver_success": true,
+          "validation_status": "success_validated_numerical"
+        }
+      ],
+      "status": "success_validated_numerical",
+      "successful_final_round": "000"
+    },
+    {
+      "attempt": "0001",
+      "family": "open_control",
+      "job_id": "test-open_control-002-p01-EI_ZO-minimum_time-bc3e46f4",
+      "latest": true,
+      "objective": "minimum_time",
+      "root_candidate_rounds": [
+        "000"
+      ],
+      "rounds": [
+        {
+          "candidate_sha256": "e21a02cd8a6093eccc8a9daf6a41546f30628dd39ddcb18ff7b0f1b7a4b5a715",
+          "contact_band_samples": 0,
+          "degree": 6,
+          "derivative_control_bounds": {
+            "acceleration_per_joint": [
+              0.6411157411467975,
+              0.5542318804999093,
+              0.34677474949482984,
+              0.23686648457094053,
+              0.07508494435943112,
+              0.21208202040253918,
+              0.11408988553101344
+            ],
+            "continuity_residual": 0.0,
+            "endpoint_velocity": 7.974230022309502e-13,
+            "velocity_per_joint": [
+              0.9999999999724518,
+              0.8644802255106153,
+              0.5408925833972684,
+              0.36945978606126,
+              0.17365793586045059,
+              0.3308014556271641,
+              0.17795520871763323
+            ]
+          },
+          "directory": "jobs/test-open_control-002-p01-EI_ZO-minimum_time-bc3e46f4/attempts/0001/rounds/000",
+          "endpoint_error_rad": 1.0009878166826636e-14,
+          "independent_collisions": 0,
+          "independently_reconstructed_cost": 7.798903815592616,
+          "maximum_sample_error_rad": 1.5543122344752192e-15,
+          "maximum_sample_joint_step_rad": 0.004019806150572604,
+          "minimum_sampled_clearance_m": 0.015766178927195007,
+          "model_disagreements": 0,
+          "native_collisions": 0,
+          "normalized_path_length": 1.1853075774166475,
+          "objective": "minimum_time",
+          "reconstructed_kind": "bezier",
+          "region_residual": -0.04041089751683796,
+          "samples": 2321,
+          "scope": "candidate_and_validation_audited",
+          "solver_status": "author_scsplanning_biconvex_returned",
+          "solver_success": true,
+          "validation_status": "success_validated_numerical"
+        }
+      ],
+      "status": "success_validated_numerical",
+      "successful_final_round": "000"
+    },
+    {
+      "attempt": "0001",
+      "family": "open_control",
+      "job_id": "test-open_control-002-p02-EI_ZO-minimum_distance-cc3881c8",
+      "latest": true,
+      "objective": "minimum_distance",
+      "root_candidate_rounds": [
+        "000"
+      ],
+      "rounds": [
+        {
+          "candidate_sha256": "472a4566542c8a4c5293fc29c7c75055366d19e003eb3a1678ad732c423e1b15",
+          "contact_band_samples": 0,
+          "degree": null,
+          "derivative_control_bounds": {},
+          "directory": "jobs/test-open_control-002-p02-EI_ZO-minimum_distance-cc3881c8/attempts/0001/rounds/000",
+          "endpoint_error_rad": 4.440892098500626e-16,
+          "independent_collisions": 0,
+          "independently_reconstructed_cost": 7.991928946083993,
+          "maximum_sample_error_rad": 8.881784197001252e-16,
+          "maximum_sample_joint_step_rad": 0.004996614592252862,
+          "minimum_sampled_clearance_m": 0.019025026584333228,
+          "model_disagreements": 0,
+          "native_collisions": 0,
+          "normalized_path_length": 1.3872488660863054,
+          "objective": "minimum_distance",
+          "reconstructed_kind": "polygon",
+          "region_residual": -2.868305593040077e-11,
+          "samples": 1604,
+          "scope": "candidate_and_validation_audited",
+          "solver_status": "author_scsplanning_get_points_returned",
+          "solver_success": true,
+          "validation_status": "success_validated_numerical"
+        }
+      ],
+      "status": "success_validated_numerical",
+      "successful_final_round": "000"
+    },
+    {
+      "attempt": "0001",
+      "family": "open_control",
+      "job_id": "test-open_control-002-p02-EI_ZO-minimum_time-dc5022db",
+      "latest": true,
+      "objective": "minimum_time",
+      "root_candidate_rounds": [
+        "000"
+      ],
+      "rounds": [
+        {
+          "candidate_sha256": "45c7ad218ef3c8159e14164c90aae34125e8c2d54e805585f9ecf87eb80ebee4",
+          "contact_band_samples": 0,
+          "degree": 6,
+          "derivative_control_bounds": {
+            "acceleration_per_joint": [
+              0.7945391337956673,
+              0.9998000313581069,
+              0.9998000312587193,
+              0.9998000312822735,
+              0.9999811878069521,
+              0.9998000311376004,
+              0.8264643363789062
+            ],
+            "continuity_residual": 9.547918011776346e-15,
+            "endpoint_velocity": 6.000416377279136e-13,
+            "velocity_per_joint": [
+              0.9786141231457665,
+              0.9257506858909292,
+              0.9999999994996593,
+              0.9093792333755816,
+              0.9999999999984756,
+              0.9189050094019543,
+              0.40339565850711506
+            ]
+          },
+          "directory": "jobs/test-open_control-002-p02-EI_ZO-minimum_time-dc5022db/attempts/0001/rounds/000",
+          "endpoint_error_rad": 1.1322097734007351e-15,
+          "independent_collisions": 0,
+          "independently_reconstructed_cost": 5.8965400148668685,
+          "maximum_sample_error_rad": 2.220446049250313e-15,
+          "maximum_sample_joint_step_rad": 0.004540797717863118,
+          "minimum_sampled_clearance_m": 0.019025026584333356,
+          "model_disagreements": 0,
+          "native_collisions": 0,
+          "normalized_path_length": 1.4921960926749946,
+          "objective": "minimum_time",
+          "reconstructed_kind": "bezier",
+          "region_residual": -1.926214743264154e-11,
+          "samples": 2388,
+          "scope": "candidate_and_validation_audited",
+          "solver_status": "author_scsplanning_biconvex_returned",
+          "solver_success": true,
+          "validation_status": "success_validated_numerical"
+        }
+      ],
+      "status": "success_validated_numerical",
+      "successful_final_round": "000"
+    },
+    {
+      "attempt": "0001",
+      "family": "open_control",
+      "job_id": "test-open_control-002-p03-EI_ZO-minimum_distance-5a730298",
+      "latest": true,
+      "objective": "minimum_distance",
+      "root_candidate_rounds": [
+        "000"
+      ],
+      "rounds": [
+        {
+          "candidate_sha256": "f74de242c8e84c4c0d767a27e4f801adfcdb79486eadd7bfe3c0a685a121cf26",
+          "contact_band_samples": 0,
+          "degree": null,
+          "derivative_control_bounds": {},
+          "directory": "jobs/test-open_control-002-p03-EI_ZO-minimum_distance-5a730298/attempts/0001/rounds/000",
+          "endpoint_error_rad": 6.77599954797753e-16,
+          "independent_collisions": 0,
+          "independently_reconstructed_cost": 4.4041971638581,
+          "maximum_sample_error_rad": 4.440892098500626e-16,
+          "maximum_sample_joint_step_rad": 0.004994814948550235,
+          "minimum_sampled_clearance_m": 0.019025026584333082,
+          "model_disagreements": 0,
+          "native_collisions": 0,
+          "normalized_path_length": 0.8099553802715134,
+          "objective": "minimum_distance",
+          "reconstructed_kind": "polygon",
+          "region_residual": -1.8172774396418845e-10,
+          "samples": 884,
+          "scope": "candidate_and_validation_audited",
+          "solver_status": "author_scsplanning_get_points_returned",
+          "solver_success": true,
+          "validation_status": "success_validated_numerical"
+        }
+      ],
+      "status": "success_validated_numerical",
+      "successful_final_round": "000"
+    },
+    {
+      "attempt": "0001",
+      "family": "open_control",
+      "job_id": "test-open_control-002-p03-EI_ZO-minimum_time-9a103f00",
+      "latest": true,
+      "objective": "minimum_time",
+      "root_candidate_rounds": [
+        "000"
+      ],
+      "rounds": [
+        {
+          "candidate_sha256": "9c4a9ba5dd28243b479ecb4407f226b901c36b64e890530189cf9f55b25ae42b",
+          "contact_band_samples": 0,
+          "degree": 6,
+          "derivative_control_bounds": {
+            "acceleration_per_joint": [
+              0.8253989682947904,
+              0.8919660114083579,
+              0.9999979994822504,
+              0.5217032449286864,
+              0.1125469964688337,
+              0.46593701842957924,
+              0.6725711719827479
+            ],
+            "continuity_residual": 7.580741590018647e-16,
+            "endpoint_velocity": 8.073482691676703e-14,
+            "velocity_per_joint": [
+              0.6724224609744544,
+              0.844362907348639,
+              1.0000000000008729,
+              0.5133958267885824,
+              0.05717232579283007,
+              0.317870173412337,
+              0.4372187901291969
+            ]
+          },
+          "directory": "jobs/test-open_control-002-p03-EI_ZO-minimum_time-9a103f00/attempts/0001/rounds/000",
+          "endpoint_error_rad": 2.0531623078253657e-15,
+          "independent_collisions": 0,
+          "independently_reconstructed_cost": 4.723869634360403,
+          "maximum_sample_error_rad": 2.6645352591003757e-15,
+          "maximum_sample_joint_step_rad": 0.004887638125462003,
+          "minimum_sampled_clearance_m": 0.019025026584333013,
+          "model_disagreements": 0,
+          "native_collisions": 0,
+          "normalized_path_length": 0.8665539093902322,
+          "objective": "minimum_time",
+          "reconstructed_kind": "bezier",
+          "region_residual": -0.06213702100508667,
+          "samples": 1341,
+          "scope": "candidate_and_validation_audited",
+          "solver_status": "author_scsplanning_biconvex_returned",
+          "solver_success": true,
+          "validation_status": "success_validated_numerical"
+        }
+      ],
+      "status": "success_validated_numerical",
+      "successful_final_round": "000"
+    },
+    {
+      "attempt": "0001",
+      "family": "open_control",
+      "job_id": "test-open_control-002-p04-EI_ZO-minimum_distance-63125bf9",
+      "latest": true,
+      "objective": "minimum_distance",
+      "root_candidate_rounds": [
+        "002"
+      ],
+      "rounds": [
+        {
+          "candidate_sha256": "29f15000827f06727fd6de4cb45b61caee6e5faafaf5c0bd7f7877beeb27cffa",
+          "contact_band_samples": 0,
+          "degree": null,
+          "derivative_control_bounds": {},
+          "directory": "jobs/test-open_control-002-p04-EI_ZO-minimum_distance-63125bf9/attempts/0001/rounds/000",
+          "endpoint_error_rad": 4.965068306494546e-16,
+          "independent_collisions": 128,
+          "independently_reconstructed_cost": 5.463319804894449,
+          "maximum_sample_error_rad": 4.440892098500626e-16,
+          "maximum_sample_joint_step_rad": 0.004996207537136172,
+          "minimum_sampled_clearance_m": -0.012213363296290525,
+          "model_disagreements": 0,
+          "native_collisions": 128,
+          "normalized_path_length": 0.9722351905672151,
+          "objective": "minimum_distance",
+          "reconstructed_kind": "polygon",
+          "region_residual": 3.2452707188213026e-11,
+          "samples": 1096,
+          "scope": "candidate_and_validation_audited",
+          "solver_status": "author_scsplanning_get_points_returned",
+          "solver_success": true,
+          "validation_status": "collision_failed"
+        },
+        {
+          "candidate_sha256": "9db004f28654f6006c158cafe4ac7a82cd460de4274af8de68c5fb7256755a01",
+          "contact_band_samples": 0,
+          "degree": null,
+          "derivative_control_bounds": {},
+          "directory": "jobs/test-open_control-002-p04-EI_ZO-minimum_distance-63125bf9/attempts/0001/rounds/001",
+          "endpoint_error_rad": 5.438959822042073e-16,
+          "independent_collisions": 60,
+          "independently_reconstructed_cost": 5.521123575799418,
+          "maximum_sample_error_rad": 4.440892098500626e-16,
+          "maximum_sample_joint_step_rad": 0.004999475157773247,
+          "minimum_sampled_clearance_m": -0.0028914301724410896,
+          "model_disagreements": 0,
+          "native_collisions": 60,
+          "normalized_path_length": 0.970815757659869,
+          "objective": "minimum_distance",
+          "reconstructed_kind": "polygon",
+          "region_residual": 7.02122804341343e-11,
+          "samples": 1107,
+          "scope": "candidate_and_validation_audited",
+          "solver_status": "author_scsplanning_get_points_returned",
+          "solver_success": true,
+          "validation_status": "collision_failed"
+        },
+        {
+          "candidate_sha256": "293bf1dfcd8cc0cc15d260deb9e65fb01789c2fd32706a93670dd1e7f263e924",
+          "contact_band_samples": 0,
+          "degree": null,
+          "derivative_control_bounds": {},
+          "directory": "jobs/test-open_control-002-p04-EI_ZO-minimum_distance-63125bf9/attempts/0001/rounds/002",
+          "endpoint_error_rad": 6.661338147750939e-16,
+          "independent_collisions": 0,
+          "independently_reconstructed_cost": 5.567958543889688,
+          "maximum_sample_error_rad": 8.881784197001252e-16,
+          "maximum_sample_joint_step_rad": 0.004995118027681777,
+          "minimum_sampled_clearance_m": 0.010792093726209706,
+          "model_disagreements": 0,
+          "native_collisions": 0,
+          "normalized_path_length": 0.9859297676972105,
+          "objective": "minimum_distance",
+          "reconstructed_kind": "polygon",
+          "region_residual": 1.9260593120407066e-11,
+          "samples": 1117,
+          "scope": "candidate_and_validation_audited",
+          "solver_status": "author_scsplanning_get_points_returned",
+          "solver_success": true,
+          "validation_status": "success_validated_numerical"
+        }
+      ],
+      "status": "success_validated_numerical",
+      "successful_final_round": "002"
+    },
+    {
+      "attempt": "0001",
+      "family": "open_control",
+      "job_id": "test-open_control-002-p04-EI_ZO-minimum_time-49a9ba82",
+      "latest": true,
+      "objective": "minimum_time",
+      "root_candidate_rounds": [
+        "000"
+      ],
+      "rounds": [
+        {
+          "candidate_sha256": "a6efd5eca66334506622fd72cfb344b32261c002f61cfec640491a48bec83c83",
+          "contact_band_samples": 0,
+          "degree": 6,
+          "derivative_control_bounds": {
+            "acceleration_per_joint": [
+              0.9999999778478443,
+              0.9999999961867017,
+              0.9999999979144212,
+              0.9999999956058139,
+              0.9999999978854183,
+              0.9999999945763387,
+              0.9999999951906386
+            ],
+            "continuity_residual": 7.59247775761196e-10,
+            "endpoint_velocity": 6.616976834023187e-14,
+            "velocity_per_joint": [
+              0.4600592889015563,
+              0.7248269967249723,
+              1.0000000000170284,
+              0.7038868799415857,
+              0.9664359973467163,
+              0.573192277837222,
+              0.4832179956340544
+            ]
+          },
+          "directory": "jobs/test-open_control-002-p04-EI_ZO-minimum_time-49a9ba82/attempts/0001/rounds/000",
+          "endpoint_error_rad": 2.256192417095925e-09,
+          "independent_collisions": 0,
+          "independently_reconstructed_cost": 5.902210691721846,
+          "maximum_sample_error_rad": 2.220446049250313e-15,
+          "maximum_sample_joint_step_rad": 0.004994375990132199,
+          "minimum_sampled_clearance_m": 0.011648296461381047,
+          "model_disagreements": 0,
+          "native_collisions": 0,
+          "normalized_path_length": 1.0373109588160383,
+          "objective": "minimum_time",
+          "reconstructed_kind": "bezier",
+          "region_residual": 9.706380144081095e-10,
+          "samples": 1674,
+          "scope": "candidate_and_validation_audited",
+          "solver_status": "author_scsplanning_biconvex_returned",
+          "solver_success": true,
+          "validation_status": "success_validated_numerical"
+        }
+      ],
+      "status": "success_validated_numerical",
+      "successful_final_round": "000"
+    },
+    {
+      "attempt": "0001",
+      "family": "open_control",
+      "job_id": "test-open_control-003-p00-EI_ZO-minimum_distance-b172c23e",
+      "latest": true,
+      "objective": "minimum_distance",
+      "root_candidate_rounds": [
+        "000"
+      ],
+      "rounds": [
+        {
+          "candidate_sha256": "61df7ea18f206837558db6850901cd30f8e325a814300fc51edbd54d29a9077a",
+          "contact_band_samples": 0,
+          "degree": null,
+          "derivative_control_bounds": {},
+          "directory": "jobs/test-open_control-003-p00-EI_ZO-minimum_distance-b172c23e/attempts/0001/rounds/000",
+          "endpoint_error_rad": 2.220446049250313e-16,
+          "independent_collisions": 0,
+          "independently_reconstructed_cost": 3.2478374606776255,
+          "maximum_sample_error_rad": 4.440892098500626e-16,
+          "maximum_sample_joint_step_rad": 0.004996673016427407,
+          "minimum_sampled_clearance_m": 0.019025026584333117,
+          "model_disagreements": 0,
+          "native_collisions": 0,
+          "normalized_path_length": 0.5898804525197845,
+          "objective": "minimum_distance",
+          "reconstructed_kind": "polygon",
+          "region_residual": -0.22728081372604625,
+          "samples": 651,
+          "scope": "candidate_and_validation_audited",
+          "solver_status": "author_scsplanning_get_points_returned",
+          "solver_success": true,
+          "validation_status": "success_validated_numerical"
+        }
+      ],
+      "status": "success_validated_numerical",
+      "successful_final_round": "000"
+    },
+    {
+      "attempt": "0001",
+      "family": "open_control",
+      "job_id": "test-open_control-003-p00-EI_ZO-minimum_time-e8660350",
+      "latest": true,
+      "objective": "minimum_time",
+      "root_candidate_rounds": [
+        "000"
+      ],
+      "rounds": [
+        {
+          "candidate_sha256": "c57c90825f1228575588ec9425519ee86d1a2f491a403f2f868fed92b3158049",
+          "contact_band_samples": 0,
+          "degree": 6,
+          "derivative_control_bounds": {
+            "acceleration_per_joint": [
+              0.21187226364562586,
+              0.7765800258880666,
+              0.9999999999918667,
+              0.20491485988675845,
+              0.261170284796921,
+              0.661386854798657,
+              0.25180103603469794
+            ],
+            "continuity_residual": 0.0,
+            "endpoint_velocity": 1.3697946129937297e-12,
+            "velocity_per_joint": [
+              0.1834827665869329,
+              0.706258751668623,
+              0.9999999999748527,
+              0.17745760940980235,
+              0.22617517545848675,
+              0.5727653436773597,
+              0.21806134472786615
+            ]
+          },
+          "directory": "jobs/test-open_control-003-p00-EI_ZO-minimum_time-e8660350/attempts/0001/rounds/000",
+          "endpoint_error_rad": 5.935087083004136e-16,
+          "independent_collisions": 0,
+          "independently_reconstructed_cost": 4.330032714754578,
+          "maximum_sample_error_rad": 1.7763568394002505e-15,
+          "maximum_sample_joint_step_rad": 0.004180216844005244,
+          "minimum_sampled_clearance_m": 0.01902502658433322,
+          "model_disagreements": 0,
+          "native_collisions": 0,
+          "normalized_path_length": 0.6238097028078241,
+          "objective": "minimum_time",
+          "reconstructed_kind": "bezier",
+          "region_residual": -0.14025110113866768,
+          "samples": 1129,
+          "scope": "candidate_and_validation_audited",
+          "solver_status": "author_scsplanning_biconvex_returned",
+          "solver_success": true,
+          "validation_status": "success_validated_numerical"
+        }
+      ],
+      "status": "success_validated_numerical",
+      "successful_final_round": "000"
+    },
+    {
+      "attempt": "0001",
+      "family": "open_control",
+      "job_id": "test-open_control-003-p01-EI_ZO-minimum_distance-753352df",
+      "latest": true,
+      "objective": "minimum_distance",
+      "root_candidate_rounds": [
+        "000"
+      ],
+      "rounds": [
+        {
+          "candidate_sha256": "768d98da56a89f714ec427747b2015fbc9442dcd4b51cbf804f4945eb25376a9",
+          "contact_band_samples": 0,
+          "degree": null,
+          "derivative_control_bounds": {},
+          "directory": "jobs/test-open_control-003-p01-EI_ZO-minimum_distance-753352df/attempts/0001/rounds/000",
+          "endpoint_error_rad": 6.684427777288335e-16,
+          "independent_collisions": 0,
+          "independently_reconstructed_cost": 7.926928125361105,
+          "maximum_sample_error_rad": 8.881784197001252e-16,
+          "maximum_sample_joint_step_rad": 0.004999623466035939,
+          "minimum_sampled_clearance_m": 0.019025026584333103,
+          "model_disagreements": 0,
+          "native_collisions": 0,
+          "normalized_path_length": 1.3457374508994313,
+          "objective": "minimum_distance",
+          "reconstructed_kind": "polygon",
+          "region_residual": 1.4555467942045652e-10,
+          "samples": 1588,
+          "scope": "candidate_and_validation_audited",
+          "solver_status": "author_scsplanning_get_points_returned",
+          "solver_success": true,
+          "validation_status": "success_validated_numerical"
+        }
+      ],
+      "status": "success_validated_numerical",
+      "successful_final_round": "000"
+    },
+    {
+      "attempt": "0001",
+      "family": "open_control",
+      "job_id": "test-open_control-003-p01-EI_ZO-minimum_time-8720ad06",
+      "latest": true,
+      "objective": "minimum_time",
+      "root_candidate_rounds": [
+        "000"
+      ],
+      "rounds": [
+        {
+          "candidate_sha256": "12d62dc04ee07065bf99f91aa8795351a2f2b40e44f094f8c3bda7de8c4f0d12",
+          "contact_band_samples": 0,
+          "degree": 6,
+          "derivative_control_bounds": {
+            "acceleration_per_joint": [
+              0.9999878572032546,
+              0.9998539766902219,
+              0.9999878572151533,
+              0.9998539765572592,
+              0.9998539766152568,
+              0.9989987769158285,
+              0.876430661923496
+            ],
+            "continuity_residual": 7.049916206369744e-15,
+            "endpoint_velocity": 2.8104592585457924e-12,
+            "velocity_per_joint": [
+              0.9999999999798292,
+              0.9999999999670738,
+              0.9999999999861374,
+              0.9999999998762109,
+              0.9999999999186666,
+              0.9993660236914229,
+              0.7953005254349237
+            ]
+          },
+          "directory": "jobs/test-open_control-003-p01-EI_ZO-minimum_time-8720ad06/attempts/0001/rounds/000",
+          "endpoint_error_rad": 2.089609621416101e-15,
+          "independent_collisions": 0,
+          "independently_reconstructed_cost": 6.125871438685628,
+          "maximum_sample_error_rad": 2.6645352591003757e-15,
+          "maximum_sample_joint_step_rad": 0.004997354344084147,
+          "minimum_sampled_clearance_m": 0.019025026584333006,
+          "model_disagreements": 0,
+          "native_collisions": 0,
+          "normalized_path_length": 1.5479322949938759,
+          "objective": "minimum_time",
+          "reconstructed_kind": "bezier",
+          "region_residual": -7.185363415374013e-13,
+          "samples": 2445,
+          "scope": "candidate_and_validation_audited",
+          "solver_status": "author_scsplanning_biconvex_returned",
+          "solver_success": true,
+          "validation_status": "success_validated_numerical"
+        }
+      ],
+      "status": "success_validated_numerical",
+      "successful_final_round": "000"
+    },
+    {
+      "attempt": "0001",
+      "family": "open_control",
+      "job_id": "test-open_control-003-p02-EI_ZO-minimum_distance-8e8a939a",
+      "latest": true,
+      "objective": "minimum_distance",
+      "root_candidate_rounds": [
+        "003"
+      ],
+      "rounds": [
+        {
+          "candidate_sha256": "816ea2bc7c091b1a60a403e4e17e7c6f0bca85761d6fd0689e6c95b583a608c0",
+          "contact_band_samples": 0,
+          "degree": null,
+          "derivative_control_bounds": {},
+          "directory": "jobs/test-open_control-003-p02-EI_ZO-minimum_distance-8e8a939a/attempts/0001/rounds/000",
+          "endpoint_error_rad": 5.750167876921837e-13,
+          "independent_collisions": 108,
+          "independently_reconstructed_cost": 8.283678246502749,
+          "maximum_sample_error_rad": 1.3322676295501878e-15,
+          "maximum_sample_joint_step_rad": 0.004997657479651464,
+          "minimum_sampled_clearance_m": -0.016082594143771944,
+          "model_disagreements": 0,
+          "native_collisions": 108,
+          "normalized_path_length": 1.5024714184270793,
+          "objective": "minimum_distance",
+          "reconstructed_kind": "polygon",
+          "region_residual": 1.220712420035852e-10,
+          "samples": 1661,
+          "scope": "candidate_and_validation_audited",
+          "solver_status": "author_scsplanning_get_points_returned",
+          "solver_success": true,
+          "validation_status": "collision_failed"
+        },
+        {
+          "candidate_sha256": "abb21b638a31960c4a149e8a7407fdab8dcda9d3d8082c7fe0e6564be0d1207f",
+          "contact_band_samples": 0,
+          "degree": null,
+          "derivative_control_bounds": {},
+          "directory": "jobs/test-open_control-003-p02-EI_ZO-minimum_distance-8e8a939a/attempts/0001/rounds/001",
+          "endpoint_error_rad": 2.891151217176277e-13,
+          "independent_collisions": 81,
+          "independently_reconstructed_cost": 8.33957888329368,
+          "maximum_sample_error_rad": 8.881784197001252e-16,
+          "maximum_sample_joint_step_rad": 0.004997054021206309,
+          "minimum_sampled_clearance_m": -0.008628865814132414,
+          "model_disagreements": 0,
+          "native_collisions": 81,
+          "normalized_path_length": 1.5049037541053538,
+          "objective": "minimum_distance",
+          "reconstructed_kind": "polygon",
+          "region_residual": 2.472373417106155e-10,
+          "samples": 1673,
+          "scope": "candidate_and_validation_audited",
+          "solver_status": "author_scsplanning_get_points_returned",
+          "solver_success": true,
+          "validation_status": "collision_failed"
+        },
+        {
+          "candidate_sha256": "d04436c01872f40df987be61de21f7b2d5c38c4e2c8911ff96fa2dbdab7e13d5",
+          "contact_band_samples": 0,
+          "degree": null,
+          "derivative_control_bounds": {},
+          "directory": "jobs/test-open_control-003-p02-EI_ZO-minimum_distance-8e8a939a/attempts/0001/rounds/002",
+          "endpoint_error_rad": 2.6123793121432377e-13,
+          "independent_collisions": 64,
+          "independently_reconstructed_cost": 8.411503914449781,
+          "maximum_sample_error_rad": 8.881784197001252e-16,
+          "maximum_sample_joint_step_rad": 0.0049984289271591395,
+          "minimum_sampled_clearance_m": -0.005018010386962646,
+          "model_disagreements": 0,
+          "native_collisions": 64,
+          "normalized_path_length": 1.5132812513711391,
+          "objective": "minimum_distance",
+          "reconstructed_kind": "polygon",
+          "region_residual": 3.351510180493733e-10,
+          "samples": 1687,
+          "scope": "candidate_and_validation_audited",
+          "solver_status": "author_scsplanning_get_points_returned",
+          "solver_success": true,
+          "validation_status": "collision_failed"
+        },
+        {
+          "candidate_sha256": "7a90019f9ccfb7ba3516e186c5860ef428f607990e391c994272c362eba1e977",
+          "contact_band_samples": 0,
+          "degree": null,
+          "derivative_control_bounds": {},
+          "directory": "jobs/test-open_control-003-p02-EI_ZO-minimum_distance-8e8a939a/attempts/0001/rounds/003",
+          "endpoint_error_rad": 4.09055582895267e-13,
+          "independent_collisions": 0,
+          "independently_reconstructed_cost": 8.470423792916845,
+          "maximum_sample_error_rad": 8.881784197001252e-16,
+          "maximum_sample_joint_step_rad": 0.004998447332074837,
+          "minimum_sampled_clearance_m": 0.0019974696733321973,
+          "model_disagreements": 0,
+          "native_collisions": 0,
+          "normalized_path_length": 1.5236963189783457,
+          "objective": "minimum_distance",
+          "reconstructed_kind": "polygon",
+          "region_residual": 8.507017312808784e-11,
+          "samples": 1699,
+          "scope": "candidate_and_validation_audited",
+          "solver_status": "author_scsplanning_get_points_returned",
+          "solver_success": true,
+          "validation_status": "success_validated_numerical"
+        }
+      ],
+      "status": "success_validated_numerical",
+      "successful_final_round": "003"
+    },
+    {
+      "attempt": "0001",
+      "family": "open_control",
+      "job_id": "test-open_control-003-p02-EI_ZO-minimum_time-eceabe63",
+      "latest": true,
+      "objective": "minimum_time",
+      "root_candidate_rounds": [
+        "001"
+      ],
+      "rounds": [
+        {
+          "candidate_sha256": "ea1a68c09d13f10766dda5ef945bea3f2a9525b7ba7454c21bd67e4b2aee0451",
+          "contact_band_samples": 0,
+          "degree": 6,
+          "derivative_control_bounds": {
+            "acceleration_per_joint": [
+              0.9999999576888625,
+              0.9875805415205968,
+              0.9999999640804594,
+              0.9996864465988381,
+              0.9902905124301937,
+              0.7595596456648138,
+              0.8681721061407633
+            ],
+            "continuity_residual": 3.956745153743668e-09,
+            "endpoint_velocity": 1.4314853966919288e-12,
+            "velocity_per_joint": [
+              0.9999999975138205,
+              0.6896896945126694,
+              0.889270792627939,
+              1.000000000098632,
+              0.6676535361127987,
+              0.2439456621671382,
+              0.7219869789414053
+            ]
+          },
+          "directory": "jobs/test-open_control-003-p02-EI_ZO-minimum_time-eceabe63/attempts/0001/rounds/000",
+          "endpoint_error_rad": 1.1541630709043759e-08,
+          "independent_collisions": 119,
+          "independently_reconstructed_cost": 7.567414708408995,
+          "maximum_sample_error_rad": 2.220446049250313e-15,
+          "maximum_sample_joint_step_rad": 0.004978942853618381,
+          "minimum_sampled_clearance_m": -0.017926797513552528,
+          "model_disagreements": 0,
+          "native_collisions": 119,
+          "normalized_path_length": 1.5966090441246643,
+          "objective": "minimum_time",
+          "reconstructed_kind": "bezier",
+          "region_residual": 1.9679600171684797e-09,
+          "samples": 2577,
+          "scope": "candidate_and_validation_audited",
+          "solver_status": "author_scsplanning_biconvex_returned",
+          "solver_success": true,
+          "validation_status": "collision_failed"
+        },
+        {
+          "candidate_sha256": "08ebf6c9566b720ec015046ca5ed2e7d82eaa37215e3171e8d6c4b7c3c38acca",
+          "contact_band_samples": 0,
+          "degree": 6,
+          "derivative_control_bounds": {
+            "acceleration_per_joint": [
+              0.9999999948489939,
+              0.9992329843694522,
+              0.9992329861769974,
+              0.9999999995922578,
+              0.9992329863663806,
+              0.7998206310553955,
+              0.7177818239070398
+            ],
+            "continuity_residual": 7.792724798783013e-14,
+            "endpoint_velocity": 3.0265051066444035e-13,
+            "velocity_per_joint": [
+              0.9999999999754842,
+              0.8013067834055537,
+              0.9999999973072697,
+              0.9999999999237007,
+              0.801306785673855,
+              0.3658577363309203,
+              0.6805375794405829
+            ]
+          },
+          "directory": "jobs/test-open_control-003-p02-EI_ZO-minimum_time-eceabe63/attempts/0001/rounds/001",
+          "endpoint_error_rad": 1.7537307245499294e-14,
+          "independent_collisions": 0,
+          "independently_reconstructed_cost": 6.857813258861263,
+          "maximum_sample_error_rad": 2.220446049250313e-15,
+          "maximum_sample_joint_step_rad": 0.004988638113549515,
+          "minimum_sampled_clearance_m": 0.001997469673536867,
+          "model_disagreements": 0,
+          "native_collisions": 0,
+          "normalized_path_length": 1.5994734041612502,
+          "objective": "minimum_time",
+          "reconstructed_kind": "bezier",
+          "region_residual": -4.445288581678142e-11,
+          "samples": 2303,
+          "scope": "candidate_and_validation_audited",
+          "solver_status": "author_scsplanning_biconvex_returned",
+          "solver_success": true,
+          "validation_status": "success_validated_numerical"
+        }
+      ],
+      "status": "success_validated_numerical",
+      "successful_final_round": "001"
+    },
+    {
+      "attempt": "0001",
+      "family": "open_control",
+      "job_id": "test-open_control-003-p03-EI_ZO-minimum_distance-83a1cf66",
+      "latest": true,
+      "objective": "minimum_distance",
+      "root_candidate_rounds": [
+        "000"
+      ],
+      "rounds": [
+        {
+          "candidate_sha256": "932daaed23f6d9cc406e767463e7693dabf811e9c5cc804c3246b05e2cd28b7e",
+          "contact_band_samples": 0,
+          "degree": null,
+          "derivative_control_bounds": {},
+          "directory": "jobs/test-open_control-003-p03-EI_ZO-minimum_distance-83a1cf66/attempts/0001/rounds/000",
+          "endpoint_error_rad": 5.3533015581491455e-16,
+          "independent_collisions": 0,
+          "independently_reconstructed_cost": 3.6449633321204264,
+          "maximum_sample_error_rad": 4.440892098500626e-16,
+          "maximum_sample_joint_step_rad": 0.0049999497011259655,
+          "minimum_sampled_clearance_m": 0.012031596339568129,
+          "model_disagreements": 0,
+          "native_collisions": 0,
+          "normalized_path_length": 0.7067530186216076,
+          "objective": "minimum_distance",
+          "reconstructed_kind": "polygon",
+          "region_residual": -0.03944788166099045,
+          "samples": 730,
+          "scope": "candidate_and_validation_audited",
+          "solver_status": "author_scsplanning_get_points_returned",
+          "solver_success": true,
+          "validation_status": "success_validated_numerical"
+        }
+      ],
+      "status": "success_validated_numerical",
+      "successful_final_round": "000"
+    },
+    {
+      "attempt": "0001",
+      "family": "open_control",
+      "job_id": "test-open_control-003-p03-EI_ZO-minimum_time-c8e93182",
+      "latest": true,
+      "objective": "minimum_time",
+      "root_candidate_rounds": [
+        "000"
+      ],
+      "rounds": [
+        {
+          "candidate_sha256": "ef2939e944f09caebd3b41889c3cbb2eb0cff810a8b6076478df01799a59cca4",
+          "contact_band_samples": 0,
+          "degree": 6,
+          "derivative_control_bounds": {
+            "acceleration_per_joint": [
+              0.086278047512791,
+              0.8672229532452228,
+              0.8113319349098986,
+              0.4336712192341213,
+              0.47011946041667935,
+              0.7775288573294663,
+              0.9999999995158564
+            ],
+            "continuity_residual": 0.0,
+            "endpoint_velocity": 1.0709897505793947e-12,
+            "velocity_per_joint": [
+              0.0949171197946649,
+              0.7836959514105877,
+              0.6479474125130269,
+              0.3515993094863742,
+              0.4410714382719981,
+              0.8185514741053999,
+              0.9999999998022225
+            ]
+          },
+          "directory": "jobs/test-open_control-003-p03-EI_ZO-minimum_time-c8e93182/attempts/0001/rounds/000",
+          "endpoint_error_rad": 1.631687946612622e-15,
+          "independent_collisions": 0,
+          "independently_reconstructed_cost": 3.9931092604224423,
+          "maximum_sample_error_rad": 8.881784197001252e-16,
+          "maximum_sample_joint_step_rad": 0.004195581196931983,
+          "minimum_sampled_clearance_m": 0.012031596339567957,
+          "model_disagreements": 0,
+          "native_collisions": 0,
+          "normalized_path_length": 0.7232257845333769,
+          "objective": "minimum_time",
+          "reconstructed_kind": "bezier",
+          "region_residual": -0.03944788166098956,
+          "samples": 1285,
+          "scope": "candidate_and_validation_audited",
+          "solver_status": "author_scsplanning_biconvex_returned",
+          "solver_success": true,
+          "validation_status": "success_validated_numerical"
+        }
+      ],
+      "status": "success_validated_numerical",
+      "successful_final_round": "000"
+    },
+    {
+      "attempt": "0001",
+      "family": "open_control",
+      "job_id": "test-open_control-003-p04-EI_ZO-minimum_distance-6ea9dd0d",
+      "latest": true,
+      "objective": "minimum_distance",
+      "root_candidate_rounds": [
+        "000"
+      ],
+      "rounds": [
+        {
+          "candidate_sha256": "26dfaed1061ef798c5b4eebc01f17bb363b37013f1c9d982189b9ebdd38dff4d",
+          "contact_band_samples": 0,
+          "degree": null,
+          "derivative_control_bounds": {},
+          "directory": "jobs/test-open_control-003-p04-EI_ZO-minimum_distance-6ea9dd0d/attempts/0001/rounds/000",
+          "endpoint_error_rad": 4.577566798522237e-16,
+          "independent_collisions": 0,
+          "independently_reconstructed_cost": 6.538941295970851,
+          "maximum_sample_error_rad": 4.440892098500626e-16,
+          "maximum_sample_joint_step_rad": 0.0049995253571944245,
+          "minimum_sampled_clearance_m": 0.019025026584333152,
+          "model_disagreements": 0,
+          "native_collisions": 0,
+          "normalized_path_length": 1.1630177065866905,
+          "objective": "minimum_distance",
+          "reconstructed_kind": "polygon",
+          "region_residual": 7.1811445678804375e-12,
+          "samples": 1310,
+          "scope": "candidate_and_validation_audited",
+          "solver_status": "author_scsplanning_get_points_returned",
+          "solver_success": true,
+          "validation_status": "success_validated_numerical"
+        }
+      ],
+      "status": "success_validated_numerical",
+      "successful_final_round": "000"
+    },
+    {
+      "attempt": "0001",
+      "family": "open_control",
+      "job_id": "test-open_control-003-p04-EI_ZO-minimum_time-8c7fd076",
+      "latest": true,
+      "objective": "minimum_time",
+      "root_candidate_rounds": [
+        "000"
+      ],
+      "rounds": [
+        {
+          "candidate_sha256": "33f8dde24344876a2615f187e5eb35cfebaed57ae11d00d80176fa4245e22e1b",
+          "contact_band_samples": 0,
+          "degree": 6,
+          "derivative_control_bounds": {
+            "acceleration_per_joint": [
+              0.9999761922194536,
+              0.9947977800687703,
+              0.9997797185227206,
+              0.9997797185191721,
+              0.7389476157782623,
+              0.5838468720580172,
+              0.8058412546905869
+            ],
+            "continuity_residual": 1.9290125052862095e-15,
+            "endpoint_velocity": 1.4663265160886648e-12,
+            "velocity_per_joint": [
+              0.999999999996138,
+              0.9938917807245015,
+              0.999999999994797,
+              0.9999999999964292,
+              0.9004269890900087,
+              0.556280336661782,
+              0.6963291950020086
+            ]
+          },
+          "directory": "jobs/test-open_control-003-p04-EI_ZO-minimum_time-8c7fd076/attempts/0001/rounds/000",
+          "endpoint_error_rad": 1.1157603309187458e-15,
+          "independent_collisions": 0,
+          "independently_reconstructed_cost": 5.396225261340648,
+          "maximum_sample_error_rad": 1.7763568394002505e-15,
+          "maximum_sample_joint_step_rad": 0.004992403499874178,
+          "minimum_sampled_clearance_m": 0.01902502658433322,
+          "model_disagreements": 0,
+          "native_collisions": 0,
+          "normalized_path_length": 1.2245232728776334,
+          "objective": "minimum_time",
+          "reconstructed_kind": "bezier",
+          "region_residual": -2.175787328084766e-12,
+          "samples": 2046,
+          "scope": "candidate_and_validation_audited",
+          "solver_status": "author_scsplanning_biconvex_returned",
+          "solver_success": true,
+          "validation_status": "success_validated_numerical"
+        }
+      ],
+      "status": "success_validated_numerical",
+      "successful_final_round": "000"
+    }
+  ],
+  "run": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/rss2025_formal_v1_main_s002_open_control",
+  "run_manifest_sha256": "1d61888cecd5eb55f7f0552a02a682812fbf761f48285fde53272ca3db698cbd",
+  "scs_attempts": 40,
+  "scs_latest_jobs": 40,
+  "scs_status_counts": [
+    {
+      "count": 1,
+      "objective": "minimum_distance",
+      "status": "frontend_failed"
+    },
+    {
+      "count": 19,
+      "objective": "minimum_distance",
+      "status": "success_validated_numerical"
+    },
+    {
+      "count": 1,
+      "objective": "minimum_time",
+      "status": "frontend_failed"
+    },
+    {
+      "count": 19,
+      "objective": "minimum_time",
+      "status": "success_validated_numerical"
+    }
+  ],
+  "sealed_files_verified": 3500,
+  "source_snapshot_checks": [
+    {
+      "expected_sha256": "5f99ed1dec9fccf393d637905dedf494de69db95f0cffedc75e608c6519f78f0",
+      "path": "benchmarks/generic_motion_v1/__main__.py",
+      "sha256": "5f99ed1dec9fccf393d637905dedf494de69db95f0cffedc75e608c6519f78f0"
+    },
+    {
+      "expected_sha256": "012ae05c9ecf7b0fc461659c2050161b9a9053f0b4dcdbd530a8bf42ef606007",
+      "path": "benchmarks/generic_motion_v1/batch.py",
+      "sha256": "012ae05c9ecf7b0fc461659c2050161b9a9053f0b4dcdbd530a8bf42ef606007"
+    },
+    {
+      "expected_sha256": "63e2d16d49ff7b316c0547eac3ee305f401ffb7fab6018ed3c8d7bfb32139022",
+      "path": "benchmarks/generic_motion_v1/common.py",
+      "sha256": "63e2d16d49ff7b316c0547eac3ee305f401ffb7fab6018ed3c8d7bfb32139022"
+    },
+    {
+      "expected_sha256": "ac60e554b442d10bf820b642fc4425d4619f12fd8c2d236f1cee10c7c91a0f8f",
+      "path": "benchmarks/generic_motion_v1/configs/dev_generator.json",
+      "sha256": "ac60e554b442d10bf820b642fc4425d4619f12fd8c2d236f1cee10c7c91a0f8f"
+    },
+    {
+      "expected_sha256": "147fc627b192130ef51b34a959eb1082de8883b0c8cc253d4f855ce28fc530a0",
+      "path": "benchmarks/generic_motion_v1/configs/evaluation.json",
+      "sha256": "147fc627b192130ef51b34a959eb1082de8883b0c8cc253d4f855ce28fc530a0"
+    },
+    {
+      "expected_sha256": "ac60e554b442d10bf820b642fc4425d4619f12fd8c2d236f1cee10c7c91a0f8f",
+      "path": "benchmarks/generic_motion_v1/configs/generator.json",
+      "sha256": "ac60e554b442d10bf820b642fc4425d4619f12fd8c2d236f1cee10c7c91a0f8f"
+    },
+    {
+      "expected_sha256": "af89a0de7988658a88a5696d5aae37ca4321fdc6f8a5bf2db5cb87c079807ce2",
+      "path": "benchmarks/generic_motion_v1/configs/robot.json",
+      "sha256": "af89a0de7988658a88a5696d5aae37ca4321fdc6f8a5bf2db5cb87c079807ce2"
+    },
+    {
+      "expected_sha256": "8c58d9430b82ca92c80b68e0aa11a5886d876f8d838cb9d3a9cb74ce450b9eba",
+      "path": "benchmarks/generic_motion_v1/configs/rss2025_eizo.json",
+      "sha256": "8c58d9430b82ca92c80b68e0aa11a5886d876f8d838cb9d3a9cb74ce450b9eba"
+    },
+    {
+      "expected_sha256": "ac60e554b442d10bf820b642fc4425d4619f12fd8c2d236f1cee10c7c91a0f8f",
+      "path": "benchmarks/generic_motion_v1/configs/smoke_generator.json",
+      "sha256": "ac60e554b442d10bf820b642fc4425d4619f12fd8c2d236f1cee10c7c91a0f8f"
+    },
+    {
+      "expected_sha256": "ac60e554b442d10bf820b642fc4425d4619f12fd8c2d236f1cee10c7c91a0f8f",
+      "path": "benchmarks/generic_motion_v1/configs/test_generator.json",
+      "sha256": "ac60e554b442d10bf820b642fc4425d4619f12fd8c2d236f1cee10c7c91a0f8f"
+    },
+    {
+      "expected_sha256": "b73fa031be4d0c3c14aa4549e11cd634dcc2428fb786367a81b67ab9bc4b9e2e",
+      "path": "benchmarks/generic_motion_v1/generator/__init__.py",
+      "sha256": "b73fa031be4d0c3c14aa4549e11cd634dcc2428fb786367a81b67ab9bc4b9e2e"
+    },
+    {
+      "expected_sha256": "3436ad76c1fcf5c32f949475075d8437f7b5a0f3464be4ec317a5e2451d69fd7",
+      "path": "benchmarks/generic_motion_v1/generator/audit.py",
+      "sha256": "3436ad76c1fcf5c32f949475075d8437f7b5a0f3464be4ec317a5e2451d69fd7"
+    },
+    {
+      "expected_sha256": "9e9c4e44d1593474213233214e6cc82a727cfa761979a80a2f9d1701b21321fe",
+      "path": "benchmarks/generic_motion_v1/generator/configuration.py",
+      "sha256": "9e9c4e44d1593474213233214e6cc82a727cfa761979a80a2f9d1701b21321fe"
+    },
+    {
+      "expected_sha256": "37174be436cfdd2313e7ea35d39120709316c701550c248a8672291ac5853cac",
+      "path": "benchmarks/generic_motion_v1/generator/endpoints.py",
+      "sha256": "37174be436cfdd2313e7ea35d39120709316c701550c248a8672291ac5853cac"
+    },
+    {
+      "expected_sha256": "53a582deee17cc2222e1d52558578a08979045ec489b0406611760d7932722f2",
+      "path": "benchmarks/generic_motion_v1/generator/integrity.py",
+      "sha256": "53a582deee17cc2222e1d52558578a08979045ec489b0406611760d7932722f2"
+    },
+    {
+      "expected_sha256": "a5da5e21c82984dd775adbcd8e88732be88082ac2d2818603cceab5cef560d5d",
+      "path": "benchmarks/generic_motion_v1/generator/manifest.py",
+      "sha256": "a5da5e21c82984dd775adbcd8e88732be88082ac2d2818603cceab5cef560d5d"
+    },
+    {
+      "expected_sha256": "bcf4b159cea50ebd4984298f0825c70cacdf6dfb16ab963b02da03744128c650",
+      "path": "benchmarks/generic_motion_v1/generator/scene.py",
+      "sha256": "bcf4b159cea50ebd4984298f0825c70cacdf6dfb16ab963b02da03744128c650"
+    },
+    {
+      "expected_sha256": "377a8f020a9b635daadfe01622d901efb327ff4146b0cd7383bd83a8ef5e0ff1",
+      "path": "benchmarks/generic_motion_v1/generator/voxelize.py",
+      "sha256": "377a8f020a9b635daadfe01622d901efb327ff4146b0cd7383bd83a8ef5e0ff1"
+    },
+    {
+      "expected_sha256": "5b152e3e5ca484e5378856de11747c45826653df8a1183582fe90e0958fc5116",
+      "path": "benchmarks/generic_motion_v1/model.py",
+      "sha256": "5b152e3e5ca484e5378856de11747c45826653df8a1183582fe90e0958fc5116"
+    },
+    {
+      "expected_sha256": "460b799f6fc85c89ec8300858644154b3e51764573433b91c45681ac1bd1dc7c",
+      "path": "benchmarks/generic_motion_v1/roadmap.py",
+      "sha256": "460b799f6fc85c89ec8300858644154b3e51764573433b91c45681ac1bd1dc7c"
+    },
+    {
+      "expected_sha256": "5068d18002a81335127caa4284c2a5ce60aa1dc9c4338568b3c2a5f29c69f81d",
+      "path": "benchmarks/generic_motion_v1/runners/csdecomp_baseline.py",
+      "sha256": "5068d18002a81335127caa4284c2a5ce60aa1dc9c4338568b3c2a5f29c69f81d"
+    },
+    {
+      "expected_sha256": "5eb45ca2f96b5dd5c727c4afca0b94b00f58ab06ec618073d3089f0ea668b01c",
+      "path": "benchmarks/generic_motion_v1/runners/native_handoff.py",
+      "sha256": "5eb45ca2f96b5dd5c727c4afca0b94b00f58ab06ec618073d3089f0ea668b01c"
+    },
+    {
+      "expected_sha256": "cb26df9783dc97646ff06a1600125d90a0259f2151b3db56e39be365926a90d9",
+      "path": "benchmarks/generic_motion_v1/runners/paper_graph.py",
+      "sha256": "cb26df9783dc97646ff06a1600125d90a0259f2151b3db56e39be365926a90d9"
+    },
+    {
+      "expected_sha256": "51882030b2564aabb2904e45c8ebeda6827d086db45b45e722962f76895a0900",
+      "path": "benchmarks/generic_motion_v1/runners/paper_lgcs.py",
+      "sha256": "51882030b2564aabb2904e45c8ebeda6827d086db45b45e722962f76895a0900"
+    },
+    {
+      "expected_sha256": "e525d4abc12d24615a53078b88427895d370d57723a320cf7f16517ffed5271b",
+      "path": "benchmarks/generic_motion_v1/runners/paper_nto.py",
+      "sha256": "e525d4abc12d24615a53078b88427895d370d57723a320cf7f16517ffed5271b"
+    },
+    {
+      "expected_sha256": "35579fcf1079e73fdd742005bfc1a3475d814cdf72a7b7cfa897f8ede7ff742b",
+      "path": "benchmarks/generic_motion_v1/runners/replay.py",
+      "sha256": "35579fcf1079e73fdd742005bfc1a3475d814cdf72a7b7cfa897f8ede7ff742b"
+    },
+    {
+      "expected_sha256": "d2a99fc8090017503fe272f5dcf4b4168b72ee5582576fa19be96fca2323a0b1",
+      "path": "benchmarks/generic_motion_v1/runners/study_metrics.py",
+      "sha256": "d2a99fc8090017503fe272f5dcf4b4168b72ee5582576fa19be96fca2323a0b1"
+    },
+    {
+      "expected_sha256": "0e0e499a95d649beae5d4f849d122ade08c03e705a2c38dd810560c73da5daa8",
+      "path": "benchmarks/generic_motion_v1/runners/summarize.py",
+      "sha256": "0e0e499a95d649beae5d4f849d122ade08c03e705a2c38dd810560c73da5daa8"
+    },
+    {
+      "expected_sha256": "12086b43b1735ab8455b260235eb0c92b336cb2b2cbaef6c286d1d2f5f376b43",
+      "path": "benchmarks/generic_motion_v1/runners/validate.py",
+      "sha256": "12086b43b1735ab8455b260235eb0c92b336cb2b2cbaef6c286d1d2f5f376b43"
+    },
+    {
+      "expected_sha256": "1d52ac53596e572efed3aba51381f004847c935ac0a6fc46782588405bf996b2",
+      "path": "benchmarks/generic_motion_v1/study_protocol.py",
+      "sha256": "1d52ac53596e572efed3aba51381f004847c935ac0a6fc46782588405bf996b2"
+    },
+    {
+      "expected_sha256": "e2a222d76e3fd709c82ec7f95df93efc697e1893ac06188e368aaaf3d223e6bc",
+      "path": "reproduction/alignment_diagnosis/geometric_solvers.py",
+      "sha256": "e2a222d76e3fd709c82ec7f95df93efc697e1893ac06188e368aaaf3d223e6bc"
+    },
+    {
+      "expected_sha256": "dbce28518dc6d94052391397fe42a84a75d4f647e4ec5fb893c0ac64c7a520ec",
+      "path": "reproduction/paper_completion/optimization.py",
+      "sha256": "dbce28518dc6d94052391397fe42a84a75d4f647e4ec5fb893c0ac64c7a520ec"
+    }
+  ]
+}

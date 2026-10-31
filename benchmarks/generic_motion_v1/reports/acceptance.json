@@ -1,0 +1,52 @@
+{
+  "G0": true,
+  "G1": true,
+  "G2": true,
+  "G4_development_execution": true,
+  "source_commit": "7809133249f131fc9c9e35a155e7521b5f06100a",
+  "checks": {
+    "smoke": {
+      "integrity_passed": true,
+      "complete": true,
+      "completed_jobs": 20,
+      "planned_jobs": 20,
+      "errors": [],
+      "unsealed_attempts": []
+    },
+    "dev": {
+      "integrity_passed": true,
+      "complete": true,
+      "completed_jobs": 360,
+      "planned_jobs": 360,
+      "errors": [],
+      "unsealed_attempts": []
+    },
+    "paired": {
+      "integrity_passed": true,
+      "complete": true,
+      "completed_jobs": 48,
+      "planned_jobs": 48,
+      "errors": [],
+      "unsealed_attempts": []
+    }
+  },
+  "evidence_sha256": {
+    "reports/model_audit/audit.json": "6c49094c65405976fa926b38c4dfda8891cc7a6844f077df006a9393b83468c0",
+    "reports/smoke_input_audit.json": "4b141540669bfa6ec25351bbbf160a3bde8daacf24b5cf7ba28875326dc4043c",
+    "reports/dev_input_audit.json": "46ef1e518c81dba711d0ed7073d0a53f3ac6cefee1c1b6a90ad8f83b24f07afd",
+    "reports/dev_actual_determinism.json": "902989eab5a82a1b8c12b2b6958bcc2caa98cdb6452e04cc36f367a0091b57af",
+    "reports/resume_and_pairing_acceptance.json": "d51d8e32ea457ebad09fa36e6cfa8d032997230ce5a54696789c0f3b4b45bbb0",
+    "manifests/smoke.jsonl": "92e19a293861fa1b93a2dba3919ae3bc3eec584f3845709dc99f2ce98e453720",
+    "manifests/dev.jsonl": "32de21ac2474846ae3cdc9867a3f41585cf80e7d0d4531e26285de216ef56000"
+  },
+  "replay_evidence_sha256": {
+    "results/smoke_preflight_v1/jobs/smoke-open_control-000-p00-EI_ZO-minimum_distance-f2544d67/attempts/0001/replay/replay.json": "6b0c2e31827d6d2415a3bc9cfcb1c52144ca4abd7269a515cdd8dd5853ab5d62",
+    "results/smoke_preflight_v1/jobs/smoke-open_control-000-p00-EI_ZO-minimum_time-6eb3552d/attempts/0001/replay/replay.json": "3a34e9f9f10fb8ba4bf0c05503c79a0476da774582150bbbd1d8470844b57568"
+  },
+  "authorization": "Only generate and audit 420 test inputs; no test planner execution.",
+  "limitations": [
+    "NTO paired development subset has four short problems; no overall ranking.",
+    "Native collision-query counters and internal pre-shortcut path are unavailable.",
+    "Equal added-collision-query budget comparison remains unsupported."
+  ]
+}

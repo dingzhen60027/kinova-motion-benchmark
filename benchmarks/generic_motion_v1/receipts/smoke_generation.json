@@ -1,0 +1,104 @@
+{
+  "benchmark_version": "kinova7_generic_v1",
+  "files_sha256": {
+    "configs/smoke_generator.json": "ac60e554b442d10bf820b642fc4425d4619f12fd8c2d236f1cee10c7c91a0f8f",
+    "inputs/smoke-bottleneck-000-p00.npz": "9f2ad12bc354efc39bf4d7295605cd8252d8d8ba36d7bcd7036809ee92b8f629",
+    "inputs/smoke-bottleneck-000-p01.npz": "893a1dc20784967b92fe6920bd74d7f90ebcf79e45dc039cf891984ae5acfba2",
+    "inputs/smoke-dense_clutter-000-p00.npz": "3895a9c679adc13af14681b2da083691a18a8f7fc82e21f0f02b8041c1cf6cc9",
+    "inputs/smoke-dense_clutter-000-p01.npz": "a104aa50102810f73e4c10386e09c987bc90285b5cf1e6aa0f102303b58552c3",
+    "inputs/smoke-open_control-000-p00.npz": "13bca9c40b513ef74c85aed60f316abe5731eba6e1e14e369117e76d157b0321",
+    "inputs/smoke-open_control-000-p01.npz": "e82474fa2d739d1432b146823c75bf046de60fb44e719b9947cf08c2acef7366",
+    "inputs/smoke-route_choice-000-p00.npz": "9ddcc54a94dcdd4853d0b43c1eeb75dd1b4b1806131a2a9ac9e816db45a24038",
+    "inputs/smoke-route_choice-000-p01.npz": "3453c21c1e9737851a1e91f37c37cac8217a416f2bb7a74f15a2edc6f1ec1ed5",
+    "inputs/smoke-sparse_clutter-000-p00.npz": "087c4b3b432dd1613903bfe08e320378f8ac284c324812f30ceae0804be30f06",
+    "inputs/smoke-sparse_clutter-000-p01.npz": "baf6f6c835b7c62f939964292c9b27ee6feeb91d92c7f18639b9e36a1ab97953",
+    "manifests/smoke.jsonl": "92e19a293861fa1b93a2dba3919ae3bc3eec584f3845709dc99f2ce98e453720",
+    "scenes/smoke-bottleneck-000.json": "6558e79d35b8a380def7e37da622adf517cb7a1c2ccc5e913f23b9b386d875c7",
+    "scenes/smoke-dense_clutter-000.json": "e796ed1de9acf711dbcb413444f7e093973005abad42ae38b7ab023c0900a7f1",
+    "scenes/smoke-open_control-000.json": "e95b033b1266a30a42e5dfd21f272ea97714d880f3a5016be12a539326bf3eeb",
+    "scenes/smoke-route_choice-000.json": "5693546a652e1bf762d3ce95ed2201588fb27b40b9fa8eb85309ddf5231664ad",
+    "scenes/smoke-sparse_clutter-000.json": "f15218f888d86526a32050cdaa7d0b8a45867c23fae92d6f74a5f46895626d4c"
+  },
+  "geometry_protocol_sha256": "d10cb605984c58a9b901b7c29eb134b3391f95d86d8fd8770f2942f25ee97f4e",
+  "invalid_input_count": 2,
+  "manifest_path": "manifests/smoke.jsonl",
+  "manifest_sha256": "92e19a293861fa1b93a2dba3919ae3bc3eec584f3845709dc99f2ce98e453720",
+  "open_control_policy": "All open layouts have the identical base-only geometry; they are not independent random environments",
+  "problem_count": 10,
+  "protocol": {
+    "collision_geometry_sha256": "896ab9f55c5d8081b843358bd85cde2daae1f432564593f86218bf61733ce4fa",
+    "config_sha256": "ac60e554b442d10bf820b642fc4425d4619f12fd8c2d236f1cee10c7c91a0f8f",
+    "generator_sources_sha256": {
+      "generator/__init__.py": "b73fa031be4d0c3c14aa4549e11cd634dcc2428fb786367a81b67ab9bc4b9e2e",
+      "generator/audit.py": "26febcec17ca1d2ff22326401b48421d9c0bd3a04b0de6f2c35e77e71d53fed4",
+      "generator/endpoints.py": "1d311eedc021a135e44eccb365e718cbc470c84472ab2be87e2781d751c08c64",
+      "generator/manifest.py": "acbf2224c9506a2c44ca8c480fcf94f0402cc6ff02738749f397fe03d672f278",
+      "generator/scene.py": "bcf4b159cea50ebd4984298f0825c70cacdf6dfb16ab963b02da03744128c650",
+      "generator/voxelize.py": "ebe45f389de4e6ec025144dde205b6f5b213d671cc28b380cfabb138855987b9"
+    },
+    "model_source_sha256": "7ecde3366d182fa8efe19091aa26b8b3f7688f79fe28e2f292afba90ab108cfe",
+    "robot_sha256": "a25f447c8caf4aff6dc76196c3d57cc940f00e802367f48034f06a9973927c75"
+  },
+  "rng": "numpy.random.PCG64; SHA256 domain-separated uint64 seeds",
+  "scene_count": 5,
+  "seed": 20261027,
+  "selection_policy": "Geometry-only fixed-equipment rejection and endpoint validity/distance bins; no planning algorithm invoked",
+  "source_code_commit": "49df4a9569447ee57687db99bf65047fbd52d4cb",
+  "split": "smoke",
+  "valid_input_count": 8,
+  "workspace_roi_evidence": {
+    "g0_workspace": {
+      "moving_collision_geometry_max": [
+        1.0803377575529907,
+        1.0206000601584602,
+        1.3763804167126161
+      ],
+      "moving_collision_geometry_min": [
+        -0.47335731147387194,
+        -1.0407504056996622,
+        0.0013384279016056544
+      ],
+      "note": "Workspace samples audit the obstacle ROI; they do not prove reachability of every point.",
+      "sampled_valid_configurations": 307,
+      "tcp_max": [
+        0.9107650718494241,
+        0.8637094097691548,
+        1.211899806216549
+      ],
+      "tcp_min": [
+        -0.3990577714751913,
+        -0.8710803995372229,
+        0.072500869014824
+      ],
+      "tcp_quantiles": [
+        [
+          -0.3056708674987541,
+          -0.5993318075263545,
+          0.18683638060609742
+        ],
+        [
+          0.0705330826201781,
+          -0.015058622448429936,
+          0.6023156799946447
+        ],
+        [
+          0.6582434026372143,
+          0.6207273019114583,
+          1.128174931725223
+        ]
+      ]
+    },
+    "interpretation": "ROI overlaps measured reachable TCP and robot envelope; pointwise reachability is not proved",
+    "model_audit_sha256": "6c49094c65405976fa926b38c4dfda8891cc7a6844f077df006a9393b83468c0",
+    "roi_max_m": [
+      0.8,
+      0.7,
+      1.0
+    ],
+    "roi_min_m": [
+      -0.2,
+      -0.7,
+      0.18
+    ]
+  }
+}

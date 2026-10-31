@@ -1,0 +1,81 @@
+{
+  "profile": {
+    "name": "ompl_2_0_1_kinova7_native_v1",
+    "methods": [
+      "RRTCONNECT",
+      "RRTSTAR"
+    ],
+    "objective": "minimum_distance",
+    "state_space": "RealVectorStateSpace(7), radians, bounded, no angular wrapping",
+    "range_rad": 0.5,
+    "motion_step_rad": 0.01,
+    "planning_seconds": 10.0,
+    "simplification_seconds": 0.5,
+    "simplification_max_steps": 100,
+    "simplification_max_empty_steps": 50,
+    "validation_reserve_seconds": 5.0,
+    "goal_bias": 0.05,
+    "rewire_factor": 1.1,
+    "delay_collision_checking": true,
+    "exact_solutions_only": true,
+    "sources": {
+      "release": "https://github.com/ompl/ompl/tree/c509861210a63ec962bbec72c52823abc16b102e",
+      "RRTCONNECT": "https://github.com/ompl/ompl/blob/2.0.1/src/ompl/geometric/planners/rrt/src/RRTConnect.cpp",
+      "RRTSTAR": "https://github.com/ompl/ompl/blob/2.0.1/src/ompl/geometric/planners/rrt/src/RRTstar.cpp",
+      "install": "https://ompl.kavrakilab.org/installation.html"
+    }
+  },
+  "dependency": {
+    "package": "ompl",
+    "version": "2.0.1",
+    "location": ".local_setup/solver_probes/ompl",
+    "native_implementation": true,
+    "environment_modified": false,
+    "source_commit": "c509861210a63ec962bbec72c52823abc16b102e",
+    "files_sha256": {
+      ".local_setup/solver_probes/ompl/ompl/_ompl.cpython-310-x86_64-linux-gnu.so": "16ccc417ed3432e7e36115712232ea84b4d3ce83643eb50092ae97c8c71a1db2",
+      ".local_setup/solver_probes/ompl/ompl/libompl.so": "2d018b2497d7924c781a91fa53c411592a7409b6e3f2ffbb0564e694f06526a3",
+      ".local_setup/solver_probes/ompl/ompl-2.0.1.dist-info/METADATA": "996114b1d4621db6f400b78c8c3f2309b6310c935ce9cc58870175c6b9f2bfe9",
+      ".local_setup/solver_probes/ompl/ompl-2.0.1.dist-info/WHEEL": "e158f45e6780f630348d2bdfd3519fb617b4d768daf2cdd863e19a20d8350239",
+      ".local_setup/solver_probes/ompl/ompl.libs/libboost_serialization-4cef20e9.so.1.87.0": "1b5e3dea1bada63b2fbeede0a848b64f2bafd9cb956b1129c83c3501b4891a69"
+    }
+  },
+  "wheel": {
+    "filename": "ompl-2.0.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+    "sha256": "346665d130ef5c2bbd80686aed3fbbd9a4d1097d0f0fd92924aafbdc0497742d",
+    "official_url": "https://files.pythonhosted.org/packages/39/c5/79e0f7b9b558c2402ff6b7bd86386f8341ab4e760fc990287fc921923701/ompl-2.0.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+    "requires_python": ">=3.9"
+  },
+  "sources": [
+    {
+      "url": "https://raw.githubusercontent.com/ompl/ompl/c509861210a63ec962bbec72c52823abc16b102e/LICENSE",
+      "path": "benchmarks/generic_motion_v1/reports/extended_baselines_v1/ompl_sources/LICENSE",
+      "sha256": "f1b0b41dbea7d46f34a723e827b5ef50070d006b34d5463f77a0a06d3dccdf2d"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/ompl/ompl/c509861210a63ec962bbec72c52823abc16b102e/src/ompl/geometric/planners/rrt/src/RRTConnect.cpp",
+      "path": "benchmarks/generic_motion_v1/reports/extended_baselines_v1/ompl_sources/RRTConnect.cpp",
+      "sha256": "252181090e0b65473dd7d251d411ca43174f9312d0096d7dee52ba007260f98b"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/ompl/ompl/c509861210a63ec962bbec72c52823abc16b102e/src/ompl/geometric/planners/rrt/src/RRTstar.cpp",
+      "path": "benchmarks/generic_motion_v1/reports/extended_baselines_v1/ompl_sources/RRTstar.cpp",
+      "sha256": "6f7e2d4258f80eb1c1738a11480018cae6482d256c5a7e19c1f49a780f8ec8a0"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/ompl/ompl/c509861210a63ec962bbec72c52823abc16b102e/src/ompl/geometric/src/PathSimplifier.cpp",
+      "path": "benchmarks/generic_motion_v1/reports/extended_baselines_v1/ompl_sources/PathSimplifier.cpp",
+      "sha256": "5e1c36d6e1f218e7703213e9ada06ad0f72ac01dd96ddb8085f0e8d8caf62869"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/ompl/ompl/c509861210a63ec962bbec72c52823abc16b102e/src/ompl/util/src/RandomNumbers.cpp",
+      "path": "benchmarks/generic_motion_v1/reports/extended_baselines_v1/ompl_sources/RandomNumbers.cpp",
+      "sha256": "bec58cdf13bfaf8101d819a9fc2e0847616daec2800a67a2fe7a3e5d50d33a09"
+    }
+  ],
+  "failed_install_attempt": "Officialwebsiteadvertises2.0.2butconfiguredmirrorandPyPInotavailable;2.0.1officialwheelused. Logsretained.",
+  "commands": [
+    "bash local/python.sh -m pip download --index-url https://pypi.org/simple --no-deps --only-binary=:all: --dest .local_setup/solver_probes/ompl_wheels ompl==2.0.1",
+    "bash local/python.sh -m pip install --no-deps --target .local_setup/solver_probes/ompl .local_setup/solver_probes/ompl_wheels/ompl-2.0.1-*.whl"
+  ]
+}

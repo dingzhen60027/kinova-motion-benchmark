@@ -1,0 +1,55 @@
+{
+  "date": "2026-10-30",
+  "queries": [
+    "MotionBenchMaker benchmark paper 40 environments 7 robot models generate goal sample",
+    "VAMP vector accelerated motion planning benchmark MotionBenchMaker robometrics",
+    "robometrics motion planning dataset benchmark github",
+    "OMPL benchmarking Planner Arena benchmark runs validation resolution",
+    "site.github.com KavrakiLab MotionBenchMaker datasets generator",
+    "site.github.com robometrics motion planning mpinets",
+    "site.vector-acceleration.github.io VAMP motion planning",
+    "site.roboticsproceedings.org VAMP motion planning 2024",
+    "Motion Policy Networks benchmark 1800 problems generation 200 environments mpinets CoRL paper",
+    "site.github.com NVlabs motion-policy-networks data generation hybrid planning benchmark",
+    "site.proceedings.mlr.press Motion Policy Networks"
+  ],
+  "read_method": [
+    "web search/open/find of original paper PDFs and official docs",
+    "GitHub API pinned commit discovery",
+    "Pinned raw GitHub files and YAML fetched with urllib",
+    "YAML safe parse with existing Conda environment"
+  ],
+  "failures": [
+    {
+      "url": "https://planner-arena.kavrakilab.rice.edu/",
+      "tool": "web.find",
+      "status": "timeout",
+      "resolved": "web.open succeeded later"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/KavrakiLab/vamp/27cb9b66ebd8d101ce88d330f3b028398afc1cfa/scripts/evaluate.py",
+      "status": "HTTP404",
+      "resolved": "Repository tree located scripts/evaluate_mbm.py"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/KavrakiLab/vamp/27cb9b66ebd8d101ce88d330f3b028398afc1cfa/LICENSE",
+      "status": "HTTP404",
+      "resolved": "Repository tree located LICENSE.txt"
+    }
+  ],
+  "excluded_sources": [
+    "EmergentMind aggregation page",
+    "Scribd rehost of MPiNets",
+    "unrelated VAMP acronym papers",
+    "third-party GitHub forks"
+  ],
+  "not_performed": [
+    "No independent paper-quality judgement orcitationcount claim",
+    "No motion planner orcollisionvalidation execution",
+    "No model/environmentinstallation",
+    "No local frozenbenchmarkdata mutation"
+  ],
+  "commands": [
+    "bash local/python.sh benchmarks/generic_motion_v1/reports/benchmark_design_audit_v2/literature_mbm/inspect_public_datasets.py --output benchmarks/generic_motion_v1/reports/benchmark_design_audit_v2/literature_mbm/robometrics_dataset_inspection_v2.json"
+  ]
+}
