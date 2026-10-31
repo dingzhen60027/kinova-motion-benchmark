@@ -1,0 +1,126 @@
+{
+  "acceleration_limit_rad_s2": 1.0,
+  "bezier_degree": 6,
+  "drm": {
+    "max_iterations_steering_to_node": 10,
+    "max_nodes_to_expand": 10000,
+    "max_number_planning_attempts": 20,
+    "online_edge_step_size": 0.1,
+    "try_shortcutting": true,
+    "voxel_padding": 0.01
+  },
+  "drm_query": {
+    "backend": "safe_native",
+    "build_dir": "benchmarks/generic_motion_v1/reports/baseline_repair_v2/drm_safe_build_v2"
+  },
+  "eizo": {
+    "bisection_steps": 9,
+    "configuration_margin": 0.01,
+    "delta": 0.005,
+    "epsilon": 0.005,
+    "max_hyperplanes_per_iteration": 10,
+    "max_iterations": 30,
+    "mixing_steps": 60,
+    "num_particles": 10000,
+    "tau": 0.5
+  },
+  "endpoint_tolerance_rad": 1e-05,
+  "extended_baselines": {
+    "chomp": {
+      "backtracking_steps": 8,
+      "collision_check_step_rad": 0.05,
+      "finite_difference_rad": 1e-05,
+      "initial_knots": 64,
+      "learning_rate": 1.0,
+      "maximum_iterations": 40,
+      "maximum_knots": 256,
+      "maximum_update_rad": 0.08,
+      "obstacle_influence_m": 0.05,
+      "obstacle_weight": 10.0,
+      "relative_cost_tolerance": 1e-07,
+      "safety_band_m": 2e-06,
+      "smoothness_weight": 1.0
+    },
+    "stomp": {
+      "collision_check_step_rad": 0.05,
+      "control_cost_weight": 0.1,
+      "cost_sensitivity": 10.0,
+      "initial_knots": 64,
+      "iterations_after_valid": 5,
+      "maximum_iterations": 40,
+      "maximum_knots": 256,
+      "maximum_update_rad": 0.08,
+      "noise_std_rad": 0.1,
+      "obstacle_influence_m": 0.05,
+      "rollouts": 12,
+      "safety_band_m": 2e-06
+    },
+    "trajopt": {
+      "clearance_m": 0.001,
+      "constraint_tolerance": 0.0001,
+      "derivative_step_rad": 1e-05,
+      "initial_knots": 64,
+      "initial_merit_coefficient": 10.0,
+      "initial_trust_box_rad": 0.1,
+      "maximum_knots": 256,
+      "maximum_merit_coefficient_increases": 5,
+      "maximum_optimizer_seconds": 45.0,
+      "maximum_sqp_iterations": 50,
+      "minimum_model_improvement": 0.0001,
+      "segment_collocation_subdivisions": 3
+    }
+  },
+  "feasibility_tolerance": 1e-05,
+  "lgcs": {
+    "solver": "scip"
+  },
+  "max_recovery_attempts": 20,
+  "maximum_recovery_witnesses": 128,
+  "nto": {
+    "clearance_m": 1e-05,
+    "collocation_points": 150,
+    "influence_distance_m": 0.01,
+    "maximum_iterations": 500,
+    "minimum_control_points": 16,
+    "solver": "IPOPT"
+  },
+  "ompl": {
+    "goal_bias": 0.05,
+    "motion_step_rad": 0.01,
+    "planning_seconds": 10.0,
+    "progress_poll_seconds": 0.5,
+    "range_rad": 0.5,
+    "record_validated_progress": false,
+    "rewire_factor": 1.1,
+    "simplification_max_empty_steps": 50,
+    "simplification_max_steps": 100,
+    "simplification_seconds": 0.5,
+    "validation_reserve_seconds": 5.0
+  },
+  "online_budget_seconds": 60.0,
+  "optimizer_budget_seconds": 60.0,
+  "protocol": "kinova7_generic_v1_evaluation",
+  "region_coverage_tolerance_rad": 1e-06,
+  "roadmap": {
+    "edge_step_size": 0.1,
+    "map_center": [
+      0.0,
+      0.0,
+      0.55
+    ],
+    "map_extent": [
+      2.8,
+      2.8,
+      2.2
+    ],
+    "max_configuration_distance_between_nodes": 10.0,
+    "max_neighbors": 10,
+    "max_task_space_distance_between_nodes": 10.0,
+    "offline_voxel_resolution": 0.03
+  },
+  "scsto_relative_tolerance": 0.01,
+  "validation_maximum_samples": 100000,
+  "validation_minimum_samples": 400,
+  "validation_step_rad": 0.005,
+  "velocity_limit_rad_s": 1.0
+}
