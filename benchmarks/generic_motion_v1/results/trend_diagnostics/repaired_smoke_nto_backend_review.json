@@ -1,0 +1,2944 @@
+{
+  "created_utc": "2026-11-01T05:26:43.321656+00:00",
+  "scope": "Read-only low-cost monitor of saved NTO backend events; no planner, solver or GPU calls.",
+  "run": "benchmarks/generic_motion_v1/results/repaired_smoke",
+  "source_commit": "7284d06f75aa6ba5ed5bf2b987d9ff287a2e8ab3",
+  "manifest_sha256": "92e19a293861fa1b93a2dba3919ae3bc3eec584f3845709dc99f2ce98e453720",
+  "gpu_calls": 0,
+  "solver_calls": 0,
+  "planned_nto_jobs": 60,
+  "completed_nto_jobs": 60,
+  "all_nto_jobs_terminal": true,
+  "terminal_status_counts": {
+    "solver_failed": 4,
+    "success_validated_numerical": 22,
+    "timeout": 9,
+    "collision_failed": 7,
+    "invalid_endpoint": 12,
+    "frontend_failed": 6
+  },
+  "total_recovery_events": 0,
+  "total_recovery_seconds": 0,
+  "blockers": [],
+  "rows": [
+    {
+      "job_id": "smoke-sparse_clutter-000-p00-NTO_PAPER-minimum_distance-6e9fb2c9",
+      "method": "NTO_PAPER",
+      "objective": "minimum_distance",
+      "attempt": "benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-sparse_clutter-000-p00-NTO_PAPER-minimum_distance-6e9fb2c9/attempts/0001",
+      "terminal": true,
+      "status": "solver_failed",
+      "process": {
+        "argv": [
+          "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/bin/python",
+          "-m",
+          "benchmarks.generic_motion_v1",
+          "_worker",
+          "--attempt",
+          "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-sparse_clutter-000-p00-NTO_PAPER-minimum_distance-6e9fb2c9/attempts/0001"
+        ],
+        "exit_code": 0,
+        "timeout_seconds": 60.0,
+        "timed_out": false,
+        "cold_e2e_seconds": 8.126331573817879,
+        "sampled_gpu_peak_mib": 192.0,
+        "gpu_peak_scope": "Per-process nvidia-smi samples at approximately 0.2 s; not an exact allocator high-water mark.",
+        "includes": "fresh process, imports, CUDA context, model/map load, warm-up, online planning, validation and output"
+      },
+      "timing": {
+        "model_setup_seconds": 0.014392163138836622,
+        "gpu_initialization_warmup_seconds": 0.11512034386396408,
+        "roadmap_load_seconds": 0.01673983922228217,
+        "online_collision_map_seconds": 0.001568933017551899,
+        "drm_path_seconds": 0.33516363613307476,
+        "drm_path_validation_seconds": 0.9891047766432166,
+        "trajectory_optimization_seconds": 3.5470344009809196,
+        "validation_seconds": 2.5651490688323975,
+        "cold_e2e_seconds": 7.863899800926447,
+        "warm_query_seconds": 7.439613364171237
+      },
+      "backend_rounds": [
+        {
+          "path": "benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-sparse_clutter-000-p00-NTO_PAPER-minimum_distance-6e9fb2c9/attempts/0001/nto_collision_backend.json",
+          "native_evaluations": 56322,
+          "retained_collision_pairs": 3332,
+          "dropped_collision_pairs": 0,
+          "recovery_count": 0,
+          "recovery_seconds": 0,
+          "recovery_failures": [],
+          "recovered_pair_distances_m": []
+        }
+      ],
+      "validation": {
+        "passed": false,
+        "status": "collision_failed",
+        "samples": 5993,
+        "independent_collisions": 1725,
+        "native_collisions": 1725,
+        "minimum_sampled_clearance_m": -0.039043672074274546,
+        "endpoint_error_rad": 9.191171591582918e-14,
+        "velocity_violation": null,
+        "acceleration_violation": null
+      }
+    },
+    {
+      "job_id": "smoke-sparse_clutter-000-p00-NTO_REFINED-minimum_distance-c94d919f",
+      "method": "NTO_REFINED",
+      "objective": "minimum_distance",
+      "attempt": "benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-sparse_clutter-000-p00-NTO_REFINED-minimum_distance-c94d919f/attempts/0001",
+      "terminal": true,
+      "status": "solver_failed",
+      "process": {
+        "argv": [
+          "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/bin/python",
+          "-m",
+          "benchmarks.generic_motion_v1",
+          "_worker",
+          "--attempt",
+          "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-sparse_clutter-000-p00-NTO_REFINED-minimum_distance-c94d919f/attempts/0001"
+        ],
+        "exit_code": 0,
+        "timeout_seconds": 60.0,
+        "timed_out": false,
+        "cold_e2e_seconds": 51.5978593910113,
+        "sampled_gpu_peak_mib": 194.0,
+        "gpu_peak_scope": "Per-process nvidia-smi samples at approximately 0.2 s; not an exact allocator high-water mark.",
+        "includes": "fresh process, imports, CUDA context, model/map load, warm-up, online planning, validation and output"
+      },
+      "timing": {
+        "model_setup_seconds": 0.014374141115695238,
+        "gpu_initialization_warmup_seconds": 0.12749158591032028,
+        "roadmap_load_seconds": 0.01731154602020979,
+        "online_collision_map_seconds": 0.001639918889850378,
+        "drm_path_seconds": 0.365683619864285,
+        "drm_path_validation_seconds": 0.9851790172979236,
+        "trajectory_optimization_seconds": 46.66813755361363,
+        "validation_seconds": 2.8421607869677246,
+        "cold_e2e_seconds": 51.294653195887804,
+        "warm_query_seconds": 50.86452686507255
+      },
+      "backend_rounds": [
+        {
+          "path": "benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-sparse_clutter-000-p00-NTO_REFINED-minimum_distance-c94d919f/attempts/0001/refinement/round_00/nto_collision_backend.json",
+          "native_evaluations": 448043,
+          "retained_collision_pairs": 3332,
+          "dropped_collision_pairs": 0,
+          "recovery_count": 0,
+          "recovery_seconds": 0,
+          "recovery_failures": [],
+          "recovered_pair_distances_m": []
+        },
+        {
+          "path": "benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-sparse_clutter-000-p00-NTO_REFINED-minimum_distance-c94d919f/attempts/0001/refinement/round_01/nto_collision_backend.json",
+          "native_evaluations": 19320,
+          "retained_collision_pairs": 3332,
+          "dropped_collision_pairs": 0,
+          "recovery_count": 0,
+          "recovery_seconds": 0,
+          "recovery_failures": [],
+          "recovered_pair_distances_m": []
+        },
+        {
+          "path": "benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-sparse_clutter-000-p00-NTO_REFINED-minimum_distance-c94d919f/attempts/0001/refinement/round_02/nto_collision_backend.json",
+          "native_evaluations": 3330,
+          "retained_collision_pairs": 3332,
+          "dropped_collision_pairs": 0,
+          "recovery_count": 0,
+          "recovery_seconds": 0,
+          "recovery_failures": [],
+          "recovered_pair_distances_m": []
+        },
+        {
+          "path": "benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-sparse_clutter-000-p00-NTO_REFINED-minimum_distance-c94d919f/attempts/0001/refinement/round_03/nto_collision_backend.json",
+          "native_evaluations": 172224,
+          "retained_collision_pairs": 3332,
+          "dropped_collision_pairs": 0,
+          "recovery_count": 0,
+          "recovery_seconds": 0,
+          "recovery_failures": [],
+          "recovered_pair_distances_m": []
+        }
+      ],
+      "validation": {
+        "passed": false,
+        "status": "collision_failed",
+        "samples": 6655,
+        "independent_collisions": 655,
+        "native_collisions": 655,
+        "minimum_sampled_clearance_m": -0.014063265486809518,
+        "endpoint_error_rad": 2.0666277498721685e-13,
+        "velocity_violation": null,
+        "acceleration_violation": null
+      }
+    },
+    {
+      "job_id": "smoke-sparse_clutter-000-p00-NTO-minimum_distance-f8a1085e",
+      "method": "NTO",
+      "objective": "minimum_distance",
+      "attempt": "benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-sparse_clutter-000-p00-NTO-minimum_distance-f8a1085e/attempts/0001",
+      "terminal": true,
+      "status": "solver_failed",
+      "process": {
+        "argv": [
+          "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/bin/python",
+          "-m",
+          "benchmarks.generic_motion_v1",
+          "_worker",
+          "--attempt",
+          "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-sparse_clutter-000-p00-NTO-minimum_distance-f8a1085e/attempts/0001"
+        ],
+        "exit_code": 0,
+        "timeout_seconds": 60.0,
+        "timed_out": false,
+        "cold_e2e_seconds": 17.238524528685957,
+        "sampled_gpu_peak_mib": 190.0,
+        "gpu_peak_scope": "Per-process nvidia-smi samples at approximately 0.2 s; not an exact allocator high-water mark.",
+        "includes": "fresh process, imports, CUDA context, model/map load, warm-up, online planning, validation and output"
+      },
+      "timing": {
+        "model_setup_seconds": 0.014407943934202194,
+        "gpu_initialization_warmup_seconds": 0.12931631691753864,
+        "roadmap_load_seconds": 0.015108756255358458,
+        "online_collision_map_seconds": 0.001598989125341177,
+        "drm_path_seconds": 0.348686131183058,
+        "drm_path_validation_seconds": 0.997644551564008,
+        "trajectory_optimization_seconds": 13.187571411952376,
+        "validation_seconds": 1.9858439736999571,
+        "cold_e2e_seconds": 16.955120353028178,
+        "warm_query_seconds": 16.52307263109833
+      },
+      "backend_rounds": [
+        {
+          "path": "benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-sparse_clutter-000-p00-NTO-minimum_distance-f8a1085e/attempts/0001/nto_collision_backend.json",
+          "native_evaluations": 223950,
+          "retained_collision_pairs": 3332,
+          "dropped_collision_pairs": 0,
+          "recovery_count": 0,
+          "recovery_seconds": 0,
+          "recovery_failures": [],
+          "recovered_pair_distances_m": []
+        }
+      ],
+      "validation": {
+        "passed": false,
+        "status": "collision_failed",
+        "samples": 4753,
+        "independent_collisions": 638,
+        "native_collisions": 638,
+        "minimum_sampled_clearance_m": -0.015559483351476791,
+        "endpoint_error_rad": 0.0,
+        "velocity_violation": null,
+        "acceleration_violation": null
+      }
+    },
+    {
+      "job_id": "smoke-sparse_clutter-000-p00-NTO_PAPER-minimum_time-07637095",
+      "method": "NTO_PAPER",
+      "objective": "minimum_time",
+      "attempt": "benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-sparse_clutter-000-p00-NTO_PAPER-minimum_time-07637095/attempts/0001",
+      "terminal": true,
+      "status": "success_validated_numerical",
+      "process": {
+        "argv": [
+          "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/bin/python",
+          "-m",
+          "benchmarks.generic_motion_v1",
+          "_worker",
+          "--attempt",
+          "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-sparse_clutter-000-p00-NTO_PAPER-minimum_time-07637095/attempts/0001"
+        ],
+        "exit_code": 0,
+        "timeout_seconds": 60.0,
+        "timed_out": false,
+        "cold_e2e_seconds": 4.820925548207015,
+        "sampled_gpu_peak_mib": 190.0,
+        "gpu_peak_scope": "Per-process nvidia-smi samples at approximately 0.2 s; not an exact allocator high-water mark.",
+        "includes": "fresh process, imports, CUDA context, model/map load, warm-up, online planning, validation and output"
+      },
+      "timing": {
+        "model_setup_seconds": 0.014416355174034834,
+        "gpu_initialization_warmup_seconds": 0.10483302315697074,
+        "roadmap_load_seconds": 0.014698154758661985,
+        "online_collision_map_seconds": 0.0015802299603819847,
+        "drm_path_seconds": 0.32532176701352,
+        "drm_path_validation_seconds": 0.9981797370128334,
+        "trajectory_optimization_seconds": 1.9868217897601426,
+        "validation_seconds": 0.8042806969024241,
+        "cold_e2e_seconds": 4.525355873629451,
+        "warm_query_seconds": 4.118431200273335
+      },
+      "backend_rounds": [
+        {
+          "path": "benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-sparse_clutter-000-p00-NTO_PAPER-minimum_time-07637095/attempts/0001/nto_collision_backend.json",
+          "native_evaluations": 27416,
+          "retained_collision_pairs": 3332,
+          "dropped_collision_pairs": 0,
+          "recovery_count": 0,
+          "recovery_seconds": 0,
+          "recovery_failures": [],
+          "recovered_pair_distances_m": []
+        }
+      ],
+      "validation": {
+        "passed": true,
+        "status": "success_validated_numerical",
+        "samples": 1909,
+        "independent_collisions": 0,
+        "native_collisions": 0,
+        "minimum_sampled_clearance_m": 0.006499161255541091,
+        "endpoint_error_rad": 0.0,
+        "velocity_violation": null,
+        "acceleration_violation": null
+      }
+    },
+    {
+      "job_id": "smoke-sparse_clutter-000-p00-NTO_REFINED-minimum_time-d97f8f6e",
+      "method": "NTO_REFINED",
+      "objective": "minimum_time",
+      "attempt": "benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-sparse_clutter-000-p00-NTO_REFINED-minimum_time-d97f8f6e/attempts/0001",
+      "terminal": true,
+      "status": "timeout",
+      "process": {
+        "argv": [
+          "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/bin/python",
+          "-m",
+          "benchmarks.generic_motion_v1",
+          "_worker",
+          "--attempt",
+          "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-sparse_clutter-000-p00-NTO_REFINED-minimum_time-d97f8f6e/attempts/0001"
+        ],
+        "exit_code": -15,
+        "timeout_seconds": 60.0,
+        "timed_out": true,
+        "cold_e2e_seconds": 60.2138917860575,
+        "sampled_gpu_peak_mib": 190.0,
+        "gpu_peak_scope": "Per-process nvidia-smi samples at approximately 0.2 s; not an exact allocator high-water mark.",
+        "includes": "fresh process, imports, CUDA context, model/map load, warm-up, online planning, validation and output"
+      },
+      "timing": {
+        "drm_path_seconds": 0.37646888103336096,
+        "drm_path_validation_seconds": 0.9981462508440018,
+        "gpu_initialization_warmup_seconds": 0.12716329796239734,
+        "model_setup_seconds": 0.014468085952103138,
+        "online_collision_map_seconds": 0.0015561203472316265,
+        "roadmap_load_seconds": 0.015183188952505589
+      },
+      "backend_rounds": [
+        {
+          "path": "benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-sparse_clutter-000-p00-NTO_REFINED-minimum_time-d97f8f6e/attempts/0001/refinement/round_00/nto_collision_backend.json",
+          "native_evaluations": 0,
+          "retained_collision_pairs": 3332,
+          "dropped_collision_pairs": 0,
+          "recovery_count": 0,
+          "recovery_seconds": 0,
+          "recovery_failures": [],
+          "recovered_pair_distances_m": []
+        }
+      ]
+    },
+    {
+      "job_id": "smoke-sparse_clutter-000-p00-NTO-minimum_time-8d7d0891",
+      "method": "NTO",
+      "objective": "minimum_time",
+      "attempt": "benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-sparse_clutter-000-p00-NTO-minimum_time-8d7d0891/attempts/0001",
+      "terminal": true,
+      "status": "success_validated_numerical",
+      "process": {
+        "argv": [
+          "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/bin/python",
+          "-m",
+          "benchmarks.generic_motion_v1",
+          "_worker",
+          "--attempt",
+          "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-sparse_clutter-000-p00-NTO-minimum_time-8d7d0891/attempts/0001"
+        ],
+        "exit_code": 0,
+        "timeout_seconds": 60.0,
+        "timed_out": false,
+        "cold_e2e_seconds": 9.083495613187551,
+        "sampled_gpu_peak_mib": 192.0,
+        "gpu_peak_scope": "Per-process nvidia-smi samples at approximately 0.2 s; not an exact allocator high-water mark.",
+        "includes": "fresh process, imports, CUDA context, model/map load, warm-up, online planning, validation and output"
+      },
+      "timing": {
+        "model_setup_seconds": 0.014451309107244015,
+        "gpu_initialization_warmup_seconds": 0.1541690519079566,
+        "roadmap_load_seconds": 0.015202799811959267,
+        "online_collision_map_seconds": 0.0016007968224585056,
+        "drm_path_seconds": 0.37396623799577355,
+        "drm_path_validation_seconds": 0.9933333951048553,
+        "trajectory_optimization_seconds": 6.305354698095471,
+        "validation_seconds": 0.6643540342338383,
+        "cold_e2e_seconds": 8.800015050917864,
+        "warm_query_seconds": 8.340848620980978
+      },
+      "backend_rounds": [
+        {
+          "path": "benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-sparse_clutter-000-p00-NTO-minimum_time-8d7d0891/attempts/0001/nto_collision_backend.json",
+          "native_evaluations": 61950,
+          "retained_collision_pairs": 3332,
+          "dropped_collision_pairs": 0,
+          "recovery_count": 0,
+          "recovery_seconds": 0,
+          "recovery_failures": [],
+          "recovered_pair_distances_m": []
+        }
+      ],
+      "validation": {
+        "passed": true,
+        "status": "success_validated_numerical",
+        "samples": 1586,
+        "independent_collisions": 0,
+        "native_collisions": 0,
+        "minimum_sampled_clearance_m": 0.005219820778345818,
+        "endpoint_error_rad": 0.0,
+        "velocity_violation": null,
+        "acceleration_violation": null
+      }
+    },
+    {
+      "job_id": "smoke-sparse_clutter-000-p01-NTO_PAPER-minimum_distance-5f1db259",
+      "method": "NTO_PAPER",
+      "objective": "minimum_distance",
+      "attempt": "benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-sparse_clutter-000-p01-NTO_PAPER-minimum_distance-5f1db259/attempts/0001",
+      "terminal": true,
+      "status": "collision_failed",
+      "process": {
+        "argv": [
+          "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/bin/python",
+          "-m",
+          "benchmarks.generic_motion_v1",
+          "_worker",
+          "--attempt",
+          "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-sparse_clutter-000-p01-NTO_PAPER-minimum_distance-5f1db259/attempts/0001"
+        ],
+        "exit_code": 0,
+        "timeout_seconds": 60.0,
+        "timed_out": false,
+        "cold_e2e_seconds": 5.371231592725962,
+        "sampled_gpu_peak_mib": 192.0,
+        "gpu_peak_scope": "Per-process nvidia-smi samples at approximately 0.2 s; not an exact allocator high-water mark.",
+        "includes": "fresh process, imports, CUDA context, model/map load, warm-up, online planning, validation and output"
+      },
+      "timing": {
+        "model_setup_seconds": 0.014441053848713636,
+        "gpu_initialization_warmup_seconds": 0.10605918290093541,
+        "roadmap_load_seconds": 0.01657089777290821,
+        "online_collision_map_seconds": 0.0015490432269871235,
+        "drm_path_seconds": 2.0937239383347332,
+        "drm_path_validation_seconds": 0.6994426758028567,
+        "trajectory_optimization_seconds": 0.5196623629890382,
+        "validation_seconds": 1.3655212628655136,
+        "cold_e2e_seconds": 5.090609067585319,
+        "warm_query_seconds": 4.6814512819983065
+      },
+      "backend_rounds": [
+        {
+          "path": "benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-sparse_clutter-000-p01-NTO_PAPER-minimum_distance-5f1db259/attempts/0001/nto_collision_backend.json",
+          "native_evaluations": 9387,
+          "retained_collision_pairs": 3332,
+          "dropped_collision_pairs": 0,
+          "recovery_count": 0,
+          "recovery_seconds": 0,
+          "recovery_failures": [],
+          "recovered_pair_distances_m": []
+        }
+      ],
+      "validation": {
+        "passed": false,
+        "status": "collision_failed",
+        "samples": 3203,
+        "independent_collisions": 21,
+        "native_collisions": 21,
+        "minimum_sampled_clearance_m": -2.2125312249154927e-05,
+        "endpoint_error_rad": 0.0,
+        "velocity_violation": null,
+        "acceleration_violation": null
+      }
+    },
+    {
+      "job_id": "smoke-sparse_clutter-000-p01-NTO_REFINED-minimum_distance-a9c43887",
+      "method": "NTO_REFINED",
+      "objective": "minimum_distance",
+      "attempt": "benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-sparse_clutter-000-p01-NTO_REFINED-minimum_distance-a9c43887/attempts/0001",
+      "terminal": true,
+      "status": "success_validated_numerical",
+      "process": {
+        "argv": [
+          "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/bin/python",
+          "-m",
+          "benchmarks.generic_motion_v1",
+          "_worker",
+          "--attempt",
+          "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-sparse_clutter-000-p01-NTO_REFINED-minimum_distance-a9c43887/attempts/0001"
+        ],
+        "exit_code": 0,
+        "timeout_seconds": 60.0,
+        "timed_out": false,
+        "cold_e2e_seconds": 7.074163076002151,
+        "sampled_gpu_peak_mib": 192.0,
+        "gpu_peak_scope": "Per-process nvidia-smi samples at approximately 0.2 s; not an exact allocator high-water mark.",
+        "includes": "fresh process, imports, CUDA context, model/map load, warm-up, online planning, validation and output"
+      },
+      "timing": {
+        "model_setup_seconds": 0.014677546918392181,
+        "gpu_initialization_warmup_seconds": 0.1283142138272524,
+        "roadmap_load_seconds": 0.01803052192553878,
+        "online_collision_map_seconds": 0.001594569068402052,
+        "drm_path_seconds": 2.1579003408551216,
+        "drm_path_validation_seconds": 0.7008380112238228,
+        "trajectory_optimization_seconds": 2.100037092808634,
+        "validation_seconds": 1.3856184841133654,
+        "cold_e2e_seconds": 6.784716228954494,
+        "warm_query_seconds": 6.347595302388072
+      },
+      "backend_rounds": [
+        {
+          "path": "benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-sparse_clutter-000-p01-NTO_REFINED-minimum_distance-a9c43887/attempts/0001/refinement/round_00/nto_collision_backend.json",
+          "native_evaluations": 12963,
+          "retained_collision_pairs": 3332,
+          "dropped_collision_pairs": 0,
+          "recovery_count": 0,
+          "recovery_seconds": 0,
+          "recovery_failures": [],
+          "recovered_pair_distances_m": []
+        }
+      ],
+      "validation": {
+        "passed": true,
+        "status": "success_validated_numerical",
+        "samples": 3233,
+        "independent_collisions": 0,
+        "native_collisions": 0,
+        "minimum_sampled_clearance_m": 0.0009748880484735656,
+        "endpoint_error_rad": 0.0,
+        "velocity_violation": null,
+        "acceleration_violation": null
+      }
+    },
+    {
+      "job_id": "smoke-sparse_clutter-000-p01-NTO-minimum_distance-b3360d31",
+      "method": "NTO",
+      "objective": "minimum_distance",
+      "attempt": "benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-sparse_clutter-000-p01-NTO-minimum_distance-b3360d31/attempts/0001",
+      "terminal": true,
+      "status": "collision_failed",
+      "process": {
+        "argv": [
+          "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/bin/python",
+          "-m",
+          "benchmarks.generic_motion_v1",
+          "_worker",
+          "--attempt",
+          "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-sparse_clutter-000-p01-NTO-minimum_distance-b3360d31/attempts/0001"
+        ],
+        "exit_code": 0,
+        "timeout_seconds": 60.0,
+        "timed_out": false,
+        "cold_e2e_seconds": 10.529799141921103,
+        "sampled_gpu_peak_mib": 192.0,
+        "gpu_peak_scope": "Per-process nvidia-smi samples at approximately 0.2 s; not an exact allocator high-water mark.",
+        "includes": "fresh process, imports, CUDA context, model/map load, warm-up, online planning, validation and output"
+      },
+      "timing": {
+        "model_setup_seconds": 0.014339981134980917,
+        "gpu_initialization_warmup_seconds": 0.12793281208723783,
+        "roadmap_load_seconds": 0.015125467907637358,
+        "online_collision_map_seconds": 0.0015865946188569069,
+        "drm_path_seconds": 2.138741896022111,
+        "drm_path_validation_seconds": 0.6984796994365752,
+        "trajectory_optimization_seconds": 6.303282494656742,
+        "validation_seconds": 0.6460314113646746,
+        "cold_e2e_seconds": 10.22381431190297,
+        "warm_query_seconds": 9.789835398085415
+      },
+      "backend_rounds": [
+        {
+          "path": "benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-sparse_clutter-000-p01-NTO-minimum_distance-b3360d31/attempts/0001/nto_collision_backend.json",
+          "native_evaluations": 102000,
+          "retained_collision_pairs": 3332,
+          "dropped_collision_pairs": 0,
+          "recovery_count": 0,
+          "recovery_seconds": 0,
+          "recovery_failures": [],
+          "recovered_pair_distances_m": []
+        }
+      ],
+      "validation": {
+        "passed": false,
+        "status": "collision_failed",
+        "samples": 1520,
+        "independent_collisions": 10,
+        "native_collisions": 10,
+        "minimum_sampled_clearance_m": -0.00014610170960110969,
+        "endpoint_error_rad": 0.0,
+        "velocity_violation": null,
+        "acceleration_violation": null
+      }
+    },
+    {
+      "job_id": "smoke-sparse_clutter-000-p01-NTO_PAPER-minimum_time-ea40e0d0",
+      "method": "NTO_PAPER",
+      "objective": "minimum_time",
+      "attempt": "benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-sparse_clutter-000-p01-NTO_PAPER-minimum_time-ea40e0d0/attempts/0001",
+      "terminal": true,
+      "status": "success_validated_numerical",
+      "process": {
+        "argv": [
+          "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/bin/python",
+          "-m",
+          "benchmarks.generic_motion_v1",
+          "_worker",
+          "--attempt",
+          "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-sparse_clutter-000-p01-NTO_PAPER-minimum_time-ea40e0d0/attempts/0001"
+        ],
+        "exit_code": 0,
+        "timeout_seconds": 60.0,
+        "timed_out": false,
+        "cold_e2e_seconds": 9.077175403945148,
+        "sampled_gpu_peak_mib": 192.0,
+        "gpu_peak_scope": "Per-process nvidia-smi samples at approximately 0.2 s; not an exact allocator high-water mark.",
+        "includes": "fresh process, imports, CUDA context, model/map load, warm-up, online planning, validation and output"
+      },
+      "timing": {
+        "model_setup_seconds": 0.014530531596392393,
+        "gpu_initialization_warmup_seconds": 0.10661632707342505,
+        "roadmap_load_seconds": 0.014990510884672403,
+        "online_collision_map_seconds": 0.0015846015885472298,
+        "drm_path_seconds": 2.1023240792565048,
+        "drm_path_validation_seconds": 0.7045000130310655,
+        "trajectory_optimization_seconds": 4.792695395182818,
+        "validation_seconds": 0.7762108026072383,
+        "cold_e2e_seconds": 8.789892645087093,
+        "warm_query_seconds": 8.378919364884496
+      },
+      "backend_rounds": [
+        {
+          "path": "benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-sparse_clutter-000-p01-NTO_PAPER-minimum_time-ea40e0d0/attempts/0001/nto_collision_backend.json",
+          "native_evaluations": 60643,
+          "retained_collision_pairs": 3332,
+          "dropped_collision_pairs": 0,
+          "recovery_count": 0,
+          "recovery_seconds": 0,
+          "recovery_failures": [],
+          "recovered_pair_distances_m": []
+        }
+      ],
+      "validation": {
+        "passed": true,
+        "status": "success_validated_numerical",
+        "samples": 1824,
+        "independent_collisions": 0,
+        "native_collisions": 0,
+        "minimum_sampled_clearance_m": 0.0015547242439959974,
+        "endpoint_error_rad": 0.0,
+        "velocity_violation": null,
+        "acceleration_violation": null
+      }
+    },
+    {
+      "job_id": "smoke-sparse_clutter-000-p01-NTO_REFINED-minimum_time-a82d1510",
+      "method": "NTO_REFINED",
+      "objective": "minimum_time",
+      "attempt": "benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-sparse_clutter-000-p01-NTO_REFINED-minimum_time-a82d1510/attempts/0001",
+      "terminal": true,
+      "status": "timeout",
+      "process": {
+        "argv": [
+          "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/bin/python",
+          "-m",
+          "benchmarks.generic_motion_v1",
+          "_worker",
+          "--attempt",
+          "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-sparse_clutter-000-p01-NTO_REFINED-minimum_time-a82d1510/attempts/0001"
+        ],
+        "exit_code": -15,
+        "timeout_seconds": 60.0,
+        "timed_out": true,
+        "cold_e2e_seconds": 60.21367309708148,
+        "sampled_gpu_peak_mib": 192.0,
+        "gpu_peak_scope": "Per-process nvidia-smi samples at approximately 0.2 s; not an exact allocator high-water mark.",
+        "includes": "fresh process, imports, CUDA context, model/map load, warm-up, online planning, validation and output"
+      },
+      "timing": {
+        "drm_path_seconds": 2.1432214491069317,
+        "drm_path_validation_seconds": 0.7146250540390611,
+        "gpu_initialization_warmup_seconds": 0.12732135318219662,
+        "model_setup_seconds": 0.014717583078891039,
+        "online_collision_map_seconds": 0.0016220691613852978,
+        "roadmap_load_seconds": 0.015283586923032999
+      },
+      "backend_rounds": [
+        {
+          "path": "benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-sparse_clutter-000-p01-NTO_REFINED-minimum_time-a82d1510/attempts/0001/refinement/round_00/nto_collision_backend.json",
+          "native_evaluations": 0,
+          "retained_collision_pairs": 3332,
+          "dropped_collision_pairs": 0,
+          "recovery_count": 0,
+          "recovery_seconds": 0,
+          "recovery_failures": [],
+          "recovered_pair_distances_m": []
+        }
+      ]
+    },
+    {
+      "job_id": "smoke-sparse_clutter-000-p01-NTO-minimum_time-8f71aad9",
+      "method": "NTO",
+      "objective": "minimum_time",
+      "attempt": "benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-sparse_clutter-000-p01-NTO-minimum_time-8f71aad9/attempts/0001",
+      "terminal": true,
+      "status": "success_validated_numerical",
+      "process": {
+        "argv": [
+          "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/bin/python",
+          "-m",
+          "benchmarks.generic_motion_v1",
+          "_worker",
+          "--attempt",
+          "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-sparse_clutter-000-p01-NTO-minimum_time-8f71aad9/attempts/0001"
+        ],
+        "exit_code": 0,
+        "timeout_seconds": 60.0,
+        "timed_out": false,
+        "cold_e2e_seconds": 8.927723004948348,
+        "sampled_gpu_peak_mib": 194.0,
+        "gpu_peak_scope": "Per-process nvidia-smi samples at approximately 0.2 s; not an exact allocator high-water mark.",
+        "includes": "fresh process, imports, CUDA context, model/map load, warm-up, online planning, validation and output"
+      },
+      "timing": {
+        "model_setup_seconds": 0.01430911710485816,
+        "gpu_initialization_warmup_seconds": 0.14667427958920598,
+        "roadmap_load_seconds": 0.014922493137419224,
+        "online_collision_map_seconds": 0.0015946608036756516,
+        "drm_path_seconds": 2.128702998161316,
+        "drm_path_validation_seconds": 0.7031904221512377,
+        "trajectory_optimization_seconds": 4.6426287069916725,
+        "validation_seconds": 0.7358065582811832,
+        "cold_e2e_seconds": 8.665459375828505,
+        "warm_query_seconds": 8.214159639086574
+      },
+      "backend_rounds": [
+        {
+          "path": "benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-sparse_clutter-000-p01-NTO-minimum_time-8f71aad9/attempts/0001/nto_collision_backend.json",
+          "native_evaluations": 43050,
+          "retained_collision_pairs": 3332,
+          "dropped_collision_pairs": 0,
+          "recovery_count": 0,
+          "recovery_seconds": 0,
+          "recovery_failures": [],
+          "recovered_pair_distances_m": []
+        }
+      ],
+      "validation": {
+        "passed": true,
+        "status": "success_validated_numerical",
+        "samples": 1746,
+        "independent_collisions": 0,
+        "native_collisions": 0,
+        "minimum_sampled_clearance_m": 0.008935019426052127,
+        "endpoint_error_rad": 0.0,
+        "velocity_violation": null,
+        "acceleration_violation": null
+      }
+    },
+    {
+      "job_id": "smoke-dense_clutter-000-p00-NTO_PAPER-minimum_distance-82dd433e",
+      "method": "NTO_PAPER",
+      "objective": "minimum_distance",
+      "attempt": "benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-dense_clutter-000-p00-NTO_PAPER-minimum_distance-82dd433e/attempts/0001",
+      "terminal": true,
+      "status": "invalid_endpoint",
+      "process": {
+        "argv": [
+          "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/bin/python",
+          "-m",
+          "benchmarks.generic_motion_v1",
+          "_worker",
+          "--attempt",
+          "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-dense_clutter-000-p00-NTO_PAPER-minimum_distance-82dd433e/attempts/0001"
+        ],
+        "exit_code": 0,
+        "timeout_seconds": 60.0,
+        "timed_out": false,
+        "cold_e2e_seconds": 0.16396210994571447,
+        "sampled_gpu_peak_mib": null,
+        "gpu_peak_scope": "Per-process nvidia-smi samples at approximately 0.2 s; not an exact allocator high-water mark.",
+        "includes": "fresh process, imports, CUDA context, model/map load, warm-up, online planning, validation and output"
+      },
+      "timing": {
+        "cold_e2e_seconds": 0.005381118040531874,
+        "warm_query_seconds": null
+      },
+      "backend_rounds": []
+    },
+    {
+      "job_id": "smoke-dense_clutter-000-p00-NTO_REFINED-minimum_distance-b27f17a3",
+      "method": "NTO_REFINED",
+      "objective": "minimum_distance",
+      "attempt": "benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-dense_clutter-000-p00-NTO_REFINED-minimum_distance-b27f17a3/attempts/0001",
+      "terminal": true,
+      "status": "invalid_endpoint",
+      "process": {
+        "argv": [
+          "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/bin/python",
+          "-m",
+          "benchmarks.generic_motion_v1",
+          "_worker",
+          "--attempt",
+          "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-dense_clutter-000-p00-NTO_REFINED-minimum_distance-b27f17a3/attempts/0001"
+        ],
+        "exit_code": 0,
+        "timeout_seconds": 60.0,
+        "timed_out": false,
+        "cold_e2e_seconds": 0.16427199309691787,
+        "sampled_gpu_peak_mib": null,
+        "gpu_peak_scope": "Per-process nvidia-smi samples at approximately 0.2 s; not an exact allocator high-water mark.",
+        "includes": "fresh process, imports, CUDA context, model/map load, warm-up, online planning, validation and output"
+      },
+      "timing": {
+        "cold_e2e_seconds": 0.005395721644163132,
+        "warm_query_seconds": null
+      },
+      "backend_rounds": []
+    },
+    {
+      "job_id": "smoke-dense_clutter-000-p00-NTO-minimum_distance-064e6931",
+      "method": "NTO",
+      "objective": "minimum_distance",
+      "attempt": "benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-dense_clutter-000-p00-NTO-minimum_distance-064e6931/attempts/0001",
+      "terminal": true,
+      "status": "invalid_endpoint",
+      "process": {
+        "argv": [
+          "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/bin/python",
+          "-m",
+          "benchmarks.generic_motion_v1",
+          "_worker",
+          "--attempt",
+          "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-dense_clutter-000-p00-NTO-minimum_distance-064e6931/attempts/0001"
+        ],
+        "exit_code": 0,
+        "timeout_seconds": 60.0,
+        "timed_out": false,
+        "cold_e2e_seconds": 0.16417359560728073,
+        "sampled_gpu_peak_mib": null,
+        "gpu_peak_scope": "Per-process nvidia-smi samples at approximately 0.2 s; not an exact allocator high-water mark.",
+        "includes": "fresh process, imports, CUDA context, model/map load, warm-up, online planning, validation and output"
+      },
+      "timing": {
+        "cold_e2e_seconds": 0.005371621809899807,
+        "warm_query_seconds": null
+      },
+      "backend_rounds": []
+    },
+    {
+      "job_id": "smoke-dense_clutter-000-p00-NTO_PAPER-minimum_time-bf28c811",
+      "method": "NTO_PAPER",
+      "objective": "minimum_time",
+      "attempt": "benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-dense_clutter-000-p00-NTO_PAPER-minimum_time-bf28c811/attempts/0001",
+      "terminal": true,
+      "status": "invalid_endpoint",
+      "process": {
+        "argv": [
+          "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/bin/python",
+          "-m",
+          "benchmarks.generic_motion_v1",
+          "_worker",
+          "--attempt",
+          "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-dense_clutter-000-p00-NTO_PAPER-minimum_time-bf28c811/attempts/0001"
+        ],
+        "exit_code": 0,
+        "timeout_seconds": 60.0,
+        "timed_out": false,
+        "cold_e2e_seconds": 0.16411624010652304,
+        "sampled_gpu_peak_mib": null,
+        "gpu_peak_scope": "Per-process nvidia-smi samples at approximately 0.2 s; not an exact allocator high-water mark.",
+        "includes": "fresh process, imports, CUDA context, model/map load, warm-up, online planning, validation and output"
+      },
+      "timing": {
+        "cold_e2e_seconds": 0.005427567288279533,
+        "warm_query_seconds": null
+      },
+      "backend_rounds": []
+    },
+    {
+      "job_id": "smoke-dense_clutter-000-p00-NTO_REFINED-minimum_time-e7701cae",
+      "method": "NTO_REFINED",
+      "objective": "minimum_time",
+      "attempt": "benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-dense_clutter-000-p00-NTO_REFINED-minimum_time-e7701cae/attempts/0001",
+      "terminal": true,
+      "status": "invalid_endpoint",
+      "process": {
+        "argv": [
+          "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/bin/python",
+          "-m",
+          "benchmarks.generic_motion_v1",
+          "_worker",
+          "--attempt",
+          "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-dense_clutter-000-p00-NTO_REFINED-minimum_time-e7701cae/attempts/0001"
+        ],
+        "exit_code": 0,
+        "timeout_seconds": 60.0,
+        "timed_out": false,
+        "cold_e2e_seconds": 0.16409855103120208,
+        "sampled_gpu_peak_mib": null,
+        "gpu_peak_scope": "Per-process nvidia-smi samples at approximately 0.2 s; not an exact allocator high-water mark.",
+        "includes": "fresh process, imports, CUDA context, model/map load, warm-up, online planning, validation and output"
+      },
+      "timing": {
+        "cold_e2e_seconds": 0.006290634162724018,
+        "warm_query_seconds": null
+      },
+      "backend_rounds": []
+    },
+    {
+      "job_id": "smoke-dense_clutter-000-p00-NTO-minimum_time-c5c2786b",
+      "method": "NTO",
+      "objective": "minimum_time",
+      "attempt": "benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-dense_clutter-000-p00-NTO-minimum_time-c5c2786b/attempts/0001",
+      "terminal": true,
+      "status": "invalid_endpoint",
+      "process": {
+        "argv": [
+          "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/bin/python",
+          "-m",
+          "benchmarks.generic_motion_v1",
+          "_worker",
+          "--attempt",
+          "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-dense_clutter-000-p00-NTO-minimum_time-c5c2786b/attempts/0001"
+        ],
+        "exit_code": 0,
+        "timeout_seconds": 60.0,
+        "timed_out": false,
+        "cold_e2e_seconds": 0.1643016799353063,
+        "sampled_gpu_peak_mib": null,
+        "gpu_peak_scope": "Per-process nvidia-smi samples at approximately 0.2 s; not an exact allocator high-water mark.",
+        "includes": "fresh process, imports, CUDA context, model/map load, warm-up, online planning, validation and output"
+      },
+      "timing": {
+        "cold_e2e_seconds": 0.00514209782704711,
+        "warm_query_seconds": null
+      },
+      "backend_rounds": []
+    },
+    {
+      "job_id": "smoke-dense_clutter-000-p01-NTO_PAPER-minimum_distance-413ddf66",
+      "method": "NTO_PAPER",
+      "objective": "minimum_distance",
+      "attempt": "benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-dense_clutter-000-p01-NTO_PAPER-minimum_distance-413ddf66/attempts/0001",
+      "terminal": true,
+      "status": "invalid_endpoint",
+      "process": {
+        "argv": [
+          "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/bin/python",
+          "-m",
+          "benchmarks.generic_motion_v1",
+          "_worker",
+          "--attempt",
+          "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-dense_clutter-000-p01-NTO_PAPER-minimum_distance-413ddf66/attempts/0001"
+        ],
+        "exit_code": 0,
+        "timeout_seconds": 60.0,
+        "timed_out": false,
+        "cold_e2e_seconds": 0.16424846090376377,
+        "sampled_gpu_peak_mib": null,
+        "gpu_peak_scope": "Per-process nvidia-smi samples at approximately 0.2 s; not an exact allocator high-water mark.",
+        "includes": "fresh process, imports, CUDA context, model/map load, warm-up, online planning, validation and output"
+      },
+      "timing": {
+        "cold_e2e_seconds": 0.005158831365406513,
+        "warm_query_seconds": null
+      },
+      "backend_rounds": []
+    },
+    {
+      "job_id": "smoke-dense_clutter-000-p01-NTO_REFINED-minimum_distance-c4411bb2",
+      "method": "NTO_REFINED",
+      "objective": "minimum_distance",
+      "attempt": "benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-dense_clutter-000-p01-NTO_REFINED-minimum_distance-c4411bb2/attempts/0001",
+      "terminal": true,
+      "status": "invalid_endpoint",
+      "process": {
+        "argv": [
+          "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/bin/python",
+          "-m",
+          "benchmarks.generic_motion_v1",
+          "_worker",
+          "--attempt",
+          "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-dense_clutter-000-p01-NTO_REFINED-minimum_distance-c4411bb2/attempts/0001"
+        ],
+        "exit_code": 0,
+        "timeout_seconds": 60.0,
+        "timed_out": false,
+        "cold_e2e_seconds": 0.16428415989503264,
+        "sampled_gpu_peak_mib": null,
+        "gpu_peak_scope": "Per-process nvidia-smi samples at approximately 0.2 s; not an exact allocator high-water mark.",
+        "includes": "fresh process, imports, CUDA context, model/map load, warm-up, online planning, validation and output"
+      },
+      "timing": {
+        "cold_e2e_seconds": 0.005604177713394165,
+        "warm_query_seconds": null
+      },
+      "backend_rounds": []
+    },
+    {
+      "job_id": "smoke-dense_clutter-000-p01-NTO-minimum_distance-f5df2573",
+      "method": "NTO",
+      "objective": "minimum_distance",
+      "attempt": "benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-dense_clutter-000-p01-NTO-minimum_distance-f5df2573/attempts/0001",
+      "terminal": true,
+      "status": "invalid_endpoint",
+      "process": {
+        "argv": [
+          "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/bin/python",
+          "-m",
+          "benchmarks.generic_motion_v1",
+          "_worker",
+          "--attempt",
+          "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-dense_clutter-000-p01-NTO-minimum_distance-f5df2573/attempts/0001"
+        ],
+        "exit_code": 0,
+        "timeout_seconds": 60.0,
+        "timed_out": false,
+        "cold_e2e_seconds": 0.16415838105604053,
+        "sampled_gpu_peak_mib": null,
+        "gpu_peak_scope": "Per-process nvidia-smi samples at approximately 0.2 s; not an exact allocator high-water mark.",
+        "includes": "fresh process, imports, CUDA context, model/map load, warm-up, online planning, validation and output"
+      },
+      "timing": {
+        "cold_e2e_seconds": 0.005404891911894083,
+        "warm_query_seconds": null
+      },
+      "backend_rounds": []
+    },
+    {
+      "job_id": "smoke-dense_clutter-000-p01-NTO_PAPER-minimum_time-b4cd0d89",
+      "method": "NTO_PAPER",
+      "objective": "minimum_time",
+      "attempt": "benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-dense_clutter-000-p01-NTO_PAPER-minimum_time-b4cd0d89/attempts/0001",
+      "terminal": true,
+      "status": "invalid_endpoint",
+      "process": {
+        "argv": [
+          "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/bin/python",
+          "-m",
+          "benchmarks.generic_motion_v1",
+          "_worker",
+          "--attempt",
+          "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-dense_clutter-000-p01-NTO_PAPER-minimum_time-b4cd0d89/attempts/0001"
+        ],
+        "exit_code": 0,
+        "timeout_seconds": 60.0,
+        "timed_out": false,
+        "cold_e2e_seconds": 0.16411995235830545,
+        "sampled_gpu_peak_mib": null,
+        "gpu_peak_scope": "Per-process nvidia-smi samples at approximately 0.2 s; not an exact allocator high-water mark.",
+        "includes": "fresh process, imports, CUDA context, model/map load, warm-up, online planning, validation and output"
+      },
+      "timing": {
+        "cold_e2e_seconds": 0.005196722224354744,
+        "warm_query_seconds": null
+      },
+      "backend_rounds": []
+    },
+    {
+      "job_id": "smoke-dense_clutter-000-p01-NTO_REFINED-minimum_time-bb236d90",
+      "method": "NTO_REFINED",
+      "objective": "minimum_time",
+      "attempt": "benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-dense_clutter-000-p01-NTO_REFINED-minimum_time-bb236d90/attempts/0001",
+      "terminal": true,
+      "status": "invalid_endpoint",
+      "process": {
+        "argv": [
+          "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/bin/python",
+          "-m",
+          "benchmarks.generic_motion_v1",
+          "_worker",
+          "--attempt",
+          "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-dense_clutter-000-p01-NTO_REFINED-minimum_time-bb236d90/attempts/0001"
+        ],
+        "exit_code": 0,
+        "timeout_seconds": 60.0,
+        "timed_out": false,
+        "cold_e2e_seconds": 0.16385979624465108,
+        "sampled_gpu_peak_mib": null,
+        "gpu_peak_scope": "Per-process nvidia-smi samples at approximately 0.2 s; not an exact allocator high-water mark.",
+        "includes": "fresh process, imports, CUDA context, model/map load, warm-up, online planning, validation and output"
+      },
+      "timing": {
+        "cold_e2e_seconds": 0.005550268106162548,
+        "warm_query_seconds": null
+      },
+      "backend_rounds": []
+    },
+    {
+      "job_id": "smoke-dense_clutter-000-p01-NTO-minimum_time-388aa01f",
+      "method": "NTO",
+      "objective": "minimum_time",
+      "attempt": "benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-dense_clutter-000-p01-NTO-minimum_time-388aa01f/attempts/0001",
+      "terminal": true,
+      "status": "invalid_endpoint",
+      "process": {
+        "argv": [
+          "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/bin/python",
+          "-m",
+          "benchmarks.generic_motion_v1",
+          "_worker",
+          "--attempt",
+          "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-dense_clutter-000-p01-NTO-minimum_time-388aa01f/attempts/0001"
+        ],
+        "exit_code": 0,
+        "timeout_seconds": 60.0,
+        "timed_out": false,
+        "cold_e2e_seconds": 0.1640780558809638,
+        "sampled_gpu_peak_mib": null,
+        "gpu_peak_scope": "Per-process nvidia-smi samples at approximately 0.2 s; not an exact allocator high-water mark.",
+        "includes": "fresh process, imports, CUDA context, model/map load, warm-up, online planning, validation and output"
+      },
+      "timing": {
+        "cold_e2e_seconds": 0.005491666030138731,
+        "warm_query_seconds": null
+      },
+      "backend_rounds": []
+    },
+    {
+      "job_id": "smoke-bottleneck-000-p00-NTO_PAPER-minimum_distance-670914e4",
+      "method": "NTO_PAPER",
+      "objective": "minimum_distance",
+      "attempt": "benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-bottleneck-000-p00-NTO_PAPER-minimum_distance-670914e4/attempts/0001",
+      "terminal": true,
+      "status": "solver_failed",
+      "process": {
+        "argv": [
+          "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/bin/python",
+          "-m",
+          "benchmarks.generic_motion_v1",
+          "_worker",
+          "--attempt",
+          "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-bottleneck-000-p00-NTO_PAPER-minimum_distance-670914e4/attempts/0001"
+        ],
+        "exit_code": 0,
+        "timeout_seconds": 60.0,
+        "timed_out": false,
+        "cold_e2e_seconds": 11.583258701954037,
+        "sampled_gpu_peak_mib": 188.0,
+        "gpu_peak_scope": "Per-process nvidia-smi samples at approximately 0.2 s; not an exact allocator high-water mark.",
+        "includes": "fresh process, imports, CUDA context, model/map load, warm-up, online planning, validation and output"
+      },
+      "timing": {
+        "model_setup_seconds": 0.014451428316533566,
+        "gpu_initialization_warmup_seconds": 0.10520452912896872,
+        "roadmap_load_seconds": 0.01657103793695569,
+        "online_collision_map_seconds": 0.002215190790593624,
+        "drm_path_seconds": 0.04895477229729295,
+        "drm_path_validation_seconds": 0.8535193367861211,
+        "trajectory_optimization_seconds": 6.458577325101942,
+        "validation_seconds": 3.529890680219978,
+        "cold_e2e_seconds": 11.30512405373156,
+        "warm_query_seconds": 10.894740775693208
+      },
+      "backend_rounds": [
+        {
+          "path": "benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-bottleneck-000-p00-NTO_PAPER-minimum_distance-670914e4/attempts/0001/nto_collision_backend.json",
+          "native_evaluations": 76586,
+          "retained_collision_pairs": 4937,
+          "dropped_collision_pairs": 0,
+          "recovery_count": 0,
+          "recovery_seconds": 0,
+          "recovery_failures": [],
+          "recovered_pair_distances_m": []
+        }
+      ],
+      "validation": {
+        "passed": false,
+        "status": "collision_failed",
+        "samples": 7201,
+        "independent_collisions": 1840,
+        "native_collisions": 1840,
+        "minimum_sampled_clearance_m": -0.09310322926211734,
+        "endpoint_error_rad": 5.278822148948842e-13,
+        "velocity_violation": null,
+        "acceleration_violation": null
+      }
+    },
+    {
+      "job_id": "smoke-bottleneck-000-p00-NTO_REFINED-minimum_distance-d4727f2e",
+      "method": "NTO_REFINED",
+      "objective": "minimum_distance",
+      "attempt": "benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-bottleneck-000-p00-NTO_REFINED-minimum_distance-d4727f2e/attempts/0001",
+      "terminal": true,
+      "status": "timeout",
+      "process": {
+        "argv": [
+          "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/bin/python",
+          "-m",
+          "benchmarks.generic_motion_v1",
+          "_worker",
+          "--attempt",
+          "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-bottleneck-000-p00-NTO_REFINED-minimum_distance-d4727f2e/attempts/0001"
+        ],
+        "exit_code": -15,
+        "timeout_seconds": 60.0,
+        "timed_out": true,
+        "cold_e2e_seconds": 60.21400331100449,
+        "sampled_gpu_peak_mib": 188.0,
+        "gpu_peak_scope": "Per-process nvidia-smi samples at approximately 0.2 s; not an exact allocator high-water mark.",
+        "includes": "fresh process, imports, CUDA context, model/map load, warm-up, online planning, validation and output"
+      },
+      "timing": {
+        "drm_path_seconds": 0.05510784313082695,
+        "drm_path_validation_seconds": 0.8793198629282415,
+        "gpu_initialization_warmup_seconds": 0.1273629004135728,
+        "model_setup_seconds": 0.014633637852966785,
+        "online_collision_map_seconds": 0.002233767881989479,
+        "roadmap_load_seconds": 0.016698510386049747
+      },
+      "backend_rounds": [
+        {
+          "path": "benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-bottleneck-000-p00-NTO_REFINED-minimum_distance-d4727f2e/attempts/0001/refinement/round_00/nto_collision_backend.json",
+          "native_evaluations": 0,
+          "retained_collision_pairs": 4937,
+          "dropped_collision_pairs": 0,
+          "recovery_count": 0,
+          "recovery_seconds": 0,
+          "recovery_failures": [],
+          "recovered_pair_distances_m": []
+        }
+      ]
+    },
+    {
+      "job_id": "smoke-bottleneck-000-p00-NTO-minimum_distance-c7731762",
+      "method": "NTO",
+      "objective": "minimum_distance",
+      "attempt": "benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-bottleneck-000-p00-NTO-minimum_distance-c7731762/attempts/0001",
+      "terminal": true,
+      "status": "collision_failed",
+      "process": {
+        "argv": [
+          "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/bin/python",
+          "-m",
+          "benchmarks.generic_motion_v1",
+          "_worker",
+          "--attempt",
+          "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-bottleneck-000-p00-NTO-minimum_distance-c7731762/attempts/0001"
+        ],
+        "exit_code": 0,
+        "timeout_seconds": 60.0,
+        "timed_out": false,
+        "cold_e2e_seconds": 17.042402582708746,
+        "sampled_gpu_peak_mib": 188.0,
+        "gpu_peak_scope": "Per-process nvidia-smi samples at approximately 0.2 s; not an exact allocator high-water mark.",
+        "includes": "fresh process, imports, CUDA context, model/map load, warm-up, online planning, validation and output"
+      },
+      "timing": {
+        "model_setup_seconds": 0.014405728783458471,
+        "gpu_initialization_warmup_seconds": 0.16003082087263465,
+        "roadmap_load_seconds": 0.015465585980564356,
+        "online_collision_map_seconds": 0.002245964016765356,
+        "drm_path_seconds": 0.0543714789673686,
+        "drm_path_validation_seconds": 0.8797655249945819,
+        "trajectory_optimization_seconds": 14.476227757986635,
+        "validation_seconds": 0.8709186259657145,
+        "cold_e2e_seconds": 16.749452023301274,
+        "warm_query_seconds": 16.285620511043817
+      },
+      "backend_rounds": [
+        {
+          "path": "benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-bottleneck-000-p00-NTO-minimum_distance-c7731762/attempts/0001/nto_collision_backend.json",
+          "native_evaluations": 171750,
+          "retained_collision_pairs": 4937,
+          "dropped_collision_pairs": 0,
+          "recovery_count": 0,
+          "recovery_seconds": 0,
+          "recovery_failures": [],
+          "recovered_pair_distances_m": []
+        }
+      ],
+      "validation": {
+        "passed": false,
+        "status": "collision_failed",
+        "samples": 1716,
+        "independent_collisions": 28,
+        "native_collisions": 28,
+        "minimum_sampled_clearance_m": -0.0015650155001087837,
+        "endpoint_error_rad": 0.0,
+        "velocity_violation": null,
+        "acceleration_violation": null
+      }
+    },
+    {
+      "job_id": "smoke-bottleneck-000-p00-NTO_PAPER-minimum_time-8b155276",
+      "method": "NTO_PAPER",
+      "objective": "minimum_time",
+      "attempt": "benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-bottleneck-000-p00-NTO_PAPER-minimum_time-8b155276/attempts/0001",
+      "terminal": true,
+      "status": "collision_failed",
+      "process": {
+        "argv": [
+          "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/bin/python",
+          "-m",
+          "benchmarks.generic_motion_v1",
+          "_worker",
+          "--attempt",
+          "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-bottleneck-000-p00-NTO_PAPER-minimum_time-8b155276/attempts/0001"
+        ],
+        "exit_code": 0,
+        "timeout_seconds": 60.0,
+        "timed_out": false,
+        "cold_e2e_seconds": 17.188434164971113,
+        "sampled_gpu_peak_mib": 188.0,
+        "gpu_peak_scope": "Per-process nvidia-smi samples at approximately 0.2 s; not an exact allocator high-water mark.",
+        "includes": "fresh process, imports, CUDA context, model/map load, warm-up, online planning, validation and output"
+      },
+      "timing": {
+        "model_setup_seconds": 0.014400018379092216,
+        "gpu_initialization_warmup_seconds": 0.11030069412663579,
+        "roadmap_load_seconds": 0.015262150205671787,
+        "online_collision_map_seconds": 0.002287399023771286,
+        "drm_path_seconds": 0.05476180976256728,
+        "drm_path_validation_seconds": 0.8513202448375523,
+        "trajectory_optimization_seconds": 14.693368205334991,
+        "validation_seconds": 0.9030328649096191,
+        "cold_e2e_seconds": 16.919740512035787,
+        "warm_query_seconds": 16.506780179217458
+      },
+      "backend_rounds": [
+        {
+          "path": "benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-bottleneck-000-p00-NTO_PAPER-minimum_time-8b155276/attempts/0001/nto_collision_backend.json",
+          "native_evaluations": 164198,
+          "retained_collision_pairs": 4937,
+          "dropped_collision_pairs": 0,
+          "recovery_count": 0,
+          "recovery_seconds": 0,
+          "recovery_failures": [],
+          "recovered_pair_distances_m": []
+        }
+      ],
+      "validation": {
+        "passed": false,
+        "status": "collision_failed",
+        "samples": 1851,
+        "independent_collisions": 12,
+        "native_collisions": 12,
+        "minimum_sampled_clearance_m": -5.460709873688491e-05,
+        "endpoint_error_rad": 0.0,
+        "velocity_violation": null,
+        "acceleration_violation": null
+      }
+    },
+    {
+      "job_id": "smoke-bottleneck-000-p00-NTO_REFINED-minimum_time-633cc65e",
+      "method": "NTO_REFINED",
+      "objective": "minimum_time",
+      "attempt": "benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-bottleneck-000-p00-NTO_REFINED-minimum_time-633cc65e/attempts/0001",
+      "terminal": true,
+      "status": "success_validated_numerical",
+      "process": {
+        "argv": [
+          "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/bin/python",
+          "-m",
+          "benchmarks.generic_motion_v1",
+          "_worker",
+          "--attempt",
+          "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-bottleneck-000-p00-NTO_REFINED-minimum_time-633cc65e/attempts/0001"
+        ],
+        "exit_code": 0,
+        "timeout_seconds": 60.0,
+        "timed_out": false,
+        "cold_e2e_seconds": 4.720404060557485,
+        "sampled_gpu_peak_mib": 188.0,
+        "gpu_peak_scope": "Per-process nvidia-smi samples at approximately 0.2 s; not an exact allocator high-water mark.",
+        "includes": "fresh process, imports, CUDA context, model/map load, warm-up, online planning, validation and output"
+      },
+      "timing": {
+        "model_setup_seconds": 0.014398952014744282,
+        "gpu_initialization_warmup_seconds": 0.125766112934798,
+        "roadmap_load_seconds": 0.015184188261628151,
+        "online_collision_map_seconds": 0.002283728215843439,
+        "drm_path_seconds": 0.05440762219950557,
+        "drm_path_validation_seconds": 0.844432283192873,
+        "trajectory_optimization_seconds": 2.290984069928527,
+        "validation_seconds": 0.819773452822119,
+        "cold_e2e_seconds": 4.441690269391984,
+        "warm_query_seconds": 4.0135493921115994
+      },
+      "backend_rounds": [
+        {
+          "path": "benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-bottleneck-000-p00-NTO_REFINED-minimum_time-633cc65e/attempts/0001/refinement/round_00/nto_collision_backend.json",
+          "native_evaluations": 9387,
+          "retained_collision_pairs": 4937,
+          "dropped_collision_pairs": 0,
+          "recovery_count": 0,
+          "recovery_seconds": 0,
+          "recovery_failures": [],
+          "recovered_pair_distances_m": []
+        }
+      ],
+      "validation": {
+        "passed": true,
+        "status": "success_validated_numerical",
+        "samples": 1694,
+        "independent_collisions": 0,
+        "native_collisions": 0,
+        "minimum_sampled_clearance_m": 0.0009304359154214334,
+        "endpoint_error_rad": 0.0,
+        "velocity_violation": null,
+        "acceleration_violation": null
+      }
+    },
+    {
+      "job_id": "smoke-bottleneck-000-p00-NTO-minimum_time-bffddce6",
+      "method": "NTO",
+      "objective": "minimum_time",
+      "attempt": "benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-bottleneck-000-p00-NTO-minimum_time-bffddce6/attempts/0001",
+      "terminal": true,
+      "status": "collision_failed",
+      "process": {
+        "argv": [
+          "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/bin/python",
+          "-m",
+          "benchmarks.generic_motion_v1",
+          "_worker",
+          "--attempt",
+          "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-bottleneck-000-p00-NTO-minimum_time-bffddce6/attempts/0001"
+        ],
+        "exit_code": 0,
+        "timeout_seconds": 60.0,
+        "timed_out": false,
+        "cold_e2e_seconds": 3.919519449118525,
+        "sampled_gpu_peak_mib": 188.0,
+        "gpu_peak_scope": "Per-process nvidia-smi samples at approximately 0.2 s; not an exact allocator high-water mark.",
+        "includes": "fresh process, imports, CUDA context, model/map load, warm-up, online planning, validation and output"
+      },
+      "timing": {
+        "model_setup_seconds": 0.014366740826517344,
+        "gpu_initialization_warmup_seconds": 0.12775465985760093,
+        "roadmap_load_seconds": 0.01514175720512867,
+        "online_collision_map_seconds": 0.002228911966085434,
+        "drm_path_seconds": 0.054854380898177624,
+        "drm_path_validation_seconds": 0.8518591960892081,
+        "trajectory_optimization_seconds": 1.4750766484066844,
+        "validation_seconds": 0.8227326571941376,
+        "cold_e2e_seconds": 3.6416749586351216,
+        "warm_query_seconds": 3.2083762092515826
+      },
+      "backend_rounds": [
+        {
+          "path": "benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-bottleneck-000-p00-NTO-minimum_time-bffddce6/attempts/0001/nto_collision_backend.json",
+          "native_evaluations": 10350,
+          "retained_collision_pairs": 4937,
+          "dropped_collision_pairs": 0,
+          "recovery_count": 0,
+          "recovery_seconds": 0,
+          "recovery_failures": [],
+          "recovered_pair_distances_m": []
+        }
+      ],
+      "validation": {
+        "passed": false,
+        "status": "collision_failed",
+        "samples": 1698,
+        "independent_collisions": 10,
+        "native_collisions": 10,
+        "minimum_sampled_clearance_m": -5.9552988564103015e-05,
+        "endpoint_error_rad": 0.0,
+        "velocity_violation": null,
+        "acceleration_violation": null
+      }
+    },
+    {
+      "job_id": "smoke-bottleneck-000-p01-NTO_PAPER-minimum_distance-dca27193",
+      "method": "NTO_PAPER",
+      "objective": "minimum_distance",
+      "attempt": "benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-bottleneck-000-p01-NTO_PAPER-minimum_distance-dca27193/attempts/0001",
+      "terminal": true,
+      "status": "success_validated_numerical",
+      "process": {
+        "argv": [
+          "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/bin/python",
+          "-m",
+          "benchmarks.generic_motion_v1",
+          "_worker",
+          "--attempt",
+          "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-bottleneck-000-p01-NTO_PAPER-minimum_distance-dca27193/attempts/0001"
+        ],
+        "exit_code": 0,
+        "timeout_seconds": 60.0,
+        "timed_out": false,
+        "cold_e2e_seconds": 2.016471456736326,
+        "sampled_gpu_peak_mib": 188.0,
+        "gpu_peak_scope": "Per-process nvidia-smi samples at approximately 0.2 s; not an exact allocator high-water mark.",
+        "includes": "fresh process, imports, CUDA context, model/map load, warm-up, online planning, validation and output"
+      },
+      "timing": {
+        "model_setup_seconds": 0.014420470222830772,
+        "gpu_initialization_warmup_seconds": 0.11309738596901298,
+        "roadmap_load_seconds": 0.01657668361440301,
+        "online_collision_map_seconds": 0.0022960458882153034,
+        "drm_path_seconds": 0.04623022302985191,
+        "drm_path_validation_seconds": 0.5774836638011038,
+        "trajectory_optimization_seconds": 0.12632606830447912,
+        "validation_seconds": 0.5740439239889383,
+        "cold_e2e_seconds": 1.7465527318418026,
+        "warm_query_seconds": 1.3279820471070707
+      },
+      "backend_rounds": [
+        {
+          "path": "benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-bottleneck-000-p01-NTO_PAPER-minimum_distance-dca27193/attempts/0001/nto_collision_backend.json",
+          "native_evaluations": 447,
+          "retained_collision_pairs": 4937,
+          "dropped_collision_pairs": 0,
+          "recovery_count": 0,
+          "recovery_seconds": 0,
+          "recovery_failures": [],
+          "recovered_pair_distances_m": []
+        }
+      ],
+      "validation": {
+        "passed": true,
+        "status": "success_validated_numerical",
+        "samples": 1193,
+        "independent_collisions": 0,
+        "native_collisions": 0,
+        "minimum_sampled_clearance_m": 0.019025026584333433,
+        "endpoint_error_rad": 0.0,
+        "velocity_violation": null,
+        "acceleration_violation": null
+      }
+    },
+    {
+      "job_id": "smoke-bottleneck-000-p01-NTO_REFINED-minimum_distance-6655205c",
+      "method": "NTO_REFINED",
+      "objective": "minimum_distance",
+      "attempt": "benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-bottleneck-000-p01-NTO_REFINED-minimum_distance-6655205c/attempts/0001",
+      "terminal": true,
+      "status": "success_validated_numerical",
+      "process": {
+        "argv": [
+          "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/bin/python",
+          "-m",
+          "benchmarks.generic_motion_v1",
+          "_worker",
+          "--attempt",
+          "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-bottleneck-000-p01-NTO_REFINED-minimum_distance-6655205c/attempts/0001"
+        ],
+        "exit_code": 0,
+        "timeout_seconds": 60.0,
+        "timed_out": false,
+        "cold_e2e_seconds": 2.6176235750317574,
+        "sampled_gpu_peak_mib": 188.0,
+        "gpu_peak_scope": "Per-process nvidia-smi samples at approximately 0.2 s; not an exact allocator high-water mark.",
+        "includes": "fresh process, imports, CUDA context, model/map load, warm-up, online planning, validation and output"
+      },
+      "timing": {
+        "model_setup_seconds": 0.014579328242689371,
+        "gpu_initialization_warmup_seconds": 0.1268180380575359,
+        "roadmap_load_seconds": 0.017061979044228792,
+        "online_collision_map_seconds": 0.0022869352251291275,
+        "drm_path_seconds": 0.0487279468216002,
+        "drm_path_validation_seconds": 0.570737942121923,
+        "trajectory_optimization_seconds": 0.6906580370850861,
+        "validation_seconds": 0.5709425928071141,
+        "cold_e2e_seconds": 2.3197392863221467,
+        "warm_query_seconds": 1.8849881016649306
+      },
+      "backend_rounds": [
+        {
+          "path": "benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-bottleneck-000-p01-NTO_REFINED-minimum_distance-6655205c/attempts/0001/refinement/round_00/nto_collision_backend.json",
+          "native_evaluations": 447,
+          "retained_collision_pairs": 4937,
+          "dropped_collision_pairs": 0,
+          "recovery_count": 0,
+          "recovery_seconds": 0,
+          "recovery_failures": [],
+          "recovered_pair_distances_m": []
+        }
+      ],
+      "validation": {
+        "passed": true,
+        "status": "success_validated_numerical",
+        "samples": 1193,
+        "independent_collisions": 0,
+        "native_collisions": 0,
+        "minimum_sampled_clearance_m": 0.019025026584333433,
+        "endpoint_error_rad": 0.0,
+        "velocity_violation": null,
+        "acceleration_violation": null
+      }
+    },
+    {
+      "job_id": "smoke-bottleneck-000-p01-NTO-minimum_distance-943b1f7f",
+      "method": "NTO",
+      "objective": "minimum_distance",
+      "attempt": "benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-bottleneck-000-p01-NTO-minimum_distance-943b1f7f/attempts/0001",
+      "terminal": true,
+      "status": "success_validated_numerical",
+      "process": {
+        "argv": [
+          "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/bin/python",
+          "-m",
+          "benchmarks.generic_motion_v1",
+          "_worker",
+          "--attempt",
+          "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-bottleneck-000-p01-NTO-minimum_distance-943b1f7f/attempts/0001"
+        ],
+        "exit_code": 0,
+        "timeout_seconds": 60.0,
+        "timed_out": false,
+        "cold_e2e_seconds": 2.066875396296382,
+        "sampled_gpu_peak_mib": 188.0,
+        "gpu_peak_scope": "Per-process nvidia-smi samples at approximately 0.2 s; not an exact allocator high-water mark.",
+        "includes": "fresh process, imports, CUDA context, model/map load, warm-up, online planning, validation and output"
+      },
+      "timing": {
+        "model_setup_seconds": 0.014564912766218185,
+        "gpu_initialization_warmup_seconds": 0.12765306886285543,
+        "roadmap_load_seconds": 0.014950309880077839,
+        "online_collision_map_seconds": 0.0021997857838869095,
+        "drm_path_seconds": 0.05016506835818291,
+        "drm_path_validation_seconds": 0.5755130350589752,
+        "trajectory_optimization_seconds": 0.14018620597198606,
+        "validation_seconds": 0.5761805619113147,
+        "cold_e2e_seconds": 1.7785820569843054,
+        "warm_query_seconds": 1.345882591791451
+      },
+      "backend_rounds": [
+        {
+          "path": "benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-bottleneck-000-p01-NTO-minimum_distance-943b1f7f/attempts/0001/nto_collision_backend.json",
+          "native_evaluations": 750,
+          "retained_collision_pairs": 4937,
+          "dropped_collision_pairs": 0,
+          "recovery_count": 0,
+          "recovery_seconds": 0,
+          "recovery_failures": [],
+          "recovered_pair_distances_m": []
+        }
+      ],
+      "validation": {
+        "passed": true,
+        "status": "success_validated_numerical",
+        "samples": 1193,
+        "independent_collisions": 0,
+        "native_collisions": 0,
+        "minimum_sampled_clearance_m": 0.019025026584333433,
+        "endpoint_error_rad": 0.0,
+        "velocity_violation": null,
+        "acceleration_violation": null
+      }
+    },
+    {
+      "job_id": "smoke-bottleneck-000-p01-NTO_PAPER-minimum_time-a9ff432b",
+      "method": "NTO_PAPER",
+      "objective": "minimum_time",
+      "attempt": "benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-bottleneck-000-p01-NTO_PAPER-minimum_time-a9ff432b/attempts/0001",
+      "terminal": true,
+      "status": "success_validated_numerical",
+      "process": {
+        "argv": [
+          "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/bin/python",
+          "-m",
+          "benchmarks.generic_motion_v1",
+          "_worker",
+          "--attempt",
+          "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-bottleneck-000-p01-NTO_PAPER-minimum_time-a9ff432b/attempts/0001"
+        ],
+        "exit_code": 0,
+        "timeout_seconds": 60.0,
+        "timed_out": false,
+        "cold_e2e_seconds": 3.318667788989842,
+        "sampled_gpu_peak_mib": 188.0,
+        "gpu_peak_scope": "Per-process nvidia-smi samples at approximately 0.2 s; not an exact allocator high-water mark.",
+        "includes": "fresh process, imports, CUDA context, model/map load, warm-up, online planning, validation and output"
+      },
+      "timing": {
+        "model_setup_seconds": 0.016625523567199707,
+        "gpu_initialization_warmup_seconds": 0.10712275607511401,
+        "roadmap_load_seconds": 0.015044604893773794,
+        "online_collision_map_seconds": 0.002251132857054472,
+        "drm_path_seconds": 0.04790339479222894,
+        "drm_path_validation_seconds": 0.5737289320677519,
+        "trajectory_optimization_seconds": 0.27163707138970494,
+        "validation_seconds": 1.7113376562483609,
+        "cold_e2e_seconds": 3.02351079788059,
+        "warm_query_seconds": 2.608583267778158
+      },
+      "backend_rounds": [
+        {
+          "path": "benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-bottleneck-000-p01-NTO_PAPER-minimum_time-a9ff432b/attempts/0001/nto_collision_backend.json",
+          "native_evaluations": 2235,
+          "retained_collision_pairs": 4937,
+          "dropped_collision_pairs": 0,
+          "recovery_count": 0,
+          "recovery_seconds": 0,
+          "recovery_failures": [],
+          "recovered_pair_distances_m": []
+        }
+      ],
+      "validation": {
+        "passed": true,
+        "status": "success_validated_numerical",
+        "samples": 3576,
+        "independent_collisions": 0,
+        "native_collisions": 0,
+        "minimum_sampled_clearance_m": 0.019025026584333433,
+        "endpoint_error_rad": 0.0,
+        "velocity_violation": null,
+        "acceleration_violation": null
+      }
+    },
+    {
+      "job_id": "smoke-bottleneck-000-p01-NTO_REFINED-minimum_time-8fcfd493",
+      "method": "NTO_REFINED",
+      "objective": "minimum_time",
+      "attempt": "benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-bottleneck-000-p01-NTO_REFINED-minimum_time-8fcfd493/attempts/0001",
+      "terminal": true,
+      "status": "success_validated_numerical",
+      "process": {
+        "argv": [
+          "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/bin/python",
+          "-m",
+          "benchmarks.generic_motion_v1",
+          "_worker",
+          "--attempt",
+          "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-bottleneck-000-p01-NTO_REFINED-minimum_time-8fcfd493/attempts/0001"
+        ],
+        "exit_code": 0,
+        "timeout_seconds": 60.0,
+        "timed_out": false,
+        "cold_e2e_seconds": 3.3687112969346344,
+        "sampled_gpu_peak_mib": 188.0,
+        "gpu_peak_scope": "Per-process nvidia-smi samples at approximately 0.2 s; not an exact allocator high-water mark.",
+        "includes": "fresh process, imports, CUDA context, model/map load, warm-up, online planning, validation and output"
+      },
+      "timing": {
+        "model_setup_seconds": 0.01444294024258852,
+        "gpu_initialization_warmup_seconds": 0.12687550717964768,
+        "roadmap_load_seconds": 0.014959012158215046,
+        "online_collision_map_seconds": 0.002270190976560116,
+        "drm_path_seconds": 0.05025707418099046,
+        "drm_path_validation_seconds": 0.5736838798038661,
+        "trajectory_optimization_seconds": 1.265495743136853,
+        "validation_seconds": 0.7697853296995163,
+        "cold_e2e_seconds": 3.094297918956727,
+        "warm_query_seconds": 2.66314739221707
+      },
+      "backend_rounds": [
+        {
+          "path": "benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-bottleneck-000-p01-NTO_REFINED-minimum_time-8fcfd493/attempts/0001/refinement/round_00/nto_collision_backend.json",
+          "native_evaluations": 2831,
+          "retained_collision_pairs": 4937,
+          "dropped_collision_pairs": 0,
+          "recovery_count": 0,
+          "recovery_seconds": 0,
+          "recovery_failures": [],
+          "recovered_pair_distances_m": []
+        }
+      ],
+      "validation": {
+        "passed": true,
+        "status": "success_validated_numerical",
+        "samples": 1602,
+        "independent_collisions": 0,
+        "native_collisions": 0,
+        "minimum_sampled_clearance_m": 0.019025026584333336,
+        "endpoint_error_rad": 0.0,
+        "velocity_violation": null,
+        "acceleration_violation": null
+      }
+    },
+    {
+      "job_id": "smoke-bottleneck-000-p01-NTO-minimum_time-b9124e1f",
+      "method": "NTO",
+      "objective": "minimum_time",
+      "attempt": "benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-bottleneck-000-p01-NTO-minimum_time-b9124e1f/attempts/0001",
+      "terminal": true,
+      "status": "success_validated_numerical",
+      "process": {
+        "argv": [
+          "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/bin/python",
+          "-m",
+          "benchmarks.generic_motion_v1",
+          "_worker",
+          "--attempt",
+          "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-bottleneck-000-p01-NTO-minimum_time-b9124e1f/attempts/0001"
+        ],
+        "exit_code": 0,
+        "timeout_seconds": 60.0,
+        "timed_out": false,
+        "cold_e2e_seconds": 2.6700072148814797,
+        "sampled_gpu_peak_mib": 188.0,
+        "gpu_peak_scope": "Per-process nvidia-smi samples at approximately 0.2 s; not an exact allocator high-water mark.",
+        "includes": "fresh process, imports, CUDA context, model/map load, warm-up, online planning, validation and output"
+      },
+      "timing": {
+        "model_setup_seconds": 0.014394250698387623,
+        "gpu_initialization_warmup_seconds": 0.12782039493322372,
+        "roadmap_load_seconds": 0.015303813852369785,
+        "online_collision_map_seconds": 0.002218844834715128,
+        "drm_path_seconds": 0.04927461128681898,
+        "drm_path_validation_seconds": 0.5771742309443653,
+        "trajectory_optimization_seconds": 0.5322693763300776,
+        "validation_seconds": 0.7700849808752537,
+        "cold_e2e_seconds": 2.3653230210766196,
+        "warm_query_seconds": 1.9327008752152324
+      },
+      "backend_rounds": [
+        {
+          "path": "benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-bottleneck-000-p01-NTO-minimum_time-b9124e1f/attempts/0001/nto_collision_backend.json",
+          "native_evaluations": 2850,
+          "retained_collision_pairs": 4937,
+          "dropped_collision_pairs": 0,
+          "recovery_count": 0,
+          "recovery_seconds": 0,
+          "recovery_failures": [],
+          "recovered_pair_distances_m": []
+        }
+      ],
+      "validation": {
+        "passed": true,
+        "status": "success_validated_numerical",
+        "samples": 1603,
+        "independent_collisions": 0,
+        "native_collisions": 0,
+        "minimum_sampled_clearance_m": 0.01902502658433331,
+        "endpoint_error_rad": 0.0,
+        "velocity_violation": null,
+        "acceleration_violation": null
+      }
+    },
+    {
+      "job_id": "smoke-route_choice-000-p00-NTO_PAPER-minimum_distance-2cdd5412",
+      "method": "NTO_PAPER",
+      "objective": "minimum_distance",
+      "attempt": "benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-route_choice-000-p00-NTO_PAPER-minimum_distance-2cdd5412/attempts/0001",
+      "terminal": true,
+      "status": "timeout",
+      "process": {
+        "argv": [
+          "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/bin/python",
+          "-m",
+          "benchmarks.generic_motion_v1",
+          "_worker",
+          "--attempt",
+          "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-route_choice-000-p00-NTO_PAPER-minimum_distance-2cdd5412/attempts/0001"
+        ],
+        "exit_code": -15,
+        "timeout_seconds": 60.0,
+        "timed_out": true,
+        "cold_e2e_seconds": 60.11360005103052,
+        "sampled_gpu_peak_mib": 200.0,
+        "gpu_peak_scope": "Per-process nvidia-smi samples at approximately 0.2 s; not an exact allocator high-water mark.",
+        "includes": "fresh process, imports, CUDA context, model/map load, warm-up, online planning, validation and output"
+      },
+      "timing": {
+        "gpu_initialization_warmup_seconds": 0.1278168549761176,
+        "model_setup_seconds": 0.014509337954223156,
+        "online_collision_map_seconds": 0.004049684852361679,
+        "roadmap_load_seconds": 0.016715331934392452
+      },
+      "backend_rounds": []
+    },
+    {
+      "job_id": "smoke-route_choice-000-p00-NTO_REFINED-minimum_distance-70011ba6",
+      "method": "NTO_REFINED",
+      "objective": "minimum_distance",
+      "attempt": "benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-route_choice-000-p00-NTO_REFINED-minimum_distance-70011ba6/attempts/0001",
+      "terminal": true,
+      "status": "timeout",
+      "process": {
+        "argv": [
+          "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/bin/python",
+          "-m",
+          "benchmarks.generic_motion_v1",
+          "_worker",
+          "--attempt",
+          "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-route_choice-000-p00-NTO_REFINED-minimum_distance-70011ba6/attempts/0001"
+        ],
+        "exit_code": -15,
+        "timeout_seconds": 60.0,
+        "timed_out": true,
+        "cold_e2e_seconds": 60.1140784593299,
+        "sampled_gpu_peak_mib": 200.0,
+        "gpu_peak_scope": "Per-process nvidia-smi samples at approximately 0.2 s; not an exact allocator high-water mark.",
+        "includes": "fresh process, imports, CUDA context, model/map load, warm-up, online planning, validation and output"
+      },
+      "timing": {
+        "gpu_initialization_warmup_seconds": 0.12866160180419683,
+        "model_setup_seconds": 0.014410031028091908,
+        "online_collision_map_seconds": 0.004069074057042599,
+        "roadmap_load_seconds": 0.01683009834960103
+      },
+      "backend_rounds": []
+    },
+    {
+      "job_id": "smoke-route_choice-000-p00-NTO-minimum_distance-feff1bdb",
+      "method": "NTO",
+      "objective": "minimum_distance",
+      "attempt": "benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-route_choice-000-p00-NTO-minimum_distance-feff1bdb/attempts/0001",
+      "terminal": true,
+      "status": "timeout",
+      "process": {
+        "argv": [
+          "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/bin/python",
+          "-m",
+          "benchmarks.generic_motion_v1",
+          "_worker",
+          "--attempt",
+          "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-route_choice-000-p00-NTO-minimum_distance-feff1bdb/attempts/0001"
+        ],
+        "exit_code": -15,
+        "timeout_seconds": 60.0,
+        "timed_out": true,
+        "cold_e2e_seconds": 60.11353406077251,
+        "sampled_gpu_peak_mib": 200.0,
+        "gpu_peak_scope": "Per-process nvidia-smi samples at approximately 0.2 s; not an exact allocator high-water mark.",
+        "includes": "fresh process, imports, CUDA context, model/map load, warm-up, online planning, validation and output"
+      },
+      "timing": {
+        "gpu_initialization_warmup_seconds": 0.1274541448801756,
+        "model_setup_seconds": 0.014508632011711597,
+        "online_collision_map_seconds": 0.0040870062075555325,
+        "roadmap_load_seconds": 0.014927729964256287
+      },
+      "backend_rounds": []
+    },
+    {
+      "job_id": "smoke-route_choice-000-p00-NTO_PAPER-minimum_time-4fc37e30",
+      "method": "NTO_PAPER",
+      "objective": "minimum_time",
+      "attempt": "benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-route_choice-000-p00-NTO_PAPER-minimum_time-4fc37e30/attempts/0001",
+      "terminal": true,
+      "status": "timeout",
+      "process": {
+        "argv": [
+          "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/bin/python",
+          "-m",
+          "benchmarks.generic_motion_v1",
+          "_worker",
+          "--attempt",
+          "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-route_choice-000-p00-NTO_PAPER-minimum_time-4fc37e30/attempts/0001"
+        ],
+        "exit_code": -15,
+        "timeout_seconds": 60.0,
+        "timed_out": true,
+        "cold_e2e_seconds": 60.113884893245995,
+        "sampled_gpu_peak_mib": 200.0,
+        "gpu_peak_scope": "Per-process nvidia-smi samples at approximately 0.2 s; not an exact allocator high-water mark.",
+        "includes": "fresh process, imports, CUDA context, model/map load, warm-up, online planning, validation and output"
+      },
+      "timing": {
+        "gpu_initialization_warmup_seconds": 0.12755091208964586,
+        "model_setup_seconds": 0.014328339137136936,
+        "online_collision_map_seconds": 0.004061189945787191,
+        "roadmap_load_seconds": 0.015171458013355732
+      },
+      "backend_rounds": []
+    },
+    {
+      "job_id": "smoke-route_choice-000-p00-NTO_REFINED-minimum_time-047e25d2",
+      "method": "NTO_REFINED",
+      "objective": "minimum_time",
+      "attempt": "benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-route_choice-000-p00-NTO_REFINED-minimum_time-047e25d2/attempts/0001",
+      "terminal": true,
+      "status": "timeout",
+      "process": {
+        "argv": [
+          "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/bin/python",
+          "-m",
+          "benchmarks.generic_motion_v1",
+          "_worker",
+          "--attempt",
+          "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-route_choice-000-p00-NTO_REFINED-minimum_time-047e25d2/attempts/0001"
+        ],
+        "exit_code": -15,
+        "timeout_seconds": 60.0,
+        "timed_out": true,
+        "cold_e2e_seconds": 60.113509523216635,
+        "sampled_gpu_peak_mib": 200.0,
+        "gpu_peak_scope": "Per-process nvidia-smi samples at approximately 0.2 s; not an exact allocator high-water mark.",
+        "includes": "fresh process, imports, CUDA context, model/map load, warm-up, online planning, validation and output"
+      },
+      "timing": {
+        "gpu_initialization_warmup_seconds": 0.13172184489667416,
+        "model_setup_seconds": 0.014410512056201696,
+        "online_collision_map_seconds": 0.004081022925674915,
+        "roadmap_load_seconds": 0.015279550105333328
+      },
+      "backend_rounds": []
+    },
+    {
+      "job_id": "smoke-route_choice-000-p00-NTO-minimum_time-e54a8f86",
+      "method": "NTO",
+      "objective": "minimum_time",
+      "attempt": "benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-route_choice-000-p00-NTO-minimum_time-e54a8f86/attempts/0001",
+      "terminal": true,
+      "status": "timeout",
+      "process": {
+        "argv": [
+          "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/bin/python",
+          "-m",
+          "benchmarks.generic_motion_v1",
+          "_worker",
+          "--attempt",
+          "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-route_choice-000-p00-NTO-minimum_time-e54a8f86/attempts/0001"
+        ],
+        "exit_code": -15,
+        "timeout_seconds": 60.0,
+        "timed_out": true,
+        "cold_e2e_seconds": 60.11353330500424,
+        "sampled_gpu_peak_mib": 200.0,
+        "gpu_peak_scope": "Per-process nvidia-smi samples at approximately 0.2 s; not an exact allocator high-water mark.",
+        "includes": "fresh process, imports, CUDA context, model/map load, warm-up, online planning, validation and output"
+      },
+      "timing": {
+        "gpu_initialization_warmup_seconds": 0.12728845002129674,
+        "model_setup_seconds": 0.014471838250756264,
+        "online_collision_map_seconds": 0.0041056470945477486,
+        "roadmap_load_seconds": 0.015240155160427094
+      },
+      "backend_rounds": []
+    },
+    {
+      "job_id": "smoke-route_choice-000-p01-NTO_PAPER-minimum_distance-c52cdd71",
+      "method": "NTO_PAPER",
+      "objective": "minimum_distance",
+      "attempt": "benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-route_choice-000-p01-NTO_PAPER-minimum_distance-c52cdd71/attempts/0001",
+      "terminal": true,
+      "status": "collision_failed",
+      "process": {
+        "argv": [
+          "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/bin/python",
+          "-m",
+          "benchmarks.generic_motion_v1",
+          "_worker",
+          "--attempt",
+          "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-route_choice-000-p01-NTO_PAPER-minimum_distance-c52cdd71/attempts/0001"
+        ],
+        "exit_code": 0,
+        "timeout_seconds": 60.0,
+        "timed_out": false,
+        "cold_e2e_seconds": 4.022461776155978,
+        "sampled_gpu_peak_mib": 188.0,
+        "gpu_peak_scope": "Per-process nvidia-smi samples at approximately 0.2 s; not an exact allocator high-water mark.",
+        "includes": "fresh process, imports, CUDA context, model/map load, warm-up, online planning, validation and output"
+      },
+      "timing": {
+        "model_setup_seconds": 0.014432752970606089,
+        "gpu_initialization_warmup_seconds": 0.10595844127237797,
+        "roadmap_load_seconds": 0.016455719247460365,
+        "online_collision_map_seconds": 0.004071755800396204,
+        "drm_path_seconds": 0.07353230193257332,
+        "drm_path_validation_seconds": 0.9134608153253794,
+        "trajectory_optimization_seconds": 1.4811966069974005,
+        "validation_seconds": 0.8708466673269868,
+        "cold_e2e_seconds": 3.7574254092760384,
+        "warm_query_seconds": 3.345010342076421
+      },
+      "backend_rounds": [
+        {
+          "path": "benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-route_choice-000-p01-NTO_PAPER-minimum_distance-c52cdd71/attempts/0001/nto_collision_backend.json",
+          "native_evaluations": 14751,
+          "retained_collision_pairs": 6092,
+          "dropped_collision_pairs": 0,
+          "recovery_count": 0,
+          "recovery_seconds": 0,
+          "recovery_failures": [],
+          "recovered_pair_distances_m": []
+        }
+      ],
+      "validation": {
+        "passed": false,
+        "status": "collision_failed",
+        "samples": 1633,
+        "independent_collisions": 29,
+        "native_collisions": 29,
+        "minimum_sampled_clearance_m": -0.00010932548696893271,
+        "endpoint_error_rad": 0.0,
+        "velocity_violation": null,
+        "acceleration_violation": null
+      }
+    },
+    {
+      "job_id": "smoke-route_choice-000-p01-NTO_REFINED-minimum_distance-9c2f380a",
+      "method": "NTO_REFINED",
+      "objective": "minimum_distance",
+      "attempt": "benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-route_choice-000-p01-NTO_REFINED-minimum_distance-9c2f380a/attempts/0001",
+      "terminal": true,
+      "status": "success_validated_numerical",
+      "process": {
+        "argv": [
+          "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/bin/python",
+          "-m",
+          "benchmarks.generic_motion_v1",
+          "_worker",
+          "--attempt",
+          "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-route_choice-000-p01-NTO_REFINED-minimum_distance-9c2f380a/attempts/0001"
+        ],
+        "exit_code": 0,
+        "timeout_seconds": 60.0,
+        "timed_out": false,
+        "cold_e2e_seconds": 4.019158988725394,
+        "sampled_gpu_peak_mib": 188.0,
+        "gpu_peak_scope": "Per-process nvidia-smi samples at approximately 0.2 s; not an exact allocator high-water mark.",
+        "includes": "fresh process, imports, CUDA context, model/map load, warm-up, online planning, validation and output"
+      },
+      "timing": {
+        "model_setup_seconds": 0.014459335245192051,
+        "gpu_initialization_warmup_seconds": 0.13486154098063707,
+        "roadmap_load_seconds": 0.016663761343806982,
+        "online_collision_map_seconds": 0.00408531678840518,
+        "drm_path_seconds": 0.08652614708989859,
+        "drm_path_validation_seconds": 0.8903559171594679,
+        "trajectory_optimization_seconds": 1.48427076311782,
+        "validation_seconds": 0.8479497008956969,
+        "cold_e2e_seconds": 3.7535709850490093,
+        "warm_query_seconds": 3.315277153160423
+      },
+      "backend_rounds": [
+        {
+          "path": "benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-route_choice-000-p01-NTO_REFINED-minimum_distance-9c2f380a/attempts/0001/refinement/round_00/nto_collision_backend.json",
+          "native_evaluations": 5364,
+          "retained_collision_pairs": 6092,
+          "dropped_collision_pairs": 0,
+          "recovery_count": 0,
+          "recovery_seconds": 0,
+          "recovery_failures": [],
+          "recovered_pair_distances_m": []
+        }
+      ],
+      "validation": {
+        "passed": true,
+        "status": "success_validated_numerical",
+        "samples": 1635,
+        "independent_collisions": 0,
+        "native_collisions": 0,
+        "minimum_sampled_clearance_m": 0.000891144416778806,
+        "endpoint_error_rad": 0.0,
+        "velocity_violation": null,
+        "acceleration_violation": null
+      }
+    },
+    {
+      "job_id": "smoke-route_choice-000-p01-NTO-minimum_distance-7ba4a8af",
+      "method": "NTO",
+      "objective": "minimum_distance",
+      "attempt": "benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-route_choice-000-p01-NTO-minimum_distance-7ba4a8af/attempts/0001",
+      "terminal": true,
+      "status": "collision_failed",
+      "process": {
+        "argv": [
+          "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/bin/python",
+          "-m",
+          "benchmarks.generic_motion_v1",
+          "_worker",
+          "--attempt",
+          "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-route_choice-000-p01-NTO-minimum_distance-7ba4a8af/attempts/0001"
+        ],
+        "exit_code": 0,
+        "timeout_seconds": 60.0,
+        "timed_out": false,
+        "cold_e2e_seconds": 9.62985434383154,
+        "sampled_gpu_peak_mib": 188.0,
+        "gpu_peak_scope": "Per-process nvidia-smi samples at approximately 0.2 s; not an exact allocator high-water mark.",
+        "includes": "fresh process, imports, CUDA context, model/map load, warm-up, online planning, validation and output"
+      },
+      "timing": {
+        "model_setup_seconds": 0.014689490664750338,
+        "gpu_initialization_warmup_seconds": 0.12780172191560268,
+        "roadmap_load_seconds": 0.015064042992889881,
+        "online_collision_map_seconds": 0.003970808815211058,
+        "drm_path_seconds": 0.08664037706330419,
+        "drm_path_validation_seconds": 0.9120632251724601,
+        "trajectory_optimization_seconds": 6.640573766082525,
+        "validation_seconds": 1.282028001267463,
+        "cold_e2e_seconds": 9.360107782762498,
+        "warm_query_seconds": 8.926924753934145
+      },
+      "backend_rounds": [
+        {
+          "path": "benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-route_choice-000-p01-NTO-minimum_distance-7ba4a8af/attempts/0001/nto_collision_backend.json",
+          "native_evaluations": 68550,
+          "retained_collision_pairs": 6092,
+          "dropped_collision_pairs": 0,
+          "recovery_count": 0,
+          "recovery_seconds": 0,
+          "recovery_failures": [],
+          "recovered_pair_distances_m": []
+        }
+      ],
+      "validation": {
+        "passed": false,
+        "status": "collision_failed",
+        "samples": 2453,
+        "independent_collisions": 13,
+        "native_collisions": 13,
+        "minimum_sampled_clearance_m": -0.0001662693022999096,
+        "endpoint_error_rad": 0.0,
+        "velocity_violation": null,
+        "acceleration_violation": null
+      }
+    },
+    {
+      "job_id": "smoke-route_choice-000-p01-NTO_PAPER-minimum_time-33973155",
+      "method": "NTO_PAPER",
+      "objective": "minimum_time",
+      "attempt": "benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-route_choice-000-p01-NTO_PAPER-minimum_time-33973155/attempts/0001",
+      "terminal": true,
+      "status": "success_validated_numerical",
+      "process": {
+        "argv": [
+          "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/bin/python",
+          "-m",
+          "benchmarks.generic_motion_v1",
+          "_worker",
+          "--attempt",
+          "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-route_choice-000-p01-NTO_PAPER-minimum_time-33973155/attempts/0001"
+        ],
+        "exit_code": 0,
+        "timeout_seconds": 60.0,
+        "timed_out": false,
+        "cold_e2e_seconds": 3.069033081177622,
+        "sampled_gpu_peak_mib": 188.0,
+        "gpu_peak_scope": "Per-process nvidia-smi samples at approximately 0.2 s; not an exact allocator high-water mark.",
+        "includes": "fresh process, imports, CUDA context, model/map load, warm-up, online planning, validation and output"
+      },
+      "timing": {
+        "model_setup_seconds": 0.014413928147405386,
+        "gpu_initialization_warmup_seconds": 0.10819452907890081,
+        "roadmap_load_seconds": 0.01477051293477416,
+        "online_collision_map_seconds": 0.004033795092254877,
+        "drm_path_seconds": 0.0733254817314446,
+        "drm_path_validation_seconds": 0.9105249862186611,
+        "trajectory_optimization_seconds": 0.5319090131670237,
+        "validation_seconds": 0.851084275636822,
+        "cold_e2e_seconds": 2.783395392354578,
+        "warm_query_seconds": 2.372479065321386
+      },
+      "backend_rounds": [
+        {
+          "path": "benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-route_choice-000-p01-NTO_PAPER-minimum_time-33973155/attempts/0001/nto_collision_backend.json",
+          "native_evaluations": 3874,
+          "retained_collision_pairs": 6092,
+          "dropped_collision_pairs": 0,
+          "recovery_count": 0,
+          "recovery_seconds": 0,
+          "recovery_failures": [],
+          "recovered_pair_distances_m": []
+        }
+      ],
+      "validation": {
+        "passed": true,
+        "status": "success_validated_numerical",
+        "samples": 1598,
+        "independent_collisions": 0,
+        "native_collisions": 0,
+        "minimum_sampled_clearance_m": 0.0002820345162122262,
+        "endpoint_error_rad": 0.0,
+        "velocity_violation": null,
+        "acceleration_violation": null
+      }
+    },
+    {
+      "job_id": "smoke-route_choice-000-p01-NTO_REFINED-minimum_time-678681bf",
+      "method": "NTO_REFINED",
+      "objective": "minimum_time",
+      "attempt": "benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-route_choice-000-p01-NTO_REFINED-minimum_time-678681bf/attempts/0001",
+      "terminal": true,
+      "status": "success_validated_numerical",
+      "process": {
+        "argv": [
+          "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/bin/python",
+          "-m",
+          "benchmarks.generic_motion_v1",
+          "_worker",
+          "--attempt",
+          "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-route_choice-000-p01-NTO_REFINED-minimum_time-678681bf/attempts/0001"
+        ],
+        "exit_code": 0,
+        "timeout_seconds": 60.0,
+        "timed_out": false,
+        "cold_e2e_seconds": 4.122271546162665,
+        "sampled_gpu_peak_mib": 188.0,
+        "gpu_peak_scope": "Per-process nvidia-smi samples at approximately 0.2 s; not an exact allocator high-water mark.",
+        "includes": "fresh process, imports, CUDA context, model/map load, warm-up, online planning, validation and output"
+      },
+      "timing": {
+        "model_setup_seconds": 0.014436841942369938,
+        "gpu_initialization_warmup_seconds": 0.12852188758552074,
+        "roadmap_load_seconds": 0.015139319002628326,
+        "online_collision_map_seconds": 0.0040526557713747025,
+        "drm_path_seconds": 0.08719710586592555,
+        "drm_path_validation_seconds": 0.9168861778452992,
+        "trajectory_optimization_seconds": 1.568995124194771,
+        "validation_seconds": 0.8120250082574785,
+        "cold_e2e_seconds": 3.8229653649032116,
+        "warm_query_seconds": 3.3907986618578434
+      },
+      "backend_rounds": [
+        {
+          "path": "benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-route_choice-000-p01-NTO_REFINED-minimum_time-678681bf/attempts/0001/refinement/round_00/nto_collision_backend.json",
+          "native_evaluations": 4023,
+          "retained_collision_pairs": 6092,
+          "dropped_collision_pairs": 0,
+          "recovery_count": 0,
+          "recovery_seconds": 0,
+          "recovery_failures": [],
+          "recovered_pair_distances_m": []
+        }
+      ],
+      "validation": {
+        "passed": true,
+        "status": "success_validated_numerical",
+        "samples": 1546,
+        "independent_collisions": 0,
+        "native_collisions": 0,
+        "minimum_sampled_clearance_m": 0.007617724271213745,
+        "endpoint_error_rad": 0.0,
+        "velocity_violation": null,
+        "acceleration_violation": null
+      }
+    },
+    {
+      "job_id": "smoke-route_choice-000-p01-NTO-minimum_time-4349cbf9",
+      "method": "NTO",
+      "objective": "minimum_time",
+      "attempt": "benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-route_choice-000-p01-NTO-minimum_time-4349cbf9/attempts/0001",
+      "terminal": true,
+      "status": "success_validated_numerical",
+      "process": {
+        "argv": [
+          "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/bin/python",
+          "-m",
+          "benchmarks.generic_motion_v1",
+          "_worker",
+          "--attempt",
+          "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-route_choice-000-p01-NTO-minimum_time-4349cbf9/attempts/0001"
+        ],
+        "exit_code": 0,
+        "timeout_seconds": 60.0,
+        "timed_out": false,
+        "cold_e2e_seconds": 3.469777286052704,
+        "sampled_gpu_peak_mib": 188.0,
+        "gpu_peak_scope": "Per-process nvidia-smi samples at approximately 0.2 s; not an exact allocator high-water mark.",
+        "includes": "fresh process, imports, CUDA context, model/map load, warm-up, online planning, validation and output"
+      },
+      "timing": {
+        "model_setup_seconds": 0.014444157015532255,
+        "gpu_initialization_warmup_seconds": 0.13423271011561155,
+        "roadmap_load_seconds": 0.01526445522904396,
+        "online_collision_map_seconds": 0.004012104123830795,
+        "drm_path_seconds": 0.08606875594705343,
+        "drm_path_validation_seconds": 0.9102809289470315,
+        "trajectory_optimization_seconds": 0.9437402398325503,
+        "validation_seconds": 0.8019289737567306,
+        "cold_e2e_seconds": 3.188195267226547,
+        "warm_query_seconds": 2.747762633021921
+      },
+      "backend_rounds": [
+        {
+          "path": "benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-route_choice-000-p01-NTO-minimum_time-4349cbf9/attempts/0001/nto_collision_backend.json",
+          "native_evaluations": 5250,
+          "retained_collision_pairs": 6092,
+          "dropped_collision_pairs": 0,
+          "recovery_count": 0,
+          "recovery_seconds": 0,
+          "recovery_failures": [],
+          "recovered_pair_distances_m": []
+        }
+      ],
+      "validation": {
+        "passed": true,
+        "status": "success_validated_numerical",
+        "samples": 1532,
+        "independent_collisions": 0,
+        "native_collisions": 0,
+        "minimum_sampled_clearance_m": 0.005762547894940628,
+        "endpoint_error_rad": 0.0,
+        "velocity_violation": null,
+        "acceleration_violation": null
+      }
+    },
+    {
+      "job_id": "smoke-open_control-000-p00-NTO_PAPER-minimum_distance-3d801bd3",
+      "method": "NTO_PAPER",
+      "objective": "minimum_distance",
+      "attempt": "benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-open_control-000-p00-NTO_PAPER-minimum_distance-3d801bd3/attempts/0001",
+      "terminal": true,
+      "status": "frontend_failed",
+      "process": {
+        "argv": [
+          "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/bin/python",
+          "-m",
+          "benchmarks.generic_motion_v1",
+          "_worker",
+          "--attempt",
+          "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-open_control-000-p00-NTO_PAPER-minimum_distance-3d801bd3/attempts/0001"
+        ],
+        "exit_code": 0,
+        "timeout_seconds": 60.0,
+        "timed_out": false,
+        "cold_e2e_seconds": 0.8650741777382791,
+        "sampled_gpu_peak_mib": 188.0,
+        "gpu_peak_scope": "Per-process nvidia-smi samples at approximately 0.2 s; not an exact allocator high-water mark.",
+        "includes": "fresh process, imports, CUDA context, model/map load, warm-up, online planning, validation and output"
+      },
+      "timing": {
+        "model_setup_seconds": 0.01462389575317502,
+        "gpu_initialization_warmup_seconds": 0.126379928085953,
+        "roadmap_load_seconds": 0.016798363998532295,
+        "online_collision_map_seconds": 2.193264663219452e-05,
+        "drm_path_seconds": 0.03285004897043109,
+        "drm_path_validation_seconds": 0.09742699330672622,
+        "cold_e2e_seconds": 0.5655638910830021,
+        "warm_query_seconds": 0.13124562008306384
+      },
+      "backend_rounds": []
+    },
+    {
+      "job_id": "smoke-open_control-000-p00-NTO_REFINED-minimum_distance-b5ee2e1b",
+      "method": "NTO_REFINED",
+      "objective": "minimum_distance",
+      "attempt": "benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-open_control-000-p00-NTO_REFINED-minimum_distance-b5ee2e1b/attempts/0001",
+      "terminal": true,
+      "status": "frontend_failed",
+      "process": {
+        "argv": [
+          "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/bin/python",
+          "-m",
+          "benchmarks.generic_motion_v1",
+          "_worker",
+          "--attempt",
+          "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-open_control-000-p00-NTO_REFINED-minimum_distance-b5ee2e1b/attempts/0001"
+        ],
+        "exit_code": 0,
+        "timeout_seconds": 60.0,
+        "timed_out": false,
+        "cold_e2e_seconds": 0.8649634746834636,
+        "sampled_gpu_peak_mib": 188.0,
+        "gpu_peak_scope": "Per-process nvidia-smi samples at approximately 0.2 s; not an exact allocator high-water mark.",
+        "includes": "fresh process, imports, CUDA context, model/map load, warm-up, online planning, validation and output"
+      },
+      "timing": {
+        "model_setup_seconds": 0.014366747811436653,
+        "gpu_initialization_warmup_seconds": 0.12644621497020125,
+        "roadmap_load_seconds": 0.01658755401149392,
+        "online_collision_map_seconds": 1.974496990442276e-05,
+        "drm_path_seconds": 0.0328601379878819,
+        "drm_path_validation_seconds": 0.09801692143082619,
+        "cold_e2e_seconds": 0.5581360207870603,
+        "warm_query_seconds": 0.1318029542453587
+      },
+      "backend_rounds": []
+    },
+    {
+      "job_id": "smoke-open_control-000-p00-NTO-minimum_distance-9f74896a",
+      "method": "NTO",
+      "objective": "minimum_distance",
+      "attempt": "benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-open_control-000-p00-NTO-minimum_distance-9f74896a/attempts/0001",
+      "terminal": true,
+      "status": "frontend_failed",
+      "process": {
+        "argv": [
+          "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/bin/python",
+          "-m",
+          "benchmarks.generic_motion_v1",
+          "_worker",
+          "--attempt",
+          "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-open_control-000-p00-NTO-minimum_distance-9f74896a/attempts/0001"
+        ],
+        "exit_code": 0,
+        "timeout_seconds": 60.0,
+        "timed_out": false,
+        "cold_e2e_seconds": 0.8648149152286351,
+        "sampled_gpu_peak_mib": 188.0,
+        "gpu_peak_scope": "Per-process nvidia-smi samples at approximately 0.2 s; not an exact allocator high-water mark.",
+        "includes": "fresh process, imports, CUDA context, model/map load, warm-up, online planning, validation and output"
+      },
+      "timing": {
+        "model_setup_seconds": 0.014322960283607244,
+        "gpu_initialization_warmup_seconds": 0.12790572131052613,
+        "roadmap_load_seconds": 0.015132702887058258,
+        "online_collision_map_seconds": 2.0664185285568237e-05,
+        "drm_path_seconds": 0.03279635030776262,
+        "drm_path_validation_seconds": 0.09798480430617929,
+        "cold_e2e_seconds": 0.5610732617788017,
+        "warm_query_seconds": 0.13169714575633407
+      },
+      "backend_rounds": []
+    },
+    {
+      "job_id": "smoke-open_control-000-p00-NTO_PAPER-minimum_time-19fd6fb2",
+      "method": "NTO_PAPER",
+      "objective": "minimum_time",
+      "attempt": "benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-open_control-000-p00-NTO_PAPER-minimum_time-19fd6fb2/attempts/0001",
+      "terminal": true,
+      "status": "frontend_failed",
+      "process": {
+        "argv": [
+          "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/bin/python",
+          "-m",
+          "benchmarks.generic_motion_v1",
+          "_worker",
+          "--attempt",
+          "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-open_control-000-p00-NTO_PAPER-minimum_time-19fd6fb2/attempts/0001"
+        ],
+        "exit_code": 0,
+        "timeout_seconds": 60.0,
+        "timed_out": false,
+        "cold_e2e_seconds": 0.8148586140014231,
+        "sampled_gpu_peak_mib": 188.0,
+        "gpu_peak_scope": "Per-process nvidia-smi samples at approximately 0.2 s; not an exact allocator high-water mark.",
+        "includes": "fresh process, imports, CUDA context, model/map load, warm-up, online planning, validation and output"
+      },
+      "timing": {
+        "model_setup_seconds": 0.014403095003217459,
+        "gpu_initialization_warmup_seconds": 0.12579312408342957,
+        "roadmap_load_seconds": 0.015270597767084837,
+        "online_collision_map_seconds": 2.0639970898628235e-05,
+        "drm_path_seconds": 0.03218793962150812,
+        "drm_path_validation_seconds": 0.09768172400072217,
+        "cold_e2e_seconds": 0.5539695271290839,
+        "warm_query_seconds": 0.13093104120343924
+      },
+      "backend_rounds": []
+    },
+    {
+      "job_id": "smoke-open_control-000-p00-NTO_REFINED-minimum_time-035fb40c",
+      "method": "NTO_REFINED",
+      "objective": "minimum_time",
+      "attempt": "benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-open_control-000-p00-NTO_REFINED-minimum_time-035fb40c/attempts/0001",
+      "terminal": true,
+      "status": "frontend_failed",
+      "process": {
+        "argv": [
+          "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/bin/python",
+          "-m",
+          "benchmarks.generic_motion_v1",
+          "_worker",
+          "--attempt",
+          "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-open_control-000-p00-NTO_REFINED-minimum_time-035fb40c/attempts/0001"
+        ],
+        "exit_code": 0,
+        "timeout_seconds": 60.0,
+        "timed_out": false,
+        "cold_e2e_seconds": 0.865288011264056,
+        "sampled_gpu_peak_mib": 188.0,
+        "gpu_peak_scope": "Per-process nvidia-smi samples at approximately 0.2 s; not an exact allocator high-water mark.",
+        "includes": "fresh process, imports, CUDA context, model/map load, warm-up, online planning, validation and output"
+      },
+      "timing": {
+        "model_setup_seconds": 0.014810425695031881,
+        "gpu_initialization_warmup_seconds": 0.1260087308473885,
+        "roadmap_load_seconds": 0.014928981196135283,
+        "online_collision_map_seconds": 1.9425060600042343e-05,
+        "drm_path_seconds": 0.03317954484373331,
+        "drm_path_validation_seconds": 0.09763473505154252,
+        "cold_e2e_seconds": 0.5636861361563206,
+        "warm_query_seconds": 0.13183731213212013
+      },
+      "backend_rounds": []
+    },
+    {
+      "job_id": "smoke-open_control-000-p00-NTO-minimum_time-440f27ae",
+      "method": "NTO",
+      "objective": "minimum_time",
+      "attempt": "benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-open_control-000-p00-NTO-minimum_time-440f27ae/attempts/0001",
+      "terminal": true,
+      "status": "frontend_failed",
+      "process": {
+        "argv": [
+          "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/bin/python",
+          "-m",
+          "benchmarks.generic_motion_v1",
+          "_worker",
+          "--attempt",
+          "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-open_control-000-p00-NTO-minimum_time-440f27ae/attempts/0001"
+        ],
+        "exit_code": 0,
+        "timeout_seconds": 60.0,
+        "timed_out": false,
+        "cold_e2e_seconds": 0.8651897991076112,
+        "sampled_gpu_peak_mib": 188.0,
+        "gpu_peak_scope": "Per-process nvidia-smi samples at approximately 0.2 s; not an exact allocator high-water mark.",
+        "includes": "fresh process, imports, CUDA context, model/map load, warm-up, online planning, validation and output"
+      },
+      "timing": {
+        "model_setup_seconds": 0.01450211787596345,
+        "gpu_initialization_warmup_seconds": 0.1267572189681232,
+        "roadmap_load_seconds": 0.015290331095457077,
+        "online_collision_map_seconds": 2.0042061805725098e-05,
+        "drm_path_seconds": 0.03227599989622831,
+        "drm_path_validation_seconds": 0.09812647802755237,
+        "cold_e2e_seconds": 0.5625696508213878,
+        "warm_query_seconds": 0.13133502518758178
+      },
+      "backend_rounds": []
+    },
+    {
+      "job_id": "smoke-open_control-000-p01-NTO_PAPER-minimum_distance-9a710320",
+      "method": "NTO_PAPER",
+      "objective": "minimum_distance",
+      "attempt": "benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-open_control-000-p01-NTO_PAPER-minimum_distance-9a710320/attempts/0001",
+      "terminal": true,
+      "status": "success_validated_numerical",
+      "process": {
+        "argv": [
+          "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/bin/python",
+          "-m",
+          "benchmarks.generic_motion_v1",
+          "_worker",
+          "--attempt",
+          "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-open_control-000-p01-NTO_PAPER-minimum_distance-9a710320/attempts/0001"
+        ],
+        "exit_code": 0,
+        "timeout_seconds": 60.0,
+        "timed_out": false,
+        "cold_e2e_seconds": 1.0663625062443316,
+        "sampled_gpu_peak_mib": 188.0,
+        "gpu_peak_scope": "Per-process nvidia-smi samples at approximately 0.2 s; not an exact allocator high-water mark.",
+        "includes": "fresh process, imports, CUDA context, model/map load, warm-up, online planning, validation and output"
+      },
+      "timing": {
+        "model_setup_seconds": 0.014398612082004547,
+        "gpu_initialization_warmup_seconds": 0.12924990197643638,
+        "roadmap_load_seconds": 0.01655619405210018,
+        "online_collision_map_seconds": 1.9923783838748932e-05,
+        "drm_path_seconds": 0.032622760627418756,
+        "drm_path_validation_seconds": 0.14235593704506755,
+        "trajectory_optimization_seconds": 0.024411519058048725,
+        "validation_seconds": 0.14616573229432106,
+        "cold_e2e_seconds": 0.7824593279510736,
+        "warm_query_seconds": 0.34712754003703594
+      },
+      "backend_rounds": [
+        {
+          "path": "benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-open_control-000-p01-NTO_PAPER-minimum_distance-9a710320/attempts/0001/nto_collision_backend.json",
+          "native_evaluations": 447,
+          "retained_collision_pairs": 137,
+          "dropped_collision_pairs": 0,
+          "recovery_count": 0,
+          "recovery_seconds": 0,
+          "recovery_failures": [],
+          "recovered_pair_distances_m": []
+        }
+      ],
+      "validation": {
+        "passed": true,
+        "status": "success_validated_numerical",
+        "samples": 1193,
+        "independent_collisions": 0,
+        "native_collisions": 0,
+        "minimum_sampled_clearance_m": 0.013688405342964591,
+        "endpoint_error_rad": 0.0,
+        "velocity_violation": null,
+        "acceleration_violation": null
+      }
+    },
+    {
+      "job_id": "smoke-open_control-000-p01-NTO_REFINED-minimum_distance-f9955056",
+      "method": "NTO_REFINED",
+      "objective": "minimum_distance",
+      "attempt": "benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-open_control-000-p01-NTO_REFINED-minimum_distance-f9955056/attempts/0001",
+      "terminal": true,
+      "status": "success_validated_numerical",
+      "process": {
+        "argv": [
+          "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/bin/python",
+          "-m",
+          "benchmarks.generic_motion_v1",
+          "_worker",
+          "--attempt",
+          "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-open_control-000-p01-NTO_REFINED-minimum_distance-f9955056/attempts/0001"
+        ],
+        "exit_code": 0,
+        "timeout_seconds": 60.0,
+        "timed_out": false,
+        "cold_e2e_seconds": 1.2157314168289304,
+        "sampled_gpu_peak_mib": 188.0,
+        "gpu_peak_scope": "Per-process nvidia-smi samples at approximately 0.2 s; not an exact allocator high-water mark.",
+        "includes": "fresh process, imports, CUDA context, model/map load, warm-up, online planning, validation and output"
+      },
+      "timing": {
+        "model_setup_seconds": 0.014560399111360312,
+        "gpu_initialization_warmup_seconds": 0.12432594411075115,
+        "roadmap_load_seconds": 0.0168879646807909,
+        "online_collision_map_seconds": 2.041226252913475e-05,
+        "drm_path_seconds": 0.03409787314012647,
+        "drm_path_validation_seconds": 0.14244499476626515,
+        "trajectory_optimization_seconds": 0.17108536837622523,
+        "validation_seconds": 0.14436633000150323,
+        "cold_e2e_seconds": 0.92146369908005,
+        "warm_query_seconds": 0.49359337287023664
+      },
+      "backend_rounds": [
+        {
+          "path": "benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-open_control-000-p01-NTO_REFINED-minimum_distance-f9955056/attempts/0001/refinement/round_00/nto_collision_backend.json",
+          "native_evaluations": 447,
+          "retained_collision_pairs": 137,
+          "dropped_collision_pairs": 0,
+          "recovery_count": 0,
+          "recovery_seconds": 0,
+          "recovery_failures": [],
+          "recovered_pair_distances_m": []
+        }
+      ],
+      "validation": {
+        "passed": true,
+        "status": "success_validated_numerical",
+        "samples": 1193,
+        "independent_collisions": 0,
+        "native_collisions": 0,
+        "minimum_sampled_clearance_m": 0.013688405342964591,
+        "endpoint_error_rad": 0.0,
+        "velocity_violation": null,
+        "acceleration_violation": null
+      }
+    },
+    {
+      "job_id": "smoke-open_control-000-p01-NTO-minimum_distance-1acff2dd",
+      "method": "NTO",
+      "objective": "minimum_distance",
+      "attempt": "benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-open_control-000-p01-NTO-minimum_distance-1acff2dd/attempts/0001",
+      "terminal": true,
+      "status": "success_validated_numerical",
+      "process": {
+        "argv": [
+          "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/bin/python",
+          "-m",
+          "benchmarks.generic_motion_v1",
+          "_worker",
+          "--attempt",
+          "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-open_control-000-p01-NTO-minimum_distance-1acff2dd/attempts/0001"
+        ],
+        "exit_code": 0,
+        "timeout_seconds": 60.0,
+        "timed_out": false,
+        "cold_e2e_seconds": 1.0656227362342179,
+        "sampled_gpu_peak_mib": 188.0,
+        "gpu_peak_scope": "Per-process nvidia-smi samples at approximately 0.2 s; not an exact allocator high-water mark.",
+        "includes": "fresh process, imports, CUDA context, model/map load, warm-up, online planning, validation and output"
+      },
+      "timing": {
+        "model_setup_seconds": 0.01439253380522132,
+        "gpu_initialization_warmup_seconds": 0.12335073901340365,
+        "roadmap_load_seconds": 0.015140335075557232,
+        "online_collision_map_seconds": 1.937011256814003e-05,
+        "drm_path_seconds": 0.033541519194841385,
+        "drm_path_validation_seconds": 0.14429294178262353,
+        "trajectory_optimization_seconds": 0.03492897702381015,
+        "validation_seconds": 0.14767446089535952,
+        "cold_e2e_seconds": 0.7861498720012605,
+        "warm_query_seconds": 0.36204833211377263
+      },
+      "backend_rounds": [
+        {
+          "path": "benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-open_control-000-p01-NTO-minimum_distance-1acff2dd/attempts/0001/nto_collision_backend.json",
+          "native_evaluations": 750,
+          "retained_collision_pairs": 137,
+          "dropped_collision_pairs": 0,
+          "recovery_count": 0,
+          "recovery_seconds": 0,
+          "recovery_failures": [],
+          "recovered_pair_distances_m": []
+        }
+      ],
+      "validation": {
+        "passed": true,
+        "status": "success_validated_numerical",
+        "samples": 1193,
+        "independent_collisions": 0,
+        "native_collisions": 0,
+        "minimum_sampled_clearance_m": 0.013688405342964591,
+        "endpoint_error_rad": 0.0,
+        "velocity_violation": null,
+        "acceleration_violation": null
+      }
+    },
+    {
+      "job_id": "smoke-open_control-000-p01-NTO_PAPER-minimum_time-27ab16d7",
+      "method": "NTO_PAPER",
+      "objective": "minimum_time",
+      "attempt": "benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-open_control-000-p01-NTO_PAPER-minimum_time-27ab16d7/attempts/0001",
+      "terminal": true,
+      "status": "success_validated_numerical",
+      "process": {
+        "argv": [
+          "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/bin/python",
+          "-m",
+          "benchmarks.generic_motion_v1",
+          "_worker",
+          "--attempt",
+          "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-open_control-000-p01-NTO_PAPER-minimum_time-27ab16d7/attempts/0001"
+        ],
+        "exit_code": 0,
+        "timeout_seconds": 60.0,
+        "timed_out": false,
+        "cold_e2e_seconds": 1.4667543917894363,
+        "sampled_gpu_peak_mib": 188.0,
+        "gpu_peak_scope": "Per-process nvidia-smi samples at approximately 0.2 s; not an exact allocator high-water mark.",
+        "includes": "fresh process, imports, CUDA context, model/map load, warm-up, online planning, validation and output"
+      },
+      "timing": {
+        "model_setup_seconds": 0.014364451169967651,
+        "gpu_initialization_warmup_seconds": 0.1082062697969377,
+        "roadmap_load_seconds": 0.01519116573035717,
+        "online_collision_map_seconds": 2.3161061108112335e-05,
+        "drm_path_seconds": 0.03262326121330261,
+        "drm_path_validation_seconds": 0.1421825927682221,
+        "trajectory_optimization_seconds": 0.16986456839367747,
+        "validation_seconds": 0.4301551152020693,
+        "cold_e2e_seconds": 1.190774803981185,
+        "warm_query_seconds": 0.7764316638931632
+      },
+      "backend_rounds": [
+        {
+          "path": "benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-open_control-000-p01-NTO_PAPER-minimum_time-27ab16d7/attempts/0001/nto_collision_backend.json",
+          "native_evaluations": 2533,
+          "retained_collision_pairs": 137,
+          "dropped_collision_pairs": 0,
+          "recovery_count": 0,
+          "recovery_seconds": 0,
+          "recovery_failures": [],
+          "recovered_pair_distances_m": []
+        }
+      ],
+      "validation": {
+        "passed": true,
+        "status": "success_validated_numerical",
+        "samples": 3576,
+        "independent_collisions": 0,
+        "native_collisions": 0,
+        "minimum_sampled_clearance_m": 0.013684065922126778,
+        "endpoint_error_rad": 0.0,
+        "velocity_violation": null,
+        "acceleration_violation": null
+      }
+    },
+    {
+      "job_id": "smoke-open_control-000-p01-NTO_REFINED-minimum_time-a60d5576",
+      "method": "NTO_REFINED",
+      "objective": "minimum_time",
+      "attempt": "benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-open_control-000-p01-NTO_REFINED-minimum_time-a60d5576/attempts/0001",
+      "terminal": true,
+      "status": "success_validated_numerical",
+      "process": {
+        "argv": [
+          "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/bin/python",
+          "-m",
+          "benchmarks.generic_motion_v1",
+          "_worker",
+          "--attempt",
+          "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-open_control-000-p01-NTO_REFINED-minimum_time-a60d5576/attempts/0001"
+        ],
+        "exit_code": 0,
+        "timeout_seconds": 60.0,
+        "timed_out": false,
+        "cold_e2e_seconds": 1.7662425781600177,
+        "sampled_gpu_peak_mib": 188.0,
+        "gpu_peak_scope": "Per-process nvidia-smi samples at approximately 0.2 s; not an exact allocator high-water mark.",
+        "includes": "fresh process, imports, CUDA context, model/map load, warm-up, online planning, validation and output"
+      },
+      "timing": {
+        "model_setup_seconds": 0.014804107137024403,
+        "gpu_initialization_warmup_seconds": 0.12636029906570911,
+        "roadmap_load_seconds": 0.015328783541917801,
+        "online_collision_map_seconds": 2.4313107132911682e-05,
+        "drm_path_seconds": 0.03442783793434501,
+        "drm_path_validation_seconds": 0.14259042078629136,
+        "trajectory_optimization_seconds": 0.6375854760408401,
+        "validation_seconds": 0.2027329341508448,
+        "cold_e2e_seconds": 1.4485671930015087,
+        "warm_query_seconds": 1.0189979770220816
+      },
+      "backend_rounds": [
+        {
+          "path": "benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-open_control-000-p01-NTO_REFINED-minimum_time-a60d5576/attempts/0001/refinement/round_00/nto_collision_backend.json",
+          "native_evaluations": 3129,
+          "retained_collision_pairs": 137,
+          "dropped_collision_pairs": 0,
+          "recovery_count": 0,
+          "recovery_seconds": 0,
+          "recovery_failures": [],
+          "recovered_pair_distances_m": []
+        }
+      ],
+      "validation": {
+        "passed": true,
+        "status": "success_validated_numerical",
+        "samples": 1672,
+        "independent_collisions": 0,
+        "native_collisions": 0,
+        "minimum_sampled_clearance_m": 0.019025026584333304,
+        "endpoint_error_rad": 0.0,
+        "velocity_violation": null,
+        "acceleration_violation": null
+      }
+    },
+    {
+      "job_id": "smoke-open_control-000-p01-NTO-minimum_time-a56cd28a",
+      "method": "NTO",
+      "objective": "minimum_time",
+      "attempt": "benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-open_control-000-p01-NTO-minimum_time-a56cd28a/attempts/0001",
+      "terminal": true,
+      "status": "success_validated_numerical",
+      "process": {
+        "argv": [
+          "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/bin/python",
+          "-m",
+          "benchmarks.generic_motion_v1",
+          "_worker",
+          "--attempt",
+          "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-open_control-000-p01-NTO-minimum_time-a56cd28a/attempts/0001"
+        ],
+        "exit_code": 0,
+        "timeout_seconds": 60.0,
+        "timed_out": false,
+        "cold_e2e_seconds": 1.5171216102316976,
+        "sampled_gpu_peak_mib": 188.0,
+        "gpu_peak_scope": "Per-process nvidia-smi samples at approximately 0.2 s; not an exact allocator high-water mark.",
+        "includes": "fresh process, imports, CUDA context, model/map load, warm-up, online planning, validation and output"
+      },
+      "timing": {
+        "model_setup_seconds": 0.014308033976703882,
+        "gpu_initialization_warmup_seconds": 0.12673666002228856,
+        "roadmap_load_seconds": 0.015254691243171692,
+        "online_collision_map_seconds": 1.819385215640068e-05,
+        "drm_path_seconds": 0.034781153313815594,
+        "drm_path_validation_seconds": 0.14335942221805453,
+        "trajectory_optimization_seconds": 0.4287546048872173,
+        "validation_seconds": 0.2040142402984202,
+        "cold_e2e_seconds": 1.2438421328552067,
+        "warm_query_seconds": 0.8125406289473176
+      },
+      "backend_rounds": [
+        {
+          "path": "benchmarks/generic_motion_v1/results/repaired_smoke/jobs/smoke-open_control-000-p01-NTO-minimum_time-a56cd28a/attempts/0001/nto_collision_backend.json",
+          "native_evaluations": 3150,
+          "retained_collision_pairs": 137,
+          "dropped_collision_pairs": 0,
+          "recovery_count": 0,
+          "recovery_seconds": 0,
+          "recovery_failures": [],
+          "recovered_pair_distances_m": []
+        }
+      ],
+      "validation": {
+        "passed": true,
+        "status": "success_validated_numerical",
+        "samples": 1672,
+        "independent_collisions": 0,
+        "native_collisions": 0,
+        "minimum_sampled_clearance_m": 0.019025026584333325,
+        "endpoint_error_rad": 0.0,
+        "velocity_violation": null,
+        "acceleration_violation": null
+      }
+    }
+  ],
+  "notes": [
+    "Refined top-level copy is not double-counted; each native round is examined once.",
+    "Native evaluation count may remain initialization0 if external watchdog killed a solve before final save; this is incomplete telemetry, not zero work.",
+    "Numerical collision/solver failures and true timeouts are preserved, not classified as backend implementation bugs.",
+    "No final aggregate success claim while jobs are incomplete."
+  ]
+}
