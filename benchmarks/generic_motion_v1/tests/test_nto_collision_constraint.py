@@ -167,5 +167,38 @@ def test_legacy_nto_uses_same_backend_with_real_ipopt(objective,tmp_path):
     assert np.max(np.abs(sample['q'][[0,-1]]-[start,goal]))<1e-6
     assert model.clearance(sample['q']).min()>.01
     record=json.loads((tmp_path/'nto_collision_backend.json').read_text())
-    assert record['native_evaluations']>0
+    assert record['native_evaluations']==0  # Native fast path has no Python instrumentation.
+    assert record['execution']['solver_calls'][0]['mode']=='native'
+    assert record['execution']['solver_calls'][0]['solver_success']
     assert record['collision_pairs']==137 and record['collision_pairs_dropped']==0
+
+
+@pytest.mark.parametrize('nonfinite_field',['controls','duration'])
+def test_legacy_failed_nonfinite_result_is_saved_without_native_curve_construction(nonfinite_field,tmp_path,monkeypatch):
+    from benchmarks.generic_motion_v1.roadmap import load_config
+    from benchmarks.generic_motion_v1.runners.csdecomp_baseline import _nto
+    from benchmarks.generic_motion_v1.runners.validate import sample_candidate
+    from benchmarks.generic_motion_v1.runners.nto_collision_constraint import NativeFirstCollisionSolve
+    model=Model()
+    start=np.asarray(json.loads((HERE/'manifests/dev.jsonl').read_text().splitlines()[0])['q_start'])
+    goal=start.copy();goal[0]+=.02
+    case=dict(q_start=start.tolist(),q_goal=goal.tolist(),_objective='minimum_time')
+    class FailedResult:
+        def GetSolution(self,variables):
+            shape=np.shape(variables)
+            if not shape:return np.nan if nonfinite_field=='duration' else 1.
+            if len(shape)==2:
+                return np.full(shape,np.nan) if nonfinite_field=='controls' else np.tile(start[:,None],(1,shape[1]))
+            return np.full(shape,np.nan)
+        def is_success(self):return False
+        def get_solution_result(self):return 'failed_nonfinite_fixture'
+        def get_optimal_cost(self):return np.nan
+        def get_solver_details(self):return SimpleNamespace(status=-1)
+    monkeypatch.setattr(NativeFirstCollisionSolve,'solve',lambda *a,**k:FailedResult())
+    candidate=_nto(np.array([start,goal]),model,case,load_config(),tmp_path,time.perf_counter()+20)
+    assert not candidate['solver_success']
+    raw=np.load(tmp_path/'nto_solver_raw.npz')
+    assert not np.isfinite(raw[nonfinite_field]).all()
+    assert json.loads((tmp_path/'nto_solver_result.json').read_text())['solver_status']=='failed_nonfinite_fixture'
+    with pytest.raises(ValueError,match='Malformed B-spline'):
+        sample_candidate(candidate)

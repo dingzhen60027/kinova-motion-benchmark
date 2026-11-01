@@ -13,6 +13,7 @@ from __future__ import annotations
 import itertools
 from pathlib import Path
 import time
+import traceback
 
 import numpy as np
 
@@ -126,6 +127,10 @@ class RobustMinimumDistanceConstraint:
                       gradient_difference_step_rad=DIFFERENCE_STEP_RAD,
                       aggregation="unchanged native MinimumValueLowerBoundConstraint",
                       ordinary_values_and_gradients="unmodified native MinimumDistanceLowerBoundConstraint")
+        if hasattr(self, "execution"):
+            record["execution"] = self.execution
+            record["native_evaluations_scope"] = (
+                "Guarded Python callback only; direct native solver evaluations are not instrumented")
         if self.out is not None:
             write(self.out, record)
         return record
@@ -224,3 +229,127 @@ class RobustMinimumDistanceConstraint:
             event["seconds"] = time.perf_counter()-began
             self.events.append(event)
             self.save()
+
+
+class NativeFirstCollisionSolve:
+    """Use native bindings; retry only a known Drake assertion, once in-budget.
+
+    The guarded evaluator remains unchanged. Switching evaluators preserves
+    every collocation location and the complete original decision-variable
+    initial guess. It does not retry ordinary unsuccessful solver returns.
+    """
+
+    def __init__(self, trajectory, backend, locations, recovery_state=None):
+        self.trajectory, self.backend = trajectory, backend
+        self.program = trajectory.get_mutable_prog()
+        self.recovery_state = (dict(guarded=False, restarts=0, solver_invocations=0)
+                               if recovery_state is None else recovery_state)
+        self.inherited_guarded = bool(self.recovery_state["guarded"])
+        self.locations = tuple(float(s) for s in locations)
+        if (not self.locations or not np.isfinite(self.locations).all()
+                or any(s <= 0 or s >= 1 for s in self.locations)
+                or any(a >= b for a, b in zip(self.locations, self.locations[1:]))):
+            raise ValueError("Native collision locations must be ordered distinct interior parameters")
+        evaluator = backend.constraint if self.inherited_guarded else backend.original
+        self.bindings = [trajectory.AddPathPositionConstraint(evaluator, s)
+                         for s in self.locations]
+        self.execution = dict(policy="native_first_exact_BoxBoxGradient_one_guarded_retry",
+                              solver_calls=[], guarded_retry_started=False,
+                              collision_bindings=len(self.bindings),
+                              collocation_locations=self.locations,
+                              guarded_mode_inherited=self.inherited_guarded,
+                              original_initial_guess_restored=False)
+        backend.execution = self.execution
+        backend.save()
+
+    def solve(self, solver, deadline, *, timeout_option, log_path=None, solver_options=None):
+        """Both native calls and recovery share this absolute deadline."""
+        if not np.isfinite(deadline):
+            raise ValueError("Native collision solve requires a finite deadline")
+        variables = self.program.decision_variables()
+        initial = np.asarray(self.program.GetInitialGuess(variables), float).copy()
+        if not np.isfinite(initial).all():
+            raise ValueError("Native collision solve initial decision variables must be finite")
+        original_constraint_count = len(self.program.GetAllConstraints())
+        self.execution.update(deadline_monotonic_seconds=float(deadline),
+                              initial_decision_variables=initial,
+                              initial_constraint_count=original_constraint_count)
+        self.backend.save()
+        for guarded in ((True,) if self.inherited_guarded else (False, True)):
+            remaining = float(deadline) - time.perf_counter()
+            if remaining <= 0:
+                self.execution["budget_exhausted_before"] = "guarded_retry" if guarded else "native_solve"
+                self.backend.save()
+                raise TimeoutError("Native collision solve exhausted its shared deadline")
+            self.program.SetSolverOption(solver.solver_id(), timeout_option, remaining)
+            entry = dict(mode="guarded" if guarded else "native",
+                         remaining_seconds=remaining, time_limit_option=timeout_option,
+                         status="running", log_path=None if log_path is None else str(log_path))
+            self.execution["solver_calls"].append(entry)
+            self.recovery_state["solver_invocations"] += 1
+            self.execution["query_solver_invocations"] = self.recovery_state["solver_invocations"]
+            if guarded and not self.inherited_guarded:
+                self.execution["guarded_retry_started"] = True
+                self.recovery_state["restarts"] += 1
+                self.execution["query_recovery_restarts"] = self.recovery_state["restarts"]
+            self.backend.save()
+            began = time.perf_counter()
+            try:
+                result = solver.Solve(self.program, None, solver_options)
+                values = np.asarray(result.GetSolution(variables), float)
+                finite = bool(np.isfinite(values).all())
+                if not finite:
+                    if self.backend.out is not None:
+                        np.savez_compressed(self.backend.out.parent / "nto_nonfinite_solver_result.npz",
+                                            decision_variables=values)
+                entry.update(status="returned", solver_success=bool(result.is_success()),
+                             solver_status=str(result.get_solution_result()),
+                             decision_variables_finite=finite)
+                # Preserve ordinary solver-failure returns, including their
+                # raw variables/details. The existing candidate serializer and
+                # strict common validator reject nonfinite trajectories.
+                return result
+            except BaseException as exc:
+                # Python Drake can map the upstream assertion to SystemExit;
+                # solver callbacks may instead wrap it as RuntimeError.
+                known = isinstance(exc, (RuntimeError, SystemExit)) and is_known_boxbox_error(exc)
+                entry.update(status="exception", exception=repr(exc),
+                             traceback=traceback.format_exc(), known_boxbox_assertion=known)
+                if guarded or not known:
+                    raise
+                if log_path is not None:
+                    source = Path(log_path)
+                    if source.exists():
+                        retained = source.with_name(source.stem + ".native_exception" + source.suffix)
+                        if retained.exists():
+                            raise FileExistsError("Refusing to overwrite the first native solver failure log")
+                        source.rename(retained)
+                        entry["retained_log_path"] = str(retained)
+                        entry["log_path"] = str(retained)
+            finally:
+                entry["wall_seconds"] = time.perf_counter() - began
+                self.backend.save()
+            # Only the first precisely matched exception reaches this block.
+            # If work consumed the budget, preserve the error without changing
+            # any bindings or starting a further solver invocation.
+            if time.perf_counter() >= deadline:
+                self.execution["budget_exhausted_before"] = "guarded_binding_replacement"
+                self.backend.save()
+                raise TimeoutError("Native assertion recovery exhausted its shared deadline")
+            removed = [self.program.RemoveConstraint(binding) for binding in self.bindings]
+            self.execution["removed_binding_counts"] = removed
+            if any(count != 1 for count in removed):
+                self.backend.save()
+                raise RuntimeError("Native collision recovery could not remove every original binding exactly once")
+            self.bindings = [self.trajectory.AddPathPositionConstraint(self.backend.constraint, s)
+                             for s in self.locations]
+            if len(self.program.GetAllConstraints()) != original_constraint_count:
+                raise RuntimeError("Native collision recovery changed the number of constraints")
+            self.program.SetInitialGuess(variables, initial)
+            restored = np.asarray(self.program.GetInitialGuess(variables), float)
+            if not np.array_equal(restored, initial):
+                raise RuntimeError("Native collision recovery did not preserve the original initial guess")
+            self.execution["original_initial_guess_restored"] = True
+            self.recovery_state["guarded"] = True
+            self.backend.save()
+        raise AssertionError("Native collision recovery exceeded one retry")

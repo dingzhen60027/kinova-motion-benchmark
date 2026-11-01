@@ -314,7 +314,8 @@ def _nto(path,model,case,cfg,out,deadline):
     """
     from pydrake.all import (BsplineBasis,BsplineTrajectory,KnotVectorType,
         KinematicTrajectoryOptimization,IpoptSolver)
-    from .nto_collision_constraint import RobustMinimumDistanceConstraint
+    from .nto_collision_constraint import RobustMinimumDistanceConstraint, NativeFirstCollisionSolve
+    from .paper_nto import _save_result
     timed=case['_objective']=='minimum_time'
     options=cfg['nto'];start=time.perf_counter()
     native=model.nto_plant()
@@ -340,10 +341,8 @@ def _nto(path,model,case,cfg,out,deadline):
     else:
         traj.AddPathLengthCost();traj.AddDurationConstraint(1.,1.)
     collision_backend=RobustMinimumDistanceConstraint(native,options['clearance_m'],options['influence_distance_m'],out)
-    constraint=collision_backend.constraint
     locations=np.arange(1,options['collocation_points']+1)/(options['collocation_points']+1)
-    for s in locations:
-        traj.AddPathPositionConstraint(constraint,float(s))
+    collision_solve=NativeFirstCollisionSolve(traj,collision_backend,locations)
     remaining=min(cfg['optimizer_budget_seconds'],deadline-time.perf_counter())
     if remaining<=0:
         raise TimeoutError('NTO construction exhausted online budget')
@@ -354,19 +353,21 @@ def _nto(path,model,case,cfg,out,deadline):
         prog.SetSolverOption(solver.solver_id(),key,value)
     write(out/'nto_parameters.json',dict(parameters=parameters,collision_pairs=native.collision_pair_count,
           collocation_locations=locations,clearance_m=options['clearance_m'],
-          collision_backend='native_Drake_with_issue21675_near_contact_recovery',
+          collision_backend='native_first_Drake_exact_issue21675_guarded_retry',
           collision_backend_evidence='nto_collision_backend.json',
           transcription='Drake KTO + Ipopt adaptation; fixed DRM initialization; no success filtering',
           construction_seconds=time.perf_counter()-start))
     try:
-        result=solver.Solve(prog)
+        result=collision_solve.solve(solver,min(deadline,time.perf_counter()+remaining),
+                                    timeout_option='max_cpu_time',log_path=parameters['output_file'])
     finally:
         collision_backend.save()
-    curve=traj.ReconstructTrajectory(result)
+    controls,duration,normalized_knots,status=_save_result(result,traj,out)
+    with np.errstate(invalid='ignore',over='ignore'):
+        knots=normalized_knots*duration
     return dict(kind='bspline',objective=case['_objective'],solver='IPOPT',solver_success=bool(result.is_success()),
                 solver_status=str(result.get_solution_result()),spline_order=order,
-                controls=np.asarray([p.ravel() for p in curve.control_points()]),knots=np.asarray(curve.basis().knots()),
-                duration=float(curve.end_time()-curve.start_time()),provenance='adapted_Drake_KTO_NTO')
+                controls=controls,knots=knots,duration=duration,provenance='adapted_Drake_KTO_NTO')
 
 
 def _input_endpoints(case):

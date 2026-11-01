@@ -155,7 +155,7 @@ def _save_result(result, traj, out):
 
 
 def paper_nto(path, model, case, cfg, out, deadline, *, _profile=None,
-              _locations=None, _initial_candidate=None):
+              _locations=None, _initial_candidate=None, _collision_recovery_state=None):
     """Return the common runner candidate with independent validation pending.
 
     The caller owns input/seed validation and the external wall-clock watchdog.
@@ -164,7 +164,7 @@ def paper_nto(path, model, case, cfg, out, deadline, *, _profile=None,
     """
     from pydrake.all import (CommonSolverOption, KinematicTrajectoryOptimization,
                             SolverOptions)
-    from .nto_collision_constraint import RobustMinimumDistanceConstraint
+    from .nto_collision_constraint import RobustMinimumDistanceConstraint, NativeFirstCollisionSolve
     profile = PROFILE if _profile is None else _profile
     out = Path(out)
     out.mkdir(parents=True, exist_ok=True)
@@ -220,7 +220,6 @@ def paper_nto(path, model, case, cfg, out, deadline, *, _profile=None,
         traj.AddDurationConstraint(1.0, 1.0)
     collision_backend = RobustMinimumDistanceConstraint(
         native, profile["clearance_m"], profile["influence_distance_m"], out)
-    constraint = collision_backend.constraint
     locations = np.arange(1, profile["collocation_parameter_Nc"], dtype=float) / profile["collocation_parameter_Nc"]
     if _locations is not None:
         locations = np.asarray(_locations, dtype=float)
@@ -228,8 +227,8 @@ def paper_nto(path, model, case, cfg, out, deadline, *, _profile=None,
                 or np.any(locations <= 0) or np.any(locations >= 1)
                 or np.any(np.diff(locations) <= 0)):
             raise ValueError("Refinement locations must be sorted distinct interior parameters")
-    for s in locations:
-        traj.AddPathPositionConstraint(constraint, float(s))
+    collision_solve = NativeFirstCollisionSolve(traj, collision_backend, locations,
+                                               _collision_recovery_state)
     remaining = min(profile["maximum_optimizer_seconds"], float(cfg["optimizer_budget_seconds"]),
                     float(deadline) - time.perf_counter())
     solver = _solver(objective)
@@ -288,7 +287,7 @@ def paper_nto(path, model, case, cfg, out, deadline, *, _profile=None,
                       knot_refinement="shape-preserving longest-knot-span bisection" if timed and profile.get("minimum_time_control_points") is not None else None,
                       warm_start_duration_seconds=initial_duration, spline_order=order,
                       collision_evaluator="Drake MinimumDistanceLowerBoundConstraint on canonical model.nto_plant()",
-                      collision_backend="native_Drake_with_issue21675_near_contact_recovery",
+                      collision_backend="native_first_Drake_exact_issue21675_guarded_retry",
                       collision_backend_evidence="nto_collision_backend.json",
                       refinement_warm_start=_initial_candidate is not None,
                       legacy_cfg_nto_used=False, construction_seconds=time.perf_counter() - started,
@@ -302,7 +301,10 @@ def paper_nto(path, model, case, cfg, out, deadline, *, _profile=None,
         prog.SetSolverOption(solver.solver_id(), key, value)
     solve_started = time.perf_counter()
     try:
-        result = solver.Solve(prog, None, solve_options)
+        result = collision_solve.solve(
+            solver, min(float(deadline), solve_started + remaining),
+            timeout_option="max_cpu_time" if timed else "Time limit",
+            log_path=logging["path"], solver_options=solve_options)
     except Exception as exc:
         write(out / "nto_solver_result.json", dict(solver=name, solver_success=False,
               solver_status="exception", error=repr(exc), traceback=traceback.format_exc(),

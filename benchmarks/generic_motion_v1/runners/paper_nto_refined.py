@@ -9,6 +9,7 @@ enough freedom after DRM simplification. CPU checks are not a certificate.
 from __future__ import annotations
 
 from copy import deepcopy
+import json
 from pathlib import Path
 import shutil
 import time
@@ -29,14 +30,14 @@ PROFILE.update(
     snopt_total_iterations=100000,
     snopt_minor_iterations=500,
     refinement_guard_m=0.0005,
-    maximum_native_solves=4,
+    maximum_refinement_rounds=4,
     maximum_collocation_points=600,
     refinement_geometry_batch=32,
     minimum_time_control_points=16,
 )
 PROFILE["sources"].update(
     clearance="Author archived appendix describes epsilon as the minimum admissible distance but gives no value. The fixed 1 mm value is a declared local development policy.",
-    refinement="Local constraint generation: after each native solve, add the minimum-clearance sampled parameter in each current interval with clearance below 0.5 mm. At most 4 solves and 600 total points. No case-specific policy.",
+    refinement="Local constraint generation: after each refinement round, add the minimum-clearance sampled parameter in each current interval with clearance below 0.5 mm. At most 4 rounds and 600 total points. One extra solver invocation is allowed only after the exact known Drake assertion; subsequent rounds retain the guarded evaluator. All invocations share the original deadline. No case-specific policy.",
     time_parameterization="Declared adapter choice, matching the existing legacy NTO basis policy: bisect longest knot spans to at least 16 time-spline controls, preserving the entire initial curve. Distance controls are unchanged. All methods retain identical derivative limits and endpoint conditions.",
     iteration_limits="Local policy: SNOPT total 100000 / major 2000 / minor 500; IPOPT max_iter 2000. All construction, solves and refinement checks share the external online deadline.",
 )
@@ -107,7 +108,18 @@ def _publish_native_artifacts(source, out, first):
     for name in names:
         path = source / name
         if path.exists():
-            shutil.copyfile(path, out / name)
+            if name == "nto_collision_backend.json":
+                backend = json.loads(path.read_text())
+                backend["original_round_evidence"] = str(path.relative_to(out))
+                for call in backend.get("execution", {}).get("solver_calls", []):
+                    for key in ("log_path", "retained_log_path"):
+                        if call.get(key):
+                            log = Path(call[key])
+                            absolute = log.resolve() if log.is_absolute() else (source / log).resolve()
+                            call[key] = str(absolute.relative_to(out.resolve()))
+                write(out / name, backend)
+            else:
+                shutil.copyfile(path, out / name)
 
 
 def paper_nto_refined(path, model, case, cfg, out, deadline):
@@ -148,8 +160,10 @@ def paper_nto_refined(path, model, case, cfg, out, deadline):
                     stopping_reason="running")
     write(out / "nto_refinement.json", manifest)
     candidate = None
+    recovery_state = dict(guarded=False, restarts=0, solver_invocations=0)
+    manifest.update(refinement_rounds=0, solver_invocations=0, collision_recovery_restarts=0)
     try:
-        for index in range(PROFILE["maximum_native_solves"]):
+        for index in range(PROFILE["maximum_refinement_rounds"]):
             if time.perf_counter() >= deadline:
                 raise TimeoutError("NTO refinement exhausted shared online budget")
             target = out / "refinement" / f"round_{index:02d}"
@@ -158,13 +172,24 @@ def paper_nto_refined(path, model, case, cfg, out, deadline):
                        collocation_points=len(locations), collocation_locations=locations,
                        remaining_seconds=deadline-time.perf_counter(), status="running")
             manifest["rounds"].append(row)
+            manifest["refinement_rounds"] = len(manifest["rounds"])
+            # Until a native round returns, the backend's incremental trace is
+            # authoritative; a watchdog may stop it before this finally runs.
+            manifest["solver_invocations"] = None
+            row["solver_invocations"] = None
+            row["collision_backend_evidence"] = str((target / "nto_collision_backend.json").relative_to(out))
             write(out / "nto_refinement.json", manifest)
             tic = time.perf_counter()
+            previous_invocations = recovery_state["solver_invocations"]
             try:
                 candidate = paper_nto(path, model, case, cfg, target, deadline,
                                      _profile=profile, _locations=locations,
-                                     _initial_candidate=candidate)
+                                     _initial_candidate=candidate,
+                                     _collision_recovery_state=recovery_state)
             finally:
+                row["solver_invocations"] = recovery_state["solver_invocations"] - previous_invocations
+                manifest["solver_invocations"] = recovery_state["solver_invocations"]
+                manifest["collision_recovery_restarts"] = recovery_state["restarts"]
                 _publish_native_artifacts(target, out, first=index == 0)
             row.update(solve_and_construction_seconds=time.perf_counter()-tic,
                        solver_success=candidate["solver_success"],
@@ -184,8 +209,8 @@ def paper_nto_refined(path, model, case, cfg, out, deadline):
             if not len(added):
                 manifest["stopping_reason"] = "no_new_interior_refinement_point"
                 break
-            if index + 1 == PROFILE["maximum_native_solves"]:
-                manifest["stopping_reason"] = "native_solve_limit"
+            if index + 1 == PROFILE["maximum_refinement_rounds"]:
+                manifest["stopping_reason"] = "refinement_round_limit"
                 break
             row["added_collocation_locations"] = added
             locations = np.unique(np.r_[locations, added])
@@ -193,7 +218,9 @@ def paper_nto_refined(path, model, case, cfg, out, deadline):
         if time.perf_counter() >= deadline:
             raise TimeoutError("NTO refinement exhausted shared online budget after geometry check")
         candidate.update(refinement_profile=PROFILE["name"],
-                         refinement_native_solves=len(manifest["rounds"]),
+                         refinement_native_solves=recovery_state["solver_invocations"],
+                         refinement_rounds=len(manifest["rounds"]),
+                         solver_invocations=recovery_state["solver_invocations"],
                          refinement_stopping_reason=manifest["stopping_reason"],
                          refinement_final_geometry_guard_passed=guard["passed"],
                          refinement_seconds=time.perf_counter()-started)

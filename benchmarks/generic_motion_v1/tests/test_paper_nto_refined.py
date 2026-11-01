@@ -2,6 +2,7 @@
 import json
 import re
 import time
+from pathlib import Path
 from types import SimpleNamespace
 
 import numpy as np
@@ -42,12 +43,15 @@ def test_real_cpu_refined_solver_artifacts_and_unmodified_original(tmp_path, obj
     assert candidate["solver_success"]
     assert candidate["refinement_final_geometry_guard_passed"]
     assert candidate["refinement_native_solves"] == 1
+    assert candidate["solver_invocations"] == candidate["refinement_rounds"] == 1
     assert candidate["profile"] == PROFILE["name"]
     assert ORIGINAL["clearance_m"] == 0
     assert "snopt_total_iterations" not in ORIGINAL
     record = json.loads((tmp_path / "nto_refinement.json").read_text())
     assert record["final_validation_required"]
     assert record["rounds"][0]["collocation_points"] == 149
+    assert record["solver_invocations"] == record["refinement_rounds"] == 1
+    assert record["collision_recovery_restarts"] == 0
     assert (tmp_path / "refinement/round_00/candidate.npz").exists()
     assert (tmp_path / "refinement/round_00/refinement_geometry.npz").exists()
     params = json.loads((tmp_path / "nto_parameters.json").read_text())
@@ -179,3 +183,54 @@ def test_refined_config_override_and_second_native_round(tmp_path):
                        _profile=PROFILE, _initial_candidate=sixteen)
     assert second["solver_success"] and len(second["controls"]) == 16
     assert json.loads((tmp_path / "second/nto_parameters.json").read_text())["refinement_warm_start"]
+
+
+@pytest.mark.parametrize("recover", [False, True])
+def test_refinement_round_limit_is_distinct_from_one_query_recovery(tmp_path, monkeypatch, recover):
+    """Force four refinement rounds without optimization or geometry work."""
+    import importlib
+    module = importlib.import_module("benchmarks.generic_motion_v1.runners.paper_nto_refined")
+    inherited = []
+    def fake_paper(path, model, case, cfg, target, deadline, **kwargs):
+        state = kwargs["_collision_recovery_state"]
+        inherited.append(state["guarded"])
+        if recover and len(inherited) == 1:
+            state.update(guarded=True, restarts=1)
+            state["solver_invocations"] += 2
+        else:
+            state["solver_invocations"] += 1
+        return dict(kind="bspline", objective="minimum_distance", solver_success=False,
+                    solver_status="test candidate", controls=np.zeros((2, 7)),
+                    knots=np.array([0., 0., 1., 1.]), duration=1.)
+    monkeypatch.setattr(module, "paper_nto", fake_paper)
+    monkeypatch.setattr(module, "_geometry_guard", lambda *a: (np.array([.001]), np.array([-.1]), {"passed": False}))
+    monkeypatch.setattr(module, "refinement_locations", lambda *a: np.array([.0001 * len(inherited)]))
+    candidate = module.paper_nto_refined(np.zeros((2, 7)), object(), {"_objective": "minimum_distance"},
+                                       load_config(), tmp_path, time.perf_counter()+10)
+    assert len(inherited) == PROFILE["maximum_refinement_rounds"] == 4
+    assert inherited == ([False, True, True, True] if recover else [False]*4)
+    assert candidate["refinement_rounds"] == 4
+    assert candidate["solver_invocations"] == candidate["refinement_native_solves"] == 4+int(recover)
+    record = json.loads((tmp_path / "nto_refinement.json").read_text())
+    assert record["solver_invocations"] == sum(r["solver_invocations"] for r in record["rounds"])
+    assert record["collision_recovery_restarts"] == int(recover)
+    assert record["stopping_reason"] == "refinement_round_limit"
+
+
+def test_published_backend_keeps_first_exception_log_reference(tmp_path):
+    from benchmarks.generic_motion_v1.runners.paper_nto_refined import _publish_native_artifacts
+    source = tmp_path / "refinement/round_00"; source.mkdir(parents=True)
+    error = source / "snopt.native_exception.log"; error.write_text("original failure")
+    final = source / "snopt.log"; final.write_text("second invocation")
+    payload = {"execution": {"solver_calls": [{"log_path": str(error), "retained_log_path": str(error)},
+                                                {"log_path": str(final)}]}}
+    (source / "nto_collision_backend.json").write_text(json.dumps(payload))
+    _publish_native_artifacts(source, tmp_path, True)
+    published = json.loads((tmp_path / "nto_collision_backend.json").read_text())
+    assert published["original_round_evidence"] == "refinement/round_00/nto_collision_backend.json"
+    for call in published["execution"]["solver_calls"]:
+        for key in ("log_path", "retained_log_path"):
+            if key in call:
+                assert not Path(call[key]).is_absolute()
+                assert (tmp_path / call[key]).is_file()
+    assert error.read_text() == "original failure"
