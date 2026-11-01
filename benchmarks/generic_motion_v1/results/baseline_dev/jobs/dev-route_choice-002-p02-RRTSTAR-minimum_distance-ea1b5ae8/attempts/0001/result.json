@@ -1,0 +1,56 @@
+{
+  "status": "success_validated_numerical",
+  "problem_id": "dev-route_choice-002-p02",
+  "scene_id": "dev-route_choice-002",
+  "family": "route_choice",
+  "objective": "minimum_distance",
+  "method": "RRTSTAR",
+  "method_seed": 3427751395,
+  "roadmap_id": "kinova7-full-n6000-s1-e258c5f9914c",
+  "frontend_success": null,
+  "frontend_native_success": null,
+  "roadmap_used": false,
+  "source_code_commit": "7bdc793eed7e5ec7aab88c15cdeeea8be7db412f",
+  "source_sha256": {
+    "runner": "f44db89373a06deb581a72c6fabb85dd18ce5704fc5d907f1bf3eef151cbef96",
+    "validator": "12086b43b1735ab8455b260235eb0c92b336cb2b2cbaef6c286d1d2f5f376b43"
+  },
+  "timing": {
+    "model_setup_seconds": 0.014363786205649376,
+    "gpu_initialization_warmup_seconds": 0.1282453932799399,
+    "sampling_planning_seconds": 54.17155526112765,
+    "validation_seconds": 0.9372430951334536,
+    "cold_e2e_seconds": 55.5225855698809,
+    "warm_query_seconds": 55.10967182042077
+  },
+  "metrics": {
+    "cost": 7.400367406375391,
+    "cost_unit": "rad",
+    "path_length_rad": 7.400367406375391,
+    "normalized_path_length": 1.2155413227451142,
+    "minimum_sampled_clearance_m": 0.0067663806840723845,
+    "duration_s": null,
+    "regions": 0,
+    "facets": 0
+  },
+  "budget_seconds": 60.0,
+  "reproduction_fidelity": "Official native OMPL RRTstar with canonical CSD state/motion callbacks; not exact author FR3/hardware reproduction",
+  "seed_semantics": "method_seed seeds native OMPL sampling; roadmap identity only pairs the repetition",
+  "offline_roadmap_seconds": null,
+  "initialization": "Fixed endpoints; independent tree search; roadmap identifier is repetition pairing only",
+  "timing_scope": {
+    "cold": "worker function entry through final validation/failure; process startup measured separately by outer runner",
+    "warm": "same actual cold execution minus one-time model/dependency/GPU/roadmap setup; not a second timed solve",
+    "offline": "DRM construction is recorded separately and never added to query latency"
+  },
+  "gpu_memory": {
+    "sampled_peak_process_allocation_mib": 190,
+    "samples": 1,
+    "sampling_period_s": 0.2,
+    "method": "nvidia-smi process allocation; sampled peak, not CUDA allocator exact high water mark",
+    "error": "TimeoutExpired(['nvidia-smi', '--query-compute-apps=pid,used_gpu_memory', '--format=csv,noheader,nounits'], 2)"
+  },
+  "final_stage": "validation",
+  "cold_e2e_seconds": 55.80060274992138,
+  "sampled_gpu_peak_mib": 190.0
+}

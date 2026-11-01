@@ -127,7 +127,24 @@ The serial evaluation is frozen at runtime commit `6c3144ff64`; each `run_manife
 | `baseline_dev` | 0, 1, 2 | 2,520 | 2,520 |
 | `baseline_test` | 0 | 5,880 | 5,530 |
 
-These post-repair cohorts are prepared for serial execution; no full-test score is claimed. The preceding native-first smoke at `6ad41275c7` completed **140/140** sealed calls: 71 numerical successes, 28 invalid inputs, 15 timeouts, 14 searches without a solution, 8 validation failures and 4 solver failures, with no infrastructure error. Its development follow-up stopped safely after **402/2,520** sealed calls when a float32 region-handoff defect was reproduced. All 402 observations and the complete smoke remain as diagnostics; no active query was interrupted, and the old test plan had not started.
+The repaired smoke and development cohorts are complete. Smoke has **140/140** sealed calls: 71 numerical successes, 28 invalid inputs, 15 timeouts, 14 searches without a solution, 8 validation failures and 4 solver failures. Dev has **2,520/2,520** sealed calls: 1,545 numerical successes, 587 searches without a solution, 127 timeouts, 150 validation failures and 111 solver failures. Both pass full receipt checks with **zero infrastructure errors**. Test is prepared but has not started at this checkpoint; no repaired full-test score is claimed. [Development evidence](benchmarks/generic_motion_v1/results/logs/baseline_dev_publication_acceptance.json).
+
+Development successes below use all 60 fixed problems and three paired seeds: **180 legal calls per method and supported track**. They describe reliability, not a common-success cost comparison.
+
+| Method | Path successes / 180 | Time successes / 180 |
+|---|---:|---:|
+| `EI_ZO` | 131 | 131 |
+| `LGCS` | 127 | — |
+| `NTO_PAPER` | 44 | 101 |
+| `NTO_REFINED` | 99 | 109 |
+| `NTO` | 44 | 107 |
+| `RRTCONNECT` | 146 | — |
+| `RRTSTAR` | 129 | — |
+| `CHOMP` | 130 | — |
+| `STOMP` | 131 | — |
+| `TRAJOPT` | 116 | — |
+
+The preceding native-first smoke at `6ad41275c7` and its **402/2,520** completed development prefix remain separate diagnostics. The prefix stopped safely when the region-handoff defect was reproduced; no active query was interrupted, no old test query had started, and no observation was selected by outcome to replace a repaired-cohort result.
 
 These counts cover all **10 methods / 14 supported method–track combinations**. Use `evaluate.py status --run results/<run>` for actual progress. Final summaries are withheld until every declared call has a terminal record. Historical completed scores remain in `records.csv` and `summary.csv` under `current_dev`, `current_test` and `current_dev_repaired_s000`; they are not scores for the repaired defaults.
 
