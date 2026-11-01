@@ -285,3 +285,80 @@ def test_fixed_initial_region_gate_rejects_different_saved_regions(tmp_path):
     rows, _ = results.collect([left, right])
     with pytest.raises(ValueError, match="Shared initial regions"):
         results._selected_rows(rows, spec)
+
+
+def test_figure_scope_does_not_modify_original_rows_or_memberships():
+    rows = [
+        {"record_id": "old", "selected_comparisons": ["current_old"]},
+        {"record_id": "shared", "selected_comparisons": ["current_old", "current_new"]},
+        {"record_id": "new", "selected_comparisons": ["current_new"]},
+        {"record_id": "unselected", "selected_comparisons": []},
+    ]
+    summary = [{"comparison": "current_old"}, {"comparison": "current_new"}]
+    original = json.loads(json.dumps([rows, summary]))
+    scoped_rows, scoped_summary = results._figure_inputs(rows, summary, {"current_new"})
+    assert [row["record_id"] for row in scoped_rows] == ["shared", "new"]
+    assert all(row["selected_comparisons"] == ["current_new"] for row in scoped_rows)
+    assert scoped_summary == [{"comparison": "current_new"}]
+    assert [rows, summary] == original
+    # Even a downstream change to the copied membership cannot contaminate CSV data.
+    scoped_rows[0]["selected_comparisons"].append("renderer_local")
+    assert [rows, summary] == original
+
+
+def test_figure_scope_absent_preserves_existing_behavior():
+    rows, summary = [{"selected_comparisons": ["current_old"]}], [{"comparison": "current_old"}]
+    scope = results._figure_comparisons({"comparisons": [{"id": "current_old"}]})
+    actual_rows, actual_summary = results._figure_inputs(rows, summary, scope)
+    assert actual_rows is rows
+    assert actual_summary is summary
+
+
+@pytest.mark.parametrize("scope", [
+    [], None, "current_new", [""], [" "], [7], ["current_new", "current_new"], ["typo"],
+])
+def test_invalid_figure_scope_rejected_before_export(tmp_path, monkeypatch, scope):
+    selection = tmp_path / "selection.json"
+    write(selection, {"comparisons": [{"id": "current_new", "runs": []}], "figure_comparisons": scope})
+    def cannot_discover(*args, **kwargs):
+        pytest.fail("Invalid figure scope must fail before discovery or any output writes")
+    monkeypatch.setattr(results, "discover", cannot_discover)
+    with pytest.raises(ValueError, match="figure_comparisons"):
+        results.export(tmp_path / "output", roots=[tmp_path], selection=selection)
+    assert not (tmp_path / "output").exists()
+
+
+def test_export_figure_scope_keeps_full_csv_history(tmp_path, monkeypatch):
+    rows = [
+        {"record_id": "old", "selected_comparisons": ["current_old"], "status": "timeout"},
+        {"record_id": "new", "selected_comparisons": ["current_old", "current_new"],
+         "status": "no_solution_within_budget"},
+    ]
+    summary = [
+        {"comparison": "current_old", "row_type": "status", "finished_legal_jobs": 2},
+        {"comparison": "current_new", "row_type": "status", "finished_legal_jobs": 1},
+    ]
+    original = json.loads(json.dumps([rows, summary]))
+    selection = tmp_path / "selection.json"
+    write(selection, {"comparisons": [{"id": key, "runs": []} for key in ("current_old", "current_new")],
+                      "figure_comparisons": ["current_new"]})
+    monkeypatch.setattr(results, "discover", lambda _: [])
+    monkeypatch.setattr(results, "collect", lambda *a, **kw: (rows, []))
+    monkeypatch.setattr(results, "summarize", lambda *a: summary)
+    captured = []
+    monkeypatch.setattr(results, "_figures", lambda *args: captured.append(args))
+    output = tmp_path / "output"
+    report = results.export(output, roots=[tmp_path], selection=selection)
+    assert report["actual_attempts"] == report["summary_rows"] == 2
+    with (output / "records.csv").open() as stream:
+        exported = list(csv.DictReader(stream))
+    assert [row["record_id"] for row in exported] == ["old", "new"]
+    assert json.loads(exported[1]["selected_comparisons"]) == ["current_old", "current_new"]
+    with (output / "summary.csv").open() as stream:
+        assert [row["comparison"] for row in csv.DictReader(stream)] == ["current_old", "current_new"]
+    assert len(captured) == 1
+    _, figure_rows, figure_summary = captured[0]
+    assert [row["record_id"] for row in figure_rows] == ["new"]
+    assert figure_rows[0]["selected_comparisons"] == ["current_new"]
+    assert figure_summary == [summary[1]]
+    assert [rows, summary] == original

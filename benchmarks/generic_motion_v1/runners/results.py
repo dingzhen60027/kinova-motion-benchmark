@@ -809,10 +809,40 @@ def summarize(rows, selection):
     return output
 
 
+def _figure_comparisons(selection):
+    """Validate an optional plot scope before exporting any derived files."""
+    if "figure_comparisons" not in selection:
+        return None
+    identifiers = selection["figure_comparisons"]
+    if (not isinstance(identifiers, list) or not identifiers
+            or any(not isinstance(value, str) or not value.strip() for value in identifiers)):
+        raise ValueError("figure_comparisons must be a nonempty list of comparison IDs")
+    if len(set(identifiers)) != len(identifiers):
+        raise ValueError("figure_comparisons must contain unique comparison IDs")
+    known = {spec["id"] for spec in selection.get("comparisons", [])}
+    unknown = sorted(set(identifiers) - known)
+    if unknown:
+        raise ValueError("Unknown figure_comparisons IDs: " + ", ".join(unknown))
+    return frozenset(identifiers)
+
+
+def _figure_inputs(rows, summary, comparison_ids):
+    """Scope figures without modifying the full records or their memberships."""
+    if comparison_ids is None:
+        return rows, summary
+    scoped_rows = []
+    for row in rows:
+        memberships = [value for value in row["selected_comparisons"] if value in comparison_ids]
+        if memberships:
+            scoped_rows.append(dict(row, selected_comparisons=memberships))
+    return scoped_rows, [row for row in summary if row["comparison"] in comparison_ids]
+
+
 def export(output=None, *, roots=None, selection=None, verify_files=True):
     output = _path(output or "results")
     roots = roots or [BASE / "results"]
     selection_value = read(_path(selection)) if selection else {"comparisons": []}
+    figure_comparisons = _figure_comparisons(selection_value)
     # Include explicitly selected new runs even when they live outside the
     # historical run root. Rebuilding the index discovers appended attempts.
     extra = [item if isinstance(item, str) else item["path"]
@@ -838,7 +868,8 @@ def export(output=None, *, roots=None, selection=None, verify_files=True):
         interval_policy="95% scene-cluster bootstrap; shared open_control base world is one cluster; no CI for one cluster.",
     ))
     _index_links(output, runs)
-    _figures(output, rows, summary)
+    figure_rows, figure_summary = _figure_inputs(rows, summary, figure_comparisons)
+    _figures(output, figure_rows, figure_summary)
     return dict(output=_relative(output), runs=len(runs), actual_attempts=len(rows), summary_rows=len(summary))
 
 

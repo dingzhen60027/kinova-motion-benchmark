@@ -18,19 +18,22 @@
     "offline_voxel_resolution": 0.03
   },
   "drm": {
-    "online_edge_step_size": 0.1
+    "online_edge_step_size": 0.01,
+    "max_number_planning_attempts": 1000,
+    "max_iterations_steering_to_node": 1000,
+    "max_nodes_to_expand": 100000
   },
   "lgcs": {
     "solver": "scip"
   },
   "drm_query": {
     "backend": "safe_native",
-    "build_dir": "benchmarks/generic_motion_v1/native/build/drm_endpoint_edges_final"
+    "build_dir": "benchmarks/generic_motion_v1/native/build/drm_consistent_query_portable"
   },
   "ompl": {
     "range_rad": 0.5,
     "motion_step_rad": 0.01,
-    "planning_seconds": 10.0,
+    "planning_seconds": 60.0,
     "simplification_seconds": 0.5,
     "simplification_max_steps": 100,
     "simplification_max_empty_steps": 50,
