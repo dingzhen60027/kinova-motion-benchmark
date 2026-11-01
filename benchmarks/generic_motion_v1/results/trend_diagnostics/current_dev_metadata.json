@@ -1,0 +1,37 @@
+{
+  "run": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/repaired_dev_all_seeds",
+  "status": "passed",
+  "passed": true,
+  "final_statistics_produced": false,
+  "scope": "Sealed result/process/receipt, pre-stop JSON and receipt-bound handoff/trace metadata only; no arrays or full trajectory verification",
+  "sealed_attempts": 402,
+  "unsealed_attempts": 0,
+  "interrupted_attempts": 0,
+  "reviewed_numerical_failures": [
+    {
+      "kind": "reviewed_bounded_native_handoff_failure",
+      "source": "benchmarks/generic_motion_v1/runners/native_handoff.py",
+      "source_sha256": "5eb45ca2f96b5dd5c727c4afca0b94b00f58ab06ec618073d3089f0ea668b01c",
+      "source_line": 117,
+      "trace_sha256": "d4cd01140785694c5c7131a23034f83fcb35600981578f11bceea4a9c6d4ee5c",
+      "handoff_evidence": [
+        {
+          "path": "recovery/000/native_handoff/0005/handoff.json",
+          "sha256": "0ea2f6ed590d3e6460f016fdfbdf0f33432dde040faea8a2fcff8b4a609beb21",
+          "allowed_normalized_correction": 1e-06,
+          "maximum_total_normalized_offset_change_from_input": 1.2022771407151653e-07
+        }
+      ],
+      "raw_status_unchanged": true,
+      "result_normalization_unchanged": true,
+      "limitation": "The 16-ULP cap can reject a correction inside the fixed bound; not a successful plan or proof of invalid geometry.",
+      "metadata_source": "result.json",
+      "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/repaired_dev_all_seeds/jobs/dev-dense_clutter-002-p01-LGCS-minimum_distance-83e6f638/attempts/0001",
+      "job_id": "dev-dense_clutter-002-p01-LGCS-minimum_distance-83e6f638"
+    }
+  ],
+  "errors": [],
+  "source_commit": "6ad41275c78ccc49584083753ff3255af172fa30",
+  "run_manifest_sha256": "9f3b41b847a2db97edfccc7ecdda3f8bd388ee78b7cfa5672072c876fa7bed3b",
+  "attention_required": false
+}

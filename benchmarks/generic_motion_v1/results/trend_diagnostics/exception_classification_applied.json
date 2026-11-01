@@ -1,0 +1,72 @@
+{
+  "completed_utc": "2026-11-01T08:48:31.697569+00:00",
+  "source_commit_before_changes": "20c8b23e8f589079eebd40ace04dd7f096a2c0f8",
+  "runtime_applied": true,
+  "committed": false,
+  "gpu_used": false,
+  "raw_results_modified": false,
+  "deferred_patch": {
+    "path": "/tmp/csdecomp_deferred_error_classification/exception_classification.patch",
+    "sha256": "a889f6821f9c9b2f71aeaefc03b90f7c1a540e787bb0ab79472d1de132aa5093",
+    "applied_then_hardened": true
+  },
+  "files_sha256": {
+    "benchmarks/generic_motion_v1/runners/failure_classification.py": "e17330a40e44729002623c949f64e50116e23aadcde18564bfb59deebb9428a6",
+    "benchmarks/generic_motion_v1/runners/csdecomp_baseline.py": "f44db89373a06deb581a72c6fabb85dd18ce5704fc5d907f1bf3eef151cbef96",
+    "benchmarks/generic_motion_v1/batch.py": "d4bd15aa1a4c320b1f7382599a04c3af669cbb61838f6f9811302fe95a4e5944",
+    "benchmarks/generic_motion_v1/runners/results.py": "c2514581f7a236c397325a6a40414a23ee7d53aad404d808b685013c72f2bf02",
+    "benchmarks/generic_motion_v1/tests/test_exception_classification.py": "a113a5f98ed1dea01f9f8a0040b565811a8cdbaf1ae0db9bf210f26f9d68f6df",
+    "benchmarks/generic_motion_v1/tests/test_results.py": "6e0f83620346a763410dbbf41d20203dc0e7d1b9f8c140085107463585a9fd78",
+    "benchmarks/generic_motion_v1/tests/test_extended_integration.py": "233400d0284711278afcdf3234fff63f7d265d07cb5a32d0110a839f12bed670"
+  },
+  "changes": [
+    "Unknown exceptions, unknown internal timeouts, CUDA failures and explicit backend error categories cannot become ordinary deadline outcomes.",
+    "Only the exact current native no-route exception and official OMPL Approximate solution/Timeout remain normal search outcomes.",
+    "Expected numerical handoff failure requires NativeHandoffError, explicit code/source/relative evidence, fixed tolerance and matching numerical evidence; readers additionally require manifest source hash and receipt binding.",
+    "Ordinary unsuccessful solver returns without exceptions retain solver_failure; finite numerical candidate guards remain validation failures.",
+    "Unexpected process signals, including a crash concurrent with deadline expiry, remain infrastructure errors; external SIGTERM/SIGKILL deadline enforcement remains timeout.",
+    "Readers preserve the historical reviewed native DRM no-route only with exact legacy source, traceback line, build/query identity and receipt hashes. Runtime does not accept the old message."
+  ],
+  "cpu_tests": {
+    "command": "bash local/python.sh -m pytest -q benchmarks/generic_motion_v1/tests/test_exception_classification.py benchmarks/generic_motion_v1/tests/test_results.py benchmarks/generic_motion_v1/tests/test_batch.py benchmarks/generic_motion_v1/tests/test_extended_integration.py",
+    "passed": 132,
+    "seconds": 1.65,
+    "log": "results/trend_diagnostics/exception_classification_cpu_tests_final.log",
+    "log_sha256": "4061fd783ad0027b7b4138f3f6c257c2c978a877f71c26d50116ed9f4a32b174",
+    "includes": [
+      "Actual run_case catch with CPU-only model/planner mocks",
+      "Real subprocess saves a CUDA/unknown exception then is stopped by the actual external deadline",
+      "Actual native CPU HPolyhedron correction rejection, with typed error and receipt-bound result normalization",
+      "Historical no-route source/build/trace corruption rejection",
+      "Unknown exception, unknown category and native crash versus deadline precedence"
+    ],
+    "initial_passed_before_legacy_compatibility_tests": 118,
+    "initial_log": "results/trend_diagnostics/exception_classification_cpu_tests.log"
+  },
+  "historical_compatibility": {
+    "command": "bash local/python.sh results/trend_diagnostics/audit_exception_classification.py --output results/trend_diagnostics/exception_classification_history_audit.json",
+    "report": "results/trend_diagnostics/exception_classification_history_audit.json",
+    "report_sha256": "dc22268190700071d39493fd9fee97b3c98471b14537963359ec4a40d5420bf6",
+    "passed": true,
+    "registered_selected_attempts": 8400,
+    "current_dev": 2520,
+    "current_test": 5880,
+    "receipt_bound_legacy_no_route_preserved": {
+      "current_dev": 600,
+      "current_test": 768
+    },
+    "ordinary_ompl_approximate_retained": {
+      "current_dev": 93,
+      "current_test": 142
+    },
+    "historical_boxbox_exceptions_still_attention": {
+      "current_dev": 1,
+      "current_test": 1
+    }
+  },
+  "limits": [
+    "No GPU or full benchmark rerun performed by this task. Parent owns full regression and GPU acceptance.",
+    "Old raw statuses, receipts, trajectories, runtime source snapshots and configuration are unchanged.",
+    "Historical old handoff ValueError is deliberately not exempted by this runtime policy; independent metadata audit owns its exact historical interpretation."
+  ]
+}

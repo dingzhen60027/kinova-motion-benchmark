@@ -1,0 +1,93 @@
+{
+  "command": [
+    "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/bin/python",
+    "results/trend_diagnostics/audit_exception_classification.py",
+    "--output",
+    "results/trend_diagnostics/exception_classification_history_audit.json"
+  ],
+  "selection": "/home/eric/wjg/wd/csdecomp/results/selection.json",
+  "selection_sha256": "ecbd78ad14a629d1148d5544742b2d8939508a743a96fea9e71a1bdefc3cb505",
+  "scope": "current_dev/current_test first sealed terminal attempts; only small JSON and exception traces; no arrays, planners, GPU or raw mutations",
+  "comparisons": {
+    "current_dev": {
+      "attempts": 2520,
+      "exceptions": [
+        {
+          "count": 600,
+          "raw_status": "frontend_failed",
+          "phase": "drm_path",
+          "exception": "RuntimeError('[DRMPlanner] No collision-free path exists in roadmap.')",
+          "requires_attention": false,
+          "legacy_source_trace_and_receipt_verified": true,
+          "example": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s000/jobs/dev-sparse_clutter-000-p00-EI_ZO-minimum_distance-3917b206/attempts/0001"
+        },
+        {
+          "count": 93,
+          "raw_status": "planner_timeout",
+          "phase": "sampling_planning",
+          "exception": "OmplNoExactSolution('OMPL did not return an exact solution: Approximate solution')",
+          "requires_attention": false,
+          "legacy_source_trace_and_receipt_verified": false,
+          "example": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s000/jobs/dev-sparse_clutter-000-p00-RRTSTAR-minimum_distance-b04b75f4/attempts/0001"
+        },
+        {
+          "count": 1,
+          "raw_status": "solver_failed",
+          "phase": "trajectory_optimization",
+          "exception": "RuntimeError(\"Exception while evaluating SNOPT costs and constraints: 'Failure at external/drake+/geometry/proximity/distance_to_shape_touching.cc:122 in BoxBoxGradient(): condition '(X_WA * p_ACa - X_WB * p_BCb).norm() < kEps' failed.'\")",
+          "requires_attention": true,
+          "legacy_source_trace_and_receipt_verified": false,
+          "example": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/rss2025_paper_comparators_v1_dev_s000/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_distance-48b608ce/attempts/0001"
+        }
+      ]
+    },
+    "current_test": {
+      "attempts": 5880,
+      "exceptions": [
+        {
+          "count": 142,
+          "raw_status": "planner_timeout",
+          "phase": "sampling_planning",
+          "exception": "OmplNoExactSolution('OMPL did not return an exact solution: Approximate solution')",
+          "requires_attention": false,
+          "legacy_source_trace_and_receipt_verified": false,
+          "example": "/home/eric/wjg/wd/csdecomp/results/test/jobs/test-sparse_clutter-000-p01-RRTSTAR-minimum_distance-83597497/attempts/0001"
+        },
+        {
+          "count": 768,
+          "raw_status": "frontend_failed",
+          "phase": "drm_path",
+          "exception": "RuntimeError('[DRMPlanner] No collision-free path exists in roadmap.')",
+          "requires_attention": false,
+          "legacy_source_trace_and_receipt_verified": true,
+          "example": "/home/eric/wjg/wd/csdecomp/results/test/jobs/test-sparse_clutter-005-p02-EI_ZO-minimum_distance-ccbe2726/attempts/0001"
+        },
+        {
+          "count": 1,
+          "raw_status": "solver_failed",
+          "phase": "trajectory_optimization",
+          "exception": "RuntimeError(\"Exception while evaluating SNOPT costs and constraints: 'Failure at external/drake+/geometry/proximity/distance_to_shape_touching.cc:122 in BoxBoxGradient(): condition '(X_WA * p_ACa - X_WB * p_BCb).norm() < kEps' failed.'\")",
+          "requires_attention": true,
+          "legacy_source_trace_and_receipt_verified": false,
+          "example": "/home/eric/wjg/wd/csdecomp/results/test/jobs/test-route_choice-014-p01-NTO_PAPER-minimum_distance-69864806/attempts/0001"
+        }
+      ]
+    }
+  },
+  "source_manifests_sha256": {
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s000/run_manifest.json": "fcedc11366d96a97a041af7080fe8461fa66e0b94bf1b5e0472e00251689f7a4",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/rss2025_reliable_v2_dev_s000/run_manifest.json": "e8fd4211c317283cc4d3f62efadbe4b6f6caf96cabe91512fa73fd570cd97ecc",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/rss2025_paper_comparators_v1_dev_s000/run_manifest.json": "1dcafad86f9b7c103e56f199ba93089937fb1ecb8fbeab138df54f8d7df05a70",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s001/run_manifest.json": "800eac4f01f969a91c275bcdd014276ff16f3a873bba92b3c3f4ad9d1eaae60e",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/rss2025_reliable_v2_dev_s001/run_manifest.json": "ad8c55549ca0ab743f2c175f33ffdac86d142387991083d2f5a6e109acd078e8",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/rss2025_paper_comparators_v1_dev_s001/run_manifest.json": "aa7a0a1486ae00781dae6d492a13b174a98ea63878e48315f218f7c31acf7a7a",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s002/run_manifest.json": "9154c267cd3cc4e05067def8bbab81e280d36f2dc144a7735f612bd8e35c2b72",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/rss2025_reliable_v2_dev_s002/run_manifest.json": "c45f896615a683eb85cc5a0f71abd227cbc38d95977cf150734ee5c66920fa22",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/rss2025_paper_comparators_v1_dev_s002/run_manifest.json": "bc6ab9bd3fcecb2ba441bd9000269f814b60b180593adc70c8c7f7eaf0fc7694",
+    "/home/eric/wjg/wd/csdecomp/results/nto_legacy_dev/run_manifest.json": "04e39dc4433cbb0570a5bb2c4f5c4a1864841dce93941afc144e1a372cf3e3d1",
+    "/home/eric/wjg/wd/csdecomp/results/test/run_manifest.json": "3d9b68108d9ce300040daa6d56e0f34d7c1eace9105ef1dc8789baac0a1e3a3f",
+    "/home/eric/wjg/wd/csdecomp/results/nto_legacy_test/run_manifest.json": "88d0cecded241c3e7de0e1b4a3e8522c75b0711f238951eeab36f9b472dd2246"
+  },
+  "failures": [],
+  "passed": true
+}

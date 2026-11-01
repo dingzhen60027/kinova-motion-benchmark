@@ -66,5 +66,192 @@
     "Mock collision oracle tests control flow only; prior saved tiny canonical fixture supplies limited real GPU evidence.",
     "No new GPU calls or performance measurement.",
     "Native finite edge sampling is not continuous certification; common final validator remains necessary."
-  ]
+  ],
+  "formal_dev_prefix_review": {
+    "review_type": "read-only inspection of already sealed formal-development records",
+    "inspection_basis": "Previously completed lightweight per-attempt JSON and selected receipt checks; this evidence append did not rerun verification, parse records.csv, run tests, or use the GPU.",
+    "run": "results/repaired_dev_all_seeds",
+    "scope": {
+      "sealed_attempts": 93,
+      "replica_seed": 0,
+      "attempt": "0001",
+      "complete_problems": [
+        "dev-sparse_clutter-000-p00",
+        "dev-sparse_clutter-000-p01",
+        "dev-sparse_clutter-000-p02",
+        "dev-sparse_clutter-001-p00",
+        "dev-sparse_clutter-001-p01",
+        "dev-sparse_clutter-001-p02"
+      ],
+      "complete_problem_method_objective_combinations_each": 14,
+      "partially_observed_problem": "dev-sparse_clutter-002-p00",
+      "partially_observed_completed_combinations": 9,
+      "unsealed_or_later_attempts_included": false,
+      "raw_status_counts": {
+        "success_validated_numerical": 18,
+        "solver_failed": 6,
+        "collision_failed": 3,
+        "planner_timeout": 11,
+        "frontend_failed": 55
+      }
+    },
+    "same_configuration_diagnostic": "results/trend_diagnostics/drm_consistent_query_budget1000_endpoint1000",
+    "failed_problem_examples": [
+      {
+        "problem_id": "dev-sparse_clutter-000-p01",
+        "method": "EI_ZO",
+        "objective": "minimum_distance",
+        "formal_frontend_success": false,
+        "formal_native_query_status": "native_exception",
+        "diagnostic_status": "native_exception",
+        "formal_query_seconds": 7.069947736337781,
+        "diagnostic_query_seconds": 7.0638112858869135
+      },
+      {
+        "problem_id": "dev-sparse_clutter-000-p02",
+        "method": "EI_ZO",
+        "objective": "minimum_distance",
+        "formal_frontend_success": false,
+        "formal_native_query_status": "native_exception",
+        "diagnostic_status": "native_exception",
+        "formal_query_seconds_rounded": 15.195,
+        "diagnostic_query_seconds": 15.154297662898898
+      },
+      {
+        "problem_id": "dev-sparse_clutter-001-p01",
+        "method": "EI_ZO",
+        "objective": "minimum_distance",
+        "formal_frontend_success": false,
+        "formal_native_query_status": "native_exception",
+        "diagnostic_status": "native_exception",
+        "formal_query_seconds_rounded": 0.65,
+        "diagnostic_query_seconds": 0.6235779677517712
+      },
+      {
+        "problem_id": "dev-sparse_clutter-001-p02",
+        "method": "EI_ZO",
+        "objective": "minimum_distance",
+        "formal_frontend_success": false,
+        "formal_native_query_status": "native_exception",
+        "diagnostic_status": "native_exception",
+        "formal_query_seconds_rounded": 0.653,
+        "diagnostic_query_seconds": 0.6402994971722364
+      },
+      {
+        "problem_id": "dev-sparse_clutter-002-p00",
+        "method": "EI_ZO",
+        "objective": "minimum_distance",
+        "formal_frontend_success": false,
+        "formal_native_query_status": "returned",
+        "formal_query_success": false,
+        "diagnostic_status": "no_path",
+        "diagnostic_native_query_status": "returned",
+        "diagnostic_query_success": false,
+        "formal_query_seconds_rounded": 12.036,
+        "diagnostic_query_seconds": 11.86000287020579
+      }
+    ],
+    "native_query_comparison": {
+      "matching_diagnostic_found_for_all_five_failed_problems": true,
+      "all_available_sealed_matching_queries_equal_on_checked_fields": true,
+      "checked_fields": [
+        "binary_sha256",
+        "native_library_sha256",
+        "patched_source_sha256",
+        "upstream_source_sha256",
+        "profile",
+        "q_start",
+        "q_goal",
+        "online_voxel_radius_m",
+        "layout_before",
+        "layout_after",
+        "status",
+        "query_success",
+        "exception"
+      ],
+      "effective_full_evaluation_config_equal_to_diagnostic": true,
+      "binary_sha256": "61a162af7298cdeeddabbf03a4cd71f435a6e6d2abcf161f4de26535798c524e",
+      "patched_source_sha256": "457a19d872256d4d9aa9a950555c0cad635ba8d36c3857cf749f55fb28b4142f",
+      "native_library_sha256": "0a048625a9d745ac409cff55791d360fe9e91ad1b8d7a3b82245a1a024c57738"
+    },
+    "source_review": {
+      "runtime_freeze_commit": "6ad41275c7",
+      "recorded_source_code_commit": "20c8b23e8f589079eebd40ace04dd7f096a2c0f8",
+      "all_93_recorded_source_commits_identical": true,
+      "between_commits_no_diff_in_checked_runtime_paths": true,
+      "checked_git_paths": [
+        "benchmarks/generic_motion_v1/runners",
+        "benchmarks/generic_motion_v1/model.py",
+        "benchmarks/generic_motion_v1/native",
+        "benchmarks/generic_motion_v1/configs",
+        "configs",
+        "scripts",
+        "reproduction"
+      ],
+      "reason_for_commit_change": "20c8b23e8f saved verified native-first smoke results, repair evidence and resumable evaluation plans; inspected runtime/configuration paths are unchanged from 6ad41275c7.",
+      "all_93_runtime_sources_before_equal_after": true,
+      "runtime_sources_json_sha256": "b6544b4fb79d2bfa9b95312b20d77f11a75f0db73cdcea094fb8fff9c2a5d653",
+      "all_93_evaluation_json_sha256": "714434221316e1ec7793de4b3c3a73b78f6be3d3fa0f59433c695fe78509ef57"
+    },
+    "receipt_and_input_review": {
+      "sealed_attempts_checked": 93,
+      "receipt_hashes_checked_when_listed": [
+        "query.json",
+        "evaluation.json",
+        "input.json",
+        "result.json",
+        "runtime_sources.json",
+        "build_receipt.json"
+      ],
+      "hash_mismatches": 0,
+      "matching_old_run": "results/repaired_dev",
+      "case_ref_equality_checks": 93,
+      "case_ref_mismatches": 0,
+      "runtime_during_run_changes": 0
+    },
+    "earlier_repaired_dev_comparison": {
+      "same_configuration": false,
+      "configuration_differences": {
+        "drm.max_iterations_steering_to_node": {
+          "old": 10,
+          "new": 1000
+        },
+        "drm.max_nodes_to_expand": {
+          "old": 10000,
+          "new": 100000
+        },
+        "drm.max_number_planning_attempts": {
+          "old": 20,
+          "new": 1000
+        },
+        "drm.online_edge_step_size": {
+          "old": 0.1,
+          "new": 0.01
+        },
+        "drm_query.build_dir": {
+          "old": "benchmarks/generic_motion_v1/native/build/drm_endpoint_edges_final",
+          "new": "benchmarks/generic_motion_v1/native/build/drm_consistent_query_portable"
+        },
+        "ompl.planning_seconds": {
+          "old": 10.0,
+          "new": 60.0
+        }
+      },
+      "old_frontend_failed_now_passed": [
+        "dev-sparse_clutter-000-p00",
+        "dev-sparse_clutter-001-p00"
+      ],
+      "old_frontend_passed_now_failed_in_observed_prefix": [],
+      "warning": "Older repaired_dev is not an identical-configuration causal control; no ranking or aggregate improvement claim is inferred from this prefix."
+    },
+    "conclusion": "No new frontend regression or runtime/configuration-integrity anomaly observed in the 93 sealed records. All 55 frontend_failed records come from five problems already failing under the same development diagnostic configuration. No intervention in the running controller is indicated by this inspection.",
+    "limitations": [
+      "This is a fixed prefix inspection, not a complete development-set or test-set result.",
+      "The process continued after the 93-record snapshot; later and in-flight records were not covered.",
+      "Receipt verification covered only the explicitly listed files, not every trajectory array, log, or receipt entry.",
+      "No planner, independent collision validator, optimizer, test suite, or GPU workload was rerun.",
+      "No-solution results are algorithmic search outcomes, not proofs that the tasks are infeasible.",
+      "Timing examples compare native-query elapsed time only; rounded formal values are labeled explicitly."
+    ]
+  }
 }

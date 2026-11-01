@@ -1,0 +1,256 @@
+{
+  "recorded_utc": "2026-11-01T07:18:15.247309+00:00",
+  "runtime_applied": false,
+  "runtime_base_commit": "6ad41275c78ccc49584083753ff3255af172fa30",
+  "runtime_unchanged_from_frozen_commit": true,
+  "patch": "/tmp/csdecomp_deferred_error_classification/exception_classification.patch",
+  "patch_sha256": "a889f6821f9c9b2f71aeaefc03b90f7c1a540e787bb0ab79472d1de132aa5093",
+  "base_sha256": {
+    "benchmarks/generic_motion_v1/runners/csdecomp_baseline.py": "a4a42c9655668e72f9f1771f63cfac2ebb028f43fbd399fad93e9a516f5d88d4",
+    "benchmarks/generic_motion_v1/batch.py": "d824defcc971fa19b35a6e961f0d01a7c7736c36e72c411d9edb54b136194bf1"
+  },
+  "git_apply_check_passed": true,
+  "staged_cpu_tests": {
+    "passed": 9,
+    "seconds": 0.02,
+    "scope": "Only staged pure helper ASTs and call-site integration; no live runtime imports, planning or GPU",
+    "log": "/tmp/csdecomp_deferred_error_classification/cpu_tests.log"
+  },
+  "metadata_checker_tests": {
+    "passed": 28,
+    "seconds": 0.08,
+    "log": "results/trend_diagnostics/metadata_attention_tests.log"
+  },
+  "actual_metadata_checks": {
+    "native_smoke_metadata": {
+      "passed": true,
+      "sealed_attempts": 140,
+      "unsealed_attempts": 0,
+      "source_commit": "6ad41275c78ccc49584083753ff3255af172fa30",
+      "report_sha256": "590430dd01ae5bbaa2ecc40431045ad22436aa3b58964025768d60e6fb8901b3"
+    },
+    "current_dev_metadata": {
+      "passed": true,
+      "sealed_attempts": 228,
+      "unsealed_attempts": 1,
+      "source_commit": "6ad41275c78ccc49584083753ff3255af172fa30",
+      "report_sha256": "a71eac23e9a8837e4724c4f7c3bdef95d59dea619140cd42b8b52eb949770cbc"
+    }
+  },
+  "repair_scope": [
+    "Only the precise native no-route RuntimeError retains frontend_failed; unknown DRM frontend exceptions become infrastructure_error.",
+    "CUDA detection precedes generic TimeoutError classification.",
+    "Worker and external deadlines retain already recorded infrastructure/unsupported/model consistency failures and add deadline_exceeded.",
+    "Normal no-route, OMPL no-exact-solution, no-exception solver nonconvergence and ordinary deadline outcomes retain existing meanings."
+  ],
+  "application_policy": "Do not apply until all frozen active cohorts finish. Apply as a new commit; never rewrite 6ad results. Keep 6ad available for exact runtime recovery. If metadata acceptance reports no affected observations, no result reclassification or rerun is required by this status-only change.",
+  "apply_command": "git apply /tmp/csdecomp_deferred_error_classification/exception_classification.patch",
+  "historical_snapshot_note": "Top-level staged classification patch and runtime-unchanged fields describe their recorded_utc snapshot, before the separately documented handoff repair below.",
+  "native_handoff_incident": {
+    "recorded_utc": "2026-11-01T08:40:02.160741+00:00",
+    "status": "CPU repair validated; full GPU planning regression delegated to root",
+    "original_warning": {
+      "path": "results/trend_diagnostics/metadata_evaluation.failed.json",
+      "sha256": "4031b6890ad7f5c0ee7ca6c0322f8f9969737ad0262ed56fa571c395e79aa49f",
+      "contents": {
+        "run": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/repaired_dev_all_seeds",
+        "status": "failed",
+        "passed": false,
+        "final_statistics_produced": false,
+        "scope": "Only sealed result/process/receipt and pre-stop JSON metadata; this is not full receipt or trajectory verification",
+        "sealed_attempts": 376,
+        "unsealed_attempts": 1,
+        "interrupted_attempts": 0,
+        "errors": [
+          {
+            "check": "unknown_exception_even_if_timeout",
+            "source": "result.json",
+            "raw_status": "solver_failed",
+            "detail": "ValueError('Native anchor containment remains unresolved after bounded float32 refinement')",
+            "failed_stage": "collision_recovery",
+            "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/repaired_dev_all_seeds/jobs/dev-dense_clutter-002-p01-LGCS-minimum_distance-83e6f638/attempts/0001",
+            "job_id": "dev-dense_clutter-002-p01-LGCS-minimum_distance-83e6f638"
+          }
+        ],
+        "source_commit": "6ad41275c78ccc49584083753ff3255af172fa30",
+        "run_manifest_sha256": "9f3b41b847a2db97edfccc7ecdda3f8bd388ee78b7cfa5672072c876fa7bed3b",
+        "attention_required": true
+      },
+      "preserved_byte_for_byte": true
+    },
+    "attempt": "results/repaired_dev_all_seeds/jobs/dev-dense_clutter-002-p01-LGCS-minimum_distance-83e6f638/attempts/0001",
+    "frozen_run_source_commit": "6ad41275c78ccc49584083753ff3255af172fa30",
+    "artifact_sha256": {
+      "recovery/000/native_handoff/0005/original.npz": "8efb73ab968f6490c77555567f2cc56d6eede39853ce85d41ae7327ba08f99c5",
+      "recovery/000/native_handoff/0005/quantized.npz": "046e4a0c1bc6bebeb7f67e3a8b6085d8eecea0b77efae3617862f4646364e814",
+      "recovery/000/native_handoff/0005/corrected.npz": "94c461d83a2356b3d14c6e79d0ce808d0afb342b21bb11bc3997fdf7fd5d5ec7",
+      "recovery/000/native_handoff/0005/handoff.json": "0ea2f6ed590d3e6460f016fdfbdf0f33432dde040faea8a2fcff8b4a609beb21",
+      "exception.txt": "d4cd01140785694c5c7131a23034f83fcb35600981578f11bceea4a9c6d4ee5c",
+      "result.json": "9182223934b0d1f1bd9b664d490477ff5d439084fdb172beed2d632ffdbc0972",
+      "rounds/000/validation.json": "2ebce7ba2693fe43b921ccf378b91f1c9b64cfe0b185fe8b88da10263b91dc57"
+    },
+    "original_handoff": {
+      "status": "rejected",
+      "native_predicate_tolerance": 0.0,
+      "fixed_anchors_changed": false,
+      "correction_semantics": "Outward b changes only after required float32 quantization; normalized by quantized row norms.",
+      "note": "Numerical handoff only; final independent collision validation remains required.",
+      "allowed_normalized_correction": 1e-06,
+      "normal_quantization_max_abs_error": 0.0,
+      "anchor_quantization_max_abs_error": 0.0,
+      "maximum_quantized_anchor_residual_in_float64": -1.0184262322354698e-09,
+      "native_anchor_containment_before": [
+        true,
+        false
+      ],
+      "maximum_normalized_correction": 1.1920928785377885e-07,
+      "maximum_total_normalized_offset_change_from_input": 1.2022771407151653e-07,
+      "corrected_planes": 1,
+      "native_anchor_containment_after": [
+        true,
+        false
+      ],
+      "native_refinement_rounds": 16,
+      "error": "ValueError('Native anchor containment remains unresolved after bounded float32 refinement')"
+    },
+    "minimal_native_cpu_reproducer": {
+      "A_shape": [
+        52,
+        7
+      ],
+      "anchor_shape": [
+        2,
+        7
+      ],
+      "row": 14,
+      "b_original": -0.11240329695262652,
+      "b_quantized": -0.11240329593420029,
+      "float32_ulp_toward_positive": 7.450580596923828e-09,
+      "dot_float64": -0.11240329695262652,
+      "dot_numpy_float32": -0.11240328848361969,
+      "first_passing_native_offset": -0.11240312457084656,
+      "increments_required_from_quantized_offset": 23,
+      "native_boundary_minus_float64_dot": 1.7238177996148352e-07,
+      "native_source": "csdecomp/src/geometry/hpolyhedron.cpp:265, full-matrix Eigen float32 (A * point <= b + tol).all()",
+      "scope": "CPU HPolyhedron predicate only; no CUDA/optimizer/planner calls"
+    },
+    "repaired_handoff": {
+      "status": "passed",
+      "native_predicate_tolerance": 0.0,
+      "fixed_anchors_changed": false,
+      "correction_semantics": "Outward b changes only after required float32 quantization; normalized by quantized row norms.",
+      "note": "Numerical handoff only; final independent collision validation remains required.",
+      "allowed_normalized_correction": 1e-06,
+      "normal_quantization_max_abs_error": 0.0,
+      "anchor_quantization_max_abs_error": 0.0,
+      "maximum_quantized_anchor_residual_in_float64": -1.0184262322354698e-09,
+      "native_anchor_containment_before": [
+        true,
+        false
+      ],
+      "maximum_normalized_correction": 1.7136335128980708e-07,
+      "maximum_total_normalized_offset_change_from_input": 1.7238177750754476e-07,
+      "corrected_planes": 1,
+      "native_anchor_containment_after": [
+        true,
+        true
+      ],
+      "native_refinement_rounds": 16,
+      "bounded_native_offset_search": [
+        {
+          "row": 14,
+          "initial_offset": -0.11240317672491074,
+          "maximum_permitted_offset": -0.1124022975564003,
+          "native_predicate_calls": 9,
+          "status": "minimal_passing_offset_found",
+          "corrected_offset": -0.11240312457084656,
+          "preceding_offset": -0.11240313202142715
+        }
+      ]
+    },
+    "geometry_conclusion": {
+      "input_or_collision_model_bug_demonstrated": false,
+      "bounded_float32_handoff_implementation_bug_demonstrated": true,
+      "reason": "The arbitrary 16-ULP cap rejects a fixed-anchor correction admitted by the existing 1e-6 normalized bound; exact same A and anchors pass at 23 ULP. Matrix reduction rounding, not near-zero b, explains the observed discrepancy.",
+      "initial_candidate_validation": {
+        "passed": false,
+        "native_collisions": 78,
+        "independent_collisions": 78,
+        "model_disagreements": 0,
+        "minimum_sampled_clearance_m": -0.013903342909113808,
+        "samples": 1241,
+        "actual_maximum_sample_joint_step_rad": 0.004998989050605672
+      },
+      "interpretation": "The initial LGCS candidate contains collisions and was rejected consistently by both checkers. Failure occurs before EditRegionsCuda. This does not establish collision freedom of the recovered region or final planner success."
+    },
+    "repair_scope": [
+      "Unchanged fast path through 16 ULP; fallback searches float32 ordered offsets only inside both preexisting normalized bounds.",
+      "Unchanged A, fixed anchors, collision model, correction tolerance and independent validation.",
+      "NativeHandoffError is limited to numeric correction-bound rejection; malformed input, failed localization and native predicate contradictions remain unexpected errors."
+    ],
+    "cpu_tests": {
+      "command": "bash local/python.sh -m pytest -q benchmarks/generic_motion_v1/tests/test_native_handoff.py results/trend_diagnostics/test_metadata_attention.py results/trend_diagnostics/test_completed_evaluation.py",
+      "passed": 91,
+      "seconds": 0.71,
+      "log": "results/trend_diagnostics/metadata_attention_tests.log"
+    },
+    "metadata_recheck": {
+      "passed": true,
+      "sealed_attempts": 402,
+      "unsealed_attempts": 0,
+      "reviewed_numerical_failures": [
+        {
+          "kind": "reviewed_bounded_native_handoff_failure",
+          "source": "benchmarks/generic_motion_v1/runners/native_handoff.py",
+          "source_sha256": "5eb45ca2f96b5dd5c727c4afca0b94b00f58ab06ec618073d3089f0ea668b01c",
+          "source_line": 117,
+          "trace_sha256": "d4cd01140785694c5c7131a23034f83fcb35600981578f11bceea4a9c6d4ee5c",
+          "handoff_evidence": [
+            {
+              "path": "recovery/000/native_handoff/0005/handoff.json",
+              "sha256": "0ea2f6ed590d3e6460f016fdfbdf0f33432dde040faea8a2fcff8b4a609beb21",
+              "allowed_normalized_correction": 1e-06,
+              "maximum_total_normalized_offset_change_from_input": 1.2022771407151653e-07
+            }
+          ],
+          "raw_status_unchanged": true,
+          "result_normalization_unchanged": true,
+          "limitation": "The 16-ULP cap can reject a correction inside the fixed bound; not a successful plan or proof of invalid geometry.",
+          "metadata_source": "result.json",
+          "attempt": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/repaired_dev_all_seeds/jobs/dev-dense_clutter-002-p01-LGCS-minimum_distance-83e6f638/attempts/0001",
+          "job_id": "dev-dense_clutter-002-p01-LGCS-minimum_distance-83e6f638"
+        }
+      ]
+    },
+    "old_raw_results_unchanged": true,
+    "old_result_normalization_unchanged_in_metadata_checker": true,
+    "formal_cohort_policy": "Old 6ad prefix preserved as diagnostic evidence. Root stopped after sealed query; new formal cohort will be run from a single newly frozen source and not mixed with old prefix.",
+    "runtime_sha256": "9ffdb2a7fbce66a9594a23a13a6e6b5aedc6fb40033176c38cfcb83068297ddf",
+    "independent_cpu_review": {
+      "path": "results/trend_diagnostics/native_handoff_independent/review.json",
+      "sha256": "d4fd865b25f1488a2ef919e8ad69b4f8db28559c36271cbb09384b6fb999a61c",
+      "checks": 20,
+      "passed": true
+    },
+    "metadata_classification": "Shared failure_classification rules plus independently receipt-bound typed handoff raise-frame verification; old 6ad ValueError exemption remains exact source hash, line117, message, stage, and bound-evidence only.",
+    "metadata_classification_integration_regression": {
+      "real_native_failures": [
+        "correction_exceeds_tolerance",
+        "bounded_predicate_rejected"
+      ],
+      "real_baseline_helper": "csdecomp_baseline._exception_outcome",
+      "real_traceback": "traceback.format_exc()",
+      "required_trace_class": "benchmarks.generic_motion_v1.runners.native_handoff.NativeHandoffError",
+      "verified_category_exemption_only": "native_handoff_numerical_rejection plus receipt-bound numerical evidence",
+      "negative_cases": [
+        "other_category",
+        "CUDA_category",
+        "missing_evidence",
+        "bare_class",
+        "wrong_module"
+      ],
+      "gpu_calls": 0,
+      "passed": true
+    }
+  }
+}

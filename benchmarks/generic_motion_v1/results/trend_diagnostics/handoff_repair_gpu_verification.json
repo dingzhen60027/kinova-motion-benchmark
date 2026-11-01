@@ -1,0 +1,90 @@
+{
+  "recorded_utc": "2026-11-01T08:51:28.184833+00:00",
+  "command": "bash local/python.sh scripts/evaluate.py run --split dev --problem dev-dense_clutter-002-p01 --methods LGCS --track path --seeds 0 --config configs/evaluation.json --output results/trend_diagnostics/handoff_repair_gpu",
+  "source_commit": "6c3144ff6445904aea3a85cde1a97abb109fc8cb",
+  "old_source_commit": "6ad41275c78ccc49584083753ff3255af172fa30",
+  "same_fixed_inputs_config_seeds_roadmap": true,
+  "same_original_handoff_arrays": {
+    "A": true,
+    "b": true,
+    "anchors": true
+  },
+  "original_status": "solver_failed",
+  "new_status": "success_validated_numerical",
+  "cold_e2e_seconds": 22.247153277043253,
+  "new_path_length_rad": 6.346408934614907,
+  "final_validation": {
+    "actual_maximum_sample_joint_step_rad": 0.004997612466812818,
+    "check": "Finite collision sampling; not a mathematical continuous collision certificate",
+    "collision_free": true,
+    "collision_points": [],
+    "collision_regions": [],
+    "contact_band_samples": 0,
+    "cost": 6.346408934614907,
+    "cost_unit": "rad",
+    "derivative_bounds": {},
+    "derivative_limits_passed": true,
+    "duration_s": null,
+    "endpoint_error_rad": 0.0,
+    "independent_collisions": 0,
+    "joint_limits_passed": true,
+    "minimum_sampled_clearance_m": 0.00267980391249735,
+    "model_disagreements": 0,
+    "native_collisions": 0,
+    "normalized_path_length": 1.2486462149380424,
+    "passed": true,
+    "path_length_rad": 6.346408934614907,
+    "region_residual": 8.928364714222425e-10,
+    "sample_step_bound_rad": 0.005,
+    "samples": 1278,
+    "status": "success_validated_numerical",
+    "time_axis": "normalized_path_parameter"
+  },
+  "handoff": {
+    "status": "passed",
+    "native_predicate_tolerance": 0.0,
+    "fixed_anchors_changed": false,
+    "correction_semantics": "Outward b changes only after required float32 quantization; normalized by quantized row norms.",
+    "note": "Numerical handoff only; final independent collision validation remains required.",
+    "allowed_normalized_correction": 1e-06,
+    "normal_quantization_max_abs_error": 0.0,
+    "anchor_quantization_max_abs_error": 0.0,
+    "maximum_quantized_anchor_residual_in_float64": -1.0184262322354698e-09,
+    "native_anchor_containment_before": [
+      true,
+      false
+    ],
+    "maximum_normalized_correction": 1.7136335128980708e-07,
+    "maximum_total_normalized_offset_change_from_input": 1.7238177750754476e-07,
+    "corrected_planes": 1,
+    "native_anchor_containment_after": [
+      true,
+      true
+    ],
+    "native_refinement_rounds": 16,
+    "bounded_native_offset_search": [
+      {
+        "row": 14,
+        "initial_offset": -0.11240317672491074,
+        "maximum_permitted_offset": -0.1124022975564003,
+        "native_predicate_calls": 9,
+        "status": "minimal_passing_offset_found",
+        "corrected_offset": -0.11240312457084656,
+        "preceding_offset": -0.11240313202142715
+      }
+    ]
+  },
+  "verification": {
+    "integrity_passed": true,
+    "complete": true,
+    "completed_jobs": 1,
+    "planned_jobs": 1,
+    "errors": [],
+    "unsealed_attempts": []
+  },
+  "old_attempt": "results/repaired_dev_all_seeds/jobs/dev-dense_clutter-002-p01-LGCS-minimum_distance-83e6f638/attempts/0001",
+  "new_attempt": "results/trend_diagnostics/handoff_repair_gpu/jobs/dev-dense_clutter-002-p01-LGCS-minimum_distance-83e6f638/attempts/0001",
+  "old_receipt_sha256": "70076503f3008e87eeee15affcba4053ba7bbf557e262c80910b62d4788fd63c",
+  "new_receipt_sha256": "81d5f561e4bdd55b083394558e2b63da2ab2c1ce73ded9e5294d73485fc9cc43",
+  "scope": "One actual end-to-end development regression, not a cohort success rate; original failed attempt remains unchanged. Numerical validation, not a continuous collision proof."
+}

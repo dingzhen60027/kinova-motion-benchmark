@@ -13,6 +13,7 @@ import hashlib
 import json
 import math
 from pathlib import Path
+import re
 import sys
 
 ROOT = next(p for p in Path(__file__).resolve().parents if (p/'scripts/evaluate.py').is_file())
@@ -21,6 +22,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from benchmarks.generic_motion_v1 import batch
 from benchmarks.generic_motion_v1.common import BASE, cases, read, recorded_path, resolve_case, sha
 from benchmarks.generic_motion_v1.runners import results
+from benchmarks.generic_motion_v1.runners import failure_classification as failures
 from benchmarks.generic_motion_v1.runners.methods import METHODS, objectives
 import check_metric_bounds as bounds
 
@@ -34,6 +36,193 @@ PINNED_MANIFESTS = {
 }
 STATES = ('success_numerical', 'invalid_input', 'no_solution_within_budget', 'timeout',
           'solver_failure', 'validation_failed', 'infrastructure_error')
+KNOWN_DRM_NO_ROUTE = failures.KNOWN_DRM_NO_ROUTE
+KNOWN_HANDOFF_FAILURE = 'Native anchor containment remains unresolved after bounded float32 refinement'
+# This is a reviewed guard in this exact source, not a general ValueError exemption.
+HANDOFF_SOURCE = failures.HANDOFF_SOURCE
+HANDOFF_TRACE_CLASS = HANDOFF_SOURCE[:-3].replace('/', '.')+'.NativeHandoffError'
+HANDOFF_SOURCE_SHA256 = '5eb45ca2f96b5dd5c727c4afca0b94b00f58ab06ec618073d3089f0ea668b01c'
+KNOWN_TIMEOUT_MESSAGES = failures.KNOWN_TIMEOUT_MESSAGES
+KNOWN_STAGES = failures.KNOWN_STAGES
+_exception_parts = failures.exception_parts
+
+
+def handoff_failure_evidence(attempt, receipt, manifest, result):
+    """Recognize one reviewed numerical guard using receipt-bound small artifacts.
+
+    This acknowledges an exhausted numerical handoff, never a successful output.
+    The fixed 16-ULP cap can reject a correction inside the configured bound;
+    the separate result-normalization/infrastructure gate remains unchanged.
+    """
+    if (_exception_parts(result.get('exception')) != ('ValueError', KNOWN_HANDOFF_FAILURE)
+            or result.get('status') != 'solver_failed'
+            or result.get('failed_stage') != 'collision_recovery'
+            or manifest.get('source_hashes', {}).get(HANDOFF_SOURCE) != HANDOFF_SOURCE_SHA256):
+        return None
+    files = receipt.get('files', {})
+    trace_path = attempt/'exception.txt'
+    if not trace_path.is_file() or files.get('exception.txt') != sha(trace_path):
+        return None
+    trace = trace_path.read_text()
+    frames = re.findall(r'^  File "([^"]+)", line (\d+), in (.+)$', trace, re.M)
+    if (not frames or not frames[-1][0].replace('\\', '/').endswith('/'+HANDOFF_SOURCE)
+            or frames[-1][1:] != ('117', 'native_region_with_anchors')
+            or trace.splitlines()[-1] != 'ValueError: '+KNOWN_HANDOFF_FAILURE):
+        return None
+    matched = []
+    for name, expected_sha in files.items():
+        if not re.fullmatch(r'recovery/[0-9]{3}/native_handoff/[0-9]{4}/handoff.json', name):
+            continue
+        path = attempt/name
+        if sha(path) != expected_sha:
+            raise ValueError('metadata receipt mismatch: '+name)
+        handoff = read(path)
+        if handoff.get('status') != 'rejected' or handoff.get('error') != result['exception']:
+            continue
+        containment = handoff.get('native_anchor_containment_after')
+        allowed = handoff.get('allowed_normalized_correction')
+        corrections = [handoff.get(k) for k in ('maximum_normalized_correction',
+            'maximum_total_normalized_offset_change_from_input')]
+        finite_number = lambda x: type(x) in (int, float) and math.isfinite(x)
+        if (handoff.get('fixed_anchors_changed') is not False
+                or handoff.get('native_predicate_tolerance') != 0.
+                or handoff.get('native_refinement_rounds') != 16
+                or not isinstance(containment, list) or not containment
+                or any(type(x) is not bool for x in containment) or all(containment)
+                or not finite_number(allowed) or allowed < 0
+                or any(not finite_number(x) or not 0 <= x <= allowed for x in corrections)):
+            continue
+        matched.append(dict(path=name, sha256=expected_sha,
+            allowed_normalized_correction=allowed,
+            maximum_total_normalized_offset_change_from_input=corrections[1]))
+    if not matched:
+        return None
+    return dict(kind='reviewed_bounded_native_handoff_failure', source=HANDOFF_SOURCE,
+        source_sha256=HANDOFF_SOURCE_SHA256, source_line=117, trace_sha256=files['exception.txt'],
+        handoff_evidence=matched, raw_status_unchanged=True, result_normalization_unchanged=True,
+        limitation='The 16-ULP cap can reject a correction inside the fixed bound; not a successful plan or proof of invalid geometry.')
+
+
+def typed_handoff_failure_evidence(attempt, receipt, manifest, job, result):
+    """Use shared classification, then independently bind its exact raise frame."""
+    evidence = failures.handoff_failure_evidence(attempt, result,
+        expected_tolerance=job.get('evaluation_config', {}).get('region_coverage_tolerance_rad'),
+        source_hashes=manifest.get('source_hashes', {}), receipt=receipt)
+    if evidence is None:
+        return None
+    trace_path = attempt/'exception.txt'
+    if not trace_path.is_file() or receipt.get('files', {}).get('exception.txt') != sha(trace_path):
+        return None
+    trace = trace_path.read_text()
+    frames = re.findall(r'^  File "([^"]+)", line (\d+), in (.+)$', trace, re.M)
+    expected_function = {'correction_exceeds_tolerance': 'check_bound',
+        'bounded_predicate_rejected': 'bounded_native_offset_search'}[evidence['code']]
+    _, message = _exception_parts(result['exception'])
+    if (not frames or not frames[-1][0].replace('\\', '/').endswith('/'+HANDOFF_SOURCE)
+            or frames[-1][2] != expected_function
+            or trace.splitlines()[-1] != HANDOFF_TRACE_CLASS+': '+message):
+        return None
+    return dict(evidence, trace_sha256=sha(trace_path), source=HANDOFF_SOURCE,
+        source_sha256=manifest['source_hashes'][HANDOFF_SOURCE], source_line=int(frames[-1][1]),
+        raw_status_unchanged=True)
+
+
+def metadata_issues(result, process, *, source='result.json', numerical_evidence=None):
+    """Attention flags are separate from historical raw outcome classification."""
+    issues = []
+    raw = result.get('status')
+    exception = result.get('exception')
+    category = result.get('error_category')
+    known_category = failures.known_exception_category(result, handoff_evidence=numerical_evidence)
+    verified_numerical_category = (category == failures.HANDOFF_KIND
+        and known_category == failures.HANDOFF_KIND and isinstance(numerical_evidence, dict)
+        and numerical_evidence.get('kind') == failures.HANDOFF_KIND)
+    details = ' '.join(str(result.get(key, '')) for key in ('exception', 'error', 'error_category'))
+    if 'cuda' in details.lower():
+        issues.append(dict(check='cuda_error_even_if_timeout', source=source, raw_status=raw, detail=details))
+    if raw in ('infrastructure_error', 'unsupported', 'model_consistency_failed'):
+        issues.append(dict(check='declared_infrastructure_error', source=source, raw_status=raw, detail=category))
+    elif category and not verified_numerical_category:
+        issues.append(dict(check='error_category_even_if_timeout', source=source, raw_status=raw, detail=category))
+    if exception:
+        kind, message = _exception_parts(exception)
+        known = known_category is not None
+        if kind == 'ValueError' and message == KNOWN_HANDOFF_FAILURE:
+            known = (raw == 'solver_failed' and result.get('failed_stage') == 'collision_recovery'
+                     and numerical_evidence is not None
+                     and numerical_evidence.get('kind') == 'reviewed_bounded_native_handoff_failure')
+        if not known:
+            issues.append(dict(check='unknown_exception_even_if_timeout', source=source,
+                               raw_status=raw, detail=exception, failed_stage=result.get('failed_stage')))
+    if source == 'result.json':
+        if 'cuda' in ' '.join(str(process.get(key, '')) for key in ('exception', 'error', 'error_category')).lower():
+            issues.append(dict(check='cuda_process_error', source='process.json'))
+        if process.get('exception'):
+            issues.append(dict(check='external_process_exception', source='process.json', detail=process['exception']))
+        exit_code, timed_out = process.get('exit_code'), process.get('timed_out')
+        if (type(exit_code) is not int or type(timed_out) is not bool or
+                failures.unexpected_process_exit(process)):
+            issues.append(dict(check='abnormal_process_exit', source='process.json', exit_code=exit_code, timed_out=timed_out))
+        if raw in ('success_validated_numerical', 'success_numerical') and (timed_out or exit_code != 0):
+            issues.append(dict(check='success_contradicts_process', source='process.json'))
+    return issues
+
+
+def review_metadata(run):
+    """Read sealed JSON metadata only; no arrays, geometry, solves or scores."""
+    run = _path(run)
+    report = dict(run=str(run), status='passed', passed=True, final_statistics_produced=False,
+        scope='Sealed result/process/receipt, pre-stop JSON and receipt-bound handoff/trace metadata only; no arrays or full trajectory verification',
+        sealed_attempts=0, unsealed_attempts=0, interrupted_attempts=0,
+        reviewed_numerical_failures=[], errors=[])
+    manifest = read(run/'run_manifest.json')
+    report['source_commit'] = manifest.get('source_code_commit')
+    report['run_manifest_sha256'] = sha(run/'run_manifest.json')
+    for job in manifest['jobs']:
+        for attempt in sorted((run/'jobs'/job['job_id']/'attempts').glob('[0-9][0-9][0-9][0-9]')):
+            if not (attempt/'receipt.json').is_file():
+                report['unsealed_attempts'] += 1
+                continue
+            try:
+                receipt = read(attempt/'receipt.json')
+                if not isinstance(receipt, dict):
+                    raise ValueError('receipt must be an object')
+                if receipt.get('retry_pending') is True:
+                    report['interrupted_attempts'] += 1
+                    continue  # Interrupted coordinator artifacts are not terminal planning observations.
+                report['sealed_attempts'] += 1
+                names = ['result.json', 'process.json']
+                if (attempt/'result_before_external_stop.json').is_file():
+                    names.append('result_before_external_stop.json')
+                metadata = {}
+                for name in names:
+                    value = read(attempt/name)
+                    if not isinstance(value, dict):
+                        raise ValueError(name+' must be an object')
+                    if receipt.get('files', {}).get(name) != sha(attempt/name):
+                        raise ValueError('metadata receipt mismatch: '+name)
+                    metadata[name] = value
+                if receipt.get('status') != metadata['result.json'].get('status'):
+                    raise ValueError('receipt/result status mismatch')
+                if metadata['result.json'].get('status') not in batch.TERMINAL_STATUSES | {'success_numerical'}:
+                    raise ValueError('unknown terminal raw status')
+                for name in names:
+                    if name != 'process.json':
+                        evidence = handoff_failure_evidence(attempt, receipt, manifest, metadata[name])
+                        if evidence is None:
+                            evidence = typed_handoff_failure_evidence(attempt, receipt, manifest, job, metadata[name])
+                        if evidence is not None:
+                            report['reviewed_numerical_failures'].append(dict(evidence, metadata_source=name,
+                                attempt=str(attempt), job_id=job['job_id']))
+                        for issue in metadata_issues(metadata[name], metadata['process.json'], source=name,
+                                numerical_evidence=evidence):
+                            report['errors'].append(dict(issue, attempt=str(attempt), job_id=job['job_id']))
+            except (OSError, ValueError, TypeError, KeyError, AttributeError) as exc:
+                report['errors'].append(dict(check='malformed_or_unbound_metadata', attempt=str(attempt), detail=repr(exc)))
+    report['attention_required'] = bool(report['errors'])
+    if report['errors']:
+        report.update(status='failed', passed=False)
+    return report
 
 
 def _path(value):
@@ -317,6 +506,12 @@ def review(run_paths, specs, *, records_path, summary_path, reference_run=ROOT/'
             report['errors'].append({'check': 'raw_integrity', 'run': str(run), 'errors': check.get('errors')})
     if len(manifests) != len(run_paths) or any(not x.get('complete') for x in verification.values()):
         return report
+    report['metadata_checks'] = [review_metadata(run) for run in run_paths]
+    report['errors'].extend(dict(issue, run=metadata['run'])
+        for metadata in report['metadata_checks'] for issue in metadata['errors'])
+    if report['errors']:
+        report['status'] = 'failed'
+        return report
     # No final rates or cost summaries are computed before every run is sealed.
     dataset = {split: cases(BASE/'manifests'/f'{split}.jsonl') for split in SEEDS}
     report['input_manifest_sha256'] = {split: sha(BASE/'manifests'/f'{split}.jsonl') for split in SEEDS}
@@ -397,21 +592,31 @@ def save_report(report, output):
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--runs', nargs='+')
+    parser.add_argument('--run', type=Path, help='One run for the lightweight metadata-only audit')
+    parser.add_argument('--metadata-only', action='store_true', help='Read sealed JSON metadata only, without arrays, scores or GPU work')
     parser.add_argument('--comparisons', nargs='+')
     parser.add_argument('--selection', type=Path, default=ROOT/'results/selection.json')
     parser.add_argument('--records', type=Path, default=ROOT/'results/records.csv')
     parser.add_argument('--summary', type=Path, default=ROOT/'results/summary.csv')
     parser.add_argument('--reference-run', type=Path, default=ROOT/'results/repaired_dev', help='Pinned previous run whose validator source and numeric validation/motion-limit settings must be unchanged')
-    parser.add_argument('--output', type=Path, default=Path(__file__).with_name('completed_evaluation.json'))
+    parser.add_argument('--output', type=Path)
     args = parser.parse_args(argv)
-    if not args.runs and not args.comparisons:
+    if args.metadata_only and (not args.run or args.runs or args.comparisons):
+        parser.error('--metadata-only requires exactly --run, without --runs/--comparisons')
+    if args.run and not args.metadata_only:
+        parser.error('--run is for --metadata-only; use --runs for full acceptance')
+    if not args.metadata_only and not args.runs and not args.comparisons:
         parser.error('Specify --runs and/or --comparisons explicitly')
     try:
-        runs, specs = resolve_scope(read(args.selection), args.runs, args.comparisons)
-        report = review(runs, specs, records_path=args.records, summary_path=args.summary, reference_run=args.reference_run)
+        if args.metadata_only:
+            report = review_metadata(args.run)
+        else:
+            runs, specs = resolve_scope(read(args.selection), args.runs, args.comparisons)
+            report = review(runs, specs, records_path=args.records, summary_path=args.summary, reference_run=args.reference_run)
     except (OSError, ValueError, KeyError, TypeError, RuntimeError) as exc:
         report = {'status': 'failed', 'passed': False, 'errors': [{'check': 'acceptance_exception', 'error': repr(exc)}]}
-    destination = save_report(report, args.output)
+    output = args.output or Path(__file__).with_name('metadata_evaluation.json' if args.metadata_only else 'completed_evaluation.json')
+    destination = save_report(report, output)
     print(json.dumps({'status': report['status'], 'passed': report['passed'], 'report': str(destination),
                       'errors': report.get('errors'), 'coverage': report.get('coverage')}, indent=2))
     return 0 if report['passed'] else 2 if report['status'] == 'pending' else 1

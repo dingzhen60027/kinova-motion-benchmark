@@ -482,22 +482,22 @@
     {
       "id": "current_smoke_repaired",
       "mode": "end_to_end",
-      "compatibility_note": "Separate complete-repair protocol, source 6ad41275c7: identical frozen inputs, full Kinova collision model, numerical validator, motion limits and 60-second outer deadline. DRM reconciles approximate cache exclusions with the actual online spheres and checks alternate endpoint attachments; dev-fixed limits are 1000 planning attempts, 1000 endpoint trials per endpoint per attempt, 100000 expansions, 0.01-rad steering, unchanged 0.01-m internal padding and frozen 6000-node roadmaps. NTO recovers only the reproduced near-contact Drake BoxBoxGradient rounding assertion without dropping collision pairs. OMPL native search cap changes explicitly from 10 to 60 seconds, bounded by remaining outer time minus final-validation and simplification reserves. Old and new observations are separate; first terminal attempt, no best-of. No final statistic may be emitted for incomplete cohorts.",
+      "compatibility_note": "Separate complete-repair protocol, source 6c3144ff64: identical frozen inputs, full Kinova collision model, numerical validator, motion limits and 60-second outer deadline. DRM reconciles approximate cache exclusions with the actual online spheres and checks alternate endpoint attachments; dev-fixed limits are 1000 planning attempts, 1000 endpoint trials per endpoint per attempt, 100000 expansions, 0.01-rad steering, unchanged 0.01-m internal padding and frozen 6000-node roadmaps. NTO recovers only the reproduced near-contact Drake BoxBoxGradient rounding assertion without dropping collision pairs. OMPL native search cap changes explicitly from 10 to 60 seconds, bounded by remaining outer time minus final-validation and simplification reserves. Old and new observations are separate; first terminal attempt, no best-of. No final statistic may be emitted for incomplete cohorts. Native region handoff searches within the unchanged 1e-6 correction bounds after the original 16-ULP path; no endpoints, normals, robot geometry or validation settings change. Unknown backend exceptions remain infrastructure errors across deadlines. All current observations use this source freeze; earlier smoke and the stopped development prefix remain diagnostics.",
       "runs": [
         {
-          "path": "results/repaired_native_smoke"
+          "path": "results/baseline_smoke"
         }
       ],
-      "scope": " Uses the native-first NTO source freeze; the earlier guarded-callback smoke is retained in its own diagnostic comparison.",
-      "runtime_commit": "6ad41275c78ccc49584083753ff3255af172fa30"
+      "scope": "Complete cohort with one first-terminal observation per fixed problem, method, track and paired seed; no substitution from prior source versions.",
+      "runtime_commit": "6c3144ff6445904aea3a85cde1a97abb109fc8cb"
     },
     {
       "id": "current_smoke_repaired_fixed_frontend",
       "mode": "fixed_frontend",
-      "compatibility_note": "Separate complete-repair protocol, source 6ad41275c7: identical frozen inputs, full Kinova collision model, numerical validator, motion limits and 60-second outer deadline. DRM reconciles approximate cache exclusions with the actual online spheres and checks alternate endpoint attachments; dev-fixed limits are 1000 planning attempts, 1000 endpoint trials per endpoint per attempt, 100000 expansions, 0.01-rad steering, unchanged 0.01-m internal padding and frozen 6000-node roadmaps. NTO recovers only the reproduced near-contact Drake BoxBoxGradient rounding assertion without dropping collision pairs. OMPL native search cap changes explicitly from 10 to 60 seconds, bounded by remaining outer time minus final-validation and simplification reserves. Old and new observations are separate; first terminal attempt, no best-of. No final statistic may be emitted for incomplete cohorts.",
+      "compatibility_note": "Separate complete-repair protocol, source 6c3144ff64: identical frozen inputs, full Kinova collision model, numerical validator, motion limits and 60-second outer deadline. DRM reconciles approximate cache exclusions with the actual online spheres and checks alternate endpoint attachments; dev-fixed limits are 1000 planning attempts, 1000 endpoint trials per endpoint per attempt, 100000 expansions, 0.01-rad steering, unchanged 0.01-m internal padding and frozen 6000-node roadmaps. NTO recovers only the reproduced near-contact Drake BoxBoxGradient rounding assertion without dropping collision pairs. OMPL native search cap changes explicitly from 10 to 60 seconds, bounded by remaining outer time minus final-validation and simplification reserves. Old and new observations are separate; first terminal attempt, no best-of. No final statistic may be emitted for incomplete cohorts. Native region handoff searches within the unchanged 1e-6 correction bounds after the original 16-ULP path; no endpoints, normals, robot geometry or validation settings change. Unknown backend exceptions remain infrastructure errors across deadlines. All current observations use this source freeze; earlier smoke and the stopped development prefix remain diagnostics.",
       "runs": [
         {
-          "path": "results/repaired_native_smoke",
+          "path": "results/baseline_smoke",
           "methods": [
             "EI_ZO",
             "LGCS",
@@ -510,27 +510,28 @@
           ]
         }
       ],
-      "scope": " Uses the native-first NTO source freeze; the earlier guarded-callback smoke is retained in its own diagnostic comparison.",
-      "runtime_commit": "6ad41275c78ccc49584083753ff3255af172fa30"
+      "scope": "Complete cohort with one first-terminal observation per fixed problem, method, track and paired seed; no substitution from prior source versions.",
+      "runtime_commit": "6c3144ff6445904aea3a85cde1a97abb109fc8cb"
     },
     {
       "id": "current_dev_repaired",
       "mode": "end_to_end",
-      "compatibility_note": "Separate complete-repair protocol, source 6ad41275c7: identical frozen inputs, full Kinova collision model, numerical validator, motion limits and 60-second outer deadline. DRM reconciles approximate cache exclusions with the actual online spheres and checks alternate endpoint attachments; dev-fixed limits are 1000 planning attempts, 1000 endpoint trials per endpoint per attempt, 100000 expansions, 0.01-rad steering, unchanged 0.01-m internal padding and frozen 6000-node roadmaps. NTO recovers only the reproduced near-contact Drake BoxBoxGradient rounding assertion without dropping collision pairs. OMPL native search cap changes explicitly from 10 to 60 seconds, bounded by remaining outer time minus final-validation and simplification reserves. Old and new observations are separate; first terminal attempt, no best-of. No final statistic may be emitted for incomplete cohorts.",
+      "compatibility_note": "Separate complete-repair protocol, source 6c3144ff64: identical frozen inputs, full Kinova collision model, numerical validator, motion limits and 60-second outer deadline. DRM reconciles approximate cache exclusions with the actual online spheres and checks alternate endpoint attachments; dev-fixed limits are 1000 planning attempts, 1000 endpoint trials per endpoint per attempt, 100000 expansions, 0.01-rad steering, unchanged 0.01-m internal padding and frozen 6000-node roadmaps. NTO recovers only the reproduced near-contact Drake BoxBoxGradient rounding assertion without dropping collision pairs. OMPL native search cap changes explicitly from 10 to 60 seconds, bounded by remaining outer time minus final-validation and simplification reserves. Old and new observations are separate; first terminal attempt, no best-of. No final statistic may be emitted for incomplete cohorts. Native region handoff searches within the unchanged 1e-6 correction bounds after the original 16-ULP path; no endpoints, normals, robot geometry or validation settings change. Unknown backend exceptions remain infrastructure errors across deadlines. All current observations use this source freeze; earlier smoke and the stopped development prefix remain diagnostics.",
       "runs": [
         {
-          "path": "results/repaired_dev_all_seeds"
+          "path": "results/baseline_dev"
         }
       ],
-      "runtime_commit": "6ad41275c78ccc49584083753ff3255af172fa30"
+      "runtime_commit": "6c3144ff6445904aea3a85cde1a97abb109fc8cb",
+      "scope": "Complete cohort with one first-terminal observation per fixed problem, method, track and paired seed; no substitution from prior source versions."
     },
     {
       "id": "current_dev_repaired_fixed_frontend",
       "mode": "fixed_frontend",
-      "compatibility_note": "Separate complete-repair protocol, source 6ad41275c7: identical frozen inputs, full Kinova collision model, numerical validator, motion limits and 60-second outer deadline. DRM reconciles approximate cache exclusions with the actual online spheres and checks alternate endpoint attachments; dev-fixed limits are 1000 planning attempts, 1000 endpoint trials per endpoint per attempt, 100000 expansions, 0.01-rad steering, unchanged 0.01-m internal padding and frozen 6000-node roadmaps. NTO recovers only the reproduced near-contact Drake BoxBoxGradient rounding assertion without dropping collision pairs. OMPL native search cap changes explicitly from 10 to 60 seconds, bounded by remaining outer time minus final-validation and simplification reserves. Old and new observations are separate; first terminal attempt, no best-of. No final statistic may be emitted for incomplete cohorts.",
+      "compatibility_note": "Separate complete-repair protocol, source 6c3144ff64: identical frozen inputs, full Kinova collision model, numerical validator, motion limits and 60-second outer deadline. DRM reconciles approximate cache exclusions with the actual online spheres and checks alternate endpoint attachments; dev-fixed limits are 1000 planning attempts, 1000 endpoint trials per endpoint per attempt, 100000 expansions, 0.01-rad steering, unchanged 0.01-m internal padding and frozen 6000-node roadmaps. NTO recovers only the reproduced near-contact Drake BoxBoxGradient rounding assertion without dropping collision pairs. OMPL native search cap changes explicitly from 10 to 60 seconds, bounded by remaining outer time minus final-validation and simplification reserves. Old and new observations are separate; first terminal attempt, no best-of. No final statistic may be emitted for incomplete cohorts. Native region handoff searches within the unchanged 1e-6 correction bounds after the original 16-ULP path; no endpoints, normals, robot geometry or validation settings change. Unknown backend exceptions remain infrastructure errors across deadlines. All current observations use this source freeze; earlier smoke and the stopped development prefix remain diagnostics.",
       "runs": [
         {
-          "path": "results/repaired_dev_all_seeds",
+          "path": "results/baseline_dev",
           "methods": [
             "EI_ZO",
             "LGCS",
@@ -543,26 +544,28 @@
           ]
         }
       ],
-      "runtime_commit": "6ad41275c78ccc49584083753ff3255af172fa30"
+      "runtime_commit": "6c3144ff6445904aea3a85cde1a97abb109fc8cb",
+      "scope": "Complete cohort with one first-terminal observation per fixed problem, method, track and paired seed; no substitution from prior source versions."
     },
     {
       "id": "current_test_repaired",
       "mode": "end_to_end",
-      "compatibility_note": "Separate complete-repair protocol, source 6ad41275c7: identical frozen inputs, full Kinova collision model, numerical validator, motion limits and 60-second outer deadline. DRM reconciles approximate cache exclusions with the actual online spheres and checks alternate endpoint attachments; dev-fixed limits are 1000 planning attempts, 1000 endpoint trials per endpoint per attempt, 100000 expansions, 0.01-rad steering, unchanged 0.01-m internal padding and frozen 6000-node roadmaps. NTO recovers only the reproduced near-contact Drake BoxBoxGradient rounding assertion without dropping collision pairs. OMPL native search cap changes explicitly from 10 to 60 seconds, bounded by remaining outer time minus final-validation and simplification reserves. Old and new observations are separate; first terminal attempt, no best-of. No final statistic may be emitted for incomplete cohorts.",
+      "compatibility_note": "Separate complete-repair protocol, source 6c3144ff64: identical frozen inputs, full Kinova collision model, numerical validator, motion limits and 60-second outer deadline. DRM reconciles approximate cache exclusions with the actual online spheres and checks alternate endpoint attachments; dev-fixed limits are 1000 planning attempts, 1000 endpoint trials per endpoint per attempt, 100000 expansions, 0.01-rad steering, unchanged 0.01-m internal padding and frozen 6000-node roadmaps. NTO recovers only the reproduced near-contact Drake BoxBoxGradient rounding assertion without dropping collision pairs. OMPL native search cap changes explicitly from 10 to 60 seconds, bounded by remaining outer time minus final-validation and simplification reserves. Old and new observations are separate; first terminal attempt, no best-of. No final statistic may be emitted for incomplete cohorts. Native region handoff searches within the unchanged 1e-6 correction bounds after the original 16-ULP path; no endpoints, normals, robot geometry or validation settings change. Unknown backend exceptions remain infrastructure errors across deadlines. All current observations use this source freeze; earlier smoke and the stopped development prefix remain diagnostics.",
       "runs": [
         {
-          "path": "results/repaired_test"
+          "path": "results/baseline_test"
         }
       ],
-      "runtime_commit": "6ad41275c78ccc49584083753ff3255af172fa30"
+      "runtime_commit": "6c3144ff6445904aea3a85cde1a97abb109fc8cb",
+      "scope": "Complete cohort with one first-terminal observation per fixed problem, method, track and paired seed; no substitution from prior source versions."
     },
     {
       "id": "current_test_repaired_fixed_frontend",
       "mode": "fixed_frontend",
-      "compatibility_note": "Separate complete-repair protocol, source 6ad41275c7: identical frozen inputs, full Kinova collision model, numerical validator, motion limits and 60-second outer deadline. DRM reconciles approximate cache exclusions with the actual online spheres and checks alternate endpoint attachments; dev-fixed limits are 1000 planning attempts, 1000 endpoint trials per endpoint per attempt, 100000 expansions, 0.01-rad steering, unchanged 0.01-m internal padding and frozen 6000-node roadmaps. NTO recovers only the reproduced near-contact Drake BoxBoxGradient rounding assertion without dropping collision pairs. OMPL native search cap changes explicitly from 10 to 60 seconds, bounded by remaining outer time minus final-validation and simplification reserves. Old and new observations are separate; first terminal attempt, no best-of. No final statistic may be emitted for incomplete cohorts.",
+      "compatibility_note": "Separate complete-repair protocol, source 6c3144ff64: identical frozen inputs, full Kinova collision model, numerical validator, motion limits and 60-second outer deadline. DRM reconciles approximate cache exclusions with the actual online spheres and checks alternate endpoint attachments; dev-fixed limits are 1000 planning attempts, 1000 endpoint trials per endpoint per attempt, 100000 expansions, 0.01-rad steering, unchanged 0.01-m internal padding and frozen 6000-node roadmaps. NTO recovers only the reproduced near-contact Drake BoxBoxGradient rounding assertion without dropping collision pairs. OMPL native search cap changes explicitly from 10 to 60 seconds, bounded by remaining outer time minus final-validation and simplification reserves. Old and new observations are separate; first terminal attempt, no best-of. No final statistic may be emitted for incomplete cohorts. Native region handoff searches within the unchanged 1e-6 correction bounds after the original 16-ULP path; no endpoints, normals, robot geometry or validation settings change. Unknown backend exceptions remain infrastructure errors across deadlines. All current observations use this source freeze; earlier smoke and the stopped development prefix remain diagnostics.",
       "runs": [
         {
-          "path": "results/repaired_test",
+          "path": "results/baseline_test",
           "methods": [
             "EI_ZO",
             "LGCS",
@@ -575,7 +578,8 @@
           ]
         }
       ],
-      "runtime_commit": "6ad41275c78ccc49584083753ff3255af172fa30"
+      "runtime_commit": "6c3144ff6445904aea3a85cde1a97abb109fc8cb",
+      "scope": "Complete cohort with one first-terminal observation per fixed problem, method, track and paired seed; no substitution from prior source versions."
     },
     {
       "id": "diagnostic_smoke_guarded_callbacks",
@@ -586,6 +590,16 @@
         }
       ],
       "scope": "Complete 140-call source7284 smoke before measured ordinary NTO callback overhead was removed. Preserved diagnostic, excluded from current comparison plots; no best-of attempt selection."
+    },
+    {
+      "id": "diagnostic_smoke_native_first",
+      "mode": "end_to_end",
+      "runs": [
+        {
+          "path": "results/repaired_native_smoke"
+        }
+      ],
+      "scope": "Complete 140-call source6ad smoke before the native handoff defect found during development was repaired. Historical diagnostic only, excluded from current comparison figures."
     }
   ],
   "success_policy": {
@@ -754,5 +768,15 @@
   "figure_comparisons": [
     "current_dev_repaired",
     "current_test_repaired"
-  ]
+  ],
+  "development_repair_interruption": {
+    "run": "results/repaired_dev_all_seeds",
+    "source_commit": "6ad41275c78ccc49584083753ff3255af172fa30",
+    "sealed_calls": 402,
+    "planned_calls": 2520,
+    "current_score": false,
+    "worker_interrupted": false,
+    "evidence": "results/trend_diagnostics/native_first_dev_prefix.json",
+    "note": "Preserved diagnostic prefix; full current cohorts run separately under the repaired source, without best-of selection."
+  }
 }

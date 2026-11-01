@@ -1,0 +1,56 @@
+{
+  "status": "success_validated_numerical",
+  "problem_id": "dev-dense_clutter-000-p02",
+  "scene_id": "dev-dense_clutter-000",
+  "family": "dense_clutter",
+  "objective": "minimum_distance",
+  "method": "RRTCONNECT",
+  "method_seed": 3075855892,
+  "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c",
+  "frontend_success": null,
+  "frontend_native_success": null,
+  "roadmap_used": false,
+  "source_code_commit": "20c8b23e8f589079eebd40ace04dd7f096a2c0f8",
+  "source_sha256": {
+    "runner": "a4a42c9655668e72f9f1771f63cfac2ebb028f43fbd399fad93e9a516f5d88d4",
+    "validator": "12086b43b1735ab8455b260235eb0c92b336cb2b2cbaef6c286d1d2f5f376b43"
+  },
+  "timing": {
+    "model_setup_seconds": 0.01438641594722867,
+    "gpu_initialization_warmup_seconds": 0.13012862019240856,
+    "sampling_planning_seconds": 0.8447404159232974,
+    "validation_seconds": 2.4162152418866754,
+    "cold_e2e_seconds": 3.6862256228923798,
+    "warm_query_seconds": 3.261536337900907
+  },
+  "metrics": {
+    "cost": 17.48376672082663,
+    "cost_unit": "rad",
+    "path_length_rad": 17.48376672082663,
+    "normalized_path_length": 3.0873696539603994,
+    "minimum_sampled_clearance_m": 0.0012309352848340893,
+    "duration_s": null,
+    "regions": 0,
+    "facets": 0
+  },
+  "budget_seconds": 60.0,
+  "reproduction_fidelity": "Official native OMPL RRTConnect with canonical CSD state/motion callbacks; not exact author FR3/hardware reproduction",
+  "seed_semantics": "method_seed seeds native OMPL sampling; roadmap identity only pairs the repetition",
+  "offline_roadmap_seconds": null,
+  "initialization": "Fixed endpoints; independent tree search; roadmap identifier is repetition pairing only",
+  "timing_scope": {
+    "cold": "worker function entry through final validation/failure; process startup measured separately by outer runner",
+    "warm": "same actual cold execution minus one-time model/dependency/GPU/roadmap setup; not a second timed solve",
+    "offline": "DRM construction is recorded separately and never added to query latency"
+  },
+  "gpu_memory": {
+    "sampled_peak_process_allocation_mib": 206,
+    "samples": 13,
+    "sampling_period_s": 0.2,
+    "method": "nvidia-smi process allocation; sampled peak, not CUDA allocator exact high water mark",
+    "error": null
+  },
+  "final_stage": "validation",
+  "cold_e2e_seconds": 3.970067767892033,
+  "sampled_gpu_peak_mib": 206.0
+}

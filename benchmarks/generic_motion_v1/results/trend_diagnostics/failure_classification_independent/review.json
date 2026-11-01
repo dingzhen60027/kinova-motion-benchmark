@@ -1,0 +1,54 @@
+{
+  "passed": true,
+  "blocking_findings": [],
+  "checks": [
+    {
+      "name": "unknown_cuda_survive_worker_and_external_deadlines",
+      "passed": true,
+      "cases": 28
+    },
+    {
+      "name": "sealed_results_unknown_cuda_never_normalized_to_timeout",
+      "passed": true,
+      "cases": 8
+    },
+    {
+      "name": "deadline_termination_vs_crash_signal_distinguished",
+      "passed": true,
+      "cases": 7
+    },
+    {
+      "name": "actual_numerical_failure_requires_source_bound_receipt_and_bound",
+      "passed": true,
+      "negative_cases": 6,
+      "positive": {
+        "kind": "native_handoff_numerical_rejection",
+        "code": "correction_exceeds_tolerance",
+        "evidence": "recovery/000/native_handoff/0000/handoff.json",
+        "receipt_verified": true
+      }
+    },
+    {
+      "name": "legacy_no_route_not_enabled_for_current_runtime",
+      "passed": true,
+      "current_source_sha256": "88635761066318a15cc5fe4c93418a5858413fe2d26b9b01f8d3efab7f3caa37",
+      "reviewed_source_sha256": "0778b54c108793ae15fe3e54ef5bb8489ccc7d1c31bd95bbe237eac5d0334549"
+    },
+    {
+      "name": "exception_repr_parser_closed_and_nonexecuting",
+      "passed": true,
+      "cases": 4
+    }
+  ],
+  "source_sha256": {
+    "benchmarks/generic_motion_v1/runners/failure_classification.py": "e17330a40e44729002623c949f64e50116e23aadcde18564bfb59deebb9428a6",
+    "benchmarks/generic_motion_v1/runners/csdecomp_baseline.py": "f44db89373a06deb581a72c6fabb85dd18ce5704fc5d907f1bf3eef151cbef96",
+    "benchmarks/generic_motion_v1/batch.py": "d4bd15aa1a4c320b1f7382599a04c3af669cbb61838f6f9811302fe95a4e5944",
+    "benchmarks/generic_motion_v1/runners/results.py": "c2514581f7a236c397325a6a40414a23ee7d53aad404d808b685013c72f2bf02"
+  },
+  "seconds": 0.2795113269239664,
+  "gpu_calls": 0,
+  "planner_calls": 0,
+  "solver_calls": 0,
+  "review": "Worker catch uses exact type/message/phase; final deadline cannot replace infrastructure status. External timeout retains pre-stop evidence and rejects unknown errors/crashes. Sealed reader requires source+receipt+bound for typed handoff failures and exact reviewed old source/build/trace for legacy no-route. Current runtime rejects legacy no-route."
+}

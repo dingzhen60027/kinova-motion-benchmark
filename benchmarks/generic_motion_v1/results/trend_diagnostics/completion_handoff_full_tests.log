@@ -1,0 +1,117 @@
+........................................................................ [  5%]
+........................................................................ [ 11%]
+........................................................................ [ 16%]
+........................................................................ [ 22%]
+........................................................................ [ 27%]
+........................................................................ [ 33%]
+........................................................................ [ 39%]
+........................................................................ [ 44%]
+........................................................................ [ 50%]
+........................................................................ [ 55%]
+........................................................................ [ 61%]
+F....................................................................... [ 67%]
+........................................................................ [ 72%]
+........................................................................ [ 78%]
+........................................................................ [ 83%]
+........................................................................ [ 89%]
+........................................................................ [ 95%]
+...............................................................          [100%]
+=================================== FAILURES ===================================
+_ test_run_case_fixed_lscs_skips_first_generation_but_uses_common_validation[load_timeout] _
+
+source = (PosixPath('/tmp/pytest-of-eric/pytest-496/test_run_case_fixed_lscs_skips3/source'), {'jobs': [{'job_id': 'source', 'c...ic_v1_evaluation', 'online_budget_seconds': 60.0, 'optimizer_budget_seconds': 60.0, 'validation_step_rad': 0.005, ...})
+tmp_path = PosixPath('/tmp/pytest-of-eric/pytest-496/test_run_case_fixed_lscs_skips3')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7dc6a9d6ead0>
+scenario = 'load_timeout'
+
+    @pytest.mark.parametrize('scenario',['success','repair','load_failure','load_timeout','wrong_roadmap'])
+    def test_run_case_fixed_lscs_skips_first_generation_but_uses_common_validation(source,tmp_path,monkeypatch,scenario):
+        import sys,types
+        from benchmarks.generic_motion_v1.runners import csdecomp_baseline as runner
+        from benchmarks.generic_motion_v1.tests.test_baseline_validation import Model as NumericModel
+        import benchmarks.generic_motion_v1.model as model_module
+        from pydrake.all import HPolyhedron
+        run,m,j,a,c,cfg=source;b=binding(source)
+        class Model(NumericModel):
+            def __init__(self,*args):
+                self.robot_sha256=c['robot_sha256'];self.collision_geometry_sha256=c['collision_geometry_sha256']
+                self.voxels_xyz=np.empty((0,3));self.voxels=None;self.voxel_radius=.04
+                self.mplant=None;self.robot_geometry_ids=[]
+        class Domain:
+            def MakeBox(self,*args):pass
+        class Inflator:
+            def __init__(self,*args):pass
+            def inflateEdge(self,*args):pytest.fail('First inflation must not execute in shared mode')
+        fake=types.SimpleNamespace(HPolyhedron=Domain,EizoOptions=lambda:types.SimpleNamespace(),CudaEdgeInflator=Inflator)
+        class NoGPUMemoryMonitor:
+            def __enter__(self):return self
+            def __exit__(self,*args):pass
+            def report(self):return {'test_double':True}
+        monkeypatch.setattr(runner,'MemoryMonitor',NoGPUMemoryMonitor)
+        edits=[]
+        if scenario=='repair':
+            original_validate=runner.validate
+            def one_collision(*args,**kwargs):
+                v=original_validate(*args,**kwargs)
+                if str(kwargs['out']).endswith('/rounds/000'):
+                    v.update(passed=False,status='collision_failed',collision_points=np.array([[.5,0,0,0,0,0,0]]),collision_regions=np.array([0]))
+                return v
+            monkeypatch.setattr(runner,'validate',one_collision)
+            monkeypatch.setattr(runner,'native_region_with_anchors',lambda region,*a:region)
+            fake.EditRegionsOptions=lambda:types.SimpleNamespace()
+            def editor(*args):
+                edits.append(args);return args[4],(np.zeros((7,1)),np.zeros((7,1)))
+            fake.EditRegionsCuda=editor
+        elif scenario in ('load_failure','load_timeout'):
+            def fail_load(*args):raise (TimeoutError('controlled load deadline') if scenario=='load_timeout' else ValueError('controlled source loading failure'))
+            monkeypatch.setattr(shared,'load_bound',fail_load)
+        elif scenario=='wrong_roadmap':
+            b['roadmap_native_sha256']='0'*64
+            b['initialization_digest']=shared.digest({k:v for k,v in b.items() if k!='initialization_digest'})
+        monkeypatch.setitem(sys.modules,'csdecomp',fake);monkeypatch.setattr(model_module,'Model',Model)
+        monkeypatch.setattr(runner,'dependency_audit',lambda *a,**k:None)
+        monkeypatch.setattr(runner,'plan_query',lambda *a,**k:pytest.fail('DRM query must not rerun'))
+        monkeypatch.setattr(runner,'build_active_corridor',lambda *a,**k:pytest.fail('First corridor must not regenerate'))
+        # Keep actual author LSCS CPU solve and the common numeric validator with a
+        # CPU-only geometry oracle; no native collision or GPU function is present.
+        road=tmp_path/'road';road.mkdir();(road/'native.map').write_bytes(b'map')
+        write(road/'metadata.json',dict(status='ready',native_map_sha256=sha(road/'native.map'),
+            robot_sha256=c['robot_sha256'],collision_geometry_sha256=c['collision_geometry_sha256'],
+            config=cfg['roadmap'],roadmap_id='map0',offline_seconds=1.))
+        out=tmp_path/'worker'
+        result=runner.run_case(c,road,out,config=cfg,seed=3,method='EI_ZO',shared_initialization=b)
+        assert result['execution_mode']==shared.MODE and result['budget_seconds']==60
+        if scenario in ('load_failure','load_timeout','wrong_roadmap'):
+>           assert result['status']==('timeout' if scenario=='load_timeout' else 'infrastructure_error'),result
+E           AssertionError: {'status': 'infrastructure_error', 'problem_id': 'dev-source', 'scene_id': 'dev-scene', 'family': 'bottleneck', ...}
+E           assert 'infrastructure_error' == 'timeout'
+E             
+E             - timeout
+E             + infrastructure_error
+
+benchmarks/generic_motion_v1/tests/test_shared_initialization.py:221: AssertionError
+=============================== warnings summary ===============================
+benchmarks/generic_motion_v1/tests/test_model_consistency.py: 58 warnings
+benchmarks/generic_motion_v1/tests/test_model_qualification.py: 29 warnings
+benchmarks/generic_motion_v1/tests/test_native_drm_query.py: 29 warnings
+benchmarks/generic_motion_v1/tests/test_nto_collision_constraint.py: 145 warnings
+benchmarks/generic_motion_v1/tests/test_paper_nto.py: 29 warnings
+benchmarks/generic_motion_v1/tests/test_paper_nto_refined.py: 116 warnings
+benchmarks/generic_motion_v1/tests/test_reporting.py: 29 warnings
+benchmarks/generic_motion_v1/tests/test_trajopt_baseline.py: 29 warnings
+  /home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/lib/python3.10/site-packages/csdecomp/drake_csd_bridge.py:62: DrakeDeprecationWarning: (Deprecated.)
+  
+  Deprecated:
+      Use is_floating_base_body() instead. This will be removed from
+      Drake on or after 2026-06-01.
+    if all_drake_bodies[-1].is_floating():
+
+benchmarks/generic_motion_v1/tests/test_paper_lgcs.py::test_graph_solution_matches_exhaustive_corridor_oracle
+benchmarks/generic_motion_v1/tests/test_paper_lgcs_scip.py::test_graph_solution_matches_all_simple_corridor_paths
+  /home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/lib/python3.10/site-packages/numpy/_core/_methods.py:52: RuntimeWarning: invalid value encountered in reduce
+    return umr_sum(a, axis, dtype, out, keepdims, initial, where)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED benchmarks/generic_motion_v1/tests/test_shared_initialization.py::test_run_case_fixed_lscs_skips_first_generation_but_uses_common_validation[load_timeout]
+1 failed, 1286 passed, 466 warnings in 31.47s

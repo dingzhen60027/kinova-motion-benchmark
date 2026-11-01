@@ -17,6 +17,8 @@ from benchmarks.generic_motion_v1.runners import results
 
 logs = ROOT/'results/logs'
 events = logs/'completion_execution.jsonl'
+RUNS = {'smoke': 'baseline_smoke', 'dev': 'baseline_dev',
+        'test': 'baseline_test', 'fixed': 'baseline_initial_regions'}
 
 def record(event, **fields):
     row = dict(time_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(), event=event, **fields)
@@ -209,22 +211,23 @@ def complete_run(name):
         raise RuntimeError('Run needs diagnosis; later stages have not started: '+name)
 
 def main():
-    for name in ['repaired_native_smoke','repaired_dev_all_seeds','repaired_test']:
-        complete_run(name)
+    for split in ('smoke', 'dev', 'test'):
+        complete_run(RUNS[split])
 
-    fixed = 'repaired_fixed_initial_regions'
+    fixed = RUNS['fixed']
     if not (ROOT/'results'/fixed/'run_manifest.json').exists():
-        command(['scripts/evaluate.py','batch','--split','test','--methods','EI_ZO','LGCS','--track','path','--seeds','0','--mode','fixed_initial_regions','--initial-source-run','results/repaired_test','--output',f'results/{fixed}','--prepare-only'], fixed+'_prepare.log')
+        command(['scripts/evaluate.py','batch','--split','test','--methods','EI_ZO','LGCS','--track','path','--seeds','0','--mode','fixed_initial_regions','--initial-source-run',f"results/{RUNS['test']}",'--output',f'results/{fixed}','--prepare-only'], fixed+'_prepare.log')
     complete_run(fixed)
     selection_path = ROOT/'results/selection.json'
     selection = read(selection_path)
     identity = 'current_test_repaired_initial_regions'
     if identity not in {c['id'] for c in selection['comparisons']}:
-        selection['comparisons'].append(dict(id=identity,mode='fixed_initial_regions',runs=[dict(path=f'results/{fixed}',methods=['EI_ZO','LGCS'],objectives=['minimum_distance'])],scope='Same receipt-bound initial EI-ZO path, regions and corridor from the complete repaired_test source stage; eligibility never uses final optimizer success. Every eligible pair receives both backends with the unchanged 60-second cold budget including source revalidation, optimization, graph expansion, collision feedback, repair and final validation. Source-stage cost is reported separately.'))
+        selection['comparisons'].append(dict(id=identity,mode='fixed_initial_regions',runs=[dict(path=f'results/{fixed}',methods=['EI_ZO','LGCS'],objectives=['minimum_distance'])],scope=f"Same receipt-bound initial EI-ZO path, regions and corridor from the complete {RUNS['test']} source stage; eligibility never uses final optimizer success. Every eligible pair receives both backends with the unchanged 60-second cold budget including source revalidation, optimization, graph expansion, collision feedback, repair and final validation. Source-stage cost is reported separately."))
         write(selection_path,selection)
     command(['scripts/evaluate.py','summarize','--selection','results/selection.json','--output','results'], 'completed_summary_export.log')
     command(['results/trend_diagnostics/check_completed_evaluation.py','--comparisons','current_smoke_repaired','current_dev_repaired','current_test_repaired',identity], 'completed_evaluation_acceptance.log')
-    for split,name in [('dev','repaired_dev_all_seeds'),('test','repaired_test')]:
+    for split in ('dev', 'test'):
+        name = RUNS[split]
         arguments=['results/trend_diagnostics/compare_repaired_dev.py','--run',f'results/{name}','--baseline-comparison',f'current_{split}','--new-comparison',f'current_{split}_repaired','--output-prefix',f'results/trend_diagnostics/completed_{split}_comparison']
         arguments += ['--all-replicas'] if split=='dev' else ['--replica-seed','0']
         comparison_command(arguments, f'completed_{split}_comparison.log')
