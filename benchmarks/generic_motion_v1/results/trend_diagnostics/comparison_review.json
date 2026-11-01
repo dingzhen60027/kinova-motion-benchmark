@@ -1,0 +1,339 @@
+{
+  "reviewed_at_utc": "2026-11-01T03:13:09.889926+00:00",
+  "scope": "Independent read-only CPU review; no planner execution, GPU query, or runtime edit.",
+  "reviewed_files": {
+    "compare_repaired_dev.py": "b99900f750707f1c17575214f7d03ec029b3d2f8cd08309f7ddb3bb77de17e92",
+    "check_metric_bounds.py": "ed60f4ae7bacde64fc9d116e0ff65638650ff3a2b38c97ce52491645a0a51f25"
+  },
+  "conclusion": "No blocking correctness issue found for the current seed-0 cohort and frozen scalar-limit protocol.",
+  "checks": [
+    "Built-in comparison self-test passed.",
+    "partial cohort returns2; emits pending only; no final stats or verification",
+    "retry_pending skipped; first terminal failure retained despite later success",
+    "pair rejects seed/input/protocol mismatch and illegal input",
+    "failed run objective excluded even if a misleading low numeric cost exists",
+    "unequal scene sizes: query-weighted point estimate, scene-block bootstrap",
+    "Analytic triangular/trapezoidal time formula reconstructs distance for seven zero/boundary/nonunit test cases.",
+    "Current selected successful metrics independently checked against fixed task endpoints and per-joint frozen limits."
+  ],
+  "bounds_independent_review": {
+    "selected_success_path_checks": 4893,
+    "selected_success_time_checks": 1422,
+    "group_counts": {
+      "current_dev": 1364,
+      "current_test": 3529
+    },
+    "motion_config_vs_frozen_task_mismatches": [],
+    "minimum_path_slack_rad": -1.337672186352279e-07,
+    "minimum_time_slack_seconds": 0.001807184831518871,
+    "independently_used_per_joint_frozen_limits": true,
+    "records_sha256": "9ac7f3a11598741c691881298eb4469a90b5897a0c852b80dd583d2c3d28b503"
+  },
+  "statistical_review": {
+    "pairing": "Exact task/method/objective/replica keys; same planner_seed, budget, input/model/validation hashes and cluster; illegal input rejected.",
+    "selection": "New observations use unified first-terminal selection; old rows are freshly verified against their first terminal receipt; complete source runs required.",
+    "incomplete_cohort": "Final scores require every declared job terminal and verify complete. Pending jobs are not counted as failures.",
+    "costs": "Only jointly successful same-unit finite objectives contribute. Failed numeric values are ignored.",
+    "frontends": "Every paired legal query remains in the full-flow denominator; conditional denominator uses passing saved frontend validation. RRTConnect/RRTstar have no DRM denominator.",
+    "uncertainty": "Query-weighted point estimate with 2000 scene-block bootstrap replicates; one scene has no CI; open_control shares one base-world cluster.",
+    "causality": "Report explicitly identifies combined DRM repair and NTO_REFINED time-basis changes; neither before/after nor PAPER-versus-REFINED is presented as a pure parameterization ablation."
+  },
+  "nonblocking_scope_limits": [
+    {
+      "location": "check_metric_bounds.py",
+      "note": "Its passed flag concerns only selected existing successes, not cohort coverage. The current selected records do not yet include current_dev_repaired_s000; rerun after final index refresh. Group counts expose this limitation."
+    },
+    {
+      "location": "check_metric_bounds.py",
+      "note": "Formula assumes zero endpoint velocity and uniform scalar velocity/acceleration config. This is correct for every audited time record and is enforced by the common validator; future nonuniform or nonzero-endpoint protocols require changing this diagnostic."
+    },
+    {
+      "location": "compare_repaired_dev.py",
+      "note": "Fresh run is seed0 only. It does not estimate variation across new planner seeds or isolate hardware-load effects on cold latency."
+    },
+    {
+      "location": "compare_repaired_dev.py",
+      "note": "Configuration-only mode describes declared differences; full pairing/hash and receipt validation occurs in final compare. Configuration equality alone is explicitly not an implementation-equivalence claim."
+    }
+  ],
+  "review_probe_failures": [
+    {
+      "probe": "First extra test fixture",
+      "cause": "Reviewer synthetic row omitted selected_comparisons required by unified selector. Fixture corrected; all extra checks then passed. No product-code defect inferred."
+    }
+  ],
+  "runtime_modified": false,
+  "gpu_used": false,
+  "final_report_review": {
+    "reviewed_at_utc": "2026-11-01T03:52:39.599539+00:00",
+    "scope": "Read-only final README/results consistency check; no GPU, no planner run, no global records/summary write.",
+    "passed": true,
+    "blocking_findings": [],
+    "source_hashes": {
+      "README.md": "b54dce594645a05cea2e777d38d3009b83a7c51d44d4e8e95fb70bfda113373f",
+      "results/trend_diagnostics/repaired_dev_comparison.json": "8bb21ae6c18457c3cad1c2e3cfb6edb0738015093e2c1324fe5577138557e66e",
+      "results/trend_diagnostics/repaired_dev_comparison_pairs.csv": "8ae7196e8ea0d2332baf6bfb65e63e28337325859d8215012995b79e2c8b8506",
+      "results/trend_diagnostics/nto_repaired_review.json": "29e85acfb974478b1ff759388219de111375e70711b5ac0df63982c9d463a156",
+      "results/trend_diagnostics/frontend_native_limits/records.json": "22c2cd59296f6b591337acaa44c9f4d7dcaea47dcb56b8f9db433fd3f71d19ca",
+      "results/trend_diagnostics/frontend_native_limits/summary.json": "0e59e6e8ea7d4b456f5b1e080a41d0ca42e7adc8d97da3487e2948941eb0dea6"
+    },
+    "complete_cohort": {
+      "paired_rows": 840,
+      "method_objective_combinations": 14,
+      "fixed_dev_inputs": 60,
+      "replica_seed": 0,
+      "all_README_method_counts_match": true,
+      "DRM_validated_frontends_each": 38
+    },
+    "NTO_PAPER_path_normalization": {
+      "raw_success": 12,
+      "normalized_success": 13,
+      "additional_validated_nonconverged_candidate": {
+        "problem_id": "dev-bottleneck-000-p01",
+        "native_status": "SolutionResult.kIterationLimit",
+        "native_solver_success": false,
+        "independent_validation_passed": true,
+        "process_exit_code": 0,
+        "cold_e2e_seconds": 48.2867901599966,
+        "acceptance_basis": "saved_candidate_independently_validated_within_budget_despite_solver_nonconvergence"
+      },
+      "conclusion": "README13 is correct under the common saved-output rule; replacing it with raw12 would mix success definitions."
+    },
+    "NTO_REFINED_time": {
+      "old_success": 36,
+      "new_success": 34,
+      "common_success": 33,
+      "old_common_mean_seconds": 6.571575034817751,
+      "new_common_mean_seconds": 4.544506062810976,
+      "paired_reduction_seconds": 2.0270689720067745,
+      "reduction_scene_ci95_seconds": [
+        1.2175883770026368,
+        2.913434885209751
+      ],
+      "old_success_to_timeout": 3,
+      "old_timeout_to_timeout": 1,
+      "old_timeout_to_success": 1,
+      "all_four_repaired_post_frontend_failures_are_timeouts": true
+    },
+    "repaired_within_run_common_success_comparisons": {
+      "NTO_REFINED_minus_EI_ZO": {
+        "estimate": -1.0313728768349195,
+        "numerator": -35.06667781238726,
+        "denominator": 34.0,
+        "independent_scene_clusters": 15,
+        "ci95": [
+          -1.2969763680131456,
+          -0.7979733218109014
+        ],
+        "bootstrap_seed": 45827,
+        "bootstrap_replicates": 2000,
+        "method": "scene-level cluster bootstrap; resample scene clusters with all paired jobs intact"
+      },
+      "RRTCONNECT_minus_EI_ZO": {
+        "estimate": 0.02020885782170504,
+        "numerator": 0.7679365972247916,
+        "denominator": 38.0,
+        "independent_scene_clusters": 15,
+        "ci95": [
+          -0.4315873802181363,
+          0.46433222437097704
+        ],
+        "bootstrap_seed": 45827,
+        "bootstrap_replicates": 2000,
+        "method": "scene-level cluster bootstrap; resample scene clusters with all paired jobs intact"
+      }
+    },
+    "NTO_independent_review": {
+      "completed": 60,
+      "errors": 0,
+      "optimizer_constructed": 38,
+      "round_distribution": {
+        "1": 37,
+        "4": 1
+      },
+      "four_round_attempt_status": "timeout",
+      "conclusion": "The README correctly says refinement executed; it does not claim the four-round attempt succeeded."
+    },
+    "native_search_limit_diagnostic": {
+      "registered": 60,
+      "baseline_validated": 38,
+      "diagnostic_validated": 39,
+      "gained": [
+        "dev-sparse_clutter-004-p01"
+      ],
+      "lost": [],
+      "count_defaults_verified_in": "csdecomp/src/planning/drm_planner.h",
+      "main_configuration_unchanged": true,
+      "not_pooled_with_main_scores": true
+    },
+    "other_verified_claims": [
+      "Ten native GPU regression checks are recorded as passed; this review did not rerun them.",
+      "Excluded otherwise collision-free vertices:801 to0, frontend38/60 unchanged.",
+      "Parameterization control:6.000 to3.015762 seconds; control-hull conservatism distinguished from analytic3-second bound.",
+      "Adapter audit records3000 rows with0diagnostic errors.",
+      "Historical test and repaired dev are explicitly separated; no repaired395-task test claim."
+    ],
+    "wording_note": {
+      "text_reviewed": "all four new failures after the frontend",
+      "recommendation": "all four post-frontend failures in the repaired run",
+      "reason": "Only three of the four are newly failed relative to the historical paired run; one was already a timeout. Numeric totals are correct.",
+      "still_present_in_reviewed_README": false
+    },
+    "remaining_post_export_action": "Parent should rerun check_metric_bounds.py after the global selected index refresh; this review intentionally did not write records.csv or summary.csv."
+  },
+  "final_export_review": {
+    "reviewed_at_utc": "2026-11-01T03:55:46.127281+00:00",
+    "passed": true,
+    "blocking_findings": [],
+    "scope": "Read-only final CSV/selection/summary audit against committed pre-export evidence and finalized paired comparison; no GPU, no records/summary write.",
+    "baseline_commit": "a20e3601675153f973ed9ef9f98c37933670abbe",
+    "record_files": {
+      "old_sha256": "9ac7f3a11598741c691881298eb4469a90b5897a0c852b80dd583d2c3d28b503",
+      "new_sha256": "4bbd86896183db755829e5075b54bda94a97d95a2e956df97a9b7384401d7731",
+      "old_rows": 21628,
+      "new_rows": 22468,
+      "added_rows": 840,
+      "removed_rows": 0,
+      "changed_existing_rows": 0
+    },
+    "repaired_selected_group": {
+      "id": "current_dev_repaired_s000",
+      "rows": 840,
+      "legal_terminal_rows": 840,
+      "unique_methods": 10,
+      "method_objective_combinations": 14,
+      "replica_seeds": [
+        0
+      ],
+      "status_counts": {
+        "no_solution_within_budget": 297,
+        "success_numerical": 469,
+        "validation_failed": 41,
+        "solver_failure": 22,
+        "timeout": 10,
+        "infrastructure_error": 1
+      },
+      "all_rows_match_finalized_paired_csv": true,
+      "all_14_status_summary_groups_match_comparison_JSON_and_summary_CSV": true,
+      "matching_fields": [
+        "status",
+        "raw_status",
+        "objective_value",
+        "objective_unit",
+        "cold_e2e_seconds",
+        "attempt_path",
+        "receipt_sha256",
+        "frontend_validated"
+      ]
+    },
+    "selection_preservation": {
+      "old_comparison_count": 10,
+      "new_comparison_count": 12,
+      "unchanged_old_specifications": [
+        "current_dev",
+        "current_dev_fixed_frontend",
+        "current_dev_initial_regions",
+        "current_test",
+        "current_test_fixed_frontend",
+        "current_test_initial_regions",
+        "diagnostic_incumbent_observer",
+        "historical_dev_ompl",
+        "historical_nto_development",
+        "historical_test"
+      ],
+      "new_comparison_ids": [
+        "current_dev_repaired_s000",
+        "current_dev_repaired_s000_fixed_frontend"
+      ],
+      "old_group_counts_unchanged": {
+        "historical_nto_development": 24,
+        "diagnostic_incumbent_observer": 127,
+        "current_dev": 2520,
+        "historical_dev_ompl": 360,
+        "current_dev_fixed_frontend": 1320,
+        "current_dev_initial_regions": 220,
+        "current_test_initial_regions": 566,
+        "current_test": 5880,
+        "current_test_fixed_frontend": 3396,
+        "historical_test": 6300
+      },
+      "repaired_fixed_frontend_rows": 456,
+      "historical_selected_rows_replaced": 0
+    },
+    "historical_summary_preservation": {
+      "old_rows": 10942,
+      "unchanged_rows": 10941,
+      "historical_comparison_rows_changed": 0,
+      "expected_global_offline_accounting_change": {
+        "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c",
+        "differences": {
+          "actual_attempts": {
+            "old": "8426",
+            "new": "9146"
+          },
+          "planned_jobs": {
+            "old": "8426",
+            "new": "9146"
+          },
+          "roadmap_timed_load_jobs": {
+            "old": "7435",
+            "new": "8155"
+          }
+        },
+        "reason": "Twelve DRM-based method/track combinations x60 added queries reference the same offline map;120 independent OMPL calls do not. Offline build seconds and bytes stay unchanged and are not multiplied."
+      }
+    },
+    "metric_bounds_after_export": {
+      "passed": true,
+      "records_sha256_matches_current_export": true,
+      "path_checks": 5362,
+      "time_checks": 1562,
+      "groups": {
+        "current_dev": 1364,
+        "current_test": 3529,
+        "current_dev_repaired_s000": 469
+      },
+      "new_success_paths_included": 469,
+      "new_success_time_trajectories_included": 140,
+      "errors": [],
+      "supersedes_prior_pending_export_note": true
+    },
+    "artifact_hashes": {
+      "results/selection.json": "24004f0af0a246bee3271e49fb07438d2cbdb5bac23bf60697cf9c8e3d408d4d",
+      "results/summary.csv": "1fbe648517e6d04c4b0232c135dc2a3c2d3dabdfda88c61615944a73deedd505",
+      "results/trend_diagnostics/repaired_dev_comparison.json": "8bb21ae6c18457c3cad1c2e3cfb6edb0738015093e2c1324fe5577138557e66e",
+      "results/trend_diagnostics/repaired_dev_comparison_pairs.csv": "8ae7196e8ea0d2332baf6bfb65e63e28337325859d8215012995b79e2c8b8506",
+      "results/trend_diagnostics/metric_bounds.json": "e6e344e655b9bbd5effa21b5186fd6705960267172c6131f67b134e464ff6fef",
+      "README.md": "43dcfccf01819fbb9e0b25017ab9e0e03cffd08d0d6ddf988d48a832f62e3ac1"
+    },
+    "gpu_used": false,
+    "global_records_modified": false,
+    "global_summary_modified": false,
+    "final_README_additions_reviewed": [
+      "VAMP/pRRTC evidence link points to the audited contemporary_sampling_sources.json.",
+      "5362path/1562time bound counts match final metric_bounds.json and its current records hash.",
+      "Directory listing includes repaired_dev and trend_diagnostics."
+    ],
+    "last_text_check": {
+      "reviewed_at_utc": "2026-11-01T03:56:59.662005+00:00",
+      "passed": true,
+      "terminal_counts_match_recorded_final_export": {
+        "success_numerical": 469,
+        "no_solution_within_budget": 297,
+        "validation_failed": 41,
+        "solver_failure": 22,
+        "timeout": 10,
+        "infrastructure_error": 1
+      },
+      "unique_infrastructure_error": {
+        "problem_id": "dev-route_choice-002-p00",
+        "method": "NTO_PAPER",
+        "objective": "minimum_distance",
+        "exception": "Drake BoxBoxGradient assertion while evaluating SNOPT constraints",
+        "failure_stage": "trajectory_optimization",
+        "old_and_new_normalized_status": "infrastructure_error",
+        "README_correctly_reports_unresolved": true
+      }
+    }
+  }
+}

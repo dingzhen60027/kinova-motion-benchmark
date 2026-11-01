@@ -1,6 +1,6 @@
 {
   "scope": "Every actual attempt belonging to a run_manifest; standalone diagnostic probes are not planning queries.",
-  "actual_attempts": 21628,
+  "actual_attempts": 22468,
   "runs": [
     {
       "run": "benchmarks/generic_motion_v1/results/dev_eizo_v1",
@@ -802,6 +802,92 @@
       ],
       "budget_seconds": 60.0,
       "manifest_sha256": "a9ae64465afb4df8b10db4743bfa2a8193b5f113d0718df173c4b19fd13db7df"
+    },
+    {
+      "run": "benchmarks/generic_motion_v1/results/repaired_dev",
+      "split": "dev",
+      "planned_jobs": 840,
+      "actual_attempts": 840,
+      "actual_legal_attempts": 840,
+      "lifecycle": {
+        "terminal": 840
+      },
+      "status_counts": {
+        "no_solution_within_budget": 297,
+        "success_numerical": 469,
+        "validation_failed": 41,
+        "solver_failure": 22,
+        "timeout": 10,
+        "infrastructure_error": 1
+      },
+      "method_objectives": [
+        {
+          "method": "CHOMP",
+          "objective": "minimum_distance"
+        },
+        {
+          "method": "EI_ZO",
+          "objective": "minimum_distance"
+        },
+        {
+          "method": "EI_ZO",
+          "objective": "minimum_time"
+        },
+        {
+          "method": "LGCS",
+          "objective": "minimum_distance"
+        },
+        {
+          "method": "NTO",
+          "objective": "minimum_distance"
+        },
+        {
+          "method": "NTO",
+          "objective": "minimum_time"
+        },
+        {
+          "method": "NTO_PAPER",
+          "objective": "minimum_distance"
+        },
+        {
+          "method": "NTO_PAPER",
+          "objective": "minimum_time"
+        },
+        {
+          "method": "NTO_REFINED",
+          "objective": "minimum_distance"
+        },
+        {
+          "method": "NTO_REFINED",
+          "objective": "minimum_time"
+        },
+        {
+          "method": "RRTCONNECT",
+          "objective": "minimum_distance"
+        },
+        {
+          "method": "RRTSTAR",
+          "objective": "minimum_distance"
+        },
+        {
+          "method": "STOMP",
+          "objective": "minimum_distance"
+        },
+        {
+          "method": "TRAJOPT",
+          "objective": "minimum_distance"
+        }
+      ],
+      "replica_seeds": [
+        0
+      ],
+      "source_commit": "a20e3601675153f973ed9ef9f98c37933670abbe",
+      "source_fingerprint": "da83dad13db0e6095cd3b5002b3e25ac646643827f3d4b4519c347000866f404",
+      "config_hashes": [
+        "947b8eba229226090156248b102906f21480d638253153ca1c55faeee0ef5444"
+      ],
+      "budget_seconds": 60.0,
+      "manifest_sha256": "d89413ec26f10f3721c1326817fbb6244ffce32af2e6d7283d571ece5bdd71f0"
     },
     {
       "run": "benchmarks/generic_motion_v1/results/rss2025_dev_v1",
@@ -2874,16 +2960,16 @@
     }
   ],
   "summary_selection": "benchmarks/generic_motion_v1/results/selection.json",
-  "summary_selection_sha256": "0da5db94c46b0823603954c5eb30a1028ac13b6839eb492a006c70d316461d76",
+  "summary_selection_sha256": "24004f0af0a246bee3271e49fb07438d2cbdb5bac23bf60697cf9c8e3d408d4d",
   "pending_run_paths": [],
   "mapped_status_counts": {
-    "no_solution_within_budget": 6102,
-    "success_numerical": 12200,
-    "infrastructure_error": 439,
-    "timeout": 132,
+    "no_solution_within_budget": 6399,
+    "success_numerical": 12669,
+    "infrastructure_error": 440,
+    "timeout": 142,
     "retry_pending": 1,
-    "validation_failed": 1142,
-    "solver_failure": 582,
+    "validation_failed": 1183,
+    "solver_failure": 604,
     "invalid_input": 1030
   },
   "receipt_files_verified": true,

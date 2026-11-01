@@ -448,6 +448,36 @@
         }
       ],
       "scope": "24 historical observations: four tasks, three paired seeds, two objectives under the older roadmap/query protocol. Not pooled into current scores."
+    },
+    {
+      "id": "current_dev_repaired_s000",
+      "mode": "end_to_end",
+      "compatibility_note": "Separate completed November 1 development rerun: 60 fixed dev tasks, replica0, 60-second outer cap, source a20e3601675153f973ed9ef9f98c37933670abbe. Native CPU DRM endpoint/query-state repairs and NTO_REFINED time minimum16 shape-preserving controls; model, inputs, validator, EI-ZO iteration cap and LGCS solver unchanged. Not mixed with historical current_dev or current_test; no best-of selection.",
+      "runs": [
+        {
+          "path": "results/repaired_dev"
+        }
+      ]
+    },
+    {
+      "id": "current_dev_repaired_s000_fixed_frontend",
+      "mode": "fixed_frontend",
+      "compatibility_note": "Separate completed November 1 development rerun: 60 fixed dev tasks, replica0, 60-second outer cap, source a20e3601675153f973ed9ef9f98c37933670abbe. Native CPU DRM endpoint/query-state repairs and NTO_REFINED time minimum16 shape-preserving controls; model, inputs, validator, EI-ZO iteration cap and LGCS solver unchanged. Not mixed with historical current_dev or current_test; no best-of selection.",
+      "runs": [
+        {
+          "path": "results/repaired_dev",
+          "methods": [
+            "EI_ZO",
+            "LGCS",
+            "NTO_PAPER",
+            "NTO_REFINED",
+            "NTO",
+            "CHOMP",
+            "STOMP",
+            "TRAJOPT"
+          ]
+        }
+      ]
     }
   ],
   "success_policy": {

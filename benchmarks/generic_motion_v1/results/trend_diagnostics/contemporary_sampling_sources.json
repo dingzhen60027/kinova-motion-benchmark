@@ -1,0 +1,289 @@
+{
+  "audit_date": "2026-11-01",
+  "local_commit_at_audit": "a20e3601675153f973ed9ef9f98c37933670abbe",
+  "purpose": "Contemporary primary-source trend checks for Kinova benchmark diagnostics; neither target ranks nor target success rates.",
+  "scope": "Read-only literature, author-source and dataset inspection. No new planner integration, GPU execution, or local performance claim.",
+  "papers": [
+    {
+      "id": "vamp_icra2024",
+      "title": "Motions in Microseconds via Vectorized Sampling-Based Planning",
+      "authors": [
+        "Wil Thomason",
+        "Zachary Kingston",
+        "Lydia E. Kavraki"
+      ],
+      "paper_url": "https://www.kavrakilab.org/publications/thomason2024vamp.pdf",
+      "venue": "ICRA 2024",
+      "venue_source": "https://github.com/KavrakiLab/vamp",
+      "venue_correction": "RSS 2024 refers to CAPT, a separate collision-checking component paper, not the original VAMP planning paper.",
+      "locations": [
+        "IV Experiments",
+        "Table I"
+      ],
+      "protocol": {
+        "dataset": "Public MotionBenchMaker: Panda 7-DoF and Fetch 8-DoF, seven environments with 100 problems each; Baxter 14-DoF bimanual bookshelf datasets.",
+        "hardware": "AMD Ryzen 9 7950X, 4.5 GHz, AVX2; single-core SIMD planning.",
+        "sampling": "Shared multidimensional Halton sequences; matching parameters and collision-check resolution. MoveIt nearest neighbors use L1 rather than L2.",
+        "repeats_per_problem": 5,
+        "budgets": {
+          "MoveIt_OMPL_seconds": 300,
+          "PyBullet_OMPL_seconds": 300,
+          "VAMP_iterations": 1000000
+        },
+        "measurement": "Geometric planning and simplification timed separately; not minimum-time execution.",
+        "model": "Conservative robot sphere decompositions; code-generated kinematics/collision routines."
+      },
+      "panda_table_I": {
+        "units": {
+          "mean_planning": "ms",
+          "median_planning": "ms",
+          "mean_simplification": "ms",
+          "success": "percent"
+        },
+        "rows": [
+          {
+            "method": "PyBullet/OMPL RRTConnect",
+            "mean_planning": 58.47,
+            "median_planning": 21.21,
+            "mean_simplification": 121.38,
+            "success": 99.6
+          },
+          {
+            "method": "MoveIt/OMPL RRTConnect",
+            "mean_planning": 23.51,
+            "median_planning": 16.58,
+            "mean_simplification": 46.95,
+            "success": 100.0
+          },
+          {
+            "method": "VAMP RRTConnect",
+            "mean_planning": 0.1,
+            "median_planning": 0.04,
+            "mean_simplification": 0.12,
+            "success": 100.0
+          }
+        ]
+      },
+      "interpretation": "Strong RRTConnect feasibility is plausible. Collision backend and language boundary can dominate latency without changing the planner family."
+    },
+    {
+      "id": "prrtc_arxiv_v2_icra2026",
+      "title": "pRRTC: GPU-Parallel RRT-Connect for Fast, Consistent, and Low-Cost Motion Planning",
+      "authors": [
+        "Chih H. Huang",
+        "Pranav Jadhav",
+        "Brian Plancher",
+        "Zachary Kingston"
+      ],
+      "paper_url": "https://arxiv.org/html/2503.06757v2",
+      "audited_paper_version": "v2, 2025-10-07",
+      "venue": "ICRA 2026, as identified by the author repository",
+      "venue_source": "https://github.com/CoMMALab/pRRTC",
+      "version_caution": "Do not combine v1 speedup claims or tables with v2 results.",
+      "locations": [
+        "III-A",
+        "IV-A",
+        "Table I"
+      ],
+      "protocol": {
+        "dataset": "MotionBenchMaker: Panda/Fetch seven environments x 100 problems; Baxter three x 500.",
+        "hardware": "AMD Threadripper PRO 5965WX, RTX 4090.",
+        "comparison": "OMPL-RRTC uses VAMP motion validation; matched extension range/collision resolution; planner-specific settings tuned.",
+        "sampling": "Shared Halton sequences for pRRTC/VAMP/OMPL; other planners use default samplers.",
+        "measurement": "Environment setup excluded; initial geometric arclength and planning latency, not constrained execution duration.",
+        "model": "Offline hierarchical robot sphere construction; static primitive obstacles.",
+        "common_wall_budget_seconds": null,
+        "repetitions": null,
+        "unknowns": "No common wall timeout or trial repeat count identified in the paper."
+      },
+      "table_I": {
+        "units": {
+          "mean_planning": "ms",
+          "mean_initial_cost": "configuration-space arclength",
+          "success": "percent"
+        },
+        "rows": [
+          {
+            "robot": "Panda",
+            "method": "cuRobo",
+            "mean_planning": 62.63,
+            "mean_initial_cost": 7.52,
+            "success": 100.0
+          },
+          {
+            "robot": "Panda",
+            "method": "OMPL-RRTC (VAMP checker)",
+            "mean_planning": 2.54,
+            "mean_initial_cost": 9.87,
+            "success": 100.0
+          },
+          {
+            "robot": "Panda",
+            "method": "VAMP-RRTC",
+            "mean_planning": 0.17,
+            "mean_initial_cost": 8.05,
+            "success": 100.0
+          },
+          {
+            "robot": "Panda",
+            "method": "pRRTC",
+            "mean_planning": 0.49,
+            "mean_initial_cost": 6.46,
+            "success": 100.0
+          },
+          {
+            "robot": "Fetch",
+            "method": "VAMP-RRTC",
+            "mean_planning": 11.93,
+            "mean_initial_cost": 21.34,
+            "success": 100.0
+          },
+          {
+            "robot": "Fetch",
+            "method": "pRRTC",
+            "mean_planning": 2.32,
+            "mean_initial_cost": 15.26,
+            "success": 100.0
+          },
+          {
+            "robot": "Baxter",
+            "method": "VAMP-RRTC",
+            "mean_planning": 18.53,
+            "mean_initial_cost": 19.47,
+            "success": 100.0
+          },
+          {
+            "robot": "Baxter",
+            "method": "pRRTC",
+            "mean_planning": 4.82,
+            "mean_initial_cost": 13.12,
+            "success": 100.0
+          }
+        ]
+      },
+      "interpretation": "CPU VAMP is faster than GPU pRRTC on Panda; the ordering reverses on Fetch/Baxter. GPU placement alone predicts neither latency nor reliability."
+    }
+  ],
+  "pinned_author_code_checks": {
+    "prrtc_commit": "6a516f73438f3ff6f06206d01be1bc9afb84670a",
+    "vamp_resource_commit_linked_by_prrtc": "35080be604aabd4373cc7db8608297afaa446878",
+    "vamp_mbm_conversion": {
+      "source": {
+        "url": "https://raw.githubusercontent.com/KavrakiLab/vamp/35080be604aabd4373cc7db8608297afaa446878/resources/problem_tar_to_pkl_json.py",
+        "sha256": "0090818b9a3f2f1efbea1c42fd24d29d5a68408d284dd2fbfcd43936efeb987d"
+      },
+      "facts": [
+        "Reads fixed joint start and the first joint goal constraint, then stores a singleton goals list.",
+        "Valid flag requires a collision-valid start and at least one collision-valid goal under VAMP. It is not a planning-success flag."
+      ],
+      "limits": "This endpoint filter does not describe the original MBM generation feasibility filter; the two stages must remain distinct."
+    },
+    "prrtc_panda_dataset": {
+      "source": {
+        "url": "https://raw.githubusercontent.com/CoMMALab/pRRTC/6a516f73438f3ff6f06206d01be1bc9afb84670a/scripts/panda_problems.json",
+        "sha256": "11f34c5f2e375683509f9ad966881bc495f893fdc44211c9176dd696b6922df1"
+      },
+      "checked_all_records": true,
+      "registered": 700,
+      "valid": 699,
+      "invalid": 1,
+      "goal_count_histogram": {
+        "1": 700
+      },
+      "invalid_by_category": {
+        "table_pick": 1
+      },
+      "conclusion": "The inspected Panda dataset has fixed singleton joint goals. The vector-valued API is not evidence of a multi-IK-goal advantage."
+    },
+    "prrtc_runner": {
+      "source": {
+        "url": "https://raw.githubusercontent.com/CoMMALab/pRRTC/6a516f73438f3ff6f06206d01be1bc9afb84670a/scripts/evaluate_mbm.cpp",
+        "sha256": "d191360e76c9fa40ebdabdb4cca3d1e35e8de053f25112f713ee24c3e5ffe3be"
+      },
+      "facts": [
+        "Skips valid=false records and constructs host environment before calling solve.",
+        "One solve call per valid record; no repeat loop in this entry point.",
+        "Settings override num_new_configs=512, granularity=16, range=0.5, balance=2, tree_ratio=1.0 and enable dynamic_domain."
+      ],
+      "limits": "Current code settings and denominators are not asserted to be the precise configuration used for every paper table."
+    },
+    "prrtc_budget": {
+      "source": {
+        "url": "https://raw.githubusercontent.com/CoMMALab/pRRTC/6a516f73438f3ff6f06206d01be1bc9afb84670a/src/planning/pRRTC_settings.hh",
+        "sha256": "e01ab2319333a0e761a250199333b610c7b4c43d021d2790265757b0bd092ada"
+      },
+      "max_samples": 1000000,
+      "max_iters": 1000000,
+      "wall_timeout_defined_in_inspected_settings": false
+    },
+    "prrtc_timing": {
+      "source": {
+        "url": "https://raw.githubusercontent.com/CoMMALab/pRRTC/6a516f73438f3ff6f06206d01be1bc9afb84670a/src/planning/pRRTC.cu",
+        "sha256": "0804e0541d3850e525223eb36de4ecb046e5ab9523750b3b0fe28a9c266ba978"
+      },
+      "facts": [
+        "kernel_ns surrounds planner kernel plus cudaDeviceSynchronize.",
+        "wall_ns includes allocations, initialization, device-environment setup, solving, extraction and cleanup.",
+        "Host scene conversion occurs outside solve; cudaDeviceReset occurs after wall_ns is saved."
+      ],
+      "limits": "The paper does not unambiguously map Table I to one of the public code timer fields. Do not relabel its reported planning time as cold end-to-end latency."
+    },
+    "vamp_resource_notes": {
+      "source": {
+        "url": "https://raw.githubusercontent.com/KavrakiLab/vamp/35080be604aabd4373cc7db8608297afaa446878/resources/README.md",
+        "sha256": "22bbf5030d3478c1089f861b51aae187fd039efd9af97bafae063be59236afaa"
+      },
+      "facts": [
+        "Reference settings enable dynamic-domain sampling, unlike the original paper; original ranges include Panda=1.25 and Fetch=1.0.",
+        "Panda original-MBM gripper separation is 6.5 cm versus 2.5 cm in Robometrics, affecting input validity.",
+        "Reference Panda count is 699 solved / 699 valid / 700 registered.",
+        "Baxter resource description says 600 per scene, while pRRTC v2 describes 500; these are not silently equated."
+      ],
+      "pointcloud_reference_panda_ms": {
+        "mean_filter": 2.65961,
+        "mean_CAPT_build": 2.87958,
+        "mean_planning": 0.206778,
+        "mean_total": 5.99077
+      },
+      "limits": "These are author documentation reference timings, distinct from original VAMP Table I."
+    }
+  },
+  "diagnostic_actions_for_existing_kinova": [
+    {
+      "issue": "Full-pipeline versus frontend/backend ceiling",
+      "check": "For paired legal queries, inspect validated frontend availability and conditional backend outcomes separately. A robust optimizer cannot fix a frontend failure it never receives.",
+      "not_a_target": "Do not force Kinova to match MBM success percentages."
+    },
+    {
+      "issue": "RRTConnect unexpectedly slow",
+      "check": "Break down collision-query count, per-query CPU/GPU synchronization and Python callback overhead, search time, setup and final validation. Compare matched timers before changing algorithm settings.",
+      "not_a_target": "Do not require sub-millisecond cold runs from generic callbacks because code-generated VAMP achieves sub-millisecond hot planning."
+    },
+    {
+      "issue": "Success-rate denominator or goal mismatch",
+      "check": "Keep registered, invalid-input and legal-query counts separate. Confirm fixed joint targets; never infer easier multi-goal tasks from a vector API alone.",
+      "not_a_target": "Do not remove legal unknown-feasibility Kinova queries to match a feasibility-filtered dataset."
+    },
+    {
+      "issue": "Collision geometry differs",
+      "check": "Retain the canonical Kinova and conservative 0.04 m sphere union; compare checker consistency, not only URDF names. Gripper state, environment conversion and sphere coverage can change solvability.",
+      "not_a_target": "Do not reduce radii or disable collision pairs for better literature agreement."
+    },
+    {
+      "issue": "Budget mismatch",
+      "check": "Record actual internal search cap, outer cold-query budget and repeated-seed policy; distinguish iteration limits from wall-time limits.",
+      "not_a_target": "A 10-second local OMPL search and a 300-second paper allowance do not share an identical protocol."
+    },
+    {
+      "issue": "Quality comparison",
+      "check": "Separate raw initial path, simplified path, optimized geometric output and constrained execution duration; use common-success paired costs and scene-aware uncertainty.",
+      "not_a_target": "GPU and CPU rankings may reverse across robot, obstacle structure and degree of freedom."
+    }
+  ],
+  "guardrails": [
+    "No literature rank fitting.",
+    "Do not change frozen endpoints, collision protocol or validation tolerances.",
+    "Preserve failure evidence and distinguish numerical feasibility from continuous certification.",
+    "No pRRTC/VAMP local runtime or reproduction claim is made by this evidence file."
+  ]
+}

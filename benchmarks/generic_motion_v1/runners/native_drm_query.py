@@ -1,10 +1,11 @@
-"""Isolated CPU repair of native DRM exhausted-search error handling.
+"""Isolated, explicitly built CPU repairs of the native DRM query.
 
-The build copies the upstream translation unit and applies two exact changes:
-empty nearest-node search returns -1, and an exhausted A* frontier returns false.
-All other C++ host code and all installed CUDA code are retained. No Python graph
-search or endpoint/model/iteration-budget substitution is used. Build explicitly;
-loading never compiles or modifies the existing environment.
+The default failure_exits profile replaces two fatal exhausted-search exits.
+The endpoint_edges profile additionally applies the exact reviewed repairs in
+native_drm_corrections: endpoint-local rejection, query-state cleanup, same-node
+reachability and endpoint-inclusive steering. Both profiles retain the installed
+CUDA code and native graph search. No endpoint, model or iteration-budget
+substitution is used. Loading never compiles or modifies the existing environment.
 """
 from __future__ import annotations
 

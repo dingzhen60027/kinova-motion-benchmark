@@ -1,0 +1,46 @@
+{
+  "script_sha256": "b99900f750707f1c17575214f7d03ec029b3d2f8cd08309f7ddb3bb77de17e92",
+  "runtime_edits": false,
+  "GPU_calls": false,
+  "commands": [
+    {
+      "command": "bash local/python.sh results/trend_diagnostics/compare_repaired_dev.py --self-test",
+      "executed": true,
+      "exit_code": 0,
+      "result": "PASS: matched outcome/denominator, common-success-only cost, difference sign, scene clusters, one-cluster CI refusal"
+    },
+    {
+      "command": "bash local/python.sh results/trend_diagnostics/compare_repaired_dev.py",
+      "executed": true,
+      "exit_code": 2,
+      "result": "Refused final statistics:840 planned,166 completed,674 pending; exact snapshot stored in repaired_dev_comparison_pending.json"
+    },
+    {
+      "command": "bash local/python.sh scripts/evaluate.py summarize --selection results/selection.json --output results",
+      "executed": false,
+      "prerequisite": "After full-run completion and receipt/source verification; append independent current_dev_repaired_s000 comparison. Preserve existing current_dev/current_test entries."
+    },
+    {
+      "command": "bash local/python.sh results/trend_diagnostics/compare_repaired_dev.py --configuration-only",
+      "executed": true,
+      "exit_code": 0,
+      "result": "840 matched jobs,14 method/objective groups; actual configuration differences saved; no final result statistics produced."
+    }
+  ],
+  "selection_append_example": {
+    "id": "current_dev_repaired_s000",
+    "mode": "end_to_end",
+    "runs": [
+      {
+        "path": "results/repaired_dev"
+      }
+    ],
+    "scope": "Independent repaired development run;60 fixed dev tasks,14 supported method/objective combinations,replica_seed0. Historical current_dev/current_test remain separate; not pooled."
+  },
+  "final_outputs": [
+    "repaired_dev_comparison.json",
+    "repaired_dev_comparison_pairs.csv",
+    "repaired_dev_comparison_summary.csv"
+  ],
+  "configuration_evidence": "repaired_dev_comparison_configuration.json"
+}

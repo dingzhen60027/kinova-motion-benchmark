@@ -1,0 +1,3444 @@
+{
+  "new_run": "benchmarks/generic_motion_v1/results/repaired_dev",
+  "new_manifest_sha256": "d89413ec26f10f3721c1326817fbb6244ffce32af2e6d7283d571ece5bdd71f0",
+  "new_source_commit": "a20e3601675153f973ed9ef9f98c37933670abbe",
+  "old_comparison": "current_dev",
+  "replica_seed": 0,
+  "paired_jobs": 840,
+  "methods": [
+    {
+      "method": "EI_ZO",
+      "objective": "minimum_distance",
+      "paired_jobs": 60,
+      "old_run": "benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s000",
+      "old_manifest_sha256": "fcedc11366d96a97a041af7080fe8461fa66e0b94bf1b5e0472e00251689f7a4",
+      "old_source_commit": "3414dd08f165e0cee0856e86007b53d9b6e97720",
+      "declared_differences": [
+        {
+          "field": "drm_query.build_dir",
+          "old_present": true,
+          "old": "benchmarks/generic_motion_v1/reports/baseline_repair_v2/drm_safe_build_v2",
+          "new_present": true,
+          "new": "benchmarks/generic_motion_v1/native/build/drm_endpoint_edges_final",
+          "scope": "active_DRM_backend_repair"
+        },
+        {
+          "field": "nto_refined.minimum_time_control_points",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 16,
+          "scope": "inactive_for_this_method_and_track"
+        },
+        {
+          "field": "ompl.progress_poll_seconds",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.5,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "ompl.record_validated_progress",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": false,
+          "scope": "inactive_other_method_configuration"
+        }
+      ],
+      "recorded_source_hashes": {
+        "model.py": {
+          "old": "5b152e3e5ca484e5378856de11747c45826653df8a1183582fe90e0958fc5116",
+          "new": "5b152e3e5ca484e5378856de11747c45826653df8a1183582fe90e0958fc5116"
+        },
+        "runners/validate.py": {
+          "old": "12086b43b1735ab8455b260235eb0c92b336cb2b2cbaef6c286d1d2f5f376b43",
+          "new": "12086b43b1735ab8455b260235eb0c92b336cb2b2cbaef6c286d1d2f5f376b43"
+        },
+        "runners/csdecomp_baseline.py": {
+          "old": "8e3d98bd484913bbd412590ec1e2344d84cc18fac19aaa316f84d4cb338d8e17",
+          "new": "5c9e467e88198d3ceff797e8b50e70553851dcb2041894d20d579b91e96f7e0b"
+        },
+        "runners/native_drm_query.py": {
+          "old": "0778b54c108793ae15fe3e54ef5bb8489ccc7d1c31bd95bbe237eac5d0334549",
+          "new": "0f13a48b26b9b62084210b86d75130c81700ba860663ca09f222b2d2f61ad7d6"
+        },
+        "runners/ompl_baselines.py": {
+          "old": "a0344f42f3b162f79034d661d50ebd19dce325cb8e90a8e8f9f5affe3da4ea04",
+          "new": "f717d659e92f1e376efbccb07423a0b2949bc3174eb113607a65ffb1772c19ab"
+        },
+        "runners/chomp_stomp.py": {
+          "old": "b815f2b9e339ce8806bac7a60892dec4cfc17f21b0e2217eb8bb4e365efd1b47",
+          "new": "b815f2b9e339ce8806bac7a60892dec4cfc17f21b0e2217eb8bb4e365efd1b47"
+        },
+        "runners/trajopt_baseline.py": {
+          "old": "063eb6923c52a94eba2b89265b6bbedb9eba2c73cf1b24628716cdbf86377388",
+          "new": "063eb6923c52a94eba2b89265b6bbedb9eba2c73cf1b24628716cdbf86377388"
+        },
+        "runners/paper_nto.py": {
+          "old": "f6697df7115cf258b5cd7773de14aeb98e67a7e3d0952654715f765748c0337f",
+          "new": "54cf6ca003571136dc99cf8e829c569ee20d5f43c4ab611cb401034d2eb5f224"
+        },
+        "runners/paper_nto_refined.py": {
+          "old": "bbb167acd8b72d686286a59d464a99c1a3bf51405b3ec78052114fd25c9e1360",
+          "new": "c67d0516cd166841ed7340f3e460d5f9ec77fb0d3b1f30acdd2ae9877d2a42e3"
+        }
+      },
+      "unchanged_critical_settings": {
+        "eizo.max_iterations": 30,
+        "lgcs.solver": "scip",
+        "online_budget_seconds": 60.0,
+        "validation_step_rad": 0.005,
+        "velocity_limit_rad_s": 1.0,
+        "acceleration_limit_rad_s2": 1.0
+      }
+    },
+    {
+      "method": "RRTCONNECT",
+      "objective": "minimum_distance",
+      "paired_jobs": 60,
+      "old_run": "benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s000",
+      "old_manifest_sha256": "fcedc11366d96a97a041af7080fe8461fa66e0b94bf1b5e0472e00251689f7a4",
+      "old_source_commit": "3414dd08f165e0cee0856e86007b53d9b6e97720",
+      "declared_differences": [
+        {
+          "field": "drm_query.build_dir",
+          "old_present": true,
+          "old": "benchmarks/generic_motion_v1/reports/baseline_repair_v2/drm_safe_build_v2",
+          "new_present": true,
+          "new": "benchmarks/generic_motion_v1/native/build/drm_endpoint_edges_final",
+          "scope": "inactive_for_independent_OMPL"
+        },
+        {
+          "field": "nto_refined.minimum_time_control_points",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 16,
+          "scope": "inactive_for_this_method_and_track"
+        },
+        {
+          "field": "ompl.progress_poll_seconds",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.5,
+          "scope": "explicit_observer_disabled_setting; verify_historical_native_evidence"
+        },
+        {
+          "field": "ompl.record_validated_progress",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": false,
+          "scope": "explicit_observer_disabled_setting; verify_historical_native_evidence"
+        }
+      ],
+      "recorded_source_hashes": {
+        "model.py": {
+          "old": "5b152e3e5ca484e5378856de11747c45826653df8a1183582fe90e0958fc5116",
+          "new": "5b152e3e5ca484e5378856de11747c45826653df8a1183582fe90e0958fc5116"
+        },
+        "runners/validate.py": {
+          "old": "12086b43b1735ab8455b260235eb0c92b336cb2b2cbaef6c286d1d2f5f376b43",
+          "new": "12086b43b1735ab8455b260235eb0c92b336cb2b2cbaef6c286d1d2f5f376b43"
+        },
+        "runners/csdecomp_baseline.py": {
+          "old": "8e3d98bd484913bbd412590ec1e2344d84cc18fac19aaa316f84d4cb338d8e17",
+          "new": "5c9e467e88198d3ceff797e8b50e70553851dcb2041894d20d579b91e96f7e0b"
+        },
+        "runners/native_drm_query.py": {
+          "old": "0778b54c108793ae15fe3e54ef5bb8489ccc7d1c31bd95bbe237eac5d0334549",
+          "new": "0f13a48b26b9b62084210b86d75130c81700ba860663ca09f222b2d2f61ad7d6"
+        },
+        "runners/ompl_baselines.py": {
+          "old": "a0344f42f3b162f79034d661d50ebd19dce325cb8e90a8e8f9f5affe3da4ea04",
+          "new": "f717d659e92f1e376efbccb07423a0b2949bc3174eb113607a65ffb1772c19ab"
+        },
+        "runners/chomp_stomp.py": {
+          "old": "b815f2b9e339ce8806bac7a60892dec4cfc17f21b0e2217eb8bb4e365efd1b47",
+          "new": "b815f2b9e339ce8806bac7a60892dec4cfc17f21b0e2217eb8bb4e365efd1b47"
+        },
+        "runners/trajopt_baseline.py": {
+          "old": "063eb6923c52a94eba2b89265b6bbedb9eba2c73cf1b24628716cdbf86377388",
+          "new": "063eb6923c52a94eba2b89265b6bbedb9eba2c73cf1b24628716cdbf86377388"
+        },
+        "runners/paper_nto.py": {
+          "old": "f6697df7115cf258b5cd7773de14aeb98e67a7e3d0952654715f765748c0337f",
+          "new": "54cf6ca003571136dc99cf8e829c569ee20d5f43c4ab611cb401034d2eb5f224"
+        },
+        "runners/paper_nto_refined.py": {
+          "old": "bbb167acd8b72d686286a59d464a99c1a3bf51405b3ec78052114fd25c9e1360",
+          "new": "c67d0516cd166841ed7340f3e460d5f9ec77fb0d3b1f30acdd2ae9877d2a42e3"
+        }
+      },
+      "unchanged_critical_settings": {
+        "eizo.max_iterations": 30,
+        "lgcs.solver": "scip",
+        "online_budget_seconds": 60.0,
+        "validation_step_rad": 0.005,
+        "velocity_limit_rad_s": 1.0,
+        "acceleration_limit_rad_s2": 1.0
+      },
+      "historical_ompl_evidence": {
+        "native_records": 60,
+        "same_recorded_search_settings": 60,
+        "positive_matching_native_seed": 60,
+        "without_progress_artifact": 60,
+        "source_verified": true,
+        "source": "benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s000/source_snapshot/benchmarks/generic_motion_v1/runners/ompl_baselines.py",
+        "source_sha256": "a0344f42f3b162f79034d661d50ebd19dce325cb8e90a8e8f9f5affe3da4ea04",
+        "source_contains_progress_observer_switch": false
+      }
+    },
+    {
+      "method": "RRTSTAR",
+      "objective": "minimum_distance",
+      "paired_jobs": 60,
+      "old_run": "benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s000",
+      "old_manifest_sha256": "fcedc11366d96a97a041af7080fe8461fa66e0b94bf1b5e0472e00251689f7a4",
+      "old_source_commit": "3414dd08f165e0cee0856e86007b53d9b6e97720",
+      "declared_differences": [
+        {
+          "field": "drm_query.build_dir",
+          "old_present": true,
+          "old": "benchmarks/generic_motion_v1/reports/baseline_repair_v2/drm_safe_build_v2",
+          "new_present": true,
+          "new": "benchmarks/generic_motion_v1/native/build/drm_endpoint_edges_final",
+          "scope": "inactive_for_independent_OMPL"
+        },
+        {
+          "field": "nto_refined.minimum_time_control_points",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 16,
+          "scope": "inactive_for_this_method_and_track"
+        },
+        {
+          "field": "ompl.progress_poll_seconds",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.5,
+          "scope": "explicit_observer_disabled_setting; verify_historical_native_evidence"
+        },
+        {
+          "field": "ompl.record_validated_progress",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": false,
+          "scope": "explicit_observer_disabled_setting; verify_historical_native_evidence"
+        }
+      ],
+      "recorded_source_hashes": {
+        "model.py": {
+          "old": "5b152e3e5ca484e5378856de11747c45826653df8a1183582fe90e0958fc5116",
+          "new": "5b152e3e5ca484e5378856de11747c45826653df8a1183582fe90e0958fc5116"
+        },
+        "runners/validate.py": {
+          "old": "12086b43b1735ab8455b260235eb0c92b336cb2b2cbaef6c286d1d2f5f376b43",
+          "new": "12086b43b1735ab8455b260235eb0c92b336cb2b2cbaef6c286d1d2f5f376b43"
+        },
+        "runners/csdecomp_baseline.py": {
+          "old": "8e3d98bd484913bbd412590ec1e2344d84cc18fac19aaa316f84d4cb338d8e17",
+          "new": "5c9e467e88198d3ceff797e8b50e70553851dcb2041894d20d579b91e96f7e0b"
+        },
+        "runners/native_drm_query.py": {
+          "old": "0778b54c108793ae15fe3e54ef5bb8489ccc7d1c31bd95bbe237eac5d0334549",
+          "new": "0f13a48b26b9b62084210b86d75130c81700ba860663ca09f222b2d2f61ad7d6"
+        },
+        "runners/ompl_baselines.py": {
+          "old": "a0344f42f3b162f79034d661d50ebd19dce325cb8e90a8e8f9f5affe3da4ea04",
+          "new": "f717d659e92f1e376efbccb07423a0b2949bc3174eb113607a65ffb1772c19ab"
+        },
+        "runners/chomp_stomp.py": {
+          "old": "b815f2b9e339ce8806bac7a60892dec4cfc17f21b0e2217eb8bb4e365efd1b47",
+          "new": "b815f2b9e339ce8806bac7a60892dec4cfc17f21b0e2217eb8bb4e365efd1b47"
+        },
+        "runners/trajopt_baseline.py": {
+          "old": "063eb6923c52a94eba2b89265b6bbedb9eba2c73cf1b24628716cdbf86377388",
+          "new": "063eb6923c52a94eba2b89265b6bbedb9eba2c73cf1b24628716cdbf86377388"
+        },
+        "runners/paper_nto.py": {
+          "old": "f6697df7115cf258b5cd7773de14aeb98e67a7e3d0952654715f765748c0337f",
+          "new": "54cf6ca003571136dc99cf8e829c569ee20d5f43c4ab611cb401034d2eb5f224"
+        },
+        "runners/paper_nto_refined.py": {
+          "old": "bbb167acd8b72d686286a59d464a99c1a3bf51405b3ec78052114fd25c9e1360",
+          "new": "c67d0516cd166841ed7340f3e460d5f9ec77fb0d3b1f30acdd2ae9877d2a42e3"
+        }
+      },
+      "unchanged_critical_settings": {
+        "eizo.max_iterations": 30,
+        "lgcs.solver": "scip",
+        "online_budget_seconds": 60.0,
+        "validation_step_rad": 0.005,
+        "velocity_limit_rad_s": 1.0,
+        "acceleration_limit_rad_s2": 1.0
+      },
+      "historical_ompl_evidence": {
+        "native_records": 60,
+        "same_recorded_search_settings": 60,
+        "positive_matching_native_seed": 60,
+        "without_progress_artifact": 60,
+        "source_verified": true,
+        "source": "benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s000/source_snapshot/benchmarks/generic_motion_v1/runners/ompl_baselines.py",
+        "source_sha256": "a0344f42f3b162f79034d661d50ebd19dce325cb8e90a8e8f9f5affe3da4ea04",
+        "source_contains_progress_observer_switch": false
+      }
+    },
+    {
+      "method": "CHOMP",
+      "objective": "minimum_distance",
+      "paired_jobs": 60,
+      "old_run": "benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s000",
+      "old_manifest_sha256": "fcedc11366d96a97a041af7080fe8461fa66e0b94bf1b5e0472e00251689f7a4",
+      "old_source_commit": "3414dd08f165e0cee0856e86007b53d9b6e97720",
+      "declared_differences": [
+        {
+          "field": "drm_query.build_dir",
+          "old_present": true,
+          "old": "benchmarks/generic_motion_v1/reports/baseline_repair_v2/drm_safe_build_v2",
+          "new_present": true,
+          "new": "benchmarks/generic_motion_v1/native/build/drm_endpoint_edges_final",
+          "scope": "active_DRM_backend_repair"
+        },
+        {
+          "field": "nto_refined.minimum_time_control_points",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 16,
+          "scope": "inactive_for_this_method_and_track"
+        },
+        {
+          "field": "ompl.progress_poll_seconds",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.5,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "ompl.record_validated_progress",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": false,
+          "scope": "inactive_other_method_configuration"
+        }
+      ],
+      "recorded_source_hashes": {
+        "model.py": {
+          "old": "5b152e3e5ca484e5378856de11747c45826653df8a1183582fe90e0958fc5116",
+          "new": "5b152e3e5ca484e5378856de11747c45826653df8a1183582fe90e0958fc5116"
+        },
+        "runners/validate.py": {
+          "old": "12086b43b1735ab8455b260235eb0c92b336cb2b2cbaef6c286d1d2f5f376b43",
+          "new": "12086b43b1735ab8455b260235eb0c92b336cb2b2cbaef6c286d1d2f5f376b43"
+        },
+        "runners/csdecomp_baseline.py": {
+          "old": "8e3d98bd484913bbd412590ec1e2344d84cc18fac19aaa316f84d4cb338d8e17",
+          "new": "5c9e467e88198d3ceff797e8b50e70553851dcb2041894d20d579b91e96f7e0b"
+        },
+        "runners/native_drm_query.py": {
+          "old": "0778b54c108793ae15fe3e54ef5bb8489ccc7d1c31bd95bbe237eac5d0334549",
+          "new": "0f13a48b26b9b62084210b86d75130c81700ba860663ca09f222b2d2f61ad7d6"
+        },
+        "runners/ompl_baselines.py": {
+          "old": "a0344f42f3b162f79034d661d50ebd19dce325cb8e90a8e8f9f5affe3da4ea04",
+          "new": "f717d659e92f1e376efbccb07423a0b2949bc3174eb113607a65ffb1772c19ab"
+        },
+        "runners/chomp_stomp.py": {
+          "old": "b815f2b9e339ce8806bac7a60892dec4cfc17f21b0e2217eb8bb4e365efd1b47",
+          "new": "b815f2b9e339ce8806bac7a60892dec4cfc17f21b0e2217eb8bb4e365efd1b47"
+        },
+        "runners/trajopt_baseline.py": {
+          "old": "063eb6923c52a94eba2b89265b6bbedb9eba2c73cf1b24628716cdbf86377388",
+          "new": "063eb6923c52a94eba2b89265b6bbedb9eba2c73cf1b24628716cdbf86377388"
+        },
+        "runners/paper_nto.py": {
+          "old": "f6697df7115cf258b5cd7773de14aeb98e67a7e3d0952654715f765748c0337f",
+          "new": "54cf6ca003571136dc99cf8e829c569ee20d5f43c4ab611cb401034d2eb5f224"
+        },
+        "runners/paper_nto_refined.py": {
+          "old": "bbb167acd8b72d686286a59d464a99c1a3bf51405b3ec78052114fd25c9e1360",
+          "new": "c67d0516cd166841ed7340f3e460d5f9ec77fb0d3b1f30acdd2ae9877d2a42e3"
+        }
+      },
+      "unchanged_critical_settings": {
+        "eizo.max_iterations": 30,
+        "lgcs.solver": "scip",
+        "online_budget_seconds": 60.0,
+        "validation_step_rad": 0.005,
+        "velocity_limit_rad_s": 1.0,
+        "acceleration_limit_rad_s2": 1.0
+      }
+    },
+    {
+      "method": "STOMP",
+      "objective": "minimum_distance",
+      "paired_jobs": 60,
+      "old_run": "benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s000",
+      "old_manifest_sha256": "fcedc11366d96a97a041af7080fe8461fa66e0b94bf1b5e0472e00251689f7a4",
+      "old_source_commit": "3414dd08f165e0cee0856e86007b53d9b6e97720",
+      "declared_differences": [
+        {
+          "field": "drm_query.build_dir",
+          "old_present": true,
+          "old": "benchmarks/generic_motion_v1/reports/baseline_repair_v2/drm_safe_build_v2",
+          "new_present": true,
+          "new": "benchmarks/generic_motion_v1/native/build/drm_endpoint_edges_final",
+          "scope": "active_DRM_backend_repair"
+        },
+        {
+          "field": "nto_refined.minimum_time_control_points",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 16,
+          "scope": "inactive_for_this_method_and_track"
+        },
+        {
+          "field": "ompl.progress_poll_seconds",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.5,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "ompl.record_validated_progress",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": false,
+          "scope": "inactive_other_method_configuration"
+        }
+      ],
+      "recorded_source_hashes": {
+        "model.py": {
+          "old": "5b152e3e5ca484e5378856de11747c45826653df8a1183582fe90e0958fc5116",
+          "new": "5b152e3e5ca484e5378856de11747c45826653df8a1183582fe90e0958fc5116"
+        },
+        "runners/validate.py": {
+          "old": "12086b43b1735ab8455b260235eb0c92b336cb2b2cbaef6c286d1d2f5f376b43",
+          "new": "12086b43b1735ab8455b260235eb0c92b336cb2b2cbaef6c286d1d2f5f376b43"
+        },
+        "runners/csdecomp_baseline.py": {
+          "old": "8e3d98bd484913bbd412590ec1e2344d84cc18fac19aaa316f84d4cb338d8e17",
+          "new": "5c9e467e88198d3ceff797e8b50e70553851dcb2041894d20d579b91e96f7e0b"
+        },
+        "runners/native_drm_query.py": {
+          "old": "0778b54c108793ae15fe3e54ef5bb8489ccc7d1c31bd95bbe237eac5d0334549",
+          "new": "0f13a48b26b9b62084210b86d75130c81700ba860663ca09f222b2d2f61ad7d6"
+        },
+        "runners/ompl_baselines.py": {
+          "old": "a0344f42f3b162f79034d661d50ebd19dce325cb8e90a8e8f9f5affe3da4ea04",
+          "new": "f717d659e92f1e376efbccb07423a0b2949bc3174eb113607a65ffb1772c19ab"
+        },
+        "runners/chomp_stomp.py": {
+          "old": "b815f2b9e339ce8806bac7a60892dec4cfc17f21b0e2217eb8bb4e365efd1b47",
+          "new": "b815f2b9e339ce8806bac7a60892dec4cfc17f21b0e2217eb8bb4e365efd1b47"
+        },
+        "runners/trajopt_baseline.py": {
+          "old": "063eb6923c52a94eba2b89265b6bbedb9eba2c73cf1b24628716cdbf86377388",
+          "new": "063eb6923c52a94eba2b89265b6bbedb9eba2c73cf1b24628716cdbf86377388"
+        },
+        "runners/paper_nto.py": {
+          "old": "f6697df7115cf258b5cd7773de14aeb98e67a7e3d0952654715f765748c0337f",
+          "new": "54cf6ca003571136dc99cf8e829c569ee20d5f43c4ab611cb401034d2eb5f224"
+        },
+        "runners/paper_nto_refined.py": {
+          "old": "bbb167acd8b72d686286a59d464a99c1a3bf51405b3ec78052114fd25c9e1360",
+          "new": "c67d0516cd166841ed7340f3e460d5f9ec77fb0d3b1f30acdd2ae9877d2a42e3"
+        }
+      },
+      "unchanged_critical_settings": {
+        "eizo.max_iterations": 30,
+        "lgcs.solver": "scip",
+        "online_budget_seconds": 60.0,
+        "validation_step_rad": 0.005,
+        "velocity_limit_rad_s": 1.0,
+        "acceleration_limit_rad_s2": 1.0
+      }
+    },
+    {
+      "method": "TRAJOPT",
+      "objective": "minimum_distance",
+      "paired_jobs": 60,
+      "old_run": "benchmarks/generic_motion_v1/results/extended_baselines_v1_dev_s000",
+      "old_manifest_sha256": "fcedc11366d96a97a041af7080fe8461fa66e0b94bf1b5e0472e00251689f7a4",
+      "old_source_commit": "3414dd08f165e0cee0856e86007b53d9b6e97720",
+      "declared_differences": [
+        {
+          "field": "drm_query.build_dir",
+          "old_present": true,
+          "old": "benchmarks/generic_motion_v1/reports/baseline_repair_v2/drm_safe_build_v2",
+          "new_present": true,
+          "new": "benchmarks/generic_motion_v1/native/build/drm_endpoint_edges_final",
+          "scope": "active_DRM_backend_repair"
+        },
+        {
+          "field": "nto_refined.minimum_time_control_points",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 16,
+          "scope": "inactive_for_this_method_and_track"
+        },
+        {
+          "field": "ompl.progress_poll_seconds",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.5,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "ompl.record_validated_progress",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": false,
+          "scope": "inactive_other_method_configuration"
+        }
+      ],
+      "recorded_source_hashes": {
+        "model.py": {
+          "old": "5b152e3e5ca484e5378856de11747c45826653df8a1183582fe90e0958fc5116",
+          "new": "5b152e3e5ca484e5378856de11747c45826653df8a1183582fe90e0958fc5116"
+        },
+        "runners/validate.py": {
+          "old": "12086b43b1735ab8455b260235eb0c92b336cb2b2cbaef6c286d1d2f5f376b43",
+          "new": "12086b43b1735ab8455b260235eb0c92b336cb2b2cbaef6c286d1d2f5f376b43"
+        },
+        "runners/csdecomp_baseline.py": {
+          "old": "8e3d98bd484913bbd412590ec1e2344d84cc18fac19aaa316f84d4cb338d8e17",
+          "new": "5c9e467e88198d3ceff797e8b50e70553851dcb2041894d20d579b91e96f7e0b"
+        },
+        "runners/native_drm_query.py": {
+          "old": "0778b54c108793ae15fe3e54ef5bb8489ccc7d1c31bd95bbe237eac5d0334549",
+          "new": "0f13a48b26b9b62084210b86d75130c81700ba860663ca09f222b2d2f61ad7d6"
+        },
+        "runners/ompl_baselines.py": {
+          "old": "a0344f42f3b162f79034d661d50ebd19dce325cb8e90a8e8f9f5affe3da4ea04",
+          "new": "f717d659e92f1e376efbccb07423a0b2949bc3174eb113607a65ffb1772c19ab"
+        },
+        "runners/chomp_stomp.py": {
+          "old": "b815f2b9e339ce8806bac7a60892dec4cfc17f21b0e2217eb8bb4e365efd1b47",
+          "new": "b815f2b9e339ce8806bac7a60892dec4cfc17f21b0e2217eb8bb4e365efd1b47"
+        },
+        "runners/trajopt_baseline.py": {
+          "old": "063eb6923c52a94eba2b89265b6bbedb9eba2c73cf1b24628716cdbf86377388",
+          "new": "063eb6923c52a94eba2b89265b6bbedb9eba2c73cf1b24628716cdbf86377388"
+        },
+        "runners/paper_nto.py": {
+          "old": "f6697df7115cf258b5cd7773de14aeb98e67a7e3d0952654715f765748c0337f",
+          "new": "54cf6ca003571136dc99cf8e829c569ee20d5f43c4ab611cb401034d2eb5f224"
+        },
+        "runners/paper_nto_refined.py": {
+          "old": "bbb167acd8b72d686286a59d464a99c1a3bf51405b3ec78052114fd25c9e1360",
+          "new": "c67d0516cd166841ed7340f3e460d5f9ec77fb0d3b1f30acdd2ae9877d2a42e3"
+        }
+      },
+      "unchanged_critical_settings": {
+        "eizo.max_iterations": 30,
+        "lgcs.solver": "scip",
+        "online_budget_seconds": 60.0,
+        "validation_step_rad": 0.005,
+        "velocity_limit_rad_s": 1.0,
+        "acceleration_limit_rad_s2": 1.0
+      }
+    },
+    {
+      "method": "NTO",
+      "objective": "minimum_distance",
+      "paired_jobs": 60,
+      "old_run": "benchmarks/generic_motion_v1/results/nto_legacy_dev",
+      "old_manifest_sha256": "04e39dc4433cbb0570a5bb2c4f5c4a1864841dce93941afc144e1a372cf3e3d1",
+      "old_source_commit": "88f50536d59e6e617afcaece9bc01d214005746f",
+      "declared_differences": [
+        {
+          "field": "drm_query.build_dir",
+          "old_present": true,
+          "old": "benchmarks/generic_motion_v1/reports/baseline_repair_v2/drm_safe_build_v2",
+          "new_present": true,
+          "new": "benchmarks/generic_motion_v1/native/build/drm_endpoint_edges_final",
+          "scope": "active_DRM_backend_repair"
+        },
+        {
+          "field": "nto_refined.minimum_time_control_points",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 16,
+          "scope": "inactive_for_this_method_and_track"
+        }
+      ],
+      "recorded_source_hashes": {
+        "model.py": {
+          "old": "5b152e3e5ca484e5378856de11747c45826653df8a1183582fe90e0958fc5116",
+          "new": "5b152e3e5ca484e5378856de11747c45826653df8a1183582fe90e0958fc5116"
+        },
+        "runners/validate.py": {
+          "old": "12086b43b1735ab8455b260235eb0c92b336cb2b2cbaef6c286d1d2f5f376b43",
+          "new": "12086b43b1735ab8455b260235eb0c92b336cb2b2cbaef6c286d1d2f5f376b43"
+        },
+        "runners/csdecomp_baseline.py": {
+          "old": "5c9e467e88198d3ceff797e8b50e70553851dcb2041894d20d579b91e96f7e0b",
+          "new": "5c9e467e88198d3ceff797e8b50e70553851dcb2041894d20d579b91e96f7e0b"
+        },
+        "runners/native_drm_query.py": {
+          "old": "0778b54c108793ae15fe3e54ef5bb8489ccc7d1c31bd95bbe237eac5d0334549",
+          "new": "0f13a48b26b9b62084210b86d75130c81700ba860663ca09f222b2d2f61ad7d6"
+        },
+        "runners/ompl_baselines.py": {
+          "old": "f717d659e92f1e376efbccb07423a0b2949bc3174eb113607a65ffb1772c19ab",
+          "new": "f717d659e92f1e376efbccb07423a0b2949bc3174eb113607a65ffb1772c19ab"
+        },
+        "runners/chomp_stomp.py": {
+          "old": "b815f2b9e339ce8806bac7a60892dec4cfc17f21b0e2217eb8bb4e365efd1b47",
+          "new": "b815f2b9e339ce8806bac7a60892dec4cfc17f21b0e2217eb8bb4e365efd1b47"
+        },
+        "runners/trajopt_baseline.py": {
+          "old": "063eb6923c52a94eba2b89265b6bbedb9eba2c73cf1b24628716cdbf86377388",
+          "new": "063eb6923c52a94eba2b89265b6bbedb9eba2c73cf1b24628716cdbf86377388"
+        },
+        "runners/paper_nto.py": {
+          "old": "f6697df7115cf258b5cd7773de14aeb98e67a7e3d0952654715f765748c0337f",
+          "new": "54cf6ca003571136dc99cf8e829c569ee20d5f43c4ab611cb401034d2eb5f224"
+        },
+        "runners/paper_nto_refined.py": {
+          "old": "bbb167acd8b72d686286a59d464a99c1a3bf51405b3ec78052114fd25c9e1360",
+          "new": "c67d0516cd166841ed7340f3e460d5f9ec77fb0d3b1f30acdd2ae9877d2a42e3"
+        }
+      },
+      "unchanged_critical_settings": {
+        "eizo.max_iterations": 30,
+        "lgcs.solver": "scip",
+        "online_budget_seconds": 60.0,
+        "validation_step_rad": 0.005,
+        "velocity_limit_rad_s": 1.0,
+        "acceleration_limit_rad_s2": 1.0
+      }
+    },
+    {
+      "method": "NTO",
+      "objective": "minimum_time",
+      "paired_jobs": 60,
+      "old_run": "benchmarks/generic_motion_v1/results/nto_legacy_dev",
+      "old_manifest_sha256": "04e39dc4433cbb0570a5bb2c4f5c4a1864841dce93941afc144e1a372cf3e3d1",
+      "old_source_commit": "88f50536d59e6e617afcaece9bc01d214005746f",
+      "declared_differences": [
+        {
+          "field": "drm_query.build_dir",
+          "old_present": true,
+          "old": "benchmarks/generic_motion_v1/reports/baseline_repair_v2/drm_safe_build_v2",
+          "new_present": true,
+          "new": "benchmarks/generic_motion_v1/native/build/drm_endpoint_edges_final",
+          "scope": "active_DRM_backend_repair"
+        },
+        {
+          "field": "nto_refined.minimum_time_control_points",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 16,
+          "scope": "inactive_for_this_method_and_track"
+        }
+      ],
+      "recorded_source_hashes": {
+        "model.py": {
+          "old": "5b152e3e5ca484e5378856de11747c45826653df8a1183582fe90e0958fc5116",
+          "new": "5b152e3e5ca484e5378856de11747c45826653df8a1183582fe90e0958fc5116"
+        },
+        "runners/validate.py": {
+          "old": "12086b43b1735ab8455b260235eb0c92b336cb2b2cbaef6c286d1d2f5f376b43",
+          "new": "12086b43b1735ab8455b260235eb0c92b336cb2b2cbaef6c286d1d2f5f376b43"
+        },
+        "runners/csdecomp_baseline.py": {
+          "old": "5c9e467e88198d3ceff797e8b50e70553851dcb2041894d20d579b91e96f7e0b",
+          "new": "5c9e467e88198d3ceff797e8b50e70553851dcb2041894d20d579b91e96f7e0b"
+        },
+        "runners/native_drm_query.py": {
+          "old": "0778b54c108793ae15fe3e54ef5bb8489ccc7d1c31bd95bbe237eac5d0334549",
+          "new": "0f13a48b26b9b62084210b86d75130c81700ba860663ca09f222b2d2f61ad7d6"
+        },
+        "runners/ompl_baselines.py": {
+          "old": "f717d659e92f1e376efbccb07423a0b2949bc3174eb113607a65ffb1772c19ab",
+          "new": "f717d659e92f1e376efbccb07423a0b2949bc3174eb113607a65ffb1772c19ab"
+        },
+        "runners/chomp_stomp.py": {
+          "old": "b815f2b9e339ce8806bac7a60892dec4cfc17f21b0e2217eb8bb4e365efd1b47",
+          "new": "b815f2b9e339ce8806bac7a60892dec4cfc17f21b0e2217eb8bb4e365efd1b47"
+        },
+        "runners/trajopt_baseline.py": {
+          "old": "063eb6923c52a94eba2b89265b6bbedb9eba2c73cf1b24628716cdbf86377388",
+          "new": "063eb6923c52a94eba2b89265b6bbedb9eba2c73cf1b24628716cdbf86377388"
+        },
+        "runners/paper_nto.py": {
+          "old": "f6697df7115cf258b5cd7773de14aeb98e67a7e3d0952654715f765748c0337f",
+          "new": "54cf6ca003571136dc99cf8e829c569ee20d5f43c4ab611cb401034d2eb5f224"
+        },
+        "runners/paper_nto_refined.py": {
+          "old": "bbb167acd8b72d686286a59d464a99c1a3bf51405b3ec78052114fd25c9e1360",
+          "new": "c67d0516cd166841ed7340f3e460d5f9ec77fb0d3b1f30acdd2ae9877d2a42e3"
+        }
+      },
+      "unchanged_critical_settings": {
+        "eizo.max_iterations": 30,
+        "lgcs.solver": "scip",
+        "online_budget_seconds": 60.0,
+        "validation_step_rad": 0.005,
+        "velocity_limit_rad_s": 1.0,
+        "acceleration_limit_rad_s2": 1.0
+      }
+    },
+    {
+      "method": "NTO_PAPER",
+      "objective": "minimum_distance",
+      "paired_jobs": 60,
+      "old_run": "benchmarks/generic_motion_v1/results/rss2025_paper_comparators_v1_dev_s000",
+      "old_manifest_sha256": "1dcafad86f9b7c103e56f199ba93089937fb1ecb8fbeab138df54f8d7df05a70",
+      "old_source_commit": "b73f2ddbcbcbb485a883d08b6b42641ddf1e6d81",
+      "declared_differences": [
+        {
+          "field": "drm_query.build_dir",
+          "old_present": true,
+          "old": "benchmarks/generic_motion_v1/reports/baseline_repair_v2/drm_safe_build_v2",
+          "new_present": true,
+          "new": "benchmarks/generic_motion_v1/native/build/drm_endpoint_edges_final",
+          "scope": "active_DRM_backend_repair"
+        },
+        {
+          "field": "extended_baselines.chomp.backtracking_steps",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 8,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.chomp.collision_check_step_rad",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.05,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.chomp.finite_difference_rad",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 1e-05,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.chomp.initial_knots",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 64,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.chomp.learning_rate",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 1.0,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.chomp.maximum_iterations",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 40,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.chomp.maximum_knots",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 256,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.chomp.maximum_update_rad",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.08,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.chomp.obstacle_influence_m",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.05,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.chomp.obstacle_weight",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 10.0,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.chomp.relative_cost_tolerance",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 1e-07,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.chomp.safety_band_m",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 2e-06,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.chomp.smoothness_weight",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 1.0,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.stomp.collision_check_step_rad",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.05,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.stomp.control_cost_weight",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.1,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.stomp.cost_sensitivity",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 10.0,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.stomp.initial_knots",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 64,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.stomp.iterations_after_valid",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 5,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.stomp.maximum_iterations",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 40,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.stomp.maximum_knots",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 256,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.stomp.maximum_update_rad",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.08,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.stomp.noise_std_rad",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.1,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.stomp.obstacle_influence_m",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.05,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.stomp.rollouts",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 12,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.stomp.safety_band_m",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 2e-06,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.trajopt.clearance_m",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.001,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.trajopt.constraint_tolerance",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.0001,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.trajopt.derivative_step_rad",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 1e-05,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.trajopt.initial_knots",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 64,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.trajopt.initial_merit_coefficient",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 10.0,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.trajopt.initial_trust_box_rad",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.1,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.trajopt.maximum_knots",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 256,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.trajopt.maximum_merit_coefficient_increases",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 5,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.trajopt.maximum_optimizer_seconds",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 45.0,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.trajopt.maximum_sqp_iterations",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 50,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.trajopt.minimum_model_improvement",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.0001,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.trajopt.segment_collocation_subdivisions",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 3,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "nto_refined.minimum_time_control_points",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 16,
+          "scope": "inactive_for_this_method_and_track"
+        },
+        {
+          "field": "ompl.goal_bias",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.05,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "ompl.motion_step_rad",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.01,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "ompl.planning_seconds",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 10.0,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "ompl.progress_poll_seconds",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.5,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "ompl.range_rad",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.5,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "ompl.record_validated_progress",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": false,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "ompl.rewire_factor",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 1.1,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "ompl.simplification_max_empty_steps",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 50,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "ompl.simplification_max_steps",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 100,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "ompl.simplification_seconds",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.5,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "ompl.validation_reserve_seconds",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 5.0,
+          "scope": "inactive_other_method_configuration"
+        }
+      ],
+      "recorded_source_hashes": {
+        "model.py": {
+          "old": "5b152e3e5ca484e5378856de11747c45826653df8a1183582fe90e0958fc5116",
+          "new": "5b152e3e5ca484e5378856de11747c45826653df8a1183582fe90e0958fc5116"
+        },
+        "runners/validate.py": {
+          "old": "12086b43b1735ab8455b260235eb0c92b336cb2b2cbaef6c286d1d2f5f376b43",
+          "new": "12086b43b1735ab8455b260235eb0c92b336cb2b2cbaef6c286d1d2f5f376b43"
+        },
+        "runners/csdecomp_baseline.py": {
+          "old": "5c44255f5729b784c1233dac8ddceee5ea6875a7acd38c14f1c72a0e55cdfcaf",
+          "new": "5c9e467e88198d3ceff797e8b50e70553851dcb2041894d20d579b91e96f7e0b"
+        },
+        "runners/native_drm_query.py": {
+          "old": "0778b54c108793ae15fe3e54ef5bb8489ccc7d1c31bd95bbe237eac5d0334549",
+          "new": "0f13a48b26b9b62084210b86d75130c81700ba860663ca09f222b2d2f61ad7d6"
+        },
+        "runners/ompl_baselines.py": {
+          "old": null,
+          "new": "f717d659e92f1e376efbccb07423a0b2949bc3174eb113607a65ffb1772c19ab"
+        },
+        "runners/chomp_stomp.py": {
+          "old": null,
+          "new": "b815f2b9e339ce8806bac7a60892dec4cfc17f21b0e2217eb8bb4e365efd1b47"
+        },
+        "runners/trajopt_baseline.py": {
+          "old": null,
+          "new": "063eb6923c52a94eba2b89265b6bbedb9eba2c73cf1b24628716cdbf86377388"
+        },
+        "runners/paper_nto.py": {
+          "old": "f6697df7115cf258b5cd7773de14aeb98e67a7e3d0952654715f765748c0337f",
+          "new": "54cf6ca003571136dc99cf8e829c569ee20d5f43c4ab611cb401034d2eb5f224"
+        },
+        "runners/paper_nto_refined.py": {
+          "old": "bbb167acd8b72d686286a59d464a99c1a3bf51405b3ec78052114fd25c9e1360",
+          "new": "c67d0516cd166841ed7340f3e460d5f9ec77fb0d3b1f30acdd2ae9877d2a42e3"
+        }
+      },
+      "unchanged_critical_settings": {
+        "eizo.max_iterations": 30,
+        "lgcs.solver": "scip",
+        "online_budget_seconds": 60.0,
+        "validation_step_rad": 0.005,
+        "velocity_limit_rad_s": 1.0,
+        "acceleration_limit_rad_s2": 1.0
+      }
+    },
+    {
+      "method": "NTO_PAPER",
+      "objective": "minimum_time",
+      "paired_jobs": 60,
+      "old_run": "benchmarks/generic_motion_v1/results/rss2025_paper_comparators_v1_dev_s000",
+      "old_manifest_sha256": "1dcafad86f9b7c103e56f199ba93089937fb1ecb8fbeab138df54f8d7df05a70",
+      "old_source_commit": "b73f2ddbcbcbb485a883d08b6b42641ddf1e6d81",
+      "declared_differences": [
+        {
+          "field": "drm_query.build_dir",
+          "old_present": true,
+          "old": "benchmarks/generic_motion_v1/reports/baseline_repair_v2/drm_safe_build_v2",
+          "new_present": true,
+          "new": "benchmarks/generic_motion_v1/native/build/drm_endpoint_edges_final",
+          "scope": "active_DRM_backend_repair"
+        },
+        {
+          "field": "extended_baselines.chomp.backtracking_steps",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 8,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.chomp.collision_check_step_rad",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.05,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.chomp.finite_difference_rad",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 1e-05,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.chomp.initial_knots",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 64,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.chomp.learning_rate",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 1.0,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.chomp.maximum_iterations",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 40,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.chomp.maximum_knots",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 256,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.chomp.maximum_update_rad",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.08,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.chomp.obstacle_influence_m",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.05,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.chomp.obstacle_weight",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 10.0,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.chomp.relative_cost_tolerance",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 1e-07,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.chomp.safety_band_m",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 2e-06,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.chomp.smoothness_weight",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 1.0,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.stomp.collision_check_step_rad",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.05,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.stomp.control_cost_weight",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.1,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.stomp.cost_sensitivity",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 10.0,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.stomp.initial_knots",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 64,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.stomp.iterations_after_valid",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 5,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.stomp.maximum_iterations",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 40,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.stomp.maximum_knots",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 256,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.stomp.maximum_update_rad",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.08,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.stomp.noise_std_rad",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.1,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.stomp.obstacle_influence_m",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.05,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.stomp.rollouts",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 12,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.stomp.safety_band_m",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 2e-06,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.trajopt.clearance_m",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.001,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.trajopt.constraint_tolerance",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.0001,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.trajopt.derivative_step_rad",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 1e-05,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.trajopt.initial_knots",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 64,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.trajopt.initial_merit_coefficient",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 10.0,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.trajopt.initial_trust_box_rad",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.1,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.trajopt.maximum_knots",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 256,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.trajopt.maximum_merit_coefficient_increases",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 5,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.trajopt.maximum_optimizer_seconds",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 45.0,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.trajopt.maximum_sqp_iterations",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 50,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.trajopt.minimum_model_improvement",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.0001,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.trajopt.segment_collocation_subdivisions",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 3,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "nto_refined.minimum_time_control_points",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 16,
+          "scope": "inactive_for_this_method_and_track"
+        },
+        {
+          "field": "ompl.goal_bias",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.05,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "ompl.motion_step_rad",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.01,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "ompl.planning_seconds",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 10.0,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "ompl.progress_poll_seconds",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.5,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "ompl.range_rad",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.5,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "ompl.record_validated_progress",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": false,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "ompl.rewire_factor",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 1.1,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "ompl.simplification_max_empty_steps",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 50,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "ompl.simplification_max_steps",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 100,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "ompl.simplification_seconds",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.5,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "ompl.validation_reserve_seconds",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 5.0,
+          "scope": "inactive_other_method_configuration"
+        }
+      ],
+      "recorded_source_hashes": {
+        "model.py": {
+          "old": "5b152e3e5ca484e5378856de11747c45826653df8a1183582fe90e0958fc5116",
+          "new": "5b152e3e5ca484e5378856de11747c45826653df8a1183582fe90e0958fc5116"
+        },
+        "runners/validate.py": {
+          "old": "12086b43b1735ab8455b260235eb0c92b336cb2b2cbaef6c286d1d2f5f376b43",
+          "new": "12086b43b1735ab8455b260235eb0c92b336cb2b2cbaef6c286d1d2f5f376b43"
+        },
+        "runners/csdecomp_baseline.py": {
+          "old": "5c44255f5729b784c1233dac8ddceee5ea6875a7acd38c14f1c72a0e55cdfcaf",
+          "new": "5c9e467e88198d3ceff797e8b50e70553851dcb2041894d20d579b91e96f7e0b"
+        },
+        "runners/native_drm_query.py": {
+          "old": "0778b54c108793ae15fe3e54ef5bb8489ccc7d1c31bd95bbe237eac5d0334549",
+          "new": "0f13a48b26b9b62084210b86d75130c81700ba860663ca09f222b2d2f61ad7d6"
+        },
+        "runners/ompl_baselines.py": {
+          "old": null,
+          "new": "f717d659e92f1e376efbccb07423a0b2949bc3174eb113607a65ffb1772c19ab"
+        },
+        "runners/chomp_stomp.py": {
+          "old": null,
+          "new": "b815f2b9e339ce8806bac7a60892dec4cfc17f21b0e2217eb8bb4e365efd1b47"
+        },
+        "runners/trajopt_baseline.py": {
+          "old": null,
+          "new": "063eb6923c52a94eba2b89265b6bbedb9eba2c73cf1b24628716cdbf86377388"
+        },
+        "runners/paper_nto.py": {
+          "old": "f6697df7115cf258b5cd7773de14aeb98e67a7e3d0952654715f765748c0337f",
+          "new": "54cf6ca003571136dc99cf8e829c569ee20d5f43c4ab611cb401034d2eb5f224"
+        },
+        "runners/paper_nto_refined.py": {
+          "old": "bbb167acd8b72d686286a59d464a99c1a3bf51405b3ec78052114fd25c9e1360",
+          "new": "c67d0516cd166841ed7340f3e460d5f9ec77fb0d3b1f30acdd2ae9877d2a42e3"
+        }
+      },
+      "unchanged_critical_settings": {
+        "eizo.max_iterations": 30,
+        "lgcs.solver": "scip",
+        "online_budget_seconds": 60.0,
+        "validation_step_rad": 0.005,
+        "velocity_limit_rad_s": 1.0,
+        "acceleration_limit_rad_s2": 1.0
+      }
+    },
+    {
+      "method": "LGCS",
+      "objective": "minimum_distance",
+      "paired_jobs": 60,
+      "old_run": "benchmarks/generic_motion_v1/results/rss2025_reliable_v2_dev_s000",
+      "old_manifest_sha256": "e8fd4211c317283cc4d3f62efadbe4b6f6caf96cabe91512fa73fd570cd97ecc",
+      "old_source_commit": "e6b7e372e091ce5b01417073e0880e7c3068910c",
+      "declared_differences": [
+        {
+          "field": "drm_query.build_dir",
+          "old_present": true,
+          "old": "benchmarks/generic_motion_v1/reports/baseline_repair_v2/drm_safe_build_v2",
+          "new_present": true,
+          "new": "benchmarks/generic_motion_v1/native/build/drm_endpoint_edges_final",
+          "scope": "active_DRM_backend_repair"
+        },
+        {
+          "field": "extended_baselines.chomp.backtracking_steps",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 8,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.chomp.collision_check_step_rad",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.05,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.chomp.finite_difference_rad",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 1e-05,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.chomp.initial_knots",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 64,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.chomp.learning_rate",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 1.0,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.chomp.maximum_iterations",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 40,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.chomp.maximum_knots",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 256,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.chomp.maximum_update_rad",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.08,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.chomp.obstacle_influence_m",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.05,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.chomp.obstacle_weight",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 10.0,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.chomp.relative_cost_tolerance",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 1e-07,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.chomp.safety_band_m",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 2e-06,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.chomp.smoothness_weight",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 1.0,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.stomp.collision_check_step_rad",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.05,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.stomp.control_cost_weight",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.1,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.stomp.cost_sensitivity",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 10.0,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.stomp.initial_knots",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 64,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.stomp.iterations_after_valid",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 5,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.stomp.maximum_iterations",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 40,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.stomp.maximum_knots",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 256,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.stomp.maximum_update_rad",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.08,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.stomp.noise_std_rad",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.1,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.stomp.obstacle_influence_m",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.05,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.stomp.rollouts",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 12,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.stomp.safety_band_m",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 2e-06,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.trajopt.clearance_m",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.001,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.trajopt.constraint_tolerance",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.0001,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.trajopt.derivative_step_rad",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 1e-05,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.trajopt.initial_knots",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 64,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.trajopt.initial_merit_coefficient",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 10.0,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.trajopt.initial_trust_box_rad",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.1,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.trajopt.maximum_knots",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 256,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.trajopt.maximum_merit_coefficient_increases",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 5,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.trajopt.maximum_optimizer_seconds",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 45.0,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.trajopt.maximum_sqp_iterations",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 50,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.trajopt.minimum_model_improvement",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.0001,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.trajopt.segment_collocation_subdivisions",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 3,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "nto_refined.minimum_time_control_points",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 16,
+          "scope": "inactive_for_this_method_and_track"
+        },
+        {
+          "field": "ompl.goal_bias",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.05,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "ompl.motion_step_rad",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.01,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "ompl.planning_seconds",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 10.0,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "ompl.progress_poll_seconds",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.5,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "ompl.range_rad",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.5,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "ompl.record_validated_progress",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": false,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "ompl.rewire_factor",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 1.1,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "ompl.simplification_max_empty_steps",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 50,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "ompl.simplification_max_steps",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 100,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "ompl.simplification_seconds",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.5,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "ompl.validation_reserve_seconds",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 5.0,
+          "scope": "inactive_other_method_configuration"
+        }
+      ],
+      "recorded_source_hashes": {
+        "model.py": {
+          "old": "5b152e3e5ca484e5378856de11747c45826653df8a1183582fe90e0958fc5116",
+          "new": "5b152e3e5ca484e5378856de11747c45826653df8a1183582fe90e0958fc5116"
+        },
+        "runners/validate.py": {
+          "old": "12086b43b1735ab8455b260235eb0c92b336cb2b2cbaef6c286d1d2f5f376b43",
+          "new": "12086b43b1735ab8455b260235eb0c92b336cb2b2cbaef6c286d1d2f5f376b43"
+        },
+        "runners/csdecomp_baseline.py": {
+          "old": "5c44255f5729b784c1233dac8ddceee5ea6875a7acd38c14f1c72a0e55cdfcaf",
+          "new": "5c9e467e88198d3ceff797e8b50e70553851dcb2041894d20d579b91e96f7e0b"
+        },
+        "runners/native_drm_query.py": {
+          "old": "0778b54c108793ae15fe3e54ef5bb8489ccc7d1c31bd95bbe237eac5d0334549",
+          "new": "0f13a48b26b9b62084210b86d75130c81700ba860663ca09f222b2d2f61ad7d6"
+        },
+        "runners/ompl_baselines.py": {
+          "old": null,
+          "new": "f717d659e92f1e376efbccb07423a0b2949bc3174eb113607a65ffb1772c19ab"
+        },
+        "runners/chomp_stomp.py": {
+          "old": null,
+          "new": "b815f2b9e339ce8806bac7a60892dec4cfc17f21b0e2217eb8bb4e365efd1b47"
+        },
+        "runners/trajopt_baseline.py": {
+          "old": null,
+          "new": "063eb6923c52a94eba2b89265b6bbedb9eba2c73cf1b24628716cdbf86377388"
+        },
+        "runners/paper_nto.py": {
+          "old": "f6697df7115cf258b5cd7773de14aeb98e67a7e3d0952654715f765748c0337f",
+          "new": "54cf6ca003571136dc99cf8e829c569ee20d5f43c4ab611cb401034d2eb5f224"
+        },
+        "runners/paper_nto_refined.py": {
+          "old": "bbb167acd8b72d686286a59d464a99c1a3bf51405b3ec78052114fd25c9e1360",
+          "new": "c67d0516cd166841ed7340f3e460d5f9ec77fb0d3b1f30acdd2ae9877d2a42e3"
+        }
+      },
+      "unchanged_critical_settings": {
+        "eizo.max_iterations": 30,
+        "lgcs.solver": "scip",
+        "online_budget_seconds": 60.0,
+        "validation_step_rad": 0.005,
+        "velocity_limit_rad_s": 1.0,
+        "acceleration_limit_rad_s2": 1.0
+      }
+    },
+    {
+      "method": "NTO_REFINED",
+      "objective": "minimum_distance",
+      "paired_jobs": 60,
+      "old_run": "benchmarks/generic_motion_v1/results/rss2025_reliable_v2_dev_s000",
+      "old_manifest_sha256": "e8fd4211c317283cc4d3f62efadbe4b6f6caf96cabe91512fa73fd570cd97ecc",
+      "old_source_commit": "e6b7e372e091ce5b01417073e0880e7c3068910c",
+      "declared_differences": [
+        {
+          "field": "drm_query.build_dir",
+          "old_present": true,
+          "old": "benchmarks/generic_motion_v1/reports/baseline_repair_v2/drm_safe_build_v2",
+          "new_present": true,
+          "new": "benchmarks/generic_motion_v1/native/build/drm_endpoint_edges_final",
+          "scope": "active_DRM_backend_repair"
+        },
+        {
+          "field": "extended_baselines.chomp.backtracking_steps",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 8,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.chomp.collision_check_step_rad",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.05,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.chomp.finite_difference_rad",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 1e-05,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.chomp.initial_knots",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 64,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.chomp.learning_rate",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 1.0,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.chomp.maximum_iterations",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 40,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.chomp.maximum_knots",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 256,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.chomp.maximum_update_rad",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.08,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.chomp.obstacle_influence_m",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.05,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.chomp.obstacle_weight",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 10.0,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.chomp.relative_cost_tolerance",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 1e-07,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.chomp.safety_band_m",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 2e-06,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.chomp.smoothness_weight",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 1.0,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.stomp.collision_check_step_rad",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.05,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.stomp.control_cost_weight",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.1,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.stomp.cost_sensitivity",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 10.0,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.stomp.initial_knots",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 64,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.stomp.iterations_after_valid",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 5,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.stomp.maximum_iterations",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 40,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.stomp.maximum_knots",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 256,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.stomp.maximum_update_rad",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.08,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.stomp.noise_std_rad",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.1,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.stomp.obstacle_influence_m",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.05,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.stomp.rollouts",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 12,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.stomp.safety_band_m",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 2e-06,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.trajopt.clearance_m",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.001,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.trajopt.constraint_tolerance",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.0001,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.trajopt.derivative_step_rad",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 1e-05,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.trajopt.initial_knots",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 64,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.trajopt.initial_merit_coefficient",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 10.0,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.trajopt.initial_trust_box_rad",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.1,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.trajopt.maximum_knots",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 256,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.trajopt.maximum_merit_coefficient_increases",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 5,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.trajopt.maximum_optimizer_seconds",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 45.0,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.trajopt.maximum_sqp_iterations",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 50,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.trajopt.minimum_model_improvement",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.0001,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.trajopt.segment_collocation_subdivisions",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 3,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "nto_refined.minimum_time_control_points",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 16,
+          "scope": "inactive_for_this_method_and_track"
+        },
+        {
+          "field": "ompl.goal_bias",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.05,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "ompl.motion_step_rad",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.01,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "ompl.planning_seconds",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 10.0,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "ompl.progress_poll_seconds",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.5,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "ompl.range_rad",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.5,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "ompl.record_validated_progress",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": false,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "ompl.rewire_factor",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 1.1,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "ompl.simplification_max_empty_steps",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 50,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "ompl.simplification_max_steps",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 100,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "ompl.simplification_seconds",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.5,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "ompl.validation_reserve_seconds",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 5.0,
+          "scope": "inactive_other_method_configuration"
+        }
+      ],
+      "recorded_source_hashes": {
+        "model.py": {
+          "old": "5b152e3e5ca484e5378856de11747c45826653df8a1183582fe90e0958fc5116",
+          "new": "5b152e3e5ca484e5378856de11747c45826653df8a1183582fe90e0958fc5116"
+        },
+        "runners/validate.py": {
+          "old": "12086b43b1735ab8455b260235eb0c92b336cb2b2cbaef6c286d1d2f5f376b43",
+          "new": "12086b43b1735ab8455b260235eb0c92b336cb2b2cbaef6c286d1d2f5f376b43"
+        },
+        "runners/csdecomp_baseline.py": {
+          "old": "5c44255f5729b784c1233dac8ddceee5ea6875a7acd38c14f1c72a0e55cdfcaf",
+          "new": "5c9e467e88198d3ceff797e8b50e70553851dcb2041894d20d579b91e96f7e0b"
+        },
+        "runners/native_drm_query.py": {
+          "old": "0778b54c108793ae15fe3e54ef5bb8489ccc7d1c31bd95bbe237eac5d0334549",
+          "new": "0f13a48b26b9b62084210b86d75130c81700ba860663ca09f222b2d2f61ad7d6"
+        },
+        "runners/ompl_baselines.py": {
+          "old": null,
+          "new": "f717d659e92f1e376efbccb07423a0b2949bc3174eb113607a65ffb1772c19ab"
+        },
+        "runners/chomp_stomp.py": {
+          "old": null,
+          "new": "b815f2b9e339ce8806bac7a60892dec4cfc17f21b0e2217eb8bb4e365efd1b47"
+        },
+        "runners/trajopt_baseline.py": {
+          "old": null,
+          "new": "063eb6923c52a94eba2b89265b6bbedb9eba2c73cf1b24628716cdbf86377388"
+        },
+        "runners/paper_nto.py": {
+          "old": "f6697df7115cf258b5cd7773de14aeb98e67a7e3d0952654715f765748c0337f",
+          "new": "54cf6ca003571136dc99cf8e829c569ee20d5f43c4ab611cb401034d2eb5f224"
+        },
+        "runners/paper_nto_refined.py": {
+          "old": "bbb167acd8b72d686286a59d464a99c1a3bf51405b3ec78052114fd25c9e1360",
+          "new": "c67d0516cd166841ed7340f3e460d5f9ec77fb0d3b1f30acdd2ae9877d2a42e3"
+        }
+      },
+      "unchanged_critical_settings": {
+        "eizo.max_iterations": 30,
+        "lgcs.solver": "scip",
+        "online_budget_seconds": 60.0,
+        "validation_step_rad": 0.005,
+        "velocity_limit_rad_s": 1.0,
+        "acceleration_limit_rad_s2": 1.0
+      }
+    },
+    {
+      "method": "EI_ZO",
+      "objective": "minimum_time",
+      "paired_jobs": 60,
+      "old_run": "benchmarks/generic_motion_v1/results/rss2025_reliable_v2_dev_s000",
+      "old_manifest_sha256": "e8fd4211c317283cc4d3f62efadbe4b6f6caf96cabe91512fa73fd570cd97ecc",
+      "old_source_commit": "e6b7e372e091ce5b01417073e0880e7c3068910c",
+      "declared_differences": [
+        {
+          "field": "drm_query.build_dir",
+          "old_present": true,
+          "old": "benchmarks/generic_motion_v1/reports/baseline_repair_v2/drm_safe_build_v2",
+          "new_present": true,
+          "new": "benchmarks/generic_motion_v1/native/build/drm_endpoint_edges_final",
+          "scope": "active_DRM_backend_repair"
+        },
+        {
+          "field": "extended_baselines.chomp.backtracking_steps",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 8,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.chomp.collision_check_step_rad",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.05,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.chomp.finite_difference_rad",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 1e-05,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.chomp.initial_knots",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 64,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.chomp.learning_rate",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 1.0,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.chomp.maximum_iterations",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 40,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.chomp.maximum_knots",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 256,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.chomp.maximum_update_rad",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.08,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.chomp.obstacle_influence_m",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.05,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.chomp.obstacle_weight",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 10.0,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.chomp.relative_cost_tolerance",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 1e-07,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.chomp.safety_band_m",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 2e-06,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.chomp.smoothness_weight",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 1.0,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.stomp.collision_check_step_rad",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.05,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.stomp.control_cost_weight",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.1,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.stomp.cost_sensitivity",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 10.0,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.stomp.initial_knots",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 64,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.stomp.iterations_after_valid",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 5,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.stomp.maximum_iterations",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 40,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.stomp.maximum_knots",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 256,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.stomp.maximum_update_rad",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.08,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.stomp.noise_std_rad",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.1,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.stomp.obstacle_influence_m",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.05,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.stomp.rollouts",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 12,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.stomp.safety_band_m",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 2e-06,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.trajopt.clearance_m",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.001,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.trajopt.constraint_tolerance",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.0001,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.trajopt.derivative_step_rad",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 1e-05,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.trajopt.initial_knots",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 64,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.trajopt.initial_merit_coefficient",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 10.0,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.trajopt.initial_trust_box_rad",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.1,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.trajopt.maximum_knots",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 256,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.trajopt.maximum_merit_coefficient_increases",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 5,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.trajopt.maximum_optimizer_seconds",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 45.0,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.trajopt.maximum_sqp_iterations",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 50,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.trajopt.minimum_model_improvement",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.0001,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.trajopt.segment_collocation_subdivisions",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 3,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "nto_refined.minimum_time_control_points",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 16,
+          "scope": "inactive_for_this_method_and_track"
+        },
+        {
+          "field": "ompl.goal_bias",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.05,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "ompl.motion_step_rad",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.01,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "ompl.planning_seconds",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 10.0,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "ompl.progress_poll_seconds",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.5,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "ompl.range_rad",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.5,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "ompl.record_validated_progress",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": false,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "ompl.rewire_factor",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 1.1,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "ompl.simplification_max_empty_steps",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 50,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "ompl.simplification_max_steps",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 100,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "ompl.simplification_seconds",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.5,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "ompl.validation_reserve_seconds",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 5.0,
+          "scope": "inactive_other_method_configuration"
+        }
+      ],
+      "recorded_source_hashes": {
+        "model.py": {
+          "old": "5b152e3e5ca484e5378856de11747c45826653df8a1183582fe90e0958fc5116",
+          "new": "5b152e3e5ca484e5378856de11747c45826653df8a1183582fe90e0958fc5116"
+        },
+        "runners/validate.py": {
+          "old": "12086b43b1735ab8455b260235eb0c92b336cb2b2cbaef6c286d1d2f5f376b43",
+          "new": "12086b43b1735ab8455b260235eb0c92b336cb2b2cbaef6c286d1d2f5f376b43"
+        },
+        "runners/csdecomp_baseline.py": {
+          "old": "5c44255f5729b784c1233dac8ddceee5ea6875a7acd38c14f1c72a0e55cdfcaf",
+          "new": "5c9e467e88198d3ceff797e8b50e70553851dcb2041894d20d579b91e96f7e0b"
+        },
+        "runners/native_drm_query.py": {
+          "old": "0778b54c108793ae15fe3e54ef5bb8489ccc7d1c31bd95bbe237eac5d0334549",
+          "new": "0f13a48b26b9b62084210b86d75130c81700ba860663ca09f222b2d2f61ad7d6"
+        },
+        "runners/ompl_baselines.py": {
+          "old": null,
+          "new": "f717d659e92f1e376efbccb07423a0b2949bc3174eb113607a65ffb1772c19ab"
+        },
+        "runners/chomp_stomp.py": {
+          "old": null,
+          "new": "b815f2b9e339ce8806bac7a60892dec4cfc17f21b0e2217eb8bb4e365efd1b47"
+        },
+        "runners/trajopt_baseline.py": {
+          "old": null,
+          "new": "063eb6923c52a94eba2b89265b6bbedb9eba2c73cf1b24628716cdbf86377388"
+        },
+        "runners/paper_nto.py": {
+          "old": "f6697df7115cf258b5cd7773de14aeb98e67a7e3d0952654715f765748c0337f",
+          "new": "54cf6ca003571136dc99cf8e829c569ee20d5f43c4ab611cb401034d2eb5f224"
+        },
+        "runners/paper_nto_refined.py": {
+          "old": "bbb167acd8b72d686286a59d464a99c1a3bf51405b3ec78052114fd25c9e1360",
+          "new": "c67d0516cd166841ed7340f3e460d5f9ec77fb0d3b1f30acdd2ae9877d2a42e3"
+        }
+      },
+      "unchanged_critical_settings": {
+        "eizo.max_iterations": 30,
+        "lgcs.solver": "scip",
+        "online_budget_seconds": 60.0,
+        "validation_step_rad": 0.005,
+        "velocity_limit_rad_s": 1.0,
+        "acceleration_limit_rad_s2": 1.0
+      }
+    },
+    {
+      "method": "NTO_REFINED",
+      "objective": "minimum_time",
+      "paired_jobs": 60,
+      "old_run": "benchmarks/generic_motion_v1/results/rss2025_reliable_v2_dev_s000",
+      "old_manifest_sha256": "e8fd4211c317283cc4d3f62efadbe4b6f6caf96cabe91512fa73fd570cd97ecc",
+      "old_source_commit": "e6b7e372e091ce5b01417073e0880e7c3068910c",
+      "declared_differences": [
+        {
+          "field": "drm_query.build_dir",
+          "old_present": true,
+          "old": "benchmarks/generic_motion_v1/reports/baseline_repair_v2/drm_safe_build_v2",
+          "new_present": true,
+          "new": "benchmarks/generic_motion_v1/native/build/drm_endpoint_edges_final",
+          "scope": "active_DRM_backend_repair"
+        },
+        {
+          "field": "extended_baselines.chomp.backtracking_steps",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 8,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.chomp.collision_check_step_rad",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.05,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.chomp.finite_difference_rad",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 1e-05,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.chomp.initial_knots",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 64,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.chomp.learning_rate",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 1.0,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.chomp.maximum_iterations",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 40,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.chomp.maximum_knots",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 256,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.chomp.maximum_update_rad",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.08,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.chomp.obstacle_influence_m",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.05,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.chomp.obstacle_weight",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 10.0,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.chomp.relative_cost_tolerance",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 1e-07,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.chomp.safety_band_m",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 2e-06,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.chomp.smoothness_weight",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 1.0,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.stomp.collision_check_step_rad",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.05,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.stomp.control_cost_weight",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.1,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.stomp.cost_sensitivity",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 10.0,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.stomp.initial_knots",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 64,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.stomp.iterations_after_valid",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 5,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.stomp.maximum_iterations",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 40,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.stomp.maximum_knots",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 256,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.stomp.maximum_update_rad",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.08,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.stomp.noise_std_rad",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.1,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.stomp.obstacle_influence_m",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.05,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.stomp.rollouts",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 12,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.stomp.safety_band_m",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 2e-06,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.trajopt.clearance_m",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.001,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.trajopt.constraint_tolerance",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.0001,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.trajopt.derivative_step_rad",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 1e-05,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.trajopt.initial_knots",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 64,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.trajopt.initial_merit_coefficient",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 10.0,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.trajopt.initial_trust_box_rad",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.1,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.trajopt.maximum_knots",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 256,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.trajopt.maximum_merit_coefficient_increases",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 5,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.trajopt.maximum_optimizer_seconds",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 45.0,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.trajopt.maximum_sqp_iterations",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 50,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.trajopt.minimum_model_improvement",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.0001,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "extended_baselines.trajopt.segment_collocation_subdivisions",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 3,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "nto_refined.minimum_time_control_points",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 16,
+          "scope": "active_time_spline_basis_change"
+        },
+        {
+          "field": "ompl.goal_bias",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.05,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "ompl.motion_step_rad",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.01,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "ompl.planning_seconds",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 10.0,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "ompl.progress_poll_seconds",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.5,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "ompl.range_rad",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.5,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "ompl.record_validated_progress",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": false,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "ompl.rewire_factor",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 1.1,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "ompl.simplification_max_empty_steps",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 50,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "ompl.simplification_max_steps",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 100,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "ompl.simplification_seconds",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 0.5,
+          "scope": "inactive_other_method_configuration"
+        },
+        {
+          "field": "ompl.validation_reserve_seconds",
+          "old_present": false,
+          "old": null,
+          "new_present": true,
+          "new": 5.0,
+          "scope": "inactive_other_method_configuration"
+        }
+      ],
+      "recorded_source_hashes": {
+        "model.py": {
+          "old": "5b152e3e5ca484e5378856de11747c45826653df8a1183582fe90e0958fc5116",
+          "new": "5b152e3e5ca484e5378856de11747c45826653df8a1183582fe90e0958fc5116"
+        },
+        "runners/validate.py": {
+          "old": "12086b43b1735ab8455b260235eb0c92b336cb2b2cbaef6c286d1d2f5f376b43",
+          "new": "12086b43b1735ab8455b260235eb0c92b336cb2b2cbaef6c286d1d2f5f376b43"
+        },
+        "runners/csdecomp_baseline.py": {
+          "old": "5c44255f5729b784c1233dac8ddceee5ea6875a7acd38c14f1c72a0e55cdfcaf",
+          "new": "5c9e467e88198d3ceff797e8b50e70553851dcb2041894d20d579b91e96f7e0b"
+        },
+        "runners/native_drm_query.py": {
+          "old": "0778b54c108793ae15fe3e54ef5bb8489ccc7d1c31bd95bbe237eac5d0334549",
+          "new": "0f13a48b26b9b62084210b86d75130c81700ba860663ca09f222b2d2f61ad7d6"
+        },
+        "runners/ompl_baselines.py": {
+          "old": null,
+          "new": "f717d659e92f1e376efbccb07423a0b2949bc3174eb113607a65ffb1772c19ab"
+        },
+        "runners/chomp_stomp.py": {
+          "old": null,
+          "new": "b815f2b9e339ce8806bac7a60892dec4cfc17f21b0e2217eb8bb4e365efd1b47"
+        },
+        "runners/trajopt_baseline.py": {
+          "old": null,
+          "new": "063eb6923c52a94eba2b89265b6bbedb9eba2c73cf1b24628716cdbf86377388"
+        },
+        "runners/paper_nto.py": {
+          "old": "f6697df7115cf258b5cd7773de14aeb98e67a7e3d0952654715f765748c0337f",
+          "new": "54cf6ca003571136dc99cf8e829c569ee20d5f43c4ab611cb401034d2eb5f224"
+        },
+        "runners/paper_nto_refined.py": {
+          "old": "bbb167acd8b72d686286a59d464a99c1a3bf51405b3ec78052114fd25c9e1360",
+          "new": "c67d0516cd166841ed7340f3e460d5f9ec77fb0d3b1f30acdd2ae9877d2a42e3"
+        }
+      },
+      "unchanged_critical_settings": {
+        "eizo.max_iterations": 30,
+        "lgcs.solver": "scip",
+        "online_budget_seconds": 60.0,
+        "validation_step_rad": 0.005,
+        "velocity_limit_rad_s": 1.0,
+        "acceleration_limit_rad_s2": 1.0
+      }
+    }
+  ],
+  "critical_protocol_checks": {
+    "eizo_max_iterations_30_unchanged": true,
+    "lgcs_solver_scip_unchanged": true
+  },
+  "interpretation": "Exact per-method declared configuration comparison. Check critical_protocol_checks before claiming a cap/solver change. Active differences are individually classified; other-method configuration blocks are inactive for the method being compared. Source hashes are retained separately, so matching configuration alone is not a claim of identical implementations. Historical OMPL source/native-parameter evidence is recorded for the now-explicit disabled observer settings.",
+  "statistics_produced": false
+}
