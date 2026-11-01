@@ -88,8 +88,14 @@ def dependency_probe(out, objective):
     return record
 
 
-def warm_start(path, objective):
-    """Retain every ordered DRM node; only duplicate cubic endpoint controls."""
+def warm_start(path, objective, *, minimum_time_control_points=None):
+    """Construct the published-profile seed, optionally refine its knot basis.
+
+    Knot insertion preserves the entire initial curve and its derivatives.
+    The original paper profile leaves this option unset.  The distinct refined
+    adapter uses it to avoid a single cubic's unnecessarily loose derivative
+    control hull after a DRM path has been reduced to just two nodes.
+    """
     from pydrake.all import BsplineBasis, BsplineTrajectory, KnotVectorType
     if objective not in ("minimum_distance", "minimum_time"):
         raise ValueError("Unsupported paper NTO objective")
@@ -97,6 +103,11 @@ def warm_start(path, objective):
     if original.ndim != 2 or original.shape[1] != 7 or len(original) < 2 or not np.isfinite(original).all():
         raise ValueError("Paper NTO requires at least two finite ordered seven-joint DRM nodes")
     timed = objective == "minimum_time"
+    if (minimum_time_control_points is not None
+            and (isinstance(minimum_time_control_points, (bool, np.bool_))
+                 or not isinstance(minimum_time_control_points, (int, np.integer))
+                 or minimum_time_control_points < 4)):
+        raise ValueError("Minimum time control count must be an integer >= 4")
     controls = np.vstack([original[0], original, original[-1]]) if timed else original.copy()
     order = 4 if timed else 2
     duration = float(np.linalg.norm(np.diff(original, axis=0), axis=1).sum() + 2.0) if timed else 1.0
@@ -104,6 +115,12 @@ def warm_start(path, objective):
         raise ValueError("Nonfinite paper NTO warm-start duration")
     basis = BsplineBasis(order, len(controls), KnotVectorType.kClampedUniform, 0.0, duration)
     initial = BsplineTrajectory(basis, [q[:, None] for q in controls])
+    if timed and minimum_time_control_points is not None:
+        while len(initial.control_points()) < minimum_time_control_points:
+            unique = np.unique(initial.basis().knots())
+            index = int(np.argmax(np.diff(unique)))
+            initial.InsertKnots([float((unique[index] + unique[index + 1]) / 2)])
+        controls = np.asarray([q.ravel() for q in initial.control_points()])
     return initial, original.copy(), controls, order, duration
 
 
@@ -157,14 +174,18 @@ def paper_nto(path, model, case, cfg, out, deadline, *, _profile=None,
         raise ValueError("Paper NTO requires a finite external online deadline")
     if float(cfg["velocity_limit_rad_s"]) != 1.0 or float(cfg["acceleration_limit_rad_s2"]) != 1.0:
         raise ValueError("Paper NTO cannot change the frozen unit velocity/acceleration limits")
-    initial, original, controls, order, initial_duration = warm_start(path, objective)
+    initial, original, controls, order, initial_duration = warm_start(
+        path, objective,
+        minimum_time_control_points=profile.get("minimum_time_control_points"))
+    expected_control_count = len(controls)
     if _initial_candidate is not None:
         from pydrake.all import BsplineBasis, BsplineTrajectory
         # Refinement changes only this solve's initial variables. The original
-        # DRM path and its count remain saved, and no controls are inserted.
+        # DRM path and its count remain saved. Any initial knot refinement has
+        # already been applied above; later rounds retain that same basis.
         controls = _numeric_array(_initial_candidate["controls"], "Refinement controls")
         knots = _numeric_array(_initial_candidate["knots"], "Refinement knots")
-        if (controls.shape != (len(original) + (2 if timed else 0), 7)
+        if (controls.shape != (expected_control_count, 7)
                 or not np.isfinite(controls).all() or not np.isfinite(knots).all()
                 or _initial_candidate["spline_order"] != order
                 or not np.isfinite(_initial_candidate["duration"])
@@ -261,6 +282,9 @@ def paper_nto(path, model, case, cfg, out, deadline, *, _profile=None,
                       collocation_points=len(locations), collocation_locations=locations,
                       warm_start_node_count=len(original), warm_start_control_count=len(controls),
                       warm_start_endpoint_copies=2 if timed else 0, warm_start_resampled=False,
+                      warm_start_inserted_knots=expected_control_count-len(original)-(2 if timed else 0),
+                      minimum_time_control_points=profile.get("minimum_time_control_points"),
+                      knot_refinement="shape-preserving longest-knot-span bisection" if timed and profile.get("minimum_time_control_points") is not None else None,
                       warm_start_duration_seconds=initial_duration, spline_order=order,
                       collision_evaluator="Drake MinimumDistanceLowerBoundConstraint on canonical model.nto_plant()",
                       refinement_warm_start=_initial_candidate is not None,
@@ -296,4 +320,5 @@ def paper_nto(path, model, case, cfg, out, deadline, *, _profile=None,
                 provenance=profile.get("provenance", "published_Franka_NTO_profile_reconstructed_on_frozen_Kinova"),
                 profile=profile["name"], collocation_parameter_Nc=profile["collocation_parameter_Nc"],
                 collocation_points=len(locations), warm_start_node_count=len(original),
-                warm_start_endpoint_copies=2 if timed else 0, warm_start_resampled=False)
+                warm_start_endpoint_copies=2 if timed else 0, warm_start_resampled=False,
+                warm_start_inserted_knots=expected_control_count-len(original)-(2 if timed else 0))

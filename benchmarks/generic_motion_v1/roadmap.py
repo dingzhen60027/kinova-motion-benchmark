@@ -79,6 +79,16 @@ def load_config(config=None):
                     raise ValueError('drm_query requires safe_native and an explicit build_dir')
                 answer[key] = dict(value)
                 continue
+            if key == 'nto_refined':
+                if (not isinstance(value, dict)
+                        or set(value) != {'minimum_time_control_points'}):
+                    raise ValueError('nto_refined must specify minimum_time_control_points')
+                count = value['minimum_time_control_points']
+                if (isinstance(count, (bool, np.bool_))
+                        or not isinstance(count, (int, np.integer)) or count < 4):
+                    raise ValueError('nto_refined.minimum_time_control_points must be an integer >= 4')
+                answer[key] = dict(value)
+                continue
             if key not in answer:
                 raise ValueError(f'Unknown evaluation setting {key}')
             if isinstance(answer[key], dict):

@@ -1,0 +1,353 @@
+{
+  "scope": "New CPU-only checking of saved paired dev curves; no GPU or planning run; no data or settings changed",
+  "source_head": "856939a029b001b58ace555343226fe6a9a9dabc",
+  "cases": [
+    {
+      "method": "NTO_PAPER",
+      "problem_id": "dev-sparse_clutter-002-p01",
+      "replica_seed": 0,
+      "attempt_path": "benchmarks/generic_motion_v1/results/rss2025_paper_comparators_v1_dev_s000/jobs/dev-sparse_clutter-002-p01-NTO_PAPER-minimum_distance-87667801/attempts/0001",
+      "input_sha256": "e06b7ba467f231274fb47e5744381d5f912ed208bd95bee881dc34815eb9f94d",
+      "initial_path_sha256": "2292d7c07fdd63362ba1d7c3010127896ba66f5c5351599057a3fd1b77da0b49",
+      "saved_status": "validation_failed",
+      "solver": {
+        "native_solver_details": {
+          "info": 1,
+          "solve_time": 0.330018567
+        },
+        "raw_solution": "nto_solver_raw.npz",
+        "returned_controls_finite": true,
+        "returned_duration_finite": true,
+        "solve_seconds": 0.3316811937838793,
+        "solver_objective": 5.006740632511665,
+        "solver_status": "SolutionResult.kSolutionFound",
+        "solver_success": true
+      },
+      "collocation_points": 149,
+      "collocation_minimum_clearance_m": -9.221789998292707e-15,
+      "collocation_maximum_aggregated_constraint": 1.000000000001839,
+      "collocation_constraint_upper_bound": 1.0,
+      "dense_samples": 1459,
+      "new_dense_minimum_clearance_m": -0.0003040860806855436,
+      "saved_dense_minimum_clearance_m": -0.0003040860806855436,
+      "new_dense_collision_samples": 20,
+      "saved_dense_collision_samples": 20,
+      "saved_validated_path_length_rad": 5.006740632511665,
+      "new_path_length_rad": 5.006740632511665,
+      "elapsed_cpu_check_seconds": 0.6575612728483975
+    },
+    {
+      "method": "NTO_REFINED",
+      "problem_id": "dev-sparse_clutter-002-p01",
+      "replica_seed": 0,
+      "attempt_path": "benchmarks/generic_motion_v1/results/rss2025_reliable_v2_dev_s000/jobs/dev-sparse_clutter-002-p01-NTO_REFINED-minimum_distance-7f66ee12/attempts/0001",
+      "input_sha256": "e06b7ba467f231274fb47e5744381d5f912ed208bd95bee881dc34815eb9f94d",
+      "initial_path_sha256": "2292d7c07fdd63362ba1d7c3010127896ba66f5c5351599057a3fd1b77da0b49",
+      "saved_status": "success_numerical",
+      "solver": {
+        "native_solver_details": {
+          "info": 1,
+          "solve_time": 0.624354441
+        },
+        "raw_solution": "nto_solver_raw.npz",
+        "returned_controls_finite": true,
+        "returned_duration_finite": true,
+        "solve_seconds": 0.6260013128630817,
+        "solver_objective": 5.006903502372019,
+        "solver_status": "SolutionResult.kSolutionFound",
+        "solver_success": true
+      },
+      "collocation_points": 149,
+      "collocation_minimum_clearance_m": 0.0009999999994399003,
+      "collocation_maximum_aggregated_constraint": 1.0000000001120188,
+      "collocation_constraint_upper_bound": 1.0,
+      "dense_samples": 1477,
+      "new_dense_minimum_clearance_m": 0.0006966825506462271,
+      "saved_dense_minimum_clearance_m": 0.0006966825506462271,
+      "new_dense_collision_samples": 0,
+      "saved_dense_collision_samples": 0,
+      "saved_validated_path_length_rad": 5.00690350237202,
+      "new_path_length_rad": 5.006903502372019,
+      "elapsed_cpu_check_seconds": 0.6664728038012981
+    }
+  ],
+  "counts": [
+    {
+      "comparison": "current_dev",
+      "method": "NTO_PAPER",
+      "objective": "minimum_distance",
+      "legal": 180,
+      "statuses": {
+        "no_solution_within_budget": 70,
+        "validation_failed": 45,
+        "solver_failure": 25,
+        "success_numerical": 39,
+        "infrastructure_error": 1
+      },
+      "failure_stages": {
+        "drm_path": 69,
+        "validation": 70,
+        "trajectory_optimization": 1,
+        "drm_path_validation": 1
+      }
+    },
+    {
+      "comparison": "current_dev",
+      "method": "NTO_PAPER",
+      "objective": "minimum_time",
+      "legal": 180,
+      "statuses": {
+        "no_solution_within_budget": 70,
+        "success_numerical": 88,
+        "validation_failed": 18,
+        "timeout": 3,
+        "solver_failure": 1
+      },
+      "failure_stages": {
+        "drm_path": 69,
+        "validation": 19,
+        "": 3,
+        "drm_path_validation": 1
+      }
+    },
+    {
+      "comparison": "current_dev",
+      "method": "NTO_REFINED",
+      "objective": "minimum_distance",
+      "legal": 180,
+      "statuses": {
+        "no_solution_within_budget": 70,
+        "success_numerical": 88,
+        "timeout": 11,
+        "solver_failure": 10,
+        "validation_failed": 1
+      },
+      "failure_stages": {
+        "drm_path": 69,
+        "": 11,
+        "validation": 11,
+        "drm_path_validation": 1
+      }
+    },
+    {
+      "comparison": "current_dev",
+      "method": "NTO_REFINED",
+      "objective": "minimum_time",
+      "legal": 180,
+      "statuses": {
+        "no_solution_within_budget": 70,
+        "success_numerical": 100,
+        "timeout": 8,
+        "validation_failed": 2
+      },
+      "failure_stages": {
+        "drm_path": 69,
+        "": 8,
+        "drm_path_validation": 1,
+        "validation": 2
+      }
+    },
+    {
+      "comparison": "current_dev",
+      "method": "NTO",
+      "objective": "minimum_distance",
+      "legal": 180,
+      "statuses": {
+        "no_solution_within_budget": 70,
+        "validation_failed": 41,
+        "success_numerical": 40,
+        "solver_failure": 29
+      },
+      "failure_stages": {
+        "drm_path": 69,
+        "validation": 70,
+        "drm_path_validation": 1
+      }
+    },
+    {
+      "comparison": "current_dev",
+      "method": "NTO",
+      "objective": "minimum_time",
+      "legal": 180,
+      "statuses": {
+        "no_solution_within_budget": 70,
+        "success_numerical": 97,
+        "solver_failure": 6,
+        "validation_failed": 7
+      },
+      "failure_stages": {
+        "drm_path": 69,
+        "validation": 13,
+        "drm_path_validation": 1
+      }
+    },
+    {
+      "comparison": "current_dev",
+      "method": "EI_ZO",
+      "objective": "minimum_distance",
+      "legal": 180,
+      "statuses": {
+        "no_solution_within_budget": 70,
+        "success_numerical": 110
+      },
+      "failure_stages": {
+        "drm_path": 69,
+        "drm_path_validation": 1
+      }
+    },
+    {
+      "comparison": "current_dev",
+      "method": "EI_ZO",
+      "objective": "minimum_time",
+      "legal": 180,
+      "statuses": {
+        "no_solution_within_budget": 70,
+        "success_numerical": 110
+      },
+      "failure_stages": {
+        "drm_path": 69,
+        "drm_path_validation": 1
+      }
+    },
+    {
+      "comparison": "current_test",
+      "method": "NTO_PAPER",
+      "objective": "minimum_distance",
+      "legal": 395,
+      "statuses": {
+        "solver_failure": 58,
+        "no_solution_within_budget": 112,
+        "success_numerical": 108,
+        "validation_failed": 115,
+        "timeout": 1,
+        "infrastructure_error": 1
+      },
+      "failure_stages": {
+        "validation": 173,
+        "drm_path": 107,
+        "drm_path_validation": 5,
+        "": 1,
+        "trajectory_optimization": 1
+      }
+    },
+    {
+      "comparison": "current_test",
+      "method": "NTO_PAPER",
+      "objective": "minimum_time",
+      "legal": 395,
+      "statuses": {
+        "validation_failed": 34,
+        "no_solution_within_budget": 112,
+        "success_numerical": 239,
+        "solver_failure": 5,
+        "timeout": 5
+      },
+      "failure_stages": {
+        "validation": 39,
+        "drm_path": 107,
+        "drm_path_validation": 5,
+        "": 5
+      }
+    },
+    {
+      "comparison": "current_test",
+      "method": "NTO_REFINED",
+      "objective": "minimum_distance",
+      "legal": 395,
+      "statuses": {
+        "solver_failure": 21,
+        "no_solution_within_budget": 112,
+        "timeout": 18,
+        "success_numerical": 240,
+        "validation_failed": 4
+      },
+      "failure_stages": {
+        "validation": 25,
+        "drm_path": 107,
+        "": 18,
+        "drm_path_validation": 5
+      }
+    },
+    {
+      "comparison": "current_test",
+      "method": "NTO_REFINED",
+      "objective": "minimum_time",
+      "legal": 395,
+      "statuses": {
+        "success_numerical": 266,
+        "no_solution_within_budget": 112,
+        "timeout": 13,
+        "validation_failed": 2,
+        "solver_failure": 2
+      },
+      "failure_stages": {
+        "drm_path": 107,
+        "drm_path_validation": 5,
+        "": 13,
+        "validation": 4
+      }
+    },
+    {
+      "comparison": "current_test",
+      "method": "NTO",
+      "objective": "minimum_distance",
+      "legal": 395,
+      "statuses": {
+        "validation_failed": 103,
+        "no_solution_within_budget": 112,
+        "solver_failure": 66,
+        "success_numerical": 114
+      },
+      "failure_stages": {
+        "validation": 169,
+        "drm_path": 107,
+        "drm_path_validation": 5
+      }
+    },
+    {
+      "comparison": "current_test",
+      "method": "NTO",
+      "objective": "minimum_time",
+      "legal": 395,
+      "statuses": {
+        "validation_failed": 13,
+        "no_solution_within_budget": 112,
+        "solver_failure": 31,
+        "success_numerical": 239
+      },
+      "failure_stages": {
+        "validation": 44,
+        "drm_path": 107,
+        "drm_path_validation": 5
+      }
+    },
+    {
+      "comparison": "current_test",
+      "method": "EI_ZO",
+      "objective": "minimum_distance",
+      "legal": 395,
+      "statuses": {
+        "success_numerical": 283,
+        "no_solution_within_budget": 112
+      },
+      "failure_stages": {
+        "drm_path": 107,
+        "drm_path_validation": 5
+      }
+    },
+    {
+      "comparison": "current_test",
+      "method": "EI_ZO",
+      "objective": "minimum_time",
+      "legal": 395,
+      "statuses": {
+        "success_numerical": 283,
+        "no_solution_within_budget": 112
+      },
+      "failure_stages": {
+        "drm_path": 107,
+        "drm_path_validation": 5
+      }
+    }
+  ]
+}

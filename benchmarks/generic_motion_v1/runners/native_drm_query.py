@@ -54,8 +54,10 @@ def native_library():
     return Path(native.__file__).resolve()
 
 
-def build(out):
+def build(out, profile='failure_exits'):
     """Compile only CPU source; existing CUDA functions are dynamic dependencies."""
+    if profile not in ('failure_exits', 'endpoint_edges'):
+        raise ValueError('Unknown native host repair profile')
     out = Path(out).resolve()
     if out.exists():
         raise FileExistsError(f'Preserve existing sidecar build: {out}')
@@ -76,13 +78,33 @@ def build(out):
     if len(set(internals)) != 1:
         raise ValueError('Installed pybind11 ABI is not the reviewed v4/gcc/libstdc++ ABI')
     patched = out/'drm_planner.cpp'
-    patched.write_text(patched_source(SOURCE.read_text()))
+    source_text = patched_source(SOURCE.read_text())
+    if profile == 'endpoint_edges':
+        from .native_drm_corrections import correct_source
+        source_text = correct_source(source_text)
+    patched.write_text(source_text)
+    binding = BINDING
+    if profile == 'endpoint_edges':
+        # Read-only native diagnostic entry points exercise the exact compiled
+        # implementation, including zero-length steering and isolated vertices.
+        binding = out/'drm_safe_query.cpp'
+        prefix, suffix = BINDING.read_text().rsplit('\n}', 1)
+        binding.write_text(prefix + '''
+  m.def("path_exists", [](DrmPlanner& p, int start, int goal) {
+    return p.CheckPathExists(start, goal, {}, nullptr);
+  });
+  m.def("steer", [](DrmPlanner& p, const Eigen::VectorXf& start,
+                    const Eigen::VectorXf& goal, const csdecomp::Voxels& voxels,
+                    float radius) {
+    return p.SteerFunctionIsSafe(start, goal, voxels, radius);
+  });
+}''' + suffix)
     binary = out / ('_drm_safe_query' + sysconfig.get_config_var('EXT_SUFFIX'))
     argv = ['/usr/bin/g++', '-std=c++17', '-O2', '-shared', '-fPIC', '-fvisibility=hidden',
             '-Wl,-Bsymbolic', '-D_GLIBCXX_USE_CXX11_ABI=1',
             '-fabi-version='+internals[0].removeprefix('_cxxabi10'),
             '-DPYBIND11_BUILD_ABI="'+internals[0]+'"', '-DFMT_HEADER_ONLY',
-            *['-I'+str(path) for path in includes], str(BINDING), str(patched), str(native),
+            *['-I'+str(path) for path in includes], str(binding), str(patched), str(native),
             '-o', str(binary)]
     abi_macros = subprocess.check_output(['/usr/bin/g++', argv[argv.index('-fabi-version='+internals[0].removeprefix('_cxxabi10'))],
         '-dM', '-E', '-x', 'c++', '-'], input='', text=True)
@@ -91,14 +113,20 @@ def build(out):
     (out/'compiler_macros.txt').write_text(abi_macros)
     source_files = {str(path.relative_to(ROOT)): sha(path) for path in sorted((ROOT/'csdecomp/src').rglob('*.h'))}
     source_files.update({str(SOURCE.relative_to(ROOT)): sha(SOURCE), str(BINDING.relative_to(ROOT)): sha(BINDING)})
-    receipt = dict(status='building', source_commit=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),
-        scope='Native CPU DRM error handling only; existing wheel CUDA functions are linked unchanged',
+    receipt = dict(status='building', profile=profile, source_commit=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),
+        scope=('Native CPU DRM failure exits, endpoint-local rejected edges, zero-edge reachability and endpoint-inclusive steering; unchanged CUDA'
+               if profile == 'endpoint_edges' else 'Native CPU DRM error handling only; existing wheel CUDA functions are linked unchanged'),
         native_library=str(native), native_library_sha256=before,
         upstream_source_sha256=sha(SOURCE), patched_source_sha256=sha(patched), binding_sha256=sha(BINDING),
         source_files=source_files, python=sys.version, pybind_abi=internals[0], compiler_argv=argv,
         include_paths=list(map(str, includes)), compiler_abi_macro=internals[0].removeprefix('_cxxabi'),
         compiler_macros_sha256=sha(out/'compiler_macros.txt'), compiler=subprocess.check_output(['/usr/bin/g++','--version'],text=True),
         patches=[dict(before=old, after=new) for old,new in PATCHES])
+    receipt['compiled_binding'] = str(binding)
+    receipt['compiled_binding_sha256'] = sha(binding)
+    if profile == 'endpoint_edges':
+        from .native_drm_corrections import CORRECTIONS
+        receipt['patches'].extend(dict(before=old,after=new) for old,new in CORRECTIONS)
     write(out/'build.json', receipt)
     started = time.perf_counter()
     with (out/'build.stdout.log').open('w') as stdout, (out/'build.stderr.log').open('w') as stderr:
@@ -127,6 +155,8 @@ def load(build_dir):
     for relative, expected in receipt['source_files'].items():
         if sha(ROOT/relative) != expected:
             raise ValueError(f'Safe DRM native header/source changed: {relative}')
+    if receipt.get('compiled_binding') and sha(receipt['compiled_binding']) != receipt['compiled_binding_sha256']:
+        raise ValueError('Safe DRM compiled diagnostic binding changed')
     key = '_drm_safe_query'
     if key in sys.modules:
         module = sys.modules[key]
@@ -177,7 +207,8 @@ def query(planner, q_start, q_goal, voxels_xyz, radius, *, build_dir, out=None):
             or not np.isfinite(options.online_edge_step_size) or options.online_edge_step_size <= 0
             or not np.isfinite(options.voxel_padding) or options.voxel_padding < 0):
         raise ValueError('Native DRM options would violate its preconditions')
-    evidence = dict(implementation='Isolated original C++ DRM with two non-aborting failure returns',
+    evidence = dict(implementation=receipt.get('scope','Isolated original C++ DRM with two non-aborting failure returns'),
+        profile=receipt.get('profile','failure_exits'),
         binary_sha256=receipt['binary_sha256'], native_library_sha256=receipt['native_library_sha256'],
         patched_source_sha256=receipt['patched_source_sha256'], upstream_source_sha256=receipt['upstream_source_sha256'],
         build_directory=str(Path(build_dir).resolve()), layout_before=before, endpoint_change=False,
@@ -208,8 +239,9 @@ def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('command',choices=['build'])
     parser.add_argument('--output',type=Path,required=True)
+    parser.add_argument('--profile',choices=['failure_exits','endpoint_edges'],default='failure_exits')
     args=parser.parse_args()
-    print(json.dumps(build(args.output),indent=2))
+    print(json.dumps(build(args.output,profile=args.profile),indent=2))
 
 
 if __name__=='__main__':

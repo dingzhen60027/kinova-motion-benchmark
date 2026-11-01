@@ -1,0 +1,69 @@
+{
+  "audit_date": "2026-11-01",
+  "purpose": "Primary-source trend sanity checks, not rank-matching or a substitute for implementation validation.",
+  "local_source": "/home/eric/wjg/wd/csdecomp/results/summary.csv",
+  "sources": [
+    {
+      "id": "werner2025",
+      "title": "Superfast Configuration-Space Convex Set Computation on GPUs for Online Motion Planning",
+      "url": "https://arxiv.org/html/2504.10783v1",
+      "location": "VII-A, Table I, Appendix D",
+      "setup": "FR3 seven DOF, 33 robot spheres, table box, 20 random obstacle spheres. Ten scene seeds x ten DRM seeds x four roadmap sizes (3000/6000/9000/12000). Backend statistics conditional on DRM success. NTO initialized with DRM path; minimum-time order-4 B-spline controls are DRM vertices; 150 collision points, SNOPT path/IPOPT time.",
+      "reported": {"drm_success": 0.961, "conditional_collision_free": {"LSCS_path": 1.0, "LGCS_path": 0.993, "SCSTO_time": 1.0, "NTO_path": 0.725, "NTO_time": 0.732}, "successful_cost": {"NTO_path_rad": 5.519, "LSCS_path_rad": 7.382, "LGCS_path_rad": 7.110, "NTO_duration_s": 5.057, "SCSTO_duration_s": 6.473}, "backend_total_ms": {"NTO_path": 3084.6, "LSCS_path": 152.5, "LGCS_path": 4441.6, "NTO_time": 4147.8, "SCSTO_time": 307.9}},
+      "diagnostic": "Separate DRM coverage from backend success; compare quality only on common successes; retain collision-feedback repairs. Lower NTO cost with lower reliability and expensive marginal LGCS improvement are plausible tendencies, not required rankings. Do not compare backend milliseconds with local cold process time."
+    },
+    {
+      "id": "schulman2014",
+      "title": "Motion planning with sequential convex optimization and convex collision checking",
+      "url": "https://escholarship.org/content/qt6km506db/qt6km506db.pdf",
+      "location": "Section 5, Table 1, Section 9.3",
+      "setup": "198 PR2 seven-DOF arm tasks. Straight-line single initialization; multiple-initialization arm runs use four fixed intermediate configurations. TrajOpt uses 11 waypoints, at most 40 iterations, trust-region and merit stopping rules, Gurobi and Bullet convex collision queries. Timings average successful runs; length normalized by shortest method output per task. Full-body sampling budget30s; no arm wall-time inferred.",
+      "reported": {"success": {"RRTConnect": 0.838, "CHOMP": 0.677, "CHOMP_multi": 0.833, "TrajOpt": 0.843, "TrajOpt_multi": 0.990}, "mean_success_time_s": {"RRTConnect": 0.566, "CHOMP": 3.16, "TrajOpt": 0.206}, "normalized_length": {"RRTConnect": 1.55, "CHOMP": 1.32, "TrajOpt": 1.15}},
+      "diagnostic": "Strong RRTConnect feasibility is credible. Initialization and swept-volume versus sampled collision handling materially affect optimizer success. Check local TrajOpt's between-collocation collisions and gradient/penalty behavior; do not require the multi-init99% score from a one-init adapter."
+    },
+    {
+      "id": "kalakrishnan2011",
+      "title": "STOMP: Stochastic Trajectory Optimization for Motion Planning",
+      "url": "https://whiteoak.umd.edu/roswiki/attachments/Papers(2f)ICRA2011_Kalakrishnan/kalakrishnan_icra2011.pdf",
+      "location": "Section V-A, Table II",
+      "setup": "PR2 seven-DOF arm shelf world:42 cabinet-pair queries repeated5times. Straight-line initialization, fixed5s duration and100timesteps. STOMP and CHOMP parameters tuned;500iteration cap. STOMP5new noisy samples plus5retained samples. Unconstrained means collision and smoothness costs without gripper-orientation constraint.",
+      "reported": {"trials": 210, "STOMP_success": 210, "CHOMP_success": 149, "STOMP_mean_time_s": 0.88, "CHOMP_mean_time_s": 0.71},
+      "diagnostic": "STOMP can escape some CHOMP local minima; both optimize smoothness/obstacle objectives, not pure length. Their shared local DRM ceiling hides standalone recovery abilities. Validate raw optimized improvement and incumbent retention separately from frontend success."
+    },
+    {
+      "id": "chamzas2022",
+      "title": "MotionBenchMaker: A Tool to Generate and Benchmark Motion Planning Datasets",
+      "url": "https://www.kavrakilab.org/publications/chamzas2022-motion-bench-maker.pdf",
+      "location": "Section IV, V-A/V-B, Figures7-9",
+      "setup": "40 datasets:5robots x8environments,100queries/dataset. Generated problems are retained only if a tuned reference planner solves within60s. RRTConnect/BiEST illustration100queries x20repeats at60s; optimizing-planner illustration5repeats at180s.",
+      "reported": {"RRTConnect_ranges_in_rank_reversal_example": [0.05, 0.5], "range_sweep": "0..7 in0.25 increments", "universal_winner": false},
+      "diagnostic": "Robot/scene distribution, reference-feasibility filtering and range setting can change rankings. Our unfiltered unknown-feasibility Kinova data cannot inherit public-dataset absolute success expectations. Use repeated development checks; do not discard hard legal queries to match literature."
+    },
+    {
+      "id": "curobo_v076",
+      "title": "cuRobo official benchmark documentation",
+      "url": "https://nvlabs.github.io/curobo/v0.7.6/get_started/4_benchmarks.html",
+      "location": "Latest Motion Generation Results, dated2024-11-22",
+      "setup": "2600 MotionBenchMaker/MotionPolicyNetworks problems on RTX6000Ada; version0.7.6. Documentation distinguishes plan time, motion duration, joint path length, jerk and pose error. Not same Kinova model or fixed-joint-goal distribution.",
+      "reported": {"success_percent": 99.85, "mean_plan_time_s": 0.039, "mean_motion_time_s": 1.181, "mean_path_length_rad": 3.144},
+      "diagnostic": "Use to confirm metric separation and benchmark version importance, not to set a99% acceptance threshold or millisecond target for this environment."
+    },
+    {
+      "id": "ompl_docs",
+      "title": "OMPL official benchmarking and RRTstar documentation",
+      "url": "https://ompl.kavrakilab.org/benchmark.html",
+      "additional_url": "https://ompl.kavrakilab.org/classompl_1_1geometric_1_1RRTstar.html",
+      "setup": "Repeated identical queries with specified time/memory limits; RRTstar may continue solving without clearing state, under a termination condition.",
+      "diagnostic": "Asymptotic optimality is not superiority at10s. Compare budget-cost curves and native valid incumbent preservation, not RRTstar's10s performance against a60s headline cap."
+    }
+  ],
+  "local_findings": [
+    {"id":"frontend_ceiling", "evidence":{"legal_test":395,"DRM_reached_backend":283,"DRM_failures":112,"EI_ZO_path_success":283,"EI_ZO_time_success":283,"RRTCONNECT_success":358}, "interpretation":"EI-ZO backend283/283 is consistent with paper reliability; shared frontend is dominant gap.","priority":"high"},
+    {"id":"NTO_path", "evidence":{"NTO_PAPER_success":108,"conditional_denominator":283,"validation_failed":115,"solver_failure":58,"timeout":1,"infrastructure_error":1,"NTO_REFINED_success":240},"interpretation":"38.16% paper-profile backend success is weak versus paper72.5%; large refined improvement points to clearance/collocation/solver behavior rather than raw geometry alone. Investigate; do not assume same expected rate.","priority":"high"},
+    {"id":"NTO_time_parametrization", "evidence":{"legacy_minus_paper_common_success_duration_s":-2.490564492436673,"common_count":217,"scene_ci":[-2.871016693433874,-2.112817832072859],"EI_ZO_minus_legacy_duration_s":0.9845813037608072,"EI_ZO_minus_paper_duration_s":-1.3717585126996812,"EI_ZO_minus_refined_duration_s":-1.1919293484216595},"interpretation":"Legacy matches paper's favorable-NTO-duration direction; paper-profile/refined reverse it despite common model/frontend. Inspect spline control count, endpoint derivative duplication, duration initialization, convergence and candidate selection.","priority":"high"},
+    {"id":"LGCS", "evidence":{"EI_ZO_minus_LGCS_common_length_rad":0.09179423206637444,"common_count":282,"EI_ZO_minus_LGCS_backend_s":-2.877333325383432},"interpretation":"Small length gain with substantially higher computation is qualitatively consistent with Werner; no rank-fixing warranted.","priority":"low"},
+    {"id":"CHOMP_STOMP", "evidence":{"CHOMP_success":282,"STOMP_success":282,"common_DRM_failures":112,"each_solver_failure":1},"interpretation":"Do not call them intrinsically poor based on282/395. Audit actual improvement, untouched incumbent rate and true optimization cost instead.","priority":"medium"},
+    {"id":"TrajOpt", "evidence":{"success":264,"DRM_failures":112,"validation_failed":19},"interpretation":"Investigate19post-optimization validation failures under a feasible DRM seed, especially sampled collision constraints versus original swept-volume handling.","priority":"medium"}
+  ],
+  "guardrails": ["No target rankings or target success rates across different datasets.","Do not modify endpoints, geometry, filters or validator to improve a method score.","Use dev for configuration checks; preserve historical test exposure and old results.","Separate full pipeline, conditional backend, common-success cost, and native solver objective."]
+}

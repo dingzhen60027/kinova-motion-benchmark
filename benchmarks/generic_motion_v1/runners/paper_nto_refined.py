@@ -1,9 +1,10 @@
 """Declared numerical refinement of the paper NTO transcription.
 
 This is a separate development baseline, not the published author profile.
-It keeps the model, objectives, solvers, ordered DRM controls and final validator.
-Only a fixed clearance, explicit iteration limits and constraint generation
-change. CPU geometry checks generate constraints; they are not a certificate.
+It keeps the model, objectives, solvers, ordered DRM path and final validator.
+A fixed clearance, explicit iteration limits and constraint generation improve
+numerical reliability. Shape-preserving knot insertion gives the time optimizer
+enough freedom after DRM simplification. CPU checks are not a certificate.
 """
 from __future__ import annotations
 
@@ -22,7 +23,7 @@ from .validate import sample_candidate
 
 PROFILE = deepcopy(PAPER_PROFILE)
 PROFILE.update(
-    name="rss2025_nto_numerical_refinement_v1",
+    name="rss2025_nto_numerical_refinement_v2",
     provenance="declared_NTO_refinement_on_frozen_Kinova_not_exact_author_configuration",
     clearance_m=0.001,
     snopt_total_iterations=100000,
@@ -31,10 +32,12 @@ PROFILE.update(
     maximum_native_solves=4,
     maximum_collocation_points=600,
     refinement_geometry_batch=32,
+    minimum_time_control_points=16,
 )
 PROFILE["sources"].update(
     clearance="Author archived appendix describes epsilon as the minimum admissible distance but gives no value. The fixed 1 mm value is a declared local development policy.",
-    refinement="Local constraint generation: after each native solve, add the minimum-clearance sampled parameter in each current interval with clearance below 0.5 mm. At most 4 solves and 600 total points. No control insertion or case-specific policy.",
+    refinement="Local constraint generation: after each native solve, add the minimum-clearance sampled parameter in each current interval with clearance below 0.5 mm. At most 4 solves and 600 total points. No case-specific policy.",
+    time_parameterization="Declared adapter choice, matching the existing legacy NTO basis policy: bisect longest knot spans to at least 16 time-spline controls, preserving the entire initial curve. Distance controls are unchanged. All methods retain identical derivative limits and endpoint conditions.",
     iteration_limits="Local policy: SNOPT total 100000 / major 2000 / minor 500; IPOPT max_iter 2000. All construction, solves and refinement checks share the external online deadline.",
 )
 
@@ -117,16 +120,31 @@ def paper_nto_refined(path, model, case, cfg, out, deadline):
     out = Path(out)
     out.mkdir(parents=True, exist_ok=True)
     started = time.perf_counter()
+    profile = deepcopy(PROFILE)
+    settings = cfg.get("nto_refined", {})
+    if (not isinstance(settings, dict)
+            or set(settings) - {"minimum_time_control_points"}):
+        raise ValueError("Unsupported NTO_REFINED settings")
+    minimum_controls = settings.get("minimum_time_control_points",
+                                    profile["minimum_time_control_points"])
+    if (isinstance(minimum_controls, (bool, np.bool_))
+            or not isinstance(minimum_controls, (int, np.integer)) or minimum_controls < 4):
+        raise ValueError("NTO_REFINED minimum_time_control_points must be an integer >= 4")
+    profile["minimum_time_control_points"] = int(minimum_controls)
     # Do not reset an already partly used query budget at a refinement round.
     deadline = min(float(deadline), started + float(cfg["optimizer_budget_seconds"]),
                    started + PROFILE["maximum_optimizer_seconds"])
     if not np.isfinite(deadline):
         raise ValueError("NTO refinement requires a finite deadline")
     locations = np.arange(1, PROFILE["collocation_parameter_Nc"]) / PROFILE["collocation_parameter_Nc"]
-    manifest = dict(profile=PROFILE, rounds=[], final_validation_required=True,
+    manifest = dict(profile=profile, rounds=[], final_validation_required=True,
                     initial_remaining_seconds=deadline-started,
                     source_profile=PAPER_PROFILE["name"],
-                    geometry_model_changed=False, controls_inserted=False,
+                    geometry_model_changed=False,
+                    controls_inserted=bool(case.get("_objective") == "minimum_time"
+                                           and len(path)+2 < minimum_controls),
+                    minimum_time_control_points=int(minimum_controls),
+                    initial_curve_preserved=True,
                     stopping_reason="running")
     write(out / "nto_refinement.json", manifest)
     candidate = None
@@ -144,7 +162,7 @@ def paper_nto_refined(path, model, case, cfg, out, deadline):
             tic = time.perf_counter()
             try:
                 candidate = paper_nto(path, model, case, cfg, target, deadline,
-                                     _profile=PROFILE, _locations=locations,
+                                     _profile=profile, _locations=locations,
                                      _initial_candidate=candidate)
             finally:
                 _publish_native_artifacts(target, out, first=index == 0)
