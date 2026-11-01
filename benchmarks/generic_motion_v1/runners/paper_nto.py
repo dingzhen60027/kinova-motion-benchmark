@@ -163,7 +163,8 @@ def paper_nto(path, model, case, cfg, out, deadline, *, _profile=None,
     watchdog. Both are restricted to the remaining online budget here.
     """
     from pydrake.all import (CommonSolverOption, KinematicTrajectoryOptimization,
-                            MinimumDistanceLowerBoundConstraint, SolverOptions)
+                            SolverOptions)
+    from .nto_collision_constraint import RobustMinimumDistanceConstraint
     profile = PROFILE if _profile is None else _profile
     out = Path(out)
     out.mkdir(parents=True, exist_ok=True)
@@ -217,9 +218,9 @@ def paper_nto(path, model, case, cfg, out, deadline, *, _profile=None,
     else:
         traj.AddPathLengthCost()
         traj.AddDurationConstraint(1.0, 1.0)
-    constraint = MinimumDistanceLowerBoundConstraint(
-        native.plant, profile["clearance_m"], native.plant_context,
-        influence_distance_offset=profile["influence_distance_m"])
+    collision_backend = RobustMinimumDistanceConstraint(
+        native, profile["clearance_m"], profile["influence_distance_m"], out)
+    constraint = collision_backend.constraint
     locations = np.arange(1, profile["collocation_parameter_Nc"], dtype=float) / profile["collocation_parameter_Nc"]
     if _locations is not None:
         locations = np.asarray(_locations, dtype=float)
@@ -287,6 +288,8 @@ def paper_nto(path, model, case, cfg, out, deadline, *, _profile=None,
                       knot_refinement="shape-preserving longest-knot-span bisection" if timed and profile.get("minimum_time_control_points") is not None else None,
                       warm_start_duration_seconds=initial_duration, spline_order=order,
                       collision_evaluator="Drake MinimumDistanceLowerBoundConstraint on canonical model.nto_plant()",
+                      collision_backend="native_Drake_with_issue21675_near_contact_recovery",
+                      collision_backend_evidence="nto_collision_backend.json",
                       refinement_warm_start=_initial_candidate is not None,
                       legacy_cfg_nto_used=False, construction_seconds=time.perf_counter() - started,
                       watchdog="Caller must enforce external wall-clock budget; IPOPT max_cpu_time is CPU time")
@@ -305,6 +308,8 @@ def paper_nto(path, model, case, cfg, out, deadline, *, _profile=None,
               solver_status="exception", error=repr(exc), traceback=traceback.format_exc(),
               solve_seconds=time.perf_counter() - solve_started))
         raise
+    finally:
+        collision_backend.save()
     optimized_controls, duration, normalized_knots, status = _save_result(result, traj, out)
     status["solve_seconds"] = time.perf_counter() - solve_started
     write(out / "nto_solver_result.json", status)

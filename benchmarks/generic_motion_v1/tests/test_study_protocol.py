@@ -15,6 +15,8 @@ def write(path, value):
 
 @pytest.fixture
 def bundle(tmp_path, monkeypatch):
+    # Keep the mocked coordinator's lock inside its fixture repository.
+    monkeypatch.setattr(batch, "BASE", tmp_path)
     runtime_sources = {"benchmarks/generic_motion_v1/study_protocol.py": common.sha(study.__file__)}
     monkeypatch.setattr(batch, "code_inventory", lambda: dict(runtime_sources))
     monkeypatch.setattr(study, "code_inventory", lambda: dict(runtime_sources))

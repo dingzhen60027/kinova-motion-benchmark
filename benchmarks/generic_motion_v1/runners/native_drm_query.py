@@ -3,13 +3,17 @@
 The default failure_exits profile replaces two fatal exhausted-search exits.
 The endpoint_edges profile additionally applies the exact reviewed repairs in
 native_drm_corrections: endpoint-local rejection, query-state cleanup, same-node
-reachability and endpoint-inclusive steering. Both profiles retain the installed
-CUDA code and native graph search. No endpoint, model or iteration-budget
+reachability and endpoint-inclusive steering. The consistent_query profile also
+reconciles approximate cached node exclusions against the actual online spheres
+and examines alternate endpoint attachments within the original per-endpoint
+candidate budget. All profiles retain the installed CUDA code and native graph
+search. No endpoint, model or iteration-budget
 substitution is used. Loading never compiles or modifies the existing environment.
 """
 from __future__ import annotations
 
 import argparse
+import ctypes
 import hashlib
 import importlib.util
 import json
@@ -57,7 +61,7 @@ def native_library():
 
 def build(out, profile='failure_exits'):
     """Compile only CPU source; existing CUDA functions are dynamic dependencies."""
-    if profile not in ('failure_exits', 'endpoint_edges'):
+    if profile not in ('failure_exits', 'endpoint_edges', 'consistent_query'):
         raise ValueError('Unknown native host repair profile')
     out = Path(out).resolve()
     if out.exists():
@@ -80,12 +84,15 @@ def build(out, profile='failure_exits'):
         raise ValueError('Installed pybind11 ABI is not the reviewed v4/gcc/libstdc++ ABI')
     patched = out/'drm_planner.cpp'
     source_text = patched_source(SOURCE.read_text())
-    if profile == 'endpoint_edges':
+    if profile in ('endpoint_edges', 'consistent_query'):
         from .native_drm_corrections import correct_source
         source_text = correct_source(source_text)
+    if profile == 'consistent_query':
+        from .native_drm_corrections import reconcile_query_source
+        source_text = reconcile_query_source(source_text)
     patched.write_text(source_text)
     binding = BINDING
-    if profile == 'endpoint_edges':
+    if profile in ('endpoint_edges', 'consistent_query'):
         # Read-only native diagnostic entry points exercise the exact compiled
         # implementation, including zero-length steering and isolated vertices.
         binding = out/'drm_safe_query.cpp'
@@ -105,7 +112,7 @@ def build(out, profile='failure_exits'):
             '-Wl,-Bsymbolic', '-D_GLIBCXX_USE_CXX11_ABI=1',
             '-fabi-version='+internals[0].removeprefix('_cxxabi10'),
             '-DPYBIND11_BUILD_ABI="'+internals[0]+'"', '-DFMT_HEADER_ONLY',
-            *['-I'+str(path) for path in includes], str(binding), str(patched), str(native),
+            *['-I'+str(path) for path in includes], str(binding), str(patched),
             '-o', str(binary)]
     abi_macros = subprocess.check_output(['/usr/bin/g++', argv[argv.index('-fabi-version='+internals[0].removeprefix('_cxxabi10'))],
         '-dM', '-E', '-x', 'c++', '-'], input='', text=True)
@@ -116,8 +123,9 @@ def build(out, profile='failure_exits'):
     source_files.update({str(SOURCE.relative_to(ROOT)): sha(SOURCE), str(BINDING.relative_to(ROOT)): sha(BINDING)})
     receipt = dict(status='building', profile=profile, source_commit=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),
         scope=('Native CPU DRM failure exits, endpoint-local rejected edges, zero-edge reachability and endpoint-inclusive steering; unchanged CUDA'
-               if profile == 'endpoint_edges' else 'Native CPU DRM error handling only; existing wheel CUDA functions are linked unchanged'),
+               if profile in ('endpoint_edges', 'consistent_query') else 'Native CPU DRM error handling only; existing wheel CUDA functions are linked unchanged'),
         native_library=str(native), native_library_sha256=before,
+        native_linkage='verified_runtime_global',
         upstream_source_sha256=sha(SOURCE), patched_source_sha256=sha(patched), binding_sha256=sha(BINDING),
         source_files=source_files, python=sys.version, pybind_abi=internals[0], compiler_argv=argv,
         include_paths=list(map(str, includes)), compiler_abi_macro=internals[0].removeprefix('_cxxabi'),
@@ -125,9 +133,13 @@ def build(out, profile='failure_exits'):
         patches=[dict(before=old, after=new) for old,new in PATCHES])
     receipt['compiled_binding'] = str(binding)
     receipt['compiled_binding_sha256'] = sha(binding)
-    if profile == 'endpoint_edges':
+    if profile in ('endpoint_edges', 'consistent_query'):
         from .native_drm_corrections import CORRECTIONS
         receipt['patches'].extend(dict(before=old,after=new) for old,new in CORRECTIONS)
+    if profile == 'consistent_query':
+        from .native_drm_corrections import QUERY_CONSISTENCY_CORRECTIONS
+        receipt['patches'].extend(dict(before=old,after=new) for old,new in QUERY_CONSISTENCY_CORRECTIONS)
+        receipt['scope'] += '; exact online node-cache reconciliation and budgeted alternate endpoint attachments'
     write(out/'build.json', receipt)
     started = time.perf_counter()
     with (out/'build.stdout.log').open('w') as stdout, (out/'build.stderr.log').open('w') as stderr:
@@ -148,26 +160,44 @@ def load(build_dir):
     receipt = json.loads((build_dir/'build.json').read_text())
     if receipt.get('status') != 'ready':
         raise ValueError('Safe DRM sidecar build is not ready')
+    # Receipt paths document the original build, while the caller-selected
+    # directory locates a byte-identical copied checkout/build at runtime.
+    # Never rewrite historical receipts or fall back to the old absolute binary.
+    binary = build_dir/Path(receipt['binary']).name
     for path, digest in [(native_library(), receipt['native_library_sha256']),
-                         (Path(receipt['binary']), receipt['binary_sha256']),
+                         (binary, receipt['binary_sha256']),
                          (SOURCE, receipt['upstream_source_sha256']), (BINDING, receipt['binding_sha256'])]:
         if sha(path) != digest:
             raise ValueError(f'Safe DRM source or dependency changed: {path}')
     for relative, expected in receipt['source_files'].items():
         if sha(ROOT/relative) != expected:
             raise ValueError(f'Safe DRM native header/source changed: {relative}')
-    if receipt.get('compiled_binding') and sha(receipt['compiled_binding']) != receipt['compiled_binding_sha256']:
-        raise ValueError('Safe DRM compiled diagnostic binding changed')
+    if receipt.get('compiled_binding'):
+        local_binding=build_dir/Path(receipt['compiled_binding']).name
+        # failure_exits compiled the repository binding directly. Later profiles
+        # save their generated binding beside the binary.
+        if not local_binding.is_file() and receipt['compiled_binding_sha256']==receipt['binding_sha256']:
+            local_binding=BINDING
+        if sha(local_binding) != receipt['compiled_binding_sha256']:
+            raise ValueError('Safe DRM compiled diagnostic binding changed')
+    # Native CUDA symbols resolve against the verified installed library. New
+    # builds contain no DT_NEEDED entry embedding a personal Conda path. Older
+    # builds retain their original linkage and receipts unchanged.
+    native_handle=None
+    if receipt.get('native_linkage')=='verified_runtime_global':
+        native_handle=ctypes.CDLL(str(native_library()),mode=ctypes.RTLD_GLOBAL)
     key = '_drm_safe_query'
     if key in sys.modules:
         module = sys.modules[key]
-        if Path(module.__file__).resolve() != Path(receipt['binary']).resolve():
+        if Path(module.__file__).resolve() != binary.resolve():
             raise ValueError('A different safe DRM sidecar is already loaded')
     else:
-        spec = importlib.util.spec_from_file_location(key, receipt['binary'])
+        spec = importlib.util.spec_from_file_location(key, binary)
         module = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(module)
         sys.modules[key] = module
+    if native_handle is not None:
+        module._verified_native_library_handle=native_handle
     return module, receipt
 
 
@@ -240,7 +270,7 @@ def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('command',choices=['build'])
     parser.add_argument('--output',type=Path,required=True)
-    parser.add_argument('--profile',choices=['failure_exits','endpoint_edges'],default='failure_exits')
+    parser.add_argument('--profile',choices=['failure_exits','endpoint_edges','consistent_query'],default='failure_exits')
     args=parser.parse_args()
     print(json.dumps(build(args.output,profile=args.profile),indent=2))
 

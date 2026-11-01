@@ -101,7 +101,7 @@ def _publish_native_artifacts(source, out, first):
     # Keep each solve immutable under refinement/round_NN. Top-level native
     # result/raw/log is the final returned solve for existing inspection tools.
     names = ["nto_parameters.json", "nto_solver_result.json", "nto_solver_raw.npz",
-             "snopt.log", "ipopt.log"]
+             "snopt.log", "ipopt.log", "nto_collision_backend.json"]
     if first:
         names.append("nto_initial.npz")
     for name in names:

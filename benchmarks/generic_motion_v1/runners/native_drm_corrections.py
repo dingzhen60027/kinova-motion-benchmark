@@ -123,3 +123,118 @@ def correct_source(source):
             raise ValueError('Upstream DRM no longer matches exact reviewed correctness repair')
         source = source.replace(old, new, 1)
     return source
+
+
+# The quantized offline cache is a broad phase, not an exact classification for
+# differently centered online spheres. Keep graph/model/CUDA code unchanged and
+# account for all exact node checks inside the native online Plan call.
+QUERY_CONSISTENCY_CORRECTIONS = (
+    ("  int success_flag{0};\n",
+     """  // Reconcile the broad-phase cache with this query's actual sphere centers
+  // and radius. This also detects colliding nodes missed by the quantized map.
+  // Cache edge hits are likewise only broad phase; native lazy checking below
+  // validates every edge before any path is returned.
+  environment_collision_nodes_.clear();
+  collision_set_ = geometry_invalid_nodes_;
+  forbidden_edge_set_.clear();
+  std::vector<int32_t> node_ids;
+  Eigen::MatrixXf node_configurations(num_joints_, drm_.id_to_node_map.size());
+  int node_column = 0;
+  for (const auto& entry : drm_.id_to_node_map) {
+    node_ids.push_back(entry.first);
+    node_configurations.col(node_column++) = entry.second;
+  }
+  if (!node_ids.empty()) {
+    const auto free_nodes = checkCollisionFreeVoxelsCuda(
+        &node_configurations, &root_p_voxels, online_voxel_radius, &mplant_,
+        inspector_.robot_geometry_ids);
+    for (size_t index = 0; index < node_ids.size(); ++index) {
+      if (!free_nodes.at(index)) {
+        environment_collision_nodes_.insert(node_ids[index]);
+        collision_set_.insert(node_ids[index]);
+      }
+    }
+  }
+
+  int success_flag{0};
+"""),
+    ("      if (IsEdgeBlocked(next_node, node)) {\n",
+     "      if (IsEdgeBlocked(node, next_node)) {\n"),
+    ("  // Find path in roadmap from start node to target node.\n",
+     """  // The first two visible vertices can belong to different components.
+  // That does not establish failure of every endpoint attachment. Examine
+  // further candidates under the same per-endpoint steering-check limit.
+  bool endpoints_connected = CheckPathExists(start_id, target_id, {}, nullptr);
+  if (!endpoints_connected) {
+    auto ordered_candidates = [&](const Eigen::VectorXf& endpoint, int tag,
+                                  int already_visible) {
+      std::vector<std::pair<double, int32_t>> candidates;
+      for (const auto& entry : drm_.id_to_node_map) {
+        if (entry.first == already_visible || collision_set_.count(entry.first) ||
+            forbidden_edge_set_.count({tag, entry.first})) continue;
+        candidates.emplace_back(Distance(endpoint, entry.second), entry.first);
+      }
+      std::sort(candidates.begin(), candidates.end());
+      return candidates;
+    };
+    auto starts = ordered_candidates(start_configuration, -1, start_id);
+    auto goals = ordered_candidates(target_configuration, -2, target_id);
+    std::vector<int32_t> visible_starts{start_id}, visible_goals{target_id};
+    size_t start_cursor = 0, goal_cursor = 0;
+    size_t start_checks = steer_to_start_iterations + 1;
+    size_t goal_checks = steer_to_target_iterations + 1;
+    const size_t limit = options_.max_iterations_steering_to_node;
+    while (!endpoints_connected &&
+           ((start_checks < limit && start_cursor < starts.size()) ||
+            (goal_checks < limit && goal_cursor < goals.size()))) {
+      if (start_checks < limit && start_cursor < starts.size()) {
+        const int32_t candidate = starts[start_cursor++].second;
+        ++start_checks;
+        if (SteerFunctionIsSafe(start_configuration, drm_.id_to_node_map.at(candidate),
+                                root_p_voxels, online_voxel_radius)) {
+          visible_starts.push_back(candidate);
+          for (const auto goal : visible_goals) {
+            if (CheckPathExists(candidate, goal, {}, nullptr)) {
+              start_id = candidate; target_id = goal; endpoints_connected = true;
+              break;
+            }
+          }
+        } else {
+          forbidden_edge_set_.insert({-1, candidate});
+        }
+      }
+      if (!endpoints_connected && goal_checks < limit && goal_cursor < goals.size()) {
+        const int32_t candidate = goals[goal_cursor++].second;
+        ++goal_checks;
+        if (SteerFunctionIsSafe(target_configuration, drm_.id_to_node_map.at(candidate),
+                                root_p_voxels, online_voxel_radius)) {
+          visible_goals.push_back(candidate);
+          for (const auto start : visible_starts) {
+            if (CheckPathExists(start, candidate, {}, nullptr)) {
+              start_id = start; target_id = candidate; endpoints_connected = true;
+              break;
+            }
+          }
+        } else {
+          forbidden_edge_set_.insert({-2, candidate});
+        }
+      }
+    }
+  }
+
+  // Find path in roadmap from start node to target node.
+"""),
+    ("  if (CheckPathExists(start_id, target_id, {}, nullptr)) {\n",
+     "  if (endpoints_connected) {\n"),
+    ('          "[DRMPlanner] No collision-free path exists in roadmap.");\n',
+     '          "[DRMPlanner] No route found through tested roadmap connections.");\n'),
+)
+
+
+def reconcile_query_source(source):
+    """Apply only after correct_source; fail closed on unreviewed source drift."""
+    for old, new in QUERY_CONSISTENCY_CORRECTIONS:
+        if source.count(old) != 1:
+            raise ValueError('Upstream DRM no longer matches exact reviewed query consistency repair')
+        source = source.replace(old, new, 1)
+    return source

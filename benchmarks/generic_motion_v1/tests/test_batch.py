@@ -10,6 +10,9 @@ from benchmarks.generic_motion_v1.common import read, write
 
 
 def prepared(tmp_path, monkeypatch, split="smoke"):
+    # These fixtures launch only mocked workers; never contend with a real
+    # experiment's GPU lock when the CPU regression suite runs concurrently.
+    monkeypatch.setattr(batch, "BASE", tmp_path)
     monkeypatch.setattr(batch, "code_inventory", lambda: {})
     manifest = tmp_path / "cases.jsonl"
     case = dict(problem_id="c0", split=split, scene_id="s0", family="sparse_clutter",

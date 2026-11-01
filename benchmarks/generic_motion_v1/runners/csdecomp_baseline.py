@@ -313,7 +313,8 @@ def _nto(path,model,case,cfg,out,deadline):
     insertion. These are documented adapter choices, not recovered paper code.
     """
     from pydrake.all import (BsplineBasis,BsplineTrajectory,KnotVectorType,
-        KinematicTrajectoryOptimization,MinimumDistanceLowerBoundConstraint,IpoptSolver)
+        KinematicTrajectoryOptimization,IpoptSolver)
+    from .nto_collision_constraint import RobustMinimumDistanceConstraint
     timed=case['_objective']=='minimum_time'
     options=cfg['nto'];start=time.perf_counter()
     native=model.nto_plant()
@@ -338,7 +339,8 @@ def _nto(path,model,case,cfg,out,deadline):
         traj.AddPathVelocityConstraint(np.zeros(7),np.zeros(7),1.)
     else:
         traj.AddPathLengthCost();traj.AddDurationConstraint(1.,1.)
-    constraint=MinimumDistanceLowerBoundConstraint(native.plant,options['clearance_m'],native.plant_context,influence_distance_offset=options['influence_distance_m'])
+    collision_backend=RobustMinimumDistanceConstraint(native,options['clearance_m'],options['influence_distance_m'],out)
+    constraint=collision_backend.constraint
     locations=np.arange(1,options['collocation_points']+1)/(options['collocation_points']+1)
     for s in locations:
         traj.AddPathPositionConstraint(constraint,float(s))
@@ -352,9 +354,14 @@ def _nto(path,model,case,cfg,out,deadline):
         prog.SetSolverOption(solver.solver_id(),key,value)
     write(out/'nto_parameters.json',dict(parameters=parameters,collision_pairs=native.collision_pair_count,
           collocation_locations=locations,clearance_m=options['clearance_m'],
+          collision_backend='native_Drake_with_issue21675_near_contact_recovery',
+          collision_backend_evidence='nto_collision_backend.json',
           transcription='Drake KTO + Ipopt adaptation; fixed DRM initialization; no success filtering',
           construction_seconds=time.perf_counter()-start))
-    result=solver.Solve(prog)
+    try:
+        result=solver.Solve(prog)
+    finally:
+        collision_backend.save()
     curve=traj.ReconstructTrajectory(result)
     return dict(kind='bspline',objective=case['_objective'],solver='IPOPT',solver_success=bool(result.is_success()),
                 solver_status=str(result.get_solution_result()),spline_order=order,

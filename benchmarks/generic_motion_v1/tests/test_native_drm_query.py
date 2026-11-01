@@ -1,5 +1,6 @@
 """CPU regressions for an isolated native host patch; no CUDA queries here."""
 import json
+import sys
 from pathlib import Path
 from types import SimpleNamespace
 
@@ -144,3 +145,70 @@ def test_native_closest_empty_and_normal_nearest_cpu():
     planner.drm.id_to_node_map={2:np.ones(7),1:np.zeros(7)}
     native_id,point=module.closest_node(planner,np.full(7,.01))
     assert native_id==1 and np.array_equal(point,np.zeros(7))
+
+
+@pytest.fixture
+def relocated(monkeypatch,tmp_path):
+    checkout=tmp_path/'moved_checkout';checkout.mkdir()
+    build=checkout/'sidecar';build.mkdir()
+    source=checkout/'source.cpp';source.write_text('unchanged original source')
+    binding=checkout/'binding.cpp';binding.write_text('unchanged original binding')
+    native=tmp_path/'native.so';native.write_bytes(b'unchanged installed CUDA')
+    binary=build/'_drm_safe_query.so';binary.write_bytes(b'unchanged compiled sidecar')
+    generated=build/'generated_binding.cpp';generated.write_text('generated binding')
+    receipt=dict(status='ready',binary='/old/machine/sidecar/_drm_safe_query.so',
+        native_library_sha256=safe.sha(native),binary_sha256=safe.sha(binary),
+        upstream_source_sha256=safe.sha(source),binding_sha256=safe.sha(binding),source_files={},
+        compiled_binding='/old/machine/sidecar/generated_binding.cpp',compiled_binding_sha256=safe.sha(generated))
+    (build/'build.json').write_text(json.dumps(receipt))
+    monkeypatch.setattr(safe,'SOURCE',source);monkeypatch.setattr(safe,'BINDING',binding)
+    monkeypatch.setattr(safe,'native_library',lambda:native)
+    module=SimpleNamespace(__file__=str(binary))
+    monkeypatch.setitem(sys.modules,'_drm_safe_query',module)
+    return build,receipt,module
+
+
+def test_copied_build_uses_current_directory_without_rewriting_receipt(relocated):
+    folder,receipt,module=relocated
+    before=(folder/'build.json').read_bytes()
+    loaded,evidence=safe.load(folder)
+    assert loaded is module and evidence==receipt
+    assert (folder/'build.json').read_bytes()==before
+
+
+@pytest.mark.parametrize('name',['_drm_safe_query.so','generated_binding.cpp'])
+def test_copied_build_tampering_still_rejected(relocated,name):
+    folder,_,_=relocated
+    (folder/name).write_bytes(b'tampered')
+    with pytest.raises(ValueError,match='changed'):safe.load(folder)
+
+
+def test_copied_legacy_build_resolves_current_original_binding(relocated):
+    folder,receipt,_=relocated
+    receipt['compiled_binding']='/old/machine/native/binding.cpp'
+    receipt['compiled_binding_sha256']=receipt['binding_sha256']
+    (folder/'build.json').write_text(json.dumps(receipt))
+    assert safe.load(folder)[1]==receipt
+
+
+def test_moved_build_does_not_reuse_an_old_loaded_binary(relocated):
+    folder,_,module=relocated
+    module.__file__='/old/machine/sidecar/_drm_safe_query.so'
+    with pytest.raises(ValueError,match='different safe DRM'):safe.load(folder)
+
+
+def test_portable_build_loads_only_hash_verified_current_native(relocated,monkeypatch):
+    folder,receipt,module=relocated
+    receipt['native_linkage']='verified_runtime_global'
+    (folder/'build.json').write_text(json.dumps(receipt))
+    calls=[];handle=object()
+    def native_load(path,mode):
+        calls.append((path,mode));return handle
+    monkeypatch.setattr(safe.ctypes,'CDLL',native_load)
+    safe.load(folder)
+    assert calls==[(str(safe.native_library()),safe.ctypes.RTLD_GLOBAL)]
+    assert module._verified_native_library_handle is handle
+    safe.native_library().write_bytes(b'changed native')
+    calls.clear()
+    with pytest.raises(ValueError,match='changed'):safe.load(folder)
+    assert not calls
