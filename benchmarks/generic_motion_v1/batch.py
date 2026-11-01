@@ -15,6 +15,8 @@ import time
 from .common import (BASE, ROOT, cases, code_inventory, head, read, sha, write,
                      case_reference, case_manifest_path, resolve_case, recorded_path)
 from .runners.methods import METHODS, INDEPENDENT, objectives as supported_objectives
+from .runners.failure_classification import (INFRASTRUCTURE_STATUSES, exception_needs_attention,
+    handoff_failure_evidence, unexpected_process_exit)
 
 TERMINAL_STATUSES = {"success_validated_numerical", "timeout", "invalid_endpoint",
     "invalid_scene_geometry", "model_consistency_failed", "collision_failed", "limit_failed",
@@ -424,6 +426,27 @@ def _gpu_memory(pid):
         return None
 
 
+
+def _external_stop_outcome(result, *, timed_out, returncode, attempt=None, config=None, source_hashes=None):
+    """Preserve reported infrastructure errors if the external deadline follows."""
+    handoff = (handoff_failure_evidence(attempt, result,
+        expected_tolerance=(config or {}).get('region_coverage_tolerance_rad'),
+        source_hashes=source_hashes or {}) if attempt is not None else None)
+    abnormal_exit = unexpected_process_exit(dict(exit_code=returncode, timed_out=timed_out))
+    attention = exception_needs_attention(result, handoff_evidence=handoff) or abnormal_exit
+    if result.get('status') in INFRASTRUCTURE_STATUSES:
+        status = result['status']
+    else:
+        status = 'infrastructure_error' if attention or not timed_out else 'timeout'
+    result.update(status=status, success=False,
+                  error='External job deadline' if timed_out else f'Worker exit {returncode}')
+    if timed_out:
+        result['deadline_exceeded'] = True
+    if abnormal_exit and returncode is not None and returncode < 0:
+        result['error_category'] = 'native_process_signal'
+        result['signal_number'] = -returncode
+
+
 def execute(job, run, timeout):
     _positive_timeout(timeout)
     runtime_sources_before = code_inventory()
@@ -485,11 +508,8 @@ def execute(job, run, timeout):
     if timed_out or process.returncode != 0 or not result:
         if result:
             write(attempt / "result_before_external_stop.json", result)
-        result.update(status="timeout" if timed_out else "infrastructure_error", success=False,
-                      error="External job deadline" if timed_out else f"Worker exit {process.returncode}")
-        if process.returncode is not None and process.returncode < 0 and not timed_out:
-            result["error_category"] = "native_process_signal"
-            result["signal_number"] = -process.returncode
+        _external_stop_outcome(result,timed_out=timed_out,returncode=process.returncode,
+            attempt=attempt,config=job.get('evaluation_config'),source_hashes=runtime_sources_before)
     if result.get("status") not in TERMINAL_STATUSES or runtime_sources_before != runtime_sources_after:
         write(attempt / "result_before_provenance_rejection.json", result)
         result.update(status="infrastructure_error", success=False,

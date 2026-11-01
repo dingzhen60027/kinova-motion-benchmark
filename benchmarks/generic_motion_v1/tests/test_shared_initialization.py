@@ -160,7 +160,7 @@ def test_fixed_mode_cannot_drop_one_backend_from_comparison(tmp_path,monkeypatch
         results._selected_rows(rows,dict(id='fixed',mode=shared.MODE,runs=[str(run)]))
 
 
-@pytest.mark.parametrize('scenario',['success','repair','load_failure','load_timeout','wrong_roadmap'])
+@pytest.mark.parametrize('scenario',['success','repair','load_failure','load_timeout','load_unknown_timeout','wrong_roadmap'])
 def test_run_case_fixed_lscs_skips_first_generation_but_uses_common_validation(source,tmp_path,monkeypatch,scenario):
     import sys,types
     from benchmarks.generic_motion_v1.runners import csdecomp_baseline as runner
@@ -198,8 +198,13 @@ def test_run_case_fixed_lscs_skips_first_generation_but_uses_common_validation(s
         def editor(*args):
             edits.append(args);return args[4],(np.zeros((7,1)),np.zeros((7,1)))
         fake.EditRegionsCuda=editor
-    elif scenario in ('load_failure','load_timeout'):
-        def fail_load(*args):raise (TimeoutError('controlled load deadline') if scenario=='load_timeout' else ValueError('controlled source loading failure'))
+    elif scenario in ('load_failure','load_timeout','load_unknown_timeout'):
+        def fail_load(*args):
+            if scenario=='load_timeout':
+                raise TimeoutError('Online deadline before shared_initialization_load')
+            if scenario=='load_unknown_timeout':
+                raise TimeoutError('controlled unexpected load timeout')
+            raise ValueError('controlled source loading failure')
         monkeypatch.setattr(shared,'load_bound',fail_load)
     elif scenario=='wrong_roadmap':
         b['roadmap_native_sha256']='0'*64
@@ -217,7 +222,7 @@ def test_run_case_fixed_lscs_skips_first_generation_but_uses_common_validation(s
     out=tmp_path/'worker'
     result=runner.run_case(c,road,out,config=cfg,seed=3,method='EI_ZO',shared_initialization=b)
     assert result['execution_mode']==shared.MODE and result['budget_seconds']==60
-    if scenario in ('load_failure','load_timeout','wrong_roadmap'):
+    if scenario in ('load_failure','load_timeout','load_unknown_timeout','wrong_roadmap'):
         assert result['status']==('timeout' if scenario=='load_timeout' else 'infrastructure_error'),result
         assert not result['frontend_success'] and not (out/'candidate.npz').exists()
         return

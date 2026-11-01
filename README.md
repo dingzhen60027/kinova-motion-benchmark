@@ -119,24 +119,26 @@ Every path-track result is compared by the length of its actual saved path, even
 
 ### Current execution and repair evidence
 
-The complete repaired protocol is committed at `6ad41275c7`. Its serial, resumable evaluation is in progress:
+The serial evaluation records its exact runtime commit, source hashes and resolved configuration in each `run_manifest.json`. The complete post-repair cohorts are:
 
 | Run | Seeds | Registered calls | Legal calls |
 |---|---|---:|---:|
-| `repaired_native_smoke` | 0 | 140 | 112 |
-| `repaired_dev_all_seeds` | 0, 1, 2 | 2,520 | 2,520 |
-| `repaired_test` | 0 | 5,880 | 5,530 |
+| `baseline_smoke` | 0 | 140 | 112 |
+| `baseline_dev` | 0, 1, 2 | 2,520 | 2,520 |
+| `baseline_test` | 0 | 5,880 | 5,530 |
 
-The native-first smoke is complete: **140/140** sealed calls, with 71 numerical successes, 28 invalid inputs, 15 timeouts, 14 searches without a solution, 8 validation failures and 4 solver failures. Its integrity check passed with no infrastructure error. Dev and test remain pending or in progress; these smoke outcomes are not full-test scores.
+These post-repair cohorts are being prepared; no full-test score is claimed. The preceding native-first smoke at `6ad41275c7` completed **140/140** sealed calls: 71 numerical successes, 28 invalid inputs, 15 timeouts, 14 searches without a solution, 8 validation failures and 4 solver failures, with no infrastructure error. Its development follow-up stopped safely after **402/2,520** sealed calls when a float32 region-handoff defect was reproduced. All 402 observations and the complete smoke remain as diagnostics; no active query was interrupted, and the old test plan had not started.
 
 These counts cover all **10 methods / 14 supported method–track combinations**. Use `evaluate.py status --run results/<run>` for actual progress. Final summaries are withheld until every declared call has a terminal record. Historical completed scores remain in `records.csv` and `summary.csv` under `current_dev`, `current_test` and `current_dev_repaired_s000`; they are not scores for the repaired defaults.
 
-The current regression suite passes **1,217 tests**, and three unchanged upstream tests pass. Repairs and their reproducible evidence are:
+The current regression suite passes **1,288 tests**, and three unchanged upstream tests pass. Repairs and their reproducible evidence are:
 
 - **DRM query correctness.** Failed endpoint edges no longer exclude otherwise free vertices; query-local state resets; isolated same-node queries and steering endpoints are handled. The quantized cache is reconciled against the original roadmap nodes at the actual online obstacle centers and radius. Independent Drake checks confirmed 2,316 cache-excluded configurations were free. The portable CPU sidecar retains the graph and CUDA implementation, with 48 targeted checks and six real-GPU positive/negative fixtures. [Evidence](benchmarks/generic_motion_v1/results/trend_diagnostics/drm_attachment_audit/comparison.json).
 - **Endpoint/search budgets.** Dev-only diagnostics separate finite-graph coverage from exhausted attachment budgets. The current profile uses 1,000 planning attempts, 1,000 endpoint candidates per endpoint per attempt, 100,000 expansions and 0.01-rad steering; the internal 0.01-m padding is retained. OMPL now uses the remaining 60-second outer budget with explicit validation and simplification reserves. Historical 10-second OMPL results remain separate.
 - **NTO trajectory freedom.** In an actual 2-rad rest-to-rest IPOPT control problem, four cubic controls produced 6.000 s; 16 controls produced 3.015762 s against a 3 s lower bound. Shape-preserving insertion changed the initial curve by at most 4.44e-16 rad. `NTO_REFINED` uses this refinement; the published-profile reference remains separate.
 - **Drake contact-gradient recovery.** Only the known [near-contact BoxBoxGradient assertion](https://github.com/RobotLocomotion/drake/issues/21675) is recovered. Every canonical collision pair and the native aggregate constraint remain present; unknown errors fail explicitly. Normal solves bind the native evaluator directly. Only this exact assertion permits one guarded restart per query, using the original remaining deadline and initial guess; subsequent refinement rounds keep the guarded evaluator. Sixty-nine targeted checks and seven independent real-Drake API checks pass. The end-to-end GPU regression reproduced the exception and retained the colliding candidate as a failure. Normal-path replay matched all 415 original IPOPT iteration rows and the final trajectory arrays. [Evidence](benchmarks/generic_motion_v1/results/trend_diagnostics/nto_collision_independent_review.json).
+- **Native region handoff.** A real recovery region needed 23 float32 increments, exceeding the old arbitrary limit of 16 despite remaining inside the existing tolerance. The fallback now searches only representable offsets inside both original correction bounds, with the complete native matrix and fixed anchors. Independent CPU replay found the least passing offset at a normalized change of 1.724e-7, below the unchanged 1e-6 limit; five normal historical regions retained byte-identical arrays and records. Final collision validation remains mandatory. [Evidence](benchmarks/generic_motion_v1/results/trend_diagnostics/native_handoff_independent/review.json).
+- **Failure accounting.** Unknown exceptions, CUDA errors and process crashes retain infrastructure-failure status even when a deadline follows. A numerical handoff rejection requires its typed error and bound-checked, receipt-bound evidence. A source-specific reader preserves 1,368 normal no-route outcomes from the older DRM implementation without accepting that old exception in the current runtime. [Evidence](benchmarks/generic_motion_v1/results/trend_diagnostics/exception_classification_applied.json).
 
 [Paper/source checks](benchmarks/generic_motion_v1/results/trend_diagnostics/literature.json) compare Werner et al., TrajOpt, STOMP, MotionBenchMaker and recent accelerated planners with their actual robots, inputs, initialization and timing definitions. They help identify suspicious behavior; they do not prescribe a universal ranking. Finite-roadmap coverage and sampled collision constraints remain real limitations. A failed query does not prove infeasibility, and a numerically validated output is not a continuous collision certificate.
 
@@ -176,14 +178,14 @@ bash local/python.sh scripts/evaluate.py verify --run /tmp/kinova-dev-example
 bash local/python.sh results/logs/complete_repair_evaluation.py
 
 # Or resume an individual run; existing outcomes are not repeated.
-bash local/python.sh scripts/evaluate.py resume --run results/repaired_native_smoke
-bash local/python.sh scripts/evaluate.py resume --run results/repaired_dev_all_seeds
-bash local/python.sh scripts/evaluate.py resume --run results/repaired_test
+bash local/python.sh scripts/evaluate.py resume --run results/baseline_smoke
+bash local/python.sh scripts/evaluate.py resume --run results/baseline_dev
+bash local/python.sh scripts/evaluate.py resume --run results/baseline_test
 
 # Reproduce the complete paired shared-initial-region comparison in a new run.
 bash local/python.sh scripts/evaluate.py batch \
   --split test --methods EI_ZO LGCS --track path --seeds 0 \
-  --mode fixed_initial_regions --initial-source-run results/repaired_test \
+  --mode fixed_initial_regions --initial-source-run results/baseline_test \
   --output /tmp/kinova-shared-initial-regions --prepare-only
 bash local/python.sh scripts/evaluate.py resume --run /tmp/kinova-shared-initial-regions
 

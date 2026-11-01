@@ -21,6 +21,8 @@ from pathlib import Path
 from ..common import BASE, ROOT, read, sha, write, resolve_case, recorded_path
 from .summarize import _cluster_ratio
 from ..outcomes import CANDIDATE_STATUSES, RAW_SUCCESSES, assess_saved_output
+from .failure_classification import (exception_needs_attention, handoff_failure_evidence,
+                                     legacy_drm_failure_evidence, unexpected_process_exit)
 
 
 SUCCESS = "success_numerical"
@@ -274,7 +276,21 @@ def attempt_row(run, manifest, job, attempt, *, verify_files=True, case_cache=No
             if raw in RAW_SUCCESSES:
                 status = assessment["status"]
             cost = None
-    if raw == "solver_failed" and lifecycle == "terminal" and status != SUCCESS:
+    if lifecycle == "terminal":
+        handoff_evidence = (handoff_failure_evidence(attempt, result,
+            expected_tolerance=job.get("evaluation_config", {}).get("region_coverage_tolerance_rad"),
+            source_hashes=manifest.get("source_hashes", {}), receipt=receipt)
+            if verify_files and not metadata_errors and not integrity_errors else None)
+        legacy_drm = (legacy_drm_failure_evidence(attempt, result,
+            source_hashes=manifest.get("source_hashes", {}), receipt=receipt)
+            if verify_files and not metadata_errors and not integrity_errors else None)
+        if exception_needs_attention(result, handoff_evidence=handoff_evidence,
+                legacy_drm_evidence=legacy_drm) or unexpected_process_exit(process):
+            status = "infrastructure_error"
+            status_basis = "recorded_exception_or_process_failure"
+            reason = reason or "Recorded backend error or abnormal process exit requires attention"
+            cost = None
+    if raw == "solver_failed" and lifecycle == "terminal" and status not in (SUCCESS, "infrastructure_error"):
         external_time = process.get("cold_e2e_seconds")
         deadline = manifest.get("timeout_seconds")
         if not valid:
@@ -282,8 +298,6 @@ def attempt_row(run, manifest, job, attempt, *, verify_files=True, case_cache=No
         elif process.get("timed_out") is True or (
                 _finite(external_time) and _finite(deadline) and external_time > deadline):
             status = "timeout"
-        elif process.get("exit_code") not in (None, 0) or result.get("exception"):
-            status = "infrastructure_error"
     success = status == SUCCESS
     family = case.get("family", job.get("family"))
     scene = case.get("scene_id", job.get("scene_id"))

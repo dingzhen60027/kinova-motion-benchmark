@@ -17,8 +17,67 @@ import traceback
 import numpy as np
 from ..roadmap import HERE, ROOT, load_config, sha, write
 from .validate import validate, _numeric_array
-from .native_handoff import native_region_with_anchors
+from .native_handoff import NativeHandoffError, native_region_with_anchors
 from .methods import METHODS, INDEPENDENT, LOCAL_EXTENSIONS, objectives as supported_objectives
+from .failure_classification import (HANDOFF_KIND, HANDOFF_SOURCE, KNOWN_DRM_NO_ROUTE,
+    KNOWN_VALIDATION_REJECTIONS, handoff_failure_evidence, known_exception_category)
+
+
+
+def _exception_outcome(exc, phase, *, out=None, config=None):
+    """Classify failures without changing search, optimization or validation."""
+    if 'cuda' in str(exc).lower():
+        return dict(status='infrastructure_error', error_category='CUDA_error')
+    if getattr(exc, 'dependency_unsupported', False):
+        return dict(status='unsupported', error_category='dependency_unsupported')
+    if type(exc) is TimeoutError:
+        timeout = dict(status='timeout', exception=repr(exc), failed_stage=phase)
+        if known_exception_category(timeout) == 'query_deadline':
+            return dict(status='timeout')
+        return dict(status='infrastructure_error', error_category='unexpected_timeout_exception')
+    if phase in ('input_contract', 'roadmap_contract'):
+        return dict(status='infrastructure_error', error_category='input_protocol_mismatch')
+    if phase == 'dependency_probe':
+        missing = isinstance(exc, (ImportError, ModuleNotFoundError))
+        return dict(status='unsupported' if missing else 'infrastructure_error',
+                    error_category='dependency_unsupported' if missing else 'dependency_probe_failed')
+    if phase == 'sampling_planning':
+        from .ompl_baselines import OmplNoExactSolution
+        if type(exc) is OmplNoExactSolution:
+            if exc.solver_status in ('Approximate solution', 'Timeout'):
+                return dict(native_planner_status=exc.solver_status, status='planner_timeout')
+            return dict(native_planner_status=exc.solver_status,
+                        status='infrastructure_error', error_category='unexpected_native_planner_status')
+    if phase == 'drm_path':
+        if type(exc) is RuntimeError and str(exc) == KNOWN_DRM_NO_ROUTE:
+            return dict(status='frontend_failed')
+        return dict(status='infrastructure_error', error_category='unexpected_frontend_exception')
+    if (phase in ('drm_path_validation', 'validation') and type(exc) is ValueError
+            and str(exc) in KNOWN_VALIDATION_REJECTIONS):
+        return dict(status='validation_undetermined')
+    if type(exc) is NativeHandoffError and phase == 'collision_recovery' and out is not None:
+        try:
+            evidence = Path(exc.evidence_path).resolve().relative_to(Path(out).resolve()).as_posix()
+            source_sha = sha(ROOT/HANDOFF_SOURCE)
+            marker = dict(kind=HANDOFF_KIND, code=exc.code, source=HANDOFF_SOURCE,
+                          source_sha256=source_sha, evidence=evidence)
+            record = dict(status='solver_failed', exception=repr(exc), failed_stage=phase,
+                          failure_classification=marker)
+            if handoff_failure_evidence(out, record,
+                    expected_tolerance=(config or {}).get('region_coverage_tolerance_rad'),
+                    source_hashes={HANDOFF_SOURCE:source_sha}):
+                return dict(status='solver_failed', error_category=HANDOFF_KIND, failure_classification=marker)
+        except (OSError, TypeError, ValueError):
+            pass  # Missing or inconsistent numerical evidence is not exempted.
+    return dict(status='infrastructure_error', error_category='unexpected_backend_exception')
+
+
+def _apply_deadline_outcome(result, deadline_exceeded):
+    """Record deadline expiry without hiding an already observed backend error."""
+    if deadline_exceeded:
+        result['deadline_exceeded'] = True
+        if result.get('status') not in ('infrastructure_error', 'unsupported', 'model_consistency_failed'):
+            result['status'] = 'timeout'
 
 
 class MemoryMonitor:
@@ -755,27 +814,10 @@ def run_case(case,roadmap_dir,out,objective='minimum_distance',seed=0,method='EI
             (out/'exception.txt').write_text(traceback.format_exc())
             if hasattr(exc, 'optimization_metadata'):
                 write(out/'optimizer_failure_metadata.json',exc.optimization_metadata)
-            if getattr(exc, 'dependency_unsupported', False):
-                result['status']='unsupported';result['error_category']='dependency_unsupported'
-            elif isinstance(exc,TimeoutError):result['status']='timeout'
-            elif 'cuda' in str(exc).lower():result['status']='infrastructure_error';result['error_category']='CUDA_error'
-            elif phase in ('input_contract','roadmap_contract'):
-                result['status']='infrastructure_error';result['error_category']='input_protocol_mismatch'
-            elif phase=='dependency_probe':
-                result['status']='unsupported' if isinstance(exc,(ImportError,ModuleNotFoundError)) else 'infrastructure_error'
-                result['error_category']='dependency_unsupported' if isinstance(exc,(ImportError,ModuleNotFoundError)) else 'dependency_probe_failed'
-            elif phase=='sampling_planning' and hasattr(exc,'solver_status'):
-                result['native_planner_status']=exc.solver_status
-                result['status']='planner_timeout' if any(word in exc.solver_status.lower() for word in ('timeout','approximate')) else 'planner_failed'
-            elif phase=='drm_path':result['status']='frontend_failed'
-            elif phase=='drm_path_validation':result['status']='validation_undetermined'
-            elif phase in ('trajectory_optimization','collision_recovery','eizo_inflation'):result['status']='solver_failed'
-            elif phase=='validation':result['status']='validation_undetermined'
-            else:result['status']='infrastructure_error'
+            result.update(_exception_outcome(exc,phase,out=out,config=cfg))
         finally:
             result['timing']['cold_e2e_seconds']=time.perf_counter()-start
-            if time.perf_counter()>=deadline:
-                result['status']='timeout'
+            _apply_deadline_outcome(result,time.perf_counter()>=deadline)
             result['timing']['warm_query_seconds']=time.perf_counter()-warm_started if warm_started is not None else None
             result['timing_scope']=dict(cold='worker function entry through final validation/failure; process startup measured separately by outer runner',
                                        warm='same actual cold execution minus one-time model/dependency/GPU/roadmap setup; not a second timed solve',

@@ -9,6 +9,7 @@ from benchmarks.generic_motion_v1.common import BASE, read
 
 from benchmarks.generic_motion_v1.common import sha, write
 from benchmarks.generic_motion_v1.runners import results
+from benchmarks.generic_motion_v1.runners.failure_classification import HANDOFF_SOURCE
 
 
 def make_run(root, name="run", method="EI_ZO", objective="minimum_distance", category="open_control"):
@@ -72,6 +73,76 @@ def test_status_mapping_preserves_reason(tmp_path, raw, expected):
     assert row["status"] == expected
     assert row["raw_status"] == raw
     assert row["objective_value"] is None
+
+
+def _reseal(attempt):
+    result = read(attempt/'result.json')
+    files = {p.relative_to(attempt).as_posix():sha(p) for p in attempt.rglob('*')
+             if p.is_file() and p != attempt/'receipt.json'}
+    write(attempt/'receipt.json', dict(status=result['status'], files=files))
+
+
+@pytest.mark.parametrize('raw', ['solver_failed', 'timeout', 'frontend_failed', 'validation_undetermined'])
+@pytest.mark.parametrize('timed_out', [False, True])
+def test_unknown_saved_exception_cannot_be_normalized_as_timeout_or_solver_failure(tmp_path, raw, timed_out):
+    run, manifest, job = make_run(tmp_path)
+    attempt = make_attempt(run, job, status=raw, valid=False)
+    result = read(attempt/'result.json')
+    result.update(exception="KeyError('unexpected backend state')", failed_stage='trajectory_optimization')
+    write(attempt/'result.json', result)
+    write(attempt/'process.json', dict(exit_code=-15 if timed_out else 0,
+        timed_out=timed_out, cold_e2e_seconds=60.1 if timed_out else 1.5))
+    _reseal(attempt)
+    row = results.attempt_row(run, manifest, job, attempt)
+    assert row['status'] == 'infrastructure_error' and row['raw_status'] == raw
+    assert row['objective_value'] is None
+
+
+@pytest.mark.parametrize('change', ['unknown_category', 'cuda_category', 'crash_during_timeout'])
+def test_saved_backend_metadata_takes_precedence_over_timeout(tmp_path, change):
+    run, manifest, job = make_run(tmp_path)
+    attempt = make_attempt(run, job, status='timeout', valid=False)
+    result = read(attempt/'result.json')
+    if change.endswith('category'):
+        result['error_category'] = 'CUDA_error' if change == 'cuda_category' else 'unreviewed_internal_error'
+        write(attempt/'result.json', result)
+    else:
+        write(attempt/'process.json', dict(exit_code=-11, timed_out=True, cold_e2e_seconds=60.1))
+    _reseal(attempt)
+    assert results.attempt_row(run, manifest, job, attempt)['status'] == 'infrastructure_error'
+
+
+def test_typed_numerical_handoff_rejection_stays_solver_failure_with_complete_evidence(tmp_path):
+    from benchmarks.generic_motion_v1.common import ROOT
+    from benchmarks.generic_motion_v1.tests.test_exception_classification import real_handoff_failure
+    run, manifest, job = make_run(tmp_path)
+    job['evaluation_config']['region_coverage_tolerance_rad'] = 1e-6
+    manifest['source_hashes'][HANDOFF_SOURCE] = sha(ROOT/HANDOFF_SOURCE)
+    attempt = make_attempt(run, job, status='solver_failed', valid=False)
+    result = read(attempt/'result.json'); result.update(real_handoff_failure(attempt))
+    write(attempt/'result.json', result); _reseal(attempt)
+    before = {p.relative_to(attempt).as_posix():p.read_bytes() for p in attempt.rglob('*') if p.is_file()}
+    row = results.attempt_row(run, manifest, job, attempt)
+    assert row['status'] == 'solver_failure' and row['raw_status'] == 'solver_failed'
+    assert before == {p.relative_to(attempt).as_posix():p.read_bytes() for p in attempt.rglob('*') if p.is_file()}
+    missing_source = dict(manifest, source_hashes={})
+    assert results.attempt_row(run, missing_source, job, attempt)['status'] == 'infrastructure_error'
+    assert results.attempt_row(run, manifest, job, attempt, verify_files=False)['status'] == 'infrastructure_error'
+    result['exception'] = result['exception'].replace('NativeHandoffError','ValueError')
+    write(attempt/'result.json', result); _reseal(attempt)
+    assert results.attempt_row(run, manifest, job, attempt)['status'] == 'infrastructure_error'
+
+
+def test_reviewed_legacy_no_route_keeps_historical_search_failure(tmp_path):
+    from benchmarks.generic_motion_v1.tests.test_exception_classification import legacy_drm_fixture
+    run, manifest, job = make_run(tmp_path)
+    attempt = make_attempt(run, job, status='frontend_failed', valid=False)
+    fields, _, sources = legacy_drm_fixture(attempt)
+    manifest['source_hashes'].update(sources)
+    result = read(attempt/'result.json');result.update(fields)
+    write(attempt/'result.json',result);_reseal(attempt)
+    assert results.attempt_row(run,manifest,job,attempt)['status']=='no_solution_within_budget'
+    assert results.attempt_row(run,dict(manifest,source_hashes={}),job,attempt)['status']=='infrastructure_error'
 
 
 def test_success_requires_standalone_validation_and_receipt(tmp_path):

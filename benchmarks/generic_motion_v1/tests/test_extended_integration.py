@@ -92,8 +92,9 @@ def test_independent_runner_does_not_touch_nonexistent_roadmap(mock_execution,tm
     assert not (tmp_path/'attempt/path.npy').exists()
 
 @pytest.mark.parametrize('error,status',[(ompl.OmplNoExactSolution('Approximate solution'),'planner_timeout'),
-    (ompl.OmplNoExactSolution('Timeout'),'planner_timeout'),(ompl.OmplNoExactSolution('Invalid start'),'planner_failed'),
-    (TimeoutError('deadline'),'timeout'),(RuntimeError('CUDA device failure'),'infrastructure_error')])
+    (ompl.OmplNoExactSolution('Timeout'),'planner_timeout'),(ompl.OmplNoExactSolution('Invalid start'),'infrastructure_error'),
+    (TimeoutError('No online time remains after reserving common validation'),'timeout'),
+    (TimeoutError('deadline'),'infrastructure_error'),(RuntimeError('CUDA device failure'),'infrastructure_error')])
 def test_native_sampling_failures_keep_terminal_class_and_raw_exception(mock_execution,tmp_path,monkeypatch,error,status):
     def failed(*a,**k): raise error
     monkeypatch.setattr(ompl,'solve',failed)

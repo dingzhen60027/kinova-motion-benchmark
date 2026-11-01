@@ -12,6 +12,15 @@ from ..common import write
 from .validate import _numeric_array
 
 
+class NativeHandoffError(ValueError):
+    """Finite native containment cannot be restored within the fixed bound."""
+
+    def __init__(self, message, *, code, evidence_path=None):
+        super().__init__(message)
+        self.code = code
+        self.evidence_path = evidence_path
+
+
 def native_region_with_anchors(region, anchors, maximum_normalized_correction, out=None):
     """Return native HPolyhedron containing every anchor after float32 casting.
 
@@ -87,7 +96,9 @@ def native_region_with_anchors(region, anchors, maximum_normalized_correction, o
             final_arrays = dict(A=A32, b=b32.copy(), anchors=q32, raw_corrections=raw,
                                 normalized_corrections=normalized, normalized_total_offset_changes=normalized_total)
             if largest > allowed or total_largest > allowed:
-                raise ValueError(f"Native handoff correction {max(largest, total_largest):.9g} exceeds fixed tolerance {allowed:.9g}")
+                raise NativeHandoffError(f"Native handoff correction {max(largest, total_largest):.9g} exceeds fixed tolerance {allowed:.9g}",
+                    code="correction_exceeds_tolerance",
+                    evidence_path=None if directory is None else str(directory / "handoff.json"))
 
         def contained(native):
             return [bool(native.PointInSet(q, 0.)) for q in q32]
@@ -101,10 +112,80 @@ def native_region_with_anchors(region, anchors, maximum_normalized_correction, o
         b32 = target.astype(np.float32)
         rounded_down = b32.astype(float) < target
         b32[rounded_down] = np.nextafter(b32[rounded_down], np.float32(np.inf))
+
+        def bounded_native_offset_search():
+            """Find the least passing float32 offset, retaining the full A shape.
+
+            The normal 16-ULP path is unchanged. In this fallback, binary search
+            spans only representable offsets permitted by both existing bounds;
+            its termination depends on float32's finite ordering, not an
+            arbitrary number of ULP increments or an enlarged safety margin.
+            """
+            def ordered(value):
+                bits = int(np.asarray(value, dtype=np.float32).view(np.uint32))
+                return (~bits & 0xffffffff) if bits & 0x80000000 else bits ^ 0x80000000
+
+            def from_ordered(key):
+                bits = (~key & 0xffffffff) if key < 0x80000000 else key ^ 0x80000000
+                return np.asarray(bits, dtype=np.uint32).view(np.float32)[()]
+
+            searches = record.setdefault("bounded_native_offset_search", [])
+            for row in range(len(b32)):
+                probe_b = np.full_like(b32, maximum)
+                probe_b[row] = b32[row]
+                calls = 0
+
+                def row_passes(offset):
+                    nonlocal calls
+                    probe_b[row] = offset
+                    calls += 1
+                    return all(contained(csd.HPolyhedron(A32, probe_b)))
+
+                if row_passes(b32[row]):
+                    continue
+                # b32 may only increase. The smaller upper bound enforces both
+                # the change from the quantized offset and from the input b.
+                with np.errstate(over="ignore"):
+                    increment = allowed * norms[row]
+                    upper64 = min(float(maximum), float(initial_b[row]) + increment, float(b[row]) + increment)
+                upper = np.float32(upper64)
+                if float(upper) > upper64:
+                    upper = np.nextafter(upper, np.float32(-np.inf))
+                # The subtraction/division in check_bound may round differently
+                # from constructing the upper bound. Enforce its exact checks.
+                while (float(upper) >= float(b32[row]) and
+                       ((float(upper) - float(initial_b[row])) / norms[row] > allowed
+                        or abs(float(upper) - float(b[row])) / norms[row] > allowed)):
+                    upper = np.nextafter(upper, np.float32(-np.inf))
+                entry = dict(row=int(row), initial_offset=float(b32[row]),
+                    maximum_permitted_offset=float(upper), native_predicate_calls=0)
+                searches.append(entry)
+                if upper < b32[row] or not row_passes(upper):
+                    entry.update(native_predicate_calls=calls, status="no_passing_offset_within_bound")
+                    raise NativeHandoffError("Native anchor containment cannot satisfy the fixed normalized correction bound",
+                        code="bounded_predicate_rejected",
+                        evidence_path=None if directory is None else str(directory / "handoff.json"))
+                low, high = ordered(b32[row]), ordered(upper)
+                while high - low > 1:
+                    middle = (low + high) // 2
+                    if row_passes(from_ordered(middle)):
+                        high = middle
+                    else:
+                        low = middle
+                b32[row] = from_ordered(high)
+                check_bound()  # Also retain up-to-date arrays if a later row rejects.
+                entry.update(native_predicate_calls=calls, status="minimal_passing_offset_found",
+                    corrected_offset=float(b32[row]), preceding_offset=float(from_ordered(low)))
+
         for iteration in range(17):
             check_bound()
             native = csd.HPolyhedron(A32, b32)
             passed = contained(native)
+            if iteration == 16 and not all(passed):
+                bounded_native_offset_search()
+                check_bound()
+                native = csd.HPolyhedron(A32, b32)
+                passed = contained(native)
             record["native_anchor_containment_after"] = passed
             record["native_refinement_rounds"] = iteration
             if all(passed):
@@ -131,6 +212,8 @@ def native_region_with_anchors(region, anchors, maximum_normalized_correction, o
             b32[failing] = np.nextafter(b32[failing], np.float32(np.inf))
     except Exception as exc:
         record.update(status="rejected", error=repr(exc))
+        if isinstance(exc, NativeHandoffError):
+            record["error_code"] = exc.code
         if directory is not None:
             if final_arrays is not None:
                 np.savez_compressed(directory / "corrected.npz", **final_arrays)
