@@ -1,0 +1,51 @@
+{
+  "aggregation": "unchanged native MinimumValueLowerBoundConstraint",
+  "backend": "native_Drake_with_issue21675_near_contact_recovery",
+  "collision_pairs": 6107,
+  "collision_pairs_dropped": 0,
+  "gradient_difference_step_rad": 1e-07,
+  "maximum_recoverable_box_distance_m": 1e-09,
+  "model_changed": false,
+  "native_evaluations": 15496,
+  "official_patch_installed": false,
+  "ordinary_values_and_gradients": "unmodified native MinimumDistanceLowerBoundConstraint",
+  "recovery_events": [
+    {
+      "constraint_value": 0.9999999999980085,
+      "exception": "Failure at external/drake+/geometry/proximity/distance_to_shape_touching.cc:122 in BoxBoxGradient(): condition '(X_WA * p_ACa - X_WB * p_BCb).norm() < kEps' failed.",
+      "gradient": [
+        16.294471222311202,
+        35.15035711831871,
+        22.828385144446628,
+        83.75814942396254,
+        44.30068395677722,
+        -18.7602497081496,
+        -7.630394396329621
+      ],
+      "gradient_step_consistency_max_error": 4.390265928577719e-05,
+      "q": [
+        -0.4756758801399265,
+        -0.7784508135733552,
+        -0.10151982573951689,
+        -1.8385378667112913,
+        -2.1591777943788024,
+        1.10114734497454,
+        0.25112028246681883
+      ],
+      "recovered_pairs": [
+        {
+          "exception": "Failure at external/drake+/geometry/proximity/distance_to_shape_touching.cc:122 in BoxBoxGradient(): condition '(X_WA * p_ACa - X_WB * p_BCb).norm() < kEps' failed.",
+          "pair": [
+            "robotiq::robotiq_85_base_link_collision",
+            "box_to_protect_pete::Box"
+          ],
+          "signed_distance_m": 9.957312752106873e-15
+        }
+      ],
+      "seconds": 0.012598161585628986,
+      "used_autodiff": true
+    }
+  ],
+  "upstream_candidate_fix": "https://github.com/RobotLocomotion/drake/pull/25144",
+  "upstream_issue": "https://github.com/RobotLocomotion/drake/issues/21675"
+}

@@ -1,0 +1,218 @@
+{
+  "recorded_utc": "2026-11-01T04:26:46.935627+00:00",
+  "review_head": "e800d18608df5eb4d5483b7a0057fc3236598c73",
+  "scope": "Read-only evaluation control/data-status audit and CPU-only evidence tests; no planner, optimizer or GPU query called.",
+  "source_records_sha256": "4bbd86896183db755829e5075b54bda94a97d95a2e956df97a9b7384401d7731",
+  "existing_results": {
+    "current_dev": {
+      "selected_records": 2520,
+      "normalized_status_counts": {
+        "no_solution_within_budget": 933,
+        "success_numerical": 1364,
+        "validation_failed": 128,
+        "solver_failure": 72,
+        "infrastructure_error": 1,
+        "timeout": 22
+      },
+      "observed_cold_query_hours": 3.360527442929904,
+      "infrastructure_errors": [
+        {
+          "problem_id": "dev-route_choice-002-p00",
+          "method": "NTO_PAPER",
+          "objective": "minimum_distance",
+          "raw_status": "solver_failed",
+          "failure_reason": "RuntimeError(\"Exception while evaluating SNOPT costs and constraints: 'Failure at external/drake+/geometry/proximity/distance_to_shape_touching.cc:122 in BoxBoxGradient(): condition '(X_WA * p_ACa - X_WB * p_BCb).norm() < kEps' failed.'\")",
+          "result_path": "benchmarks/generic_motion_v1/results/rss2025_paper_comparators_v1_dev_s000/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_distance-48b608ce/attempts/0001/result.json"
+        }
+      ]
+    },
+    "current_test": {
+      "selected_records": 5880,
+      "normalized_status_counts": {
+        "validation_failed": 291,
+        "no_solution_within_budget": 1486,
+        "solver_failure": 185,
+        "success_numerical": 3529,
+        "invalid_input": 350,
+        "timeout": 38,
+        "infrastructure_error": 1
+      },
+      "observed_cold_query_hours": 7.624775898129059,
+      "infrastructure_errors": [
+        {
+          "problem_id": "test-route_choice-014-p01",
+          "method": "NTO_PAPER",
+          "objective": "minimum_distance",
+          "raw_status": "solver_failed",
+          "failure_reason": "RuntimeError(\"Exception while evaluating SNOPT costs and constraints: 'Failure at external/drake+/geometry/proximity/distance_to_shape_touching.cc:122 in BoxBoxGradient(): condition '(X_WA * p_ACa - X_WB * p_BCb).norm() < kEps' failed.'\")",
+          "result_path": "benchmarks/generic_motion_v1/results/test/jobs/test-route_choice-014-p01-NTO_PAPER-minimum_distance-69864806/attempts/0001/result.json"
+        }
+      ]
+    },
+    "current_dev_repaired_s000": {
+      "selected_records": 840,
+      "normalized_status_counts": {
+        "no_solution_within_budget": 297,
+        "success_numerical": 469,
+        "validation_failed": 41,
+        "solver_failure": 22,
+        "timeout": 10,
+        "infrastructure_error": 1
+      },
+      "observed_cold_query_hours": 1.15688756500332,
+      "infrastructure_errors": [
+        {
+          "problem_id": "dev-route_choice-002-p00",
+          "method": "NTO_PAPER",
+          "objective": "minimum_distance",
+          "raw_status": "solver_failed",
+          "failure_reason": "RuntimeError(\"Exception while evaluating SNOPT costs and constraints: 'Failure at external/drake+/geometry/proximity/distance_to_shape_touching.cc:122 in BoxBoxGradient(): condition '(X_WA * p_ACa - X_WB * p_BCb).norm() < kEps' failed.'\")",
+          "result_path": "benchmarks/generic_motion_v1/results/repaired_dev/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_distance-48b608ce/attempts/0001/result.json"
+        }
+      ]
+    }
+  },
+  "complete_rerun_plan": {
+    "smoke": {
+      "registered_inputs": 10,
+      "legal_inputs": 8,
+      "invalid_inputs": 2,
+      "replica_seeds": [
+        0
+      ],
+      "method_objective_combinations": 14,
+      "registered_jobs": 140,
+      "legal_jobs": 112
+    },
+    "dev": {
+      "registered_inputs": 60,
+      "legal_inputs": 60,
+      "invalid_inputs": 0,
+      "replica_seeds": [
+        0,
+        1,
+        2
+      ],
+      "method_objective_combinations": 14,
+      "registered_jobs": 2520,
+      "legal_jobs": 2520
+    },
+    "test": {
+      "registered_inputs": 420,
+      "legal_inputs": 395,
+      "invalid_inputs": 25,
+      "replica_seeds": [
+        0
+      ],
+      "method_objective_combinations": 14,
+      "registered_jobs": 5880,
+      "legal_jobs": 5530
+    }
+  },
+  "total_registered_jobs": 8540,
+  "total_legal_jobs": 8162,
+  "reusing_old_results": "Do not attach old attempts to a newly frozen run. Changed DRM/model/NTO behavior invalidates reuse for dependent algorithms. Unchanged OMPL may be compared separately with a disclosed compatibility audit, but a new complete cohort is simpler and removes ambiguity.",
+  "source_freeze": "Commit all runtime and config changes before prepare. prepare uses Git-recoverable exact source hashes; unfinished runs refuse changed source on resume.",
+  "invalid_input_policy": "Keep all original registrations. Frozen invalid endpoints return before GPU/model creation. Summary legal denominator is 395 for test; 25 invalid rows are not dropped from evidence.",
+  "timing_policy": {
+    "outer_deadline_seconds": 60,
+    "gpu_concurrency": 1,
+    "gpu_lock": "benchmarks/generic_motion_v1/results/.gpu.lock",
+    "process_scope": "Fresh process, imports, CUDA context, model/map load, warm-up, planning, validation and output",
+    "timeout": "SIGTERM, then SIGKILL if needed; timed-out outputs never promoted to success",
+    "observed_previous_runtime_is_not_forecast": "Prior 840 dev queries sum to about 1.16 hours; actual new runtime depends on fixes and failures. Worst-case legal query deadline sum is 136.03 hours before coordination overhead."
+  },
+  "continuation_policy": "resume keeps sealed terminal failures, successes and timeouts; only missing/interrupted retry_pending attempts are resumed. Interrupted attempts remain in raw evidence. Main statistics choose first terminal attempt, never best-of.",
+  "verification_caveat": "verify integrity/complete does not mean all baseline jobs were healthy; inspect normalized infrastructure_error counts in status/export. Raw solver_failed can normalize to infrastructure_error when an exception occurred.",
+  "cpu_test": {
+    "command": "bash local/python.sh -m pytest -q benchmarks/generic_motion_v1/tests/test_batch.py benchmarks/generic_motion_v1/tests/test_results.py benchmarks/generic_motion_v1/tests/test_cli_status.py benchmarks/generic_motion_v1/tests/test_valid_output.py benchmarks/generic_motion_v1/tests/test_public_cli.py",
+    "exit_code": 0,
+    "passed": 147,
+    "elapsed_seconds": 1.47
+  },
+  "commands_after_runtime_commit": [
+    "bash local/python.sh scripts/evaluate.py batch --split smoke --seeds 0 --track both --output results/repaired_smoke --prepare-only",
+    "bash local/python.sh scripts/evaluate.py resume --run results/repaired_smoke",
+    "bash local/python.sh scripts/evaluate.py verify --run results/repaired_smoke",
+    "bash local/python.sh scripts/evaluate.py status --run results/repaired_smoke",
+    "bash local/python.sh scripts/evaluate.py batch --split dev --seeds 0 1 2 --track both --output results/repaired_dev_all_seeds --prepare-only",
+    "bash local/python.sh scripts/evaluate.py resume --run results/repaired_dev_all_seeds",
+    "bash local/python.sh scripts/evaluate.py verify --run results/repaired_dev_all_seeds",
+    "bash local/python.sh scripts/evaluate.py status --run results/repaired_dev_all_seeds",
+    "bash local/python.sh scripts/evaluate.py batch --split test --seeds 0 --track both --output results/repaired_test --prepare-only",
+    "bash local/python.sh scripts/evaluate.py resume --run results/repaired_test",
+    "bash local/python.sh scripts/evaluate.py verify --run results/repaired_test",
+    "bash local/python.sh scripts/evaluate.py status --run results/repaired_test",
+    "bash local/python.sh scripts/evaluate.py summarize --selection results/selection.json --output results"
+  ],
+  "new_selection_examples": {
+    "schema_version": 1,
+    "attempt_policy": "first_terminal",
+    "comparisons": [
+      {
+        "id": "completed_smoke",
+        "mode": "end_to_end",
+        "runs": [
+          {
+            "path": "results/repaired_smoke"
+          }
+        ]
+      },
+      {
+        "id": "completed_dev",
+        "mode": "end_to_end",
+        "runs": [
+          {
+            "path": "results/repaired_dev_all_seeds"
+          }
+        ]
+      },
+      {
+        "id": "completed_test",
+        "mode": "end_to_end",
+        "runs": [
+          {
+            "path": "results/repaired_test"
+          }
+        ]
+      }
+    ]
+  },
+  "selection_instructions": "Append new comparison specifications to the existing selection file; do not overwrite old comparison groups. For conditional fixed_frontend, select the eight DRM-dependent methods and use mode=fixed_frontend; exact identical validated path hashes are checked. Fixed initial-region comparison needs a separate receipt-bound fixed_initial_regions run, not a post-hoc claim that equal seeds imply equal regions.",
+  "implementation_review": {
+    "recorded_utc": "2026-11-01T04:47:09.109593+00:00",
+    "checker_tests_passed": 15,
+    "checker_test_log": "results/trend_diagnostics/completed_evaluation_checker_tests.log",
+    "comparison_self_test_log": "results/trend_diagnostics/completed_comparison_self_test.log",
+    "real_positive_regression": {
+      "comparison": "current_test_initial_regions",
+      "jobs": 566,
+      "passed": true,
+      "report": "results/trend_diagnostics/completed_evaluation_historical_fixed.json"
+    },
+    "real_negative_regression": {
+      "comparison": "current_dev_repaired_s000",
+      "existing_completed_jobs": 840,
+      "missing_required_seed_jobs": 1680,
+      "exit_code": 2,
+      "report": "results/trend_diagnostics/completed_evaluation_prior_seed0.pending.json"
+    },
+    "resolved_checker_test_failure": {
+      "tests_failed": 2,
+      "tests_passed": 10,
+      "reason": "Reference manifest argument shadowed by a canonical-case local variable during adding the pinned validation protocol comparison.",
+      "resolution": "Renamed the local case variable; all expanded15 CPU tests now pass."
+    },
+    "sampling_protocol_change": "Root accepted OMPL planning_seconds10→60 before final source freeze. This is an explicit development protocol change, bounded by the shared60s remaining deadline, with5s validation and0.5s simplification reserve. Final before/after reports audit actual per-job changes; historical evidence is unchanged.",
+    "final_acceptance_command": "bash local/python.sh results/trend_diagnostics/check_completed_evaluation.py --comparisons NEW_SMOKE NEW_DEV NEW_TEST NEW_FIXED_REGIONS",
+    "dev_comparison_command": "bash local/python.sh results/trend_diagnostics/compare_repaired_dev.py --run NEW_DEV_RUN --baseline-comparison current_dev --all-replicas --new-comparison NEW_DEV_GROUP --output-prefix results/trend_diagnostics/completed_dev_comparison",
+    "test_comparison_command": "bash local/python.sh results/trend_diagnostics/compare_repaired_dev.py --run NEW_TEST_RUN --baseline-comparison current_test --replica-seed 0 --new-comparison NEW_TEST_GROUP --output-prefix results/trend_diagnostics/completed_test_comparison",
+    "sha256": {
+      "results/trend_diagnostics/check_completed_evaluation.py": "d82dcdef47daa9a62bf230ae8e7d09e72071493206d34ad86777b7f134d501a8",
+      "results/trend_diagnostics/check_metric_bounds.py": "7ace320a4ea8ce7e6c20a8d665abda07ee1acfe7bdc526a0ee9363eb31e78d2c",
+      "results/trend_diagnostics/compare_repaired_dev.py": "00d86a595e0826ad5497cf9e098e9fa8678e1a74691f60d3430908f84ae2c1e8",
+      "results/trend_diagnostics/test_completed_evaluation.py": "263b33a9f2354169fcc9556a0f1481d0dd2d8d9bfab64821dac2a23f39688bc2"
+    },
+    "new_full_evaluation_completed": false
+  }
+}

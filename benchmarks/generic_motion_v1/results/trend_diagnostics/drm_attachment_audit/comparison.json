@@ -1,0 +1,93 @@
+{
+  "scope": "Development diagnosis only; do not combine the conditional 1000-attempt rows with an earlier run as a formal score.",
+  "full_60_dev_frontend": {
+    "old_current": {
+      "counts": {
+        "native_exception": 11,
+        "no_path": 11,
+        "success_numerical": 38
+      },
+      "median_query_validation_s": 0.5622585399542004,
+      "max_query_validation_s": 1.3155168420635164
+    },
+    "cache_attachment_repair_same_limits": {
+      "counts": {
+        "no_path": 16,
+        "native_exception": 9,
+        "success_numerical": 35
+      },
+      "median_query_validation_s": 0.395329904044047,
+      "max_query_validation_s": 1.2830518768168986
+    },
+    "repair_native_limits_fine_edges": {
+      "counts": {
+        "success_numerical": 41,
+        "native_exception": 8,
+        "no_path": 11
+      },
+      "median_query_validation_s": 0.8614560437854379,
+      "max_query_validation_s": 3.633293516933918
+    }
+  },
+  "conditional_budget1000": {
+    "denominator": 19,
+    "counts": {
+      "native_exception": 15,
+      "no_path": 3,
+      "success_numerical": 1
+    },
+    "max_query_validation_s": 54.783999882638454,
+    "new_validated_problem_ids": [
+      "dev-dense_clutter-001-p01"
+    ]
+  },
+  "cache_scene_population": {
+    "distinct_failed_scenes": 9,
+    "cache_false_positive_nodes_across_distinct_scenes": 5366,
+    "cache_false_negative_nodes_across_distinct_scenes": 3163,
+    "independent_witnesses_distinct_scene_node_pairs": 1028,
+    "independently_clear_distinct_scene_node_pairs": 1028
+  },
+  "offline_sampling_observation": {
+    "edge_step_declared_rad": 0.1,
+    "frozen_undirected_edges": 37849,
+    "source_effective_max_interval_rad": 0.393303245306015,
+    "source_effective_median_interval_rad": 0.11686026304960251,
+    "source_edges_exceeding_declared_interval": 37849,
+    "source_formula": "floor(distance / step) - 2 samples; t=(i+1)/t_steps. This diagnostic describes construction sampling, not a collision certificate. Final native lazy validation is retained and uses inclusive ceil subdivision."
+  },
+  "unused_edge_cache_source_issue": {
+    "current_edge_map_empty": true,
+    "bug": "BuildEdgeCollisionMap does not advance neigh_idx for zero-sample neighbors, and advances starting_idx by the next neighbor count. Current benchmark builder never calls BuildEdgeCollisionMap; no score is attributed to this unused bug."
+  },
+  "method_limits": "No RRT fallback; unchanged nodes, edges, endpoints, models and final validator. Approximate cache hits require exact online node reconciliation; internal edge padding remains 0.01 m.",
+  "conditional_budget1000_endpoint1000": {
+    "denominator": 19,
+    "counts": {
+      "native_exception": 10,
+      "no_path": 3,
+      "success_numerical": 3,
+      "diagnostic_timeout": 3
+    },
+    "max_normal_query_validation_s": 55.22305175894871,
+    "wall_cap_seconds": 60,
+    "new_validated_problem_ids": [
+      "dev-dense_clutter-000-p02",
+      "dev-dense_clutter-001-p01",
+      "dev-dense_clutter-003-p00"
+    ],
+    "actual_timeout_problem_ids": [
+      "dev-dense_clutter-001-p02",
+      "dev-route_choice-003-p00",
+      "dev-route_choice-003-p02"
+    ],
+    "recommended_uniform_dev_configuration": {
+      "max_number_planning_attempts": 1000,
+      "max_iterations_steering_to_node": 1000,
+      "max_nodes_to_expand": 100000,
+      "online_edge_step_size": 0.01,
+      "voxel_padding": 0.01
+    },
+    "formal_full_cohort_score_available": false
+  }
+}

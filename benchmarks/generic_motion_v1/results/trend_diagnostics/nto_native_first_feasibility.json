@@ -1,0 +1,79 @@
+{
+  "created_utc": "2026-11-01T05:14:02.768778+00:00",
+  "scope": "Read-only source/API design review, no runtime change and no solve",
+  "official_sources": [
+    {
+      "url": "https://raw.githubusercontent.com/RobotLocomotion/drake/v1.51.1/planning/trajectory_optimization/kinematic_trajectory_optimization.cc",
+      "facts": [
+        "AddPathPositionConstraint(shared_ptr<Constraint>, s) returns Binding<Constraint>.",
+        "It constructs a PathConstraint over active B-spline control variables and unchanged basis values.",
+        "PathConstraint forwards native AutoDiff through its wrapped constraint."
+      ]
+    },
+    {
+      "url": "https://raw.githubusercontent.com/RobotLocomotion/drake/v1.51.1/solvers/mathematical_program.cc",
+      "facts": [
+        "RemoveConstraint accepts Binding<Constraint> and returns removed count."
+      ]
+    }
+  ],
+  "entry_points": [
+    {
+      "path": "benchmarks/generic_motion_v1/runners/paper_nto.py",
+      "constraint_registration_line": 221,
+      "solve_line": 305,
+      "scope": "NTO_PAPER and each NTO_REFINED native round"
+    },
+    {
+      "path": "benchmarks/generic_motion_v1/runners/csdecomp_baseline.py",
+      "constraint_registration_line": 342,
+      "solve_line": 362,
+      "scope": "Legacy NTO distance and time"
+    }
+  ],
+  "feasible_design": [
+    "Store all native collision Binding objects with exact collocation locations.",
+    "Ordinary solver uses original native constraint directly.",
+    "Only exact known BoxBoxGradient RuntimeError or SystemExit may initiate one internal recovery.",
+    "Persist first exception, elapsed seconds and full solver log before retry.",
+    "Remove exactly the stored collision bindings, assert each removal count equals one, and re-add existing guarded wrapper at identical locations.",
+    "Keep same MathematicalProgram, initial guess, objectives, limits, collision model and filters.",
+    "Recompute remaining wall deadline and native solver limit before retry; no fresh outer attempt or budget.",
+    "Unknown errors and retry errors propagate; guard/recovery errors never become feasible points.",
+    "NTO_REFINED retains its existing collision-refinement rounds and candidate validation."
+  ],
+  "required_regressions_before_adoption": [
+    "Installed binding return type/removal count, variable order, bounds, and initial guess invariance.",
+    "Normal-input objective/gradient/path equivalence and no PyFunction invocation.",
+    "Exact known exception retries once with all constraints and bounded shared budget; unknown exception never retries.",
+    "First solver log and exception remain available after second solver invocation.",
+    "Native handling of nonfinite iterates must be checked; Python explicit normal-path guard would no longer execute before each native Eval.",
+    "Historical BoxBox fixtures plus actual failed development query remain necessary end-to-end checks."
+  ],
+  "caveats": [
+    "Solver internal state cannot be resumed through current public Solve API; recovery restarts from preserved initial guess and counts prior work.",
+    "A rare recovery near the deadline can time out where always-on guarded evaluation would not.",
+    "No claim of native nonfinite-input equivalence until independently tested.",
+    "No runtime implementation made; currently frozen evaluation remains unchanged."
+  ],
+  "installed_api_probe": {
+    "binding_type": "<class 'pydrake.solvers.Binding\ud835\udce3Constraint\ud835\udce4'>",
+    "removed_counts": [
+      1,
+      1
+    ],
+    "baseline_constraints": 1,
+    "replacement_constraints": 3,
+    "initial_guess_changed": false,
+    "sample_locations": [
+      0.25,
+      0.75
+    ],
+    "maximum_value_error": 0.0,
+    "solver_calls": 0
+  },
+  "gpu_calls": 0,
+  "optimizer_calls": 0,
+  "normal_path_microbenchmark": "results/trend_diagnostics/nto_wrapper_cpu_timing.json",
+  "remaining_decision": "Parent to decide adoption after measured normal-Eval overhead; runtime remains frozen and unchanged."
+}

@@ -1,0 +1,136 @@
+{
+  "passed": true,
+  "scope": "Real Drake bindings with injected solver behavior; no GPU and no optimizer Solve",
+  "source_sha256": "874dad10b4b3c6ea2f2be6b299f212099b37e98b6713f2b2cf194489b8b43a22",
+  "checks": [
+    "exact public-binding variables/bounds/values/AutoDiff preserved",
+    "all original bindings removed exactly once; other constraints/costs unchanged",
+    "complete decision-variable initial guess restored",
+    "first exception log retained separately",
+    "shared remaining budget 10 to 7 seconds",
+    "ordinary unsuccessful result returned unchanged",
+    "next refinement round inherits guarded bindings without another retry"
+  ],
+  "final_query_state": {
+    "guarded": true,
+    "restarts": 1,
+    "solver_invocations": 3
+  },
+  "first_round_execution": {
+    "policy": "native_first_exact_BoxBoxGradient_one_guarded_retry",
+    "solver_calls": [
+      {
+        "mode": "native",
+        "remaining_seconds": 10.0,
+        "time_limit_option": "max_cpu_time",
+        "status": "exception",
+        "log_path": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/trend_diagnostics/nto_native_first_independent_cpu/ipopt.native_exception.log",
+        "exception": "RuntimeError('BoxBoxGradient failed: X_WA * p_ACa - X_WB * p_BCb')",
+        "traceback": "Traceback (most recent call last):\n  File \"/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/runners/nto_collision_constraint.py\", line 298, in solve\n    result = solver.Solve(self.program, None, solver_options)\n  File \"/home/eric/wjg/wd/csdecomp/results/trend_diagnostics/check_nto_native_first_independent_cpu.py\", line 97, in Solve\n    raise RuntimeError('BoxBoxGradient failed: X_WA * p_ACa - X_WB * p_BCb')\nRuntimeError: BoxBoxGradient failed: X_WA * p_ACa - X_WB * p_BCb\n",
+        "known_boxbox_assertion": true,
+        "retained_log_path": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/trend_diagnostics/nto_native_first_independent_cpu/ipopt.native_exception.log",
+        "wall_seconds": 3.0
+      },
+      {
+        "mode": "guarded",
+        "remaining_seconds": 7.0,
+        "time_limit_option": "max_cpu_time",
+        "status": "returned",
+        "log_path": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/trend_diagnostics/nto_native_first_independent_cpu/ipopt.log",
+        "solver_success": false,
+        "solver_status": "intentional_unsuccessful_result",
+        "decision_variables_finite": true,
+        "wall_seconds": 2.0
+      }
+    ],
+    "guarded_retry_started": true,
+    "collision_bindings": 3,
+    "collocation_locations": [
+      0.2,
+      0.4,
+      0.85
+    ],
+    "guarded_mode_inherited": false,
+    "original_initial_guess_restored": true,
+    "deadline_monotonic_seconds": 110.0,
+    "initial_decision_variables": [
+      0.2,
+      -0.3,
+      0.30000000000000004,
+      -0.09999999999999998,
+      0.4,
+      0.10000000000000003,
+      0.5,
+      0.3000000000000001,
+      2.0
+    ],
+    "initial_constraint_count": 9,
+    "query_solver_invocations": 2,
+    "removed_binding_counts": [
+      1,
+      1,
+      1
+    ],
+    "query_recovery_restarts": 1
+  },
+  "second_round_execution": {
+    "policy": "native_first_exact_BoxBoxGradient_one_guarded_retry",
+    "solver_calls": [
+      {
+        "mode": "guarded",
+        "remaining_seconds": 5.0,
+        "time_limit_option": "max_cpu_time",
+        "status": "returned",
+        "log_path": null,
+        "solver_success": false,
+        "solver_status": "intentional_unsuccessful_result",
+        "decision_variables_finite": true,
+        "wall_seconds": 0.0
+      }
+    ],
+    "guarded_retry_started": false,
+    "collision_bindings": 3,
+    "collocation_locations": [
+      0.2,
+      0.4,
+      0.85
+    ],
+    "guarded_mode_inherited": true,
+    "original_initial_guess_restored": false,
+    "deadline_monotonic_seconds": 110.0,
+    "initial_decision_variables": [
+      0.2,
+      -0.3,
+      0.30000000000000004,
+      -0.09999999999999998,
+      0.4,
+      0.10000000000000003,
+      0.5,
+      0.3000000000000001,
+      2.0
+    ],
+    "initial_constraint_count": 9,
+    "query_solver_invocations": 3
+  },
+  "native_callbacks_before_recovery": 0,
+  "actual_optimizer_invocations": 0,
+  "gpu_calls": 0,
+  "reviewed_runtime_sha256": {
+    "benchmarks/generic_motion_v1/runners/nto_collision_constraint.py": "874dad10b4b3c6ea2f2be6b299f212099b37e98b6713f2b2cf194489b8b43a22",
+    "benchmarks/generic_motion_v1/runners/paper_nto.py": "7375ea668c54f9778c3eb21ab65b5bb6786bda9df6941597614a18d01afa7a83",
+    "benchmarks/generic_motion_v1/runners/csdecomp_baseline.py": "a4a42c9655668e72f9f1771f63cfac2ebb028f43fbd399fad93e9a516f5d88d4",
+    "benchmarks/generic_motion_v1/runners/paper_nto_refined.py": "e7fcedb84fe3d90ee8f3489a91214debdef9ae867f508b3555ccbb568b70b231"
+  },
+  "probe_source_sha256": "c34a15ce70e4621ffd017356ffa4c12b024efd595c802b1eaf16bd0bf631393f",
+  "actual_command": "bash local/python.sh results/trend_diagnostics/check_nto_native_first_independent_cpu.py --output results/trend_diagnostics/nto_native_first_independent_cpu",
+  "static_review": {
+    "deadline": "One fixed absolute solver deadline, capped by the outer deadline; first call and all recovery work consume it.",
+    "exception_filter": "Only matching BoxBoxGradient RuntimeError/SystemExit permits retry; unrelated BaseException propagates after evidence capture.",
+    "normal_failure": "An unsuccessful or nonfinite returned result is retained without retry; strict existing candidate validation remains required.",
+    "query_retry_scope": "The refiner shares guarded/restarts/invocations across all rounds. Maximum 4 refinement rounds, at most one exceptional aborted call in addition.",
+    "logs": "First exception solver log is renamed with overwrite refusal; the second call uses a fresh original filename. Refined round evidence remains in its round directory and top-level pointers are rebased.",
+    "old_key_compatibility": "Unified results/CLI do not consume old maximum_native_solves. Candidate refinement_native_solves remains as actual invocation count; refinement_rounds is separate. Existing historical source snapshots, immutable reports and result records remain untouched.",
+    "resolved_draft_issue": "The first draft raised on ordinary nonfinite solver results and would have changed failure classification to infrastructure_error; latest implementation returns the original result and records finiteness."
+  },
+  "scope_limit": "Static review and a real Drake-binding transaction with injected solver behavior. No real optimizer, collision query, GPU query, or formal benchmark was run by this reviewer. Historical actual BoxBox solve and real normal-solve validation are performed separately by nto_correctness."
+}

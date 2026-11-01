@@ -1,0 +1,50 @@
+..F.........                                                             [100%]
+=================================== FAILURES ===================================
+_____ test_recovered_gradient_matches_independent_directions_and_ad_chain ______
+
+native = (namespace(diagram=<pydrake.planning.RobotDiagram object at 0x7ce7ea151da0>, context=<pydrake.systems.framework.Contex...count=8327), array([ 2.07554089,  2.00119369, -1.88980959,  1.90833566, -1.40392545,
+       -1.03451211,  1.99036929]))
+
+    def test_recovered_gradient_matches_independent_directions_and_ad_chain(native):
+        source, q = native
+        wrapper = module.RobustMinimumDistanceConstraint(source, 0., .01)
+>       grad = ExtractGradient(wrapper.evaluate(InitializeAutoDiff(q)))[0]
+
+results/trend_diagnostics/test_nto_collision_independent_review.py:84: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <benchmarks.generic_motion_v1.runners.nto_collision_constraint.RobustMinimumDistanceConstraint object at 0x7ce8036df910>
+q = array([[<AutoDiffXd 2.0755408865839566 nderiv=7>],
+       [<AutoDiffXd 2.0011936907854526 nderiv=7>],
+       [<AutoDif...,
+       [<AutoDiffXd -1.0345121069462058 nderiv=7>],
+       [<AutoDiffXd 1.9903692918549658 nderiv=7>]], dtype=object)
+
+    def evaluate(self, q):
+        from pydrake.autodiffutils import AutoDiffXd, ExtractGradient, ExtractValue
+        self.native_evaluations += 1
+        try:
+            return self.original.Eval(q)
+        except (RuntimeError, SystemExit) as exc:
+            if not is_known_boxbox_error(exc):
+                raise
+            error = str(exc)
+        began = time.perf_counter()
+        autodiff = any(isinstance(x,AutoDiffXd) for x in q)
+>       values = np.asarray(ExtractValue(q) if autodiff else q,float).ravel()
+E       TypeError: float() argument must be a string or a real number, not 'pydrake.autodiffutils.AutoDiffXd'
+
+benchmarks/generic_motion_v1/runners/nto_collision_constraint.py:186: TypeError
+=============================== warnings summary ===============================
+results/trend_diagnostics/test_nto_collision_independent_review.py: 29 warnings
+  /home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/lib/python3.10/site-packages/csdecomp/drake_csd_bridge.py:62: DrakeDeprecationWarning: (Deprecated.)
+  
+  Deprecated:
+      Use is_floating_base_body() instead. This will be removed from
+      Drake on or after 2026-06-01.
+    if all_drake_bodies[-1].is_floating():
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED results/trend_diagnostics/test_nto_collision_independent_review.py::test_recovered_gradient_matches_independent_directions_and_ad_chain
+1 failed, 11 passed, 29 warnings in 1.48s

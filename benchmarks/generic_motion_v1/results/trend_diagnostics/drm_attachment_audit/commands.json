@@ -1,0 +1,20 @@
+{
+  "scope": "Actual diagnostic command forms; original outputs are preserved. Use a fresh output directory for a new independent rerun. The current resolved project configuration may differ from historical evaluation.json snapshots; reproduce historical config from each saved snapshot instead of silently using new defaults.",
+  "commands": [
+    "bash local/python.sh results/trend_diagnostics/drm_attachment_audit.py --output results/trend_diagnostics/drm_attachment_audit",
+    "bash local/python.sh -m benchmarks.generic_motion_v1.runners.native_drm_query build --profile consistent_query --output benchmarks/generic_motion_v1/native/build/drm_consistent_query_portable",
+    "bash local/python.sh results/trend_diagnostics/drm_query_regression.py --build benchmarks/generic_motion_v1/native/build/drm_consistent_query --output results/trend_diagnostics/drm_consistent_query_current",
+    "bash local/python.sh results/trend_diagnostics/drm_query_regression.py --build benchmarks/generic_motion_v1/native/build/drm_consistent_query --output results/trend_diagnostics/drm_consistent_query_native --native-defaults",
+    "bash local/python.sh results/trend_diagnostics/drm_budget_audit.py --source results/trend_diagnostics/drm_consistent_query_native/records.json --output results/trend_diagnostics/drm_consistent_query_budget1000 --build benchmarks/generic_motion_v1/native/build/drm_consistent_query --attempts 1000 --endpoint-trials 50",
+    "bash local/python.sh results/trend_diagnostics/drm_graph_coverage.py --scene dev-dense_clutter-000 --output results/trend_diagnostics/drm_graph_dense000",
+    "bash local/python.sh results/trend_diagnostics/drm_attachment_audit.py --output results/trend_diagnostics/drm_attachment_audit --witnesses-only",
+    "bash local/python.sh results/trend_diagnostics/drm_query_regression.py --build benchmarks/generic_motion_v1/native/build/drm_consistent_query_portable --output results/trend_diagnostics/drm_query_fixture_portable --fixture",
+    "bash local/python.sh -m pytest -q benchmarks/generic_motion_v1/tests/test_native_drm_query.py benchmarks/generic_motion_v1/tests/test_native_drm_corrections.py",
+    "bash local/python.sh results/trend_diagnostics/drm_budget_audit.py --source results/trend_diagnostics/drm_consistent_query_native/records.json --output results/trend_diagnostics/drm_consistent_query_budget1000_endpoint1000 --build benchmarks/generic_motion_v1/native/build/drm_consistent_query_portable --attempts 1000 --endpoint-trials 1000"
+  ],
+  "historical_reproduction_note": "Use --config with the saved evaluation.json and a fresh --output directory; the original command used the then-current identical configuration. The explicit --build overrides the requested path recorded in the oldest snapshots.",
+  "historical_reproduction_commands": [
+    "bash local/python.sh results/trend_diagnostics/drm_query_regression.py --config results/trend_diagnostics/drm_consistent_query_current/evaluation.json --build benchmarks/generic_motion_v1/native/build/drm_consistent_query --output /tmp/drm_current_config_rerun",
+    "bash local/python.sh results/trend_diagnostics/drm_query_regression.py --config results/trend_diagnostics/drm_consistent_query_native/evaluation.json --build benchmarks/generic_motion_v1/native/build/drm_consistent_query --output /tmp/drm_native_config_rerun"
+  ]
+}

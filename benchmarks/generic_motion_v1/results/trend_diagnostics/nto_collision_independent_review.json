@@ -1,0 +1,65 @@
+{
+  "recorded_utc": "2026-11-01T04:38:02.399539+00:00",
+  "scope": "Independent CPU review with Model.cuda explicitly disabled. No planner/optimizer or GPU collision calls.",
+  "passed": true,
+  "tests": {
+    "passed": 12,
+    "warnings": 29,
+    "seconds": 1.52
+  },
+  "values": {
+    "canonical_pairs_queried_once": 8327,
+    "recovered_pair_names": [
+      [
+        "robotiq::left_inner_finger_collision",
+        "table::Box"
+      ]
+    ],
+    "maximum_recovered_absolute_distance_m": 9.992007221626409e-15,
+    "native_aggregation_comparisons": 30,
+    "maximum_aggregation_absolute_error": 0.0,
+    "independent_directional_derivative_checks": 5,
+    "maximum_directional_derivative_absolute_error": 8.233346049735246e-05,
+    "nonidentity_autodiff_chain_max_error": 0.0,
+    "known_systemexit_constraint_value": 0.9999999999980016
+  },
+  "resolved_finding": {
+    "issue": "Direct evaluate(InitializeAutoDiff(q)) receives a 7x1 column and previously misidentified its entries as non-AutoDiff arrays, raising TypeError in the recovery path.",
+    "repair": "Adapter now validates vector/column shape, flattens while preserving AutoDiff values, and checks finite value/derivative inputs.",
+    "before_log": "results/trend_diagnostics/nto_collision_independent_tests_before_fix.log",
+    "after_log": "results/trend_diagnostics/nto_collision_independent_tests.log"
+  },
+  "official_source_checks": [
+    {
+      "url": "https://github.com/RobotLocomotion/drake/issues/21675",
+      "finding": "Known BoxBoxGradient witness-point assertion matches this real Kinova failure."
+    },
+    {
+      "url": "https://github.com/RobotLocomotion/drake/pull/25144",
+      "finding": "Open upstream candidate repair at review time; this local adapter does not claim that the official patch is installed."
+    },
+    {
+      "url": "https://raw.githubusercontent.com/RobotLocomotion/drake/master/multibody/inverse_kinematics/minimum_distance_lower_bound_constraint.cc",
+      "finding": "Original aggregation max_num_values is the complete GetCollisionCandidates size; the adapter preserves this cardinality and every canonical pair."
+    },
+    {
+      "url": "https://raw.githubusercontent.com/RobotLocomotion/drake/master/solvers/minimum_value_constraint.cc",
+      "finding": "Native aggregate filters at influence distance, pads with zero penalties to max_num_values, and uses its native smooth-over-max; returning every pair to that same aggregate preserves these semantics."
+    }
+  ],
+  "rejection_checks": [
+    "Unknown RuntimeError and SystemExit propagate without fallback",
+    "Known assertion on non-box geometry rejected",
+    "Reconstructed separated/penetrating distances away from contact rejected",
+    "Nonfinite reconstructed distance rejected"
+  ],
+  "limits": "Independent tests exercise the recorded failure and adversarial inputs. Finite-difference recovery is a numerical adapter at near contact, not a symbolic differentiability or continuous-collision proof.",
+  "sha256": {
+    "benchmarks/generic_motion_v1/runners/nto_collision_constraint.py": "5747c3e2d08c1a893a103ba4dc11809ac1e562bfeead69633049fbab980ab0a5",
+    "benchmarks/generic_motion_v1/runners/paper_nto.py": "c534969e0fb20dff387afcbb80cb53d3e2aebda824eb39660060244e37b910da",
+    "benchmarks/generic_motion_v1/runners/csdecomp_baseline.py": "1838abfcee834ebd3a6fd7a2454336cef11e491ae6a03cf2a81bb2f758139cd8",
+    "results/trend_diagnostics/test_nto_collision_independent_review.py": "c73e4b2ba09c2c8846b0145490319f1f2d62eaf246c6880601c07e854213efa0",
+    "results/trend_diagnostics/nto_collision_independent_tests.log": "1edb83aa4d46ed9cdac768e191223a684d7f585f92601c6bac43619432c7b5c6",
+    "results/trend_diagnostics/nto_collision_independent_tests_before_fix.log": "7c3241b40885bff5db30310de5df370812e4e93ab9a9709d90800912f7fe281a"
+  }
+}

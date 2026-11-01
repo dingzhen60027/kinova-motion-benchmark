@@ -1,0 +1,70 @@
+{
+  "scope": "Exact corrected native C++ control-flow bodies with mocked CUDA oracle and minimal plant/graph structures; no GPU calls and not a geometry validity test",
+  "gpu_calls": 0,
+  "source_sha256": "457a19d872256d4d9aa9a950555c0cad635ba8d36c3857cf749f55fb28b4142f",
+  "extracted_methods": [
+    "double DrmPlanner::Distance",
+    "bool DrmPlanner::CheckPathExists",
+    "bool DrmPlanner::FindPath",
+    "bool DrmPlanner::IsEdgeBlocked",
+    "void DrmPlanner::PopulatePath",
+    "bool DrmPlanner::Plan(",
+    "int DrmPlanner::_plan",
+    "bool DrmPlanner::PlanStatePath",
+    "bool DrmPlanner::SteerFunctionIsSafe"
+  ],
+  "test_script_sha256": "3ed64b0c773e41b34591c1e6984b54b621bd138022833738593f1597d5ea4d8d",
+  "compile_returncode": 0,
+  "returncode": 0,
+  "checks": [
+    "cache_false_positive_removed_false_negative_added_geometry_invalid_retained",
+    "all_nodes_queried_in_exact_batch",
+    "old_cached_edges_and_endpoint_tags_cleared",
+    "second_query_can_reuse_previously_excluded_free_node",
+    "second_query_retains_only_permanent_geometry_invalid",
+    "second_query_clears_outgoing_attempts",
+    "alternative_visible_attachment_connects_components",
+    "alternative_attachment_preserves_fixed_endpoints",
+    "alternative_attachment_steered_before_acceptance",
+    "one_candidate_budget_cannot_use_unchecked_alternative",
+    "budget_one_checks_exact_batch_endpoints_and_one_per_endpoint_only",
+    "alternate_graph_connection_does_not_bypass_lazy_edge_check",
+    "failed_internal_steer_records_both_edge_directions",
+    "reachability_honors_forward_forbidden_edge",
+    "reverse_direction_is_independent_when_only_forward_forbidden",
+    "astar_agrees_with_blocked_reachability",
+    "astar_agrees_with_reverse_reachability",
+    "isolated_same_node_is_reachable",
+    "colliding_same_node_is_not_reachable",
+    "all_visible_alternatives_rejected_never_count_success",
+    "failed_endpoint_edge_does_not_invalidate_intermediate_node",
+    "failed_endpoint_edge_uses_local_tag",
+    "colliding_fixed_endpoint_is_rejected",
+    "uncached_colliding_node_added",
+    "steering_checks_final_endpoint",
+    "interpolated_endpoint_exact"
+  ],
+  "failed": [],
+  "built_profile": "consistent_query",
+  "compiled_source_matches_reviewed_generation": true,
+  "binary_matches_receipt": true,
+  "prior_real_gpu_fixture": {
+    "all_checks_passed": true,
+    "checks": {
+      "alternate_attachment_success": true,
+      "cache_false_positive_reconciled": true,
+      "fixture_cache_excluded_all": true,
+      "fixture_cache_missed_collision": true,
+      "uncached_collision_nodes_excluded": true,
+      "uncached_collision_rejected": true
+    },
+    "profile": "consistent_query",
+    "scope": "Real canonical CUDA/Drake collision tests on deliberately tiny regression graphs, not benchmark tasks"
+  },
+  "budget_semantics": "max_iterations_steering_to_node is per endpoint per _plan attempt, preserved from upstream; full Plan may attempt up to max_number_planning_attempts. Exact reconciliation is once per Plan and charged within online query.",
+  "limits": [
+    "Mock collision oracle tests control flow only; prior saved tiny canonical fixture supplies limited real GPU evidence.",
+    "No new GPU calls or performance measurement.",
+    "Native finite edge sampling is not continuous certification; common final validator remains necessary."
+  ]
+}

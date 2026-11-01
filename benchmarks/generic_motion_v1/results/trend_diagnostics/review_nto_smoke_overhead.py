@@ -29,7 +29,7 @@ def inspect(run, problem, method="NTO_REFINED"):
     rows = []
     for line in log.splitlines():
         fields = line.split()
-        if len(fields) != 11 or not re.fullmatch(r"\d+r?", fields[0]):
+        if len(fields) != 10 or not re.fullmatch(r"\d+r?", fields[0]):
             continue
         try:
             row = {"iteration": int(fields[0].rstrip("r")),
@@ -69,12 +69,15 @@ def main():
     comparable = [inspect(run, "smoke-bottleneck-000-p00", "NTO_PAPER")
                   for run in ["smoke", "repaired_smoke"]]
     before, after = comparable
+    if not before["complete_iteration_rows"] or not after["complete_iteration_rows"]:
+        raise ValueError("Cannot compare solver iteration histories with no parsed iteration rows")
     old_seconds = before["timing"]["trajectory_optimization_seconds"]
     new_seconds = after["timing"]["trajectory_optimization_seconds"]
     output = {
         "created_utc": datetime.now(timezone.utc).isoformat(),
         "scope": __doc__, "gpu_calls": 0, "solver_calls": 0,
         "microbenchmark_performed": False,
+        "diagnostic_parser_correction": "IPOPT emits 10 fields per iteration. The initial diagnostic required 11 and produced empty parsed histories; corrected and rechecked against all 415 rows (iterations 0..414). Original solver logs were never changed.",
         "frozen_runtime_commit": "7284d06f75aa6ba5ed5bf2b987d9ff287a2e8ab3",
         "sparse_timeout_comparison": sparse,
         "same_input_completed_comparison": {

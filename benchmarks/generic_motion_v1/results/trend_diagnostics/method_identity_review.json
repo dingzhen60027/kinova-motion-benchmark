@@ -1,0 +1,306 @@
+{
+  "created_utc": "2026-11-01T04:45:27.788676+00:00",
+  "head_observed": "e800d18608df5eb4d5483b7a0057fc3236598c73",
+  "scope": "Read-only source, current metadata, official fixed-commit network identity and CPU regression review; no benchmark scores recalculated, no GPU, no runtime or README edits",
+  "gpu_calls": 0,
+  "methods": [
+    {
+      "method": "CHOMP",
+      "identity": "CHOMP adaptation, local implementation; not official MoveIt CHOMP",
+      "formula": "J(Q)=w_s/2 ||D2 Q||_F^2 + w_o sum_i .5[c(d_i)+c(d_i+1)] ||q_i+1-q_i||_2; interior update=-eta A^-1 grad J, A=D2_interior^T D2_interior, scaled by a fixed positive scalar and bounded/backtracked",
+      "objective": "Squared joint acceleration plus canonical-clearance C-space arc integral; evaluation is actual PWL joint length",
+      "collision": "Canonical primitive minimum signed clearance, piecewise-linear/quadratic CHOMP potential; analytic active feature gradient with finite differences at ties; final common validator required",
+      "stopping": "40 iterations, 8 backtracks, 1e-7 relative-cost threshold or line-search stationary, within outer deadline",
+      "source_files": [
+        "benchmarks/generic_motion_v1/runners/chomp_stomp.py",
+        "benchmarks/generic_motion_v1/runners/canonical_distance.py"
+      ],
+      "official_urls": [
+        "https://moveit.picknik.ai/main/doc/how_to_guides/chomp_planner/chomp_planner_tutorial.html",
+        "https://publications.ri.cmu.edu/storage/publications/pub_files/2013/5/CHOMP_IJRR.pdf"
+      ],
+      "conclusion": "Real covariant functional descent with obstacle terms, not a renamed generic smoother. Explicit C-space-vs-workspace functional adaptation remains accurate.",
+      "limitations": [
+        "Uses a C-space minimum-clearance functional instead of integrating workspace body-point collision potentials.",
+        "Penalty optimization may return colliding paths; this is caught rather than relabelled success."
+      ],
+      "eligible_as_declared_baseline": true
+    },
+    {
+      "method": "STOMP",
+      "identity": "Unchanged official ros-industrial STOMP core plus canonical geometry task callbacks",
+      "formula": "Noise covariance proportional to inverse acceleration metric; native p_r,t proportional to exp[-h(S_r,t-min_r S_r,t)/(max_r S_r,t-min_r S_r,t)], normalized across rollouts; native weighted noise updates then STOMP smoothing matrix and bounded endpoint-preserving projection",
+      "objective": "Official normalized acceleration control cost plus canonical signed-clearance waypoint potential; PWL length evaluated separately",
+      "collision": "Same full model via Model.clearance; final candidate polyline check and common final validator",
+      "stopping": "40 native iterations, 12 rollouts, native iterations-after-valid setting5; local callbacks enforce remaining outer deadline",
+      "source_files": [
+        "benchmarks/generic_motion_v1/runners/chomp_stomp.py",
+        "benchmarks/generic_motion_v1/native/stomp_python.cpp",
+        "benchmarks/generic_motion_v1/native/vendor/stomp/src/stomp.cpp"
+      ],
+      "official_urls": [
+        "https://github.com/ros-industrial/stomp/tree/b1a87c80f7338caae25a5c689b876da15492aa75"
+      ],
+      "conclusion": "Authentic official probability-weighted rollout optimization, not generic added-noise search. Four checked official files are byte-identical.",
+      "limitations": [
+        "Local canonical-geometry task, correlated-noise generator, projection and update limiter are declared adapters.",
+        "Native STOMP return does not certify continuous collision freedom."
+      ],
+      "eligible_as_declared_baseline": true
+    },
+    {
+      "method": "TRAJOPT",
+      "identity": "Unchanged author BasicTrustRegionSQP/BPMPD optimizer with local canonical collision transcription",
+      "formula": "min sum_i ||q_i+1-q_i||_2^2; g=clearance-distance<=0, linearized at current iterate; trust-region sequential convex QP with L1 merit and escalating constraint penalties",
+      "objective": "Squared joint differences, not pure PWL length; reported comparison metric is PWL length",
+      "collision": "Canonical signed clearance at three segment collocation subdivisions; analytic/central-difference derivative chained through interpolation matrix; fixed endpoints/joint bounds",
+      "stopping": "50 SQP iterations, max5 merit increases, 45s optimizer cap bounded by total query deadline; final validator retained",
+      "source_files": [
+        "benchmarks/generic_motion_v1/runners/trajopt_baseline.py",
+        "benchmarks/generic_motion_v1/runners/canonical_distance.py",
+        "benchmarks/generic_motion_v1/native/trajopt_bridge.cpp"
+      ],
+      "official_urls": [
+        "https://github.com/joschu/trajopt/tree/9c634c060f7e2d61c4a888b0a5700d668a5d16f8"
+      ],
+      "conclusion": "Author trust-region SQP and BPMPD are truly called. Three key author optimizer source files are byte-identical. POSIX transport fixes are recorded separately from optimizer code.",
+      "limitations": [
+        "Uses finite segment collocation, not author OpenRAVE swept-volume collision transcription.",
+        "Must remain named adaptation; misses between sample points are failures under final validator."
+      ],
+      "eligible_as_declared_baseline": true
+    },
+    {
+      "method": "RRTCONNECT",
+      "identity": "Official OMPL2.0.1 native RRTConnect with canonical state/motion callbacks",
+      "formula": "Bidirectional RRT expansion and connect; exact endpoint solution; native reduceVertices postprocess",
+      "objective": "Feasible path first, then length-nonincreasing vertex reduction; not shortest-path optimality",
+      "collision": "0.01rad Euclidean motion subdivisions include both endpoints; canonical CSD checker; common0.005rad validation after solve",
+      "stopping": "First exact solution or remaining planning deadline; current explicit config caps search at60s but subtracts validation5s and simplification0.5s from overall deadline",
+      "source_files": [
+        "benchmarks/generic_motion_v1/runners/ompl_baselines.py",
+        "benchmarks/generic_motion_v1/runners/csdecomp_baseline.py"
+      ],
+      "official_urls": [
+        "https://github.com/ompl/ompl/blob/2.0.1/src/ompl/geometric/planners/rrt/src/RRTConnect.cpp"
+      ],
+      "conclusion": "Official native tree implementation. Exact-goal gate and common final validator remain active.",
+      "limitations": [
+        "Main run has no intermediate callback; missing first-valid times are correctly left unavailable.",
+        "Historical10s search results must remain separate from current60s configuration."
+      ],
+      "eligible_as_declared_baseline": true
+    },
+    {
+      "method": "RRTSTAR",
+      "identity": "Official OMPL2.0.1 native RRTstar with rewiring and path-length objective",
+      "formula": "PathLengthOptimizationObjective; native near-neighbor parent selection/rewiring, goal_bias.05, range.5rad, rewire_factor1.1, delayed collision checking",
+      "objective": "Continually improve actual native joint PWL length until termination condition",
+      "collision": "Same canonical callbacks and final independent validation as RRTConnect",
+      "stopping": "Current config planning_seconds60; one uninterrupted native solve until min(adapter_start+60,query_deadline-5-.5). Main observer disabled so no observation overhead or repeated restart.",
+      "source_files": [
+        "benchmarks/generic_motion_v1/runners/ompl_baselines.py",
+        "benchmarks/generic_motion_v1/runners/csdecomp_baseline.py"
+      ],
+      "official_urls": [
+        "https://github.com/ompl/ompl/blob/2.0.1/src/ompl/geometric/planners/rrt/src/RRTstar.cpp",
+        "https://ompl.kavrakilab.org/classompl_1_1geometric_1_1RRTstar.html"
+      ],
+      "conclusion": "Actual CPU native test ran12.479s using current60s configured cap and18s outer fixture deadline, exceeding former10s cap while preserving5s validator reserve. Impossible barrier stayed failure.",
+      "limitations": [
+        "60s denotes full query budget; it cannot mean60s search plus validation.",
+        "Finite state/motion checks and finite budget do not establish completeness or global optimality."
+      ],
+      "eligible_as_declared_baseline": true
+    },
+    {
+      "method": "EI_ZO / LSCS",
+      "identity": "Native CSDecomp EI-ZO plus unchanged author scsplanning.polygonal.get_points",
+      "formula": "EI-ZO: delta_k=6delta/(pi^2 k^2), M=ceil[2log(1/delta_k)/(epsilon tau^2)], hit-and-run, collision bisection and separating cuts; LSCS minimizes sum ||p_i+1-p_i|| subject to both segment endpoints in ordered convex region",
+      "objective": "Shortest PWL length in the supplied ordered corridor",
+      "collision": "Fixed canonical model; original CUDA inflate/edit regions; numerical coverage repairs and collision feedback retained; final common validator",
+      "stopping": "EI-ZO30 iterations with epsilon=delta=.005,Np10000,Nf10,mixing60;20 recovery rounds; full query watchdog60s",
+      "source_files": [
+        "benchmarks/generic_motion_v1/runners/csdecomp_baseline.py",
+        "benchmarks/generic_motion_v1/runners/native_handoff.py",
+        "benchmarks/generic_motion_v1/runners/paper_graph.py"
+      ],
+      "official_urls": [
+        "https://github.com/wernerpe/csdecomp",
+        "https://arxiv.org/html/2504.10783v1",
+        "https://raw.githubusercontent.com/TobiaMarcucci/scsplanning/d3f885aa2b74a10418de96e61ec2df0bf6ef16b8/scsplanning/polygonal.py"
+      ],
+      "conclusion": "Actual native algorithm and author convex program retained, including EditRegionsCuda and restoring original-path coverage. Source audit reused and current call sites checked.",
+      "limitations": [
+        "Installed native API does not expose every region statistical acceptance/cap reason; do not claim proved safe region merely from returned polytope.",
+        "Clarabel solver and Kinova task distribution are declared differences from published FR3 experiment."
+      ],
+      "eligible_as_declared_baseline": true
+    },
+    {
+      "method": "SCSTO",
+      "identity": "Unchanged author SCSPlanning biconvex solver via EI_ZO minimum_time track",
+      "formula": "min sum_i T_i; alternate FixedPoints and FixedVelocities convex programs with Bezier position/derivative control constraints; Q_{k+1}-Q_k and second differences scaled by T and T^2",
+      "objective": "Optimize both trajectory geometry and segment durations within fixed regions; not merely retime a fixed path",
+      "collision": "Bezier convex-hull region membership; shared unit velocity/acceleration boxes and zero endpoint velocity; independent common trajectory validation",
+      "stopping": "Author relative duration improvement tol.01; external60s worker watchdog limits author loop and solves",
+      "source_files": [
+        "benchmarks/generic_motion_v1/runners/csdecomp_baseline.py"
+      ],
+      "official_urls": [
+        "https://github.com/TobiaMarcucci/scsplanning/tree/d3f885aa2b74a10418de96e61ec2df0bf6ef16b8"
+      ],
+      "conclusion": "Five official files match vendor and installed package byte-for-byte. Actual CPU corridor solve passed shared motion/region validator; controls and durations saved.",
+      "limitations": [
+        "Author biconvex solver is local and conservative in its trajectory representation.",
+        "Author solver does not expose per-iteration termination metadata through this API; external timeout remains authoritative."
+      ],
+      "eligible_as_declared_baseline": true
+    },
+    {
+      "method": "LGCS",
+      "identity": "Local projected perspective GCS MISOCP reconstruction with explicit SCIP backend",
+      "formula": "Binary unit flow phi, homogeneous membership A z<=b phi, per-region delta=sum z_out-sum z_in, SOC ||delta||<=length; minimize sum length, degree<=1. Decode source-goal flow and check algebraic/region residuals.",
+      "objective": "Shortest PWL path in supplied local region graph, not whole free C-space",
+      "collision": "EI-ZO region graph plus common final collision validation and region repair; all final segments mapped to original pool IDs",
+      "stopping": "Model construction deducted from remaining60s; SCIP limits/time receives remainder, gap1e-6, numerical feasibility1e-9; no silent fallback",
+      "source_files": [
+        "benchmarks/generic_motion_v1/runners/paper_lgcs.py",
+        "benchmarks/generic_motion_v1/runners/paper_lgcs_scip.py",
+        "benchmarks/generic_motion_v1/runners/paper_graph.py"
+      ],
+      "official_urls": [
+        "https://arxiv.org/html/2504.10783v1",
+        "https://drake.mit.edu/doxygen_cxx/classdrake_1_1geometry_1_1optimization_1_1_graph_of_convex_sets.html",
+        "https://www.scipopt.org/"
+      ],
+      "conclusion": "Real binary SOC optimization and independent primal/path algebra gates; dedicated CPU tests matched exhaustive simple-corridor oracle and preserved infeasible/no-incumbent cases.",
+      "limitations": [
+        "Local reconstruction, not recovered author LGCS source.",
+        "Only optimal-status solution of supplied graph supports local-graph optimality; time-limit incumbent is not globally optimal."
+      ],
+      "eligible_as_declared_baseline": true
+    }
+  ],
+  "existing_audits_reused": [
+    "benchmarks/generic_motion_v1/reports/paper_algorithm/source_audit.md",
+    "results/methods.json",
+    "results/trend_diagnostics/literature.json"
+  ],
+  "official_hash_verification": "method_identity_official_hashes.json",
+  "official_files_checked": 12,
+  "official_files_byte_identical": 12,
+  "cpu_regression": {
+    "log": "method_identity_cpu_tests.log",
+    "passed": 86,
+    "seconds": 7.05,
+    "scope": "CHOMP/STOMP, TrajOpt, OMPL and SCIP GCS dedicated tests; canonical Model.cuda disabled"
+  },
+  "ompl_budget_probe": {
+    "configured_planning_seconds": 60.0,
+    "exceeded_old_10_second_cap": true,
+    "failed_as_expected": true,
+    "gpu_calls": 0,
+    "native_solve_seconds": 12.47943254513666,
+    "note": "The 18s fixture deadline avoids a 60s CPU-only stress run; actual 60s planning override is used and tested above the former 10s cap.",
+    "outer_fixture_budget_seconds": 18.0,
+    "retained_validation_reserve": true,
+    "scope": "Actual OMPL native RRTstar with impossible full-space barrier CPU fixture; no benchmark tasks and no GPU",
+    "simplification_reserve_seconds": 0.5,
+    "source_sha256": "f717d659e92f1e376efbccb07423a0b2949bc3174eb113607a65ffb1772c19ab",
+    "validation_reserve_seconds": 5.0,
+    "wall_seconds": 12.553831703029573
+  },
+  "scsto_probe": {
+    "common_validation_passed": true,
+    "duration_s": 2.4405084004720567,
+    "gpu_calls": 0,
+    "installed_source_identity": {
+      "base_program": {
+        "installed_path": "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/lib/python3.10/site-packages/scsplanning/base_program.py",
+        "installed_sha256": "3cebf7b9590c1113e33e3658dde473e760484db2503cfdf40bc5857addc4cb06",
+        "same": true,
+        "vendor_sha256": "3cebf7b9590c1113e33e3658dde473e760484db2503cfdf40bc5857addc4cb06"
+      },
+      "biconvex": {
+        "installed_path": "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/lib/python3.10/site-packages/scsplanning/biconvex.py",
+        "installed_sha256": "d1fb6585b77bf8b0eda4d18c3cedaa383a9e15904e2479813283345268c19e27",
+        "same": true,
+        "vendor_sha256": "d1fb6585b77bf8b0eda4d18c3cedaa383a9e15904e2479813283345268c19e27"
+      },
+      "fixed_points": {
+        "installed_path": "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/lib/python3.10/site-packages/scsplanning/fixed_points.py",
+        "installed_sha256": "32796ac30e821f631cfb55f2fbdae0a53d7b11c8bad13b99a7c0603fdec58dd8",
+        "same": true,
+        "vendor_sha256": "32796ac30e821f631cfb55f2fbdae0a53d7b11c8bad13b99a7c0603fdec58dd8"
+      },
+      "fixed_velocities": {
+        "installed_path": "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/lib/python3.10/site-packages/scsplanning/fixed_velocities.py",
+        "installed_sha256": "22dce6fb6169767daa7c27cbd0ec556c0a705ebbd83f19c4809a24e490967311",
+        "same": true,
+        "vendor_sha256": "22dce6fb6169767daa7c27cbd0ec556c0a705ebbd83f19c4809a24e490967311"
+      },
+      "polygonal": {
+        "installed_path": "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/lib/python3.10/site-packages/scsplanning/polygonal.py",
+        "installed_sha256": "a8b44ede8e553a87451871dc4f59fc90fb98e26c04adc709ffbfb7d8eb1d1473",
+        "same": true,
+        "vendor_sha256": "a8b44ede8e553a87451871dc4f59fc90fb98e26c04adc709ffbfb7d8eb1d1473"
+      }
+    },
+    "lscs_length_rad": 1.5652475842505829,
+    "prior_diagnostic_failure": {
+      "log": "../method_identity_scsto_cpu.log",
+      "reason": "First standalone diagnostic omitted dtype=float when converting author object-valued controls. Production adapter already explicitly converts to float; diagnostic corrected to the same conversion."
+    },
+    "scope": "Author LSCS/SCSTO CPU optimizer and common validator fixture; no physical robot performance claim.",
+    "seconds": 0.010210884734988213
+  },
+  "findings": [
+    {
+      "severity": "metadata_drift",
+      "blocking_runtime": false,
+      "files": [
+        "results/methods.json",
+        "benchmarks/generic_motion_v1/runners/methods.py"
+      ],
+      "detail": "Method stopping descriptions still state10s OMPL search; current explicit config planning_seconds is60 and runtime honors it. Keep historical10s comparisons distinct and update current method descriptions.",
+      "current_config_planning_seconds": 60.0,
+      "observed_descriptions": {
+        "RRTCONNECT": "At most 10 s search and 0.5 s vertex reduction, within 60 s total query; first solution behavior retained.",
+        "RRTSTAR": "10 s single native solve plus at most 0.5 s vertex reduction, 60 s total query. Main profile disables costly validated-progress observation."
+      }
+    },
+    {
+      "severity": "stale_readme",
+      "blocking_runtime": false,
+      "files": [
+        "README.md"
+      ],
+      "detail": "README describes repaired_dev BoxBoxGradient error as unresolved; subsequent narrow fix and independent tests now exist. Historical outcome must remain preserved; do not retrospectively change it."
+    }
+  ],
+  "blocking_runtime_bugs_found": [],
+  "limitations": [
+    "This verifies identities/formulations and tested interfaces, not every possible numerical failure.",
+    "No rankings were used to change solver settings; no new algorithm or framework was introduced.",
+    "CHOMP/TrajOpt adaptation labels are necessary technical identities, not explanations used to dismiss bad results."
+  ],
+  "network_notes": [
+    "Official web pages and raw pinned source URLs checked2026-11-01. GitHub UI for SCSPlanning was blocked by web tool; all five raw official source fetches succeeded and matched.",
+    "CHOMP original PDF web fetch timed out; existing local formula audit and official MoveIt documentation were used."
+  ],
+  "source_sha256": {
+    "benchmarks/generic_motion_v1/native/stomp_python.cpp": "7823c2b7fbe7d3a7f2b3205175ee121eef5b6b7fe5b94ff13163992af7a3ebad",
+    "benchmarks/generic_motion_v1/native/trajopt_bridge.cpp": "08b7d4fb2b90bda6d612371a6f7d43220fbc5919621aebdc4ea06ceeb6cc4399",
+    "benchmarks/generic_motion_v1/native/vendor/stomp/src/stomp.cpp": "4f63827235d93d7078a9a2f37e77bce5b9823109b838ddb87a74d14cd7e82d74",
+    "benchmarks/generic_motion_v1/runners/canonical_distance.py": "0c7af835ebf6b916761b61e0af3ba1109fd6ecd744d1b3ecd4780e3d7dec4335",
+    "benchmarks/generic_motion_v1/runners/chomp_stomp.py": "b815f2b9e339ce8806bac7a60892dec4cfc17f21b0e2217eb8bb4e365efd1b47",
+    "benchmarks/generic_motion_v1/runners/csdecomp_baseline.py": "1838abfcee834ebd3a6fd7a2454336cef11e491ae6a03cf2a81bb2f758139cd8",
+    "benchmarks/generic_motion_v1/runners/native_handoff.py": "5eb45ca2f96b5dd5c727c4afca0b94b00f58ab06ec618073d3089f0ea668b01c",
+    "benchmarks/generic_motion_v1/runners/ompl_baselines.py": "f717d659e92f1e376efbccb07423a0b2949bc3174eb113607a65ffb1772c19ab",
+    "benchmarks/generic_motion_v1/runners/paper_graph.py": "e79715ecd952d048582ef7b24bbaa2a9c21477a2bf98ecd071e2183dbb8c754a",
+    "benchmarks/generic_motion_v1/runners/paper_lgcs.py": "66de3124f4c19635c37ee4b78fc0231d96c933d870ed534313eeec33a4df4951",
+    "benchmarks/generic_motion_v1/runners/paper_lgcs_scip.py": "935c45fe4aa61343efac1480e5aa7ea7071ad9a285ff878793a7133af0fb6332",
+    "benchmarks/generic_motion_v1/runners/trajopt_baseline.py": "063eb6923c52a94eba2b89265b6bbedb9eba2c73cf1b24628716cdbf86377388"
+  }
+}

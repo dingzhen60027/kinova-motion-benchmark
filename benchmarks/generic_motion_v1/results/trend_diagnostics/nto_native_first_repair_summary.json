@@ -1,0 +1,157 @@
+{
+  "created_utc": "2026-11-01T05:41:41.770997+00:00",
+  "scope": "Native-first collision-constraint performance correction and preserved exact-assertion recovery; CPU regressions only",
+  "runtime_frozen_for_parent_validation": true,
+  "gpu_calls": 0,
+  "tests": {
+    "command": "bash local/python.sh -m pytest -q benchmarks/generic_motion_v1/tests/test_nto_native_first.py benchmarks/generic_motion_v1/tests/test_nto_collision_constraint.py benchmarks/generic_motion_v1/tests/test_paper_nto.py benchmarks/generic_motion_v1/tests/test_paper_nto_refined.py",
+    "passed": 69,
+    "seconds": 5.37,
+    "log": "results/trend_diagnostics/nto_native_first_tests_final.log"
+  },
+  "independent_probe": "results/trend_diagnostics/nto_native_first_independent_cpu/review.json",
+  "cpu_regressions": {
+    "nto_native_first_dev": {
+      "diagnostic": {
+        "backend": "native_first",
+        "case": "dev",
+        "cpu_colliding_samples": 903,
+        "cpu_minimum_clearance_m": -0.08327997175905309,
+        "duration": 1.0,
+        "endpoint_error_rad": 1.1667338917220604e-07,
+        "input_sha256": "ad45f2ed9731516f32c427aa9504950b11990a13a1c6db5037f97ae4bd3a61d6",
+        "outcome": "candidate_returned",
+        "path_length_rad": 25.907250541227036,
+        "path_sha256": "7f2f1a7f3aa77027aee364ab4b05930e76d3c4c94b4e5eca1346e79ec3fa38ce",
+        "sample_count": 6870,
+        "scope": "CPU diagnostic on exact saved input and path, not a fresh end-to-end score; final common GPU validator not run",
+        "seconds": 20.924003809224814,
+        "solver_status": "SolutionResult.kInfeasibleConstraints",
+        "solver_success": false,
+        "source_attempt": "results/repaired_dev/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_distance-48b608ce/attempts/0001",
+        "source_sha256": {
+          "benchmarks/generic_motion_v1/results/trend_diagnostics/diagnose_nto_boxbox.py": "6bf7292859da266ff0fe9ab1fb83a32251dd380b56e2d39b9c4c0c6c95e0515d",
+          "benchmarks/generic_motion_v1/runners/nto_collision_constraint.py": "874dad10b4b3c6ea2f2be6b299f212099b37e98b6713f2b2cf194489b8b43a22",
+          "benchmarks/generic_motion_v1/runners/paper_nto.py": "7375ea668c54f9778c3eb21ab65b5bb6786bda9df6941597614a18d01afa7a83"
+        }
+      },
+      "backend_modes": [
+        "native",
+        "guarded"
+      ],
+      "solver_call_seconds": [
+        6.366509512998164,
+        9.772846507374197
+      ],
+      "remaining_seconds": [
+        58.33168969070539,
+        51.96290863677859
+      ],
+      "guarded_recovery_events": 1,
+      "query_restarts": 1,
+      "strict_cpu_colliding_samples": 900,
+      "reported_safe_band_samples": 903,
+      "formal_baseline_score": false
+    },
+    "nto_native_first_bottleneck": {
+      "diagnostic": {
+        "backend": "native_first",
+        "case": "smoke_bottleneck",
+        "cpu_colliding_samples": 12,
+        "cpu_minimum_clearance_m": -5.460709873688491e-05,
+        "duration": 5.142784740329223,
+        "endpoint_error_rad": 9.39576922931451e-08,
+        "input_sha256": "4a78f88ea519f571e384bceb1133f1fe222e0a58d09dd15f56c2bcd36e1472d1",
+        "outcome": "candidate_returned",
+        "path_sha256": "10a267e3da62cc53099878fb1d51654c89abc142e0c59f7a48d4f0bea5dfd83e",
+        "sample_count": 1851,
+        "scope": "CPU diagnostic on exact saved input and path, not a fresh end-to-end score; final common GPU validator not run",
+        "seconds": 12.921685103792697,
+        "solver_status": "SolutionResult.kSolutionFound",
+        "solver_success": true,
+        "source_attempt": "results/smoke/jobs/smoke-bottleneck-000-p00-NTO_PAPER-minimum_time-8b155276/attempts/0001",
+        "source_sha256": {
+          "benchmarks/generic_motion_v1/results/trend_diagnostics/diagnose_nto_boxbox.py": "bcbe82a26f2d4c2c93fb92e22a57fcf0f0bd83f7a1ffdd8cd53ea1ec814b3304",
+          "benchmarks/generic_motion_v1/runners/nto_collision_constraint.py": "874dad10b4b3c6ea2f2be6b299f212099b37e98b6713f2b2cf194489b8b43a22",
+          "benchmarks/generic_motion_v1/runners/paper_nto.py": "7375ea668c54f9778c3eb21ab65b5bb6786bda9df6941597614a18d01afa7a83"
+        },
+        "trajectory_duration_s": 5.142784740329223
+      },
+      "backend_modes": [
+        "native"
+      ],
+      "solver_call_seconds": [
+        11.659858133643866
+      ],
+      "remaining_seconds": [
+        58.72759050363675
+      ],
+      "guarded_recovery_events": 0,
+      "query_restarts": 0,
+      "strict_cpu_colliding_samples": 12,
+      "reported_safe_band_samples": 12,
+      "formal_baseline_score": false
+    }
+  },
+  "normal_path_comparison": "results/trend_diagnostics/nto_native_first_normal_path_comparison.json",
+  "microbenchmark": "results/trend_diagnostics/nto_wrapper_cpu_timing.json",
+  "native_only_cli_recheck": {
+    "backend": "native",
+    "case": "dev",
+    "exception": "RuntimeError(\"Exception while evaluating SNOPT costs and constraints: 'Failure at external/drake+/geometry/proximity/distance_to_shape_touching.cc:122 in BoxBoxGradient(): condition '(X_WA * p_ACa - X_WB * p_BCb).norm() < kEps' failed.'\")",
+    "input_sha256": "ad45f2ed9731516f32c427aa9504950b11990a13a1c6db5037f97ae4bd3a61d6",
+    "outcome": "exception",
+    "path_sha256": "7f2f1a7f3aa77027aee364ab4b05930e76d3c4c94b4e5eca1346e79ec3fa38ce",
+    "scope": "CPU diagnostic on exact saved input and path, not a fresh end-to-end score; final common GPU validator not run",
+    "seconds": 6.552499434910715,
+    "source_attempt": "results/repaired_dev/jobs/dev-route_choice-002-p00-NTO_PAPER-minimum_distance-48b608ce/attempts/0001",
+    "source_sha256": {
+      "benchmarks/generic_motion_v1/results/trend_diagnostics/diagnose_nto_boxbox.py": "bcbe82a26f2d4c2c93fb92e22a57fcf0f0bd83f7a1ffdd8cd53ea1ec814b3304",
+      "benchmarks/generic_motion_v1/runners/nto_collision_constraint.py": "874dad10b4b3c6ea2f2be6b299f212099b37e98b6713f2b2cf194489b8b43a22",
+      "benchmarks/generic_motion_v1/runners/paper_nto.py": "7375ea668c54f9778c3eb21ab65b5bb6786bda9df6941597614a18d01afa7a83"
+    },
+    "traceback": "Traceback (most recent call last):\n  File \"/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/trend_diagnostics/diagnose_nto_boxbox.py\", line 79, in main\n    candidate=paper_nto(path,model,case,cfg,out,tic+60-reserve);write(out/'candidate.json',candidate)\n  File \"/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/runners/paper_nto.py\", line 304, in paper_nto\n    result = collision_solve.solve(\n  File \"/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/trend_diagnostics/diagnose_nto_boxbox.py\", line 57, in solve\n    return solver.Solve(self.prog,None,solver_options)\nRuntimeError: Exception while evaluating SNOPT costs and constraints: 'Failure at external/drake+/geometry/proximity/distance_to_shape_touching.cc:122 in BoxBoxGradient(): condition '(X_WA * p_ACa - X_WB * p_BCb).norm() < kEps' failed.'\n"
+  },
+  "changed_sources_sha256": {
+    "benchmarks/generic_motion_v1/runners/nto_collision_constraint.py": "874dad10b4b3c6ea2f2be6b299f212099b37e98b6713f2b2cf194489b8b43a22",
+    "benchmarks/generic_motion_v1/runners/paper_nto.py": "7375ea668c54f9778c3eb21ab65b5bb6786bda9df6941597614a18d01afa7a83",
+    "benchmarks/generic_motion_v1/runners/paper_nto_refined.py": "e7fcedb84fe3d90ee8f3489a91214debdef9ae867f508b3555ccbb568b70b231",
+    "benchmarks/generic_motion_v1/runners/csdecomp_baseline.py": "a4a42c9655668e72f9f1771f63cfac2ebb028f43fbd399fad93e9a516f5d88d4",
+    "benchmarks/generic_motion_v1/tests/test_nto_native_first.py": "3f199ed3563c02b1a1291c3c6471d4255b51ada5734e8afb0904f2d942bfddfb",
+    "benchmarks/generic_motion_v1/tests/test_nto_collision_constraint.py": "ec5e60ff97c5b488584b6213192c8906f30b9475c66d4a70924cc366c01b4d50",
+    "benchmarks/generic_motion_v1/tests/test_paper_nto_refined.py": "5b28fd748286c9f70f671e8fb934ecc081798e2ad81c7cb92a2574c765e6414e"
+  },
+  "behavior": [
+    "Ordinary collision evaluations use original Drake constraints without a Python callback.",
+    "Only exact known BoxBoxGradient RuntimeError/SystemExit can trigger one query-level guarded restart.",
+    "Every collision binding and collocation location is retained; complete initial decision variables are restored.",
+    "Native and guarded calls plus replacement work share one fixed deadline; normal failed returns never retry.",
+    "REFINED allows four collocation rounds and at most one extra assertion-aborted Solve; rounds and invocations are separate.",
+    "Legacy failed/nonfinite solver arrays are saved without constructing a native B-spline; unchanged common validator rejects them.",
+    "Guarded wrapper public API and narrow near-contact recovery geometry remain unchanged."
+  ],
+  "limitations": [
+    "This evidence is not a fresh formal baseline score. Parent will run full tests and serialized GPU pipeline validation.",
+    "Native fast-path evaluation count is intentionally uninstrumented; zero native_evaluations means zero guarded Python callbacks.",
+    "Timing microbenchmark uses saved collision-free path nodes, with both fixed and varying input sequences.",
+    "One rare restart loses native solver internal iteration state; all repeated work counts against the original budget."
+  ],
+  "diagnostic_repairs": [
+    "Fixed repository-root import setup and KTO default duration-constraint counting in the microbenchmark script; failed logs retained.",
+    "Fixed IPOPT diagnostic parser from 11 to 10 fields, now rejects empty histories; revalidated all415 iteration rows and equal raw solutions. Original solver logs were never changed."
+  ],
+  "runtime_commit": "6ad41275c78ccc49584083753ff3255af172fa30",
+  "parent_final_verification": {
+    "full_tests": {
+      "passed": 1217,
+      "log": "results/trend_diagnostics/completion_native_first_full_tests.log"
+    },
+    "unchanged_upstream_tests": {
+      "passed": 3,
+      "log": "results/trend_diagnostics/completion_native_first_upstream_tests.log"
+    },
+    "gpu_native_first": "results/trend_diagnostics/nto_native_first_gpu_confirmed",
+    "gpu_guarded_control": "results/trend_diagnostics/nto_native_first_gpu",
+    "independent_static_review": "No blocking issue found in all seven runtime/test diffs; normal native binding, query-wide at most one known exception recovery, fixed absolute deadline, constraints and initial guess preserved. Reviewer ran no further tests or GPU tasks."
+  }
+}

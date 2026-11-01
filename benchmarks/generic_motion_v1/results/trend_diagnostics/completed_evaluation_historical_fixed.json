@@ -1,0 +1,105 @@
+{
+  "recorded_utc": "2026-11-01T04:39:54.304592+00:00",
+  "scope": "CPU-only final cohort, receipt, input/protocol, accounting and metric acceptance; no new collision proof",
+  "runs": [
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/fixed_initial_regions"
+  ],
+  "comparisons": [
+    "current_test_initial_regions"
+  ],
+  "status": "passed",
+  "passed": true,
+  "coverage": [
+    {
+      "run": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/fixed_initial_regions",
+      "integrity_passed": true,
+      "complete": true,
+      "completed_jobs": 566,
+      "planned_jobs": 566,
+      "errors": [],
+      "unsealed_attempts": []
+    }
+  ],
+  "errors": [],
+  "matrix": {
+    "expected_jobs": 0,
+    "declared_jobs": 0,
+    "unique_declared_jobs": 0,
+    "missing_jobs": 0,
+    "errors": []
+  },
+  "conditioned_cohorts": [
+    {
+      "source_run": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/test",
+      "registered_task_replicas": 420,
+      "eligible_task_replicas": 283,
+      "expected_paired_jobs": 566,
+      "declared_jobs": 566,
+      "eligibility_reconstructed_before_backend_outcomes": true,
+      "errors": []
+    }
+  ],
+  "protocol": {
+    "errors": [],
+    "robot_collision_models": [
+      [
+        "a25f447c8caf4aff6dc76196c3d57cc940f00e802367f48034f06a9973927c75",
+        "896ab9f55c5d8081b843358bd85cde2daae1f432564593f86218bf61733ce4fa"
+      ]
+    ],
+    "validator_sources": [
+      "12086b43b1735ab8455b260235eb0c92b336cb2b2cbaef6c286d1d2f5f376b43"
+    ],
+    "validation_settings_fingerprints": [
+      "12310818887f19f984d429058a01473216f65050298f68e229a93e262f317583"
+    ],
+    "configuration_fingerprints": [
+      "8b5d973b6447e162e2a29bdb8103de043a408dfd2568cc106dc58565fc3ace92"
+    ],
+    "runtime_fingerprints": [
+      "437a6ad09aba4cf3c9b77f4b95817fc56aa16353aa82723d279798229cd26e28"
+    ],
+    "outer_budget_seconds": [
+      60.0
+    ],
+    "ompl_native_planning_caps_seconds": [
+      10.0
+    ],
+    "sampling_protocol_note": "Historical OMPL runs used a 10-second native planning cap. The completed-repair profile may use 60 seconds as a ceiling, bounded by the shared remaining deadline minus validation/simplification reserves. This is an explicit protocol change, not solely a DRM/NTO implementation repair; RRTConnect still returns its first solution.",
+    "reference_run_manifest_sha256": "d89413ec26f10f3721c1326817fbb6244ffce32af2e6d7283d571ece5bdd71f0"
+  },
+  "records_sha256": "4bbd86896183db755829e5075b54bda94a97d95a2e956df97a9b7384401d7731",
+  "summary_sha256": "1fbe648517e6d04c4b0232c135dc2a3c2d3dabdfda88c61615944a73deedd505",
+  "metric_bounds": {
+    "scope": "Selected numerical successes only; analytic metric sanity check, no new collision or planner queries",
+    "comparisons": [
+      "current_test_initial_regions"
+    ],
+    "observations": {
+      "current_test_initial_regions": 566
+    },
+    "counts": {
+      "path_checks": 565,
+      "time_checks": 0
+    },
+    "groups": {
+      "current_test_initial_regions": 565
+    },
+    "passed": true,
+    "errors": [],
+    "path_bound": "Euclidean fixed endpoint chord in bounded unwrapped joint coordinates",
+    "time_bound": "Maximum joint rest-to-rest triangular/trapezoidal minimum using its saved motion limits",
+    "numerical_tolerance": 0.0001
+  },
+  "completed_groups": {
+    "current_test_initial_regions": {
+      "registered_jobs": 566,
+      "terminal_jobs": 566,
+      "legal_jobs": 566,
+      "normalized_statuses": {
+        "success_numerical": 565,
+        "timeout": 1
+      }
+    }
+  }
+}

@@ -1,0 +1,1161 @@
+........................................................................ [  6%]
+.........................................FFFF.F......................... [ 12%]
+........................................................................ [ 18%]
+........................................................................ [ 24%]
+........................................................................ [ 30%]
+........................................................................ [ 36%]
+........................................................................ [ 42%]
+........................................................................ [ 48%]
+........................................................................ [ 54%]
+........................................................................ [ 60%]
+........................................................................ [ 66%]
+........................FFFFFFFFF....................................... [ 72%]
+........................................................................ [ 78%]
+........................................................................ [ 85%]
+........................................................................ [ 91%]
+........................................................................ [ 97%]
+.................................                                        [100%]
+=================================== FAILURES ===================================
+_____________________ test_resume_rejects_mutated_manifest _____________________
+
+run = PosixPath('/tmp/pytest-of-eric/pytest-461/test_resume_rejects_mutated_ma0/run')
+max_jobs = None
+
+    def resume(run, max_jobs=None):
+        if max_jobs is not None and (isinstance(max_jobs, bool) or not isinstance(max_jobs, int) or max_jobs < 0):
+            raise ValueError("max_jobs must be a nonnegative integer")
+        run = Path(run).resolve()
+        # Keep this inode for the lifetime of the run: unlinking a locked file
+        # would let another coordinator lock a different inode at the same path.
+        # This coordinator-level file is deliberately outside attempt receipts.
+        with (run / ".resume.lock").open("a+") as lock:
+            try:
+                fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+            except BlockingIOError as exc:
+                raise RuntimeError(f"Another coordinator is already resuming this run: {run}") from exc
+            try:
+                # A per-run lock alone permits two separate runs to share the GPU.
+                # Main evaluation timing uses one worker across the whole project.
+                shared = BASE / 'results' / '.gpu.lock'
+                shared.parent.mkdir(parents=True, exist_ok=True)
+                with shared.open('a+') as gpu_lock:
+                    try:
+>                       fcntl.flock(gpu_lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+E                       BlockingIOError: [Errno 11] Resource temporarily unavailable
+
+benchmarks/generic_motion_v1/batch.py:531: BlockingIOError
+
+The above exception was the direct cause of the following exception:
+
+tmp_path = PosixPath('/tmp/pytest-of-eric/pytest-461/test_resume_rejects_mutated_ma0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x789e7a3712d0>
+
+    def test_resume_rejects_mutated_manifest(tmp_path, monkeypatch):
+        run, manifest, _ = prepared(tmp_path, monkeypatch)
+        manifest.write_text(manifest.read_text() + "\n")
+        with pytest.raises(ValueError, match="manifest changed"):
+>           batch.resume(run)
+
+benchmarks/generic_motion_v1/tests/test_batch.py:61: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+run = PosixPath('/tmp/pytest-of-eric/pytest-461/test_resume_rejects_mutated_ma0/run')
+max_jobs = None
+
+    def resume(run, max_jobs=None):
+        if max_jobs is not None and (isinstance(max_jobs, bool) or not isinstance(max_jobs, int) or max_jobs < 0):
+            raise ValueError("max_jobs must be a nonnegative integer")
+        run = Path(run).resolve()
+        # Keep this inode for the lifetime of the run: unlinking a locked file
+        # would let another coordinator lock a different inode at the same path.
+        # This coordinator-level file is deliberately outside attempt receipts.
+        with (run / ".resume.lock").open("a+") as lock:
+            try:
+                fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+            except BlockingIOError as exc:
+                raise RuntimeError(f"Another coordinator is already resuming this run: {run}") from exc
+            try:
+                # A per-run lock alone permits two separate runs to share the GPU.
+                # Main evaluation timing uses one worker across the whole project.
+                shared = BASE / 'results' / '.gpu.lock'
+                shared.parent.mkdir(parents=True, exist_ok=True)
+                with shared.open('a+') as gpu_lock:
+                    try:
+                        fcntl.flock(gpu_lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+                    except BlockingIOError as exc:
+>                       raise RuntimeError('Another benchmark run currently owns the GPU') from exc
+E                       RuntimeError: Another benchmark run currently owns the GPU
+
+benchmarks/generic_motion_v1/batch.py:533: RuntimeError
+_______________________ test_resume_rejects_mutated_map ________________________
+
+run = PosixPath('/tmp/pytest-of-eric/pytest-461/test_resume_rejects_mutated_ma1/run')
+max_jobs = None
+
+    def resume(run, max_jobs=None):
+        if max_jobs is not None and (isinstance(max_jobs, bool) or not isinstance(max_jobs, int) or max_jobs < 0):
+            raise ValueError("max_jobs must be a nonnegative integer")
+        run = Path(run).resolve()
+        # Keep this inode for the lifetime of the run: unlinking a locked file
+        # would let another coordinator lock a different inode at the same path.
+        # This coordinator-level file is deliberately outside attempt receipts.
+        with (run / ".resume.lock").open("a+") as lock:
+            try:
+                fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+            except BlockingIOError as exc:
+                raise RuntimeError(f"Another coordinator is already resuming this run: {run}") from exc
+            try:
+                # A per-run lock alone permits two separate runs to share the GPU.
+                # Main evaluation timing uses one worker across the whole project.
+                shared = BASE / 'results' / '.gpu.lock'
+                shared.parent.mkdir(parents=True, exist_ok=True)
+                with shared.open('a+') as gpu_lock:
+                    try:
+>                       fcntl.flock(gpu_lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+E                       BlockingIOError: [Errno 11] Resource temporarily unavailable
+
+benchmarks/generic_motion_v1/batch.py:531: BlockingIOError
+
+The above exception was the direct cause of the following exception:
+
+tmp_path = PosixPath('/tmp/pytest-of-eric/pytest-461/test_resume_rejects_mutated_ma1')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x789e7a31e680>
+
+    def test_resume_rejects_mutated_map(tmp_path, monkeypatch):
+        run, _, roadmap = prepared(tmp_path, monkeypatch)
+        write(roadmap / "metadata.json", dict(seed=99))
+        with pytest.raises(ValueError, match="roadmap changed"):
+>           batch.resume(run)
+
+benchmarks/generic_motion_v1/tests/test_batch.py:68: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+run = PosixPath('/tmp/pytest-of-eric/pytest-461/test_resume_rejects_mutated_ma1/run')
+max_jobs = None
+
+    def resume(run, max_jobs=None):
+        if max_jobs is not None and (isinstance(max_jobs, bool) or not isinstance(max_jobs, int) or max_jobs < 0):
+            raise ValueError("max_jobs must be a nonnegative integer")
+        run = Path(run).resolve()
+        # Keep this inode for the lifetime of the run: unlinking a locked file
+        # would let another coordinator lock a different inode at the same path.
+        # This coordinator-level file is deliberately outside attempt receipts.
+        with (run / ".resume.lock").open("a+") as lock:
+            try:
+                fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+            except BlockingIOError as exc:
+                raise RuntimeError(f"Another coordinator is already resuming this run: {run}") from exc
+            try:
+                # A per-run lock alone permits two separate runs to share the GPU.
+                # Main evaluation timing uses one worker across the whole project.
+                shared = BASE / 'results' / '.gpu.lock'
+                shared.parent.mkdir(parents=True, exist_ok=True)
+                with shared.open('a+') as gpu_lock:
+                    try:
+                        fcntl.flock(gpu_lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+                    except BlockingIOError as exc:
+>                       raise RuntimeError('Another benchmark run currently owns the GPU') from exc
+E                       RuntimeError: Another benchmark run currently owns the GPU
+
+benchmarks/generic_motion_v1/batch.py:533: RuntimeError
+_________ test_real_process_timeout_is_saved_and_resume_never_retries __________
+
+run = PosixPath('/tmp/pytest-of-eric/pytest-461/test_real_process_timeout_is_s0/run')
+max_jobs = None
+
+    def resume(run, max_jobs=None):
+        if max_jobs is not None and (isinstance(max_jobs, bool) or not isinstance(max_jobs, int) or max_jobs < 0):
+            raise ValueError("max_jobs must be a nonnegative integer")
+        run = Path(run).resolve()
+        # Keep this inode for the lifetime of the run: unlinking a locked file
+        # would let another coordinator lock a different inode at the same path.
+        # This coordinator-level file is deliberately outside attempt receipts.
+        with (run / ".resume.lock").open("a+") as lock:
+            try:
+                fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+            except BlockingIOError as exc:
+                raise RuntimeError(f"Another coordinator is already resuming this run: {run}") from exc
+            try:
+                # A per-run lock alone permits two separate runs to share the GPU.
+                # Main evaluation timing uses one worker across the whole project.
+                shared = BASE / 'results' / '.gpu.lock'
+                shared.parent.mkdir(parents=True, exist_ok=True)
+                with shared.open('a+') as gpu_lock:
+                    try:
+>                       fcntl.flock(gpu_lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+E                       BlockingIOError: [Errno 11] Resource temporarily unavailable
+
+benchmarks/generic_motion_v1/batch.py:531: BlockingIOError
+
+The above exception was the direct cause of the following exception:
+
+tmp_path = PosixPath('/tmp/pytest-of-eric/pytest-461/test_real_process_timeout_is_s0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x789e7a2c3e80>
+
+    def test_real_process_timeout_is_saved_and_resume_never_retries(tmp_path, monkeypatch):
+        run, _, _ = prepared(tmp_path, monkeypatch)
+        original = subprocess.Popen
+        monkeypatch.setattr(batch.subprocess, "Popen", lambda argv, **kwargs:
+                            original([sys.executable, "-c", "import time; print('started', flush=True); time.sleep(30)"], **kwargs))
+        monkeypatch.setattr(batch, "_gpu_memory", lambda pid: None)
+        job = read(run / "run_manifest.json")["jobs"][0]
+        result = batch.execute(job, run, .15)
+        assert result["status"] == "timeout"
+        attempt = run / "jobs" / job["job_id"] / "attempts" / "0001"
+        assert read(attempt / "process.json")["timed_out"]
+        before = {str(p): p.read_bytes() for p in attempt.iterdir() if p.is_file()}
+        monkeypatch.setattr(batch, "execute", lambda *a, **k: pytest.fail("Do not retry completed failure"))
+>       assert batch.resume(run)["complete"]
+
+benchmarks/generic_motion_v1/tests/test_batch.py:84: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+run = PosixPath('/tmp/pytest-of-eric/pytest-461/test_real_process_timeout_is_s0/run')
+max_jobs = None
+
+    def resume(run, max_jobs=None):
+        if max_jobs is not None and (isinstance(max_jobs, bool) or not isinstance(max_jobs, int) or max_jobs < 0):
+            raise ValueError("max_jobs must be a nonnegative integer")
+        run = Path(run).resolve()
+        # Keep this inode for the lifetime of the run: unlinking a locked file
+        # would let another coordinator lock a different inode at the same path.
+        # This coordinator-level file is deliberately outside attempt receipts.
+        with (run / ".resume.lock").open("a+") as lock:
+            try:
+                fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+            except BlockingIOError as exc:
+                raise RuntimeError(f"Another coordinator is already resuming this run: {run}") from exc
+            try:
+                # A per-run lock alone permits two separate runs to share the GPU.
+                # Main evaluation timing uses one worker across the whole project.
+                shared = BASE / 'results' / '.gpu.lock'
+                shared.parent.mkdir(parents=True, exist_ok=True)
+                with shared.open('a+') as gpu_lock:
+                    try:
+                        fcntl.flock(gpu_lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+                    except BlockingIOError as exc:
+>                       raise RuntimeError('Another benchmark run currently owns the GPU') from exc
+E                       RuntimeError: Another benchmark run currently owns the GPU
+
+benchmarks/generic_motion_v1/batch.py:533: RuntimeError
+----------------------------- Captured stdout call -----------------------------
+{"job_id": "c0-EI_ZO-minimum_distance-f667c350", "status": "timeout", "seconds": 0.151}
+______ test_unsealed_interruption_is_preserved_and_retried_in_new_attempt ______
+
+run = PosixPath('/tmp/pytest-of-eric/pytest-461/test_unsealed_interruption_is_0/run')
+max_jobs = None
+
+    def resume(run, max_jobs=None):
+        if max_jobs is not None and (isinstance(max_jobs, bool) or not isinstance(max_jobs, int) or max_jobs < 0):
+            raise ValueError("max_jobs must be a nonnegative integer")
+        run = Path(run).resolve()
+        # Keep this inode for the lifetime of the run: unlinking a locked file
+        # would let another coordinator lock a different inode at the same path.
+        # This coordinator-level file is deliberately outside attempt receipts.
+        with (run / ".resume.lock").open("a+") as lock:
+            try:
+                fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+            except BlockingIOError as exc:
+                raise RuntimeError(f"Another coordinator is already resuming this run: {run}") from exc
+            try:
+                # A per-run lock alone permits two separate runs to share the GPU.
+                # Main evaluation timing uses one worker across the whole project.
+                shared = BASE / 'results' / '.gpu.lock'
+                shared.parent.mkdir(parents=True, exist_ok=True)
+                with shared.open('a+') as gpu_lock:
+                    try:
+>                       fcntl.flock(gpu_lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+E                       BlockingIOError: [Errno 11] Resource temporarily unavailable
+
+benchmarks/generic_motion_v1/batch.py:531: BlockingIOError
+
+The above exception was the direct cause of the following exception:
+
+tmp_path = PosixPath('/tmp/pytest-of-eric/pytest-461/test_unsealed_interruption_is_0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x789e7a955180>
+
+    def test_unsealed_interruption_is_preserved_and_retried_in_new_attempt(tmp_path, monkeypatch):
+        run, _, _ = prepared(tmp_path, monkeypatch)
+        job = read(run / "run_manifest.json")["jobs"][0]
+        first = run / "jobs" / job["job_id"] / "attempts" / "0001"
+        first.mkdir(parents=True)
+        (first / "partial.txt").write_text("actual partial output must survive")
+        write(first / "result.json", dict(status="running", stage="planning"))
+        assert not batch.verify(run)["integrity_passed"]
+        original = subprocess.Popen
+        monkeypatch.setattr(batch.subprocess, "Popen", lambda argv, **kwargs:
+                            original([sys.executable, "-c", "print('second attempt process')"], **kwargs))
+        monkeypatch.setattr(batch, "_gpu_memory", lambda pid: None)
+>       result = batch.resume(run)
+
+benchmarks/generic_motion_v1/tests/test_batch.py:102: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+run = PosixPath('/tmp/pytest-of-eric/pytest-461/test_unsealed_interruption_is_0/run')
+max_jobs = None
+
+    def resume(run, max_jobs=None):
+        if max_jobs is not None and (isinstance(max_jobs, bool) or not isinstance(max_jobs, int) or max_jobs < 0):
+            raise ValueError("max_jobs must be a nonnegative integer")
+        run = Path(run).resolve()
+        # Keep this inode for the lifetime of the run: unlinking a locked file
+        # would let another coordinator lock a different inode at the same path.
+        # This coordinator-level file is deliberately outside attempt receipts.
+        with (run / ".resume.lock").open("a+") as lock:
+            try:
+                fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+            except BlockingIOError as exc:
+                raise RuntimeError(f"Another coordinator is already resuming this run: {run}") from exc
+            try:
+                # A per-run lock alone permits two separate runs to share the GPU.
+                # Main evaluation timing uses one worker across the whole project.
+                shared = BASE / 'results' / '.gpu.lock'
+                shared.parent.mkdir(parents=True, exist_ok=True)
+                with shared.open('a+') as gpu_lock:
+                    try:
+                        fcntl.flock(gpu_lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+                    except BlockingIOError as exc:
+>                       raise RuntimeError('Another benchmark run currently owns the GPU') from exc
+E                       RuntimeError: Another benchmark run currently owns the GPU
+
+benchmarks/generic_motion_v1/batch.py:533: RuntimeError
+_____ test_active_coordinator_lock_rejects_resume_without_mutating_attempt _____
+
+run = PosixPath('/tmp/pytest-of-eric/pytest-461/test_active_coordinator_lock_r0/run')
+max_jobs = 0
+
+    def resume(run, max_jobs=None):
+        if max_jobs is not None and (isinstance(max_jobs, bool) or not isinstance(max_jobs, int) or max_jobs < 0):
+            raise ValueError("max_jobs must be a nonnegative integer")
+        run = Path(run).resolve()
+        # Keep this inode for the lifetime of the run: unlinking a locked file
+        # would let another coordinator lock a different inode at the same path.
+        # This coordinator-level file is deliberately outside attempt receipts.
+        with (run / ".resume.lock").open("a+") as lock:
+            try:
+                fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+            except BlockingIOError as exc:
+                raise RuntimeError(f"Another coordinator is already resuming this run: {run}") from exc
+            try:
+                # A per-run lock alone permits two separate runs to share the GPU.
+                # Main evaluation timing uses one worker across the whole project.
+                shared = BASE / 'results' / '.gpu.lock'
+                shared.parent.mkdir(parents=True, exist_ok=True)
+                with shared.open('a+') as gpu_lock:
+                    try:
+>                       fcntl.flock(gpu_lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+E                       BlockingIOError: [Errno 11] Resource temporarily unavailable
+
+benchmarks/generic_motion_v1/batch.py:531: BlockingIOError
+
+The above exception was the direct cause of the following exception:
+
+tmp_path = PosixPath('/tmp/pytest-of-eric/pytest-461/test_active_coordinator_lock_r0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x789e7a27ae00>
+
+    def test_active_coordinator_lock_rejects_resume_without_mutating_attempt(tmp_path, monkeypatch):
+        run, _, _ = prepared(tmp_path, monkeypatch)
+        job = read(run / "run_manifest.json")["jobs"][0]
+        attempt = run / "jobs" / job["job_id"] / "attempts" / "0001"
+        write(attempt / "result.json", dict(status="running", stage="planning"))
+        (attempt / "partial.txt").write_text("live worker output")
+        before = {str(p): p.read_bytes() for p in attempt.iterdir()}
+        monkeypatch.setattr(batch, "execute", lambda *a, **k: pytest.fail("Do not launch another worker"))
+        with (run / ".resume.lock").open("a+") as owner:
+            fcntl.flock(owner, fcntl.LOCK_EX | fcntl.LOCK_NB)
+            with pytest.raises(RuntimeError, match="Another coordinator"):
+                batch.resume(run, max_jobs=0)
+            assert before == {str(p): p.read_bytes() for p in attempt.iterdir()}
+        # Once the owner releases the lock, normal interruption recovery can
+        # proceed. max_jobs=0 seals evidence without launching a GPU worker.
+>       check = batch.resume(run, max_jobs=0)
+
+benchmarks/generic_motion_v1/tests/test_batch.py:133: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+run = PosixPath('/tmp/pytest-of-eric/pytest-461/test_active_coordinator_lock_r0/run')
+max_jobs = 0
+
+    def resume(run, max_jobs=None):
+        if max_jobs is not None and (isinstance(max_jobs, bool) or not isinstance(max_jobs, int) or max_jobs < 0):
+            raise ValueError("max_jobs must be a nonnegative integer")
+        run = Path(run).resolve()
+        # Keep this inode for the lifetime of the run: unlinking a locked file
+        # would let another coordinator lock a different inode at the same path.
+        # This coordinator-level file is deliberately outside attempt receipts.
+        with (run / ".resume.lock").open("a+") as lock:
+            try:
+                fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+            except BlockingIOError as exc:
+                raise RuntimeError(f"Another coordinator is already resuming this run: {run}") from exc
+            try:
+                # A per-run lock alone permits two separate runs to share the GPU.
+                # Main evaluation timing uses one worker across the whole project.
+                shared = BASE / 'results' / '.gpu.lock'
+                shared.parent.mkdir(parents=True, exist_ok=True)
+                with shared.open('a+') as gpu_lock:
+                    try:
+                        fcntl.flock(gpu_lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+                    except BlockingIOError as exc:
+>                       raise RuntimeError('Another benchmark run currently owns the GPU') from exc
+E                       RuntimeError: Another benchmark run currently owns the GPU
+
+benchmarks/generic_motion_v1/batch.py:533: RuntimeError
+_ test_verify_rejects_original_or_copied_evidence_mutation[original-protocol] __
+
+run = PosixPath('/tmp/pytest-of-eric/pytest-461/test_verify_rejects_original_o0/run')
+max_jobs = None
+
+    def resume(run, max_jobs=None):
+        if max_jobs is not None and (isinstance(max_jobs, bool) or not isinstance(max_jobs, int) or max_jobs < 0):
+            raise ValueError("max_jobs must be a nonnegative integer")
+        run = Path(run).resolve()
+        # Keep this inode for the lifetime of the run: unlinking a locked file
+        # would let another coordinator lock a different inode at the same path.
+        # This coordinator-level file is deliberately outside attempt receipts.
+        with (run / ".resume.lock").open("a+") as lock:
+            try:
+                fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+            except BlockingIOError as exc:
+                raise RuntimeError(f"Another coordinator is already resuming this run: {run}") from exc
+            try:
+                # A per-run lock alone permits two separate runs to share the GPU.
+                # Main evaluation timing uses one worker across the whole project.
+                shared = BASE / 'results' / '.gpu.lock'
+                shared.parent.mkdir(parents=True, exist_ok=True)
+                with shared.open('a+') as gpu_lock:
+                    try:
+>                       fcntl.flock(gpu_lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+E                       BlockingIOError: [Errno 11] Resource temporarily unavailable
+
+benchmarks/generic_motion_v1/batch.py:531: BlockingIOError
+
+The above exception was the direct cause of the following exception:
+
+bundle = namespace(root=PosixPath('/tmp/pytest-of-eric/pytest-461/test_verify_rejects_original_o0'), manifest=PosixPath('/tmp/p...verage_tolerance_rad': 1e-06}, methods=['EI_ZO', 'NTO_PAPER', 'LGCS'], objectives=['minimum_distance', 'minimum_time'])
+artifact = 'original-protocol'
+
+    @pytest.mark.parametrize("artifact", ["original-protocol", "copied-protocol", "original-audit", "copied-audit", "original-contract", "copied-contract", "data", "model", "roadmap"])
+    def test_verify_rejects_original_or_copied_evidence_mutation(bundle, artifact):
+        run = prepare(bundle)
+        target = {"original-protocol": bundle.protocol_path, "copied-protocol": run / "study_protocol.json",
+                  "original-audit": bundle.audit_path, "copied-audit": run / "study_input_audit.json",
+                  "original-contract": bundle.contract, "copied-contract": run / "study_metrics_contract.md",
+                  "data": bundle.root / "inputs" / "p0.npz", "model": bundle.asset,
+                  "roadmap": bundle.maps[0] / "native.map"}[artifact]
+        target.write_bytes(target.read_bytes() + b"\n")
+        check = batch.verify(run)
+        assert not check["integrity_passed"]
+        assert any("study protocol" in error for error in check["errors"])
+        with pytest.raises(ValueError):
+>           batch.resume(run)
+
+benchmarks/generic_motion_v1/tests/test_study_protocol.py:298: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+run = PosixPath('/tmp/pytest-of-eric/pytest-461/test_verify_rejects_original_o0/run')
+max_jobs = None
+
+    def resume(run, max_jobs=None):
+        if max_jobs is not None and (isinstance(max_jobs, bool) or not isinstance(max_jobs, int) or max_jobs < 0):
+            raise ValueError("max_jobs must be a nonnegative integer")
+        run = Path(run).resolve()
+        # Keep this inode for the lifetime of the run: unlinking a locked file
+        # would let another coordinator lock a different inode at the same path.
+        # This coordinator-level file is deliberately outside attempt receipts.
+        with (run / ".resume.lock").open("a+") as lock:
+            try:
+                fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+            except BlockingIOError as exc:
+                raise RuntimeError(f"Another coordinator is already resuming this run: {run}") from exc
+            try:
+                # A per-run lock alone permits two separate runs to share the GPU.
+                # Main evaluation timing uses one worker across the whole project.
+                shared = BASE / 'results' / '.gpu.lock'
+                shared.parent.mkdir(parents=True, exist_ok=True)
+                with shared.open('a+') as gpu_lock:
+                    try:
+                        fcntl.flock(gpu_lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+                    except BlockingIOError as exc:
+>                       raise RuntimeError('Another benchmark run currently owns the GPU') from exc
+E                       RuntimeError: Another benchmark run currently owns the GPU
+
+benchmarks/generic_motion_v1/batch.py:533: RuntimeError
+__ test_verify_rejects_original_or_copied_evidence_mutation[copied-protocol] ___
+
+run = PosixPath('/tmp/pytest-of-eric/pytest-461/test_verify_rejects_original_o1/run')
+max_jobs = None
+
+    def resume(run, max_jobs=None):
+        if max_jobs is not None and (isinstance(max_jobs, bool) or not isinstance(max_jobs, int) or max_jobs < 0):
+            raise ValueError("max_jobs must be a nonnegative integer")
+        run = Path(run).resolve()
+        # Keep this inode for the lifetime of the run: unlinking a locked file
+        # would let another coordinator lock a different inode at the same path.
+        # This coordinator-level file is deliberately outside attempt receipts.
+        with (run / ".resume.lock").open("a+") as lock:
+            try:
+                fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+            except BlockingIOError as exc:
+                raise RuntimeError(f"Another coordinator is already resuming this run: {run}") from exc
+            try:
+                # A per-run lock alone permits two separate runs to share the GPU.
+                # Main evaluation timing uses one worker across the whole project.
+                shared = BASE / 'results' / '.gpu.lock'
+                shared.parent.mkdir(parents=True, exist_ok=True)
+                with shared.open('a+') as gpu_lock:
+                    try:
+>                       fcntl.flock(gpu_lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+E                       BlockingIOError: [Errno 11] Resource temporarily unavailable
+
+benchmarks/generic_motion_v1/batch.py:531: BlockingIOError
+
+The above exception was the direct cause of the following exception:
+
+bundle = namespace(root=PosixPath('/tmp/pytest-of-eric/pytest-461/test_verify_rejects_original_o1'), manifest=PosixPath('/tmp/p...verage_tolerance_rad': 1e-06}, methods=['EI_ZO', 'NTO_PAPER', 'LGCS'], objectives=['minimum_distance', 'minimum_time'])
+artifact = 'copied-protocol'
+
+    @pytest.mark.parametrize("artifact", ["original-protocol", "copied-protocol", "original-audit", "copied-audit", "original-contract", "copied-contract", "data", "model", "roadmap"])
+    def test_verify_rejects_original_or_copied_evidence_mutation(bundle, artifact):
+        run = prepare(bundle)
+        target = {"original-protocol": bundle.protocol_path, "copied-protocol": run / "study_protocol.json",
+                  "original-audit": bundle.audit_path, "copied-audit": run / "study_input_audit.json",
+                  "original-contract": bundle.contract, "copied-contract": run / "study_metrics_contract.md",
+                  "data": bundle.root / "inputs" / "p0.npz", "model": bundle.asset,
+                  "roadmap": bundle.maps[0] / "native.map"}[artifact]
+        target.write_bytes(target.read_bytes() + b"\n")
+        check = batch.verify(run)
+        assert not check["integrity_passed"]
+        assert any("study protocol" in error for error in check["errors"])
+        with pytest.raises(ValueError):
+>           batch.resume(run)
+
+benchmarks/generic_motion_v1/tests/test_study_protocol.py:298: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+run = PosixPath('/tmp/pytest-of-eric/pytest-461/test_verify_rejects_original_o1/run')
+max_jobs = None
+
+    def resume(run, max_jobs=None):
+        if max_jobs is not None and (isinstance(max_jobs, bool) or not isinstance(max_jobs, int) or max_jobs < 0):
+            raise ValueError("max_jobs must be a nonnegative integer")
+        run = Path(run).resolve()
+        # Keep this inode for the lifetime of the run: unlinking a locked file
+        # would let another coordinator lock a different inode at the same path.
+        # This coordinator-level file is deliberately outside attempt receipts.
+        with (run / ".resume.lock").open("a+") as lock:
+            try:
+                fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+            except BlockingIOError as exc:
+                raise RuntimeError(f"Another coordinator is already resuming this run: {run}") from exc
+            try:
+                # A per-run lock alone permits two separate runs to share the GPU.
+                # Main evaluation timing uses one worker across the whole project.
+                shared = BASE / 'results' / '.gpu.lock'
+                shared.parent.mkdir(parents=True, exist_ok=True)
+                with shared.open('a+') as gpu_lock:
+                    try:
+                        fcntl.flock(gpu_lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+                    except BlockingIOError as exc:
+>                       raise RuntimeError('Another benchmark run currently owns the GPU') from exc
+E                       RuntimeError: Another benchmark run currently owns the GPU
+
+benchmarks/generic_motion_v1/batch.py:533: RuntimeError
+___ test_verify_rejects_original_or_copied_evidence_mutation[original-audit] ___
+
+run = PosixPath('/tmp/pytest-of-eric/pytest-461/test_verify_rejects_original_o2/run')
+max_jobs = None
+
+    def resume(run, max_jobs=None):
+        if max_jobs is not None and (isinstance(max_jobs, bool) or not isinstance(max_jobs, int) or max_jobs < 0):
+            raise ValueError("max_jobs must be a nonnegative integer")
+        run = Path(run).resolve()
+        # Keep this inode for the lifetime of the run: unlinking a locked file
+        # would let another coordinator lock a different inode at the same path.
+        # This coordinator-level file is deliberately outside attempt receipts.
+        with (run / ".resume.lock").open("a+") as lock:
+            try:
+                fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+            except BlockingIOError as exc:
+                raise RuntimeError(f"Another coordinator is already resuming this run: {run}") from exc
+            try:
+                # A per-run lock alone permits two separate runs to share the GPU.
+                # Main evaluation timing uses one worker across the whole project.
+                shared = BASE / 'results' / '.gpu.lock'
+                shared.parent.mkdir(parents=True, exist_ok=True)
+                with shared.open('a+') as gpu_lock:
+                    try:
+>                       fcntl.flock(gpu_lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+E                       BlockingIOError: [Errno 11] Resource temporarily unavailable
+
+benchmarks/generic_motion_v1/batch.py:531: BlockingIOError
+
+The above exception was the direct cause of the following exception:
+
+bundle = namespace(root=PosixPath('/tmp/pytest-of-eric/pytest-461/test_verify_rejects_original_o2'), manifest=PosixPath('/tmp/p...verage_tolerance_rad': 1e-06}, methods=['EI_ZO', 'NTO_PAPER', 'LGCS'], objectives=['minimum_distance', 'minimum_time'])
+artifact = 'original-audit'
+
+    @pytest.mark.parametrize("artifact", ["original-protocol", "copied-protocol", "original-audit", "copied-audit", "original-contract", "copied-contract", "data", "model", "roadmap"])
+    def test_verify_rejects_original_or_copied_evidence_mutation(bundle, artifact):
+        run = prepare(bundle)
+        target = {"original-protocol": bundle.protocol_path, "copied-protocol": run / "study_protocol.json",
+                  "original-audit": bundle.audit_path, "copied-audit": run / "study_input_audit.json",
+                  "original-contract": bundle.contract, "copied-contract": run / "study_metrics_contract.md",
+                  "data": bundle.root / "inputs" / "p0.npz", "model": bundle.asset,
+                  "roadmap": bundle.maps[0] / "native.map"}[artifact]
+        target.write_bytes(target.read_bytes() + b"\n")
+        check = batch.verify(run)
+        assert not check["integrity_passed"]
+        assert any("study protocol" in error for error in check["errors"])
+        with pytest.raises(ValueError):
+>           batch.resume(run)
+
+benchmarks/generic_motion_v1/tests/test_study_protocol.py:298: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+run = PosixPath('/tmp/pytest-of-eric/pytest-461/test_verify_rejects_original_o2/run')
+max_jobs = None
+
+    def resume(run, max_jobs=None):
+        if max_jobs is not None and (isinstance(max_jobs, bool) or not isinstance(max_jobs, int) or max_jobs < 0):
+            raise ValueError("max_jobs must be a nonnegative integer")
+        run = Path(run).resolve()
+        # Keep this inode for the lifetime of the run: unlinking a locked file
+        # would let another coordinator lock a different inode at the same path.
+        # This coordinator-level file is deliberately outside attempt receipts.
+        with (run / ".resume.lock").open("a+") as lock:
+            try:
+                fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+            except BlockingIOError as exc:
+                raise RuntimeError(f"Another coordinator is already resuming this run: {run}") from exc
+            try:
+                # A per-run lock alone permits two separate runs to share the GPU.
+                # Main evaluation timing uses one worker across the whole project.
+                shared = BASE / 'results' / '.gpu.lock'
+                shared.parent.mkdir(parents=True, exist_ok=True)
+                with shared.open('a+') as gpu_lock:
+                    try:
+                        fcntl.flock(gpu_lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+                    except BlockingIOError as exc:
+>                       raise RuntimeError('Another benchmark run currently owns the GPU') from exc
+E                       RuntimeError: Another benchmark run currently owns the GPU
+
+benchmarks/generic_motion_v1/batch.py:533: RuntimeError
+____ test_verify_rejects_original_or_copied_evidence_mutation[copied-audit] ____
+
+run = PosixPath('/tmp/pytest-of-eric/pytest-461/test_verify_rejects_original_o3/run')
+max_jobs = None
+
+    def resume(run, max_jobs=None):
+        if max_jobs is not None and (isinstance(max_jobs, bool) or not isinstance(max_jobs, int) or max_jobs < 0):
+            raise ValueError("max_jobs must be a nonnegative integer")
+        run = Path(run).resolve()
+        # Keep this inode for the lifetime of the run: unlinking a locked file
+        # would let another coordinator lock a different inode at the same path.
+        # This coordinator-level file is deliberately outside attempt receipts.
+        with (run / ".resume.lock").open("a+") as lock:
+            try:
+                fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+            except BlockingIOError as exc:
+                raise RuntimeError(f"Another coordinator is already resuming this run: {run}") from exc
+            try:
+                # A per-run lock alone permits two separate runs to share the GPU.
+                # Main evaluation timing uses one worker across the whole project.
+                shared = BASE / 'results' / '.gpu.lock'
+                shared.parent.mkdir(parents=True, exist_ok=True)
+                with shared.open('a+') as gpu_lock:
+                    try:
+>                       fcntl.flock(gpu_lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+E                       BlockingIOError: [Errno 11] Resource temporarily unavailable
+
+benchmarks/generic_motion_v1/batch.py:531: BlockingIOError
+
+The above exception was the direct cause of the following exception:
+
+bundle = namespace(root=PosixPath('/tmp/pytest-of-eric/pytest-461/test_verify_rejects_original_o3'), manifest=PosixPath('/tmp/p...verage_tolerance_rad': 1e-06}, methods=['EI_ZO', 'NTO_PAPER', 'LGCS'], objectives=['minimum_distance', 'minimum_time'])
+artifact = 'copied-audit'
+
+    @pytest.mark.parametrize("artifact", ["original-protocol", "copied-protocol", "original-audit", "copied-audit", "original-contract", "copied-contract", "data", "model", "roadmap"])
+    def test_verify_rejects_original_or_copied_evidence_mutation(bundle, artifact):
+        run = prepare(bundle)
+        target = {"original-protocol": bundle.protocol_path, "copied-protocol": run / "study_protocol.json",
+                  "original-audit": bundle.audit_path, "copied-audit": run / "study_input_audit.json",
+                  "original-contract": bundle.contract, "copied-contract": run / "study_metrics_contract.md",
+                  "data": bundle.root / "inputs" / "p0.npz", "model": bundle.asset,
+                  "roadmap": bundle.maps[0] / "native.map"}[artifact]
+        target.write_bytes(target.read_bytes() + b"\n")
+        check = batch.verify(run)
+        assert not check["integrity_passed"]
+        assert any("study protocol" in error for error in check["errors"])
+        with pytest.raises(ValueError):
+>           batch.resume(run)
+
+benchmarks/generic_motion_v1/tests/test_study_protocol.py:298: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+run = PosixPath('/tmp/pytest-of-eric/pytest-461/test_verify_rejects_original_o3/run')
+max_jobs = None
+
+    def resume(run, max_jobs=None):
+        if max_jobs is not None and (isinstance(max_jobs, bool) or not isinstance(max_jobs, int) or max_jobs < 0):
+            raise ValueError("max_jobs must be a nonnegative integer")
+        run = Path(run).resolve()
+        # Keep this inode for the lifetime of the run: unlinking a locked file
+        # would let another coordinator lock a different inode at the same path.
+        # This coordinator-level file is deliberately outside attempt receipts.
+        with (run / ".resume.lock").open("a+") as lock:
+            try:
+                fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+            except BlockingIOError as exc:
+                raise RuntimeError(f"Another coordinator is already resuming this run: {run}") from exc
+            try:
+                # A per-run lock alone permits two separate runs to share the GPU.
+                # Main evaluation timing uses one worker across the whole project.
+                shared = BASE / 'results' / '.gpu.lock'
+                shared.parent.mkdir(parents=True, exist_ok=True)
+                with shared.open('a+') as gpu_lock:
+                    try:
+                        fcntl.flock(gpu_lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+                    except BlockingIOError as exc:
+>                       raise RuntimeError('Another benchmark run currently owns the GPU') from exc
+E                       RuntimeError: Another benchmark run currently owns the GPU
+
+benchmarks/generic_motion_v1/batch.py:533: RuntimeError
+_ test_verify_rejects_original_or_copied_evidence_mutation[original-contract] __
+
+run = PosixPath('/tmp/pytest-of-eric/pytest-461/test_verify_rejects_original_o4/run')
+max_jobs = None
+
+    def resume(run, max_jobs=None):
+        if max_jobs is not None and (isinstance(max_jobs, bool) or not isinstance(max_jobs, int) or max_jobs < 0):
+            raise ValueError("max_jobs must be a nonnegative integer")
+        run = Path(run).resolve()
+        # Keep this inode for the lifetime of the run: unlinking a locked file
+        # would let another coordinator lock a different inode at the same path.
+        # This coordinator-level file is deliberately outside attempt receipts.
+        with (run / ".resume.lock").open("a+") as lock:
+            try:
+                fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+            except BlockingIOError as exc:
+                raise RuntimeError(f"Another coordinator is already resuming this run: {run}") from exc
+            try:
+                # A per-run lock alone permits two separate runs to share the GPU.
+                # Main evaluation timing uses one worker across the whole project.
+                shared = BASE / 'results' / '.gpu.lock'
+                shared.parent.mkdir(parents=True, exist_ok=True)
+                with shared.open('a+') as gpu_lock:
+                    try:
+>                       fcntl.flock(gpu_lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+E                       BlockingIOError: [Errno 11] Resource temporarily unavailable
+
+benchmarks/generic_motion_v1/batch.py:531: BlockingIOError
+
+The above exception was the direct cause of the following exception:
+
+bundle = namespace(root=PosixPath('/tmp/pytest-of-eric/pytest-461/test_verify_rejects_original_o4'), manifest=PosixPath('/tmp/p...verage_tolerance_rad': 1e-06}, methods=['EI_ZO', 'NTO_PAPER', 'LGCS'], objectives=['minimum_distance', 'minimum_time'])
+artifact = 'original-contract'
+
+    @pytest.mark.parametrize("artifact", ["original-protocol", "copied-protocol", "original-audit", "copied-audit", "original-contract", "copied-contract", "data", "model", "roadmap"])
+    def test_verify_rejects_original_or_copied_evidence_mutation(bundle, artifact):
+        run = prepare(bundle)
+        target = {"original-protocol": bundle.protocol_path, "copied-protocol": run / "study_protocol.json",
+                  "original-audit": bundle.audit_path, "copied-audit": run / "study_input_audit.json",
+                  "original-contract": bundle.contract, "copied-contract": run / "study_metrics_contract.md",
+                  "data": bundle.root / "inputs" / "p0.npz", "model": bundle.asset,
+                  "roadmap": bundle.maps[0] / "native.map"}[artifact]
+        target.write_bytes(target.read_bytes() + b"\n")
+        check = batch.verify(run)
+        assert not check["integrity_passed"]
+        assert any("study protocol" in error for error in check["errors"])
+        with pytest.raises(ValueError):
+>           batch.resume(run)
+
+benchmarks/generic_motion_v1/tests/test_study_protocol.py:298: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+run = PosixPath('/tmp/pytest-of-eric/pytest-461/test_verify_rejects_original_o4/run')
+max_jobs = None
+
+    def resume(run, max_jobs=None):
+        if max_jobs is not None and (isinstance(max_jobs, bool) or not isinstance(max_jobs, int) or max_jobs < 0):
+            raise ValueError("max_jobs must be a nonnegative integer")
+        run = Path(run).resolve()
+        # Keep this inode for the lifetime of the run: unlinking a locked file
+        # would let another coordinator lock a different inode at the same path.
+        # This coordinator-level file is deliberately outside attempt receipts.
+        with (run / ".resume.lock").open("a+") as lock:
+            try:
+                fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+            except BlockingIOError as exc:
+                raise RuntimeError(f"Another coordinator is already resuming this run: {run}") from exc
+            try:
+                # A per-run lock alone permits two separate runs to share the GPU.
+                # Main evaluation timing uses one worker across the whole project.
+                shared = BASE / 'results' / '.gpu.lock'
+                shared.parent.mkdir(parents=True, exist_ok=True)
+                with shared.open('a+') as gpu_lock:
+                    try:
+                        fcntl.flock(gpu_lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+                    except BlockingIOError as exc:
+>                       raise RuntimeError('Another benchmark run currently owns the GPU') from exc
+E                       RuntimeError: Another benchmark run currently owns the GPU
+
+benchmarks/generic_motion_v1/batch.py:533: RuntimeError
+__ test_verify_rejects_original_or_copied_evidence_mutation[copied-contract] ___
+
+run = PosixPath('/tmp/pytest-of-eric/pytest-461/test_verify_rejects_original_o5/run')
+max_jobs = None
+
+    def resume(run, max_jobs=None):
+        if max_jobs is not None and (isinstance(max_jobs, bool) or not isinstance(max_jobs, int) or max_jobs < 0):
+            raise ValueError("max_jobs must be a nonnegative integer")
+        run = Path(run).resolve()
+        # Keep this inode for the lifetime of the run: unlinking a locked file
+        # would let another coordinator lock a different inode at the same path.
+        # This coordinator-level file is deliberately outside attempt receipts.
+        with (run / ".resume.lock").open("a+") as lock:
+            try:
+                fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+            except BlockingIOError as exc:
+                raise RuntimeError(f"Another coordinator is already resuming this run: {run}") from exc
+            try:
+                # A per-run lock alone permits two separate runs to share the GPU.
+                # Main evaluation timing uses one worker across the whole project.
+                shared = BASE / 'results' / '.gpu.lock'
+                shared.parent.mkdir(parents=True, exist_ok=True)
+                with shared.open('a+') as gpu_lock:
+                    try:
+>                       fcntl.flock(gpu_lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+E                       BlockingIOError: [Errno 11] Resource temporarily unavailable
+
+benchmarks/generic_motion_v1/batch.py:531: BlockingIOError
+
+The above exception was the direct cause of the following exception:
+
+bundle = namespace(root=PosixPath('/tmp/pytest-of-eric/pytest-461/test_verify_rejects_original_o5'), manifest=PosixPath('/tmp/p...verage_tolerance_rad': 1e-06}, methods=['EI_ZO', 'NTO_PAPER', 'LGCS'], objectives=['minimum_distance', 'minimum_time'])
+artifact = 'copied-contract'
+
+    @pytest.mark.parametrize("artifact", ["original-protocol", "copied-protocol", "original-audit", "copied-audit", "original-contract", "copied-contract", "data", "model", "roadmap"])
+    def test_verify_rejects_original_or_copied_evidence_mutation(bundle, artifact):
+        run = prepare(bundle)
+        target = {"original-protocol": bundle.protocol_path, "copied-protocol": run / "study_protocol.json",
+                  "original-audit": bundle.audit_path, "copied-audit": run / "study_input_audit.json",
+                  "original-contract": bundle.contract, "copied-contract": run / "study_metrics_contract.md",
+                  "data": bundle.root / "inputs" / "p0.npz", "model": bundle.asset,
+                  "roadmap": bundle.maps[0] / "native.map"}[artifact]
+        target.write_bytes(target.read_bytes() + b"\n")
+        check = batch.verify(run)
+        assert not check["integrity_passed"]
+        assert any("study protocol" in error for error in check["errors"])
+        with pytest.raises(ValueError):
+>           batch.resume(run)
+
+benchmarks/generic_motion_v1/tests/test_study_protocol.py:298: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+run = PosixPath('/tmp/pytest-of-eric/pytest-461/test_verify_rejects_original_o5/run')
+max_jobs = None
+
+    def resume(run, max_jobs=None):
+        if max_jobs is not None and (isinstance(max_jobs, bool) or not isinstance(max_jobs, int) or max_jobs < 0):
+            raise ValueError("max_jobs must be a nonnegative integer")
+        run = Path(run).resolve()
+        # Keep this inode for the lifetime of the run: unlinking a locked file
+        # would let another coordinator lock a different inode at the same path.
+        # This coordinator-level file is deliberately outside attempt receipts.
+        with (run / ".resume.lock").open("a+") as lock:
+            try:
+                fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+            except BlockingIOError as exc:
+                raise RuntimeError(f"Another coordinator is already resuming this run: {run}") from exc
+            try:
+                # A per-run lock alone permits two separate runs to share the GPU.
+                # Main evaluation timing uses one worker across the whole project.
+                shared = BASE / 'results' / '.gpu.lock'
+                shared.parent.mkdir(parents=True, exist_ok=True)
+                with shared.open('a+') as gpu_lock:
+                    try:
+                        fcntl.flock(gpu_lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+                    except BlockingIOError as exc:
+>                       raise RuntimeError('Another benchmark run currently owns the GPU') from exc
+E                       RuntimeError: Another benchmark run currently owns the GPU
+
+benchmarks/generic_motion_v1/batch.py:533: RuntimeError
+________ test_verify_rejects_original_or_copied_evidence_mutation[data] ________
+
+run = PosixPath('/tmp/pytest-of-eric/pytest-461/test_verify_rejects_original_o6/run')
+max_jobs = None
+
+    def resume(run, max_jobs=None):
+        if max_jobs is not None and (isinstance(max_jobs, bool) or not isinstance(max_jobs, int) or max_jobs < 0):
+            raise ValueError("max_jobs must be a nonnegative integer")
+        run = Path(run).resolve()
+        # Keep this inode for the lifetime of the run: unlinking a locked file
+        # would let another coordinator lock a different inode at the same path.
+        # This coordinator-level file is deliberately outside attempt receipts.
+        with (run / ".resume.lock").open("a+") as lock:
+            try:
+                fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+            except BlockingIOError as exc:
+                raise RuntimeError(f"Another coordinator is already resuming this run: {run}") from exc
+            try:
+                # A per-run lock alone permits two separate runs to share the GPU.
+                # Main evaluation timing uses one worker across the whole project.
+                shared = BASE / 'results' / '.gpu.lock'
+                shared.parent.mkdir(parents=True, exist_ok=True)
+                with shared.open('a+') as gpu_lock:
+                    try:
+>                       fcntl.flock(gpu_lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+E                       BlockingIOError: [Errno 11] Resource temporarily unavailable
+
+benchmarks/generic_motion_v1/batch.py:531: BlockingIOError
+
+The above exception was the direct cause of the following exception:
+
+bundle = namespace(root=PosixPath('/tmp/pytest-of-eric/pytest-461/test_verify_rejects_original_o6'), manifest=PosixPath('/tmp/p...verage_tolerance_rad': 1e-06}, methods=['EI_ZO', 'NTO_PAPER', 'LGCS'], objectives=['minimum_distance', 'minimum_time'])
+artifact = 'data'
+
+    @pytest.mark.parametrize("artifact", ["original-protocol", "copied-protocol", "original-audit", "copied-audit", "original-contract", "copied-contract", "data", "model", "roadmap"])
+    def test_verify_rejects_original_or_copied_evidence_mutation(bundle, artifact):
+        run = prepare(bundle)
+        target = {"original-protocol": bundle.protocol_path, "copied-protocol": run / "study_protocol.json",
+                  "original-audit": bundle.audit_path, "copied-audit": run / "study_input_audit.json",
+                  "original-contract": bundle.contract, "copied-contract": run / "study_metrics_contract.md",
+                  "data": bundle.root / "inputs" / "p0.npz", "model": bundle.asset,
+                  "roadmap": bundle.maps[0] / "native.map"}[artifact]
+        target.write_bytes(target.read_bytes() + b"\n")
+        check = batch.verify(run)
+        assert not check["integrity_passed"]
+        assert any("study protocol" in error for error in check["errors"])
+        with pytest.raises(ValueError):
+>           batch.resume(run)
+
+benchmarks/generic_motion_v1/tests/test_study_protocol.py:298: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+run = PosixPath('/tmp/pytest-of-eric/pytest-461/test_verify_rejects_original_o6/run')
+max_jobs = None
+
+    def resume(run, max_jobs=None):
+        if max_jobs is not None and (isinstance(max_jobs, bool) or not isinstance(max_jobs, int) or max_jobs < 0):
+            raise ValueError("max_jobs must be a nonnegative integer")
+        run = Path(run).resolve()
+        # Keep this inode for the lifetime of the run: unlinking a locked file
+        # would let another coordinator lock a different inode at the same path.
+        # This coordinator-level file is deliberately outside attempt receipts.
+        with (run / ".resume.lock").open("a+") as lock:
+            try:
+                fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+            except BlockingIOError as exc:
+                raise RuntimeError(f"Another coordinator is already resuming this run: {run}") from exc
+            try:
+                # A per-run lock alone permits two separate runs to share the GPU.
+                # Main evaluation timing uses one worker across the whole project.
+                shared = BASE / 'results' / '.gpu.lock'
+                shared.parent.mkdir(parents=True, exist_ok=True)
+                with shared.open('a+') as gpu_lock:
+                    try:
+                        fcntl.flock(gpu_lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+                    except BlockingIOError as exc:
+>                       raise RuntimeError('Another benchmark run currently owns the GPU') from exc
+E                       RuntimeError: Another benchmark run currently owns the GPU
+
+benchmarks/generic_motion_v1/batch.py:533: RuntimeError
+_______ test_verify_rejects_original_or_copied_evidence_mutation[model] ________
+
+run = PosixPath('/tmp/pytest-of-eric/pytest-461/test_verify_rejects_original_o7/run')
+max_jobs = None
+
+    def resume(run, max_jobs=None):
+        if max_jobs is not None and (isinstance(max_jobs, bool) or not isinstance(max_jobs, int) or max_jobs < 0):
+            raise ValueError("max_jobs must be a nonnegative integer")
+        run = Path(run).resolve()
+        # Keep this inode for the lifetime of the run: unlinking a locked file
+        # would let another coordinator lock a different inode at the same path.
+        # This coordinator-level file is deliberately outside attempt receipts.
+        with (run / ".resume.lock").open("a+") as lock:
+            try:
+                fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+            except BlockingIOError as exc:
+                raise RuntimeError(f"Another coordinator is already resuming this run: {run}") from exc
+            try:
+                # A per-run lock alone permits two separate runs to share the GPU.
+                # Main evaluation timing uses one worker across the whole project.
+                shared = BASE / 'results' / '.gpu.lock'
+                shared.parent.mkdir(parents=True, exist_ok=True)
+                with shared.open('a+') as gpu_lock:
+                    try:
+>                       fcntl.flock(gpu_lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+E                       BlockingIOError: [Errno 11] Resource temporarily unavailable
+
+benchmarks/generic_motion_v1/batch.py:531: BlockingIOError
+
+The above exception was the direct cause of the following exception:
+
+bundle = namespace(root=PosixPath('/tmp/pytest-of-eric/pytest-461/test_verify_rejects_original_o7'), manifest=PosixPath('/tmp/p...verage_tolerance_rad': 1e-06}, methods=['EI_ZO', 'NTO_PAPER', 'LGCS'], objectives=['minimum_distance', 'minimum_time'])
+artifact = 'model'
+
+    @pytest.mark.parametrize("artifact", ["original-protocol", "copied-protocol", "original-audit", "copied-audit", "original-contract", "copied-contract", "data", "model", "roadmap"])
+    def test_verify_rejects_original_or_copied_evidence_mutation(bundle, artifact):
+        run = prepare(bundle)
+        target = {"original-protocol": bundle.protocol_path, "copied-protocol": run / "study_protocol.json",
+                  "original-audit": bundle.audit_path, "copied-audit": run / "study_input_audit.json",
+                  "original-contract": bundle.contract, "copied-contract": run / "study_metrics_contract.md",
+                  "data": bundle.root / "inputs" / "p0.npz", "model": bundle.asset,
+                  "roadmap": bundle.maps[0] / "native.map"}[artifact]
+        target.write_bytes(target.read_bytes() + b"\n")
+        check = batch.verify(run)
+        assert not check["integrity_passed"]
+        assert any("study protocol" in error for error in check["errors"])
+        with pytest.raises(ValueError):
+>           batch.resume(run)
+
+benchmarks/generic_motion_v1/tests/test_study_protocol.py:298: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+run = PosixPath('/tmp/pytest-of-eric/pytest-461/test_verify_rejects_original_o7/run')
+max_jobs = None
+
+    def resume(run, max_jobs=None):
+        if max_jobs is not None and (isinstance(max_jobs, bool) or not isinstance(max_jobs, int) or max_jobs < 0):
+            raise ValueError("max_jobs must be a nonnegative integer")
+        run = Path(run).resolve()
+        # Keep this inode for the lifetime of the run: unlinking a locked file
+        # would let another coordinator lock a different inode at the same path.
+        # This coordinator-level file is deliberately outside attempt receipts.
+        with (run / ".resume.lock").open("a+") as lock:
+            try:
+                fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+            except BlockingIOError as exc:
+                raise RuntimeError(f"Another coordinator is already resuming this run: {run}") from exc
+            try:
+                # A per-run lock alone permits two separate runs to share the GPU.
+                # Main evaluation timing uses one worker across the whole project.
+                shared = BASE / 'results' / '.gpu.lock'
+                shared.parent.mkdir(parents=True, exist_ok=True)
+                with shared.open('a+') as gpu_lock:
+                    try:
+                        fcntl.flock(gpu_lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+                    except BlockingIOError as exc:
+>                       raise RuntimeError('Another benchmark run currently owns the GPU') from exc
+E                       RuntimeError: Another benchmark run currently owns the GPU
+
+benchmarks/generic_motion_v1/batch.py:533: RuntimeError
+______ test_verify_rejects_original_or_copied_evidence_mutation[roadmap] _______
+
+run = PosixPath('/tmp/pytest-of-eric/pytest-461/test_verify_rejects_original_o8/run')
+max_jobs = None
+
+    def resume(run, max_jobs=None):
+        if max_jobs is not None and (isinstance(max_jobs, bool) or not isinstance(max_jobs, int) or max_jobs < 0):
+            raise ValueError("max_jobs must be a nonnegative integer")
+        run = Path(run).resolve()
+        # Keep this inode for the lifetime of the run: unlinking a locked file
+        # would let another coordinator lock a different inode at the same path.
+        # This coordinator-level file is deliberately outside attempt receipts.
+        with (run / ".resume.lock").open("a+") as lock:
+            try:
+                fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+            except BlockingIOError as exc:
+                raise RuntimeError(f"Another coordinator is already resuming this run: {run}") from exc
+            try:
+                # A per-run lock alone permits two separate runs to share the GPU.
+                # Main evaluation timing uses one worker across the whole project.
+                shared = BASE / 'results' / '.gpu.lock'
+                shared.parent.mkdir(parents=True, exist_ok=True)
+                with shared.open('a+') as gpu_lock:
+                    try:
+>                       fcntl.flock(gpu_lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+E                       BlockingIOError: [Errno 11] Resource temporarily unavailable
+
+benchmarks/generic_motion_v1/batch.py:531: BlockingIOError
+
+The above exception was the direct cause of the following exception:
+
+bundle = namespace(root=PosixPath('/tmp/pytest-of-eric/pytest-461/test_verify_rejects_original_o8'), manifest=PosixPath('/tmp/p...verage_tolerance_rad': 1e-06}, methods=['EI_ZO', 'NTO_PAPER', 'LGCS'], objectives=['minimum_distance', 'minimum_time'])
+artifact = 'roadmap'
+
+    @pytest.mark.parametrize("artifact", ["original-protocol", "copied-protocol", "original-audit", "copied-audit", "original-contract", "copied-contract", "data", "model", "roadmap"])
+    def test_verify_rejects_original_or_copied_evidence_mutation(bundle, artifact):
+        run = prepare(bundle)
+        target = {"original-protocol": bundle.protocol_path, "copied-protocol": run / "study_protocol.json",
+                  "original-audit": bundle.audit_path, "copied-audit": run / "study_input_audit.json",
+                  "original-contract": bundle.contract, "copied-contract": run / "study_metrics_contract.md",
+                  "data": bundle.root / "inputs" / "p0.npz", "model": bundle.asset,
+                  "roadmap": bundle.maps[0] / "native.map"}[artifact]
+        target.write_bytes(target.read_bytes() + b"\n")
+        check = batch.verify(run)
+        assert not check["integrity_passed"]
+        assert any("study protocol" in error for error in check["errors"])
+        with pytest.raises(ValueError):
+>           batch.resume(run)
+
+benchmarks/generic_motion_v1/tests/test_study_protocol.py:298: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+run = PosixPath('/tmp/pytest-of-eric/pytest-461/test_verify_rejects_original_o8/run')
+max_jobs = None
+
+    def resume(run, max_jobs=None):
+        if max_jobs is not None and (isinstance(max_jobs, bool) or not isinstance(max_jobs, int) or max_jobs < 0):
+            raise ValueError("max_jobs must be a nonnegative integer")
+        run = Path(run).resolve()
+        # Keep this inode for the lifetime of the run: unlinking a locked file
+        # would let another coordinator lock a different inode at the same path.
+        # This coordinator-level file is deliberately outside attempt receipts.
+        with (run / ".resume.lock").open("a+") as lock:
+            try:
+                fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+            except BlockingIOError as exc:
+                raise RuntimeError(f"Another coordinator is already resuming this run: {run}") from exc
+            try:
+                # A per-run lock alone permits two separate runs to share the GPU.
+                # Main evaluation timing uses one worker across the whole project.
+                shared = BASE / 'results' / '.gpu.lock'
+                shared.parent.mkdir(parents=True, exist_ok=True)
+                with shared.open('a+') as gpu_lock:
+                    try:
+                        fcntl.flock(gpu_lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+                    except BlockingIOError as exc:
+>                       raise RuntimeError('Another benchmark run currently owns the GPU') from exc
+E                       RuntimeError: Another benchmark run currently owns the GPU
+
+benchmarks/generic_motion_v1/batch.py:533: RuntimeError
+=============================== warnings summary ===============================
+benchmarks/generic_motion_v1/tests/test_model_consistency.py: 58 warnings
+benchmarks/generic_motion_v1/tests/test_model_qualification.py: 29 warnings
+benchmarks/generic_motion_v1/tests/test_native_drm_query.py: 29 warnings
+benchmarks/generic_motion_v1/tests/test_nto_collision_constraint.py: 87 warnings
+benchmarks/generic_motion_v1/tests/test_paper_nto.py: 29 warnings
+benchmarks/generic_motion_v1/tests/test_paper_nto_refined.py: 116 warnings
+benchmarks/generic_motion_v1/tests/test_reporting.py: 29 warnings
+benchmarks/generic_motion_v1/tests/test_trajopt_baseline.py: 29 warnings
+  /home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/lib/python3.10/site-packages/csdecomp/drake_csd_bridge.py:62: DrakeDeprecationWarning: (Deprecated.)
+  
+  Deprecated:
+      Use is_floating_base_body() instead. This will be removed from
+      Drake on or after 2026-06-01.
+    if all_drake_bodies[-1].is_floating():
+
+benchmarks/generic_motion_v1/tests/test_paper_lgcs.py::test_graph_solution_matches_exhaustive_corridor_oracle
+benchmarks/generic_motion_v1/tests/test_paper_lgcs_scip.py::test_graph_solution_matches_all_simple_corridor_paths
+  /home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/lib/python3.10/site-packages/numpy/_core/_methods.py:52: RuntimeWarning: invalid value encountered in reduce
+    return umr_sum(a, axis, dtype, out, keepdims, initial, where)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED benchmarks/generic_motion_v1/tests/test_batch.py::test_resume_rejects_mutated_manifest
+FAILED benchmarks/generic_motion_v1/tests/test_batch.py::test_resume_rejects_mutated_map
+FAILED benchmarks/generic_motion_v1/tests/test_batch.py::test_real_process_timeout_is_saved_and_resume_never_retries
+FAILED benchmarks/generic_motion_v1/tests/test_batch.py::test_unsealed_interruption_is_preserved_and_retried_in_new_attempt
+FAILED benchmarks/generic_motion_v1/tests/test_batch.py::test_active_coordinator_lock_rejects_resume_without_mutating_attempt
+FAILED benchmarks/generic_motion_v1/tests/test_study_protocol.py::test_verify_rejects_original_or_copied_evidence_mutation[original-protocol]
+FAILED benchmarks/generic_motion_v1/tests/test_study_protocol.py::test_verify_rejects_original_or_copied_evidence_mutation[copied-protocol]
+FAILED benchmarks/generic_motion_v1/tests/test_study_protocol.py::test_verify_rejects_original_or_copied_evidence_mutation[original-audit]
+FAILED benchmarks/generic_motion_v1/tests/test_study_protocol.py::test_verify_rejects_original_or_copied_evidence_mutation[copied-audit]
+FAILED benchmarks/generic_motion_v1/tests/test_study_protocol.py::test_verify_rejects_original_or_copied_evidence_mutation[original-contract]
+FAILED benchmarks/generic_motion_v1/tests/test_study_protocol.py::test_verify_rejects_original_or_copied_evidence_mutation[copied-contract]
+FAILED benchmarks/generic_motion_v1/tests/test_study_protocol.py::test_verify_rejects_original_or_copied_evidence_mutation[data]
+FAILED benchmarks/generic_motion_v1/tests/test_study_protocol.py::test_verify_rejects_original_or_copied_evidence_mutation[model]
+FAILED benchmarks/generic_motion_v1/tests/test_study_protocol.py::test_verify_rejects_original_or_copied_evidence_mutation[roadmap]
+14 failed, 1171 passed, 408 warnings in 31.20s

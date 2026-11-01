@@ -1,0 +1,24 @@
+/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/lib/python3.10/site-packages/csdecomp/drake_csd_bridge.py:62: DrakeDeprecationWarning: (Deprecated.)
+
+Deprecated:
+    Use is_floating_base_body() instead. This will be removed from
+    Drake on or after 2026-06-01.
+  if all_drake_bodies[-1].is_floating():
+[DRMPlanner] DRM loaded which contains a pose map for 'kinova::end_effector_link'.
+[DRMPlanner] Validating roadmap nodes against current robot geometry...
+[DRMPlanner] All roadmap nodes are valid with current geometry.
+Built collision set: 5832 total (0 from geometry, 5832 from environment)
+Built forbidden edge set of size: 0
+Traceback (most recent call last):
+  File "/home/eric/wjg/wd/csdecomp/results/trend_diagnostics/drm_attachment_audit.py", line 152, in <module>
+    main()
+  File "/home/eric/wjg/wd/csdecomp/results/trend_diagnostics/drm_attachment_audit.py", line 139, in main
+    row=diagnose(case,folder,args.candidate_limit)
+  File "/home/eric/wjg/wd/csdecomp/results/trend_diagnostics/drm_attachment_audit.py", line 88, in diagnose
+    safe = bool(module.steer(planner, target, nodes[node], model.voxels, case['voxel_radius_m']))
+TypeError: steer(): incompatible function arguments. The following argument types are supported:
+    1. (arg0: csdecomp.pycsdecomp_bindings.DrmPlanner, arg1: numpy.ndarray[numpy.float32[m, 1]], arg2: numpy.ndarray[numpy.float32[m, 1]], arg3: numpy.ndarray[numpy.float32[3, n]], arg4: float) -> bool
+
+Invoked with: <csdecomp.pycsdecomp_bindings.DrmPlanner object at 0x747eabb7ca30>, array([-2.30716893,  1.40476508, -0.85076509, -0.97399188,  1.14256681,
+        1.23628675,  0.16459172]), array([-0.3601883 ,  1.6520386 , -0.22397092, -0.306262  ,  1.2650036 ,
+        0.38544816, -0.57354003], dtype=float32), <csdecomp.pycsdecomp_bindings.Voxels object at 0x747eafb818f0>, 0.04

@@ -1,0 +1,25 @@
+{
+  "argv": [
+    "flock",
+    "/home/eric/wjg/wd/csdecomp/results/.gpu.lock",
+    "timeout",
+    "--signal=TERM",
+    "--kill-after=5",
+    "60",
+    "bash",
+    "local/python.sh",
+    "results/trend_diagnostics/drm_query_regression.py",
+    "--build",
+    "benchmarks/generic_motion_v1/native/build/drm_consistent_query",
+    "--output",
+    "results/trend_diagnostics/drm_consistent_query_budget1000",
+    "--native-defaults",
+    "--attempts",
+    "1000",
+    "--problem",
+    "dev-sparse_clutter-000-p01",
+    "--external-gpu-lock"
+  ],
+  "cwd": "/home/eric/wjg/wd/csdecomp",
+  "timing": "Timeout starts after GPU lock acquisition; includes process startup, model, query, validation and diagnostic graph checks"
+}

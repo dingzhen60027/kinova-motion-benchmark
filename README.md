@@ -96,88 +96,53 @@ Every candidate is checked for fixed endpoints, joint limits, self/environment c
 
 For the time track, all seven joints have velocity limits of **1 rad/s**, acceleration limits of **1 rad/s²**, and zero endpoint velocity. Endpoint acceleration is bounded but is not constrained to zero. Curve derivatives and segment continuity are checked independently of solver success. Path length is evaluated from the actual saved polygon or curve, rather than the solver's internal composite objective.
 
-## Methods
+## Baselines
 
-Stored method IDs are stable. Their implementations and objectives are intentionally distinguished:
+All methods use the model and validator above. The source review checks actual optimizer calls, constraints and stopping conditions; configuration names alone do not establish method identity. [Implementation evidence](benchmarks/generic_motion_v1/results/trend_diagnostics/method_identity_review.json) includes 12 source files verified against the official STOMP, SCSPlanning and TrajOpt commits. [methods.json](benchmarks/generic_motion_v1/results/methods.json) records detailed identities and completed coverage.
 
-| ID | Implementation and initialization | Historical test path / 395 | Historical test time / 395 |
+| Method ID | Actual implementation and initialization | Native objective | Tracks |
+|---|---|---|---|
+| `EI_ZO` | Native DRM → EI-ZO → author LSCS / SCSTO, with Clarabel; collision feedback, region editing and corridor repair retained | PWL length / Bézier trajectory duration in the corridor | Path, time |
+| `LGCS` | Perspective GCS MISOCP reconstruction with SCIP; starts from the validated DRM path and EI-ZO regions | PWL length in the supplied region graph | Path |
+| `NTO_PAPER` | Published-profile reconstruction with Drake KTO; SNOPT for path, IPOPT for time; validated DRM initialization | Path-length transcription / trajectory duration | Path, time |
+| `NTO_REFINED` | NTO adaptation with clearance and iterative collision collocation; time track refines the initial spline to at least 16 controls without changing its shape | Same track objectives, richer time parameterization | Path, time |
+| `NTO` | Legacy Drake KTO/IPOPT adaptation with a separate saved profile | Path-length transcription / trajectory duration | Path, time |
+| `RRTCONNECT` | [Official OMPL 2.0.1](https://github.com/ompl/ompl/tree/2.0.1) RRTConnect and native vertex reduction; fixed endpoints | First feasible path, then shortening | Path |
+| `RRTSTAR` | Official OMPL 2.0.1 RRT* with native rewiring and uninterrupted search | Joint-space path length | Path |
+| `CHOMP` | Covariant functional-gradient implementation; validated DRM initialization | Acceleration smoothness and a C-space clearance integral | Path |
+| `STOMP` | [Official STOMP core](https://github.com/ros-industrial/stomp) with canonical-geometry and correlated-noise callbacks; validated DRM initialization | Acceleration control cost and obstacle potential | Path |
+| `TRAJOPT` | [Author SQP/BPMPD core](https://github.com/joschu/trajopt) with canonical collision collocation; validated DRM initialization | Squared joint differences with collision constraints | Path |
+
+CHOMP uses a C-space clearance functional rather than the original workspace body-point functional. TrajOpt uses segment collocation rather than the original OpenRAVE swept-volume collision transcription. These are explicitly identified adaptations. LGCS and NTO are mathematical reconstructions, while EI-ZO, LSCS, SCSTO, OMPL, STOMP and the TrajOpt optimizer call their stated upstream implementations. NTO can leave its initial corridor. SCSTO optimizes trajectory geometry and segment durations; it is not just time parameterization.
+
+Every path-track result is compared by the length of its actual saved path, even when its native objective includes other terms. A correct implementation may fail on a problem; success requires the independent output checks, not just a solver success flag. The Kinova suite evaluates these methods on its own fixed robot and task distribution.
+
+### Current execution and repair evidence
+
+The complete repaired protocol is committed at `6ad41275c7`. Its serial, resumable evaluation is in progress:
+
+| Run | Seeds | Registered calls | Legal calls |
 |---|---|---:|---:|
-| `EI_ZO` | Native DRM and EI-ZO; author LSCS/SCSTO with Clarabel. Collision feedback, region editing and corridor repair are retained. | 283 | 283 |
-| `LGCS` | Perspective GCS MISOCP reconstruction, solved with SCIP, initialized from the same validated DRM path. | 282 | — |
-| `NTO_PAPER` | Published-profile reconstruction using Drake KTO, SNOPT for path and IPOPT for time; initialized from the validated DRM path. | 108 | 239 |
-| `NTO_REFINED` | NTO adaptation with positive clearance and iterative collision collocation; the current time profile additionally preserves the initial spline while refining to at least 16 controls. | 240 | 266 |
-| `NTO` | Legacy Drake KTO/IPOPT adaptation: original DRM controls for path; shape-preserving knot insertion for time. | 114 | 239 |
-| `RRTCONNECT` | [Official OMPL 2.0.1](https://github.com/ompl/ompl) RRTConnect and native vertex reduction, searching directly from the fixed endpoints. | 358 | — |
-| `RRTSTAR` | Official OMPL 2.0.1 RRT* and native vertex reduction, with uninterrupted native search and common final validation. | 289 | — |
-| `CHOMP` | CHOMP adaptation: acceleration-metric covariant descent on a C-space smoothness/obstacle functional. Uses the validated DRM path. | 282 | — |
-| `STOMP` | Unmodified [official STOMP core](https://github.com/ros-industrial/stomp) with canonical-geometry task and correlated-noise callbacks. Uses the validated DRM path. | 282 | — |
-| `TRAJOPT` | TrajOpt adaptation: [author trust-region SQP/BPMPD core](https://github.com/joschu/trajopt) with sampled canonical collision constraints. Uses the validated DRM path. | 264 | — |
+| `repaired_native_smoke` | 0 | 140 | 112 |
+| `repaired_dev_all_seeds` | 0, 1, 2 | 2,520 | 2,520 |
+| `repaired_test` | 0 | 5,880 | 5,530 |
 
-These historical counts are numerically validated full-flow outputs from `current_test`, before the November 1 correctness repairs; a dash denotes an unsupported track. Every supported combination also completed all 60 development problems at seeds 0, 1 and 2 under the saved historical settings. They are not scores for the repaired defaults. Per-category, failure and paired quality statistics are in [summary.csv](benchmarks/generic_motion_v1/results/summary.csv).
+The native-first smoke is complete: **140/140** sealed calls, with 71 numerical successes, 28 invalid inputs, 15 timeouts, 14 searches without a solution, 8 validation failures and 4 solver failures. Its integrity check passed with no infrastructure error. Dev and test remain pending or in progress; these smoke outcomes are not full-test scores.
 
-CHOMP, STOMP and TrajOpt have native smoothness/collision objectives; their reported comparison metric remains validated path length. CHOMP uses a C-space arc-length collision functional rather than the original workspace body-point functional. The TrajOpt adapter uses segment collocation rather than the original OpenRAVE swept-volume implementation. NTO can leave its initial DRM corridor while retaining the common collision and motion constraints. `NTO_PAPER` and `NTO_REFINED` use a declared 2,000-iteration cap; legacy `NTO` uses IPOPT with a 500-iteration cap. Numerical tolerances and initial-duration policies are recorded local settings. The Kinova suite evaluates the paper's planning pipeline on this robot; it does not change the robot to match a method. The `NTO` legacy adaptation is a separate active method; it is not an alias for `NTO_PAPER` or `NTO_REFINED`. Earlier NTO runs used an older roadmap profile and are kept separate.
+These counts cover all **10 methods / 14 supported method–track combinations**. Use `evaluate.py status --run results/<run>` for actual progress. Final summaries are withheld until every declared call has a terminal record. Historical completed scores remain in `records.csv` and `summary.csv` under `current_dev`, `current_test` and `current_dev_repaired_s000`; they are not scores for the repaired defaults.
 
-All **10 methods / 14 supported method–track combinations** completed the historical selected smoke, development and test evaluations. The current regression suite passes **1,159 tests**; the earlier unchanged upstream check passed three tests. Historical completed coverage, including the separate legacy NTO runs, is:
+The current regression suite passes **1,217 tests**, and three unchanged upstream tests pass. Repairs and their reproducible evidence are:
 
-| Evaluation | Paired seeds | Registered calls | Legal calls | Numerically validated outputs |
-|---|---|---:|---:|---:|
-| smoke | 0 | 140 | 112 | 40 |
-| dev | 0, 1, 2 | 2,520 | 2,520 | 1,364 |
-| test | 0 | 5,880 | 5,530 | 3,529 |
+- **DRM query correctness.** Failed endpoint edges no longer exclude otherwise free vertices; query-local state resets; isolated same-node queries and steering endpoints are handled. The quantized cache is reconciled against the original roadmap nodes at the actual online obstacle centers and radius. Independent Drake checks confirmed 2,316 cache-excluded configurations were free. The portable CPU sidecar retains the graph and CUDA implementation, with 48 targeted checks and six real-GPU positive/negative fixtures. [Evidence](benchmarks/generic_motion_v1/results/trend_diagnostics/drm_attachment_audit/comparison.json).
+- **Endpoint/search budgets.** Dev-only diagnostics separate finite-graph coverage from exhausted attachment budgets. The current profile uses 1,000 planning attempts, 1,000 endpoint candidates per endpoint per attempt, 100,000 expansions and 0.01-rad steering; the internal 0.01-m padding is retained. OMPL now uses the remaining 60-second outer budget with explicit validation and simplification reserves. Historical 10-second OMPL results remain separate.
+- **NTO trajectory freedom.** In an actual 2-rad rest-to-rest IPOPT control problem, four cubic controls produced 6.000 s; 16 controls produced 3.015762 s against a 3 s lower bound. Shape-preserving insertion changed the initial curve by at most 4.44e-16 rad. `NTO_REFINED` uses this refinement; the published-profile reference remains separate.
+- **Drake contact-gradient recovery.** Only the known [near-contact BoxBoxGradient assertion](https://github.com/RobotLocomotion/drake/issues/21675) is recovered. Every canonical collision pair and the native aggregate constraint remain present; unknown errors fail explicitly. Normal solves bind the native evaluator directly. Only this exact assertion permits one guarded restart per query, using the original remaining deadline and initial guess; subsequent refinement rounds keep the guarded evaluator. Sixty-nine targeted checks and seven independent real-Drake API checks pass. The end-to-end GPU regression reproduced the exception and retained the colliding candidate as a failure. Normal-path replay matched all 415 original IPOPT iteration rows and the final trajectory arrays. [Evidence](benchmarks/generic_motion_v1/results/trend_diagnostics/nto_collision_independent_review.json).
 
-These are accounting totals across methods and tracks, not an aggregate performance score. The separate shared-initial-region experiment completed **283 eligible task pairs / 566 backend calls**, with 565 numerically validated outputs and one timeout. Eligibility depends on the saved initial path and corridor, not the original optimizer's final success. Detailed method comparisons remain in `summary.csv`.
-
-### Correctness checks and repaired development run
-
-The November 1 review checks observed trends against [Werner et al.](https://arxiv.org/html/2504.10783v1), the original [TrajOpt comparison](https://escholarship.org/content/qt6km506db/qt6km506db.pdf), STOMP, MotionBenchMaker and recent accelerated planners. Their robots, task selection, initialization and timing denominators differ; [the source records](benchmarks/generic_motion_v1/results/trend_diagnostics/literature.json) and [VAMP/pRRTC checks](benchmarks/generic_motion_v1/results/trend_diagnostics/contemporary_sampling_sources.json) retain those differences and reported values. Paper scores identify suspicious behavior to investigate, rather than a ranking to reproduce by changing inputs.
-
-Two concrete problems were reproduced and repaired:
-
-- **DRM query state:** a failed endpoint connector used to globally exclude its otherwise valid roadmap vertex. The isolated native CPU sidecar now records that failed edge, clears query-local exclusions between queries, handles an isolated same-node query, and checks steering endpoints including zero-length edges. The upstream CUDA implementation is unchanged. Ten real-GPU positive/negative checks pass. Across the same 60 dev inputs, query-added exclusions of independently collision-free vertices fell from 801 to zero; frontend success remained 38/60. The repair does not establish that the remaining roadmap failures are infeasible tasks.
-- **NTO time parameterization:** a two-vertex initial path became a four-control cubic spline. With stationary endpoints, its derivative bounds could unnecessarily double duration. An actual IPOPT control problem with 2 rad displacement and unit velocity/acceleration limits took 6.000 s with four controls and 3.015762 s with 16, against a 3 s lower bound. Shape-preserving knot insertion changed the initial curve by at most 4.44e-16 rad. The current `NTO_REFINED` time profile uses at least 16 controls; `NTO_PAPER` retains its original parameterization for an explicit comparison.
-
-The saved evidence also distinguishes optimizer weakness from frontend failure. Historical EI-ZO path and time outputs passed validation on all 283 test problems where the DRM seed was accepted. CHOMP and STOMP passed 282/283 of those problems; their 282/395 full-flow counts should not be read as an optimizer-only failure rate. Recomputed lengths from 3,000 selected saved CHOMP/STOMP/TrajOpt/OMPL records matched the recorded values. NTO's sampled collision constraints can still miss between-sample contact: an independently rechecked dev path had all 149 constraints satisfied but a -0.304 mm intermediate clearance; its refined counterpart had +0.697 mm clearance.
-
-The repaired run in `results/repaired_dev` completed **840/840 queries**: 60 fixed dev inputs, seed 0, and all 14 supported combinations, under the same 60 s outer cap and common validator. Complete receipt/source verification passed. Its separate selection is `current_dev_repaired_s000`, with a corresponding fixed-frontend comparison. The 395-problem historical test scores above have not been rerun with these repairs.
-
-| Method | Repaired dev path / 60 | Repaired dev time / 60 |
-|---|---:|---:|
-| EI-ZO + LSCS / SCSTO | 38 | 38 |
-| LGCS | 38 | — |
-| NTO_PAPER | 13 | 33 |
-| NTO_REFINED | 29 | 34 |
-| NTO legacy | 14 | 35 |
-| RRTConnect | 49 | — |
-| RRT* | 38 | — |
-| CHOMP adaptation | 38 | — |
-| STOMP | 38 | — |
-| TrajOpt adaptation | 34 | — |
-
-Every DRM-based combination obtained 38 validated initial paths. In that conditional cohort, EI-ZO/LSCS, SCSTO, LGCS, CHOMP and STOMP each passed 38/38 final outputs. TrajOpt passed 34/38. The table uses the common normalized success rule, which can accept a validated candidate even if its native solver reports failure; native convergence remains a separate field. Across all 840 calls, the terminal counts are 469 numerical successes, 297 no-solution-within-budget outcomes, 41 validation failures, 22 solver failures, 10 timeouts and one infrastructure error. The latter is the existing Drake `BoxBoxGradient` exception during NTO_PAPER path optimization on `dev-route_choice-002-p00`; it remains unresolved and is counted separately from algorithmic failure.
-
-On 33 same-task, same-seed common successes, repaired NTO_REFINED execution duration decreased from **6.5716 to 4.5445 s**: a paired reduction of **2.0271 s**, with scene-cluster 95% CI **[1.2176, 2.9134] s**. Its overall success count changed **36/60 to 34/60**; all four post-frontend failures in the repaired run were 60 s timeouts. This is a quality/reliability tradeoff, not an across-the-board improvement. In the repaired run, it was also 1.0314 s faster in execution than SCSTO on their 34 common successes, consistent with the paper's favorable-NTO-duration/lower-reliability tendency. RRTConnect retained 49/60 successes; its common-success path-length difference from LSCS was only +0.0202 rad, without a clear length advantage. These observations do not impose a universal paper ranking.
-
-[Paired before/after records](benchmarks/generic_motion_v1/results/trend_diagnostics/repaired_dev_comparison_pairs.csv) retain each outcome and cost; [the comparison JSON](benchmarks/generic_motion_v1/results/trend_diagnostics/repaired_dev_comparison.json) includes configuration differences and scene-cluster intervals. Independent NumPy/SciPy reconstruction checked all 60 NTO_REFINED time attempts, including a four-round refinement, with no integrity or motion-limit errors. A separate 60-task DRM diagnostic restored the upstream search-count defaults (100 planning attempts, 50 connector trials, 100,000 expansion cap): frontend success rose only **38 to 39**, with no lost successes. This diagnostic is not mixed into the main scores or promoted to the default configuration.
-
-DRM coverage remains the main full-flow limitation. For optimization comparisons, retain the refined NTO and all supported strong comparators alongside the published-profile reference. Neither a finite roadmap failure nor an optimizer timeout proves a problem infeasible.
-
-```bash
-bash local/python.sh scripts/evaluate.py resume --run results/repaired_dev
-bash local/python.sh scripts/evaluate.py verify --run results/repaired_dev
-# Use a new prefix to reproduce an already finalized derived comparison.
-bash local/python.sh results/trend_diagnostics/compare_repaired_dev.py \
-  --output-prefix /tmp/kinova-repair-comparison
-bash local/python.sh results/trend_diagnostics/review_repaired_nto.py
-bash local/python.sh results/trend_diagnostics/check_metric_bounds.py
-```
-
-The paired comparison refuses final statistics while any planned query is unfinished. All diagnostic fixtures, raw arrays, logs and source references are in [results/trend_diagnostics](benchmarks/generic_motion_v1/results/trend_diagnostics/).
-
-An additional [metric sanity check](benchmarks/generic_motion_v1/results/trend_diagnostics/metric_bounds.json) passed for 5,362 selected validated paths and 1,562 time-track outputs, including the repaired run: no recorded length undercut its fixed endpoint chord and no duration undercut its saved joint-limit rest-to-rest lower bound beyond numerical tolerance. This check complements trajectory validation; it does not establish optimality.
+[Paper/source checks](benchmarks/generic_motion_v1/results/trend_diagnostics/literature.json) compare Werner et al., TrajOpt, STOMP, MotionBenchMaker and recent accelerated planners with their actual robots, inputs, initialization and timing definitions. They help identify suspicious behavior; they do not prescribe a universal ranking. Finite-roadmap coverage and sampled collision constraints remain real limitations. A failed query does not prove infeasibility, and a numerically validated output is not a continuous collision certificate.
 
 ## Evaluation
 
-[configs/evaluation.json](configs/evaluation.json) selects the existing method settings; each run saves the fully resolved configuration. The outer budget is **60 seconds per query**, with one GPU query at a time. This cap includes process startup, model/dependency setup, GPU warm-up, frontend search, region generation, optimization, repairs, validation and output. An internal stopping criterion may finish earlier: OMPL currently has a 10-second search budget and bounded vertex reduction. Offline roadmap construction time, node counts and storage are reported once per roadmap identity, separately from online query statistics; reuse across methods and queries does not multiply the offline cost.
+[configs/evaluation.json](configs/evaluation.json) selects the existing method settings; each run saves the fully resolved configuration. The outer budget is **60 seconds per query**, with one GPU query at a time. This cap includes process startup, model/dependency setup, GPU warm-up, frontend search, region generation, optimization, repairs, validation and output. An internal stopping criterion may finish earlier: OMPL searches within the remaining outer deadline, reserving 5 seconds for validation and 0.5 seconds for bounded vertex reduction; its explicit native ceiling is 60 seconds. Historical runs used a 10-second native cap and remain separate. Offline roadmap construction time, node counts and storage are reported once per roadmap identity, separately from online query statistics; reuse across methods and queries does not multiply the offline cost.
 
 Two tracks are reported separately:
 
@@ -207,17 +172,18 @@ bash local/python.sh scripts/evaluate.py resume --run /tmp/kinova-dev-example
 bash local/python.sh scripts/evaluate.py status --run /tmp/kinova-dev-example
 bash local/python.sh scripts/evaluate.py verify --run /tmp/kinova-dev-example
 
-# Resume is safe for completed runs: existing outcomes are not repeated.
-bash local/python.sh scripts/evaluate.py resume --run results/test
-bash local/python.sh scripts/evaluate.py resume --run results/nto_legacy_smoke
-bash local/python.sh scripts/evaluate.py resume --run results/nto_legacy_dev
-bash local/python.sh scripts/evaluate.py resume --run results/nto_legacy_test
-bash local/python.sh scripts/evaluate.py resume --run results/fixed_initial_regions
+# Complete the saved serial smoke/dev/test and paired-region evaluation, then verify and summarize.
+bash local/python.sh results/logs/complete_repair_evaluation.py
+
+# Or resume an individual run; existing outcomes are not repeated.
+bash local/python.sh scripts/evaluate.py resume --run results/repaired_native_smoke
+bash local/python.sh scripts/evaluate.py resume --run results/repaired_dev_all_seeds
+bash local/python.sh scripts/evaluate.py resume --run results/repaired_test
 
 # Reproduce the complete paired shared-initial-region comparison in a new run.
 bash local/python.sh scripts/evaluate.py batch \
   --split test --methods EI_ZO LGCS --track path --seeds 0 \
-  --mode fixed_initial_regions --initial-source-run results/test \
+  --mode fixed_initial_regions --initial-source-run results/repaired_test \
   --output /tmp/kinova-shared-initial-regions --prepare-only
 bash local/python.sh scripts/evaluate.py resume --run /tmp/kinova-shared-initial-regions
 
@@ -271,7 +237,9 @@ results/                       Public alias of benchmark/results/
   selection.json, inventory.json
   figures/, trajectories/, logs/
   smoke/, test/               Original full-flow run evidence
-  repaired_dev/              Complete repaired 60-task, seed-0 comparison
+  repaired_dev/              Earlier repaired seed-0 evidence
+  repaired_native_smoke/, repaired_dev_all_seeds/, repaired_test/
+                             Current frozen-config run plans and evidence
   trend_diagnostics/         Literature checks, repairs and paired evidence
   nto_legacy_smoke/, nto_legacy_dev/, nto_legacy_test/
   fixed_initial_regions/     Paired shared-initial-region experiment

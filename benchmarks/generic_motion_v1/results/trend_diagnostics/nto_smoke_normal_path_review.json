@@ -1,9 +1,10 @@
 {
-  "created_utc": "2026-11-01T05:07:26.990499+00:00",
+  "created_utc": "2026-11-01T05:40:52.358664+00:00",
   "scope": "Compare saved NTO smoke evidence without evaluating models or solvers.",
   "gpu_calls": 0,
   "solver_calls": 0,
   "microbenchmark_performed": false,
+  "diagnostic_parser_correction": "IPOPT emits 10 fields per iteration. The initial diagnostic required 11 and produced empty parsed histories; corrected and rechecked against all 415 rows (iterations 0..414). Original solver logs were never changed.",
   "frozen_runtime_commit": "7284d06f75aa6ba5ed5bf2b987d9ff287a2e8ab3",
   "sparse_timeout_comparison": [
     {
@@ -145,10 +146,24 @@
             "includes": "fresh process, imports, CUDA context, model/map load, warm-up, online planning, validation and output"
           },
           "native_solve_started": true,
-          "first_complete_iteration": null,
-          "last_complete_iteration": null,
-          "complete_iteration_rows": 0,
-          "iteration_rows_sha256": null,
+          "first_complete_iteration": {
+            "iteration": 0,
+            "restoration": false,
+            "objective": 13.743171,
+            "primal_infeasibility": 1.07e-07,
+            "dual_infeasibility": 0.997,
+            "line_search_trials": 0
+          },
+          "last_complete_iteration": {
+            "iteration": 1529,
+            "restoration": true,
+            "objective": 95.762572,
+            "primal_infeasibility": 4.33,
+            "dual_infeasibility": 13200.0,
+            "line_search_trials": 1
+          },
+          "complete_iteration_rows": 1530,
+          "iteration_rows_sha256": "2278eccbedcafc2ca398619241aaa0cf242c80c790241bb0c937d596ad4a9ca7",
           "parameters": {
             "warm_start_control_count": 16,
             "warm_start_node_count": 5,
@@ -313,10 +328,24 @@
             "includes": "fresh process, imports, CUDA context, model/map load, warm-up, online planning, validation and output"
           },
           "native_solve_started": true,
-          "first_complete_iteration": null,
-          "last_complete_iteration": null,
-          "complete_iteration_rows": 0,
-          "iteration_rows_sha256": null,
+          "first_complete_iteration": {
+            "iteration": 0,
+            "restoration": false,
+            "objective": 10.231631,
+            "primal_infeasibility": 8.53,
+            "dual_infeasibility": 1.21,
+            "line_search_trials": 0
+          },
+          "last_complete_iteration": {
+            "iteration": 1568,
+            "restoration": true,
+            "objective": 99.572689,
+            "primal_infeasibility": 18.1,
+            "dual_infeasibility": 34200.0,
+            "line_search_trials": 1
+          },
+          "complete_iteration_rows": 1569,
+          "iteration_rows_sha256": "f23a1496d54a8d71c3a9a0cfa338d5334a21afd44016f18c45bce009f03409fa",
           "parameters": {
             "warm_start_control_count": 16,
             "warm_start_node_count": 4,
@@ -381,10 +410,24 @@
           "includes": "fresh process, imports, CUDA context, model/map load, warm-up, online planning, validation and output"
         },
         "native_solve_started": true,
-        "first_complete_iteration": null,
-        "last_complete_iteration": null,
-        "complete_iteration_rows": 0,
-        "iteration_rows_sha256": null,
+        "first_complete_iteration": {
+          "iteration": 0,
+          "restoration": false,
+          "objective": 10.792769,
+          "primal_infeasibility": 9.4e-08,
+          "dual_infeasibility": 1.15,
+          "line_search_trials": 0
+        },
+        "last_complete_iteration": {
+          "iteration": 414,
+          "restoration": false,
+          "objective": 5.1427847,
+          "primal_infeasibility": 0.0,
+          "dual_infeasibility": 1.4e-09,
+          "line_search_trials": 1
+        },
+        "complete_iteration_rows": 415,
+        "iteration_rows_sha256": "41d2e57c66349813db52b42859adc1de8f2a1324db3a42c5b4e866d0c9efdfd4",
         "parameters": {
           "warm_start_control_count": 7,
           "warm_start_node_count": 5,
@@ -445,10 +488,24 @@
           "includes": "fresh process, imports, CUDA context, model/map load, warm-up, online planning, validation and output"
         },
         "native_solve_started": true,
-        "first_complete_iteration": null,
-        "last_complete_iteration": null,
-        "complete_iteration_rows": 0,
-        "iteration_rows_sha256": null,
+        "first_complete_iteration": {
+          "iteration": 0,
+          "restoration": false,
+          "objective": 10.792769,
+          "primal_infeasibility": 9.4e-08,
+          "dual_infeasibility": 1.15,
+          "line_search_trials": 0
+        },
+        "last_complete_iteration": {
+          "iteration": 414,
+          "restoration": false,
+          "objective": 5.1427847,
+          "primal_infeasibility": 0.0,
+          "dual_infeasibility": 1.4e-09,
+          "line_search_trials": 1
+        },
+        "complete_iteration_rows": 415,
+        "iteration_rows_sha256": "41d2e57c66349813db52b42859adc1de8f2a1324db3a42c5b4e866d0c9efdfd4",
         "parameters": {
           "warm_start_control_count": 7,
           "warm_start_node_count": 5,
@@ -483,7 +540,7 @@
   },
   "normal_path_source_review": {
     "path": "benchmarks/generic_motion_v1/runners/nto_collision_constraint.py",
-    "sha256": "5747c3e2d08c1a893a103ba4dc11809ac1e562bfeead69633049fbab980ab0a5",
+    "sha256": "874dad10b4b3c6ea2f2be6b299f212099b37e98b6713f2b2cf194489b8b43a22",
     "normal_eval_per_pair_python_scan": false,
     "normal_eval_disk_write": false,
     "native_constraint_and_gradient_used": true,
