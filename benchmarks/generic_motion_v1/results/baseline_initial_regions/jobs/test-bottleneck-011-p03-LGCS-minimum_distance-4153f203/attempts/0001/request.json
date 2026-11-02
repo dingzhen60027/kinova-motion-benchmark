@@ -1,0 +1,198 @@
+{
+  "job_id": "test-bottleneck-011-p03-LGCS-minimum_distance-4153f203",
+  "case_id": "test-bottleneck-011-p03",
+  "scene_id": "test-bottleneck-011",
+  "family": "bottleneck",
+  "method": "LGCS",
+  "objective": "minimum_distance",
+  "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c",
+  "evaluation_config": {
+    "protocol": "kinova7_generic_v1_evaluation",
+    "online_budget_seconds": 60.0,
+    "optimizer_budget_seconds": 60.0,
+    "validation_step_rad": 0.005,
+    "validation_minimum_samples": 400,
+    "validation_maximum_samples": 100000,
+    "endpoint_tolerance_rad": 1e-05,
+    "feasibility_tolerance": 1e-05,
+    "velocity_limit_rad_s": 1.0,
+    "acceleration_limit_rad_s2": 1.0,
+    "bezier_degree": 6,
+    "scsto_relative_tolerance": 0.01,
+    "max_recovery_attempts": 20,
+    "maximum_recovery_witnesses": 128,
+    "drm": {
+      "max_iterations_steering_to_node": 1000,
+      "max_nodes_to_expand": 100000,
+      "try_shortcutting": true,
+      "online_edge_step_size": 0.01,
+      "max_number_planning_attempts": 1000,
+      "voxel_padding": 0.01
+    },
+    "eizo": {
+      "num_particles": 10000,
+      "bisection_steps": 9,
+      "configuration_margin": 0.01,
+      "delta": 0.005,
+      "epsilon": 0.005,
+      "tau": 0.5,
+      "mixing_steps": 60,
+      "max_hyperplanes_per_iteration": 10,
+      "max_iterations": 30
+    },
+    "roadmap": {
+      "map_center": [
+        0.0,
+        0.0,
+        0.55
+      ],
+      "map_extent": [
+        2.8,
+        2.8,
+        2.2
+      ],
+      "offline_voxel_resolution": 0.03,
+      "max_task_space_distance_between_nodes": 10.0,
+      "max_configuration_distance_between_nodes": 10.0,
+      "edge_step_size": 0.1,
+      "max_neighbors": 10
+    },
+    "nto": {
+      "solver": "IPOPT",
+      "collocation_points": 150,
+      "minimum_control_points": 16,
+      "maximum_iterations": 500,
+      "clearance_m": 1e-05,
+      "influence_distance_m": 0.01
+    },
+    "region_coverage_tolerance_rad": 1e-06,
+    "lgcs": {
+      "solver": "scip"
+    },
+    "drm_query": {
+      "backend": "safe_native",
+      "build_dir": "benchmarks/generic_motion_v1/native/build/drm_consistent_query_portable"
+    },
+    "ompl": {
+      "range_rad": 0.5,
+      "motion_step_rad": 0.01,
+      "planning_seconds": 60.0,
+      "simplification_seconds": 0.5,
+      "simplification_max_steps": 100,
+      "simplification_max_empty_steps": 50,
+      "validation_reserve_seconds": 5.0,
+      "goal_bias": 0.05,
+      "rewire_factor": 1.1,
+      "record_validated_progress": false,
+      "progress_poll_seconds": 0.5
+    },
+    "extended_baselines": {
+      "chomp": {
+        "initial_knots": 64,
+        "maximum_knots": 256,
+        "obstacle_influence_m": 0.05,
+        "collision_check_step_rad": 0.05,
+        "safety_band_m": 2e-06,
+        "maximum_iterations": 40,
+        "smoothness_weight": 1.0,
+        "obstacle_weight": 10.0,
+        "finite_difference_rad": 1e-05,
+        "learning_rate": 1.0,
+        "maximum_update_rad": 0.08,
+        "backtracking_steps": 8,
+        "relative_cost_tolerance": 1e-07
+      },
+      "stomp": {
+        "initial_knots": 64,
+        "maximum_knots": 256,
+        "obstacle_influence_m": 0.05,
+        "collision_check_step_rad": 0.05,
+        "safety_band_m": 2e-06,
+        "maximum_iterations": 40,
+        "iterations_after_valid": 5,
+        "rollouts": 12,
+        "noise_std_rad": 0.1,
+        "cost_sensitivity": 10.0,
+        "control_cost_weight": 0.1,
+        "maximum_update_rad": 0.08
+      },
+      "trajopt": {
+        "initial_knots": 64,
+        "maximum_knots": 256,
+        "segment_collocation_subdivisions": 3,
+        "clearance_m": 0.001,
+        "derivative_step_rad": 1e-05,
+        "maximum_sqp_iterations": 50,
+        "initial_trust_box_rad": 0.1,
+        "constraint_tolerance": 0.0001,
+        "initial_merit_coefficient": 10.0,
+        "maximum_merit_coefficient_increases": 5,
+        "minimum_model_improvement": 0.0001,
+        "maximum_optimizer_seconds": 45.0
+      }
+    },
+    "nto_refined": {
+      "minimum_time_control_points": 16
+    }
+  },
+  "roadmap_dir": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/roadmaps/rss2025_n6000_s000",
+  "roadmap_used": true,
+  "replica_seed": 0,
+  "method_seed": 2904117857,
+  "solver_seed": 4236056587,
+  "solver_seed_used": false,
+  "solver_seed_note": "Reserved solver_seed is unused. Native OMPL/STOMP RNG uses method_seed; local deterministic optimizers use the fixed DRM seed path.",
+  "case_ref": {
+    "manifest_path": "benchmarks/generic_motion_v1/manifests/test.jsonl",
+    "manifest_sha256": "9fcbe5ccae28d8681586b1ac6c9986f51f7cc7b5cdc19352c101910e3b6ed03b",
+    "problem_id": "test-bottleneck-011-p03",
+    "problem_sha256": "726b14c179a60698f25104e718ff1ed6320d8bbe4f642b06c0512810dd7811db",
+    "record_sha256": "1e78fa2358e34cc6e29c3b1e0eef3bbf13a6e36bf20807f28174681ac1d19374",
+    "scene_id": "test-bottleneck-011"
+  },
+  "execution_mode": "fixed_initial_regions",
+  "shared_initialization": {
+    "mode": "fixed_initial_regions",
+    "source_run": "benchmarks/generic_motion_v1/results/baseline_test",
+    "source_run_manifest_sha256": "e67e3b3f028667e83ddf0cac98a5d8c837fcfcd91a28e213a7cfcd11b72eaada",
+    "source_job_id": "test-bottleneck-011-p03-EI_ZO-minimum_distance-eccba54c",
+    "source_attempt": "benchmarks/generic_motion_v1/results/baseline_test/jobs/test-bottleneck-011-p03-EI_ZO-minimum_distance-eccba54c/attempts/0001",
+    "source_receipt_sha256": "8f1f53b3a588d90e7789479016a1f67ebf4eafa45409a089161176ad74b91a2b",
+    "case_id": "test-bottleneck-011-p03",
+    "case_sha256": "1e78fa2358e34cc6e29c3b1e0eef3bbf13a6e36bf20807f28174681ac1d19374",
+    "robot_sha256": "a25f447c8caf4aff6dc76196c3d57cc940f00e802367f48034f06a9973927c75",
+    "collision_geometry_sha256": "896ab9f55c5d8081b843358bd85cde2daae1f432564593f86218bf61733ce4fa",
+    "evaluation_config_sha256": "d57d94513e57d3d267222213a8492a171edd8caa2ab55de90005dc55ca254650",
+    "method_seed": 2904117857,
+    "replica_seed": 0,
+    "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c",
+    "files": {
+      "request.json": "c70a8a39d01d3db60afcb758052c4e7e342486b40a9f44260dc8f91a5063ee25",
+      "input.json": "3ae3f408d8222495e17303816a80659ede8d3f0a08bbd710106cc3df7d86339d",
+      "evaluation.json": "714434221316e1ec7793de4b3c3a73b78f6be3d3fa0f59433c695fe78509ef57",
+      "result.json": "8cda3476b1098760cda72a48d07782408efd105270783e24bac4297f1559c2bd",
+      "process.json": "ca354c13a5635fdeda5ee64be15a5875b241695dd4dfcb62e60e6cc9391c6566",
+      "path.npy": "76ba3dc28b6eb98f7696d070f2f6cb85c8fce4f5ee3f7150e6e071b9a203578d",
+      "frontend_validation/validation.json": "9ac229b7cbf25601bb8b278e47f7e58886f65dda4a804bb22d691fb4df4a7b69",
+      "frontend_validation/trajectory_samples.npz": "580c1212e9b90ed7d90c3020649cc34f86984fd822d45c80ccc49a4887ee35e1",
+      "rounds/000/regions.npz": "72a98adbf6884e59d3a183cb73091c0900c7670cf6518c36d1f9d625cadfc459",
+      "rounds/000/corridor.json": "45fd4d4c900138c15a8bc792dedd28449bb43b28d6b429b17ee33bbcfc7dba53",
+      "eizo_parameters.json": "4738cefd84fef22a5503bb610cfa824d81509abf0a6acf01e222f3c3190efd75"
+    },
+    "roadmap_native_sha256": "bb780d13284769b0a97b6e891d2d90e2377e7494bb420fba32cc2f09355998a7",
+    "source_initialization_recorded_stages": {
+      "model_setup_seconds": 0.01450893422588706,
+      "gpu_initialization_warmup_seconds": 0.12040923209860921,
+      "roadmap_load_seconds": 0.015210180077701807,
+      "online_collision_map_seconds": 0.003462216816842556,
+      "drm_path_seconds": 0.07504333509132266,
+      "drm_path_validation_seconds": 0.675213246140629,
+      "eizo_inflation_seconds": 0.14349170308560133
+    },
+    "source_initialization_recorded_stage_seconds": 1.0473388475365937,
+    "source_attempt_cold_seconds": 2.317473496310413,
+    "source_initialization_timing_scope": "Saved measured source stages only; excludes uninstrumented startup/dependency overhead and is not a separate exact frontend wall clock",
+    "initialization_digest": "892b14bd005c558567bc607dcf6322745d7b4f9f9600a20ca2328680ce93647f"
+  },
+  "initialization_digest": "892b14bd005c558567bc607dcf6322745d7b4f9f9600a20ca2328680ce93647f"
+}

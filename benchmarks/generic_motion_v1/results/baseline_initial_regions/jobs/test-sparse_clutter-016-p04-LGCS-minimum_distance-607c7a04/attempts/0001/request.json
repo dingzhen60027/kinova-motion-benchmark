@@ -1,0 +1,198 @@
+{
+  "job_id": "test-sparse_clutter-016-p04-LGCS-minimum_distance-607c7a04",
+  "case_id": "test-sparse_clutter-016-p04",
+  "scene_id": "test-sparse_clutter-016",
+  "family": "sparse_clutter",
+  "method": "LGCS",
+  "objective": "minimum_distance",
+  "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c",
+  "evaluation_config": {
+    "protocol": "kinova7_generic_v1_evaluation",
+    "online_budget_seconds": 60.0,
+    "optimizer_budget_seconds": 60.0,
+    "validation_step_rad": 0.005,
+    "validation_minimum_samples": 400,
+    "validation_maximum_samples": 100000,
+    "endpoint_tolerance_rad": 1e-05,
+    "feasibility_tolerance": 1e-05,
+    "velocity_limit_rad_s": 1.0,
+    "acceleration_limit_rad_s2": 1.0,
+    "bezier_degree": 6,
+    "scsto_relative_tolerance": 0.01,
+    "max_recovery_attempts": 20,
+    "maximum_recovery_witnesses": 128,
+    "drm": {
+      "max_iterations_steering_to_node": 1000,
+      "max_nodes_to_expand": 100000,
+      "try_shortcutting": true,
+      "online_edge_step_size": 0.01,
+      "max_number_planning_attempts": 1000,
+      "voxel_padding": 0.01
+    },
+    "eizo": {
+      "num_particles": 10000,
+      "bisection_steps": 9,
+      "configuration_margin": 0.01,
+      "delta": 0.005,
+      "epsilon": 0.005,
+      "tau": 0.5,
+      "mixing_steps": 60,
+      "max_hyperplanes_per_iteration": 10,
+      "max_iterations": 30
+    },
+    "roadmap": {
+      "map_center": [
+        0.0,
+        0.0,
+        0.55
+      ],
+      "map_extent": [
+        2.8,
+        2.8,
+        2.2
+      ],
+      "offline_voxel_resolution": 0.03,
+      "max_task_space_distance_between_nodes": 10.0,
+      "max_configuration_distance_between_nodes": 10.0,
+      "edge_step_size": 0.1,
+      "max_neighbors": 10
+    },
+    "nto": {
+      "solver": "IPOPT",
+      "collocation_points": 150,
+      "minimum_control_points": 16,
+      "maximum_iterations": 500,
+      "clearance_m": 1e-05,
+      "influence_distance_m": 0.01
+    },
+    "region_coverage_tolerance_rad": 1e-06,
+    "lgcs": {
+      "solver": "scip"
+    },
+    "drm_query": {
+      "backend": "safe_native",
+      "build_dir": "benchmarks/generic_motion_v1/native/build/drm_consistent_query_portable"
+    },
+    "ompl": {
+      "range_rad": 0.5,
+      "motion_step_rad": 0.01,
+      "planning_seconds": 60.0,
+      "simplification_seconds": 0.5,
+      "simplification_max_steps": 100,
+      "simplification_max_empty_steps": 50,
+      "validation_reserve_seconds": 5.0,
+      "goal_bias": 0.05,
+      "rewire_factor": 1.1,
+      "record_validated_progress": false,
+      "progress_poll_seconds": 0.5
+    },
+    "extended_baselines": {
+      "chomp": {
+        "initial_knots": 64,
+        "maximum_knots": 256,
+        "obstacle_influence_m": 0.05,
+        "collision_check_step_rad": 0.05,
+        "safety_band_m": 2e-06,
+        "maximum_iterations": 40,
+        "smoothness_weight": 1.0,
+        "obstacle_weight": 10.0,
+        "finite_difference_rad": 1e-05,
+        "learning_rate": 1.0,
+        "maximum_update_rad": 0.08,
+        "backtracking_steps": 8,
+        "relative_cost_tolerance": 1e-07
+      },
+      "stomp": {
+        "initial_knots": 64,
+        "maximum_knots": 256,
+        "obstacle_influence_m": 0.05,
+        "collision_check_step_rad": 0.05,
+        "safety_band_m": 2e-06,
+        "maximum_iterations": 40,
+        "iterations_after_valid": 5,
+        "rollouts": 12,
+        "noise_std_rad": 0.1,
+        "cost_sensitivity": 10.0,
+        "control_cost_weight": 0.1,
+        "maximum_update_rad": 0.08
+      },
+      "trajopt": {
+        "initial_knots": 64,
+        "maximum_knots": 256,
+        "segment_collocation_subdivisions": 3,
+        "clearance_m": 0.001,
+        "derivative_step_rad": 1e-05,
+        "maximum_sqp_iterations": 50,
+        "initial_trust_box_rad": 0.1,
+        "constraint_tolerance": 0.0001,
+        "initial_merit_coefficient": 10.0,
+        "maximum_merit_coefficient_increases": 5,
+        "minimum_model_improvement": 0.0001,
+        "maximum_optimizer_seconds": 45.0
+      }
+    },
+    "nto_refined": {
+      "minimum_time_control_points": 16
+    }
+  },
+  "roadmap_dir": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/roadmaps/rss2025_n6000_s000",
+  "roadmap_used": true,
+  "replica_seed": 0,
+  "method_seed": 2679569352,
+  "solver_seed": 755459839,
+  "solver_seed_used": false,
+  "solver_seed_note": "Reserved solver_seed is unused. Native OMPL/STOMP RNG uses method_seed; local deterministic optimizers use the fixed DRM seed path.",
+  "case_ref": {
+    "manifest_path": "benchmarks/generic_motion_v1/manifests/test.jsonl",
+    "manifest_sha256": "9fcbe5ccae28d8681586b1ac6c9986f51f7cc7b5cdc19352c101910e3b6ed03b",
+    "problem_id": "test-sparse_clutter-016-p04",
+    "problem_sha256": "c99d287b2ef3b1d87ea13e3968a8eff46038bb507965680aab0becf1db3795a7",
+    "record_sha256": "8f39e5892a52f2ee71fc524810e50d455e020ca202da192407c55315c9eaef8a",
+    "scene_id": "test-sparse_clutter-016"
+  },
+  "execution_mode": "fixed_initial_regions",
+  "shared_initialization": {
+    "mode": "fixed_initial_regions",
+    "source_run": "benchmarks/generic_motion_v1/results/baseline_test",
+    "source_run_manifest_sha256": "e67e3b3f028667e83ddf0cac98a5d8c837fcfcd91a28e213a7cfcd11b72eaada",
+    "source_job_id": "test-sparse_clutter-016-p04-EI_ZO-minimum_distance-00beed8a",
+    "source_attempt": "benchmarks/generic_motion_v1/results/baseline_test/jobs/test-sparse_clutter-016-p04-EI_ZO-minimum_distance-00beed8a/attempts/0001",
+    "source_receipt_sha256": "aa1d4219575f5153263d9c4e0ca955f413060be83cb1e5d0838b43d285f12451",
+    "case_id": "test-sparse_clutter-016-p04",
+    "case_sha256": "8f39e5892a52f2ee71fc524810e50d455e020ca202da192407c55315c9eaef8a",
+    "robot_sha256": "a25f447c8caf4aff6dc76196c3d57cc940f00e802367f48034f06a9973927c75",
+    "collision_geometry_sha256": "896ab9f55c5d8081b843358bd85cde2daae1f432564593f86218bf61733ce4fa",
+    "evaluation_config_sha256": "d57d94513e57d3d267222213a8492a171edd8caa2ab55de90005dc55ca254650",
+    "method_seed": 2679569352,
+    "replica_seed": 0,
+    "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c",
+    "files": {
+      "request.json": "e774be839b9e8dd8ecf50bec174bed771f00092012942cb96675a7b0f4c4cea2",
+      "input.json": "9cebbe284059a5b80dfd3b591b1bbfeb21f52bf5b13e9b3e96ae9d9e81af73f3",
+      "evaluation.json": "714434221316e1ec7793de4b3c3a73b78f6be3d3fa0f59433c695fe78509ef57",
+      "result.json": "a98f8759d77c32fbf9baa69b14ca9af880845c122e9a223f6979f087fae58724",
+      "process.json": "e342a49671b1156bea45cddda1ee08bf59a60d5d89a59d44fd2ce0a2fde6d006",
+      "path.npy": "86a56a517c06b9382b626f8c5a245c8b8032113d92eed5644a4e19b218c17de6",
+      "frontend_validation/validation.json": "17d3a1512e142daf3da899216b52823fe4e3e5091013e6278f49263b6352e255",
+      "frontend_validation/trajectory_samples.npz": "a8bc1a6067bb6a2ae53446b6c4a5b283f5a55180f98e4612230d704931fd2774",
+      "rounds/000/regions.npz": "142132086ca829f3ca74288e5bc033ceaea3955c6be3ce462f9affe4711e117f",
+      "rounds/000/corridor.json": "5a8ded32ad824f64c18b68ff9ea56344dc6947484a8a14e53a63f5148bdd9a44",
+      "eizo_parameters.json": "f7fb65de09f6830085cf8ec8bc3b6e1d18c80c180eba7f62bb9ac9910b946b0f"
+    },
+    "roadmap_native_sha256": "bb780d13284769b0a97b6e891d2d90e2377e7494bb420fba32cc2f09355998a7",
+    "source_initialization_recorded_stages": {
+      "model_setup_seconds": 0.014527880121022463,
+      "gpu_initialization_warmup_seconds": 0.12405597884207964,
+      "roadmap_load_seconds": 0.014778013341128826,
+      "online_collision_map_seconds": 0.0003243088722229004,
+      "drm_path_seconds": 0.04384208703413606,
+      "drm_path_validation_seconds": 0.5051510189659894,
+      "eizo_inflation_seconds": 0.18905800813809037
+    },
+    "source_initialization_recorded_stage_seconds": 0.8917372953146696,
+    "source_attempt_cold_seconds": 2.0169208967126906,
+    "source_initialization_timing_scope": "Saved measured source stages only; excludes uninstrumented startup/dependency overhead and is not a separate exact frontend wall clock",
+    "initialization_digest": "0e4d4ed27e70c8f0b00ebc586cc8c805bb11328b26a4f42f935f13bfb5cd76a4"
+  },
+  "initialization_digest": "0e4d4ed27e70c8f0b00ebc586cc8c805bb11328b26a4f42f935f13bfb5cd76a4"
+}

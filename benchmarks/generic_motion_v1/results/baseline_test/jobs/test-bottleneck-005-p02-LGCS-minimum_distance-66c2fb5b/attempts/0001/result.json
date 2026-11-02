@@ -1,0 +1,76 @@
+{
+  "status": "success_validated_numerical",
+  "problem_id": "test-bottleneck-005-p02",
+  "scene_id": "test-bottleneck-005",
+  "family": "bottleneck",
+  "objective": "minimum_distance",
+  "method": "LGCS",
+  "method_seed": 4169086571,
+  "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c",
+  "frontend_success": true,
+  "frontend_native_success": true,
+  "roadmap_used": true,
+  "source_code_commit": "e3cef56b038e687af4b14aa1db8400b932ffce36",
+  "source_sha256": {
+    "runner": "f44db89373a06deb581a72c6fabb85dd18ce5704fc5d907f1bf3eef151cbef96",
+    "validator": "12086b43b1735ab8455b260235eb0c92b336cb2b2cbaef6c286d1d2f5f376b43"
+  },
+  "timing": {
+    "model_setup_seconds": 0.014385982882231474,
+    "gpu_initialization_warmup_seconds": 0.10067429766058922,
+    "roadmap_load_seconds": 0.014894373714923859,
+    "online_collision_map_seconds": 0.0046562450006604195,
+    "drm_path_seconds": 0.08035781281068921,
+    "drm_path_validation_seconds": 0.7194710071198642,
+    "eizo_inflation_seconds": 0.12641137838363647,
+    "alternate_drm_path_seconds": 0.004569013137370348,
+    "trajectory_optimization_seconds": 0.026534766890108585,
+    "validation_seconds": 0.6873097941279411,
+    "collision_recovery_seconds": 0.0,
+    "cold_e2e_seconds": 2.0600716560147703,
+    "warm_query_seconds": 1.6565393079072237
+  },
+  "metrics": {
+    "recovery_attempts": 0,
+    "cost": 7.1513002353864685,
+    "cost_unit": "rad",
+    "path_length_rad": 7.1513002353864685,
+    "normalized_path_length": 1.3699343215562734,
+    "minimum_sampled_clearance_m": 0.00038194054997006677,
+    "duration_s": null,
+    "regions": 2,
+    "facets": 84
+  },
+  "budget_seconds": 60.0,
+  "reproduction_fidelity": "Kinova; native EI-ZO and perspective GCS MISOCP using scip; not exact author FR3/hardware reproduction",
+  "seed_semantics": "EI-ZO EizoOptions.seed is passed to native cuRAND; DRM graph sampling uses separate saved PCG64 seed; optimizer initialization is deterministic fixed DRM path",
+  "roadmap_sha256": "bb780d13284769b0a97b6e891d2d90e2377e7494bb420fba32cc2f09355998a7",
+  "offline_roadmap_seconds": 45.87767210975289,
+  "frontend_validation_status": "success_validated_numerical",
+  "alternate_route": {
+    "status": "no_eligible_interior_region",
+    "first_path_retained": true,
+    "algorithm": "paper_VI-C_one_additional_path_attempt",
+    "selection_rng": "numpy.PCG64",
+    "selection_seed": 4169086571,
+    "eligible_region_indices": [],
+    "endpoints_changed": false,
+    "original_roadmap_sha256": "bb780d13284769b0a97b6e891d2d90e2377e7494bb420fba32cc2f09355998a7",
+    "seconds": 0.004457044880837202
+  },
+  "timing_scope": {
+    "cold": "worker function entry through final validation/failure; process startup measured separately by outer runner",
+    "warm": "same actual cold execution minus one-time model/dependency/GPU/roadmap setup; not a second timed solve",
+    "offline": "DRM construction is recorded separately and never added to query latency"
+  },
+  "gpu_memory": {
+    "sampled_peak_process_allocation_mib": 5308,
+    "samples": 8,
+    "sampling_period_s": 0.2,
+    "method": "nvidia-smi process allocation; sampled peak, not CUDA allocator exact high water mark",
+    "error": null
+  },
+  "final_stage": "validation",
+  "cold_e2e_seconds": 2.4676938229240477,
+  "sampled_gpu_peak_mib": 5308.0
+}

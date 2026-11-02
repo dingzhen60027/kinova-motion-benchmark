@@ -1,0 +1,48 @@
+{
+  "kind": "polygon",
+  "native_cost": 26.779087023794077,
+  "native_objective": "STOMP: official normalized acceleration control cost plus summed canonical signed-clearance waypoint potential",
+  "objective": "minimum_distance",
+  "optimizer_provenance": {
+    "algorithm": "unmodified ros-industrial STOMP core",
+    "collision_model": "unchanged Model.clearance; exact canonical primitives and filter pairs",
+    "initializer": "shared validated DRM path, all vertices retained",
+    "method": "STOMP",
+    "native_objective": "STOMP: official normalized acceleration control cost plus summed canonical signed-clearance waypoint potential",
+    "profile": {
+      "collision_check_step_rad": 0.05,
+      "control_cost_weight": 0.1,
+      "cost_sensitivity": 10.0,
+      "initial_knots": 64,
+      "iterations_after_valid": 5,
+      "maximum_iterations": 40,
+      "maximum_knots": 256,
+      "maximum_update_rad": 0.08,
+      "noise_std_rad": 0.1,
+      "obstacle_influence_m": 0.05,
+      "rollouts": 12,
+      "safety_band_m": 2e-06
+    },
+    "reported_benchmark_cost": "Euclidean seven-joint PWL arc length in radians",
+    "seed": 1243712607,
+    "sources": [
+      "https://github.com/ros-industrial/stomp/tree/b1a87c80f7338caae25a5c689b876da15492aa75"
+    ]
+  },
+  "optimizer_status": {
+    "analytic_gradient_calls": 0,
+    "candidate_changed": false,
+    "clearance_calls": 86,
+    "clearance_states": 6906,
+    "final_pwl_length_rad": 6.6334084122084525,
+    "finite_sampling_is_not_continuous_certificate": true,
+    "geometry_seconds": 2.5476184715516865,
+    "initial_pwl_length_rad": 6.6334084122084525,
+    "iterations": 6,
+    "native_cost": 26.779087023794077,
+    "seconds": 2.5665708030574024,
+    "solver_success": true,
+    "stop_reason": "native_STOMP_return"
+  },
+  "solver_success": true
+}
