@@ -1,0 +1,20 @@
+Traceback (most recent call last):
+  File "/home/eric/wjg/wd/csdecomp/scripts/evaluate.py", line 10, in <module>
+    evaluate_main()
+  File "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/cli.py", line 141, in evaluate_main
+    results.main(['--output', str(project_path(args.output)), '--selection', str(project_path(args.selection))])
+  File "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/runners/results.py", line 1012, in main
+    print(json.dumps(export(args.output, roots=args.roots, selection=args.selection), indent=2))
+  File "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/runners/results.py", line 885, in export
+    figure_rows, figure_summary = _figure_inputs(rows, summary, figure_comparisons)
+  File "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/runners/results.py", line 852, in _figure_inputs
+    return scoped_rows, [row for row in summary if row["comparison"] in comparison_ids]
+  File "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/runners/results.py", line 852, in <listcomp>
+    return scoped_rows, [row for row in summary if row["comparison"] in comparison_ids]
+KeyError: 'comparison'
+{
+  "output": "benchmarks/generic_motion_v1/results",
+  "runs": 72,
+  "actual_attempts": 32367,
+  "summary_rows": 36724
+}

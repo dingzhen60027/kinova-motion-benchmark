@@ -1,0 +1,76 @@
+{
+  "time_utc": "2026-11-02T17:29:05.014830+00:00",
+  "scope": "Exact collect_witnesses prefilter only: strict JSON read, object type and string problem_id/status. No numerical_witness/assess_saved_output, no arrays, GPU or validation.",
+  "scan_root": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results",
+  "stats": {
+    "result_records_scanned": 32371,
+    "unreadable_result_records": 2
+  },
+  "findings": [
+    {
+      "path": "benchmarks/generic_motion_v1/results/dev_sampling/jobs/dev-sparse_clutter-001-p00-RRTSTAR-minimum_distance-2caf64b1/attempts/0001/result.json",
+      "absolute_path": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/dev_sampling/jobs/dev-sparse_clutter-001-p00-RRTSTAR-minimum_distance-2caf64b1/attempts/0001/result.json",
+      "reason": "missing_or_non_string_problem_id_or_status",
+      "exception": null,
+      "is_current_cohort": false,
+      "top_level_type": "dict",
+      "keys": [
+        "error",
+        "error_category",
+        "previous_partial_status",
+        "status",
+        "success"
+      ],
+      "problem_id": null,
+      "problem_id_type": "NoneType",
+      "status": "infrastructure_error",
+      "status_type": "str",
+      "sha256": "f27fef495f0907e80ce37fe6b64eb0dbe0de03219fffbf18810f3003ed60c251",
+      "size_bytes": 200,
+      "classification": "historical_failed_task_record_missing_problem_id",
+      "raw_error_metadata": {
+        "status": "infrastructure_error",
+        "success": false,
+        "error_category": "coordinator_interrupted",
+        "error": "Unsealed attempt retained before resume",
+        "previous_partial_status": "running"
+      },
+      "receipt.json": {
+        "status": "infrastructure_error",
+        "returncode": null,
+        "timed_out": null,
+        "result_json_sha256": "f27fef495f0907e80ce37fe6b64eb0dbe0de03219fffbf18810f3003ed60c251",
+        "keys": [
+          "files",
+          "retry_pending",
+          "status"
+        ]
+      }
+    },
+    {
+      "path": "benchmarks/generic_motion_v1/results/trend_diagnostics/nto_parameterization_control/result.json",
+      "absolute_path": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/trend_diagnostics/nto_parameterization_control/result.json",
+      "reason": "missing_or_non_string_problem_id_or_status",
+      "exception": null,
+      "is_current_cohort": false,
+      "top_level_type": "dict",
+      "keys": [
+        "continuous_rest_to_rest_lower_bound_s",
+        "four_control_hull_lower_bound_s",
+        "runs",
+        "scope"
+      ],
+      "problem_id": null,
+      "problem_id_type": "NoneType",
+      "status": null,
+      "status_type": "NoneType",
+      "sha256": "6da33f2557413916f3bff91c33a3c10c8c99c45201bda881e1dca7b359b82eff",
+      "size_bytes": 1330,
+      "classification": "standalone_cpu_parameterization_diagnostic_not_benchmark_attempt",
+      "diagnostic_scope": "CPU analytical seven-dimensional rest-to-rest motion without obstacles, only joint0 displacement2.0; isolates parameterization under identical KTO derivative constraints, no benchmark solve",
+      "diagnostic_run_count": 2
+    }
+  ],
+  "current_cohort_findings": 0,
+  "interpretation": "Both files are parseable JSON. The counter combines structural rejection with parse errors: the old dev_sampling infrastructure_error record lacks problem_id; the standalone parameterization diagnostic lacks benchmark problem_id/status. None belong to the current four formal cohorts. Historical failed evidence is retained, not reclassified as algorithm success or discarded."
+}

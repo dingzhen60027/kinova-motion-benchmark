@@ -1,0 +1,22 @@
+{
+  "time_utc": "2026-11-02T17:03:59.523976+00:00",
+  "event": "postprocessing_offline_figure_key_repaired",
+  "source": "benchmarks/generic_motion_v1/runners/results.py",
+  "frozen_source_sha256": "c2514581f7a236c397325a6a40414a23ee7d53aad404d808b685013c72f2bf02",
+  "current_source_sha256": "6cde86e5bc0e4eab771f2a40a57df70a4138b42fee025ba5a5fc9cf1a3e9c5a5",
+  "scope": "Only figure selection uses row.get(comparison) for offline roadmap rows lacking that key; no planning or validation change. All original manifests and attempts retained.",
+  "original_error_log_sha256": "50d03a978d98ce649049063efb709641c65bd5c7d784aea84764fe42ac58bb52",
+  "original_error": "Traceback (most recent call last):\n  File \"/home/eric/wjg/wd/csdecomp/scripts/evaluate.py\", line 10, in <module>\n    evaluate_main()\n  File \"/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/cli.py\", line 141, in evaluate_main\n    results.main(['--output', str(project_path(args.output)), '--selection', str(project_path(args.selection))])\n  File \"/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/runners/results.py\", line 1012, in main\n    print(json.dumps(export(args.output, roots=args.roots, selection=args.selection), indent=2))\n  File \"/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/runners/results.py\", line 885, in export\n    figure_rows, figure_summary = _figure_inputs(rows, summary, figure_comparisons)\n  File \"/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/runners/results.py\", line 852, in _figure_inputs\n    return scoped_rows, [row for row in summary if row[\"comparison\"] in comparison_ids]\n  File \"/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/runners/results.py\", line 852, in <listcomp>\n    return scoped_rows, [row for row in summary if row[\"comparison\"] in comparison_ids]\nKeyError: 'comparison'\n",
+  "tests": "results/trend_diagnostics/completed_offline_figure_fix_tests.log",
+  "tests_passed": 12,
+  "restart_policy": "Existing complete runs verify and return without planning; controller continues summary and final acceptance.",
+  "csv_sha256_before_retry": {
+    "results/records.csv": "4678e9f0510ee5f1185824f3282582b0a404788db96aee8c89d94a4635c9da16",
+    "results/summary.csv": "93cdc47bc3eef07b56b21a69b3817b7726123887bd62b48f96621f4aecf28f70"
+  },
+  "csv_sha256_after_retry": {
+    "results/records.csv": "4678e9f0510ee5f1185824f3282582b0a404788db96aee8c89d94a4635c9da16",
+    "results/summary.csv": "93cdc47bc3eef07b56b21a69b3817b7726123887bd62b48f96621f4aecf28f70"
+  },
+  "csv_outputs_unchanged_by_plot_fix": true
+}

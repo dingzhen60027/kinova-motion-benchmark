@@ -160,6 +160,51 @@ def build_catalog(original, records, summary, specs, manifests, acceptance, evid
             method['collision_evaluation_accounting'] = ('native_evaluations counts only calls through the guarded Python '
                 'callback. Direct native solver callback evaluations are not instrumented and their count is unknown; '
                 'a saved zero means zero guarded callback calls, not zero collision work or zero native evaluations.')
+        if method['method'] in ('NTO', 'NTO_PAPER', 'NTO_REFINED'):
+            method['historical_backend_evidence'] = original.get('known_backend_issue', {}).get(
+                'historical_evidence', original.get('known_backend_issue', {}).get(
+                    'evidence', 'results/nto_backend_issue.json'))
+            method['verification'] = ('Current coverage is generated only after complete-cohort receipt, '
+                'fixed-input, model, protocol, state-accounting and metric acceptance. Solver termination '
+                'and independent finite-sampling validation remain separate; no continuous certificate is claimed. '
+                'Earlier backend failures remain in historical_backend_evidence; current repair evidence is '
+                'results/trend_diagnostics/nto_collision_independent_review.json.')
+        if method['method'] == 'NTO_PAPER':
+            method['distinction'] = ('Published-profile Drake KTO reconstruction, not unpublished author code. '
+                'Nc=150 maps to 149 interior k/150 bindings from archived author TeX; the published wording '
+                'alone does not resolve that transcription detail. Historical BoxBoxGradient failures are '
+                'retained; the current exact-assertion recovery is described in collision_backend_repair.')
+            method['correctness'] = ('Real SNOPT path and IPOPT time solves with canonical collision constraints; '
+                'the native-first callback and bounded exact-assertion recovery preserve all collision pairs. '
+                'All candidates require the common independent numerical validator.')
+            method['initialization'] = ('Path uses the original DRM vertices. Time duplicates the first and '
+                'last control once each; the published-profile variant inserts no additional knots or controls.')
+        if method['method'] == 'NTO':
+            minimum_controls = cfg['nto']['minimum_control_points']
+            method['distinction'] = ('Local historical Drake KTO/IPOPT adaptation; it uses IPOPT for both tracks '
+                'and does not equal the paper SNOPT path profile. Historical backend exceptions remain recorded; '
+                'the current exact-assertion recovery is described in collision_backend_repair.')
+            method['correctness'] = ('Real Drake KTO/IPOPT transcription with canonical collision constraints, '
+                'native-first callbacks and bounded exact-assertion recovery. It remains a separately labeled '
+                'adaptation and every output undergoes common independent numerical validation.')
+            method['initialization'] = (f'Path retains the original DRM controls. Time duplicates both endpoints '
+                f'once and bisects longest knot spans with shape-preserving InsertKnots until at least '
+                f'{minimum_controls} controls; there is no arc-length resampling.')
+        if method['method'] == 'NTO_REFINED':
+            minimum_controls = cfg.get('nto_refined', {}).get('minimum_time_control_points', 16)
+            method['distinction'] = ('Declared local numerical adaptation of the published NTO profile. '
+                'The post-solve geometry guard adds collocation constraints; the separate native-first '
+                'collision backend handles only the reviewed exact BoxBoxGradient assertion. Neither '
+                'mechanism drops canonical collision pairs or relaxes final validation.')
+            method['correctness'] = ('Real SNOPT/IPOPT solves with positive optimization clearance, '
+                'collision-driven constraint refinement and bounded exact-assertion recovery. The fixed '
+                'robot model, endpoints, motion limits and final validator are unchanged.')
+            method['initialization'] = (f'Path retains the original DRM controls. Time duplicates both endpoints '
+                f'once and uses shape-preserving knot insertion to at least {minimum_controls} controls. '
+                'Each later refinement round starts from the preceding native candidate on the same basis.')
+            method['current_time_parameterization'] = (f'At least {minimum_controls} time-spline controls through '
+                'shape-preserving knot insertion; the initial curve, motion limits and endpoint conditions '
+                'are unchanged. Current outcomes are reported only in actual_coverage.')
         if method['method'] == 'NTO_REFINED':
             method['stopping'] = drm + (' Backend: At most 4 refinement rounds and 600 collocation positions. '
                 'At query level, only the exact known BoxBoxGradient assertion may abort a native Solve and add '

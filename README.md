@@ -64,7 +64,7 @@ The five environment categories are:
 
 Scene randomness and endpoint randomness use separate SHA256-derived PCG64 streams. Planner seeds are repetitions of fixed problems, not new environments. No problem is selected according to a planner's success. Invalid generation records remain registered; a valid input without a verified path has unknown feasibility.
 
-The two smoke generation failures are both dense-clutter inputs; that category has valid development and test coverage. Receipt-bound numerical path witnesses currently exist for 7 smoke, 49 dev and 358 test problems. The other 49 legal problems retain unknown feasibility; no failed planner result is treated as proof of infeasibility.
+The two smoke generation failures are both dense-clutter inputs; that category has valid development and test coverage. Receipt-bound numerical path witnesses exist for 7 smoke, 49 dev and 362 test problems. The other 45 legal problems retain unknown feasibility; no failed planner result is treated as proof of infeasibility.
 
 The legal test set contains **75 random obstacle layouts plus one shared base environment**, rather than 395 independent environments. The 25 test generation failures belong to five complete scenes. Dev has no open-control tasks; its short/medium/long distance ratio is 1:1:1, whereas legal test uses 2:2:1. Results therefore include category breakdowns and scene-cluster uncertainty. Test has historical evaluation exposure and is not an untouched holdout.
 
@@ -117,38 +117,51 @@ CHOMP uses a C-space clearance functional rather than the original workspace bod
 
 Every path-track result is compared by the length of its actual saved path, even when its native objective includes other terms. A correct implementation may fail on a problem; success requires the independent output checks, not just a solver success flag. The Kinova suite evaluates these methods on its own fixed robot and task distribution.
 
-### Current execution and repair evidence
+### Completed evaluation and repair evidence
 
-The serial evaluation is frozen at runtime commit `6c3144ff64`; each `run_manifest.json` records the exact source hashes and resolved configuration. The complete post-repair cohorts are:
+The serial evaluation uses runtime commit `6c3144ff64`; each `run_manifest.json` records the exact source hashes and resolved configuration. The shared-region run was prepared at publication commit `e3cef56b03`, with all 82 runtime source hashes, input hashes and roadmap files identical. All four repaired cohorts are complete:
 
 | Run | Seeds | Registered calls | Legal calls |
 |---|---|---:|---:|
 | `baseline_smoke` | 0 | 140 | 112 |
 | `baseline_dev` | 0, 1, 2 | 2,520 | 2,520 |
 | `baseline_test` | 0 | 5,880 | 5,530 |
+| `baseline_initial_regions` | 0 | 676 | 676 |
 
-The repaired smoke and development cohorts are complete. Smoke has **140/140** sealed calls: 71 numerical successes, 28 invalid inputs, 15 timeouts, 14 searches without a solution, 8 validation failures and 4 solver failures. Dev has **2,520/2,520** sealed calls: 1,545 numerical successes, 587 searches without a solution, 127 timeouts, 150 validation failures and 111 solver failures. Both pass full receipt checks with **zero infrastructure errors**. Test is prepared but has not started at this checkpoint; no repaired full-test score is claimed. [Development evidence](benchmarks/generic_motion_v1/results/logs/baseline_dev_publication_acceptance.json).
+All **9,216 calls** are sealed and pass full receipt checks, with **zero infrastructure errors**. Smoke has 71 numerical successes; dev has 1,545. Test has **4,009 numerical successes, 759 searches without a solution, 140 timeouts, 369 validation failures, 253 solver failures and 350 invalid-input calls**. Those 350 calls represent the original 25 generation failures across 14 supported method–track combinations. Shared-region comparison has 671 successes and 5 timeouts over all 338 eligible pairs. [Test evidence](benchmarks/generic_motion_v1/results/logs/baseline_test_acceptance.json), [shared-region evidence](benchmarks/generic_motion_v1/results/logs/baseline_initial_regions_acceptance.json).
 
-Development successes below use all 60 fixed problems and three paired seeds: **180 legal calls per method and supported track**. They describe reliability, not a common-success cost comparison.
+Development uses all 60 fixed problems and three paired seeds; test uses all 395 legal problems and seed 0. Success counts below describe reliability; cost comparisons use paired common-success problems.
 
-| Method | Path successes / 180 | Time successes / 180 |
-|---|---:|---:|
-| `EI_ZO` | 131 | 131 |
-| `LGCS` | 127 | — |
-| `NTO_PAPER` | 44 | 101 |
-| `NTO_REFINED` | 99 | 109 |
-| `NTO` | 44 | 107 |
-| `RRTCONNECT` | 146 | — |
-| `RRTSTAR` | 129 | — |
-| `CHOMP` | 130 | — |
-| `STOMP` | 131 | — |
-| `TRAJOPT` | 116 | — |
+| Method | Dev path / 180 | Dev time / 180 | Test path / 395 | Test time / 395 |
+|---|---:|---:|---:|---:|
+| `EI_ZO` | 131 | 131 | 338 | 338 |
+| `LGCS` | 127 | — | 327 | — |
+| `NTO_PAPER` | 44 | 101 | 113 | 269 |
+| `NTO_REFINED` | 99 | 109 | 276 | 297 |
+| `NTO` | 44 | 107 | 123 | 265 |
+| `RRTCONNECT` | 146 | — | 362 | — |
+| `RRTSTAR` | 129 | — | 316 | — |
+| `CHOMP` | 130 | — | 336 | — |
+| `STOMP` | 131 | — | 336 | — |
+| `TRAJOPT` | 116 | — | 313 | — |
+
+On the 338 test problems solved by the EI-ZO path pipeline, CHOMP and STOMP each validate 336 outputs; LGCS validates 327, with 11 timeouts; TrajOpt validates 313, with 25 collision failures. These methods share the same 54 frontend failures. Their full-flow success rates therefore reflect both finite-roadmap coverage and backend behavior. NTO_PAPER path retains 148 validation failures and 73 solver failures; its low validated success is not hidden or treated as an infrastructure crash. The refined profile is reported separately.
+
+Selected test comparisons below use **competitor minus EI-ZO**, with 95% scene-cluster bootstrap intervals. Negative objective differences favor the competitor. Every row uses the same common-success queries for its cost and computation-time differences.
+
+| Comparison / competitor | Common successes / scene clusters | Objective difference [95% CI] | Cold computation difference [95% CI] |
+|---|---:|---:|---:|
+| Full-flow path / RRTConnect | 338 / 75 | −0.286 rad [−0.534, −0.073] | −1.773 s [−2.445, −1.286] |
+| Full-flow time / NTO_REFINED | 297 / 74 | −1.224 s [−1.424, −1.057] | +3.906 s [2.916, 4.997] |
+| Shared initial regions / LGCS | 333 / 75 | −0.214 rad [−0.325, −0.123] | +5.191 s [4.111, 6.500] |
+
+RRTConnect also solves 24 test problems that EI-ZO does not; EI-ZO has no exclusive success in that pair. NTO_REFINED time produces shorter trajectories on the 297 common successes, while EI-ZO solves another 41 problems. Shared-region cold time covers loading/revalidation and backend work; its source frontend cost is reported separately. Full-denominator outcome and latency statistics remain in [summary.csv](benchmarks/generic_motion_v1/results/summary.csv). The [dev](benchmarks/generic_motion_v1/results/trend_diagnostics/completed_dev_comparison.json) and [test](benchmarks/generic_motion_v1/results/trend_diagnostics/completed_test_comparison.json) repair comparisons preserve the earlier configurations and outcomes, including the historical shorter OMPL search cap.
 
 The preceding native-first smoke at `6ad41275c7` and its **402/2,520** completed development prefix remain separate diagnostics. The prefix stopped safely when the region-handoff defect was reproduced; no active query was interrupted, no old test query had started, and no observation was selected by outcome to replace a repaired-cohort result.
 
-These counts cover all **10 methods / 14 supported method–track combinations**. Use `evaluate.py status --run results/<run>` for actual progress. Final summaries are withheld until every declared call has a terminal record. Historical completed scores remain in `records.csv` and `summary.csv` under `current_dev`, `current_test` and `current_dev_repaired_s000`; they are not scores for the repaired defaults.
+These counts cover all **10 methods / 14 supported method–track combinations**. Use `evaluate.py status --run results/<run>` for coverage. Current summaries use `current_dev_repaired`, `current_test_repaired` and their explicitly separated conditional comparisons. Historical scores remain under `current_dev`, `current_test` and `current_dev_repaired_s000`; they are not substituted for repaired-cohort results.
 
-The current regression suite passes **1,288 tests**, and three unchanged upstream tests pass. Repairs and their reproducible evidence are:
+The planning/runtime regression suite passed **1,288 tests**, and three unchanged upstream tests passed. Final catalog checks passed 13 tests; the offline-row plotting repair passed 12 targeted checks. Repairs and their reproducible evidence are:
 
 - **DRM query correctness.** Failed endpoint edges no longer exclude otherwise free vertices; query-local state resets; isolated same-node queries and steering endpoints are handled. The quantized cache is reconciled against the original roadmap nodes at the actual online obstacle centers and radius. Independent Drake checks confirmed 2,316 cache-excluded configurations were free. The portable CPU sidecar retains the graph and CUDA implementation, with 48 targeted checks and six real-GPU positive/negative fixtures. [Evidence](benchmarks/generic_motion_v1/results/trend_diagnostics/drm_attachment_audit/comparison.json).
 - **Endpoint/search budgets.** Dev-only diagnostics separate finite-graph coverage from exhausted attachment budgets. The current profile uses 1,000 planning attempts, 1,000 endpoint candidates per endpoint per attempt, 100,000 expansions and 0.01-rad steering; the internal 0.01-m padding is retained. OMPL now uses the remaining 60-second outer budget with explicit validation and simplification reserves. Historical 10-second OMPL results remain separate.
@@ -156,6 +169,7 @@ The current regression suite passes **1,288 tests**, and three unchanged upstrea
 - **Drake contact-gradient recovery.** Only the known [near-contact BoxBoxGradient assertion](https://github.com/RobotLocomotion/drake/issues/21675) is recovered. Every canonical collision pair and the native aggregate constraint remain present; unknown errors fail explicitly. Normal solves bind the native evaluator directly. Only this exact assertion permits one guarded restart per query, using the original remaining deadline and initial guess; subsequent refinement rounds keep the guarded evaluator. Sixty-nine targeted checks and seven independent real-Drake API checks pass. The end-to-end GPU regression reproduced the exception and retained the colliding candidate as a failure. Normal-path replay matched all 415 original IPOPT iteration rows and the final trajectory arrays. [Evidence](benchmarks/generic_motion_v1/results/trend_diagnostics/nto_collision_independent_review.json).
 - **Native region handoff.** A real recovery region needed 23 float32 increments, exceeding the old arbitrary limit of 16 despite remaining inside the existing tolerance. The fallback now searches only representable offsets inside both original correction bounds, with the complete native matrix and fixed anchors. Independent CPU replay found the least passing offset at a normalized change of 1.724e-7, below the unchanged 1e-6 limit; five normal historical regions retained byte-identical arrays and records. Final collision validation remains mandatory. [Evidence](benchmarks/generic_motion_v1/results/trend_diagnostics/native_handoff_independent/review.json).
 - **Failure accounting.** Unknown exceptions, CUDA errors and process crashes retain infrastructure-failure status even when a deadline follows. A numerical handoff rejection requires its typed error and bound-checked, receipt-bound evidence. A source-specific reader preserves 1,368 normal no-route outcomes from the older DRM implementation without accepting that old exception in the current runtime. [Evidence](benchmarks/generic_motion_v1/results/trend_diagnostics/exception_classification_applied.json).
+- **Result export.** Offline roadmap rows have no comparison membership. The final plotting filter handles those rows without removing their costs from the full CSV. This postprocessing repair was applied after all timed runs; the original export error, frozen runtime hashes and regression checks are preserved. [Evidence](benchmarks/generic_motion_v1/results/trend_diagnostics/completed_offline_figure_fix.json).
 
 The actual LGCS GPU regression for `dev-dense_clutter-002-p01` retains the same input, seed, roadmap, configuration and original failing handoff arrays. After the repair it passes the common 1,278-sample validation with a 6.346409-rad path in 22.25 s end to end. The initial colliding candidate and old failed query remain saved. This is one development regression, not a full-test success rate. [Run evidence](benchmarks/generic_motion_v1/results/trend_diagnostics/handoff_repair_gpu_verification.json).
 
@@ -176,7 +190,7 @@ The result selection distinguishes three comparisons:
 
 - **End-to-end:** every legal input remains in the denominator, including frontend failures.
 - **Fixed frontend:** methods share the byte-identical, independently validated DRM path. Frontend failures are excluded from this conditional backend comparison. A method whose saved paths differ is excluded from this entire conditional comparison, while its full-flow results remain available.
-- **Fixed initial regions:** both LSCS and LGCS load the same receipt-bound initial EI-ZO path, regions and corridor. Each receives a fresh 60-second budget including setup and source revalidation; source-load failures remain in the predeclared denominator. Initial corridor generation is reported separately as recorded source stages. Later graph expansion and collision repair remain part of each method. Two of the 283 available original test pairs had different independently generated regions; those full-flow results are preserved, and the shared-snapshot experiment reruns the complete eligible cohort.
+- **Fixed initial regions:** both LSCS and LGCS load the same receipt-bound initial EI-ZO path, regions and corridor. Each receives a fresh 60-second budget including setup and source revalidation; source-load failures remain in the predeclared denominator. Initial corridor generation is reported separately as recorded source stages. Later graph expansion and collision repair remain part of each method. The repaired comparison includes all 338 eligible source-stage pairs; eligibility does not depend on final optimizer success. The older 283-pair experiment remains historical evidence.
 
 The summary keeps each mode separate. On the same problem and planner seed it reports common-success objective and cold-time differences, plus common-success backend-time differences for fixed-frontend comparisons. All-finished latency differences remain a separate statistic, so an early failure cannot become a common-success speed advantage. Four paired outcome counts—both succeed, only A succeeds, only B succeeds, neither succeeds—share the same matched legal denominator. Each metric reports its actual nonmissing sample and scene-cluster counts. Confidence intervals resample complete scene clusters, keeping correlated queries/repetitions together; all open-control tasks share one physical cluster. Single-cluster results have no bootstrap interval.
 
@@ -222,6 +236,8 @@ bash local/python.sh scripts/evaluate.py replay \
   --attempt '<attempt_path from records.csv>' --output /tmp/kinova-replay
 ```
 
+Actual test examples are available as self-contained [successful replay](benchmarks/generic_motion_v1/results/figures/repaired_success/replay.html) and [failed replay](benchmarks/generic_motion_v1/results/figures/repaired_failure/replay.html); open the downloaded HTML locally. Every displayed joint state matches the saved validator arrays. The failed TrajOpt example retains a sampled clearance of −1.80 mm and is counted as a failure. [Replay checks](benchmarks/generic_motion_v1/results/logs/completed_replay_acceptance.json).
+
 Outputs are centralized:
 
 | File or directory | Contents |
@@ -257,10 +273,13 @@ results/                       Public alias of benchmark/results/
   records.csv, summary.csv
   selection.json, inventory.json
   figures/, trajectories/, logs/
-  smoke/, test/               Original full-flow run evidence
-  repaired_dev/              Earlier repaired seed-0 evidence
-  repaired_native_smoke/, repaired_dev_all_seeds/, repaired_test/
-                             Current frozen-config run plans and evidence
+  baseline_smoke/, baseline_dev/, baseline_test/
+                             Complete repaired full-flow evidence
+  baseline_initial_regions/  Complete paired shared-initial-region evidence
+  smoke/, test/, repaired_dev/
+                             Historical full-flow and seed-0 evidence
+  repaired_native_smoke/, repaired_dev_all_seeds/
+                             Earlier diagnostic evidence, including failures
   trend_diagnostics/         Literature checks, repairs and paired evidence
   nto_legacy_smoke/, nto_legacy_dev/, nto_legacy_test/
   fixed_initial_regions/     Paired shared-initial-region experiment

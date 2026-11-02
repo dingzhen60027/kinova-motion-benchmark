@@ -849,7 +849,7 @@ def _figure_inputs(rows, summary, comparison_ids):
         memberships = [value for value in row["selected_comparisons"] if value in comparison_ids]
         if memberships:
             scoped_rows.append(dict(row, selected_comparisons=memberships))
-    return scoped_rows, [row for row in summary if row["comparison"] in comparison_ids]
+    return scoped_rows, [row for row in summary if row.get("comparison") in comparison_ids]
 
 
 def export(output=None, *, roots=None, selection=None, verify_files=True):

@@ -1,0 +1,47 @@
+{
+  "passed": true,
+  "selection": "First completed EI_ZO path numerical success and first TRAJOPT path collision failure in baseline_test execution order; no replanning.",
+  "checks": [
+    {
+      "output": "results/figures/repaired_success",
+      "attempt": "results/baseline_test/jobs/test-sparse_clutter-000-p00-EI_ZO-minimum_distance-3cafa806/attempts/0001",
+      "status": "success_validated_numerical",
+      "receipt_integrity_verified_by_replay": true,
+      "html_data_matches_json": true,
+      "all_displayed_joint_frames_match_original": true,
+      "source_sha256_matches": true,
+      "original_samples": 973,
+      "displayed_frames": 180,
+      "minimum_saved_clearance_m": 0.008909085916026238,
+      "expected_clearance_sign": true,
+      "artifacts_sha256": {
+        "replay.html": "e2ca545e5b1f5e53f08b32d89b900499d3d5ce55be49228ffdd9cfb620fcb8a2",
+        "replay.json": "b2fdc906823a99c9c67d159754a19c7f8807260262cebc820c243727bc30be33",
+        "scene.png": "90b6b2b9c1f0db9fc2d4e1a7075949417b7640c80ef5b561a2a801a7d0d3bbe5",
+        "joints.png": "10ad8731496a2b1787075b57f1238dbe855f58a9a0713f71125696bbf43915e2"
+      },
+      "expected_status_matches": true
+    },
+    {
+      "output": "results/figures/repaired_failure",
+      "attempt": "results/baseline_test/jobs/test-sparse_clutter-000-p02-TRAJOPT-minimum_distance-f8b48f43/attempts/0001",
+      "status": "collision_failed",
+      "receipt_integrity_verified_by_replay": true,
+      "html_data_matches_json": true,
+      "all_displayed_joint_frames_match_original": true,
+      "source_sha256_matches": true,
+      "original_samples": 1732,
+      "displayed_frames": 180,
+      "minimum_saved_clearance_m": -0.0017995657603084737,
+      "expected_clearance_sign": true,
+      "artifacts_sha256": {
+        "replay.html": "84e3d185990341eb53f3c2ba357693fea94dc2f603fcfe005129713586d2ea16",
+        "replay.json": "4c25186041a77bee19bee2912b694e72f75f1509807a1ac3e51bc8a6a566bd83",
+        "scene.png": "b47937d08b4f13eb4a75d22d72ef999858f1fcc340e128f9a6e00d52ac3d59bf",
+        "joints.png": "de778c014e075504452ebb48342b2ca094a62cfa4d1a9778a3457cd7dd32d45a"
+      },
+      "expected_status_matches": true
+    }
+  ],
+  "visual_review": "Success scene and failure joint/clearance plots inspected; actual negative clearance visible in failure plot."
+}

@@ -400,6 +400,19 @@ def test_invalid_figure_scope_rejected_before_export(tmp_path, monkeypatch, scop
 
 
 def test_export_figure_scope_keeps_full_csv_history(tmp_path, monkeypatch):
+    # Use the real offline-summary producer: its rows intentionally have no
+    # comparison because a built map is shared across comparison modes.
+    roadmap = tmp_path / "roadmap"
+    roadmap.mkdir()
+    native = roadmap / "native.map"
+    native.write_bytes(b"map")
+    write(roadmap / "metadata.json", dict(status="ready", roadmap_id="map",
+          native_map_sha256=sha(native), native_map_bytes=3, actual_nodes=6000,
+          offline_seconds=45., timing_scope="Recorded builder stages", seed=0))
+    offline = results._offline_roadmap_summary([dict(run="run", actual_attempts=1,
+        row={"roadmap_load_seconds": .2}, job=dict(job_id="job", method="EI_ZO",
+        roadmap_dir=str(roadmap), roadmap_id="map"))])
+    assert len(offline) == 1 and "comparison" not in offline[0]
     rows = [
         {"record_id": "old", "selected_comparisons": ["current_old"], "status": "timeout"},
         {"record_id": "new", "selected_comparisons": ["current_old", "current_new"],
@@ -408,7 +421,7 @@ def test_export_figure_scope_keeps_full_csv_history(tmp_path, monkeypatch):
     summary = [
         {"comparison": "current_old", "row_type": "status", "finished_legal_jobs": 2},
         {"comparison": "current_new", "row_type": "status", "finished_legal_jobs": 1},
-    ]
+    ] + offline
     original = json.loads(json.dumps([rows, summary]))
     selection = tmp_path / "selection.json"
     write(selection, {"comparisons": [{"id": key, "runs": []} for key in ("current_old", "current_new")],
@@ -420,13 +433,17 @@ def test_export_figure_scope_keeps_full_csv_history(tmp_path, monkeypatch):
     monkeypatch.setattr(results, "_figures", lambda *args: captured.append(args))
     output = tmp_path / "output"
     report = results.export(output, roots=[tmp_path], selection=selection)
-    assert report["actual_attempts"] == report["summary_rows"] == 2
+    assert report["actual_attempts"] == 2
+    assert report["summary_rows"] == 3
     with (output / "records.csv").open() as stream:
         exported = list(csv.DictReader(stream))
     assert [row["record_id"] for row in exported] == ["old", "new"]
     assert json.loads(exported[1]["selected_comparisons"]) == ["current_old", "current_new"]
     with (output / "summary.csv").open() as stream:
-        assert [row["comparison"] for row in csv.DictReader(stream)] == ["current_old", "current_new"]
+        exported_summary = list(csv.DictReader(stream))
+    assert [row["comparison"] for row in exported_summary] == ["current_old", "current_new", ""]
+    assert exported_summary[2]["row_type"] == "offline_roadmap"
+    assert float(exported_summary[2]["offline_roadmap_seconds"]) == 45.
     assert len(captured) == 1
     _, figure_rows, figure_summary = captured[0]
     assert [row["record_id"] for row in figure_rows] == ["new"]
