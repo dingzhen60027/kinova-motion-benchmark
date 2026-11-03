@@ -1,0 +1,60 @@
+{
+  "passed": true,
+  "base_commit": "fa2d9baa59154b8551c13d8d086bf832de2e9724",
+  "planning_runtime_commit": "84d9f8eb33b1a5501f5e947a7e3c37dc9a744b0b",
+  "input_checks": {
+    "registered_problems": 490,
+    "endpoint_proposals_replayed": 146816,
+    "original_manifest_hashes_unchanged": true
+  },
+  "model_check_status": "passed_with_explicit_contact_band",
+  "contact_band_m": 2e-06,
+  "tests": {
+    "regression": 1330,
+    "upstream": 3
+  },
+  "historical_records_checked": 32367,
+  "historical_records_changed": 0,
+  "new_regression_records": 28,
+  "regression_outcomes": {
+    "success_numerical": 10,
+    "solver_failure": 1,
+    "timeout": 1,
+    "validation_failed": 3,
+    "no_solution_within_budget": 13
+  },
+  "complete_historical_primary_calls": 8540,
+  "complete_historical_selected_calls": 9216,
+  "completed_formal_test_seeds": [
+    0
+  ],
+  "historical_summary_rows": 36724,
+  "current_summary_rows": 39358,
+  "historical_summary_values_changed": 0,
+  "records_sha256": "2cb418255861d5daa850b2756425b08f5beaf76aa9fe99d21686c2ebbf31662c",
+  "summary_sha256": "20d2b4cb081b5fbf22020f2e574c3c1eb8d15455726fb1f3d47c47a81efb60b1",
+  "evidence_sha256": {
+    "generator_reaudit_receipt.json": "da0378ee1b85621b75dfc2c0b4bc929f9f3ef3b3c464ca810d267dbe7332a336",
+    "model_audit_fresh.json": "b0127d1c4e091f8c98ac47424c3d0ca01f57d1d6fe500b6eb05169f96c91caf2",
+    "health.json": "b0b2b348e6730bec06b003c405315d568affa994c2cabea4ea71d6da2fc106c3",
+    "baseline_regression.json": "d5e98b9c5c31490f5204bc9a7cfe4e2e32472f40fc8538130f3126b0f80355f0",
+    "nto_saved_dev_diagnostic/summary.json": "09c764eab1dad9fbb40e9f62c74726ced93bf47518fad0ad9a7298fd388f47b1",
+    "completed_evaluation.json": "7be3df8cbf17bc191fec583a1973c16a429eb78491af3ba31ff5d7dc216a8296",
+    "regression_final.log": "9ac2f49ebd9f4b4c56ff212f5c99994f9b117e72247f7a8a8954c512db43cb30",
+    "upstream_tests.log": "5d8667d9275ac743f87e6a53f70bd18edea65897ebe873637674e64feafa8401"
+  },
+  "limitations": [
+    "Formal test currently has seed 0 only; seeds 1 and 2 have not been run.",
+    "Collision validation is numerical; no continuous mathematical certificate.",
+    "NTO_PAPER collocation can miss between-point collisions; those outputs remain failures.",
+    "Regression timings overlapped CPU postprocessing and are outside primary performance comparisons.",
+    "No external public benchmark was run in this repair task."
+  ],
+  "retained_diagnostic_errors": [
+    "regression_after.log: obsolete pending-category test assertion; corrected and full regression passed.",
+    "completed_evaluation.failed.json: unsupported conditional-comparison invocation; accepted primary invocation passed.",
+    "nto_saved_dev_diagnostic/selection_probe_failure.log: initial report selection call omitted comparison id.",
+    "baseline_regression.json: initial summary script referenced a nonexistent field; corrected using batch.verify.",
+    "publication_check_import_failure.log: direct-script package search path missing; corrected before publication verification."
+  ]
+}

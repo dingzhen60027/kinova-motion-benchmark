@@ -1,0 +1,201 @@
+{
+  "passed": true,
+  "purpose": "Post-repair functional regression, not a ranking or formal repeated evaluation",
+  "selection": "First registered smoke bottleneck problem and first registered dev dense_clutter problem; fixed before these runs; every supported method/track, paired seed index 0",
+  "timing_limit": "Other CPU-only audit/export processes overlapped these regression runs; timings are not used in the primary performance comparisons. Only one GPU planning query was active.",
+  "runs": [
+    {
+      "run": "benchmarks/generic_motion_v1/results/rigor_checks/baseline_bottleneck",
+      "split": "smoke",
+      "planned_jobs": 14,
+      "actual_attempts": 14,
+      "actual_legal_attempts": 14,
+      "lifecycle": {
+        "terminal": 14
+      },
+      "status_counts": {
+        "success_numerical": 9,
+        "solver_failure": 1,
+        "timeout": 1,
+        "validation_failed": 3
+      },
+      "method_objectives": [
+        {
+          "method": "CHOMP",
+          "objective": "minimum_distance"
+        },
+        {
+          "method": "EI_ZO",
+          "objective": "minimum_distance"
+        },
+        {
+          "method": "EI_ZO",
+          "objective": "minimum_time"
+        },
+        {
+          "method": "LGCS",
+          "objective": "minimum_distance"
+        },
+        {
+          "method": "NTO",
+          "objective": "minimum_distance"
+        },
+        {
+          "method": "NTO",
+          "objective": "minimum_time"
+        },
+        {
+          "method": "NTO_PAPER",
+          "objective": "minimum_distance"
+        },
+        {
+          "method": "NTO_PAPER",
+          "objective": "minimum_time"
+        },
+        {
+          "method": "NTO_REFINED",
+          "objective": "minimum_distance"
+        },
+        {
+          "method": "NTO_REFINED",
+          "objective": "minimum_time"
+        },
+        {
+          "method": "RRTCONNECT",
+          "objective": "minimum_distance"
+        },
+        {
+          "method": "RRTSTAR",
+          "objective": "minimum_distance"
+        },
+        {
+          "method": "STOMP",
+          "objective": "minimum_distance"
+        },
+        {
+          "method": "TRAJOPT",
+          "objective": "minimum_distance"
+        }
+      ],
+      "replica_seeds": [
+        0
+      ],
+      "source_commit": "84d9f8eb33b1a5501f5e947a7e3c37dc9a744b0b",
+      "source_fingerprint": "8071df5bbf7b98abe9f76911129fc369f61f8b1033b05a850ec151ddce37f076",
+      "config_hashes": [
+        "d57d94513e57d3d267222213a8492a171edd8caa2ab55de90005dc55ca254650"
+      ],
+      "budget_seconds": 60.0,
+      "manifest_sha256": "7f737ec4166a2a4e51d549bd2dbcd5ab0ef2c396163bc204a9e575c2f752c049"
+    },
+    {
+      "run": "benchmarks/generic_motion_v1/results/rigor_checks/baseline_dense",
+      "split": "dev",
+      "planned_jobs": 14,
+      "actual_attempts": 14,
+      "actual_legal_attempts": 14,
+      "lifecycle": {
+        "terminal": 14
+      },
+      "status_counts": {
+        "no_solution_within_budget": 13,
+        "success_numerical": 1
+      },
+      "method_objectives": [
+        {
+          "method": "CHOMP",
+          "objective": "minimum_distance"
+        },
+        {
+          "method": "EI_ZO",
+          "objective": "minimum_distance"
+        },
+        {
+          "method": "EI_ZO",
+          "objective": "minimum_time"
+        },
+        {
+          "method": "LGCS",
+          "objective": "minimum_distance"
+        },
+        {
+          "method": "NTO",
+          "objective": "minimum_distance"
+        },
+        {
+          "method": "NTO",
+          "objective": "minimum_time"
+        },
+        {
+          "method": "NTO_PAPER",
+          "objective": "minimum_distance"
+        },
+        {
+          "method": "NTO_PAPER",
+          "objective": "minimum_time"
+        },
+        {
+          "method": "NTO_REFINED",
+          "objective": "minimum_distance"
+        },
+        {
+          "method": "NTO_REFINED",
+          "objective": "minimum_time"
+        },
+        {
+          "method": "RRTCONNECT",
+          "objective": "minimum_distance"
+        },
+        {
+          "method": "RRTSTAR",
+          "objective": "minimum_distance"
+        },
+        {
+          "method": "STOMP",
+          "objective": "minimum_distance"
+        },
+        {
+          "method": "TRAJOPT",
+          "objective": "minimum_distance"
+        }
+      ],
+      "replica_seeds": [
+        0
+      ],
+      "source_commit": "84d9f8eb33b1a5501f5e947a7e3c37dc9a744b0b",
+      "source_fingerprint": "8071df5bbf7b98abe9f76911129fc369f61f8b1033b05a850ec151ddce37f076",
+      "config_hashes": [
+        "d57d94513e57d3d267222213a8492a171edd8caa2ab55de90005dc55ca254650"
+      ],
+      "budget_seconds": 60.0,
+      "manifest_sha256": "9f504429d22afdf01160abd6ce96313c31e3e471b95fa046c13afcde23c4afd4"
+    }
+  ],
+  "verification": [
+    {
+      "integrity_passed": true,
+      "complete": true,
+      "completed_jobs": 14,
+      "planned_jobs": 14,
+      "errors": [],
+      "unsealed_attempts": []
+    },
+    {
+      "integrity_passed": true,
+      "complete": true,
+      "completed_jobs": 14,
+      "planned_jobs": 14,
+      "errors": [],
+      "unsealed_attempts": []
+    }
+  ],
+  "outcome_counts": {
+    "success_numerical": 10,
+    "solver_failure": 1,
+    "timeout": 1,
+    "validation_failed": 3,
+    "no_solution_within_budget": 13
+  },
+  "records_sha256": "a651c5cd643cda21b458489deee5b3e9f16c7a835a339015db45498d646e4200",
+  "diagnostic_summary_initial_error": "First reporting attempt referenced nonexistent artifact_verified field and raised KeyError after exporting CSV; corrected to actual batch.verify integrity results. No raw attempts changed."
+}

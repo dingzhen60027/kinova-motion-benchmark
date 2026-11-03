@@ -1,0 +1,64 @@
+........................................................................ [  5%]
+........................................................................ [ 10%]
+.................................F...................................... [ 16%]
+........................................................................ [ 21%]
+........................................................................ [ 27%]
+........................................................................ [ 32%]
+........................................................................ [ 37%]
+........................................................................ [ 43%]
+........................................................................ [ 48%]
+........................................................................ [ 54%]
+........................................................................ [ 59%]
+........................................................................ [ 64%]
+........................................................................ [ 70%]
+........................................................................ [ 75%]
+........................................................................ [ 81%]
+........................................................................ [ 86%]
+........................................................................ [ 92%]
+........................................................................ [ 97%]
+..................................                                       [100%]
+=================================== FAILURES ===================================
+_______________ test_new_pending_denominators_and_legacy_summary _______________
+
+prepared = (PosixPath('/tmp/pytest-of-eric/pytest-569/test_new_pending_denominators_0/run'), PosixPath('/tmp/pytest-of-eric/pytes...urce_code_commit': 'fa2d9baa59154b8551c13d8d086bf832de2e9724', 'created_utc': '2026-11-03T03:24:26.503407+00:00', ...})
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x753667adebf0>
+
+    def test_new_pending_denominators_and_legacy_summary(prepared, monkeypatch):
+        run, _, _, manifest = prepared
+        monkeypatch.setattr(batch, "verify", lambda *a, **k: dict(integrity_passed=True))
+        selected, planned = results._selected_rows([], dict(id="new", runs=[str(run)]))
+        assert not selected and len(planned) == 12
+        assert all(p["case"]["validation_status"] == "valid_input" for p in planned)
+        table = results.summarize([], dict(comparisons=[dict(id="new", runs=[str(run)])]))
+        status = [row for row in table if row.get("row_type") == "status"]
+>       assert len(status) == 2
+E       AssertionError: assert 4 == 2
+E        +  where 4 = len([{'comparison': 'new', 'mode': 'end_to_end', 'split': 'dev', 'objective': 'minimum_distance', ...}, {'comparison': 'ne...mum_distance', ...}, {'comparison': 'new', 'mode': 'end_to_end', 'split': 'dev', 'objective': 'minimum_distance', ...}])
+
+benchmarks/generic_motion_v1/tests/test_compact_inputs.py:152: AssertionError
+=============================== warnings summary ===============================
+benchmarks/generic_motion_v1/tests/test_model_consistency.py: 58 warnings
+benchmarks/generic_motion_v1/tests/test_model_qualification.py: 29 warnings
+benchmarks/generic_motion_v1/tests/test_native_drm_query.py: 29 warnings
+benchmarks/generic_motion_v1/tests/test_nto_collision_constraint.py: 145 warnings
+benchmarks/generic_motion_v1/tests/test_nto_failed_candidates.py: 29 warnings
+benchmarks/generic_motion_v1/tests/test_paper_nto.py: 29 warnings
+benchmarks/generic_motion_v1/tests/test_paper_nto_refined.py: 116 warnings
+benchmarks/generic_motion_v1/tests/test_reporting.py: 29 warnings
+benchmarks/generic_motion_v1/tests/test_trajopt_baseline.py: 29 warnings
+  /home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/lib/python3.10/site-packages/csdecomp/drake_csd_bridge.py:62: DrakeDeprecationWarning: (Deprecated.)
+  
+  Deprecated:
+      Use is_floating_base_body() instead. This will be removed from
+      Drake on or after 2026-06-01.
+    if all_drake_bodies[-1].is_floating():
+
+benchmarks/generic_motion_v1/tests/test_paper_lgcs.py::test_graph_solution_matches_exhaustive_corridor_oracle
+benchmarks/generic_motion_v1/tests/test_paper_lgcs_scip.py::test_graph_solution_matches_all_simple_corridor_paths
+  /home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/lib/python3.10/site-packages/numpy/_core/_methods.py:52: RuntimeWarning: invalid value encountered in reduce
+    return umr_sum(a, axis, dtype, out, keepdims, initial, where)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED benchmarks/generic_motion_v1/tests/test_compact_inputs.py::test_new_pending_denominators_and_legacy_summary
+1 failed, 1329 passed, 495 warnings in 31.94s

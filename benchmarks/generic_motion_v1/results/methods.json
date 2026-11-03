@@ -1072,7 +1072,7 @@
       "method": "RRTCONNECT",
       "display_name": "OMPL RRTConnect + vertex reduction",
       "implementation": "官方OMPL 2.0.1原生RRTConnect与reduceVertices；规范模型回调",
-      "distinction": "可很快找到短路径不等于最小时间轨迹；无本地时间赛道。搜索预算10s不是60s。",
+      "distinction": "A first feasible path followed by vertex reduction is not a minimum-time trajectory; there is no local minimum-time track. The current native search ceiling is 60 s, bounded by the remaining shared outer deadline and reserves described in stopping. Historical runs used a 10 s ceiling.",
       "objectives": [
         "minimum_distance"
       ],
@@ -1763,7 +1763,7 @@
       "scope": "Earlier source review; original tests and changes are retained under their existing top-level keys."
     }
   ],
-  "latest_review_at_utc": "2026-11-02T17:25:35.696841+00:00",
+  "latest_review_at_utc": "2026-11-03T03:53:46.531528+00:00",
   "latest_review_scope": "CPU derivation after strict complete-suite receipt, matrix, protocol, normalized-state, accounting and metric acceptance; no additional planning.",
   "catalog_method_count": 10,
   "supported_method_objective_combinations": 14,
@@ -1799,11 +1799,11 @@
   "actual_coverage_status": "All three repaired end-to-end smoke/dev/test cohorts complete and verified. Only explicitly accepted extra fixed-initial cohorts appear in current coverage.",
   "historical_evidence_scope": "Original tests, changes, limitations and review history are preserved as historical identity evidence. Current coverage and stopping conditions come only from the accepted repaired runs.",
   "actual_coverage_evidence": {
-    "updated_at_utc": "2026-11-02T17:25:35.696841+00:00",
+    "updated_at_utc": "2026-11-03T03:53:46.531528+00:00",
     "records": "/home/eric/wjg/wd/csdecomp/results/records.csv",
-    "records_sha256": "4678e9f0510ee5f1185824f3282582b0a404788db96aee8c89d94a4635c9da16",
+    "records_sha256": "2cb418255861d5daa850b2756425b08f5beaf76aa9fe99d21686c2ebbf31662c",
     "summary": "/home/eric/wjg/wd/csdecomp/results/summary.csv",
-    "summary_sha256": "93cdc47bc3eef07b56b21a69b3817b7726123887bd62b48f96621f4aecf28f70",
+    "summary_sha256": "20d2b4cb081b5fbf22020f2e574c3c1eb8d15455726fb1f3d47c47a81efb60b1",
     "selection": "/home/eric/wjg/wd/csdecomp/results/selection.json",
     "selection_sha256": "9498c01e4919a1cd90b74a537e35aa466f3e256bf34faa68368e747edb25a814",
     "accepted_comparisons": [
@@ -1812,7 +1812,7 @@
       "current_test_repaired",
       "current_test_repaired_initial_regions"
     ],
-    "previous_catalog_sha256": "f292fa913c3e77ba3f9c0c1fad151abcc7c00e32470cf078e2c5ad01b70acce1",
+    "previous_catalog_sha256": "f632e86b24b03489b1a3c3462042fc3375843bbe462e2c7ea33f6900c430e242",
     "completed_groups": {
       "current_smoke_repaired": {
         "registered_jobs": 140,
@@ -1862,7 +1862,7 @@
         }
       }
     },
-    "acceptance_checker_sha256": "746fe82397b5046b130829fb343ea3a2e480f25b47e26bf05102a88de4de286d",
+    "acceptance_checker_sha256": "150c665e2ed754341967ac7e9c4014c32b33555aba8f1ad48cc52787d065f2f5",
     "counts_denominator": "Legal finished queries; paired seeds are repeated queries, not independent scene layouts."
   },
   "head_at_original_inventory_review": "88f50536d59e6e617afcaece9bc01d214005746f",

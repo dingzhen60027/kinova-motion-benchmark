@@ -1,0 +1,26 @@
+{
+  "actual_stdout_stderr": "execution.log",
+  "actual_successful_command": "bash local/python.sh benchmarks/generic_motion_v1/results/rigor_checks/nto_saved_dev_diagnostic.py --out benchmarks/generic_motion_v1/results/rigor_checks/nto_saved_dev_diagnostic_v2 > benchmarks/generic_motion_v1/results/rigor_checks/nto_saved_dev_diagnostic_v2.log 2>&1",
+  "cwd": "/home/eric/wjg/wd/csdecomp",
+  "failed_probe": {
+    "command": "bash local/python.sh -",
+    "correction": "The completed official rerun supplied the required spec id.",
+    "exit_code": 1,
+    "output": "selection_probe_failure.log",
+    "output_provenance": "Exact failed terminal output transcribed from this task tool result; the original command did not redirect output to a file.",
+    "stdin": "from pathlib import Path\nfrom collections import Counter\nimport json\nfrom benchmarks.generic_motion_v1.runners.results import collect, _selected_rows\nrun=Path('benchmarks/generic_motion_v1/results/baseline_dev').resolve()\nrows,_=collect([run])\nprint('collected',len(rows))\nprint('lifecycle',Counter(r['lifecycle'] for r in rows))\nselected=_selected_rows(rows,dict(runs=[dict(path=str(run),methods=['NTO','NTO_PAPER','NTO_REFINED'])]))\nprint(type(selected),len(selected))\nfor i,v in enumerate(selected):print(i,type(v),len(v) if hasattr(v,'__len__') else None)\n"
+  },
+  "original_output_directory": "nto_saved_dev_diagnostic_v2",
+  "rerun_command": "bash local/python.sh benchmarks/generic_motion_v1/results/rigor_checks/nto_saved_dev_diagnostic.py --out /tmp/nto_saved_dev_diagnostic_fresh",
+  "retained_output_directory": ".",
+  "runtime_source_sha256": {
+    "benchmarks/generic_motion_v1/model.py": "5b152e3e5ca484e5378856de11747c45826653df8a1183582fe90e0958fc5116",
+    "benchmarks/generic_motion_v1/outcomes.py": "5844e35b113175e5468c8002f16a0e58b383b5c736a44083ad1889970e354d90",
+    "benchmarks/generic_motion_v1/runners/nto_collision_constraint.py": "874dad10b4b3c6ea2f2be6b299f212099b37e98b6713f2b2cf194489b8b43a22",
+    "benchmarks/generic_motion_v1/runners/results.py": "08f88d4bac25c6a1a5d90d56107c218082c0d45735558a6aab5f8116819f96e3"
+  },
+  "source_path": "../nto_saved_dev_diagnostic.py",
+  "source_sha256": "081dc8db62104c6942af654bffe6c696e951d7db1211e52b6e7ee500111fb266",
+  "summary": "summary.json",
+  "summary_sha256": "09c764eab1dad9fbb40e9f62c74726ced93bf47518fad0ad9a7298fd388f47b1"
+}
