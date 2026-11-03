@@ -54,7 +54,7 @@ Effective settings: [evaluation.json](../../configs/evaluation.json). Joint limi
 
 ## Methods
 
-Ten methods support 14 method–track combinations. All share the model and final validator. Except for independent OMPL planners, methods start from an independently validated DRM path.
+Ten method IDs, including three configurations of the NTO family, support 14 method–track combinations. All share the model and final validator. Except for independent OMPL planners, methods start from an independently validated DRM path.
 
 | Method ID | Implementation | Native objective | Tracks |
 |---|---|---|---|
@@ -62,7 +62,7 @@ Ten methods support 14 method–track combinations. All share the model and fina
 | `LGCS` | Perspective GCS MISOCP reconstruction using SCIP | Path length in the supplied region graph | Path |
 | `NTO_PAPER` | Published-profile reconstruction in Drake KTO; SNOPT path / IPOPT time | Path-length transcription / duration | Path, time |
 | `NTO_REFINED` | NTO adaptation with clearance, adaptive collision collocation and richer time splines | Path-length transcription / duration | Path, time |
-| `NTO` | Legacy Drake KTO/IPOPT adaptation, kept as a distinct profile | Path-length transcription / duration | Path, time |
+| `NTO` | Historical Drake KTO/IPOPT profile with a 500-iteration limit | Path-length transcription / duration | Path, time |
 | `RRTCONNECT` | Official OMPL 2.0.1 RRTConnect and native vertex reduction | First feasible path, then shortening | Path |
 | `RRTSTAR` | Official OMPL 2.0.1 RRT* with native rewiring and vertex reduction | Joint-space path length | Path |
 | `CHOMP` | Covariant-gradient adaptation with a C-space clearance functional | Smoothness + obstacle cost | Path |
@@ -86,6 +86,54 @@ Smoke/dev/test contain 8,540 recorded calls, including explicit invalid inputs. 
 | [Input/regression checks](results/rigor_checks/checks.json) | Model/input rechecks, test evidence and historical-result preservation |
 
 Cost comparisons use paired common-success problems, accompanied by full-denominator success rates and uncertainty clustered by physical scene. Do not pool historical cohorts or compare only each method's own success subset. The later runtime passed 1,330 regression tests and three upstream tests; 28 further planner calls recorded 10 successes and 18 classified failures/timeouts as separate functional diagnostics. NTO's collisions between constraint points remain validation failures even when the solver reports convergence.
+
+### NTO profiles and failure analysis
+
+Use `NTO_REFINED` as the strengthened NTO comparison profile. `NTO_PAPER` preserves the published-parameter reconstruction, and `NTO` preserves the historical adaptation. These are three configurations of one method family. The reconstruction uses local Drake code; the author's NTO implementation is unavailable in the supplied upstream repository.
+
+| Setting | `NTO_PAPER` | `NTO_REFINED` | `NTO` (legacy) |
+|---|---|---|---|
+| Path / time solver | SNOPT / IPOPT | SNOPT / IPOPT | IPOPT / IPOPT |
+| Collision constraint locations | 149 interior points, `k/150` | Same initial points; adaptive refinement up to 600 points / 4 rounds | 150 interior points, `k/151` |
+| Required clearance | 0 mm | 1 mm, with a 0.5 mm refinement guard | 0.01 mm |
+| Solver iteration limits | SNOPT major 2,000, total 10,000; IPOPT 2,000 | SNOPT major 2,000, total 100,000; IPOPT 2,000 | IPOPT 500 |
+| Time spline | Cubic, DRM nodes + duplicated endpoints | Same initial curve, knot insertion to at least 16 controls | Knot insertion to at least 16 controls |
+
+All profiles use the same model, inputs, 60-second full-flow budget and final validator. Path optimization uses order-2 splines, whose control-polygon length is the actual PWL length. Time optimization uses the same motion limits; Drake enforces derivative bounds through conservative spline control-hull constraints ([KTO documentation](https://drake.mit.edu/doxygen_cxx/classdrake_1_1planning_1_1trajectory__optimization_1_1_kinematic_trajectory_optimization.html)). SNOPT's major and total iteration limits are distinct ([solver documentation](https://ccom.ucsd.edu/~optimizers/docs/snopt/options.html)).
+
+The [receipt/count audit](results/rigor_checks/nto_profiles/counts.json) checks all 3,600 registered dev/test NTO calls and 99,387 sealed files. Counts agree with the published CSVs. On test, all six profile–track combinations share **338 identical validated frontend paths**; the remaining 57 problems have the same frontend failure (54 searches without a solution, 3 timeouts). Backend outcomes on those 338 paths are:
+
+| Profile / track | Numerically valid | Validation failed | Solver failed | Backend timeout |
+|---|---:|---:|---:|---:|
+| Published / path | 113 | 148 | 73 | 4 |
+| Refined / path | 276 | 4 | 27 | 31 |
+| Legacy / path | 123 | 122 | 92 | 1 |
+| Published / time | 269 | 48 | 6 | 15 |
+| Refined / time | 297 | 0 | 1 | 40 |
+| Legacy / time | 265 | 21 | 50 | 2 |
+
+The [CPU geometry recheck](results/rigor_checks/nto_profiles/geometry/summary.json) reconstructed **all 343 validation-failed outputs**, reevaluated their actual collision constraint locations and independently recomputed the worst saved collision witness. Reconstruction and witness-distance differences were zero. All discrete constraints satisfied their saved solver tolerance, but 329 curves had penetrating witnesses and 14 remained in the contact uncertainty band. Published/path included 139 penetrating curves (up to 22.52 mm) and 9 contact-band cases. Refined/path still had four penetrating curves (0.752–2.456 mm); they remain failures. This check reuses saved curves, without optimizing test problems or changing scores.
+
+Refined/path converts 136 published/path validation failures into valid outputs. Its clearance, adaptive constraint locations and solver limits change together, so the overall improvement cannot be attributed to a single change. Path control counts stay unchanged; the time profile additionally increases spline capacity. Nonconverged candidates count as numerical successes only when the common validator passes them; solver convergence alone never establishes success.
+
+Legacy's 500-iteration limit accounts for 90 of its 92 test/path solver failures and all 50 test/time solver failures. A separate [DEV-only paired diagnostic](results/rigor_checks/nto_profiles/iteration_probe/verification.json) selected the first seed-0 iteration-limit failure per track before running either cap. Only the cap changed:
+
+| Fixed dev problem | 500 iterations | 2,000 iterations |
+|---|---|---|
+| `dev-bottleneck-000-p02`, path | Iteration limit; invalid candidate | Iteration limit; invalid candidate |
+| `dev-dense_clutter-001-p01`, time | Iteration limit; invalid candidate | 60-second timeout |
+
+These four real calls retained identical original frontend paths and passed artifact integrity checks. They show that raising the iteration cap alone did not recover these two failures; they do not estimate a population success rate or provide a controlled timing comparison. Historical test settings, inputs and published CSVs remain unchanged.
+
+Reproduce the diagnostics with new output paths:
+
+```bash
+bash local/python.sh results/rigor_checks/check_nto_profiles.py --output runs/nto-counts.json
+bash local/python.sh results/rigor_checks/check_nto_profile_geometry.py \
+  --run results/baseline_test --methods NTO NTO_PAPER NTO_REFINED \
+  --output runs/nto-geometry
+bash local/python.sh results/rigor_checks/probe_nto_iterations.py --output runs/nto-dev-cap
+```
 
 ## Commands
 

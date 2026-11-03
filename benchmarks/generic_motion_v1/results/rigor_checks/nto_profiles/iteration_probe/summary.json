@@ -1,0 +1,562 @@
+{
+  "scope": "DEV failure mechanism only; not an unbiased score or timing comparison",
+  "selection": "First lexicographic seed-0 legacy NTO iteration-limit failure per track; selection fixed before new calls",
+  "caps": [
+    500,
+    2000
+  ],
+  "selected": [
+    {
+      "problem_id": "dev-bottleneck-000-p02",
+      "objective": "minimum_distance",
+      "original_attempt": "benchmarks/generic_motion_v1/results/baseline_dev/jobs/dev-bottleneck-000-p02-NTO-minimum_distance-0b005097/attempts/0001",
+      "original_job": {
+        "job_id": "dev-bottleneck-000-p02-NTO-minimum_distance-0b005097",
+        "case_id": "dev-bottleneck-000-p02",
+        "scene_id": "dev-bottleneck-000",
+        "family": "bottleneck",
+        "method": "NTO",
+        "objective": "minimum_distance",
+        "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c",
+        "evaluation_config": {
+          "protocol": "kinova7_generic_v1_evaluation",
+          "online_budget_seconds": 60.0,
+          "optimizer_budget_seconds": 60.0,
+          "validation_step_rad": 0.005,
+          "validation_minimum_samples": 400,
+          "validation_maximum_samples": 100000,
+          "endpoint_tolerance_rad": 1e-05,
+          "feasibility_tolerance": 1e-05,
+          "velocity_limit_rad_s": 1.0,
+          "acceleration_limit_rad_s2": 1.0,
+          "bezier_degree": 6,
+          "scsto_relative_tolerance": 0.01,
+          "max_recovery_attempts": 20,
+          "maximum_recovery_witnesses": 128,
+          "drm": {
+            "max_iterations_steering_to_node": 1000,
+            "max_nodes_to_expand": 100000,
+            "try_shortcutting": true,
+            "online_edge_step_size": 0.01,
+            "max_number_planning_attempts": 1000,
+            "voxel_padding": 0.01
+          },
+          "eizo": {
+            "num_particles": 10000,
+            "bisection_steps": 9,
+            "configuration_margin": 0.01,
+            "delta": 0.005,
+            "epsilon": 0.005,
+            "tau": 0.5,
+            "mixing_steps": 60,
+            "max_hyperplanes_per_iteration": 10,
+            "max_iterations": 30
+          },
+          "roadmap": {
+            "map_center": [
+              0.0,
+              0.0,
+              0.55
+            ],
+            "map_extent": [
+              2.8,
+              2.8,
+              2.2
+            ],
+            "offline_voxel_resolution": 0.03,
+            "max_task_space_distance_between_nodes": 10.0,
+            "max_configuration_distance_between_nodes": 10.0,
+            "edge_step_size": 0.1,
+            "max_neighbors": 10
+          },
+          "nto": {
+            "solver": "IPOPT",
+            "collocation_points": 150,
+            "minimum_control_points": 16,
+            "maximum_iterations": 500,
+            "clearance_m": 1e-05,
+            "influence_distance_m": 0.01
+          },
+          "region_coverage_tolerance_rad": 1e-06,
+          "lgcs": {
+            "solver": "scip"
+          },
+          "drm_query": {
+            "backend": "safe_native",
+            "build_dir": "benchmarks/generic_motion_v1/native/build/drm_consistent_query_portable"
+          },
+          "ompl": {
+            "range_rad": 0.5,
+            "motion_step_rad": 0.01,
+            "planning_seconds": 60.0,
+            "simplification_seconds": 0.5,
+            "simplification_max_steps": 100,
+            "simplification_max_empty_steps": 50,
+            "validation_reserve_seconds": 5.0,
+            "goal_bias": 0.05,
+            "rewire_factor": 1.1,
+            "record_validated_progress": false,
+            "progress_poll_seconds": 0.5
+          },
+          "extended_baselines": {
+            "chomp": {
+              "initial_knots": 64,
+              "maximum_knots": 256,
+              "obstacle_influence_m": 0.05,
+              "collision_check_step_rad": 0.05,
+              "safety_band_m": 2e-06,
+              "maximum_iterations": 40,
+              "smoothness_weight": 1.0,
+              "obstacle_weight": 10.0,
+              "finite_difference_rad": 1e-05,
+              "learning_rate": 1.0,
+              "maximum_update_rad": 0.08,
+              "backtracking_steps": 8,
+              "relative_cost_tolerance": 1e-07
+            },
+            "stomp": {
+              "initial_knots": 64,
+              "maximum_knots": 256,
+              "obstacle_influence_m": 0.05,
+              "collision_check_step_rad": 0.05,
+              "safety_band_m": 2e-06,
+              "maximum_iterations": 40,
+              "iterations_after_valid": 5,
+              "rollouts": 12,
+              "noise_std_rad": 0.1,
+              "cost_sensitivity": 10.0,
+              "control_cost_weight": 0.1,
+              "maximum_update_rad": 0.08
+            },
+            "trajopt": {
+              "initial_knots": 64,
+              "maximum_knots": 256,
+              "segment_collocation_subdivisions": 3,
+              "clearance_m": 0.001,
+              "derivative_step_rad": 1e-05,
+              "maximum_sqp_iterations": 50,
+              "initial_trust_box_rad": 0.1,
+              "constraint_tolerance": 0.0001,
+              "initial_merit_coefficient": 10.0,
+              "maximum_merit_coefficient_increases": 5,
+              "minimum_model_improvement": 0.0001,
+              "maximum_optimizer_seconds": 45.0
+            }
+          },
+          "nto_refined": {
+            "minimum_time_control_points": 16
+          }
+        },
+        "roadmap_dir": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/roadmaps/rss2025_n6000_s000",
+        "roadmap_used": true,
+        "replica_seed": 0,
+        "method_seed": 583562842,
+        "solver_seed": 847122094,
+        "solver_seed_used": false,
+        "solver_seed_note": "Reserved solver_seed is unused. Native OMPL/STOMP RNG uses method_seed; local deterministic optimizers use the fixed DRM seed path.",
+        "case_ref": {
+          "manifest_path": "benchmarks/generic_motion_v1/manifests/dev.jsonl",
+          "manifest_sha256": "32de21ac2474846ae3cdc9867a3f41585cf80e7d0d4531e26285de216ef56000",
+          "problem_id": "dev-bottleneck-000-p02",
+          "problem_sha256": "39a9868a204ee5fc1684989bdec4c55b906149ec2fafc675d8c3da41cfd47e9c",
+          "record_sha256": "900e3216cbf5942bc996852dc0ba2dd23fa2554aab616bc63c8ef2da44929bad",
+          "scene_id": "dev-bottleneck-000"
+        }
+      },
+      "original_receipt_sha256": "489856af1cd7867af246361b327dac61e1a0c163b27caf9d4a7ae0121121c2d8"
+    },
+    {
+      "problem_id": "dev-dense_clutter-001-p01",
+      "objective": "minimum_time",
+      "original_attempt": "benchmarks/generic_motion_v1/results/baseline_dev/jobs/dev-dense_clutter-001-p01-NTO-minimum_time-5940d4ce/attempts/0001",
+      "original_job": {
+        "job_id": "dev-dense_clutter-001-p01-NTO-minimum_time-5940d4ce",
+        "case_id": "dev-dense_clutter-001-p01",
+        "scene_id": "dev-dense_clutter-001",
+        "family": "dense_clutter",
+        "method": "NTO",
+        "objective": "minimum_time",
+        "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c",
+        "evaluation_config": {
+          "protocol": "kinova7_generic_v1_evaluation",
+          "online_budget_seconds": 60.0,
+          "optimizer_budget_seconds": 60.0,
+          "validation_step_rad": 0.005,
+          "validation_minimum_samples": 400,
+          "validation_maximum_samples": 100000,
+          "endpoint_tolerance_rad": 1e-05,
+          "feasibility_tolerance": 1e-05,
+          "velocity_limit_rad_s": 1.0,
+          "acceleration_limit_rad_s2": 1.0,
+          "bezier_degree": 6,
+          "scsto_relative_tolerance": 0.01,
+          "max_recovery_attempts": 20,
+          "maximum_recovery_witnesses": 128,
+          "drm": {
+            "max_iterations_steering_to_node": 1000,
+            "max_nodes_to_expand": 100000,
+            "try_shortcutting": true,
+            "online_edge_step_size": 0.01,
+            "max_number_planning_attempts": 1000,
+            "voxel_padding": 0.01
+          },
+          "eizo": {
+            "num_particles": 10000,
+            "bisection_steps": 9,
+            "configuration_margin": 0.01,
+            "delta": 0.005,
+            "epsilon": 0.005,
+            "tau": 0.5,
+            "mixing_steps": 60,
+            "max_hyperplanes_per_iteration": 10,
+            "max_iterations": 30
+          },
+          "roadmap": {
+            "map_center": [
+              0.0,
+              0.0,
+              0.55
+            ],
+            "map_extent": [
+              2.8,
+              2.8,
+              2.2
+            ],
+            "offline_voxel_resolution": 0.03,
+            "max_task_space_distance_between_nodes": 10.0,
+            "max_configuration_distance_between_nodes": 10.0,
+            "edge_step_size": 0.1,
+            "max_neighbors": 10
+          },
+          "nto": {
+            "solver": "IPOPT",
+            "collocation_points": 150,
+            "minimum_control_points": 16,
+            "maximum_iterations": 500,
+            "clearance_m": 1e-05,
+            "influence_distance_m": 0.01
+          },
+          "region_coverage_tolerance_rad": 1e-06,
+          "lgcs": {
+            "solver": "scip"
+          },
+          "drm_query": {
+            "backend": "safe_native",
+            "build_dir": "benchmarks/generic_motion_v1/native/build/drm_consistent_query_portable"
+          },
+          "ompl": {
+            "range_rad": 0.5,
+            "motion_step_rad": 0.01,
+            "planning_seconds": 60.0,
+            "simplification_seconds": 0.5,
+            "simplification_max_steps": 100,
+            "simplification_max_empty_steps": 50,
+            "validation_reserve_seconds": 5.0,
+            "goal_bias": 0.05,
+            "rewire_factor": 1.1,
+            "record_validated_progress": false,
+            "progress_poll_seconds": 0.5
+          },
+          "extended_baselines": {
+            "chomp": {
+              "initial_knots": 64,
+              "maximum_knots": 256,
+              "obstacle_influence_m": 0.05,
+              "collision_check_step_rad": 0.05,
+              "safety_band_m": 2e-06,
+              "maximum_iterations": 40,
+              "smoothness_weight": 1.0,
+              "obstacle_weight": 10.0,
+              "finite_difference_rad": 1e-05,
+              "learning_rate": 1.0,
+              "maximum_update_rad": 0.08,
+              "backtracking_steps": 8,
+              "relative_cost_tolerance": 1e-07
+            },
+            "stomp": {
+              "initial_knots": 64,
+              "maximum_knots": 256,
+              "obstacle_influence_m": 0.05,
+              "collision_check_step_rad": 0.05,
+              "safety_band_m": 2e-06,
+              "maximum_iterations": 40,
+              "iterations_after_valid": 5,
+              "rollouts": 12,
+              "noise_std_rad": 0.1,
+              "cost_sensitivity": 10.0,
+              "control_cost_weight": 0.1,
+              "maximum_update_rad": 0.08
+            },
+            "trajopt": {
+              "initial_knots": 64,
+              "maximum_knots": 256,
+              "segment_collocation_subdivisions": 3,
+              "clearance_m": 0.001,
+              "derivative_step_rad": 1e-05,
+              "maximum_sqp_iterations": 50,
+              "initial_trust_box_rad": 0.1,
+              "constraint_tolerance": 0.0001,
+              "initial_merit_coefficient": 10.0,
+              "maximum_merit_coefficient_increases": 5,
+              "minimum_model_improvement": 0.0001,
+              "maximum_optimizer_seconds": 45.0
+            }
+          },
+          "nto_refined": {
+            "minimum_time_control_points": 16
+          }
+        },
+        "roadmap_dir": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/roadmaps/rss2025_n6000_s000",
+        "roadmap_used": true,
+        "replica_seed": 0,
+        "method_seed": 930991894,
+        "solver_seed": 756139363,
+        "solver_seed_used": false,
+        "solver_seed_note": "Reserved solver_seed is unused. Native OMPL/STOMP RNG uses method_seed; local deterministic optimizers use the fixed DRM seed path.",
+        "case_ref": {
+          "manifest_path": "benchmarks/generic_motion_v1/manifests/dev.jsonl",
+          "manifest_sha256": "32de21ac2474846ae3cdc9867a3f41585cf80e7d0d4531e26285de216ef56000",
+          "problem_id": "dev-dense_clutter-001-p01",
+          "problem_sha256": "aa2bc86d634c4b5eb46fc87e968730f8e88fd936d0542b27ca130140a9868b4f",
+          "record_sha256": "896955eb2e7f6c1b722e82fed2894aaaca802cefd02f0888fea335cd57c8c54e",
+          "scene_id": "dev-dense_clutter-001"
+        }
+      },
+      "original_receipt_sha256": "ae0a90ca55ece3ae7330297fb85fb45715c6614c72a352398e887145496c34d6"
+    }
+  ],
+  "calls": [
+    {
+      "problem_id": "dev-bottleneck-000-p02",
+      "objective": "minimum_distance",
+      "cap": 500,
+      "config_sha256": "6fdf9833018238e0c56b0a16c50a419819dd837b759d0417719d7e97d0541031",
+      "command": [
+        "bash",
+        "/home/eric/wjg/wd/csdecomp/local/python.sh",
+        "scripts/evaluate.py",
+        "run",
+        "--split",
+        "dev",
+        "--problem",
+        "dev-bottleneck-000-p02",
+        "--methods",
+        "NTO",
+        "--track",
+        "path",
+        "--seeds",
+        "0",
+        "--config",
+        "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/rigor_checks/nto_profiles/iteration_probe/path_cap500.json",
+        "--output",
+        "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/rigor_checks/nto_profiles/iteration_probe/path_cap500"
+      ],
+      "run": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/rigor_checks/nto_profiles/iteration_probe/path_cap500",
+      "status": "completed",
+      "returncode": 0,
+      "run_status": {
+        "planned": 1,
+        "completed": 1,
+        "pending": 0,
+        "statuses": {
+          "solver_failure": 1
+        },
+        "raw_statuses": {
+          "solver_failed": 1
+        },
+        "selection": "first_terminal_attempt_per_job; never best-of or last retry",
+        "actual_attempts": 1,
+        "attempt_lifecycles": {
+          "terminal": 1
+        },
+        "all_receipt_raw_statuses": {
+          "solver_failed": 1
+        },
+        "not_started_jobs": 0,
+        "unsealed_jobs": 0,
+        "interrupted_jobs_awaiting_resume": 0,
+        "ignored_later_terminal_attempts": 0,
+        "attempt_relations": [],
+        "acceptance": "same saved-output rule as records.csv; CPU evidence consistency, no new collision query",
+        "run_manifest_sha256": "2a8dc82f3803661fb199ff90622bab691e8f3a8518a9d9a7d2ac5a2f3416b448",
+        "status_check_seconds": 0.03129037702456117
+      }
+    },
+    {
+      "problem_id": "dev-bottleneck-000-p02",
+      "objective": "minimum_distance",
+      "cap": 2000,
+      "config_sha256": "045378bb14a60603128741cf0628cc15601b31a24758aaa0dc74dfb3226554b5",
+      "command": [
+        "bash",
+        "/home/eric/wjg/wd/csdecomp/local/python.sh",
+        "scripts/evaluate.py",
+        "run",
+        "--split",
+        "dev",
+        "--problem",
+        "dev-bottleneck-000-p02",
+        "--methods",
+        "NTO",
+        "--track",
+        "path",
+        "--seeds",
+        "0",
+        "--config",
+        "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/rigor_checks/nto_profiles/iteration_probe/path_cap2000.json",
+        "--output",
+        "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/rigor_checks/nto_profiles/iteration_probe/path_cap2000"
+      ],
+      "run": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/rigor_checks/nto_profiles/iteration_probe/path_cap2000",
+      "status": "completed",
+      "returncode": 0,
+      "run_status": {
+        "planned": 1,
+        "completed": 1,
+        "pending": 0,
+        "statuses": {
+          "solver_failure": 1
+        },
+        "raw_statuses": {
+          "solver_failed": 1
+        },
+        "selection": "first_terminal_attempt_per_job; never best-of or last retry",
+        "actual_attempts": 1,
+        "attempt_lifecycles": {
+          "terminal": 1
+        },
+        "all_receipt_raw_statuses": {
+          "solver_failed": 1
+        },
+        "not_started_jobs": 0,
+        "unsealed_jobs": 0,
+        "interrupted_jobs_awaiting_resume": 0,
+        "ignored_later_terminal_attempts": 0,
+        "attempt_relations": [],
+        "acceptance": "same saved-output rule as records.csv; CPU evidence consistency, no new collision query",
+        "run_manifest_sha256": "7cf9a6721850f94f44348980e29aec7c1849ac301da7ac22f9b7c2796837245b",
+        "status_check_seconds": 0.019559745211154222
+      }
+    },
+    {
+      "problem_id": "dev-dense_clutter-001-p01",
+      "objective": "minimum_time",
+      "cap": 500,
+      "config_sha256": "6fdf9833018238e0c56b0a16c50a419819dd837b759d0417719d7e97d0541031",
+      "command": [
+        "bash",
+        "/home/eric/wjg/wd/csdecomp/local/python.sh",
+        "scripts/evaluate.py",
+        "run",
+        "--split",
+        "dev",
+        "--problem",
+        "dev-dense_clutter-001-p01",
+        "--methods",
+        "NTO",
+        "--track",
+        "time",
+        "--seeds",
+        "0",
+        "--config",
+        "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/rigor_checks/nto_profiles/iteration_probe/time_cap500.json",
+        "--output",
+        "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/rigor_checks/nto_profiles/iteration_probe/time_cap500"
+      ],
+      "run": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/rigor_checks/nto_profiles/iteration_probe/time_cap500",
+      "status": "completed",
+      "returncode": 0,
+      "run_status": {
+        "planned": 1,
+        "completed": 1,
+        "pending": 0,
+        "statuses": {
+          "solver_failure": 1
+        },
+        "raw_statuses": {
+          "solver_failed": 1
+        },
+        "selection": "first_terminal_attempt_per_job; never best-of or last retry",
+        "actual_attempts": 1,
+        "attempt_lifecycles": {
+          "terminal": 1
+        },
+        "all_receipt_raw_statuses": {
+          "solver_failed": 1
+        },
+        "not_started_jobs": 0,
+        "unsealed_jobs": 0,
+        "interrupted_jobs_awaiting_resume": 0,
+        "ignored_later_terminal_attempts": 0,
+        "attempt_relations": [],
+        "acceptance": "same saved-output rule as records.csv; CPU evidence consistency, no new collision query",
+        "run_manifest_sha256": "867eba4669301ccf812dd85934c40dac0325e42bc3e1101ae8b4d968152dc1d4",
+        "status_check_seconds": 0.024141874630004168
+      }
+    },
+    {
+      "problem_id": "dev-dense_clutter-001-p01",
+      "objective": "minimum_time",
+      "cap": 2000,
+      "config_sha256": "045378bb14a60603128741cf0628cc15601b31a24758aaa0dc74dfb3226554b5",
+      "command": [
+        "bash",
+        "/home/eric/wjg/wd/csdecomp/local/python.sh",
+        "scripts/evaluate.py",
+        "run",
+        "--split",
+        "dev",
+        "--problem",
+        "dev-dense_clutter-001-p01",
+        "--methods",
+        "NTO",
+        "--track",
+        "time",
+        "--seeds",
+        "0",
+        "--config",
+        "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/rigor_checks/nto_profiles/iteration_probe/time_cap2000.json",
+        "--output",
+        "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/rigor_checks/nto_profiles/iteration_probe/time_cap2000"
+      ],
+      "run": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/rigor_checks/nto_profiles/iteration_probe/time_cap2000",
+      "status": "completed",
+      "returncode": 0,
+      "run_status": {
+        "planned": 1,
+        "completed": 1,
+        "pending": 0,
+        "statuses": {
+          "timeout": 1
+        },
+        "raw_statuses": {
+          "timeout": 1
+        },
+        "selection": "first_terminal_attempt_per_job; never best-of or last retry",
+        "actual_attempts": 1,
+        "attempt_lifecycles": {
+          "terminal": 1
+        },
+        "all_receipt_raw_statuses": {
+          "timeout": 1
+        },
+        "not_started_jobs": 0,
+        "unsealed_jobs": 0,
+        "interrupted_jobs_awaiting_resume": 0,
+        "ignored_later_terminal_attempts": 0,
+        "attempt_relations": [],
+        "acceptance": "same saved-output rule as records.csv; CPU evidence consistency, no new collision query",
+        "run_manifest_sha256": "85c4a9935afdeb5b68150998099b4f9fd5927c1a8074033413c99f060ed9679f",
+        "status_check_seconds": 0.02242513606324792
+      }
+    }
+  ],
+  "records_sha256": "2cb418255861d5daa850b2756425b08f5beaf76aa9fe99d21686c2ebbf31662c",
+  "original_manifest_sha256": "d7db40015e3844f8993348e7d82305c7da8be7d1c4e13da1aae4c710c2023070",
+  "script_sha256": "5f76478e4d24e576c4c3b6a5fff566ffa75fb31f4051441df58ca4393b15e145",
+  "source_commit": "be7ebc0730d3fc137677a130957c4bb0e7c0734b",
+  "budget_seconds": 60,
+  "test_optimizer_calls": 0,
+  "status": "completed",
+  "original_records_unchanged": true
+}

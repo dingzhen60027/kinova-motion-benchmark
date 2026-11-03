@@ -71,7 +71,7 @@ Validated successes on **395 test problems, seed 0, 60 seconds/query**. Dev was 
 | LGCS reconstruction | 327 | — |
 | NTO published-profile reconstruction | 113 | 269 |
 | NTO refined adaptation | 276 | 297 |
-| NTO legacy adaptation | 123 | 265 |
+| NTO legacy adaptation (historical profile) | 123 | 265 |
 | OMPL RRTConnect | 362 | — |
 | OMPL RRT* | 316 | — |
 | CHOMP adaptation | 336 | — |
@@ -79,6 +79,8 @@ Validated successes on **395 test problems, seed 0, 60 seconds/query**. Dev was 
 | TrajOpt adaptation | 313 | — |
 
 All methods share the final validator. Path length and execution duration are evaluated separately from computation time; cost comparisons use paired common-success problems. [Method definitions](benchmarks/generic_motion_v1/README.md#methods) · [Raw records](benchmarks/generic_motion_v1/results/records.csv) · [Selected comparisons](benchmarks/generic_motion_v1/results/selection.json)
+
+The three NTO rows are configurations of one method family. `NTO_REFINED` is the strengthened comparison profile; the other two preserve the published-parameter reconstruction and historical configuration. [Configuration differences and verified failure causes →](benchmarks/generic_motion_v1/README.md#nto-profiles-and-failure-analysis)
 
 ## Project structure
 

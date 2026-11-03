@@ -1,0 +1,1021 @@
+{
+  "schema_version": 1,
+  "created_utc": "2026-11-03T05:14:55.002007+00:00",
+  "git_head": "be7ebc0730d3fc137677a130957c4bb0e7c0734b",
+  "script": "benchmarks/generic_motion_v1/results/rigor_checks/check_nto_profiles.py",
+  "script_sha256": "0c711725c6ddce64a1a3a3df27e51f4903ffa4bdeaadf8887a84295367e54f79",
+  "sources_sha256": {
+    "benchmarks/generic_motion_v1/results/records.csv": "2cb418255861d5daa850b2756425b08f5beaf76aa9fe99d21686c2ebbf31662c",
+    "benchmarks/generic_motion_v1/results/summary.csv": "20d2b4cb081b5fbf22020f2e574c3c1eb8d15455726fb1f3d47c47a81efb60b1",
+    "benchmarks/generic_motion_v1/results/selection.json": "9498c01e4919a1cd90b74a537e35aa466f3e256bf34faa68368e747edb25a814",
+    "benchmarks/generic_motion_v1/results/baseline_dev/run_manifest.json": "d7db40015e3844f8993348e7d82305c7da8be7d1c4e13da1aae4c710c2023070",
+    "benchmarks/generic_motion_v1/results/baseline_test/run_manifest.json": "e67e3b3f028667e83ddf0cac98a5d8c837fcfcd91a28e213a7cfcd11b72eaada"
+  },
+  "scope": "Completed baseline_dev (paired replicas 0,1,2) and baseline_test (replica 0), three NTO profiles and both objectives; all registered jobs included.",
+  "notes": [
+    "Numerical success requires saved independent validation, not solver convergence. It is not a mathematical continuous collision certificate.",
+    "Native codes are the last saved solver result. For interrupted refinement, that may precede the interrupted solve; missing output is not a fabricated exit code.",
+    "Frontend comparison checks actual receipt-bound path.npy bytes, as well as input/model/geometry/planner-seed/roadmap identities.",
+    "Every receipt-listed file is rehashed, including raw arrays and logs. All inspected JSON must be included in its receipt."
+  ],
+  "cohorts": [
+    {
+      "split": "dev",
+      "method": "NTO_PAPER",
+      "objective": "minimum_distance",
+      "registered": 180,
+      "legal": 180,
+      "replica_seeds": {
+        "0": 60,
+        "1": 60,
+        "2": 60
+      },
+      "statuses": {
+        "no_solution_within_budget": 42,
+        "solver_failure": 36,
+        "success_numerical": 44,
+        "timeout": 7,
+        "validation_failed": 51
+      },
+      "raw_statuses": {
+        "collision_failed": 51,
+        "frontend_failed": 42,
+        "solver_failed": 41,
+        "success_validated_numerical": 39,
+        "timeout": 7
+      },
+      "frontend_validated": {
+        "": 49,
+        "True": 131
+      },
+      "source_commits": {
+        "6c3144ff6445904aea3a85cde1a97abb109fc8cb": 180
+      },
+      "attempts": {
+        "1": 180
+      },
+      "convergence_vs_status": {
+        "solver_success=False | solver_failure": 36,
+        "solver_success=False | success_numerical": 5,
+        "solver_success=True | success_numerical": 39,
+        "solver_success=True | validation_failed": 51,
+        "solver_success=missing | no_solution_within_budget": 42,
+        "solver_success=missing | timeout": 7
+      },
+      "native_code_by_status": {
+        "no_solution_within_budget | missing | missing": 42,
+        "solver_failure | 13 | SolutionResult.kInfeasibleConstraints": 11,
+        "solver_failure | 31 | SolutionResult.kIterationLimit": 13,
+        "solver_failure | 32 | SolutionResult.kIterationLimit": 3,
+        "solver_failure | 41 | SolutionResult.kSolverSpecificError": 8,
+        "solver_failure | 43 | SolutionResult.kSolverSpecificError": 1,
+        "success_numerical | 1 | SolutionResult.kSolutionFound": 39,
+        "success_numerical | 31 | SolutionResult.kIterationLimit": 1,
+        "success_numerical | 32 | SolutionResult.kIterationLimit": 4,
+        "timeout | missing | missing": 7,
+        "validation_failed | 1 | SolutionResult.kSolutionFound": 39,
+        "validation_failed | 3 | SolutionResult.kSolutionFound": 12
+      },
+      "validation_failure_signature": {
+        "{\"collision_free\": false, \"derivative_limits_passed\": true, \"endpoint_within_1e_5_rad\": true, \"has_contact_band_samples\": false, \"joint_limits_passed\": true, \"status\": \"collision_failed\"}": 12,
+        "{\"collision_free\": false, \"derivative_limits_passed\": true, \"endpoint_within_1e_5_rad\": true, \"has_contact_band_samples\": true, \"joint_limits_passed\": true, \"status\": \"collision_failed\"}": 39
+      },
+      "timeout_phase": {
+        "drm_path": 7
+      },
+      "failure_stages": {
+        "no_solution_within_budget | recorded_failure_stage=drm_path | last_raw_phase=drm_path": 42,
+        "solver_failure | recorded_failure_stage=validation | last_raw_phase=validation": 36,
+        "timeout | recorded_failure_stage=missing | last_raw_phase=drm_path": 7,
+        "validation_failed | recorded_failure_stage=validation | last_raw_phase=validation": 51
+      },
+      "frontend_failure_reasons": {
+        "{\"final_stage\": \"drm_path\", \"status\": \"frontend_failed\"}": 42
+      },
+      "summary_counts_match": true
+    },
+    {
+      "split": "dev",
+      "method": "NTO_PAPER",
+      "objective": "minimum_time",
+      "registered": 180,
+      "legal": 180,
+      "replica_seeds": {
+        "0": 60,
+        "1": 60,
+        "2": 60
+      },
+      "statuses": {
+        "no_solution_within_budget": 42,
+        "solver_failure": 3,
+        "success_numerical": 101,
+        "timeout": 12,
+        "validation_failed": 22
+      },
+      "raw_statuses": {
+        "collision_failed": 22,
+        "frontend_failed": 42,
+        "solver_failed": 3,
+        "success_validated_numerical": 101,
+        "timeout": 12
+      },
+      "frontend_validated": {
+        "": 49,
+        "True": 131
+      },
+      "source_commits": {
+        "6c3144ff6445904aea3a85cde1a97abb109fc8cb": 180
+      },
+      "attempts": {
+        "1": 180
+      },
+      "convergence_vs_status": {
+        "solver_success=False | solver_failure": 3,
+        "solver_success=True | success_numerical": 101,
+        "solver_success=True | validation_failed": 22,
+        "solver_success=missing | no_solution_within_budget": 42,
+        "solver_success=missing | timeout": 12
+      },
+      "native_code_by_status": {
+        "no_solution_within_budget | missing | missing": 42,
+        "solver_failure | 1 | Max iteration exceeded": 2,
+        "solver_failure | 6 | Local infeasibility": 1,
+        "success_numerical | 0 | Success": 101,
+        "timeout | missing | missing": 12,
+        "validation_failed | 0 | Success": 22
+      },
+      "validation_failure_signature": {
+        "{\"collision_free\": false, \"derivative_limits_passed\": true, \"endpoint_within_1e_5_rad\": true, \"has_contact_band_samples\": false, \"joint_limits_passed\": true, \"status\": \"collision_failed\"}": 8,
+        "{\"collision_free\": false, \"derivative_limits_passed\": true, \"endpoint_within_1e_5_rad\": true, \"has_contact_band_samples\": true, \"joint_limits_passed\": true, \"status\": \"collision_failed\"}": 14
+      },
+      "timeout_phase": {
+        "drm_path": 7,
+        "trajectory_optimization": 5
+      },
+      "failure_stages": {
+        "no_solution_within_budget | recorded_failure_stage=drm_path | last_raw_phase=drm_path": 42,
+        "solver_failure | recorded_failure_stage=validation | last_raw_phase=validation": 3,
+        "timeout | recorded_failure_stage=missing | last_raw_phase=drm_path": 7,
+        "timeout | recorded_failure_stage=missing | last_raw_phase=trajectory_optimization": 5,
+        "validation_failed | recorded_failure_stage=validation | last_raw_phase=validation": 22
+      },
+      "frontend_failure_reasons": {
+        "{\"final_stage\": \"drm_path\", \"status\": \"frontend_failed\"}": 42
+      },
+      "summary_counts_match": true
+    },
+    {
+      "split": "dev",
+      "method": "NTO_REFINED",
+      "objective": "minimum_distance",
+      "registered": 180,
+      "legal": 180,
+      "replica_seeds": {
+        "0": 60,
+        "1": 60,
+        "2": 60
+      },
+      "statuses": {
+        "no_solution_within_budget": 42,
+        "solver_failure": 14,
+        "success_numerical": 99,
+        "timeout": 22,
+        "validation_failed": 3
+      },
+      "raw_statuses": {
+        "collision_failed": 3,
+        "frontend_failed": 42,
+        "solver_failed": 18,
+        "success_validated_numerical": 95,
+        "timeout": 22
+      },
+      "frontend_validated": {
+        "": 49,
+        "True": 131
+      },
+      "source_commits": {
+        "6c3144ff6445904aea3a85cde1a97abb109fc8cb": 180
+      },
+      "attempts": {
+        "1": 180
+      },
+      "convergence_vs_status": {
+        "solver_success=False | solver_failure": 14,
+        "solver_success=False | success_numerical": 4,
+        "solver_success=False | timeout": 1,
+        "solver_success=True | success_numerical": 95,
+        "solver_success=True | validation_failed": 3,
+        "solver_success=missing | no_solution_within_budget": 42,
+        "solver_success=missing | timeout": 21
+      },
+      "native_code_by_status": {
+        "no_solution_within_budget | missing | missing": 42,
+        "solver_failure | 13 | SolutionResult.kInfeasibleConstraints": 10,
+        "solver_failure | 41 | SolutionResult.kSolverSpecificError": 4,
+        "success_numerical | 1 | SolutionResult.kSolutionFound": 95,
+        "success_numerical | 13 | SolutionResult.kInfeasibleConstraints": 3,
+        "success_numerical | 41 | SolutionResult.kSolverSpecificError": 1,
+        "timeout | 13 | SolutionResult.kInfeasibleConstraints": 7,
+        "timeout | 32 | SolutionResult.kIterationLimit": 2,
+        "timeout | 41 | SolutionResult.kSolverSpecificError": 3,
+        "timeout | missing | missing": 10,
+        "validation_failed | 1 | SolutionResult.kSolutionFound": 3
+      },
+      "validation_failure_signature": {
+        "{\"collision_free\": false, \"derivative_limits_passed\": true, \"endpoint_within_1e_5_rad\": true, \"has_contact_band_samples\": false, \"joint_limits_passed\": true, \"status\": \"collision_failed\"}": 3
+      },
+      "timeout_phase": {
+        "drm_path": 7,
+        "trajectory_optimization": 14,
+        "validation": 1
+      },
+      "failure_stages": {
+        "no_solution_within_budget | recorded_failure_stage=drm_path | last_raw_phase=drm_path": 42,
+        "solver_failure | recorded_failure_stage=validation | last_raw_phase=validation": 14,
+        "timeout | recorded_failure_stage=missing | last_raw_phase=drm_path": 7,
+        "timeout | recorded_failure_stage=missing | last_raw_phase=trajectory_optimization": 14,
+        "timeout | recorded_failure_stage=missing | last_raw_phase=validation": 1,
+        "validation_failed | recorded_failure_stage=validation | last_raw_phase=validation": 3
+      },
+      "frontend_failure_reasons": {
+        "{\"final_stage\": \"drm_path\", \"status\": \"frontend_failed\"}": 42
+      },
+      "summary_counts_match": true
+    },
+    {
+      "split": "dev",
+      "method": "NTO_REFINED",
+      "objective": "minimum_time",
+      "registered": 180,
+      "legal": 180,
+      "replica_seeds": {
+        "0": 60,
+        "1": 60,
+        "2": 60
+      },
+      "statuses": {
+        "no_solution_within_budget": 42,
+        "solver_failure": 3,
+        "success_numerical": 109,
+        "timeout": 25,
+        "validation_failed": 1
+      },
+      "raw_statuses": {
+        "collision_failed": 1,
+        "frontend_failed": 42,
+        "solver_failed": 3,
+        "success_validated_numerical": 109,
+        "timeout": 25
+      },
+      "frontend_validated": {
+        "": 49,
+        "True": 131
+      },
+      "source_commits": {
+        "6c3144ff6445904aea3a85cde1a97abb109fc8cb": 180
+      },
+      "attempts": {
+        "1": 180
+      },
+      "convergence_vs_status": {
+        "solver_success=False | solver_failure": 3,
+        "solver_success=True | success_numerical": 109,
+        "solver_success=True | timeout": 1,
+        "solver_success=True | validation_failed": 1,
+        "solver_success=missing | no_solution_within_budget": 42,
+        "solver_success=missing | timeout": 24
+      },
+      "native_code_by_status": {
+        "no_solution_within_budget | missing | missing": 42,
+        "solver_failure | 10 | Restoration failure": 1,
+        "solver_failure | 6 | Local infeasibility": 2,
+        "success_numerical | 0 | Success": 109,
+        "timeout | 0 | Success": 4,
+        "timeout | missing | missing": 21,
+        "validation_failed | 0 | Success": 1
+      },
+      "validation_failure_signature": {
+        "{\"collision_free\": false, \"derivative_limits_passed\": true, \"endpoint_within_1e_5_rad\": true, \"has_contact_band_samples\": false, \"joint_limits_passed\": true, \"status\": \"collision_failed\"}": 1
+      },
+      "timeout_phase": {
+        "drm_path": 7,
+        "trajectory_optimization": 17,
+        "validation": 1
+      },
+      "failure_stages": {
+        "no_solution_within_budget | recorded_failure_stage=drm_path | last_raw_phase=drm_path": 42,
+        "solver_failure | recorded_failure_stage=validation | last_raw_phase=validation": 3,
+        "timeout | recorded_failure_stage=missing | last_raw_phase=drm_path": 7,
+        "timeout | recorded_failure_stage=missing | last_raw_phase=trajectory_optimization": 17,
+        "timeout | recorded_failure_stage=missing | last_raw_phase=validation": 1,
+        "validation_failed | recorded_failure_stage=validation | last_raw_phase=validation": 1
+      },
+      "frontend_failure_reasons": {
+        "{\"final_stage\": \"drm_path\", \"status\": \"frontend_failed\"}": 42
+      },
+      "summary_counts_match": true
+    },
+    {
+      "split": "dev",
+      "method": "NTO",
+      "objective": "minimum_distance",
+      "registered": 180,
+      "legal": 180,
+      "replica_seeds": {
+        "0": 60,
+        "1": 60,
+        "2": 60
+      },
+      "statuses": {
+        "no_solution_within_budget": 42,
+        "solver_failure": 38,
+        "success_numerical": 44,
+        "timeout": 7,
+        "validation_failed": 49
+      },
+      "raw_statuses": {
+        "collision_failed": 48,
+        "frontend_failed": 42,
+        "solver_failed": 38,
+        "success_validated_numerical": 44,
+        "timeout": 7,
+        "validation_undetermined": 1
+      },
+      "frontend_validated": {
+        "": 49,
+        "True": 131
+      },
+      "source_commits": {
+        "6c3144ff6445904aea3a85cde1a97abb109fc8cb": 180
+      },
+      "attempts": {
+        "1": 180
+      },
+      "convergence_vs_status": {
+        "solver_success=False | solver_failure": 38,
+        "solver_success=True | success_numerical": 44,
+        "solver_success=True | validation_failed": 49,
+        "solver_success=missing | no_solution_within_budget": 42,
+        "solver_success=missing | timeout": 7
+      },
+      "native_code_by_status": {
+        "no_solution_within_budget | missing | missing": 42,
+        "solver_failure | 1 | Max iteration exceeded": 36,
+        "solver_failure | 6 | Local infeasibility": 2,
+        "success_numerical | 0 | Success": 44,
+        "timeout | missing | missing": 7,
+        "validation_failed | 0 | Success": 49
+      },
+      "validation_failure_signature": {
+        "{\"collision_free\": false, \"derivative_limits_passed\": true, \"endpoint_within_1e_5_rad\": true, \"has_contact_band_samples\": false, \"joint_limits_passed\": true, \"status\": \"collision_failed\"}": 25,
+        "{\"collision_free\": false, \"derivative_limits_passed\": true, \"endpoint_within_1e_5_rad\": true, \"has_contact_band_samples\": true, \"joint_limits_passed\": true, \"status\": \"collision_failed\"}": 23,
+        "{\"collision_free\": false, \"derivative_limits_passed\": true, \"endpoint_within_1e_5_rad\": true, \"has_contact_band_samples\": true, \"joint_limits_passed\": true, \"status\": \"validation_undetermined\"}": 1
+      },
+      "timeout_phase": {
+        "drm_path": 7
+      },
+      "failure_stages": {
+        "no_solution_within_budget | recorded_failure_stage=drm_path | last_raw_phase=drm_path": 42,
+        "solver_failure | recorded_failure_stage=validation | last_raw_phase=validation": 38,
+        "timeout | recorded_failure_stage=missing | last_raw_phase=drm_path": 7,
+        "validation_failed | recorded_failure_stage=validation | last_raw_phase=validation": 49
+      },
+      "frontend_failure_reasons": {
+        "{\"final_stage\": \"drm_path\", \"status\": \"frontend_failed\"}": 42
+      },
+      "summary_counts_match": true
+    },
+    {
+      "split": "dev",
+      "method": "NTO",
+      "objective": "minimum_time",
+      "registered": 180,
+      "legal": 180,
+      "replica_seeds": {
+        "0": 60,
+        "1": 60,
+        "2": 60
+      },
+      "statuses": {
+        "no_solution_within_budget": 42,
+        "solver_failure": 16,
+        "success_numerical": 107,
+        "timeout": 8,
+        "validation_failed": 7
+      },
+      "raw_statuses": {
+        "collision_failed": 7,
+        "frontend_failed": 42,
+        "solver_failed": 16,
+        "success_validated_numerical": 107,
+        "timeout": 8
+      },
+      "frontend_validated": {
+        "": 49,
+        "True": 131
+      },
+      "source_commits": {
+        "6c3144ff6445904aea3a85cde1a97abb109fc8cb": 180
+      },
+      "attempts": {
+        "1": 180
+      },
+      "convergence_vs_status": {
+        "solver_success=False | solver_failure": 16,
+        "solver_success=False | timeout": 1,
+        "solver_success=True | success_numerical": 107,
+        "solver_success=True | validation_failed": 7,
+        "solver_success=missing | no_solution_within_budget": 42,
+        "solver_success=missing | timeout": 7
+      },
+      "native_code_by_status": {
+        "no_solution_within_budget | missing | missing": 42,
+        "solver_failure | 1 | Max iteration exceeded": 16,
+        "success_numerical | 0 | Success": 107,
+        "timeout | 1 | Max iteration exceeded": 1,
+        "timeout | missing | missing": 7,
+        "validation_failed | 0 | Success": 7
+      },
+      "validation_failure_signature": {
+        "{\"collision_free\": false, \"derivative_limits_passed\": true, \"endpoint_within_1e_5_rad\": true, \"has_contact_band_samples\": false, \"joint_limits_passed\": true, \"status\": \"collision_failed\"}": 4,
+        "{\"collision_free\": false, \"derivative_limits_passed\": true, \"endpoint_within_1e_5_rad\": true, \"has_contact_band_samples\": true, \"joint_limits_passed\": true, \"status\": \"collision_failed\"}": 3
+      },
+      "timeout_phase": {
+        "drm_path": 7,
+        "validation": 1
+      },
+      "failure_stages": {
+        "no_solution_within_budget | recorded_failure_stage=drm_path | last_raw_phase=drm_path": 42,
+        "solver_failure | recorded_failure_stage=validation | last_raw_phase=validation": 16,
+        "timeout | recorded_failure_stage=missing | last_raw_phase=drm_path": 7,
+        "timeout | recorded_failure_stage=missing | last_raw_phase=validation": 1,
+        "validation_failed | recorded_failure_stage=validation | last_raw_phase=validation": 7
+      },
+      "frontend_failure_reasons": {
+        "{\"final_stage\": \"drm_path\", \"status\": \"frontend_failed\"}": 42
+      },
+      "summary_counts_match": true
+    },
+    {
+      "split": "test",
+      "method": "NTO_PAPER",
+      "objective": "minimum_distance",
+      "registered": 420,
+      "legal": 395,
+      "replica_seeds": {
+        "0": 395
+      },
+      "statuses": {
+        "no_solution_within_budget": 54,
+        "solver_failure": 73,
+        "success_numerical": 113,
+        "timeout": 7,
+        "validation_failed": 148
+      },
+      "raw_statuses": {
+        "collision_failed": 139,
+        "frontend_failed": 54,
+        "solver_failed": 82,
+        "success_validated_numerical": 104,
+        "timeout": 7,
+        "validation_undetermined": 9
+      },
+      "frontend_validated": {
+        "": 57,
+        "True": 338
+      },
+      "source_commits": {
+        "6c3144ff6445904aea3a85cde1a97abb109fc8cb": 395
+      },
+      "attempts": {
+        "1": 395
+      },
+      "convergence_vs_status": {
+        "solver_success=False | solver_failure": 73,
+        "solver_success=False | success_numerical": 9,
+        "solver_success=False | timeout": 1,
+        "solver_success=True | success_numerical": 104,
+        "solver_success=True | validation_failed": 148,
+        "solver_success=missing | no_solution_within_budget": 54,
+        "solver_success=missing | timeout": 6
+      },
+      "native_code_by_status": {
+        "no_solution_within_budget | missing | missing": 54,
+        "solver_failure | 13 | SolutionResult.kInfeasibleConstraints": 32,
+        "solver_failure | 31 | SolutionResult.kIterationLimit": 21,
+        "solver_failure | 32 | SolutionResult.kIterationLimit": 7,
+        "solver_failure | 41 | SolutionResult.kSolverSpecificError": 13,
+        "success_numerical | 1 | SolutionResult.kSolutionFound": 104,
+        "success_numerical | 31 | SolutionResult.kIterationLimit": 1,
+        "success_numerical | 32 | SolutionResult.kIterationLimit": 8,
+        "timeout | 32 | SolutionResult.kIterationLimit": 1,
+        "timeout | missing | missing": 6,
+        "validation_failed | 1 | SolutionResult.kSolutionFound": 116,
+        "validation_failed | 3 | SolutionResult.kSolutionFound": 32
+      },
+      "validation_failure_signature": {
+        "{\"collision_free\": false, \"derivative_limits_passed\": true, \"endpoint_within_1e_5_rad\": true, \"has_contact_band_samples\": false, \"joint_limits_passed\": true, \"status\": \"collision_failed\"}": 32,
+        "{\"collision_free\": false, \"derivative_limits_passed\": true, \"endpoint_within_1e_5_rad\": true, \"has_contact_band_samples\": true, \"joint_limits_passed\": true, \"status\": \"collision_failed\"}": 107,
+        "{\"collision_free\": false, \"derivative_limits_passed\": true, \"endpoint_within_1e_5_rad\": true, \"has_contact_band_samples\": true, \"joint_limits_passed\": true, \"status\": \"validation_undetermined\"}": 9
+      },
+      "timeout_phase": {
+        "drm_path": 3,
+        "trajectory_optimization": 3,
+        "validation": 1
+      },
+      "failure_stages": {
+        "no_solution_within_budget | recorded_failure_stage=drm_path | last_raw_phase=drm_path": 54,
+        "solver_failure | recorded_failure_stage=validation | last_raw_phase=validation": 73,
+        "timeout | recorded_failure_stage=missing | last_raw_phase=drm_path": 3,
+        "timeout | recorded_failure_stage=missing | last_raw_phase=trajectory_optimization": 3,
+        "timeout | recorded_failure_stage=missing | last_raw_phase=validation": 1,
+        "validation_failed | recorded_failure_stage=validation | last_raw_phase=validation": 148
+      },
+      "frontend_failure_reasons": {
+        "{\"final_stage\": \"drm_path\", \"status\": \"frontend_failed\"}": 54
+      },
+      "summary_counts_match": true
+    },
+    {
+      "split": "test",
+      "method": "NTO_PAPER",
+      "objective": "minimum_time",
+      "registered": 420,
+      "legal": 395,
+      "replica_seeds": {
+        "0": 395
+      },
+      "statuses": {
+        "no_solution_within_budget": 54,
+        "solver_failure": 6,
+        "success_numerical": 269,
+        "timeout": 18,
+        "validation_failed": 48
+      },
+      "raw_statuses": {
+        "collision_failed": 46,
+        "frontend_failed": 54,
+        "solver_failed": 7,
+        "success_validated_numerical": 268,
+        "timeout": 18,
+        "validation_undetermined": 2
+      },
+      "frontend_validated": {
+        "": 57,
+        "True": 338
+      },
+      "source_commits": {
+        "6c3144ff6445904aea3a85cde1a97abb109fc8cb": 395
+      },
+      "attempts": {
+        "1": 395
+      },
+      "convergence_vs_status": {
+        "solver_success=False | solver_failure": 6,
+        "solver_success=False | success_numerical": 1,
+        "solver_success=False | timeout": 2,
+        "solver_success=True | success_numerical": 268,
+        "solver_success=True | validation_failed": 48,
+        "solver_success=missing | no_solution_within_budget": 54,
+        "solver_success=missing | timeout": 16
+      },
+      "native_code_by_status": {
+        "no_solution_within_budget | missing | missing": 54,
+        "solver_failure | 1 | Max iteration exceeded": 5,
+        "solver_failure | 10 | Restoration failure": 1,
+        "success_numerical | 0 | Success": 268,
+        "success_numerical | 6 | Local infeasibility": 1,
+        "timeout | 1 | Max iteration exceeded": 2,
+        "timeout | missing | missing": 16,
+        "validation_failed | 0 | Success": 48
+      },
+      "validation_failure_signature": {
+        "{\"collision_free\": false, \"derivative_limits_passed\": true, \"endpoint_within_1e_5_rad\": true, \"has_contact_band_samples\": false, \"joint_limits_passed\": true, \"status\": \"collision_failed\"}": 16,
+        "{\"collision_free\": false, \"derivative_limits_passed\": true, \"endpoint_within_1e_5_rad\": true, \"has_contact_band_samples\": true, \"joint_limits_passed\": true, \"status\": \"collision_failed\"}": 30,
+        "{\"collision_free\": false, \"derivative_limits_passed\": true, \"endpoint_within_1e_5_rad\": true, \"has_contact_band_samples\": true, \"joint_limits_passed\": true, \"status\": \"validation_undetermined\"}": 2
+      },
+      "timeout_phase": {
+        "drm_path": 3,
+        "trajectory_optimization": 13,
+        "validation": 2
+      },
+      "failure_stages": {
+        "no_solution_within_budget | recorded_failure_stage=drm_path | last_raw_phase=drm_path": 54,
+        "solver_failure | recorded_failure_stage=validation | last_raw_phase=validation": 6,
+        "timeout | recorded_failure_stage=missing | last_raw_phase=drm_path": 3,
+        "timeout | recorded_failure_stage=missing | last_raw_phase=trajectory_optimization": 13,
+        "timeout | recorded_failure_stage=missing | last_raw_phase=validation": 2,
+        "validation_failed | recorded_failure_stage=validation | last_raw_phase=validation": 48
+      },
+      "frontend_failure_reasons": {
+        "{\"final_stage\": \"drm_path\", \"status\": \"frontend_failed\"}": 54
+      },
+      "summary_counts_match": true
+    },
+    {
+      "split": "test",
+      "method": "NTO_REFINED",
+      "objective": "minimum_distance",
+      "registered": 420,
+      "legal": 395,
+      "replica_seeds": {
+        "0": 395
+      },
+      "statuses": {
+        "no_solution_within_budget": 54,
+        "solver_failure": 27,
+        "success_numerical": 276,
+        "timeout": 34,
+        "validation_failed": 4
+      },
+      "raw_statuses": {
+        "collision_failed": 4,
+        "frontend_failed": 54,
+        "solver_failed": 43,
+        "success_validated_numerical": 260,
+        "timeout": 34
+      },
+      "frontend_validated": {
+        "": 57,
+        "True": 338
+      },
+      "source_commits": {
+        "6c3144ff6445904aea3a85cde1a97abb109fc8cb": 395
+      },
+      "attempts": {
+        "1": 395
+      },
+      "convergence_vs_status": {
+        "solver_success=False | solver_failure": 27,
+        "solver_success=False | success_numerical": 16,
+        "solver_success=False | timeout": 1,
+        "solver_success=True | success_numerical": 260,
+        "solver_success=True | validation_failed": 4,
+        "solver_success=missing | no_solution_within_budget": 54,
+        "solver_success=missing | timeout": 33
+      },
+      "native_code_by_status": {
+        "no_solution_within_budget | missing | missing": 54,
+        "solver_failure | 13 | SolutionResult.kInfeasibleConstraints": 19,
+        "solver_failure | 41 | SolutionResult.kSolverSpecificError": 8,
+        "success_numerical | 1 | SolutionResult.kSolutionFound": 260,
+        "success_numerical | 13 | SolutionResult.kInfeasibleConstraints": 2,
+        "success_numerical | 32 | SolutionResult.kIterationLimit": 12,
+        "success_numerical | 41 | SolutionResult.kSolverSpecificError": 2,
+        "timeout | 1 | SolutionResult.kSolutionFound": 1,
+        "timeout | 13 | SolutionResult.kInfeasibleConstraints": 17,
+        "timeout | 32 | SolutionResult.kIterationLimit": 2,
+        "timeout | 41 | SolutionResult.kSolverSpecificError": 7,
+        "timeout | missing | missing": 7,
+        "validation_failed | 1 | SolutionResult.kSolutionFound": 4
+      },
+      "validation_failure_signature": {
+        "{\"collision_free\": false, \"derivative_limits_passed\": true, \"endpoint_within_1e_5_rad\": true, \"has_contact_band_samples\": false, \"joint_limits_passed\": true, \"status\": \"collision_failed\"}": 4
+      },
+      "timeout_phase": {
+        "drm_path": 3,
+        "trajectory_optimization": 30,
+        "validation": 1
+      },
+      "failure_stages": {
+        "no_solution_within_budget | recorded_failure_stage=drm_path | last_raw_phase=drm_path": 54,
+        "solver_failure | recorded_failure_stage=validation | last_raw_phase=validation": 27,
+        "timeout | recorded_failure_stage=missing | last_raw_phase=drm_path": 3,
+        "timeout | recorded_failure_stage=missing | last_raw_phase=trajectory_optimization": 30,
+        "timeout | recorded_failure_stage=validation | last_raw_phase=validation": 1,
+        "validation_failed | recorded_failure_stage=validation | last_raw_phase=validation": 4
+      },
+      "frontend_failure_reasons": {
+        "{\"final_stage\": \"drm_path\", \"status\": \"frontend_failed\"}": 54
+      },
+      "summary_counts_match": true
+    },
+    {
+      "split": "test",
+      "method": "NTO_REFINED",
+      "objective": "minimum_time",
+      "registered": 420,
+      "legal": 395,
+      "replica_seeds": {
+        "0": 395
+      },
+      "statuses": {
+        "no_solution_within_budget": 54,
+        "solver_failure": 1,
+        "success_numerical": 297,
+        "timeout": 43
+      },
+      "raw_statuses": {
+        "frontend_failed": 54,
+        "solver_failed": 2,
+        "success_validated_numerical": 296,
+        "timeout": 43
+      },
+      "frontend_validated": {
+        "": 57,
+        "True": 338
+      },
+      "source_commits": {
+        "6c3144ff6445904aea3a85cde1a97abb109fc8cb": 395
+      },
+      "attempts": {
+        "1": 395
+      },
+      "convergence_vs_status": {
+        "solver_success=False | solver_failure": 1,
+        "solver_success=False | success_numerical": 1,
+        "solver_success=True | success_numerical": 296,
+        "solver_success=True | timeout": 1,
+        "solver_success=missing | no_solution_within_budget": 54,
+        "solver_success=missing | timeout": 42
+      },
+      "native_code_by_status": {
+        "no_solution_within_budget | missing | missing": 54,
+        "solver_failure | 6 | Local infeasibility": 1,
+        "success_numerical | 0 | Success": 296,
+        "success_numerical | 6 | Local infeasibility": 1,
+        "timeout | 0 | Success": 7,
+        "timeout | 1 | Max iteration exceeded": 3,
+        "timeout | missing | missing": 33
+      },
+      "validation_failure_signature": {},
+      "timeout_phase": {
+        "drm_path": 3,
+        "trajectory_optimization": 39,
+        "validation": 1
+      },
+      "failure_stages": {
+        "no_solution_within_budget | recorded_failure_stage=drm_path | last_raw_phase=drm_path": 54,
+        "solver_failure | recorded_failure_stage=validation | last_raw_phase=validation": 1,
+        "timeout | recorded_failure_stage=missing | last_raw_phase=drm_path": 3,
+        "timeout | recorded_failure_stage=missing | last_raw_phase=trajectory_optimization": 39,
+        "timeout | recorded_failure_stage=missing | last_raw_phase=validation": 1
+      },
+      "frontend_failure_reasons": {
+        "{\"final_stage\": \"drm_path\", \"status\": \"frontend_failed\"}": 54
+      },
+      "summary_counts_match": true
+    },
+    {
+      "split": "test",
+      "method": "NTO",
+      "objective": "minimum_distance",
+      "registered": 420,
+      "legal": 395,
+      "replica_seeds": {
+        "0": 395
+      },
+      "statuses": {
+        "no_solution_within_budget": 54,
+        "solver_failure": 92,
+        "success_numerical": 123,
+        "timeout": 4,
+        "validation_failed": 122
+      },
+      "raw_statuses": {
+        "collision_failed": 119,
+        "frontend_failed": 54,
+        "solver_failed": 97,
+        "success_validated_numerical": 118,
+        "timeout": 4,
+        "validation_undetermined": 3
+      },
+      "frontend_validated": {
+        "": 57,
+        "True": 338
+      },
+      "source_commits": {
+        "6c3144ff6445904aea3a85cde1a97abb109fc8cb": 395
+      },
+      "attempts": {
+        "1": 395
+      },
+      "convergence_vs_status": {
+        "solver_success=False | solver_failure": 92,
+        "solver_success=False | success_numerical": 5,
+        "solver_success=False | timeout": 1,
+        "solver_success=True | success_numerical": 118,
+        "solver_success=True | validation_failed": 122,
+        "solver_success=missing | no_solution_within_budget": 54,
+        "solver_success=missing | timeout": 3
+      },
+      "native_code_by_status": {
+        "no_solution_within_budget | missing | missing": 54,
+        "solver_failure | 1 | Max iteration exceeded": 90,
+        "solver_failure | 6 | Local infeasibility": 2,
+        "success_numerical | 0 | Success": 118,
+        "success_numerical | 1 | Max iteration exceeded": 5,
+        "timeout | 1 | Max iteration exceeded": 1,
+        "timeout | missing | missing": 3,
+        "validation_failed | 0 | Success": 122
+      },
+      "validation_failure_signature": {
+        "{\"collision_free\": false, \"derivative_limits_passed\": true, \"endpoint_within_1e_5_rad\": true, \"has_contact_band_samples\": false, \"joint_limits_passed\": true, \"status\": \"collision_failed\"}": 67,
+        "{\"collision_free\": false, \"derivative_limits_passed\": true, \"endpoint_within_1e_5_rad\": true, \"has_contact_band_samples\": true, \"joint_limits_passed\": true, \"status\": \"collision_failed\"}": 52,
+        "{\"collision_free\": false, \"derivative_limits_passed\": true, \"endpoint_within_1e_5_rad\": true, \"has_contact_band_samples\": true, \"joint_limits_passed\": true, \"status\": \"validation_undetermined\"}": 2,
+        "{\"collision_free\": true, \"derivative_limits_passed\": true, \"endpoint_within_1e_5_rad\": true, \"has_contact_band_samples\": true, \"joint_limits_passed\": true, \"status\": \"validation_undetermined\"}": 1
+      },
+      "timeout_phase": {
+        "drm_path": 3,
+        "validation": 1
+      },
+      "failure_stages": {
+        "no_solution_within_budget | recorded_failure_stage=drm_path | last_raw_phase=drm_path": 54,
+        "solver_failure | recorded_failure_stage=validation | last_raw_phase=validation": 92,
+        "timeout | recorded_failure_stage=missing | last_raw_phase=drm_path": 3,
+        "timeout | recorded_failure_stage=missing | last_raw_phase=validation": 1,
+        "validation_failed | recorded_failure_stage=validation | last_raw_phase=validation": 122
+      },
+      "frontend_failure_reasons": {
+        "{\"final_stage\": \"drm_path\", \"status\": \"frontend_failed\"}": 54
+      },
+      "summary_counts_match": true
+    },
+    {
+      "split": "test",
+      "method": "NTO",
+      "objective": "minimum_time",
+      "registered": 420,
+      "legal": 395,
+      "replica_seeds": {
+        "0": 395
+      },
+      "statuses": {
+        "no_solution_within_budget": 54,
+        "solver_failure": 50,
+        "success_numerical": 265,
+        "timeout": 5,
+        "validation_failed": 21
+      },
+      "raw_statuses": {
+        "collision_failed": 21,
+        "frontend_failed": 54,
+        "solver_failed": 51,
+        "success_validated_numerical": 264,
+        "timeout": 5
+      },
+      "frontend_validated": {
+        "": 57,
+        "True": 338
+      },
+      "source_commits": {
+        "6c3144ff6445904aea3a85cde1a97abb109fc8cb": 395
+      },
+      "attempts": {
+        "1": 395
+      },
+      "convergence_vs_status": {
+        "solver_success=False | solver_failure": 50,
+        "solver_success=False | success_numerical": 1,
+        "solver_success=False | timeout": 2,
+        "solver_success=True | success_numerical": 264,
+        "solver_success=True | validation_failed": 21,
+        "solver_success=missing | no_solution_within_budget": 54,
+        "solver_success=missing | timeout": 3
+      },
+      "native_code_by_status": {
+        "no_solution_within_budget | missing | missing": 54,
+        "solver_failure | 1 | Max iteration exceeded": 50,
+        "success_numerical | 0 | Success": 264,
+        "success_numerical | 1 | Max iteration exceeded": 1,
+        "timeout | 1 | Max iteration exceeded": 2,
+        "timeout | missing | missing": 3,
+        "validation_failed | 0 | Success": 21
+      },
+      "validation_failure_signature": {
+        "{\"collision_free\": false, \"derivative_limits_passed\": true, \"endpoint_within_1e_5_rad\": true, \"has_contact_band_samples\": false, \"joint_limits_passed\": true, \"status\": \"collision_failed\"}": 12,
+        "{\"collision_free\": false, \"derivative_limits_passed\": true, \"endpoint_within_1e_5_rad\": true, \"has_contact_band_samples\": true, \"joint_limits_passed\": true, \"status\": \"collision_failed\"}": 9
+      },
+      "timeout_phase": {
+        "drm_path": 3,
+        "validation": 2
+      },
+      "failure_stages": {
+        "no_solution_within_budget | recorded_failure_stage=drm_path | last_raw_phase=drm_path": 54,
+        "solver_failure | recorded_failure_stage=validation | last_raw_phase=validation": 50,
+        "timeout | recorded_failure_stage=missing | last_raw_phase=drm_path": 3,
+        "timeout | recorded_failure_stage=missing | last_raw_phase=validation": 2,
+        "validation_failed | recorded_failure_stage=validation | last_raw_phase=validation": 21
+      },
+      "frontend_failure_reasons": {
+        "{\"final_stage\": \"drm_path\", \"status\": \"frontend_failed\"}": 54
+      },
+      "summary_counts_match": true
+    }
+  ],
+  "frontend_groups": [
+    {
+      "split": "dev",
+      "groups": 180,
+      "all_six_same_validated_path": 131,
+      "all_six_without_frontend": 49,
+      "without_frontend_statuses": {
+        "no_solution_within_budget": 42,
+        "timeout": 7
+      },
+      "missing_method_track_rows": [],
+      "mismatches": []
+    },
+    {
+      "split": "test",
+      "groups": 395,
+      "all_six_same_validated_path": 338,
+      "all_six_without_frontend": 57,
+      "without_frontend_statuses": {
+        "no_solution_within_budget": 54,
+        "timeout": 3
+      },
+      "missing_method_track_rows": [],
+      "mismatches": []
+    }
+  ],
+  "paired_status_changes": [
+    {
+      "split": "dev",
+      "objective": "minimum_distance",
+      "from": "NTO_PAPER",
+      "to": "NTO_REFINED",
+      "transitions": {
+        "no_solution_within_budget -> no_solution_within_budget": 42,
+        "solver_failure -> solver_failure": 12,
+        "solver_failure -> success_numerical": 10,
+        "solver_failure -> timeout": 14,
+        "success_numerical -> solver_failure": 1,
+        "success_numerical -> success_numerical": 41,
+        "success_numerical -> timeout": 1,
+        "success_numerical -> validation_failed": 1,
+        "timeout -> timeout": 7,
+        "validation_failed -> solver_failure": 1,
+        "validation_failed -> success_numerical": 48,
+        "validation_failed -> validation_failed": 2
+      }
+    },
+    {
+      "split": "dev",
+      "objective": "minimum_time",
+      "from": "NTO_PAPER",
+      "to": "NTO_REFINED",
+      "transitions": {
+        "no_solution_within_budget -> no_solution_within_budget": 42,
+        "solver_failure -> success_numerical": 1,
+        "solver_failure -> timeout": 2,
+        "success_numerical -> solver_failure": 3,
+        "success_numerical -> success_numerical": 92,
+        "success_numerical -> timeout": 6,
+        "timeout -> timeout": 12,
+        "validation_failed -> success_numerical": 16,
+        "validation_failed -> timeout": 5,
+        "validation_failed -> validation_failed": 1
+      }
+    },
+    {
+      "split": "test",
+      "objective": "minimum_distance",
+      "from": "NTO_PAPER",
+      "to": "NTO_REFINED",
+      "transitions": {
+        "no_solution_within_budget -> no_solution_within_budget": 54,
+        "solver_failure -> solver_failure": 20,
+        "solver_failure -> success_numerical": 29,
+        "solver_failure -> timeout": 23,
+        "solver_failure -> validation_failed": 1,
+        "success_numerical -> solver_failure": 2,
+        "success_numerical -> success_numerical": 109,
+        "success_numerical -> timeout": 2,
+        "timeout -> solver_failure": 1,
+        "timeout -> success_numerical": 2,
+        "timeout -> timeout": 4,
+        "validation_failed -> solver_failure": 4,
+        "validation_failed -> success_numerical": 136,
+        "validation_failed -> timeout": 5,
+        "validation_failed -> validation_failed": 3
+      }
+    },
+    {
+      "split": "test",
+      "objective": "minimum_time",
+      "from": "NTO_PAPER",
+      "to": "NTO_REFINED",
+      "transitions": {
+        "no_solution_within_budget -> no_solution_within_budget": 54,
+        "solver_failure -> success_numerical": 4,
+        "solver_failure -> timeout": 2,
+        "success_numerical -> solver_failure": 1,
+        "success_numerical -> success_numerical": 250,
+        "success_numerical -> timeout": 18,
+        "timeout -> success_numerical": 9,
+        "timeout -> timeout": 9,
+        "validation_failed -> success_numerical": 34,
+        "validation_failed -> timeout": 14
+      }
+    }
+  ],
+  "integrity": {
+    "registered_rows": 3600,
+    "verified_attempts": 3600,
+    "verified_receipt_files": 99387,
+    "verified_bytes": 1724606126
+  },
+  "passed": true,
+  "errors": []
+}
