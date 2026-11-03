@@ -1,5 +1,9 @@
 # Reproducing CSDecomp experiments
 
+> Historical Forest/FR3 reconstruction and reproduction evidence. References to
+> “current” or “latest” below refer to that study. For the current Kinova
+> benchmark, protocol and commands, use the [project README](../README.md).
+
 A runnable constructed benchmark for the simulation experiments in
 [Superfast Configuration-Space Convex Set Computation on GPUs for Online Motion Planning](https://arxiv.org/abs/2504.10783v1).
 The work uses the existing Ubuntu 22.04 Conda environment and stays on `main`.

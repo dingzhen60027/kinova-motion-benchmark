@@ -1,5 +1,9 @@
 # Research protocol
 
+> Historical Forest/FR3 protocol for `research_platform/`. Its budgets and
+> result-selection rules apply to those preserved experiments. For the current
+> Kinova benchmark, protocol and commands, use the [project README](../README.md).
+
 This document defines the experimental contract implemented by `research_platform/`.
 The platform reuses the preserved research implementations in `reproduction/` and
 records their numerical variants explicitly. The public Forest and constructed

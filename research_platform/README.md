@@ -1,5 +1,10 @@
 # Research platform
 
+> Historical Forest/FR3 experiment runner, retained with its original results
+> and protocol. For the current Kinova benchmark, data and public CLI, start with
+> the [project README](../README.md). The budgets and selection rules below apply
+> only to this historical runner.
+
 A reproducible experiment runner for native CSDecomp planning and trajectory-optimization baselines. The platform separates shared task preparation, method execution, independent validation, and reporting. It retains failed attempts and the inputs needed to inspect them.
 
 This package uses the existing Conda environment and the algorithms under `reproduction/`. Historical implementations and recorded experiments remain unchanged. The current environments are public-asset reconstructions suitable for declared research studies; they do not constitute recovery of the authors' private benchmark or hardware experiments.

@@ -1,5 +1,9 @@
 # Baseline conditions
 
+> Historical Forest/FR3 baseline conditions. The 120-second budget below belongs
+> to those preserved experiments. For the current Kinova benchmark and its
+> evaluation settings, use the [project README](../README.md).
+
 The strengthened NTO methods address observed transcription weaknesses. They
 are additional, explicitly configured numerical baselines, not new research
 algorithms or recovered author settings. Historical implementations and results
