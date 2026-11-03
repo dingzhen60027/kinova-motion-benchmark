@@ -1,7 +1,171 @@
-# Motion planning benchmark
+# Benchmark reference
 
-The current data, model, methods, commands and result interpretation are documented in the [project README](../../README.md).
+[Project overview](../../README.md) · [Conda and native dependencies](../../local/README.md)
 
-Use `scripts/benchmark.py` and `scripts/evaluate.py` from that guide. `benchmark/` is the public alias of this existing package; there is one physical dataset.
+Commands below run from the repository root. `benchmark/` and `results/` are aliases of this package and its results directory; there is one physical dataset. Original manifests and sealed artifacts remain at their recorded paths.
 
-Original manifests, scene/input arrays, sealed run artifacts and protocol documents remain here because their hashes and trajectories are historical evidence. They are not additional current benchmarks.
+## Dataset
+
+| Split | Registered | Valid inputs | Generation failures | Purpose |
+|---|---:|---:|---:|---|
+| `smoke` | 10 | 8 | 2 | Functional checks |
+| `dev` | 60 | 60 | 0 | Configuration and regression tests |
+| `test` | 420 | 395 | 25 | Designated baseline evaluation set |
+| **Total** | **490** | **463** | **27** | |
+
+[Problems](problems.jsonl) reference stored scenes and endpoints. [Splits](splits.json), [features](features.csv), and [metadata](metadata.json) record membership, endpoint checks/distances, direct-connection checks, obstacle counts, rejection reasons, seeds and hashes.
+
+| Category | Actual workspace geometry | Valid dev / test |
+|---|---|---:|
+| `sparse_clutter` | Mixture of spheres and boxes | 15 / 95 |
+| `dense_clutter` | Dense spheres with a different size distribution | 15 / 85 |
+| `bottleneck` | Two finite walls separated by a gap | 15 / 100 |
+| `route_choice` | Two clusters of spheres | 15 / 95 |
+| `open_control` | Fixed table/equipment without added random obstacles | 0 / 20 |
+
+- Scene and endpoint sampling use independent SHA256-derived PCG64 streams. All seven joints are sampled. Input acceptance uses geometry, endpoint validity and distance criteria, never planner success. Planner seeds repeat fixed problems.
+- Test contains **75 random layouts plus one shared base environment**; problems within a layout are correlated. Dev/test random layouts are disjoint. Open-control queries share the base environment. Test has historical evaluation exposure: it is **not an untouched holdout**.
+- Dev uses equal short/medium/long proportions; valid test uses 2:2:1. Both smoke generation failures are dense-clutter inputs. All failures remain registered.
+- Sparse/dense clutter is not a density-only comparison. Category names do not establish C-space passages or homotopy classes; open control is not obstacle-free.
+- Input validity does not prove solvability. **418** problems have stored numerical path witnesses; **45** valid problems retain unknown feasibility. A planning failure is not a generation failure or proof of infeasibility.
+
+## Model and evaluation protocol
+
+Effective settings: [evaluation.json](../../configs/evaluation.json). Joint limits, geometry and collision pairs: [robot.json](configs/robot.json).
+
+| Item | Shared definition |
+|---|---|
+| Robot | Full [Kinova model](../../csdecomp/tests/test_assets/directives/kinova_sens_on_table.yml); fixed base, welded Robotiq fingers; TCP `kinova::end_effector_link` |
+| Joint metric | `kinova_joint_1_q` through `kinova_joint_7_q`; bounded Euclidean coordinates in radians, without angular wrapping |
+| Obstacles | Fixed table/equipment plus conservative unions of 0.04 m radius spheres at frozen float32 centers |
+| Path objective | Actual saved PWL/curve length; composite solver costs are not substituted |
+| Time objective | Duration with velocity ≤ 1 rad/s, acceleration ≤ 1 rad/s², zero endpoint velocity; endpoint acceleration bounded, not fixed to zero |
+| Validation | Endpoints, bounds, continuity, self/environment collision and applicable derivatives; CUDA plus independent double-precision geometry checks |
+| Collision resolution | Maximum final joint step 0.005 rad; the ±2 μm contact band does not count as validated success |
+| Online budget | 60 s/query including startup, setup, frontend, optimization, repair, validation and output; one GPU planning job at a time |
+| Offline work | 6,000-node roadmaps at seeds 0, 1, 2; construction time and storage reported separately |
+| Repetitions | First terminal attempt per declared job; no best-of retry selection |
+
+**Comparison modes.** Full-flow evaluation includes each method's frontend. Fixed-frontend summaries condition on an identical validated seed path. `fixed_initial_regions` gives EI-ZO and LGCS the same saved path and initial regions under a fresh backend budget; source frontend costs remain separate. These modes are not pooled.
+
+**Timing.** Computation time and trajectory execution time are distinct. Cold end-to-end time includes startup; `within_call` decomposes that run and is not a separately measured warm-start experiment. First-valid-solution times and progress curves appear only when actually observed. OMPL reserves budget for validation and simplification. Effective settings and thread policies are captured per run.
+
+**Validation and status.** Solver convergence and numerical validity are separate fields. Numerical sampling is not a continuous mathematical certificate; timeout does not prove infeasibility. Statuses are `success_numerical`, `invalid_input`, `no_solution_within_budget`, `timeout`, `solver_failure`, `validation_failed`, and `infrastructure_error`.
+
+## Methods
+
+Ten methods support 14 method–track combinations. All share the model and final validator. Except for independent OMPL planners, methods start from an independently validated DRM path.
+
+| Method ID | Implementation | Native objective | Tracks |
+|---|---|---|---|
+| `EI_ZO` | Native DRM → EI-ZO → author LSCS / SCSTO with Clarabel; collision feedback and region/corridor repair retained | Corridor path length / duration | Path, time |
+| `LGCS` | Perspective GCS MISOCP reconstruction using SCIP | Path length in the supplied region graph | Path |
+| `NTO_PAPER` | Published-profile reconstruction in Drake KTO; SNOPT path / IPOPT time | Path-length transcription / duration | Path, time |
+| `NTO_REFINED` | NTO adaptation with clearance, adaptive collision collocation and richer time splines | Path-length transcription / duration | Path, time |
+| `NTO` | Legacy Drake KTO/IPOPT adaptation, kept as a distinct profile | Path-length transcription / duration | Path, time |
+| `RRTCONNECT` | Official OMPL 2.0.1 RRTConnect and native vertex reduction | First feasible path, then shortening | Path |
+| `RRTSTAR` | Official OMPL 2.0.1 RRT* with native rewiring and vertex reduction | Joint-space path length | Path |
+| `CHOMP` | Covariant-gradient adaptation with a C-space clearance functional | Smoothness + obstacle cost | Path |
+| `STOMP` | Official ros-industrial core with canonical collision and correlated-noise callbacks | Smoothness + obstacle cost | Path |
+| `TRAJOPT` | Author SQP/BPMPD core with canonical collision collocation | Squared joint differences + collision constraints | Path |
+
+CHOMP's C-space functional and TrajOpt's sampled collision constraints differ from the original workspace-body and swept-volume formulations. LGCS and NTO are mathematical reconstructions. SCSTO optimizes geometry and timing as the time backend of `EI_ZO`; it is not an additional method ID. Identity and source details are in the [method catalog](results/methods.json) and [source review](results/trend_diagnostics/method_identity_review.json).
+
+## Results and evidence
+
+The published test table in the [project overview](../../README.md) uses `baseline_test`; dev results are in the linked summaries. Both cohorts use runtime commit `6c3144ff64`. **Dev: 60 problems × seeds 0, 1, 2. Test: 395 valid problems × seed 0 only. Test seeds 1 and 2 have not been run.** Manifests preserve source hashes and effective settings.
+
+Smoke/dev/test contain 8,540 recorded calls, including explicit invalid inputs. A separate shared-initial-region comparison adds 676 calls on 338 eligible problems. All 9,216 declared calls completed, with zero infrastructure errors. Test recorded 4,009 successes, 759 searches without a solution, 140 timeouts, 369 validation failures, 253 solver failures and 350 invalid-input calls (25 generation failures × 14 combinations).
+
+| Evidence | Use |
+|---|---|
+| [records.csv](results/records.csv) | Actual attempts, including historical/diagnostic runs; filter by run identity |
+| [summary.csv](results/summary.csv) | Outcomes, latency, objectives and paired differences; filter by comparison identity |
+| [selection.json](results/selection.json) | Cohorts; main comparisons are `current_dev_repaired` and `current_test_repaired` |
+| [Completion checks](results/rigor_checks/completed_evaluation.json) | Run completion, receipts, input/protocol identity and metrics |
+| [Input/regression checks](results/rigor_checks/checks.json) | Model/input rechecks, test evidence and historical-result preservation |
+
+Cost comparisons use paired common-success problems, accompanied by full-denominator success rates and uncertainty clustered by physical scene. Do not pool historical cohorts or compare only each method's own success subset. The later runtime passed 1,330 regression tests and three upstream tests; 28 further planner calls recorded 10 successes and 18 classified failures/timeouts as separate functional diagnostics. NTO's collisions between constraint points remain validation failures even when the solver reports convergence.
+
+## Commands
+
+Each subcommand supports `--help`. Use a new output directory per experiment. `resume` preserves completed failures and does not rerun completed jobs. Commit runtime code changes before preparing new experiments; source-hash mismatches prevent incomplete historical runs from silently continuing with changed code. From another working directory, invoke `local/python.sh` by its absolute path.
+
+### Check and run one problem
+
+```bash
+bash local/python.sh scripts/benchmark.py check
+bash local/python.sh scripts/evaluate.py check
+bash local/python.sh scripts/evaluate.py methods
+bash local/python.sh scripts/benchmark.py show smoke-bottleneck-000-p00
+bash local/python.sh scripts/evaluate.py run \
+  --split smoke --problem smoke-bottleneck-000-p00 \
+  --methods EI_ZO --track both --seeds 0 --output runs/quickstart
+bash local/python.sh scripts/evaluate.py verify --run runs/quickstart
+```
+
+`benchmark.py check` checks input hashes/references, not the full collision audit. `evaluate.py check` executes real GPU collision, solver and positive/negative checks.
+
+### Batch and resume
+
+```bash
+# 60 dev problems × 3 paired seeds × 2 path methods.
+bash local/python.sh scripts/evaluate.py batch \
+  --split dev --methods EI_ZO RRTCONNECT --track path --seeds 0 1 2 \
+  --output runs/dev-comparison --prepare-only
+bash local/python.sh scripts/evaluate.py resume --run runs/dev-comparison
+bash local/python.sh scripts/evaluate.py status --run runs/dev-comparison
+bash local/python.sh scripts/evaluate.py verify --run runs/dev-comparison
+```
+
+Omit `--methods` for all supported methods; `--track both` uses their supported tracks. Single-problem/smoke runs default to seed 0; dev/test batches default to 0, 1, 2. `resume --max-jobs N` limits a session.
+
+### Summarize and replay
+
+```bash
+bash local/python.sh scripts/evaluate.py summarize \
+  --selection results/selection.json --output runs/published-summary
+bash local/python.sh scripts/evaluate.py replay \
+  --attempt results/baseline_test/jobs/test-sparse_clutter-000-p00-EI_ZO-minimum_distance-3cafa806/attempts/0001 \
+  --output runs/replay-example
+```
+
+Replay writes `replay.html`. Use another trajectory's `attempt_path` from `records.csv` to inspect it. For new comparisons, adapt the existing selection schema to reference your run and retain distinct comparison identities. Summaries preserve failures, pending work, stage timings and scene-cluster paired statistics.
+
+### Generate and build an offline roadmap
+
+```bash
+# Frozen dev configuration and generation seed; separate destination required.
+bash local/python.sh scripts/benchmark.py generate \
+  --split dev --output runs/regenerated-dev
+bash local/python.sh scripts/benchmark.py build-roadmap \
+  --nodes 6000 --seed 0 --output runs/roadmap-rebuild
+```
+
+Generation accepts `--seed` and `--config`. `benchmark.py index` rebuilds the reference index without resampling inputs. Offline construction is outside online query timing.
+
+### Tests and extension
+
+```bash
+bash local/python.sh -m pytest -q
+bash local/python.sh -m pytest -q --import-mode=prepend \
+  csdecomp/tests/csdecomp_test.py csdecomp/tests/drake_dep_test.py
+```
+
+The second command checks the installed upstream package with its required import mode. GPU tests need the configured environment. Upstream workflows are inactive examples in [.github/workflow-examples/](../../.github/workflow-examples/); automated GPU CI is not configured.
+
+To add a planner, implement an adapter in [runners/](runners/), declare its identity/objectives in [methods.py](runners/methods.py), and connect [worker dispatch](batch.py). Reuse the frozen inputs, validator and result contracts; add a targeted test and configuration.
+
+## Upstream citation
+
+This Kinova dataset does not reproduce the private Franka/FR3 inputs or KUKA hardware trials. For the original algorithm, cite [Werner et al., RSS 2025](https://www.roboticsproceedings.org/rss21/p045.html):
+
+```bibtex
+@inproceedings{WernerP-RSS-25,
+  author    = {Peter Werner and Richard Cheng and Tom Stewart and Russ Tedrake and Daniela Rus},
+  title     = {Superfast Configuration-Space Convex Set Computation on GPUs for Online Motion Planning},
+  booktitle = {Proceedings of Robotics: Science and Systems},
+  year      = {2025},
+  doi       = {10.15607/RSS.2025.XXI.045}
+}
+```
