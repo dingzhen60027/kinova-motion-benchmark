@@ -234,3 +234,94 @@ def test_published_backend_keeps_first_exception_log_reference(tmp_path):
                 assert not Path(call[key]).is_absolute()
                 assert (tmp_path / call[key]).is_file()
     assert error.read_text() == "original failure"
+
+
+@pytest.mark.parametrize("value", [1, 0, "true", None, 1.0])
+def test_refined_early_accept_config_requires_boolean(value):
+    with pytest.raises(ValueError, match="early_accept_validated"):
+        load_config({"nto_refined": {"early_accept_validated": value}})
+
+
+def test_refined_early_accept_is_opt_in_without_mutating_legacy_config():
+    default = load_config()
+    assert "nto_refined" not in default
+    legacy = load_config({"nto_refined": {"minimum_time_control_points": 4}})
+    assert legacy["nto_refined"] == {"minimum_time_control_points": 4}
+    enabled = load_config({"nto_refined": {"early_accept_validated": True}})
+    assert enabled["nto_refined"] == {"early_accept_validated": True}
+
+
+def _mock_refinement_rounds(monkeypatch, clearance):
+    import importlib
+    module = importlib.import_module("benchmarks.generic_motion_v1.runners.paper_nto_refined")
+    calls = []
+    def fake_paper(path, model, case, cfg, target, deadline, **kwargs):
+        calls.append(target)
+        kwargs["_collision_recovery_state"]["solver_invocations"] += 1
+        return dict(kind="bspline", objective="minimum_distance", solver_success=True,
+                    solver_status="test candidate", controls=np.zeros((2, 7)),
+                    knots=np.array([0., 0., 1., 1.]), duration=1.)
+    monkeypatch.setattr(module, "paper_nto", fake_paper)
+    monkeypatch.setattr(module, "_geometry_guard", lambda *a: (
+        np.array([.001]), np.array([clearance]),
+        {"passed": False, "minimum_clearance_m": clearance}))
+    monkeypatch.setattr(module, "refinement_locations", lambda *a: np.array([.001]))
+    return module, calls
+
+
+@pytest.mark.parametrize("passed, expected_calls, reason", [
+    (True, 1, "early_validated_candidate"),
+    (False, 4, "refinement_round_limit"),
+])
+def test_early_accept_requires_full_validator_and_failure_continues(
+        tmp_path, monkeypatch, passed, expected_calls, reason):
+    module, calls = _mock_refinement_rounds(monkeypatch, .0002)
+    validations = []
+    def check(candidate, model, case, cfg, out):
+        validations.append(out)
+        return {"passed": passed, "status": "success_validated_numerical" if passed else "limit_failed"}
+    monkeypatch.setattr(module, "validate", check)
+    cfg = load_config({"nto_refined": {"early_accept_validated": True}})
+    candidate = module.paper_nto_refined(np.zeros((2, 7)), SimpleNamespace(contact_band_m=2e-6),
+                                        {"_objective": "minimum_distance"}, cfg, tmp_path,
+                                        time.perf_counter()+10)
+    record = json.loads((tmp_path / "nto_refinement.json").read_text())
+    assert len(calls) == len(validations) == expected_calls
+    assert candidate["refinement_stopping_reason"] == record["stopping_reason"] == reason
+    assert record["early_accept_validated"] is True
+    for target in validations:
+        state = json.loads((target / "state.json").read_text())
+        assert state["passed"] is passed and state["status"] == "completed"
+        assert state["seconds"] >= 0
+
+
+@pytest.mark.parametrize("enabled, clearance", [(False, .0002), (True, 2e-6), (True, -.001)])
+def test_early_accept_skips_disabled_and_contact_or_colliding_candidates(
+        tmp_path, monkeypatch, enabled, clearance):
+    module, calls = _mock_refinement_rounds(monkeypatch, clearance)
+    monkeypatch.setattr(module, "validate", lambda *a, **k: pytest.fail("must not call validator"))
+    cfg = load_config({"nto_refined": {"early_accept_validated": enabled}})
+    module.paper_nto_refined(np.zeros((2, 7)), SimpleNamespace(contact_band_m=2e-6),
+                            {"_objective": "minimum_distance"}, cfg, tmp_path, time.perf_counter()+10)
+    assert len(calls) == 4
+
+
+@pytest.mark.parametrize("error", ["backend", "deadline"])
+def test_early_validation_propagates_errors_and_deadline(tmp_path, monkeypatch, error):
+    module, calls = _mock_refinement_rounds(monkeypatch, .0002)
+    clock = [10.]
+    monkeypatch.setattr(module.time, "perf_counter", lambda: clock[0])
+    def check(*args, **kwargs):
+        if error == "backend":
+            raise RuntimeError("collision backend error")
+        clock[0] = 21.
+        return {"passed": True, "status": "success_validated_numerical"}
+    monkeypatch.setattr(module, "validate", check)
+    cfg = load_config({"nto_refined": {"early_accept_validated": True}})
+    exception = RuntimeError if error == "backend" else TimeoutError
+    with pytest.raises(exception):
+        module.paper_nto_refined(np.zeros((2, 7)), SimpleNamespace(contact_band_m=2e-6),
+                                {"_objective": "minimum_distance"}, cfg, tmp_path, 20.)
+    state = json.loads((tmp_path / "refinement/round_00/early_validation/state.json").read_text())
+    assert state["status"] == ("exception" if error == "backend" else "deadline_exhausted")
+    assert len(calls) == 1

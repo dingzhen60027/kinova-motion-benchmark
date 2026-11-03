@@ -81,12 +81,15 @@ def load_config(config=None):
                 continue
             if key == 'nto_refined':
                 if (not isinstance(value, dict)
-                        or set(value) != {'minimum_time_control_points'}):
-                    raise ValueError('nto_refined must specify minimum_time_control_points')
-                count = value['minimum_time_control_points']
-                if (isinstance(count, (bool, np.bool_))
-                        or not isinstance(count, (int, np.integer)) or count < 4):
-                    raise ValueError('nto_refined.minimum_time_control_points must be an integer >= 4')
+                        or not value or set(value) - {'minimum_time_control_points', 'early_accept_validated'}):
+                    raise ValueError('nto_refined must contain supported settings')
+                if 'minimum_time_control_points' in value:
+                    count = value['minimum_time_control_points']
+                    if (isinstance(count, (bool, np.bool_))
+                            or not isinstance(count, (int, np.integer)) or count < 4):
+                        raise ValueError('nto_refined.minimum_time_control_points must be an integer >= 4')
+                if 'early_accept_validated' in value and not isinstance(value['early_accept_validated'], bool):
+                    raise ValueError('nto_refined.early_accept_validated must be boolean')
                 answer[key] = dict(value)
                 continue
             if key not in answer:

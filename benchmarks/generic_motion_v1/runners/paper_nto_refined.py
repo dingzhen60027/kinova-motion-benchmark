@@ -19,7 +19,7 @@ import numpy as np
 
 from ..roadmap import write
 from .paper_nto import PROFILE as PAPER_PROFILE, paper_nto, dependency_probe
-from .validate import sample_candidate
+from .validate import sample_candidate, validate
 from .failure_classification import KNOWN_VALIDATION_REJECTIONS
 
 
@@ -148,8 +148,11 @@ def paper_nto_refined(path, model, case, cfg, out, deadline):
     profile = deepcopy(PROFILE)
     settings = cfg.get("nto_refined", {})
     if (not isinstance(settings, dict)
-            or set(settings) - {"minimum_time_control_points"}):
+            or set(settings) - {"minimum_time_control_points", "early_accept_validated"}):
         raise ValueError("Unsupported NTO_REFINED settings")
+    early_accept = settings.get("early_accept_validated", False)
+    if not isinstance(early_accept, bool):
+        raise ValueError("NTO_REFINED early_accept_validated must be boolean")
     minimum_controls = settings.get("minimum_time_control_points",
                                     profile["minimum_time_control_points"])
     if (isinstance(minimum_controls, (bool, np.bool_))
@@ -169,6 +172,7 @@ def paper_nto_refined(path, model, case, cfg, out, deadline):
                     controls_inserted=bool(case.get("_objective") == "minimum_time"
                                            and len(path)+2 < minimum_controls),
                     minimum_time_control_points=int(minimum_controls),
+                    early_accept_validated=early_accept,
                     initial_curve_preserved=True,
                     stopping_reason="running")
     write(out / "nto_refinement.json", manifest)
@@ -217,6 +221,47 @@ def paper_nto_refined(path, model, case, cfg, out, deadline):
                 manifest["stopping_reason"] = "unusable_failed_solver_candidate"
                 break
             row["geometry_guard"] = guard
+            # The guard is deliberately stricter than the common validator.
+            # Optionally stop at a truly validated candidate before a later
+            # refinement round can destroy it. All checking shares the same
+            # deadline, and the outer runner still performs final validation.
+            if early_accept and not guard["passed"]:
+                band = float(getattr(model, "contact_band_m", 2e-6))
+                if not np.isfinite(band) or band < 0:
+                    raise ValueError("Invalid collision contact band")
+                minimum = guard.get("minimum_clearance_m")
+                if minimum is not None and minimum > band:
+                    if time.perf_counter() >= deadline:
+                        raise TimeoutError("NTO refinement exhausted shared online budget")
+                    early_dir = target / "early_validation"
+                    early_dir.mkdir(exist_ok=False)
+                    early = dict(status="running", passed=False, contact_band_m=band,
+                                 validation_directory=str(early_dir.relative_to(out)))
+                    row["early_validation"] = early
+                    write(out / "nto_refinement.json", manifest)
+                    write(early_dir / "state.json", early)
+                    validation_started = time.perf_counter()
+                    try:
+                        checked = validate(candidate, model, case, cfg, out=early_dir)
+                        early.update(status="completed", passed=bool(checked["passed"]),
+                                     validation_status=checked["status"])
+                        if time.perf_counter() >= deadline:
+                            early["status"] = "deadline_exhausted"
+                            raise TimeoutError("NTO refinement exhausted shared online budget")
+                    except Exception as exc:
+                        if early["status"] != "deadline_exhausted":
+                            early.update(status="exception", exception=repr(exc),
+                                         traceback=traceback.format_exc())
+                        raise
+                    finally:
+                        early["seconds"] = time.perf_counter() - validation_started
+                        write(early_dir / "state.json", early)
+                        write(out / "nto_refinement.json", manifest)
+                    if checked["passed"]:
+                        row.update(proposed_collocation_locations=[], added_collocation_locations=[],
+                                   status="completed")
+                        manifest["stopping_reason"] = "early_validated_candidate"
+                        break
             added = refinement_locations(locations, parameters, clearance)
             row["proposed_collocation_locations"] = added
             row["added_collocation_locations"] = []
