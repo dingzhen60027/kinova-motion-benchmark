@@ -1,5 +1,6 @@
 """Accounting regression tests: failed attempts cannot become successful rows."""
 import csv
+import copy
 import json
 from pathlib import Path
 
@@ -180,6 +181,11 @@ def test_all_attempts_exported_but_no_best_of(tmp_path):
     assert chosen[0]["attempt_number"] == 1
     assert rows[1]["previous_attempt"] == str(run / "jobs/job/attempts/0001")
     assert planned[0]["actual_attempts"] == 2
+    summary = results.summarize(rows, {"comparisons": [{"id": "latency", "runs": [str(run)]}]})
+    strata = {r["scope"]: r for r in summary if r["row_type"] == "metric"
+              and r["category"] == "all" and r["metric"] == "cold_e2e_seconds"}
+    assert strata["failed_legal_only"]["count"] == 1
+    assert strata["success_numerical_only"]["count"] == 0
 
 
 def test_interrupted_retry_does_not_replace_terminal_observation(tmp_path):
@@ -202,6 +208,9 @@ def test_pending_jobs_do_not_create_fabricated_attempt_rows(tmp_path):
     assert status["planned_jobs"] == status["pending_jobs"] == 1
     assert status["actual_attempts"] == status["finished_legal_jobs"] == 0
     assert status["success_rate"] is None
+    category = next(r for r in summary if r["row_type"] == "status" and r["category"] == "open_control")
+    assert category["planned_jobs"] == category["pending_jobs"] == 1
+    assert category["frontend_excluded_jobs"] == 0
 
 
 def test_duplicate_run_observations_rejected(tmp_path):
@@ -210,6 +219,30 @@ def test_duplicate_run_observations_rejected(tmp_path):
     rows, _ = results.collect([run])
     with pytest.raises(ValueError, match="Duplicate observation"):
         results._selected_rows(rows, {"id": "check", "runs": [str(run), str(run)]})
+
+
+def test_duplicate_pending_declarations_rejected(tmp_path):
+    run, _, _ = make_run(tmp_path)
+    with pytest.raises(ValueError, match="Duplicate observation"):
+        results._selected_rows([], {"id": "check", "runs": [str(run), str(run)]})
+
+
+def test_statistics_export_measured_p50_p90_p95_and_blank_missing_values(tmp_path):
+    sample = [dict(cluster_id="one_scene", seconds=value) for value in (1., 2., 3., 4.)]
+    sample += [dict(cluster_id="one_scene", seconds=None)]
+    measured = results._stats(sample, "seconds")
+    assert measured["count"] == 4 and measured["scene_clusters"] == 1
+    assert measured["median"] == pytest.approx(2.5)
+    assert measured["p90"] == pytest.approx(3.7)
+    assert measured["p95"] == pytest.approx(3.85)
+    assert measured["ci_low"] is measured["ci_high"] is None
+    missing = results._stats(sample, "unmeasured")
+    assert missing["count"] == 0 and missing["p95"] is None
+    path = tmp_path / "summary.csv"
+    results._csv(path, [measured, missing], results.SUMMARY_FIELDS)
+    with path.open() as stream:
+        rows = list(csv.DictReader(stream))
+    assert float(rows[0]["p95"]) == pytest.approx(3.85) and rows[1]["p95"] == ""
 
 
 def test_cost_pairs_require_both_to_succeed(tmp_path):
@@ -356,6 +389,60 @@ def test_fixed_initial_region_gate_rejects_different_saved_regions(tmp_path):
     rows, _ = results.collect([left, right])
     with pytest.raises(ValueError, match="Shared initial regions"):
         results._selected_rows(rows, spec)
+
+
+def test_fixed_frontend_reports_exclusions_and_keeps_conditional_pairs(tmp_path):
+    runs = []
+    for method in ("EI_ZO", "LGCS"):
+        run, manifest, template = make_run(tmp_path, method, method=method)
+        manifest["jobs"] = []
+        for index in range(5):
+            job = copy.deepcopy(template)
+            job["job_id"] = f"job{index}"
+            job["case_id"] = job["case"]["problem_id"] = f"test-open_control-000-p{index:02d}"
+            manifest["jobs"].append(job)
+            if index == 3:
+                continue  # Pending is coverage, not a frontend exclusion or failure.
+            if index == 4:
+                job["case"]["validation_status"] = "generation_failed"
+                make_attempt(run, job, status="invalid_input")
+                continue
+            failed = index == 1 and method == "LGCS"
+            status = "frontend_failed" if index == 2 else "validation_failed" if failed else "success_validated_numerical"
+            attempt = make_attempt(run, job, status=status, valid=not failed)
+            if index != 2:
+                _bound_bytes(attempt, "frontend_validation/validation.json", b'{"passed":true}')
+                _bound_bytes(attempt, "path.npy", b"identical validated frontend path")
+        write(run / "run_manifest.json", manifest)
+        runs.append(run)
+    rows, _ = results.collect(runs)
+    summary = results.summarize(rows, {"comparisons": [{"id": "conditional", "mode": "fixed_frontend",
+        "runs": [str(run) for run in runs]}]})
+    for method, successes in (("EI_ZO", 2), ("LGCS", 1)):
+        row = next(r for r in summary if r["row_type"] == "status" and r["category"] == "all" and r["method"] == method)
+        assert row["planned_jobs"] == 5 and row["legal_jobs"] == 4
+        assert row["invalid_input_jobs"] == 1
+        assert row["finished_legal_jobs"] == 2
+        assert row["frontend_excluded_jobs"] == row["pending_jobs"] == 1
+        assert row["success_numerical"] == successes
+        assert row["success_rate"] == successes / 2
+    paired = [r for r in summary if r["row_type"] == "paired_outcome" and r["category"] == "all"]
+    assert all(r["count"] == 2 for r in paired)
+    assert {r["metric"]: r["outcome_count"] for r in paired} == {
+        "both_success": 1, "a_only_success": 1, "b_only_success": 0, "neither_success": 0}
+    costs = next(r for r in summary if r["row_type"] == "paired" and r["category"] == "all" and r["metric"] == "objective_value")
+    assert costs["count"] == 1
+
+
+def test_fixed_frontend_keeps_wholly_excluded_category_visible(tmp_path):
+    run, _, job = make_run(tmp_path)
+    make_attempt(run, job, status="frontend_failed")
+    rows, _ = results.collect([run])
+    summary = results.summarize(rows, {"comparisons": [{"id": "conditional", "mode": "fixed_frontend", "runs": [str(run)]}]})
+    status = [r for r in summary if r["row_type"] == "status"]
+    assert {r["category"] for r in status} == {"all", "open_control"}
+    assert all(r["planned_jobs"] == r["frontend_excluded_jobs"] == 1 for r in status)
+    assert all(r["finished_legal_jobs"] == 0 and r["success_rate"] is None for r in status)
 
 
 def test_figure_scope_does_not_modify_original_rows_or_memberships():

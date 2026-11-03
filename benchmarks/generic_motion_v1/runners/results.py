@@ -90,10 +90,10 @@ RECORD_FIELDS = (
 SUMMARY_FIELDS = (
     "comparison", "mode", "split", "objective", "category", "row_type", "method", "method_b",
     "planned_jobs", "actual_attempts", "legal_jobs", "finished_legal_jobs", "pending_jobs",
-    "invalid_input_jobs", "scene_clusters", "success_numerical", "no_solution_within_budget",
+    "invalid_input_jobs", "frontend_excluded_jobs", "scene_clusters", "success_numerical", "no_solution_within_budget",
     "timeout", "solver_failure", "validation_failed", "infrastructure_error",
     "success_rate", "success_ci_low", "success_ci_high", "metric", "count", "outcome_count", "mean", "median",
-    "p90", "ci_low", "ci_high", "unit", "scope",
+    "p90", "p95", "ci_low", "ci_high", "unit", "scope",
     "roadmap_id", "roadmap_native_sha256", "roadmap_metadata_sha256", "roadmap_sources",
     "roadmap_nodes", "roadmap_native_bytes", "roadmap_bytes", "offline_roadmap_seconds",
     "offline_roadmap_timing_scope", "roadmap_timed_load_jobs",
@@ -522,6 +522,7 @@ def _selected_rows(rows, spec, verified_runs=None):
     selected = []
     verified_runs = {} if verified_runs is None else verified_runs
     planned = []
+    declared_jobs = set()
     for item in spec["runs"]:
         item = {"path": item} if isinstance(item, str) else item
         run = _relative(_path(item["path"]))
@@ -545,6 +546,10 @@ def _selected_rows(rows, spec, verified_runs=None):
                 by_job[row["job_id"]].append(row)
         case_cache = {}
         for job in jobs:
+            declaration = (run, job["job_id"])
+            if declaration in declared_jobs:
+                raise ValueError("Duplicate observation in comparison; declared job appears more than once")
+            declared_jobs.add(declaration)
             attempts = sorted(by_job[job["job_id"]], key=lambda row: row["attempt_number"])
             terminal = [r for r in attempts if r["lifecycle"] == "terminal"]
             chosen = terminal[0] if terminal else None
@@ -621,13 +626,13 @@ def _stats(rows, field):
     values = sorted(r[field] for r in usable)
     n = len(values)
     if not n:
-        return dict(count=0, scene_clusters=0, mean=None, median=None, p90=None, ci_low=None, ci_high=None)
+        return dict(count=0, scene_clusters=0, mean=None, median=None, p90=None, p95=None, ci_low=None, ci_high=None)
     import numpy as np
     bootstrap = _cluster_ratio(usable, lambda r: r[field], lambda r: 1)
     ci = bootstrap["ci95"] or (None, None)
     return dict(count=n, scene_clusters=bootstrap["independent_scene_clusters"],
                 mean=sum(values) / n, median=float(np.quantile(values, .5)),
-                p90=float(np.quantile(values, .9)), ci_low=ci[0], ci_high=ci[1])
+                p90=float(np.quantile(values, .9)), p95=float(np.quantile(values, .95)), ci_low=ci[0], ci_high=ci[1])
 
 
 def _offline_roadmap_summary(planned):
@@ -730,7 +735,10 @@ def summarize(rows, selection):
         blocks = sorted({(p["case"]["split"], p["job"]["objective"]) for p in planned})
         for split, objective in blocks:
             block = [r for r in selected if (r["split"], r["objective"]) == (split, objective)]
-            categories = ["all"] + sorted({r["category"] for r in block})
+            # Pending jobs and frontend exclusions remain visible as coverage,
+            # even when a category contributes no selected backend outcomes.
+            categories = ["all"] + sorted({p["case"]["family"] for p in planned
+                if (p["case"]["split"], p["job"]["objective"]) == (split, objective)})
             for category in categories:
                 pool = [r for r in block if category == "all" or r["category"] == category]
                 base = dict(comparison=spec["id"], mode=mode, split=split, objective=objective, category=category)
@@ -743,6 +751,8 @@ def summarize(rows, selection):
                                     and (category == "all" or p["case"]["family"] == category)]
                     legal = [r for r in group if r["input_valid"]]
                     success = [r for r in legal if r["status"] == SUCCESS]
+                    failed = [r for r in legal if r["status"] != SUCCESS]
+                    latency_metric = "cold_e2e_seconds" if mode in ("end_to_end", "fixed_initial_regions") else "backend_seconds"
                     planned_legal = sum(p["case"].get("validation_status") == "valid_input" for p in declarations)
                     stat = Counter(r["status"] for r in legal)
                     rate = _cluster_ratio(legal, lambda r: r["status"] == SUCCESS, lambda r: 1)
@@ -752,18 +762,27 @@ def summarize(rows, selection):
                         legal_jobs=planned_legal, finished_legal_jobs=len(legal),
                         pending_jobs=sum(p["row"] is None for p in declarations),
                         invalid_input_jobs=len(declarations) - planned_legal,
+                        frontend_excluded_jobs=sum(p["row"] is not None and p["row"]["input_valid"]
+                            and p["row"]["frontend_validated"] is not True for p in declarations)
+                            if mode == "fixed_frontend" else 0,
                         scene_clusters=rate["independent_scene_clusters"], **{s: stat[s] for s in set(STATUS.values()) if s != "invalid_input"},
                         success_rate=rate["estimate"], success_ci_low=ci[0], success_ci_high=ci[1],
                         scope="First terminal attempt per declared job. Rate denominator is finished legal jobs; pending coverage is reported separately."
                               if mode == "end_to_end" else
                               "All predeclared eligible paired backend jobs, including source-load/revalidation failures; shared source generation excluded from this separate 60-second backend clock."
-                              if mode == "fixed_initial_regions" else "Conditional on the identical validated frontend path; frontend failures excluded from backend denominator."))
+                              if mode == "fixed_initial_regions" else
+                              "Conditional on the identical validated frontend path; rate denominator is finished legal eligible jobs. "
+                              "Declared coverage retains pending and invalid jobs; frontend_excluded_jobs counts finished legal jobs excluded from this backend denominator."))
                     metrics = [("objective_value", success, "rad" if objective == "minimum_distance" else "s", "validated_success_only_descriptive"),
                                ("path_length_rad", success, "rad", "validated_success_only_descriptive"),
                                ("trajectory_duration_s", success, "s", "validated_success_only_descriptive"),
                                ("first_valid_seconds", legal, "s", "explicit_validated_event_only"),
                                ("observed_first_valid_adapter_seconds", legal, "s", "observed_upper_bound_from_OMPL_adapter_entry_not_cold_query_time"),
-                               ("cold_e2e_seconds" if mode in ("end_to_end","fixed_initial_regions") else "backend_seconds", legal, "s", "all_finished_legal"),
+                               (latency_metric, legal, "s", "all_finished_legal"),
+                               # Descriptive outcome strata keep the same clock and
+                               # first-terminal cohort; absent durations stay absent.
+                               (latency_metric, success, "s", "success_numerical_only"),
+                               (latency_metric, failed, "s", "failed_legal_only"),
                                ("within_call_query_seconds", legal, "s", "derived_within_cold_call_not_independent_warm_run")]
                     if mode=='fixed_initial_regions':
                         metrics.extend([('shared_initialization_load_seconds',legal,'s','actual_source_load_and_CPU_binding_check_within_new_query'),

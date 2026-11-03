@@ -99,6 +99,7 @@ def test_endpoint_all_joints_and_distance_bin(config, distance_bin):
 def test_invalid_endpoints_preserved(config):
     model = FakeModel()
     model.cuda = lambda q: np.zeros(len(np.atleast_2d(q)), dtype=bool)
+    model.clearance = lambda q: np.full(len(np.atleast_2d(q)), -1.)
     config["endpoint_max_attempts"] = 16
     row, arrays = generate_endpoints(model, 1, "short", config)
     assert row["validation_status"] == "invalid_endpoint"

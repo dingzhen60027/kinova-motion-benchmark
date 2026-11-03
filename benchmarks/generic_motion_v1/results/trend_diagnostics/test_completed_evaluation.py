@@ -158,11 +158,31 @@ def test_summary_metric_and_common_success_pair_are_recomputed():
                 for p, m, s, v in [('p1', 'A', 'success_numerical', 2.), ('p2', 'A', 'success_numerical', 4.),
                                    ('p1', 'B', 'success_numerical', 1.), ('p2', 'B', 'timeout', None)]]
     metric = dict(comparison='g', row_type='metric', split='smoke', objective='minimum_distance', category='all',
-                  method='A', metric='objective_value', scope='validated_success_only_descriptive', count='2', mean='3.0', median='3.0', p90='3.8')
-    paired = dict(metric, row_type='paired', method_b='B', scope='common_success_a_minus_b', count='1', mean='1.0', median='1.0', p90='1.0')
+                  method='A', metric='objective_value', scope='validated_success_only_descriptive', count='2', mean='3.0', median='3.0', p90='3.8', p95='3.9')
+    paired = dict(metric, row_type='paired', method_b='B', scope='common_success_a_minus_b', count='1', mean='1.0', median='1.0', p90='1.0', p95='1.0')
     assert not audit.check_summary_metrics(selected, [metric, paired], 'g')
     assert any(e['field'] == 'mean' for e in audit.check_summary_metrics(selected, [dict(metric, mean='4.')], 'g'))
     assert any(e['field'] == 'count' for e in audit.check_summary_metrics(selected, [dict(paired, count='2')], 'g'))
+    assert any(e['field'] == 'p95' for e in audit.check_summary_metrics(selected, [dict(metric, p95='4.')], 'g'))
+
+
+@pytest.mark.parametrize('scope,count,mean,median,p90,p95', [
+    ('all_finished_legal', '3', '20.7', '2.0', '48.4', '54.2'),
+    ('success_numerical_only', '1', '2.0', '2.0', '2.0', '2.0'),
+    ('failed_legal_only', '2', '30.05', '30.05', '54.01', '57.005'),
+])
+def test_latency_strata_are_independently_recomputed(scope, count, mean, median, p90, p95):
+    selected = [dict(problem_id=str(index), replica_seed=0, split='smoke', objective='minimum_distance',
+                     category='open_control', method='A', status=state, input_valid=valid, cold_e2e_seconds=value)
+                for index, (state, valid, value) in enumerate([
+                    ('success_numerical', True, 2.), ('timeout', True, 60.),
+                    ('infrastructure_error', True, .1), ('solver_failure', True, None),
+                    ('invalid_input', False, 999.)])]
+    row = dict(comparison='g', row_type='metric', split='smoke', objective='minimum_distance', category='all',
+               method='A', metric='cold_e2e_seconds', scope=scope,
+               count=count, mean=mean, median=median, p90=p90, p95=p95)
+    assert not audit.check_summary_metrics(selected, [row], 'g')
+    assert any(e['field'] == 'count' for e in audit.check_summary_metrics(selected, [dict(row, count='5')], 'g'))
 
 
 def test_fixed_regions_use_exact_reconstructed_eligibility_and_two_jobs(tmp_path, monkeypatch):

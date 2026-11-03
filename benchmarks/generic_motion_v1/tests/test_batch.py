@@ -40,6 +40,16 @@ def test_test_set_cannot_execute(tmp_path, monkeypatch):
         prepared(tmp_path, monkeypatch, split="test")
 
 
+def test_dirty_runtime_preparation_does_not_leave_unresumable_output(tmp_path, monkeypatch):
+    _, manifest, roadmap = prepared(tmp_path, monkeypatch)
+    output = tmp_path / 'dirty-run'
+    monkeypatch.setattr(batch, '_git_source_errors', lambda commit, sources: ['runtime.py'])
+    with pytest.raises(ValueError, match='Commit runtime changes'):
+        batch.prepare(manifest, [roadmap], output, objectives=['minimum_distance'],
+                      methods=['EI_ZO'], snapshot_sources=False)
+    assert not output.exists()
+
+
 def test_complete_paper_suite_creates_five_valid_method_objective_pairs(tmp_path, monkeypatch):
     _, manifest, roadmap = prepared(tmp_path, monkeypatch)
     run = batch.prepare(manifest, [roadmap], tmp_path / 'paper_run',

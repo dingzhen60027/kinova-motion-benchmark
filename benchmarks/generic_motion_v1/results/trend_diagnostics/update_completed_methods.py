@@ -34,10 +34,12 @@ def preflight(runs):
         manifest = audit.read(run/'run_manifest.json')
         terminal = 0
         for job in manifest['jobs']:
-            attempts = sorted((run/'jobs'/job['job_id']/'attempts').glob('*'))
-            receipt = attempts[-1]/'receipt.json' if attempts else None
-            if receipt is not None and receipt.is_file() and not audit.read(receipt).get('retry_pending'):
-                terminal += 1
+            attempts = sorted((run/'jobs'/job['job_id']/'attempts').glob('[0-9][0-9][0-9][0-9]'))
+            for attempt in attempts:
+                receipt = attempt/'receipt.json'
+                if receipt.is_file() and not audit.read(receipt).get('retry_pending'):
+                    terminal += 1
+                    break  # A later unfinished retry cannot erase a terminal observation.
         coverage.append(dict(run=str(run), split=manifest['split'],
                              declared=len(manifest['jobs']), terminal=terminal,
                              state='ready_for_verification' if terminal == len(manifest['jobs']) else 'pending'))
@@ -150,6 +152,10 @@ def build_catalog(original, records, summary, specs, manifests, acceptance, evid
             method['stopping'] = ompl + (' RRTConnect stops at its first exact solution.'
                 if method['method'] == 'RRTCONNECT' else
                 ' RRTstar retains its native tree and improves until this remaining budget; main profile disables the validated-progress observer.')
+        if method['method'] == 'RRTCONNECT':
+            method['distinction'] = ('A first feasible path followed by vertex reduction is not a minimum-time trajectory; '
+                'there is no local minimum-time track. The current native search ceiling is 60 s, bounded by '
+                'the remaining shared outer deadline and reserves described in stopping. Historical runs used a 10 s ceiling.')
         if method['method'] in ('NTO', 'NTO_PAPER', 'NTO_REFINED'):
             method['collision_backend_repair'] = ('Native-first solve uses direct Drake collision callbacks without an ordinary '
                 'Python guard. Only the exact reproduced BoxBoxGradient near-contact rounding assertion permits at most '

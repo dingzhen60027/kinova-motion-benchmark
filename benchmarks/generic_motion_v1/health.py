@@ -81,7 +81,9 @@ def _environment():
     import csdecomp
     import pydrake
 
-    expected = ROOT / ".conda/envs/csdecomp"
+    # Match the public launcher/CLI: a relocated checkout may intentionally
+    # reuse the already installed environment through this override.
+    expected = Path(os.environ.get("CSDECOMP_CONDA_PREFIX", ROOT / ".conda/envs/csdecomp")).expanduser().resolve()
     versions = {}
     for name in (
         "numpy",

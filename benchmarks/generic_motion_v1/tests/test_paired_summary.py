@@ -10,7 +10,7 @@ def pair(problem, *, states=(True, True), cold=(10., 8.), backend=(3., 2.),
     return [dict(problem_id=problem, replica_seed=seed, planner_seed=100 + seed,
         input_sha256='fixed-' + problem, split='test', category='clutter',
         cluster_id=cluster, method=method, objective=objective, input_valid=True,
-        status=results.SUCCESS if ok else 'solver_failure',
+        status=results.SUCCESS if ok else 'solver_failure', frontend_validated=True,
         cold_e2e_seconds=seconds, backend_seconds=back,
         objective_value=4. if method == 'EI_ZO' else 5., cohort=cohort)
         for method, ok, seconds, back in zip(('EI_ZO', 'LGCS'), states, cold, backend)]
@@ -44,7 +44,9 @@ def test_early_failure_cannot_become_common_success_speed_advantage(calculate):
     all_finished = metric(summary, 'cold_e2e_seconds', 'paired_finished_a_minus_b')
     common = metric(summary, 'cold_e2e_seconds', 'common_success_cold_a_minus_b')
     assert all_finished['count'] == 2 and all_finished['mean'] == pytest.approx(-8.95)
+    assert all_finished['p95'] == pytest.approx(.905)
     assert common['count'] == 1 and common['mean'] == 2.
+    assert common['p95'] == 2.
     assert common['scene_clusters'] == 1 and common['ci_low'] is None
     outcomes = {r['metric']: r['outcome_count'] for r in summary if r['row_type'] == 'paired_outcome'}
     assert outcomes == {'both_success': 1, 'a_only_success': 0, 'b_only_success': 1, 'neither_success': 0}
@@ -108,6 +110,40 @@ def test_fixed_frontend_keeps_backend_and_cold_metrics_separate(calculate):
     cold = metric(summary, 'cold_e2e_seconds', 'common_success_cold_a_minus_b')
     assert all_backend['mean'] == common_backend['mean'] == -1.
     assert cold['mean'] == 4.
+
+
+@pytest.mark.parametrize('mode,clock,success_time,failure_time', [
+    ('end_to_end', 'cold_e2e_seconds', 10., .1),
+    ('fixed_initial_regions', 'cold_e2e_seconds', 10., .1),
+    ('fixed_frontend', 'backend_seconds', 3., None),
+])
+def test_per_method_latency_strata_exclude_invalid_and_keep_missing_times(
+        calculate, mode, clock, success_time, failure_time):
+    rows = pair('success', cold=(10., 8.), backend=(3., 2.), cluster='a')
+    rows += pair('failure', states=(False, False), cold=(.1, 60.), backend=(None, 4.), cluster='b')
+    rows[2]['status'] = 'infrastructure_error'  # A legal finished failure remains in this stratum.
+    invalid = pair('invalid', states=(False, False), cold=(999., 999.), backend=(999., 999.), cluster='c')
+    for row in invalid:
+        row['input_valid'] = False
+        row['status'] = 'invalid_input'
+    summary = calculate(rows + invalid, {'comparison': mode})
+    strata = {r['scope']: r for r in summary if r['row_type'] == 'metric'
+              and r['method'] == 'EI_ZO' and r['metric'] == clock}
+    assert set(strata) == {'all_finished_legal', 'success_numerical_only', 'failed_legal_only'}
+    success, failure, overall = (strata[k] for k in
+        ('success_numerical_only', 'failed_legal_only', 'all_finished_legal'))
+    assert success['count'] == 1 and success['mean'] == success['median'] == success['p95'] == success_time
+    if failure_time is None:
+        assert failure['count'] == 0 and failure['mean'] is failure['p95'] is None
+        assert overall['count'] == 1 and overall['mean'] == success_time
+    else:
+        assert failure['count'] == 1 and failure['mean'] == failure['median'] == failure['p95'] == failure_time
+        assert overall['count'] == 2 and overall['mean'] == pytest.approx((success_time + failure_time)/2)
+    assert not any(r.get('scope') in ('success_numerical_only', 'failed_legal_only')
+                   and r.get('metric') in ('first_valid_seconds', 'within_call_query_seconds') for r in summary)
+    outcomes = [r for r in summary if r['row_type'] == 'paired_outcome']
+    assert all(r['count'] == 2 for r in outcomes)
+    assert sum(r['outcome_count'] for r in outcomes) == 2
 
 
 def test_invalid_inputs_are_not_counted_as_paired_planning_failures(calculate):

@@ -20,6 +20,7 @@ import numpy as np
 from ..roadmap import write
 from .paper_nto import PROFILE as PAPER_PROFILE, paper_nto, dependency_probe
 from .validate import sample_candidate
+from .failure_classification import KNOWN_VALIDATION_REJECTIONS
 
 
 PROFILE = deepcopy(PAPER_PROFILE)
@@ -67,7 +68,19 @@ def refinement_locations(locations, parameters, clearance):
 
 def _geometry_guard(candidate, model, cfg, out, deadline):
     started = time.perf_counter()
-    samples = sample_candidate(candidate, cfg)
+    try:
+        samples = sample_candidate(candidate, cfg)
+    except ValueError as exc:
+        # An unsuccessful solver may return unusable variables. Preserve the
+        # candidate without querying geometry or using it to seed another solve.
+        # This catch encloses sampling only: backend faults still propagate.
+        if candidate["solver_success"] or str(exc) not in KNOWN_VALIDATION_REJECTIONS:
+            raise
+        summary = dict(purpose="CPU constraint refinement only; common final validation still required",
+                       passed=False, candidate_sampling_rejection=repr(exc),
+                       geometry_checked=False, seconds=time.perf_counter()-started)
+        write(out / "refinement_geometry.json", summary)
+        return None, None, summary
     q = samples["q"]
     parameters = np.asarray(samples["time"], float) / float(candidate["duration"])
     clearance = np.full(len(q), np.nan)
@@ -198,6 +211,11 @@ def paper_nto_refined(path, model, case, cfg, out, deadline):
             np.savez_compressed(target / "candidate.npz", controls=candidate["controls"],
                                 knots=candidate["knots"], duration=candidate["duration"])
             parameters, clearance, guard = _geometry_guard(candidate, model, cfg, target, deadline)
+            if "candidate_sampling_rejection" in guard:
+                row.update(geometry_guard=guard, status="completed",
+                           proposed_collocation_locations=[], added_collocation_locations=[])
+                manifest["stopping_reason"] = "unusable_failed_solver_candidate"
+                break
             row["geometry_guard"] = guard
             added = refinement_locations(locations, parameters, clearance)
             row["proposed_collocation_locations"] = added

@@ -439,8 +439,10 @@ def check_summary_metrics(selected, summary, comparison):
         values = []
         if row['row_type'] == 'metric':
             group = [r for r in pool if r['method'] == row['method']]
-            if row['scope'] == 'validated_success_only_descriptive':
+            if row['scope'] in ('validated_success_only_descriptive', 'success_numerical_only'):
                 group = [r for r in group if r['status'] == 'success_numerical']
+            elif row['scope'] == 'failed_legal_only':
+                group = [r for r in group if r['status'] != 'success_numerical']
             values = [r[row['metric']] for r in group if finite(r.get(row['metric']))]
         else:
             left = {(r['problem_id'], r['replica_seed']): r for r in pool if r['method'] == row['method']}
@@ -464,6 +466,7 @@ def check_summary_metrics(selected, summary, comparison):
         check(row, 'mean', sum(values)/len(values) if values else None)
         check(row, 'median', float(np.quantile(values, .5)) if values else None)
         check(row, 'p90', float(np.quantile(values, .9)) if values else None)
+        check(row, 'p95', float(np.quantile(values, .95)) if values else None)
     return errors
 
 

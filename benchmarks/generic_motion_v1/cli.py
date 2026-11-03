@@ -85,7 +85,8 @@ def evaluate_main(argv=None):
         s.add_argument('--problem', required=cmd == 'run')
         s.add_argument('--methods', nargs='+', choices=ACTIVE_METHODS, default=list(ACTIVE_METHODS))
         s.add_argument('--track', choices=['path', 'time', 'both'], default='both')
-        s.add_argument('--seeds', nargs='+', type=int)
+        s.add_argument('--seeds', nargs='+', type=int,
+                       help='Paired repetition indices: single run/smoke defaults to 0; dev/test batch defaults to 0 1 2')
         s.add_argument('--config', default='configs/evaluation.json')
         s.add_argument('--output', required=True)
         s.add_argument('--mode', choices=['end_to_end','fixed_initial_regions'], default='end_to_end')
@@ -114,7 +115,8 @@ def evaluate_main(argv=None):
         from .batch import prepare, resume
         from .roadmap import load_config
         cfg = load_config(project_path(args.config))
-        seeds = args.seeds if args.seeds is not None else ([0, 1, 2] if args.split == 'dev' else [0])
+        seeds = (args.seeds if args.seeds is not None else
+                 ([0, 1, 2] if args.command == 'batch' and args.split in ('dev', 'test') else [0]))
         objectives = {'path': ['minimum_distance'], 'time': ['minimum_time'],
                       'both': ['minimum_distance', 'minimum_time']}[args.track]
         from .runners.methods import INDEPENDENT
@@ -125,7 +127,8 @@ def evaluate_main(argv=None):
             seed_indices=seeds if independent else None, timeout=cfg['online_budget_seconds'], config=cfg,
             allow_test=True, snapshot_sources=False,mode=args.mode,
             initial_source_run=project_path(args.initial_source_run) if args.initial_source_run else None)
-        emit({'run': str(run), 'prepared': True} if args.prepare_only else resume(run, max_jobs=args.max_jobs))
+        emit({'run': str(run), 'prepared': True, 'requested_seed_indices': seeds}
+             if args.prepare_only else resume(run, max_jobs=args.max_jobs))
     elif args.command in ('resume', 'verify', 'status'):
         from .batch import resume, verify
         run = project_path(args.run)

@@ -120,7 +120,9 @@ def sample_candidate(candidate, config=None):
         timed=objective=='minimum_time'
         if (not timed and order != 2) or (timed and order < 3):
             raise ValueError('Distance requires PWL order two; time requires a C1 spline')
-        if (knots[order-1] >= knots[-order] or np.any(knots[:order] != knots[order-1])
+        if knots[order-1] >= knots[-order]:
+            raise ValueError('Nonpositive B-spline duration')
+        if (np.any(knots[:order] != knots[order-1])
                 or np.any(knots[-order:] != knots[-order])):
             raise ValueError('Only clamped B-splines with positive active duration are supported')
         interior = knots[order:-order]

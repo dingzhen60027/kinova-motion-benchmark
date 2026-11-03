@@ -16,7 +16,7 @@ import time
 import traceback
 import numpy as np
 from ..roadmap import HERE, ROOT, load_config, sha, write
-from .validate import validate, _numeric_array
+from .validate import validate, sample_candidate, _numeric_array
 from .native_handoff import NativeHandoffError, native_region_with_anchors
 from .methods import METHODS, INDEPENDENT, LOCAL_EXTENSIONS, objectives as supported_objectives
 from .failure_classification import (HANDOFF_KIND, HANDOFF_SOURCE, KNOWN_DRM_NO_ROUTE,
@@ -111,6 +111,27 @@ def _save_candidate(out,candidate):
     arrays={k:v for k,v in candidate.items() if isinstance(v,np.ndarray)}
     np.savez_compressed(out/'candidate.npz',**arrays)
     write(out/'candidate.json',{k:v for k,v in candidate.items() if k not in arrays})
+
+
+def _validate_optimizer_candidate(candidate,model,case,cfg,out):
+    """Retain an unsuccessful solve when its numerical candidate is unusable.
+
+    A declared sampling rejection is secondary to a native unsuccessful return.
+    The raw candidate is already saved by the caller. Unknown validator or
+    collision-backend errors retain the ordinary exception path.
+    """
+    if candidate.get('solver_success') is False:
+        try:
+            sample_candidate(candidate,cfg)
+        except ValueError as exc:
+            if str(exc) not in KNOWN_VALIDATION_REJECTIONS:
+                raise
+            write(Path(out)/'validation.json',dict(status='validation_undetermined',passed=False,
+                candidate_sampling_rejection=repr(exc),
+                solver_success=False,solver_status=candidate.get('solver_status'),
+                check='Unsuccessful optimizer returned a numerically unusable candidate; no feasibility claim'))
+            return None
+    return validate(candidate,model,case,cfg,out=out)
 
 
 def _save_regions(out,regions):
@@ -714,7 +735,7 @@ def run_case(case,roadmap_dir,out,objective='minimum_distance',seed=0,method='EI
                 result['timing']['trajectory_optimization_seconds']=time.perf_counter()-tic
                 _save_candidate(out,candidate)
                 stage('validation');tic=time.perf_counter()
-                validation=validate(candidate,model,case,cfg,out=out)
+                validation=_validate_optimizer_candidate(candidate,model,case,cfg,out)
                 result['timing']['validation_seconds']=time.perf_counter()-tic
                 result['status']=validation['status'] if candidate['solver_success'] else 'solver_failed'
             else:

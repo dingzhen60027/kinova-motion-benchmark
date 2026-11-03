@@ -9,9 +9,9 @@ import numpy as np
 import pytest
 
 from benchmarks.generic_motion_v1.generator.configuration import validate_config
-from benchmarks.generic_motion_v1.generator.endpoints import generate_endpoints
+from benchmarks.generic_motion_v1.generator.endpoints import generate_endpoints, straight_line
 from benchmarks.generic_motion_v1.generator.manifest import DEFAULT_CONFIG, file_sha256
-from benchmarks.generic_motion_v1.generator.scene import digest
+from benchmarks.generic_motion_v1.generator.scene import digest, generate_scene
 from benchmarks.generic_motion_v1.generator.voxelize import voxelize
 from benchmarks.generic_motion_v1.tests.test_generator import FakeModel
 
@@ -190,6 +190,47 @@ def test_nonfinite_classifier_observations_cannot_create_endpoints():
     model.clearance = lambda q: np.full(len(q), np.nan)
     with pytest.raises(ValueError, match='finite clearance'):
         generate_endpoints(model, 12, 'short', config)
+
+
+@pytest.mark.parametrize('value', [np.nan, np.inf, -np.inf])
+def test_nonfinite_fixed_checker_cannot_accept_layout(value):
+    config = json.loads(DEFAULT_CONFIG.read_text())
+    model = FakeModel()
+    model.fixed_geometry_sphere_clearance = lambda xyz, radius: np.full(len(xyz), value)
+    with pytest.raises(ValueError, match='finite clearance per voxel'):
+        generate_scene('sparse_clutter', 12, config, model)
+
+
+def test_fixed_checker_requires_one_observation_per_voxel():
+    config = json.loads(DEFAULT_CONFIG.read_text())
+    model = FakeModel()
+    model.fixed_geometry_sphere_clearance = lambda xyz, radius: np.ones(1)
+    with pytest.raises(ValueError, match='per voxel'):
+        generate_scene('sparse_clutter', 12, config, model)
+
+
+@pytest.mark.parametrize('mutation', ['nan', 'infinite', 'wrong_shape', 'integer_native'])
+def test_malformed_straight_line_checker_cannot_create_classification(mutation):
+    model = FakeModel()
+    if mutation == 'integer_native':
+        model.cuda = lambda q: np.ones(len(q), dtype=int)
+    else:
+        model.clearance = lambda q: (np.ones((len(q), 1)) if mutation == 'wrong_shape'
+                                     else np.full(len(q), np.nan if mutation == 'nan' else np.inf))
+    with pytest.raises(ValueError, match='Straight-line classifiers'):
+        straight_line(model, np.zeros(7), np.full(7, .1), .04)
+
+
+def test_exhausted_disagreeing_checkers_are_model_failure():
+    config = json.loads(DEFAULT_CONFIG.read_text())
+    config['endpoint_max_attempts'] = 16
+    model = FakeModel()
+    model.cuda = lambda q: np.zeros(len(q), dtype=bool)
+    row, arrays = generate_endpoints(model, 12, 'short', config)
+    assert row['q_start'] is None and row['q_goal'] is None
+    assert row['validation_status'] == 'model_consistency_failed'
+    assert row['endpoint_sampling']['checker_disagreements_outside_contact_band'] == 16
+    assert len(arrays['endpoint_proposal_q']) == 16
 
 
 @pytest.mark.parametrize('passed,current_source,accepted', [

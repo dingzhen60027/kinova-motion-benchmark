@@ -149,3 +149,26 @@ def test_default_public_batch_includes_all_ten_existing_methods(tmp_path, monkey
     assert calls[0]['methods'] == list(METHODS)
     assert len(calls[0]['methods']) == 10
     assert sum(len(objectives(method)) for method in calls[0]['methods']) == 14
+
+
+@pytest.mark.parametrize('command,split,expected', [
+    ('batch', 'smoke', [0]), ('batch', 'dev', [0, 1, 2]),
+    ('batch', 'test', [0, 1, 2]), ('run', 'dev', [0]), ('run', 'test', [0]),
+])
+def test_default_repetition_coverage_is_explicit(tmp_path, monkeypatch, capsys, command, split, expected):
+    from benchmarks.generic_motion_v1 import cli, roadmap
+    calls = []
+    monkeypatch.setattr(cli, 'require_environment', lambda: None)
+    monkeypatch.setattr(roadmap, 'load_config', lambda path: {'online_budget_seconds': 60})
+    def capture_prepare(manifest, roadmaps, output, **kwargs):
+        calls.append(kwargs)
+        return output
+    monkeypatch.setattr(batch, 'prepare', capture_prepare)
+    monkeypatch.setattr(batch, 'resume', lambda *a, **kw: pytest.fail('prepare-only must not plan'))
+    args = [command, '--split', split, '--methods', 'RRTCONNECT', '--track', 'path',
+            '--output', str(tmp_path / 'new'), '--prepare-only']
+    if command == 'run':
+        args += ['--problem', 'fixed-problem']
+    cli.evaluate_main(args)
+    assert calls[0]['seed_indices'] == expected
+    assert json.loads(capsys.readouterr().out)['requested_seed_indices'] == expected

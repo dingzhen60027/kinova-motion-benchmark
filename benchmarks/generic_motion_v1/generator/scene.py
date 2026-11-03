@@ -82,8 +82,10 @@ def generate_scene(family, scene_seed, config, model):
     for attempt in range(config["maximum_scene_proposals"]):
         objects = _proposal(family, random, config)
         xyz, cover = voxelize(objects, config["voxel_radius_m"], config["maximum_voxel_cell_side_m"])
-        distances = model.fixed_geometry_sphere_clearance(xyz, config["voxel_radius_m"])
-        overlap = int(np.sum(np.asarray(distances) <= 0))
+        distances = np.asarray(model.fixed_geometry_sphere_clearance(xyz, config["voxel_radius_m"]))
+        if distances.shape != (len(xyz),) or not np.isfinite(distances).all():
+            raise ValueError('Fixed-geometry checker must return one finite clearance per voxel')
+        overlap = int(np.sum(distances <= 0))
         if not overlap:
             break
         rejection_count += 1

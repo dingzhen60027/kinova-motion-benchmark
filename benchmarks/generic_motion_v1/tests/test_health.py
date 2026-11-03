@@ -3,11 +3,36 @@
 import fcntl
 import json
 from pathlib import Path
+import subprocess
+import sys
+from types import SimpleNamespace
 
 import numpy as np
 import pytest
 
 from benchmarks.generic_motion_v1 import health
+
+
+@pytest.mark.parametrize("override", [None, "current", "wrong"])
+def test_environment_check_uses_same_existing_conda_override_as_launcher(
+    tmp_path, monkeypatch, override
+):
+    """Relocation must not reject an explicitly selected existing environment."""
+    monkeypatch.setattr(health, "ROOT", tmp_path / "relocated-checkout")
+    monkeypatch.setitem(sys.modules, "csdecomp", SimpleNamespace(__file__="csdecomp-fixture"))
+    monkeypatch.setitem(sys.modules, "pydrake", SimpleNamespace(__file__="drake-fixture"))
+    monkeypatch.setattr(health.metadata, "version", lambda name: "fixture")
+    monkeypatch.setattr(health.subprocess, "run", lambda argv, **kwargs:
+                        subprocess.CompletedProcess(argv, 0, "fixture GPU\n", ""))
+    if override is None:
+        monkeypatch.delenv("CSDECOMP_CONDA_PREFIX", raising=False)
+        expected = health.ROOT / ".conda/envs/csdecomp"
+    else:
+        expected = Path(sys.prefix) if override == "current" else tmp_path / "wrong-env"
+        monkeypatch.setenv("CSDECOMP_CONDA_PREFIX", str(expected))
+    result = health._environment()
+    assert result["passed"] is (override == "current")
+    assert result["expected_conda_prefix"] == str(expected.resolve())
 
 
 def test_actual_subprocess_deadline_kills_child(tmp_path):

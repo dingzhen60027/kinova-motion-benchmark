@@ -11,6 +11,15 @@ def normalized_distance(start, goal, lower, upper):
     return float(np.sqrt(np.mean(((np.asarray(goal) - start) / (upper - lower)) ** 2)))
 
 
+def _collision_observations(model, states, name):
+    native = np.asarray(model.cuda(states))
+    clearance = np.asarray(model.clearance(states))
+    if (native.shape != (len(states),) or native.dtype.kind != 'b' or
+            clearance.shape != (len(states),) or not np.isfinite(clearance).all()):
+        raise ValueError(f'{name} classifiers must return one Boolean and one finite clearance per configuration')
+    return native, clearance
+
+
 def straight_line(model, start, goal, step):
     if not np.isfinite(step) or step <= 0:
         raise ValueError('Straight-line step must be finite and positive')
@@ -18,8 +27,7 @@ def straight_line(model, start, goal, step):
     if count > 1000000:
         raise ValueError('Straight-line check exceeds one million samples; choose a supported step')
     states = np.linspace(start, goal, count)
-    native = model.cuda(states)
-    clearance = model.clearance(states)
+    native, clearance = _collision_observations(model, states, 'Straight-line')
     independent = clearance > 0
     mismatch = native != independent
     significant = mismatch & (np.abs(clearance) > model.contact_band_m)
@@ -51,11 +59,7 @@ def generate_endpoints(model, seed, distance_bin, config):
     for offset in range(0, max_attempts, batch_size):
         count = min(batch_size, max_attempts - offset)
         states = random.uniform(model.lower + margin, model.upper - margin, (count, 7))
-        native = model.cuda(states)
-        distances = model.clearance(states)
-        if (np.asarray(native).shape != (count,) or np.asarray(native).dtype.kind != 'b' or
-                np.asarray(distances).shape != (count,) or not np.isfinite(distances).all()):
-            raise ValueError('Endpoint classifiers must return one Boolean and one finite clearance per proposal')
+        native, distances = _collision_observations(model, states, 'Endpoint')
         all_states.extend(states)
         all_native.extend(native)
         all_clearance.extend(distances)
@@ -110,6 +114,10 @@ def generate_endpoints(model, seed, distance_bin, config):
         line_report, line_raw = straight_line(model, start, goal, config["straight_line_step_rad"])
         record.update(line_report)
         raw.update(line_raw)
-        if line_report["straight_line_disagreements_outside_contact_band"] or significant.any():
+        if line_report["straight_line_disagreements_outside_contact_band"]:
             record["validation_status"] = "model_consistency_failed"
+    # A checker disagreement is a model failure even if it prevents the search
+    # from finding a pair. Do not report it as ordinary endpoint exhaustion.
+    if significant.any():
+        record["validation_status"] = "model_consistency_failed"
     return record, raw

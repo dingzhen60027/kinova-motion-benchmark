@@ -149,8 +149,16 @@ def test_new_pending_denominators_and_legacy_summary(prepared, monkeypatch):
     assert all(p["case"]["validation_status"] == "valid_input" for p in planned)
     table = results.summarize([], dict(comparisons=[dict(id="new", runs=[str(run)])]))
     status = [row for row in table if row.get("row_type") == "status"]
-    assert len(status) == 2
-    assert all(row["planned_jobs"] == row["pending_jobs"] == 6 for row in status)
+    by_key = {(row["method"], row["category"]): row for row in status}
+    assert len(by_key) == len(status) == 4
+    assert set(by_key) == {(method, category) for method in ("RRTCONNECT", "RRTSTAR")
+                           for category in ("all", "sparse_clutter")}
+    for row in by_key.values():
+        assert row["planned_jobs"] == row["legal_jobs"] == row["pending_jobs"] == 6
+        assert row["actual_attempts"] == row["finished_legal_jobs"] == 0
+        assert row["invalid_input_jobs"] == row["frontend_excluded_jobs"] == 0
+        assert row["success_numerical"] == row["scene_clusters"] == 0
+        assert row["success_rate"] is row["success_ci_low"] is row["success_ci_high"] is None
     monkeypatch.setattr(summarize, "_verify_run", lambda *a, **k: dict(integrity_passed=True))
     legacy = summarize.summarize(run)
     assert legacy["planned_jobs"] == 12

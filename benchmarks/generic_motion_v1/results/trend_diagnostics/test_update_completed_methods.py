@@ -66,6 +66,8 @@ def test_refresh_preserves_identity_replaces_only_current_coverage_and_describes
             assert method[key] == old[key]
         if method['method'] not in ('NTO', 'NTO_PAPER', 'NTO_REFINED'):
             for key in ('distinction', 'correctness', 'verification', 'initialization'):
+                if method['method'] == 'RRTCONNECT' and key == 'distinction':
+                    continue  # Current budget must replace the historical 10-second description.
                 assert method[key] == old[key]
         assert 'repaired_dev_seed0' not in method
         assert set(method['actual_coverage']) == {'end_to_end'}
@@ -73,6 +75,8 @@ def test_refresh_preserves_identity_replaces_only_current_coverage_and_describes
             assert set(method['actual_coverage']['end_to_end'][objective]) == {'smoke', 'dev', 'test'}
     by_name = {m['method']: m for m in result['methods']}
     assert 'first exact solution' in by_name['RRTCONNECT']['stopping']
+    assert 'current native search ceiling is 60 s' in by_name['RRTCONNECT']['distinction']
+    assert 'Historical runs used a 10 s ceiling' in by_name['RRTCONNECT']['distinction']
     assert '5 s final-validation' in by_name['RRTSTAR']['stopping']
     assert '1000 endpoint-connection trials per endpoint per attempt' in by_name['EI_ZO']['stopping']
     assert 'no collision constraint is dropped' in by_name['NTO']['collision_backend_repair']
@@ -192,6 +196,21 @@ def test_preflight_does_not_treat_interrupted_receipt_as_terminal(tmp_path):
     assert refresh.preflight([run])[0]['state'] == 'pending'
     receipt.write_text(json.dumps({'retry_pending': False}))
     assert refresh.preflight([run])[0]['state'] == 'ready_for_verification'
+
+
+@pytest.mark.parametrize('later_retry_pending', [None, True])
+def test_preflight_later_incomplete_retry_cannot_hide_terminal_attempt(tmp_path, later_retry_pending):
+    run = tmp_path/'run'
+    first = run/'jobs'/'j'/'attempts'/'0001'
+    later = first.with_name('0002')
+    first.mkdir(parents=True)
+    later.mkdir()
+    (first/'receipt.json').write_text(json.dumps({'retry_pending': False, 'status': 'timeout'}))
+    if later_retry_pending is not None:
+        (later/'receipt.json').write_text(json.dumps({'retry_pending': later_retry_pending}))
+    (run/'run_manifest.json').write_text(json.dumps({'split': 'smoke', 'jobs': [{'job_id': 'j'}]}))
+    result = refresh.preflight([run])[0]
+    assert result['state'] == 'ready_for_verification' and result['terminal'] == 1
 
 
 def test_comparison_ids_follow_selection_without_binding_old_smoke_directory(tmp_path):

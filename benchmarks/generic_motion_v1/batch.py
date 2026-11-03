@@ -156,24 +156,22 @@ def prepare(manifest, roadmaps, output, *, objectives, methods, selection="all",
                         jobs[-1].update(execution_mode=mode,shared_initialization=shared,
                             initialization_digest=shared['initialization_digest'])
     _unique([j["job_id"] for j in jobs], "job IDs")
+    sources = code_inventory()
+    commit = head()
+    if not snapshot_sources:
+        # Refuse before creating a directory that cannot subsequently resume.
+        mismatches = _git_source_errors(commit, sources)
+        if mismatches:
+            raise ValueError('Commit runtime changes before preparing: ' + ', '.join(mismatches))
     output.mkdir(parents=True)
     if approval is not None:
         from .study_protocol import copy_evidence
         copy_evidence(output, approval)
-    sources = code_inventory()
-    commit = head()
     if snapshot_sources:
         for name in sources:
             dest = output / "source_snapshot" / name
             dest.parent.mkdir(parents=True, exist_ok=True)
             dest.write_bytes((ROOT / name).read_bytes())
-    else:
-        # New runs use Git plus exact file digests, not another source copy.
-        # Refuse uncommitted runtime changes: the recorded commit must recover
-        # every byte that is used by this run.
-        mismatches = _git_source_errors(commit, sources)
-        if mismatches:
-            raise ValueError('Commit runtime changes before preparing: ' + ', '.join(mismatches))
     write(output / "run_manifest.json", dict(version=2, input_storage="manifest_reference", source_code_commit=head(),
         created_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(), manifest_path=str(manifest),
         manifest_sha256=input_manifest_sha256, source_hashes=sources, roadmap_files=roadmap_files,

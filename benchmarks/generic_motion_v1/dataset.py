@@ -210,6 +210,13 @@ def _check_saved_arrays(row, base, config, robot):
             f"Straight-line observations malformed: {identity}",
         )
         _require(
+            not np.any(
+                (flags != (distances > 0))
+                & (np.abs(distances) > robot["contact_band_m"])
+            ),
+            f"Saved straight-line checker disagreement: {identity}",
+        )
+        _require(
             row["straight_line_collision"]
             is bool(not (flags.all() and (distances > 0).all())),
             f"Straight-line classification differs: {identity}",

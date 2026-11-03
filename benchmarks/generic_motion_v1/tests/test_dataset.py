@@ -4,6 +4,7 @@ import json
 from pathlib import Path
 import shutil
 
+import numpy as np
 import pytest
 from benchmarks.generic_motion_v1.tests.evidence_fixtures import save_numeric_output
 from benchmarks.generic_motion_v1.common import BASE, read
@@ -194,3 +195,24 @@ def test_index_resolves_original_record_without_array_duplication(row):
     assert all(
         "q_start" not in record and "voxels_xyz" not in record for record in index
     )
+
+
+@pytest.mark.parametrize("clearance_sign", [1, -1])
+def test_cpu_source_check_rejects_saved_straight_line_checker_disagreement(tmp_path, clearance_sign):
+    row = next(r for r, _, _ in dataset.source_records()
+               if r["validation_status"] == "valid_input" and r["straight_line_collision"])
+    config = dataset.read(dataset.BASE / f"configs/{row['split']}_generator.json")
+    robot = dataset.read(dataset.BASE / "configs/robot.json")
+    with np.load(dataset.BASE / row["input_arrays_file"], allow_pickle=False) as stored:
+        arrays = {name: stored[name].copy() for name in stored.files}
+    distances = arrays["straight_line_independent_clearance_m"]
+    index = np.flatnonzero(clearance_sign * distances > robot["contact_band_m"])[0]
+    arrays["straight_line_cuda_free"][index] = not (distances[index] > 0)
+    path = tmp_path / row["input_arrays_file"]
+    path.parent.mkdir(parents=True)
+    np.savez_compressed(path, **arrays)
+    # The overall line remains blocked, so its Boolean classification alone
+    # cannot expose the newly inconsistent per-sample observations.
+    assert not (arrays["straight_line_cuda_free"].all() and (distances > 0).all())
+    with pytest.raises(ValueError, match="Saved straight-line checker disagreement"):
+        dataset._check_saved_arrays(row, tmp_path, config, robot)
