@@ -125,6 +125,18 @@ Legacy's 500-iteration limit accounts for 90 of its 92 test/path solver failures
 
 These four real calls retained identical original frontend paths and passed artifact integrity checks. They show that raising the iteration cap alone did not recover these two failures; they do not estimate a population success rate or provide a controlled timing comparison. Historical test settings, inputs and published CSVs remain unchanged.
 
+**Experimental early return.** The opt-in `nto_refined.early_accept_validated` setting returns an intermediate NTO candidate only after it passes the complete common validator. This prevents later refinement from discarding that candidate. The final validator still runs; both validation costs count toward the online budget. It can stop with sampled clearance below the profile's 0.5 mm refinement guard, so treat this as a separate configuration and inspect clearance alongside success and cost. The default remains disabled.
+
+On all 60 DEV problems at seed 0, historical versus enabled results were 31→31 path successes and 35→36 time successes. One run recorded a native `libdrake.so` SIGSEGV near the deadline; it remains an infrastructure error. Historical and enabled runtimes differ, including failure-classification fixes, so this is observational. A [same-source control](results/rigor_checks/dev_nto_incumbent/control_summary.json) on 12 geometry-selected DEV problems (24 calls) gave 7→7 path and 7→8 time successes. Its seven common successes per track had zero median paired change in objective; this small, nonrandom control does not establish an overall quality or latency improvement. Selection was made after part of the enabled batch had run, without using outcomes. The [full-run summary](results/rigor_checks/dev_nto_incumbent/dev_seed0_summary.json), control and [crash review](results/rigor_checks/dev_nto_incumbent/native_crash_review.json) link to the saved attempts and receipts. No new test score is claimed.
+
+```bash
+bash local/python.sh scripts/evaluate.py run \
+  --split dev --problem dev-sparse_clutter-000-p00 --methods NTO_REFINED \
+  --track time --seeds 0 \
+  --config results/rigor_checks/dev_nto_incumbent/early_evaluation.json \
+  --output runs/nto-early-example
+```
+
 Reproduce the diagnostics with new output paths:
 
 ```bash

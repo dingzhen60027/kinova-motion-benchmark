@@ -1,0 +1,3585 @@
+{
+  "created_utc": "2026-11-03T07:56:50.264362+00:00",
+  "scope": "Geometry-selected DEV seed 0; 24 predeclared queries, selected after enabled batch began. No outcome selection.",
+  "old_label": "control: early_accept_validated=false",
+  "new_label": "enabled: early_accept_validated=true",
+  "plan": "benchmarks/generic_motion_v1/results/rigor_checks/dev_nto_incumbent/control_plan.json",
+  "plan_sha256": "1aa7410411a92634cdd03af833b143c787b0a2e745f1c30a1e991be5132de43f",
+  "enabled_manifest_sha256": "01e804f9355a9d2a4a831f2693a5dd460a73b43d3f30b942c5a57b2aabc80ef8",
+  "source_identity": "Every prepared control manifest is checked for exact equality of source and roadmap hashes to enabled manifest; each receipt and request is verified.",
+  "selection_timing": "Selection was defined after the enabled full-DEV seed-0 experiment had already partially run; it is geometry-only but was not prospective to that run.",
+  "scene_grouping": "Each chosen case comes from a distinct obstacle scene; do not pool two tracks as independent scenes.",
+  "frontends": {
+    "both_available": 22,
+    "matched": 22,
+    "different": [],
+    "note": "Null when either frontend path is absent. Differences do not erase end-to-end results but prevent claiming an identical-initial-path pair."
+  },
+  "complete": true,
+  "coverage": {
+    "planned": 24,
+    "paired_completed": 24,
+    "new_states": {
+      "completed": 24
+    },
+    "old_states": {
+      "completed": 24
+    },
+    "old_statuses": {
+      "no_solution_within_budget": 4,
+      "solver_failure": 3,
+      "success_numerical": 14,
+      "timeout": 2,
+      "validation_failed": 1
+    },
+    "new_statuses": {
+      "no_solution_within_budget": 4,
+      "solver_failure": 3,
+      "success_numerical": 15,
+      "timeout": 2
+    },
+    "status_transitions_old_to_new": {
+      "no_solution_within_budget -> no_solution_within_budget": 4,
+      "solver_failure -> solver_failure": 3,
+      "success_numerical -> success_numerical": 14,
+      "timeout -> timeout": 2,
+      "validation_failed -> success_numerical": 1
+    },
+    "common_success_metrics": null,
+    "metrics_note": "Metrics are separated by objective because distance and time have different units."
+  },
+  "by_objective": {
+    "minimum_distance": {
+      "planned": 12,
+      "paired_completed": 12,
+      "new_states": {
+        "completed": 12
+      },
+      "old_states": {
+        "completed": 12
+      },
+      "old_statuses": {
+        "no_solution_within_budget": 2,
+        "solver_failure": 2,
+        "success_numerical": 7,
+        "timeout": 1
+      },
+      "new_statuses": {
+        "no_solution_within_budget": 2,
+        "solver_failure": 2,
+        "success_numerical": 7,
+        "timeout": 1
+      },
+      "status_transitions_old_to_new": {
+        "no_solution_within_budget -> no_solution_within_budget": 2,
+        "solver_failure -> solver_failure": 2,
+        "success_numerical -> success_numerical": 7,
+        "timeout -> timeout": 1
+      },
+      "common_success_metrics": {
+        "objective_value": {
+          "old": {
+            "count": 7,
+            "mean": 3.3085806035933505,
+            "median": 3.0536178975014003
+          },
+          "new": {
+            "count": 7,
+            "mean": 3.308586752876388,
+            "median": 3.0536178975014003
+          },
+          "difference_new_minus_old": {
+            "count": 7,
+            "mean": 6.1492830375645525e-06,
+            "median": 0.0
+          }
+        },
+        "cold_e2e_seconds": {
+          "old": {
+            "count": 7,
+            "mean": 2.3672993245002414,
+            "median": 1.9666097182780504
+          },
+          "new": {
+            "count": 7,
+            "mean": 2.145656397233584,
+            "median": 1.9663177351467311
+          },
+          "difference_new_minus_old": {
+            "count": 7,
+            "mean": -0.22164292726665735,
+            "median": -0.0006593619473278522
+          }
+        },
+        "minimum_sampled_clearance_m": {
+          "old": {
+            "count": 7,
+            "mean": 0.013130370647524647,
+            "median": 0.0190250265843331
+          },
+          "new": {
+            "count": 7,
+            "mean": 0.013130370647524647,
+            "median": 0.0190250265843331
+          },
+          "difference_new_minus_old": {
+            "count": 7,
+            "mean": 0.0,
+            "median": 0.0
+          }
+        }
+      },
+      "metrics_note": null
+    },
+    "minimum_time": {
+      "planned": 12,
+      "paired_completed": 12,
+      "new_states": {
+        "completed": 12
+      },
+      "old_states": {
+        "completed": 12
+      },
+      "old_statuses": {
+        "no_solution_within_budget": 2,
+        "solver_failure": 1,
+        "success_numerical": 7,
+        "timeout": 1,
+        "validation_failed": 1
+      },
+      "new_statuses": {
+        "no_solution_within_budget": 2,
+        "solver_failure": 1,
+        "success_numerical": 8,
+        "timeout": 1
+      },
+      "status_transitions_old_to_new": {
+        "no_solution_within_budget -> no_solution_within_budget": 2,
+        "solver_failure -> solver_failure": 1,
+        "success_numerical -> success_numerical": 7,
+        "timeout -> timeout": 1,
+        "validation_failed -> success_numerical": 1
+      },
+      "common_success_metrics": {
+        "objective_value": {
+          "old": {
+            "count": 7,
+            "mean": 3.391375480348916,
+            "median": 3.4326331424761474
+          },
+          "new": {
+            "count": 7,
+            "mean": 3.391375480348916,
+            "median": 3.4326331424761474
+          },
+          "difference_new_minus_old": {
+            "count": 7,
+            "mean": 0.0,
+            "median": 0.0
+          }
+        },
+        "cold_e2e_seconds": {
+          "old": {
+            "count": 7,
+            "mean": 2.839558679477445,
+            "median": 2.718105094972998
+          },
+          "new": {
+            "count": 7,
+            "mean": 2.846693759052349,
+            "median": 2.7171278540045023
+          },
+          "difference_new_minus_old": {
+            "count": 7,
+            "mean": 0.007135079574904272,
+            "median": 0.00014945399016141891
+          }
+        },
+        "minimum_sampled_clearance_m": {
+          "old": {
+            "count": 7,
+            "mean": 0.014894209607956068,
+            "median": 0.019025026584333037
+          },
+          "new": {
+            "count": 7,
+            "mean": 0.014894209607956068,
+            "median": 0.019025026584333037
+          },
+          "difference_new_minus_old": {
+            "count": 7,
+            "mean": 0.0,
+            "median": 0.0
+          }
+        }
+      },
+      "metrics_note": null
+    }
+  },
+  "by_scene_cluster": [
+    {
+      "cluster_id": "dev-bottleneck-000",
+      "objective": "minimum_distance",
+      "planned": 1,
+      "paired_completed": 1,
+      "new_states": {
+        "completed": 1
+      },
+      "old_states": {
+        "completed": 1
+      },
+      "old_statuses": {
+        "success_numerical": 1
+      },
+      "new_statuses": {
+        "success_numerical": 1
+      },
+      "status_transitions_old_to_new": {
+        "success_numerical -> success_numerical": 1
+      },
+      "common_success_metrics": {
+        "objective_value": {
+          "old": {
+            "count": 1,
+            "mean": 2.9297608639237556,
+            "median": 2.9297608639237556
+          },
+          "new": {
+            "count": 1,
+            "mean": 2.9297608639237556,
+            "median": 2.9297608639237556
+          },
+          "difference_new_minus_old": {
+            "count": 1,
+            "mean": 0.0,
+            "median": 0.0
+          }
+        },
+        "cold_e2e_seconds": {
+          "old": {
+            "count": 1,
+            "mean": 1.816562863998115,
+            "median": 1.816562863998115
+          },
+          "new": {
+            "count": 1,
+            "mean": 1.7160900360904634,
+            "median": 1.7160900360904634
+          },
+          "difference_new_minus_old": {
+            "count": 1,
+            "mean": -0.10047282790765166,
+            "median": -0.10047282790765166
+          }
+        },
+        "minimum_sampled_clearance_m": {
+          "old": {
+            "count": 1,
+            "mean": 0.01902502658433342,
+            "median": 0.01902502658433342
+          },
+          "new": {
+            "count": 1,
+            "mean": 0.01902502658433342,
+            "median": 0.01902502658433342
+          },
+          "difference_new_minus_old": {
+            "count": 1,
+            "mean": 0.0,
+            "median": 0.0
+          }
+        }
+      },
+      "metrics_note": null
+    },
+    {
+      "cluster_id": "dev-bottleneck-000",
+      "objective": "minimum_time",
+      "planned": 1,
+      "paired_completed": 1,
+      "new_states": {
+        "completed": 1
+      },
+      "old_states": {
+        "completed": 1
+      },
+      "old_statuses": {
+        "success_numerical": 1
+      },
+      "new_statuses": {
+        "success_numerical": 1
+      },
+      "status_transitions_old_to_new": {
+        "success_numerical -> success_numerical": 1
+      },
+      "common_success_metrics": {
+        "objective_value": {
+          "old": {
+            "count": 1,
+            "mean": 3.4784405412904214,
+            "median": 3.4784405412904214
+          },
+          "new": {
+            "count": 1,
+            "mean": 3.4784405412904214,
+            "median": 3.4784405412904214
+          },
+          "difference_new_minus_old": {
+            "count": 1,
+            "mean": 0.0,
+            "median": 0.0
+          }
+        },
+        "cold_e2e_seconds": {
+          "old": {
+            "count": 1,
+            "mean": 2.4169602910988033,
+            "median": 2.4169602910988033
+          },
+          "new": {
+            "count": 1,
+            "mean": 2.4171097450889647,
+            "median": 2.4171097450889647
+          },
+          "difference_new_minus_old": {
+            "count": 1,
+            "mean": 0.00014945399016141891,
+            "median": 0.00014945399016141891
+          }
+        },
+        "minimum_sampled_clearance_m": {
+          "old": {
+            "count": 1,
+            "mean": 0.019025026584333388,
+            "median": 0.019025026584333388
+          },
+          "new": {
+            "count": 1,
+            "mean": 0.019025026584333388,
+            "median": 0.019025026584333388
+          },
+          "difference_new_minus_old": {
+            "count": 1,
+            "mean": 0.0,
+            "median": 0.0
+          }
+        }
+      },
+      "metrics_note": null
+    },
+    {
+      "cluster_id": "dev-bottleneck-001",
+      "objective": "minimum_distance",
+      "planned": 1,
+      "paired_completed": 1,
+      "new_states": {
+        "completed": 1
+      },
+      "old_states": {
+        "completed": 1
+      },
+      "old_statuses": {
+        "success_numerical": 1
+      },
+      "new_statuses": {
+        "success_numerical": 1
+      },
+      "status_transitions_old_to_new": {
+        "success_numerical -> success_numerical": 1
+      },
+      "common_success_metrics": {
+        "objective_value": {
+          "old": {
+            "count": 1,
+            "mean": 3.3480843673858702,
+            "median": 3.3480843673858702
+          },
+          "new": {
+            "count": 1,
+            "mean": 3.3480843673858702,
+            "median": 3.3480843673858702
+          },
+          "difference_new_minus_old": {
+            "count": 1,
+            "mean": 0.0,
+            "median": 0.0
+          }
+        },
+        "cold_e2e_seconds": {
+          "old": {
+            "count": 1,
+            "mean": 1.966977097094059,
+            "median": 1.966977097094059
+          },
+          "new": {
+            "count": 1,
+            "mean": 1.9663177351467311,
+            "median": 1.9663177351467311
+          },
+          "difference_new_minus_old": {
+            "count": 1,
+            "mean": -0.0006593619473278522,
+            "median": -0.0006593619473278522
+          }
+        },
+        "minimum_sampled_clearance_m": {
+          "old": {
+            "count": 1,
+            "mean": 0.012025549183554226,
+            "median": 0.012025549183554226
+          },
+          "new": {
+            "count": 1,
+            "mean": 0.012025549183554226,
+            "median": 0.012025549183554226
+          },
+          "difference_new_minus_old": {
+            "count": 1,
+            "mean": 0.0,
+            "median": 0.0
+          }
+        }
+      },
+      "metrics_note": null
+    },
+    {
+      "cluster_id": "dev-bottleneck-001",
+      "objective": "minimum_time",
+      "planned": 1,
+      "paired_completed": 1,
+      "new_states": {
+        "completed": 1
+      },
+      "old_states": {
+        "completed": 1
+      },
+      "old_statuses": {
+        "success_numerical": 1
+      },
+      "new_statuses": {
+        "success_numerical": 1
+      },
+      "status_transitions_old_to_new": {
+        "success_numerical -> success_numerical": 1
+      },
+      "common_success_metrics": {
+        "objective_value": {
+          "old": {
+            "count": 1,
+            "mean": 3.3893403851323347,
+            "median": 3.3893403851323347
+          },
+          "new": {
+            "count": 1,
+            "mean": 3.3893403851323347,
+            "median": 3.3893403851323347
+          },
+          "difference_new_minus_old": {
+            "count": 1,
+            "mean": 0.0,
+            "median": 0.0
+          }
+        },
+        "cold_e2e_seconds": {
+          "old": {
+            "count": 1,
+            "mean": 2.718105094972998,
+            "median": 2.718105094972998
+          },
+          "new": {
+            "count": 1,
+            "mean": 2.7171278540045023,
+            "median": 2.7171278540045023
+          },
+          "difference_new_minus_old": {
+            "count": 1,
+            "mean": -0.0009772409684956074,
+            "median": -0.0009772409684956074
+          }
+        },
+        "minimum_sampled_clearance_m": {
+          "old": {
+            "count": 1,
+            "mean": 0.008403184166370245,
+            "median": 0.008403184166370245
+          },
+          "new": {
+            "count": 1,
+            "mean": 0.008403184166370245,
+            "median": 0.008403184166370245
+          },
+          "difference_new_minus_old": {
+            "count": 1,
+            "mean": 0.0,
+            "median": 0.0
+          }
+        }
+      },
+      "metrics_note": null
+    },
+    {
+      "cluster_id": "dev-bottleneck-002",
+      "objective": "minimum_distance",
+      "planned": 1,
+      "paired_completed": 1,
+      "new_states": {
+        "completed": 1
+      },
+      "old_states": {
+        "completed": 1
+      },
+      "old_statuses": {
+        "success_numerical": 1
+      },
+      "new_statuses": {
+        "success_numerical": 1
+      },
+      "status_transitions_old_to_new": {
+        "success_numerical -> success_numerical": 1
+      },
+      "common_success_metrics": {
+        "objective_value": {
+          "old": {
+            "count": 1,
+            "mean": 3.0536178975014003,
+            "median": 3.0536178975014003
+          },
+          "new": {
+            "count": 1,
+            "mean": 3.0536178975014003,
+            "median": 3.0536178975014003
+          },
+          "difference_new_minus_old": {
+            "count": 1,
+            "mean": 0.0,
+            "median": 0.0
+          }
+        },
+        "cold_e2e_seconds": {
+          "old": {
+            "count": 1,
+            "mean": 1.8658556337468326,
+            "median": 1.8658556337468326
+          },
+          "new": {
+            "count": 1,
+            "mean": 1.8174284133128822,
+            "median": 1.8174284133128822
+          },
+          "difference_new_minus_old": {
+            "count": 1,
+            "mean": -0.048427220433950424,
+            "median": -0.048427220433950424
+          }
+        },
+        "minimum_sampled_clearance_m": {
+          "old": {
+            "count": 1,
+            "mean": 0.019025026584333377,
+            "median": 0.019025026584333377
+          },
+          "new": {
+            "count": 1,
+            "mean": 0.019025026584333377,
+            "median": 0.019025026584333377
+          },
+          "difference_new_minus_old": {
+            "count": 1,
+            "mean": 0.0,
+            "median": 0.0
+          }
+        }
+      },
+      "metrics_note": null
+    },
+    {
+      "cluster_id": "dev-bottleneck-002",
+      "objective": "minimum_time",
+      "planned": 1,
+      "paired_completed": 1,
+      "new_states": {
+        "completed": 1
+      },
+      "old_states": {
+        "completed": 1
+      },
+      "old_statuses": {
+        "success_numerical": 1
+      },
+      "new_statuses": {
+        "success_numerical": 1
+      },
+      "status_transitions_old_to_new": {
+        "success_numerical -> success_numerical": 1
+      },
+      "common_success_metrics": {
+        "objective_value": {
+          "old": {
+            "count": 1,
+            "mean": 3.361944042685466,
+            "median": 3.361944042685466
+          },
+          "new": {
+            "count": 1,
+            "mean": 3.361944042685466,
+            "median": 3.361944042685466
+          },
+          "difference_new_minus_old": {
+            "count": 1,
+            "mean": 0.0,
+            "median": 0.0
+          }
+        },
+        "cold_e2e_seconds": {
+          "old": {
+            "count": 1,
+            "mean": 2.667307524010539,
+            "median": 2.667307524010539
+          },
+          "new": {
+            "count": 1,
+            "mean": 2.670252236071974,
+            "median": 2.670252236071974
+          },
+          "difference_new_minus_old": {
+            "count": 1,
+            "mean": 0.002944712061434984,
+            "median": 0.002944712061434984
+          }
+        },
+        "minimum_sampled_clearance_m": {
+          "old": {
+            "count": 1,
+            "mean": 0.019025026584333367,
+            "median": 0.019025026584333367
+          },
+          "new": {
+            "count": 1,
+            "mean": 0.019025026584333367,
+            "median": 0.019025026584333367
+          },
+          "difference_new_minus_old": {
+            "count": 1,
+            "mean": 0.0,
+            "median": 0.0
+          }
+        }
+      },
+      "metrics_note": null
+    },
+    {
+      "cluster_id": "dev-dense_clutter-000",
+      "objective": "minimum_distance",
+      "planned": 1,
+      "paired_completed": 1,
+      "new_states": {
+        "completed": 1
+      },
+      "old_states": {
+        "completed": 1
+      },
+      "old_statuses": {
+        "no_solution_within_budget": 1
+      },
+      "new_statuses": {
+        "no_solution_within_budget": 1
+      },
+      "status_transitions_old_to_new": {
+        "no_solution_within_budget -> no_solution_within_budget": 1
+      },
+      "common_success_metrics": {
+        "objective_value": {
+          "old": {
+            "count": 0,
+            "mean": null,
+            "median": null
+          },
+          "new": {
+            "count": 0,
+            "mean": null,
+            "median": null
+          },
+          "difference_new_minus_old": {
+            "count": 0,
+            "mean": null,
+            "median": null
+          }
+        },
+        "cold_e2e_seconds": {
+          "old": {
+            "count": 0,
+            "mean": null,
+            "median": null
+          },
+          "new": {
+            "count": 0,
+            "mean": null,
+            "median": null
+          },
+          "difference_new_minus_old": {
+            "count": 0,
+            "mean": null,
+            "median": null
+          }
+        },
+        "minimum_sampled_clearance_m": {
+          "old": {
+            "count": 0,
+            "mean": null,
+            "median": null
+          },
+          "new": {
+            "count": 0,
+            "mean": null,
+            "median": null
+          },
+          "difference_new_minus_old": {
+            "count": 0,
+            "mean": null,
+            "median": null
+          }
+        }
+      },
+      "metrics_note": null
+    },
+    {
+      "cluster_id": "dev-dense_clutter-000",
+      "objective": "minimum_time",
+      "planned": 1,
+      "paired_completed": 1,
+      "new_states": {
+        "completed": 1
+      },
+      "old_states": {
+        "completed": 1
+      },
+      "old_statuses": {
+        "no_solution_within_budget": 1
+      },
+      "new_statuses": {
+        "no_solution_within_budget": 1
+      },
+      "status_transitions_old_to_new": {
+        "no_solution_within_budget -> no_solution_within_budget": 1
+      },
+      "common_success_metrics": {
+        "objective_value": {
+          "old": {
+            "count": 0,
+            "mean": null,
+            "median": null
+          },
+          "new": {
+            "count": 0,
+            "mean": null,
+            "median": null
+          },
+          "difference_new_minus_old": {
+            "count": 0,
+            "mean": null,
+            "median": null
+          }
+        },
+        "cold_e2e_seconds": {
+          "old": {
+            "count": 0,
+            "mean": null,
+            "median": null
+          },
+          "new": {
+            "count": 0,
+            "mean": null,
+            "median": null
+          },
+          "difference_new_minus_old": {
+            "count": 0,
+            "mean": null,
+            "median": null
+          }
+        },
+        "minimum_sampled_clearance_m": {
+          "old": {
+            "count": 0,
+            "mean": null,
+            "median": null
+          },
+          "new": {
+            "count": 0,
+            "mean": null,
+            "median": null
+          },
+          "difference_new_minus_old": {
+            "count": 0,
+            "mean": null,
+            "median": null
+          }
+        }
+      },
+      "metrics_note": null
+    },
+    {
+      "cluster_id": "dev-dense_clutter-001",
+      "objective": "minimum_distance",
+      "planned": 1,
+      "paired_completed": 1,
+      "new_states": {
+        "completed": 1
+      },
+      "old_states": {
+        "completed": 1
+      },
+      "old_statuses": {
+        "success_numerical": 1
+      },
+      "new_statuses": {
+        "success_numerical": 1
+      },
+      "status_transitions_old_to_new": {
+        "success_numerical -> success_numerical": 1
+      },
+      "common_success_metrics": {
+        "objective_value": {
+          "old": {
+            "count": 1,
+            "mean": 4.007927318472756,
+            "median": 4.007927318472756
+          },
+          "new": {
+            "count": 1,
+            "mean": 4.007927318472756,
+            "median": 4.007927318472756
+          },
+          "difference_new_minus_old": {
+            "count": 1,
+            "mean": 0.0,
+            "median": 0.0
+          }
+        },
+        "cold_e2e_seconds": {
+          "old": {
+            "count": 1,
+            "mean": 2.7686772947199643,
+            "median": 2.7686772947199643
+          },
+          "new": {
+            "count": 1,
+            "mean": 2.91879724804312,
+            "median": 2.91879724804312
+          },
+          "difference_new_minus_old": {
+            "count": 1,
+            "mean": 0.15011995332315564,
+            "median": 0.15011995332315564
+          }
+        },
+        "minimum_sampled_clearance_m": {
+          "old": {
+            "count": 1,
+            "mean": 0.003620642738494273,
+            "median": 0.003620642738494273
+          },
+          "new": {
+            "count": 1,
+            "mean": 0.003620642738494273,
+            "median": 0.003620642738494273
+          },
+          "difference_new_minus_old": {
+            "count": 1,
+            "mean": 0.0,
+            "median": 0.0
+          }
+        }
+      },
+      "metrics_note": null
+    },
+    {
+      "cluster_id": "dev-dense_clutter-001",
+      "objective": "minimum_time",
+      "planned": 1,
+      "paired_completed": 1,
+      "new_states": {
+        "completed": 1
+      },
+      "old_states": {
+        "completed": 1
+      },
+      "old_statuses": {
+        "success_numerical": 1
+      },
+      "new_statuses": {
+        "success_numerical": 1
+      },
+      "status_transitions_old_to_new": {
+        "success_numerical -> success_numerical": 1
+      },
+      "common_success_metrics": {
+        "objective_value": {
+          "old": {
+            "count": 1,
+            "mean": 4.100998470153269,
+            "median": 4.100998470153269
+          },
+          "new": {
+            "count": 1,
+            "mean": 4.100998470153269,
+            "median": 4.100998470153269
+          },
+          "difference_new_minus_old": {
+            "count": 1,
+            "mean": 0.0,
+            "median": 0.0
+          }
+        },
+        "cold_e2e_seconds": {
+          "old": {
+            "count": 1,
+            "mean": 3.6191591382957995,
+            "median": 3.6191591382957995
+          },
+          "new": {
+            "count": 1,
+            "mean": 3.618130047339946,
+            "median": 3.618130047339946
+          },
+          "difference_new_minus_old": {
+            "count": 1,
+            "mean": -0.0010290909558534622,
+            "median": -0.0010290909558534622
+          }
+        },
+        "minimum_sampled_clearance_m": {
+          "old": {
+            "count": 1,
+            "mean": 0.008576017927032664,
+            "median": 0.008576017927032664
+          },
+          "new": {
+            "count": 1,
+            "mean": 0.008576017927032664,
+            "median": 0.008576017927032664
+          },
+          "difference_new_minus_old": {
+            "count": 1,
+            "mean": 0.0,
+            "median": 0.0
+          }
+        }
+      },
+      "metrics_note": null
+    },
+    {
+      "cluster_id": "dev-dense_clutter-002",
+      "objective": "minimum_distance",
+      "planned": 1,
+      "paired_completed": 1,
+      "new_states": {
+        "completed": 1
+      },
+      "old_states": {
+        "completed": 1
+      },
+      "old_statuses": {
+        "solver_failure": 1
+      },
+      "new_statuses": {
+        "solver_failure": 1
+      },
+      "status_transitions_old_to_new": {
+        "solver_failure -> solver_failure": 1
+      },
+      "common_success_metrics": {
+        "objective_value": {
+          "old": {
+            "count": 0,
+            "mean": null,
+            "median": null
+          },
+          "new": {
+            "count": 0,
+            "mean": null,
+            "median": null
+          },
+          "difference_new_minus_old": {
+            "count": 0,
+            "mean": null,
+            "median": null
+          }
+        },
+        "cold_e2e_seconds": {
+          "old": {
+            "count": 0,
+            "mean": null,
+            "median": null
+          },
+          "new": {
+            "count": 0,
+            "mean": null,
+            "median": null
+          },
+          "difference_new_minus_old": {
+            "count": 0,
+            "mean": null,
+            "median": null
+          }
+        },
+        "minimum_sampled_clearance_m": {
+          "old": {
+            "count": 0,
+            "mean": null,
+            "median": null
+          },
+          "new": {
+            "count": 0,
+            "mean": null,
+            "median": null
+          },
+          "difference_new_minus_old": {
+            "count": 0,
+            "mean": null,
+            "median": null
+          }
+        }
+      },
+      "metrics_note": null
+    },
+    {
+      "cluster_id": "dev-dense_clutter-002",
+      "objective": "minimum_time",
+      "planned": 1,
+      "paired_completed": 1,
+      "new_states": {
+        "completed": 1
+      },
+      "old_states": {
+        "completed": 1
+      },
+      "old_statuses": {
+        "success_numerical": 1
+      },
+      "new_statuses": {
+        "success_numerical": 1
+      },
+      "status_transitions_old_to_new": {
+        "success_numerical -> success_numerical": 1
+      },
+      "common_success_metrics": {
+        "objective_value": {
+          "old": {
+            "count": 1,
+            "mean": 3.4326331424761474,
+            "median": 3.4326331424761474
+          },
+          "new": {
+            "count": 1,
+            "mean": 3.4326331424761474,
+            "median": 3.4326331424761474
+          },
+          "difference_new_minus_old": {
+            "count": 1,
+            "mean": 0.0,
+            "median": 0.0
+          }
+        },
+        "cold_e2e_seconds": {
+          "old": {
+            "count": 1,
+            "mean": 3.069232535082847,
+            "median": 3.069232535082847
+          },
+          "new": {
+            "count": 1,
+            "mean": 3.118647184688598,
+            "median": 3.118647184688598
+          },
+          "difference_new_minus_old": {
+            "count": 1,
+            "mean": 0.04941464960575104,
+            "median": 0.04941464960575104
+          }
+        },
+        "minimum_sampled_clearance_m": {
+          "old": {
+            "count": 1,
+            "mean": 0.011180158824956266,
+            "median": 0.011180158824956266
+          },
+          "new": {
+            "count": 1,
+            "mean": 0.011180158824956266,
+            "median": 0.011180158824956266
+          },
+          "difference_new_minus_old": {
+            "count": 1,
+            "mean": 0.0,
+            "median": 0.0
+          }
+        }
+      },
+      "metrics_note": null
+    },
+    {
+      "cluster_id": "dev-route_choice-000",
+      "objective": "minimum_distance",
+      "planned": 1,
+      "paired_completed": 1,
+      "new_states": {
+        "completed": 1
+      },
+      "old_states": {
+        "completed": 1
+      },
+      "old_statuses": {
+        "success_numerical": 1
+      },
+      "new_statuses": {
+        "success_numerical": 1
+      },
+      "status_transitions_old_to_new": {
+        "success_numerical -> success_numerical": 1
+      },
+      "common_success_metrics": {
+        "objective_value": {
+          "old": {
+            "count": 1,
+            "mean": 3.036416335558628,
+            "median": 3.036416335558628
+          },
+          "new": {
+            "count": 1,
+            "mean": 3.036416335558628,
+            "median": 3.036416335558628
+          },
+          "difference_new_minus_old": {
+            "count": 1,
+            "mean": 0.0,
+            "median": 0.0
+          }
+        },
+        "cold_e2e_seconds": {
+          "old": {
+            "count": 1,
+            "mean": 1.9666097182780504,
+            "median": 1.9666097182780504
+          },
+          "new": {
+            "count": 1,
+            "mean": 1.967537506017834,
+            "median": 1.967537506017834
+          },
+          "difference_new_minus_old": {
+            "count": 1,
+            "mean": 0.0009277877397835255,
+            "median": 0.0009277877397835255
+          }
+        },
+        "minimum_sampled_clearance_m": {
+          "old": {
+            "count": 1,
+            "mean": 0.0190250265843331,
+            "median": 0.0190250265843331
+          },
+          "new": {
+            "count": 1,
+            "mean": 0.0190250265843331,
+            "median": 0.0190250265843331
+          },
+          "difference_new_minus_old": {
+            "count": 1,
+            "mean": 0.0,
+            "median": 0.0
+          }
+        }
+      },
+      "metrics_note": null
+    },
+    {
+      "cluster_id": "dev-route_choice-000",
+      "objective": "minimum_time",
+      "planned": 1,
+      "paired_completed": 1,
+      "new_states": {
+        "completed": 1
+      },
+      "old_states": {
+        "completed": 1
+      },
+      "old_statuses": {
+        "success_numerical": 1
+      },
+      "new_statuses": {
+        "success_numerical": 1
+      },
+      "status_transitions_old_to_new": {
+        "success_numerical -> success_numerical": 1
+      },
+      "common_success_metrics": {
+        "objective_value": {
+          "old": {
+            "count": 1,
+            "mean": 3.5118174326123914,
+            "median": 3.5118174326123914
+          },
+          "new": {
+            "count": 1,
+            "mean": 3.5118174326123914,
+            "median": 3.5118174326123914
+          },
+          "difference_new_minus_old": {
+            "count": 1,
+            "mean": 0.0,
+            "median": 0.0
+          }
+        },
+        "cold_e2e_seconds": {
+          "old": {
+            "count": 1,
+            "mean": 2.817753708921373,
+            "median": 2.817753708921373
+          },
+          "new": {
+            "count": 1,
+            "mean": 2.8181427642703056,
+            "median": 2.8181427642703056
+          },
+          "difference_new_minus_old": {
+            "count": 1,
+            "mean": 0.00038905534893274307,
+            "median": 0.00038905534893274307
+          }
+        },
+        "minimum_sampled_clearance_m": {
+          "old": {
+            "count": 1,
+            "mean": 0.019025026584333037,
+            "median": 0.019025026584333037
+          },
+          "new": {
+            "count": 1,
+            "mean": 0.019025026584333037,
+            "median": 0.019025026584333037
+          },
+          "difference_new_minus_old": {
+            "count": 1,
+            "mean": 0.0,
+            "median": 0.0
+          }
+        }
+      },
+      "metrics_note": null
+    },
+    {
+      "cluster_id": "dev-route_choice-001",
+      "objective": "minimum_distance",
+      "planned": 1,
+      "paired_completed": 1,
+      "new_states": {
+        "completed": 1
+      },
+      "old_states": {
+        "completed": 1
+      },
+      "old_statuses": {
+        "success_numerical": 1
+      },
+      "new_statuses": {
+        "success_numerical": 1
+      },
+      "status_transitions_old_to_new": {
+        "success_numerical -> success_numerical": 1
+      },
+      "common_success_metrics": {
+        "objective_value": {
+          "old": {
+            "count": 1,
+            "mean": 2.2833471586397835,
+            "median": 2.2833471586397835
+          },
+          "new": {
+            "count": 1,
+            "mean": 2.2833471586397835,
+            "median": 2.2833471586397835
+          },
+          "difference_new_minus_old": {
+            "count": 1,
+            "mean": 0.0,
+            "median": 0.0
+          }
+        },
+        "cold_e2e_seconds": {
+          "old": {
+            "count": 1,
+            "mean": 1.6662678397260606,
+            "median": 1.6662678397260606
+          },
+          "new": {
+            "count": 1,
+            "mean": 1.6659340490587056,
+            "median": 1.6659340490587056
+          },
+          "difference_new_minus_old": {
+            "count": 1,
+            "mean": -0.0003337906673550606,
+            "median": -0.0003337906673550606
+          }
+        },
+        "minimum_sampled_clearance_m": {
+          "old": {
+            "count": 1,
+            "mean": 0.0190250265843335,
+            "median": 0.0190250265843335
+          },
+          "new": {
+            "count": 1,
+            "mean": 0.0190250265843335,
+            "median": 0.0190250265843335
+          },
+          "difference_new_minus_old": {
+            "count": 1,
+            "mean": 0.0,
+            "median": 0.0
+          }
+        }
+      },
+      "metrics_note": null
+    },
+    {
+      "cluster_id": "dev-route_choice-001",
+      "objective": "minimum_time",
+      "planned": 1,
+      "paired_completed": 1,
+      "new_states": {
+        "completed": 1
+      },
+      "old_states": {
+        "completed": 1
+      },
+      "old_statuses": {
+        "success_numerical": 1
+      },
+      "new_statuses": {
+        "success_numerical": 1
+      },
+      "status_transitions_old_to_new": {
+        "success_numerical -> success_numerical": 1
+      },
+      "common_success_metrics": {
+        "objective_value": {
+          "old": {
+            "count": 1,
+            "mean": 2.464454348092381,
+            "median": 2.464454348092381
+          },
+          "new": {
+            "count": 1,
+            "mean": 2.464454348092381,
+            "median": 2.464454348092381
+          },
+          "difference_new_minus_old": {
+            "count": 1,
+            "mean": 0.0,
+            "median": 0.0
+          }
+        },
+        "cold_e2e_seconds": {
+          "old": {
+            "count": 1,
+            "mean": 2.5683924639597535,
+            "median": 2.5683924639597535
+          },
+          "new": {
+            "count": 1,
+            "mean": 2.5674464819021523,
+            "median": 2.5674464819021523
+          },
+          "difference_new_minus_old": {
+            "count": 1,
+            "mean": -0.0009459820576012135,
+            "median": -0.0009459820576012135
+          }
+        },
+        "minimum_sampled_clearance_m": {
+          "old": {
+            "count": 1,
+            "mean": 0.019025026584333506,
+            "median": 0.019025026584333506
+          },
+          "new": {
+            "count": 1,
+            "mean": 0.019025026584333506,
+            "median": 0.019025026584333506
+          },
+          "difference_new_minus_old": {
+            "count": 1,
+            "mean": 0.0,
+            "median": 0.0
+          }
+        }
+      },
+      "metrics_note": null
+    },
+    {
+      "cluster_id": "dev-route_choice-002",
+      "objective": "minimum_distance",
+      "planned": 1,
+      "paired_completed": 1,
+      "new_states": {
+        "completed": 1
+      },
+      "old_states": {
+        "completed": 1
+      },
+      "old_statuses": {
+        "timeout": 1
+      },
+      "new_statuses": {
+        "timeout": 1
+      },
+      "status_transitions_old_to_new": {
+        "timeout -> timeout": 1
+      },
+      "common_success_metrics": {
+        "objective_value": {
+          "old": {
+            "count": 0,
+            "mean": null,
+            "median": null
+          },
+          "new": {
+            "count": 0,
+            "mean": null,
+            "median": null
+          },
+          "difference_new_minus_old": {
+            "count": 0,
+            "mean": null,
+            "median": null
+          }
+        },
+        "cold_e2e_seconds": {
+          "old": {
+            "count": 0,
+            "mean": null,
+            "median": null
+          },
+          "new": {
+            "count": 0,
+            "mean": null,
+            "median": null
+          },
+          "difference_new_minus_old": {
+            "count": 0,
+            "mean": null,
+            "median": null
+          }
+        },
+        "minimum_sampled_clearance_m": {
+          "old": {
+            "count": 0,
+            "mean": null,
+            "median": null
+          },
+          "new": {
+            "count": 0,
+            "mean": null,
+            "median": null
+          },
+          "difference_new_minus_old": {
+            "count": 0,
+            "mean": null,
+            "median": null
+          }
+        }
+      },
+      "metrics_note": null
+    },
+    {
+      "cluster_id": "dev-route_choice-002",
+      "objective": "minimum_time",
+      "planned": 1,
+      "paired_completed": 1,
+      "new_states": {
+        "completed": 1
+      },
+      "old_states": {
+        "completed": 1
+      },
+      "old_statuses": {
+        "timeout": 1
+      },
+      "new_statuses": {
+        "timeout": 1
+      },
+      "status_transitions_old_to_new": {
+        "timeout -> timeout": 1
+      },
+      "common_success_metrics": {
+        "objective_value": {
+          "old": {
+            "count": 0,
+            "mean": null,
+            "median": null
+          },
+          "new": {
+            "count": 0,
+            "mean": null,
+            "median": null
+          },
+          "difference_new_minus_old": {
+            "count": 0,
+            "mean": null,
+            "median": null
+          }
+        },
+        "cold_e2e_seconds": {
+          "old": {
+            "count": 0,
+            "mean": null,
+            "median": null
+          },
+          "new": {
+            "count": 0,
+            "mean": null,
+            "median": null
+          },
+          "difference_new_minus_old": {
+            "count": 0,
+            "mean": null,
+            "median": null
+          }
+        },
+        "minimum_sampled_clearance_m": {
+          "old": {
+            "count": 0,
+            "mean": null,
+            "median": null
+          },
+          "new": {
+            "count": 0,
+            "mean": null,
+            "median": null
+          },
+          "difference_new_minus_old": {
+            "count": 0,
+            "mean": null,
+            "median": null
+          }
+        }
+      },
+      "metrics_note": null
+    },
+    {
+      "cluster_id": "dev-sparse_clutter-000",
+      "objective": "minimum_distance",
+      "planned": 1,
+      "paired_completed": 1,
+      "new_states": {
+        "completed": 1
+      },
+      "old_states": {
+        "completed": 1
+      },
+      "old_statuses": {
+        "solver_failure": 1
+      },
+      "new_statuses": {
+        "solver_failure": 1
+      },
+      "status_transitions_old_to_new": {
+        "solver_failure -> solver_failure": 1
+      },
+      "common_success_metrics": {
+        "objective_value": {
+          "old": {
+            "count": 0,
+            "mean": null,
+            "median": null
+          },
+          "new": {
+            "count": 0,
+            "mean": null,
+            "median": null
+          },
+          "difference_new_minus_old": {
+            "count": 0,
+            "mean": null,
+            "median": null
+          }
+        },
+        "cold_e2e_seconds": {
+          "old": {
+            "count": 0,
+            "mean": null,
+            "median": null
+          },
+          "new": {
+            "count": 0,
+            "mean": null,
+            "median": null
+          },
+          "difference_new_minus_old": {
+            "count": 0,
+            "mean": null,
+            "median": null
+          }
+        },
+        "minimum_sampled_clearance_m": {
+          "old": {
+            "count": 0,
+            "mean": null,
+            "median": null
+          },
+          "new": {
+            "count": 0,
+            "mean": null,
+            "median": null
+          },
+          "difference_new_minus_old": {
+            "count": 0,
+            "mean": null,
+            "median": null
+          }
+        }
+      },
+      "metrics_note": null
+    },
+    {
+      "cluster_id": "dev-sparse_clutter-000",
+      "objective": "minimum_time",
+      "planned": 1,
+      "paired_completed": 1,
+      "new_states": {
+        "completed": 1
+      },
+      "old_states": {
+        "completed": 1
+      },
+      "old_statuses": {
+        "validation_failed": 1
+      },
+      "new_statuses": {
+        "success_numerical": 1
+      },
+      "status_transitions_old_to_new": {
+        "validation_failed -> success_numerical": 1
+      },
+      "common_success_metrics": {
+        "objective_value": {
+          "old": {
+            "count": 0,
+            "mean": null,
+            "median": null
+          },
+          "new": {
+            "count": 0,
+            "mean": null,
+            "median": null
+          },
+          "difference_new_minus_old": {
+            "count": 0,
+            "mean": null,
+            "median": null
+          }
+        },
+        "cold_e2e_seconds": {
+          "old": {
+            "count": 0,
+            "mean": null,
+            "median": null
+          },
+          "new": {
+            "count": 0,
+            "mean": null,
+            "median": null
+          },
+          "difference_new_minus_old": {
+            "count": 0,
+            "mean": null,
+            "median": null
+          }
+        },
+        "minimum_sampled_clearance_m": {
+          "old": {
+            "count": 0,
+            "mean": null,
+            "median": null
+          },
+          "new": {
+            "count": 0,
+            "mean": null,
+            "median": null
+          },
+          "difference_new_minus_old": {
+            "count": 0,
+            "mean": null,
+            "median": null
+          }
+        }
+      },
+      "metrics_note": null
+    },
+    {
+      "cluster_id": "dev-sparse_clutter-001",
+      "objective": "minimum_distance",
+      "planned": 1,
+      "paired_completed": 1,
+      "new_states": {
+        "completed": 1
+      },
+      "old_states": {
+        "completed": 1
+      },
+      "old_statuses": {
+        "success_numerical": 1
+      },
+      "new_statuses": {
+        "success_numerical": 1
+      },
+      "status_transitions_old_to_new": {
+        "success_numerical -> success_numerical": 1
+      },
+      "common_success_metrics": {
+        "objective_value": {
+          "old": {
+            "count": 1,
+            "mean": 4.50091028367126,
+            "median": 4.50091028367126
+          },
+          "new": {
+            "count": 1,
+            "mean": 4.500953328652523,
+            "median": 4.500953328652523
+          },
+          "difference_new_minus_old": {
+            "count": 1,
+            "mean": 4.3044981262951865e-05,
+            "median": 4.3044981262951865e-05
+          }
+        },
+        "cold_e2e_seconds": {
+          "old": {
+            "count": 1,
+            "mean": 4.520144823938608,
+            "median": 4.520144823938608
+          },
+          "new": {
+            "count": 1,
+            "mean": 2.9674897929653525,
+            "median": 2.9674897929653525
+          },
+          "difference_new_minus_old": {
+            "count": 1,
+            "mean": -1.5526550309732556,
+            "median": -1.5526550309732556
+          }
+        },
+        "minimum_sampled_clearance_m": {
+          "old": {
+            "count": 1,
+            "mean": 0.00016629627329063645,
+            "median": 0.00016629627329063645
+          },
+          "new": {
+            "count": 1,
+            "mean": 0.00016629627329063645,
+            "median": 0.00016629627329063645
+          },
+          "difference_new_minus_old": {
+            "count": 1,
+            "mean": 0.0,
+            "median": 0.0
+          }
+        }
+      },
+      "metrics_note": null
+    },
+    {
+      "cluster_id": "dev-sparse_clutter-001",
+      "objective": "minimum_time",
+      "planned": 1,
+      "paired_completed": 1,
+      "new_states": {
+        "completed": 1
+      },
+      "old_states": {
+        "completed": 1
+      },
+      "old_statuses": {
+        "solver_failure": 1
+      },
+      "new_statuses": {
+        "solver_failure": 1
+      },
+      "status_transitions_old_to_new": {
+        "solver_failure -> solver_failure": 1
+      },
+      "common_success_metrics": {
+        "objective_value": {
+          "old": {
+            "count": 0,
+            "mean": null,
+            "median": null
+          },
+          "new": {
+            "count": 0,
+            "mean": null,
+            "median": null
+          },
+          "difference_new_minus_old": {
+            "count": 0,
+            "mean": null,
+            "median": null
+          }
+        },
+        "cold_e2e_seconds": {
+          "old": {
+            "count": 0,
+            "mean": null,
+            "median": null
+          },
+          "new": {
+            "count": 0,
+            "mean": null,
+            "median": null
+          },
+          "difference_new_minus_old": {
+            "count": 0,
+            "mean": null,
+            "median": null
+          }
+        },
+        "minimum_sampled_clearance_m": {
+          "old": {
+            "count": 0,
+            "mean": null,
+            "median": null
+          },
+          "new": {
+            "count": 0,
+            "mean": null,
+            "median": null
+          },
+          "difference_new_minus_old": {
+            "count": 0,
+            "mean": null,
+            "median": null
+          }
+        }
+      },
+      "metrics_note": null
+    },
+    {
+      "cluster_id": "dev-sparse_clutter-002",
+      "objective": "minimum_distance",
+      "planned": 1,
+      "paired_completed": 1,
+      "new_states": {
+        "completed": 1
+      },
+      "old_states": {
+        "completed": 1
+      },
+      "old_statuses": {
+        "no_solution_within_budget": 1
+      },
+      "new_statuses": {
+        "no_solution_within_budget": 1
+      },
+      "status_transitions_old_to_new": {
+        "no_solution_within_budget -> no_solution_within_budget": 1
+      },
+      "common_success_metrics": {
+        "objective_value": {
+          "old": {
+            "count": 0,
+            "mean": null,
+            "median": null
+          },
+          "new": {
+            "count": 0,
+            "mean": null,
+            "median": null
+          },
+          "difference_new_minus_old": {
+            "count": 0,
+            "mean": null,
+            "median": null
+          }
+        },
+        "cold_e2e_seconds": {
+          "old": {
+            "count": 0,
+            "mean": null,
+            "median": null
+          },
+          "new": {
+            "count": 0,
+            "mean": null,
+            "median": null
+          },
+          "difference_new_minus_old": {
+            "count": 0,
+            "mean": null,
+            "median": null
+          }
+        },
+        "minimum_sampled_clearance_m": {
+          "old": {
+            "count": 0,
+            "mean": null,
+            "median": null
+          },
+          "new": {
+            "count": 0,
+            "mean": null,
+            "median": null
+          },
+          "difference_new_minus_old": {
+            "count": 0,
+            "mean": null,
+            "median": null
+          }
+        }
+      },
+      "metrics_note": null
+    },
+    {
+      "cluster_id": "dev-sparse_clutter-002",
+      "objective": "minimum_time",
+      "planned": 1,
+      "paired_completed": 1,
+      "new_states": {
+        "completed": 1
+      },
+      "old_states": {
+        "completed": 1
+      },
+      "old_statuses": {
+        "no_solution_within_budget": 1
+      },
+      "new_statuses": {
+        "no_solution_within_budget": 1
+      },
+      "status_transitions_old_to_new": {
+        "no_solution_within_budget -> no_solution_within_budget": 1
+      },
+      "common_success_metrics": {
+        "objective_value": {
+          "old": {
+            "count": 0,
+            "mean": null,
+            "median": null
+          },
+          "new": {
+            "count": 0,
+            "mean": null,
+            "median": null
+          },
+          "difference_new_minus_old": {
+            "count": 0,
+            "mean": null,
+            "median": null
+          }
+        },
+        "cold_e2e_seconds": {
+          "old": {
+            "count": 0,
+            "mean": null,
+            "median": null
+          },
+          "new": {
+            "count": 0,
+            "mean": null,
+            "median": null
+          },
+          "difference_new_minus_old": {
+            "count": 0,
+            "mean": null,
+            "median": null
+          }
+        },
+        "minimum_sampled_clearance_m": {
+          "old": {
+            "count": 0,
+            "mean": null,
+            "median": null
+          },
+          "new": {
+            "count": 0,
+            "mean": null,
+            "median": null
+          },
+          "difference_new_minus_old": {
+            "count": 0,
+            "mean": null,
+            "median": null
+          }
+        }
+      },
+      "metrics_note": null
+    }
+  ],
+  "all_declared_jobs": [
+    {
+      "problem_id": "dev-bottleneck-000-p00",
+      "scene_id": "dev-bottleneck-000",
+      "cluster_id": "dev-bottleneck-000",
+      "category": "bottleneck",
+      "objective": "minimum_distance",
+      "replica_seed": 0,
+      "old_attempt": {
+        "attempts": [
+          "0001"
+        ],
+        "terminal_attempts": [
+          "0001"
+        ],
+        "selected_attempt": "0001",
+        "state": "completed",
+        "receipt_sha256": "ba1d6fc8739a64c7419f948ff5918c2c89d0f686ed55aab5066b2de0b8af2d40",
+        "attempt_path": "benchmarks/generic_motion_v1/results/rigor_checks/dev_nto_incumbent/control/dev-bottleneck-000-p00/jobs/dev-bottleneck-000-p00-NTO_REFINED-minimum_distance-cbac2f04/attempts/0001"
+      },
+      "old_state": "completed",
+      "old_status": "success_numerical",
+      "old": {
+        "input_sha256": "3ab997b0c3e0a945328d96a5b078e34b30ec46ffdc9e9a3139d48bb3be060c84",
+        "robot_sha256": "a25f447c8caf4aff6dc76196c3d57cc940f00e802367f48034f06a9973927c75",
+        "geometry_sha256": "896ab9f55c5d8081b843358bd85cde2daae1f432564593f86218bf61733ce4fa",
+        "planner_seed": 851680796,
+        "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c",
+        "frontend_path_sha256": "f3bcd3cc42d93c124cba90798181e0f37c504a888739308eca593c8a68bc303c",
+        "objective_value": 2.9297608639237556,
+        "cold_e2e_seconds": 1.816562863998115,
+        "minimum_sampled_clearance_m": 0.01902502658433342,
+        "validation_passed": true,
+        "status_basis": "saved_candidate_independently_validated_within_budget",
+        "raw_status": "success_validated_numerical"
+      },
+      "new_attempt": {
+        "attempts": [
+          "0001"
+        ],
+        "terminal_attempts": [
+          "0001"
+        ],
+        "selected_attempt": "0001",
+        "state": "completed",
+        "receipt_sha256": "1f82640b3c3be9cf5fd25ad7b9b895fd29eaf6e91044bde39e2cff35aa5aaeca",
+        "attempt_path": "benchmarks/generic_motion_v1/results/rigor_checks/dev_nto_incumbent/dev_seed0/jobs/dev-bottleneck-000-p00-NTO_REFINED-minimum_distance-cbac2f04/attempts/0001"
+      },
+      "new_state": "completed",
+      "new_status": "success_numerical",
+      "new": {
+        "input_sha256": "3ab997b0c3e0a945328d96a5b078e34b30ec46ffdc9e9a3139d48bb3be060c84",
+        "robot_sha256": "a25f447c8caf4aff6dc76196c3d57cc940f00e802367f48034f06a9973927c75",
+        "geometry_sha256": "896ab9f55c5d8081b843358bd85cde2daae1f432564593f86218bf61733ce4fa",
+        "planner_seed": 851680796,
+        "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c",
+        "frontend_path_sha256": "f3bcd3cc42d93c124cba90798181e0f37c504a888739308eca593c8a68bc303c",
+        "objective_value": 2.9297608639237556,
+        "cold_e2e_seconds": 1.7160900360904634,
+        "minimum_sampled_clearance_m": 0.01902502658433342,
+        "validation_passed": true,
+        "status_basis": "saved_candidate_independently_validated_within_budget",
+        "raw_status": "success_validated_numerical"
+      },
+      "frontend_paths_identical": true
+    },
+    {
+      "problem_id": "dev-bottleneck-000-p00",
+      "scene_id": "dev-bottleneck-000",
+      "cluster_id": "dev-bottleneck-000",
+      "category": "bottleneck",
+      "objective": "minimum_time",
+      "replica_seed": 0,
+      "old_attempt": {
+        "attempts": [
+          "0001"
+        ],
+        "terminal_attempts": [
+          "0001"
+        ],
+        "selected_attempt": "0001",
+        "state": "completed",
+        "receipt_sha256": "041efe6202d29c3f5c55cb2ad778c801906140db70206fecdbe41810dd2d2cbe",
+        "attempt_path": "benchmarks/generic_motion_v1/results/rigor_checks/dev_nto_incumbent/control/dev-bottleneck-000-p00/jobs/dev-bottleneck-000-p00-NTO_REFINED-minimum_time-2dc0f991/attempts/0001"
+      },
+      "old_state": "completed",
+      "old_status": "success_numerical",
+      "old": {
+        "input_sha256": "3ab997b0c3e0a945328d96a5b078e34b30ec46ffdc9e9a3139d48bb3be060c84",
+        "robot_sha256": "a25f447c8caf4aff6dc76196c3d57cc940f00e802367f48034f06a9973927c75",
+        "geometry_sha256": "896ab9f55c5d8081b843358bd85cde2daae1f432564593f86218bf61733ce4fa",
+        "planner_seed": 851680796,
+        "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c",
+        "frontend_path_sha256": "f3bcd3cc42d93c124cba90798181e0f37c504a888739308eca593c8a68bc303c",
+        "objective_value": 3.4784405412904214,
+        "cold_e2e_seconds": 2.4169602910988033,
+        "minimum_sampled_clearance_m": 0.019025026584333388,
+        "validation_passed": true,
+        "status_basis": "saved_candidate_independently_validated_within_budget",
+        "raw_status": "success_validated_numerical"
+      },
+      "new_attempt": {
+        "attempts": [
+          "0001"
+        ],
+        "terminal_attempts": [
+          "0001"
+        ],
+        "selected_attempt": "0001",
+        "state": "completed",
+        "receipt_sha256": "3d2f7c6f4a2f9c3a2d675a45969f6f833c4a5d14b5e7c18b259b7dd95ac8388f",
+        "attempt_path": "benchmarks/generic_motion_v1/results/rigor_checks/dev_nto_incumbent/dev_seed0/jobs/dev-bottleneck-000-p00-NTO_REFINED-minimum_time-2dc0f991/attempts/0001"
+      },
+      "new_state": "completed",
+      "new_status": "success_numerical",
+      "new": {
+        "input_sha256": "3ab997b0c3e0a945328d96a5b078e34b30ec46ffdc9e9a3139d48bb3be060c84",
+        "robot_sha256": "a25f447c8caf4aff6dc76196c3d57cc940f00e802367f48034f06a9973927c75",
+        "geometry_sha256": "896ab9f55c5d8081b843358bd85cde2daae1f432564593f86218bf61733ce4fa",
+        "planner_seed": 851680796,
+        "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c",
+        "frontend_path_sha256": "f3bcd3cc42d93c124cba90798181e0f37c504a888739308eca593c8a68bc303c",
+        "objective_value": 3.4784405412904214,
+        "cold_e2e_seconds": 2.4171097450889647,
+        "minimum_sampled_clearance_m": 0.019025026584333388,
+        "validation_passed": true,
+        "status_basis": "saved_candidate_independently_validated_within_budget",
+        "raw_status": "success_validated_numerical"
+      },
+      "frontend_paths_identical": true
+    },
+    {
+      "problem_id": "dev-bottleneck-001-p00",
+      "scene_id": "dev-bottleneck-001",
+      "cluster_id": "dev-bottleneck-001",
+      "category": "bottleneck",
+      "objective": "minimum_distance",
+      "replica_seed": 0,
+      "old_attempt": {
+        "attempts": [
+          "0001"
+        ],
+        "terminal_attempts": [
+          "0001"
+        ],
+        "selected_attempt": "0001",
+        "state": "completed",
+        "receipt_sha256": "b8ef2d5d7b615de0faea18a22a52f63214f5c29215b2327e352a338f2def50c2",
+        "attempt_path": "benchmarks/generic_motion_v1/results/rigor_checks/dev_nto_incumbent/control/dev-bottleneck-001-p00/jobs/dev-bottleneck-001-p00-NTO_REFINED-minimum_distance-f0d1e124/attempts/0001"
+      },
+      "old_state": "completed",
+      "old_status": "success_numerical",
+      "old": {
+        "input_sha256": "73318d7ec91fa0f89f5e007501b9620c16d722ff4fe53a83406e33fa85c26a4a",
+        "robot_sha256": "a25f447c8caf4aff6dc76196c3d57cc940f00e802367f48034f06a9973927c75",
+        "geometry_sha256": "896ab9f55c5d8081b843358bd85cde2daae1f432564593f86218bf61733ce4fa",
+        "planner_seed": 360624278,
+        "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c",
+        "frontend_path_sha256": "45a8d8f6f8fb64820bcd619a834e0c56048195e991f56a04723822dc9807f54e",
+        "objective_value": 3.3480843673858702,
+        "cold_e2e_seconds": 1.966977097094059,
+        "minimum_sampled_clearance_m": 0.012025549183554226,
+        "validation_passed": true,
+        "status_basis": "saved_candidate_independently_validated_within_budget",
+        "raw_status": "success_validated_numerical"
+      },
+      "new_attempt": {
+        "attempts": [
+          "0001"
+        ],
+        "terminal_attempts": [
+          "0001"
+        ],
+        "selected_attempt": "0001",
+        "state": "completed",
+        "receipt_sha256": "0688975ce7492cd661a96050f26949a72fec77b729bd966f867801a016d13f17",
+        "attempt_path": "benchmarks/generic_motion_v1/results/rigor_checks/dev_nto_incumbent/dev_seed0/jobs/dev-bottleneck-001-p00-NTO_REFINED-minimum_distance-f0d1e124/attempts/0001"
+      },
+      "new_state": "completed",
+      "new_status": "success_numerical",
+      "new": {
+        "input_sha256": "73318d7ec91fa0f89f5e007501b9620c16d722ff4fe53a83406e33fa85c26a4a",
+        "robot_sha256": "a25f447c8caf4aff6dc76196c3d57cc940f00e802367f48034f06a9973927c75",
+        "geometry_sha256": "896ab9f55c5d8081b843358bd85cde2daae1f432564593f86218bf61733ce4fa",
+        "planner_seed": 360624278,
+        "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c",
+        "frontend_path_sha256": "45a8d8f6f8fb64820bcd619a834e0c56048195e991f56a04723822dc9807f54e",
+        "objective_value": 3.3480843673858702,
+        "cold_e2e_seconds": 1.9663177351467311,
+        "minimum_sampled_clearance_m": 0.012025549183554226,
+        "validation_passed": true,
+        "status_basis": "saved_candidate_independently_validated_within_budget",
+        "raw_status": "success_validated_numerical"
+      },
+      "frontend_paths_identical": true
+    },
+    {
+      "problem_id": "dev-bottleneck-001-p00",
+      "scene_id": "dev-bottleneck-001",
+      "cluster_id": "dev-bottleneck-001",
+      "category": "bottleneck",
+      "objective": "minimum_time",
+      "replica_seed": 0,
+      "old_attempt": {
+        "attempts": [
+          "0001"
+        ],
+        "terminal_attempts": [
+          "0001"
+        ],
+        "selected_attempt": "0001",
+        "state": "completed",
+        "receipt_sha256": "05aa02aae4e391c507486a6ac052cec643dc1a96d37971d218e198fc6246056b",
+        "attempt_path": "benchmarks/generic_motion_v1/results/rigor_checks/dev_nto_incumbent/control/dev-bottleneck-001-p00/jobs/dev-bottleneck-001-p00-NTO_REFINED-minimum_time-b8092d66/attempts/0001"
+      },
+      "old_state": "completed",
+      "old_status": "success_numerical",
+      "old": {
+        "input_sha256": "73318d7ec91fa0f89f5e007501b9620c16d722ff4fe53a83406e33fa85c26a4a",
+        "robot_sha256": "a25f447c8caf4aff6dc76196c3d57cc940f00e802367f48034f06a9973927c75",
+        "geometry_sha256": "896ab9f55c5d8081b843358bd85cde2daae1f432564593f86218bf61733ce4fa",
+        "planner_seed": 360624278,
+        "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c",
+        "frontend_path_sha256": "45a8d8f6f8fb64820bcd619a834e0c56048195e991f56a04723822dc9807f54e",
+        "objective_value": 3.3893403851323347,
+        "cold_e2e_seconds": 2.718105094972998,
+        "minimum_sampled_clearance_m": 0.008403184166370245,
+        "validation_passed": true,
+        "status_basis": "saved_candidate_independently_validated_within_budget",
+        "raw_status": "success_validated_numerical"
+      },
+      "new_attempt": {
+        "attempts": [
+          "0001"
+        ],
+        "terminal_attempts": [
+          "0001"
+        ],
+        "selected_attempt": "0001",
+        "state": "completed",
+        "receipt_sha256": "529a40d86a686868bf099545ddab2c650c6fe148634a6e31f9c9aa6b2c4e2150",
+        "attempt_path": "benchmarks/generic_motion_v1/results/rigor_checks/dev_nto_incumbent/dev_seed0/jobs/dev-bottleneck-001-p00-NTO_REFINED-minimum_time-b8092d66/attempts/0001"
+      },
+      "new_state": "completed",
+      "new_status": "success_numerical",
+      "new": {
+        "input_sha256": "73318d7ec91fa0f89f5e007501b9620c16d722ff4fe53a83406e33fa85c26a4a",
+        "robot_sha256": "a25f447c8caf4aff6dc76196c3d57cc940f00e802367f48034f06a9973927c75",
+        "geometry_sha256": "896ab9f55c5d8081b843358bd85cde2daae1f432564593f86218bf61733ce4fa",
+        "planner_seed": 360624278,
+        "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c",
+        "frontend_path_sha256": "45a8d8f6f8fb64820bcd619a834e0c56048195e991f56a04723822dc9807f54e",
+        "objective_value": 3.3893403851323347,
+        "cold_e2e_seconds": 2.7171278540045023,
+        "minimum_sampled_clearance_m": 0.008403184166370245,
+        "validation_passed": true,
+        "status_basis": "saved_candidate_independently_validated_within_budget",
+        "raw_status": "success_validated_numerical"
+      },
+      "frontend_paths_identical": true
+    },
+    {
+      "problem_id": "dev-bottleneck-002-p00",
+      "scene_id": "dev-bottleneck-002",
+      "cluster_id": "dev-bottleneck-002",
+      "category": "bottleneck",
+      "objective": "minimum_distance",
+      "replica_seed": 0,
+      "old_attempt": {
+        "attempts": [
+          "0001"
+        ],
+        "terminal_attempts": [
+          "0001"
+        ],
+        "selected_attempt": "0001",
+        "state": "completed",
+        "receipt_sha256": "8d0794bcb0f946b533cc3f12462510e678a8ceb3a18be37c86a5875018273632",
+        "attempt_path": "benchmarks/generic_motion_v1/results/rigor_checks/dev_nto_incumbent/control/dev-bottleneck-002-p00/jobs/dev-bottleneck-002-p00-NTO_REFINED-minimum_distance-1ac21a2c/attempts/0001"
+      },
+      "old_state": "completed",
+      "old_status": "success_numerical",
+      "old": {
+        "input_sha256": "3619c7836a397702d7552185c36ae321596e08bb24fa44f22b96eb77ba3691f7",
+        "robot_sha256": "a25f447c8caf4aff6dc76196c3d57cc940f00e802367f48034f06a9973927c75",
+        "geometry_sha256": "896ab9f55c5d8081b843358bd85cde2daae1f432564593f86218bf61733ce4fa",
+        "planner_seed": 2838271267,
+        "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c",
+        "frontend_path_sha256": "9c4424dbd8a4257f5c07b13983a34ad4b117591eac1540d34304176f367b8d99",
+        "objective_value": 3.0536178975014003,
+        "cold_e2e_seconds": 1.8658556337468326,
+        "minimum_sampled_clearance_m": 0.019025026584333377,
+        "validation_passed": true,
+        "status_basis": "saved_candidate_independently_validated_within_budget",
+        "raw_status": "success_validated_numerical"
+      },
+      "new_attempt": {
+        "attempts": [
+          "0001"
+        ],
+        "terminal_attempts": [
+          "0001"
+        ],
+        "selected_attempt": "0001",
+        "state": "completed",
+        "receipt_sha256": "34a96a3366501549714898f881e237e6b5d179fb9da01ba2da99bd956d1cdad1",
+        "attempt_path": "benchmarks/generic_motion_v1/results/rigor_checks/dev_nto_incumbent/dev_seed0/jobs/dev-bottleneck-002-p00-NTO_REFINED-minimum_distance-1ac21a2c/attempts/0001"
+      },
+      "new_state": "completed",
+      "new_status": "success_numerical",
+      "new": {
+        "input_sha256": "3619c7836a397702d7552185c36ae321596e08bb24fa44f22b96eb77ba3691f7",
+        "robot_sha256": "a25f447c8caf4aff6dc76196c3d57cc940f00e802367f48034f06a9973927c75",
+        "geometry_sha256": "896ab9f55c5d8081b843358bd85cde2daae1f432564593f86218bf61733ce4fa",
+        "planner_seed": 2838271267,
+        "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c",
+        "frontend_path_sha256": "9c4424dbd8a4257f5c07b13983a34ad4b117591eac1540d34304176f367b8d99",
+        "objective_value": 3.0536178975014003,
+        "cold_e2e_seconds": 1.8174284133128822,
+        "minimum_sampled_clearance_m": 0.019025026584333377,
+        "validation_passed": true,
+        "status_basis": "saved_candidate_independently_validated_within_budget",
+        "raw_status": "success_validated_numerical"
+      },
+      "frontend_paths_identical": true
+    },
+    {
+      "problem_id": "dev-bottleneck-002-p00",
+      "scene_id": "dev-bottleneck-002",
+      "cluster_id": "dev-bottleneck-002",
+      "category": "bottleneck",
+      "objective": "minimum_time",
+      "replica_seed": 0,
+      "old_attempt": {
+        "attempts": [
+          "0001"
+        ],
+        "terminal_attempts": [
+          "0001"
+        ],
+        "selected_attempt": "0001",
+        "state": "completed",
+        "receipt_sha256": "1308adcaccb3f482081cf42b8a7567878e02cafb235d615ae6264294479a32c6",
+        "attempt_path": "benchmarks/generic_motion_v1/results/rigor_checks/dev_nto_incumbent/control/dev-bottleneck-002-p00/jobs/dev-bottleneck-002-p00-NTO_REFINED-minimum_time-d5c19fb4/attempts/0001"
+      },
+      "old_state": "completed",
+      "old_status": "success_numerical",
+      "old": {
+        "input_sha256": "3619c7836a397702d7552185c36ae321596e08bb24fa44f22b96eb77ba3691f7",
+        "robot_sha256": "a25f447c8caf4aff6dc76196c3d57cc940f00e802367f48034f06a9973927c75",
+        "geometry_sha256": "896ab9f55c5d8081b843358bd85cde2daae1f432564593f86218bf61733ce4fa",
+        "planner_seed": 2838271267,
+        "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c",
+        "frontend_path_sha256": "9c4424dbd8a4257f5c07b13983a34ad4b117591eac1540d34304176f367b8d99",
+        "objective_value": 3.361944042685466,
+        "cold_e2e_seconds": 2.667307524010539,
+        "minimum_sampled_clearance_m": 0.019025026584333367,
+        "validation_passed": true,
+        "status_basis": "saved_candidate_independently_validated_within_budget",
+        "raw_status": "success_validated_numerical"
+      },
+      "new_attempt": {
+        "attempts": [
+          "0001"
+        ],
+        "terminal_attempts": [
+          "0001"
+        ],
+        "selected_attempt": "0001",
+        "state": "completed",
+        "receipt_sha256": "757547e40ee95b00d36af888acaf182dfb60cbb778bfd916ef49f8ad2fc4ccb4",
+        "attempt_path": "benchmarks/generic_motion_v1/results/rigor_checks/dev_nto_incumbent/dev_seed0/jobs/dev-bottleneck-002-p00-NTO_REFINED-minimum_time-d5c19fb4/attempts/0001"
+      },
+      "new_state": "completed",
+      "new_status": "success_numerical",
+      "new": {
+        "input_sha256": "3619c7836a397702d7552185c36ae321596e08bb24fa44f22b96eb77ba3691f7",
+        "robot_sha256": "a25f447c8caf4aff6dc76196c3d57cc940f00e802367f48034f06a9973927c75",
+        "geometry_sha256": "896ab9f55c5d8081b843358bd85cde2daae1f432564593f86218bf61733ce4fa",
+        "planner_seed": 2838271267,
+        "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c",
+        "frontend_path_sha256": "9c4424dbd8a4257f5c07b13983a34ad4b117591eac1540d34304176f367b8d99",
+        "objective_value": 3.361944042685466,
+        "cold_e2e_seconds": 2.670252236071974,
+        "minimum_sampled_clearance_m": 0.019025026584333367,
+        "validation_passed": true,
+        "status_basis": "saved_candidate_independently_validated_within_budget",
+        "raw_status": "success_validated_numerical"
+      },
+      "frontend_paths_identical": true
+    },
+    {
+      "problem_id": "dev-dense_clutter-000-p00",
+      "scene_id": "dev-dense_clutter-000",
+      "cluster_id": "dev-dense_clutter-000",
+      "category": "dense_clutter",
+      "objective": "minimum_distance",
+      "replica_seed": 0,
+      "old_attempt": {
+        "attempts": [
+          "0001"
+        ],
+        "terminal_attempts": [
+          "0001"
+        ],
+        "selected_attempt": "0001",
+        "state": "completed",
+        "receipt_sha256": "e86af1894158234b57097301614997eb69f713b77e689927e8ae94650583216a",
+        "attempt_path": "benchmarks/generic_motion_v1/results/rigor_checks/dev_nto_incumbent/control/dev-dense_clutter-000-p00/jobs/dev-dense_clutter-000-p00-NTO_REFINED-minimum_distance-cf2184de/attempts/0001"
+      },
+      "old_state": "completed",
+      "old_status": "no_solution_within_budget",
+      "old": {
+        "input_sha256": "8b16be4ca078df2439e841cf90d9cf72c1e6584164bec6e97fba00feefee1b78",
+        "robot_sha256": "a25f447c8caf4aff6dc76196c3d57cc940f00e802367f48034f06a9973927c75",
+        "geometry_sha256": "896ab9f55c5d8081b843358bd85cde2daae1f432564593f86218bf61733ce4fa",
+        "planner_seed": 1020855309,
+        "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c",
+        "frontend_path_sha256": null,
+        "objective_value": null,
+        "cold_e2e_seconds": 30.85595584101975,
+        "minimum_sampled_clearance_m": null,
+        "validation_passed": null,
+        "status_basis": "raw_status",
+        "raw_status": "frontend_failed"
+      },
+      "new_attempt": {
+        "attempts": [
+          "0001"
+        ],
+        "terminal_attempts": [
+          "0001"
+        ],
+        "selected_attempt": "0001",
+        "state": "completed",
+        "receipt_sha256": "586b706145f2aabf78b8c606743797b7515943702d1008176fbe4a97aca6ff2e",
+        "attempt_path": "benchmarks/generic_motion_v1/results/rigor_checks/dev_nto_incumbent/dev_seed0/jobs/dev-dense_clutter-000-p00-NTO_REFINED-minimum_distance-cf2184de/attempts/0001"
+      },
+      "new_state": "completed",
+      "new_status": "no_solution_within_budget",
+      "new": {
+        "input_sha256": "8b16be4ca078df2439e841cf90d9cf72c1e6584164bec6e97fba00feefee1b78",
+        "robot_sha256": "a25f447c8caf4aff6dc76196c3d57cc940f00e802367f48034f06a9973927c75",
+        "geometry_sha256": "896ab9f55c5d8081b843358bd85cde2daae1f432564593f86218bf61733ce4fa",
+        "planner_seed": 1020855309,
+        "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c",
+        "frontend_path_sha256": null,
+        "objective_value": null,
+        "cold_e2e_seconds": 30.85314195090905,
+        "minimum_sampled_clearance_m": null,
+        "validation_passed": null,
+        "status_basis": "raw_status",
+        "raw_status": "frontend_failed"
+      },
+      "frontend_paths_identical": null
+    },
+    {
+      "problem_id": "dev-dense_clutter-000-p00",
+      "scene_id": "dev-dense_clutter-000",
+      "cluster_id": "dev-dense_clutter-000",
+      "category": "dense_clutter",
+      "objective": "minimum_time",
+      "replica_seed": 0,
+      "old_attempt": {
+        "attempts": [
+          "0001"
+        ],
+        "terminal_attempts": [
+          "0001"
+        ],
+        "selected_attempt": "0001",
+        "state": "completed",
+        "receipt_sha256": "9f551defc2ba96bee2fc1bc88e35ef3e670d0d56ed698b15bc639b46c37c2057",
+        "attempt_path": "benchmarks/generic_motion_v1/results/rigor_checks/dev_nto_incumbent/control/dev-dense_clutter-000-p00/jobs/dev-dense_clutter-000-p00-NTO_REFINED-minimum_time-d2146cf8/attempts/0001"
+      },
+      "old_state": "completed",
+      "old_status": "no_solution_within_budget",
+      "old": {
+        "input_sha256": "8b16be4ca078df2439e841cf90d9cf72c1e6584164bec6e97fba00feefee1b78",
+        "robot_sha256": "a25f447c8caf4aff6dc76196c3d57cc940f00e802367f48034f06a9973927c75",
+        "geometry_sha256": "896ab9f55c5d8081b843358bd85cde2daae1f432564593f86218bf61733ce4fa",
+        "planner_seed": 1020855309,
+        "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c",
+        "frontend_path_sha256": null,
+        "objective_value": null,
+        "cold_e2e_seconds": 30.90564547199756,
+        "minimum_sampled_clearance_m": null,
+        "validation_passed": null,
+        "status_basis": "raw_status",
+        "raw_status": "frontend_failed"
+      },
+      "new_attempt": {
+        "attempts": [
+          "0001"
+        ],
+        "terminal_attempts": [
+          "0001"
+        ],
+        "selected_attempt": "0001",
+        "state": "completed",
+        "receipt_sha256": "47ab81e32e2669c943b6ad2cf12219de309d27e4ebb0150088a11ee62980194b",
+        "attempt_path": "benchmarks/generic_motion_v1/results/rigor_checks/dev_nto_incumbent/dev_seed0/jobs/dev-dense_clutter-000-p00-NTO_REFINED-minimum_time-d2146cf8/attempts/0001"
+      },
+      "new_state": "completed",
+      "new_status": "no_solution_within_budget",
+      "new": {
+        "input_sha256": "8b16be4ca078df2439e841cf90d9cf72c1e6584164bec6e97fba00feefee1b78",
+        "robot_sha256": "a25f447c8caf4aff6dc76196c3d57cc940f00e802367f48034f06a9973927c75",
+        "geometry_sha256": "896ab9f55c5d8081b843358bd85cde2daae1f432564593f86218bf61733ce4fa",
+        "planner_seed": 1020855309,
+        "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c",
+        "frontend_path_sha256": null,
+        "objective_value": null,
+        "cold_e2e_seconds": 30.752599657978863,
+        "minimum_sampled_clearance_m": null,
+        "validation_passed": null,
+        "status_basis": "raw_status",
+        "raw_status": "frontend_failed"
+      },
+      "frontend_paths_identical": null
+    },
+    {
+      "problem_id": "dev-dense_clutter-001-p00",
+      "scene_id": "dev-dense_clutter-001",
+      "cluster_id": "dev-dense_clutter-001",
+      "category": "dense_clutter",
+      "objective": "minimum_distance",
+      "replica_seed": 0,
+      "old_attempt": {
+        "attempts": [
+          "0001"
+        ],
+        "terminal_attempts": [
+          "0001"
+        ],
+        "selected_attempt": "0001",
+        "state": "completed",
+        "receipt_sha256": "a3295168400e31113975cc8873f8e1979ceb1cd18795bcbcfba16b036fd09134",
+        "attempt_path": "benchmarks/generic_motion_v1/results/rigor_checks/dev_nto_incumbent/control/dev-dense_clutter-001-p00/jobs/dev-dense_clutter-001-p00-NTO_REFINED-minimum_distance-9d338dd3/attempts/0001"
+      },
+      "old_state": "completed",
+      "old_status": "success_numerical",
+      "old": {
+        "input_sha256": "aebca6d4cc615c3377c5cbe5f0bc936c362b7e0c1f4e9fa46b8983c820c70000",
+        "robot_sha256": "a25f447c8caf4aff6dc76196c3d57cc940f00e802367f48034f06a9973927c75",
+        "geometry_sha256": "896ab9f55c5d8081b843358bd85cde2daae1f432564593f86218bf61733ce4fa",
+        "planner_seed": 2481988873,
+        "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c",
+        "frontend_path_sha256": "358ae2cf5abe722fe42c80751398f21ec30d26e7b9cbf1d4cef601000650e7b8",
+        "objective_value": 4.007927318472756,
+        "cold_e2e_seconds": 2.7686772947199643,
+        "minimum_sampled_clearance_m": 0.003620642738494273,
+        "validation_passed": true,
+        "status_basis": "saved_candidate_independently_validated_within_budget",
+        "raw_status": "success_validated_numerical"
+      },
+      "new_attempt": {
+        "attempts": [
+          "0001"
+        ],
+        "terminal_attempts": [
+          "0001"
+        ],
+        "selected_attempt": "0001",
+        "state": "completed",
+        "receipt_sha256": "6942c9e510fc79b7902415c3f6424b358945dd087c11546add8ff704e71bdff4",
+        "attempt_path": "benchmarks/generic_motion_v1/results/rigor_checks/dev_nto_incumbent/dev_seed0/jobs/dev-dense_clutter-001-p00-NTO_REFINED-minimum_distance-9d338dd3/attempts/0001"
+      },
+      "new_state": "completed",
+      "new_status": "success_numerical",
+      "new": {
+        "input_sha256": "aebca6d4cc615c3377c5cbe5f0bc936c362b7e0c1f4e9fa46b8983c820c70000",
+        "robot_sha256": "a25f447c8caf4aff6dc76196c3d57cc940f00e802367f48034f06a9973927c75",
+        "geometry_sha256": "896ab9f55c5d8081b843358bd85cde2daae1f432564593f86218bf61733ce4fa",
+        "planner_seed": 2481988873,
+        "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c",
+        "frontend_path_sha256": "358ae2cf5abe722fe42c80751398f21ec30d26e7b9cbf1d4cef601000650e7b8",
+        "objective_value": 4.007927318472756,
+        "cold_e2e_seconds": 2.91879724804312,
+        "minimum_sampled_clearance_m": 0.003620642738494273,
+        "validation_passed": true,
+        "status_basis": "saved_candidate_independently_validated_within_budget",
+        "raw_status": "success_validated_numerical"
+      },
+      "frontend_paths_identical": true
+    },
+    {
+      "problem_id": "dev-dense_clutter-001-p00",
+      "scene_id": "dev-dense_clutter-001",
+      "cluster_id": "dev-dense_clutter-001",
+      "category": "dense_clutter",
+      "objective": "minimum_time",
+      "replica_seed": 0,
+      "old_attempt": {
+        "attempts": [
+          "0001"
+        ],
+        "terminal_attempts": [
+          "0001"
+        ],
+        "selected_attempt": "0001",
+        "state": "completed",
+        "receipt_sha256": "c1d4433d4c716e3ae26de1099a7fe17603f22b03175b8ff046a492edf6117fc6",
+        "attempt_path": "benchmarks/generic_motion_v1/results/rigor_checks/dev_nto_incumbent/control/dev-dense_clutter-001-p00/jobs/dev-dense_clutter-001-p00-NTO_REFINED-minimum_time-3b0eb9f1/attempts/0001"
+      },
+      "old_state": "completed",
+      "old_status": "success_numerical",
+      "old": {
+        "input_sha256": "aebca6d4cc615c3377c5cbe5f0bc936c362b7e0c1f4e9fa46b8983c820c70000",
+        "robot_sha256": "a25f447c8caf4aff6dc76196c3d57cc940f00e802367f48034f06a9973927c75",
+        "geometry_sha256": "896ab9f55c5d8081b843358bd85cde2daae1f432564593f86218bf61733ce4fa",
+        "planner_seed": 2481988873,
+        "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c",
+        "frontend_path_sha256": "358ae2cf5abe722fe42c80751398f21ec30d26e7b9cbf1d4cef601000650e7b8",
+        "objective_value": 4.100998470153269,
+        "cold_e2e_seconds": 3.6191591382957995,
+        "minimum_sampled_clearance_m": 0.008576017927032664,
+        "validation_passed": true,
+        "status_basis": "saved_candidate_independently_validated_within_budget",
+        "raw_status": "success_validated_numerical"
+      },
+      "new_attempt": {
+        "attempts": [
+          "0001"
+        ],
+        "terminal_attempts": [
+          "0001"
+        ],
+        "selected_attempt": "0001",
+        "state": "completed",
+        "receipt_sha256": "3031a252386c983b0c3840397d1c05012634bf629e7ff2a2e39db6cf98a2cc99",
+        "attempt_path": "benchmarks/generic_motion_v1/results/rigor_checks/dev_nto_incumbent/dev_seed0/jobs/dev-dense_clutter-001-p00-NTO_REFINED-minimum_time-3b0eb9f1/attempts/0001"
+      },
+      "new_state": "completed",
+      "new_status": "success_numerical",
+      "new": {
+        "input_sha256": "aebca6d4cc615c3377c5cbe5f0bc936c362b7e0c1f4e9fa46b8983c820c70000",
+        "robot_sha256": "a25f447c8caf4aff6dc76196c3d57cc940f00e802367f48034f06a9973927c75",
+        "geometry_sha256": "896ab9f55c5d8081b843358bd85cde2daae1f432564593f86218bf61733ce4fa",
+        "planner_seed": 2481988873,
+        "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c",
+        "frontend_path_sha256": "358ae2cf5abe722fe42c80751398f21ec30d26e7b9cbf1d4cef601000650e7b8",
+        "objective_value": 4.100998470153269,
+        "cold_e2e_seconds": 3.618130047339946,
+        "minimum_sampled_clearance_m": 0.008576017927032664,
+        "validation_passed": true,
+        "status_basis": "saved_candidate_independently_validated_within_budget",
+        "raw_status": "success_validated_numerical"
+      },
+      "frontend_paths_identical": true
+    },
+    {
+      "problem_id": "dev-dense_clutter-002-p00",
+      "scene_id": "dev-dense_clutter-002",
+      "cluster_id": "dev-dense_clutter-002",
+      "category": "dense_clutter",
+      "objective": "minimum_distance",
+      "replica_seed": 0,
+      "old_attempt": {
+        "attempts": [
+          "0001"
+        ],
+        "terminal_attempts": [
+          "0001"
+        ],
+        "selected_attempt": "0001",
+        "state": "completed",
+        "receipt_sha256": "4ce8db41d35638b39781e7ed83e728ec52121dfa22082c79bd18c7e63d5f6d32",
+        "attempt_path": "benchmarks/generic_motion_v1/results/rigor_checks/dev_nto_incumbent/control/dev-dense_clutter-002-p00/jobs/dev-dense_clutter-002-p00-NTO_REFINED-minimum_distance-f9bda55e/attempts/0001"
+      },
+      "old_state": "completed",
+      "old_status": "solver_failure",
+      "old": {
+        "input_sha256": "24727a5035a1142c0e661849ffe3278defb0850935e1ab33985c616e6efaa7b4",
+        "robot_sha256": "a25f447c8caf4aff6dc76196c3d57cc940f00e802367f48034f06a9973927c75",
+        "geometry_sha256": "896ab9f55c5d8081b843358bd85cde2daae1f432564593f86218bf61733ce4fa",
+        "planner_seed": 3438572441,
+        "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c",
+        "frontend_path_sha256": "ec8924fd98847996f8cb005800127799b51b84ff502b5242e6eb6de71c38bcf2",
+        "objective_value": null,
+        "cold_e2e_seconds": 11.577664609998465,
+        "minimum_sampled_clearance_m": -0.061315331643739965,
+        "validation_passed": false,
+        "status_basis": "saved_output_evidence_rejected",
+        "raw_status": "solver_failed"
+      },
+      "new_attempt": {
+        "attempts": [
+          "0001"
+        ],
+        "terminal_attempts": [
+          "0001"
+        ],
+        "selected_attempt": "0001",
+        "state": "completed",
+        "receipt_sha256": "a281aa7678c0d0759138f5faa0e1a04f86a19651cd3f70960973ca6ebc690bcb",
+        "attempt_path": "benchmarks/generic_motion_v1/results/rigor_checks/dev_nto_incumbent/dev_seed0/jobs/dev-dense_clutter-002-p00-NTO_REFINED-minimum_distance-f9bda55e/attempts/0001"
+      },
+      "new_state": "completed",
+      "new_status": "solver_failure",
+      "new": {
+        "input_sha256": "24727a5035a1142c0e661849ffe3278defb0850935e1ab33985c616e6efaa7b4",
+        "robot_sha256": "a25f447c8caf4aff6dc76196c3d57cc940f00e802367f48034f06a9973927c75",
+        "geometry_sha256": "896ab9f55c5d8081b843358bd85cde2daae1f432564593f86218bf61733ce4fa",
+        "planner_seed": 3438572441,
+        "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c",
+        "frontend_path_sha256": "ec8924fd98847996f8cb005800127799b51b84ff502b5242e6eb6de71c38bcf2",
+        "objective_value": null,
+        "cold_e2e_seconds": 11.592606996186078,
+        "minimum_sampled_clearance_m": -0.061315331643739965,
+        "validation_passed": false,
+        "status_basis": "saved_output_evidence_rejected",
+        "raw_status": "solver_failed"
+      },
+      "frontend_paths_identical": true
+    },
+    {
+      "problem_id": "dev-dense_clutter-002-p00",
+      "scene_id": "dev-dense_clutter-002",
+      "cluster_id": "dev-dense_clutter-002",
+      "category": "dense_clutter",
+      "objective": "minimum_time",
+      "replica_seed": 0,
+      "old_attempt": {
+        "attempts": [
+          "0001"
+        ],
+        "terminal_attempts": [
+          "0001"
+        ],
+        "selected_attempt": "0001",
+        "state": "completed",
+        "receipt_sha256": "a9b999fbfca2610d7d43e6c9d557d94c623b3647cfb45ffd12d8dbddbf675cff",
+        "attempt_path": "benchmarks/generic_motion_v1/results/rigor_checks/dev_nto_incumbent/control/dev-dense_clutter-002-p00/jobs/dev-dense_clutter-002-p00-NTO_REFINED-minimum_time-50757eb2/attempts/0001"
+      },
+      "old_state": "completed",
+      "old_status": "success_numerical",
+      "old": {
+        "input_sha256": "24727a5035a1142c0e661849ffe3278defb0850935e1ab33985c616e6efaa7b4",
+        "robot_sha256": "a25f447c8caf4aff6dc76196c3d57cc940f00e802367f48034f06a9973927c75",
+        "geometry_sha256": "896ab9f55c5d8081b843358bd85cde2daae1f432564593f86218bf61733ce4fa",
+        "planner_seed": 3438572441,
+        "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c",
+        "frontend_path_sha256": "ec8924fd98847996f8cb005800127799b51b84ff502b5242e6eb6de71c38bcf2",
+        "objective_value": 3.4326331424761474,
+        "cold_e2e_seconds": 3.069232535082847,
+        "minimum_sampled_clearance_m": 0.011180158824956266,
+        "validation_passed": true,
+        "status_basis": "saved_candidate_independently_validated_within_budget",
+        "raw_status": "success_validated_numerical"
+      },
+      "new_attempt": {
+        "attempts": [
+          "0001"
+        ],
+        "terminal_attempts": [
+          "0001"
+        ],
+        "selected_attempt": "0001",
+        "state": "completed",
+        "receipt_sha256": "ed74268ab30ee157efbef7c83f1203d9d850cbb6313edd36720de49bf5df5363",
+        "attempt_path": "benchmarks/generic_motion_v1/results/rigor_checks/dev_nto_incumbent/dev_seed0/jobs/dev-dense_clutter-002-p00-NTO_REFINED-minimum_time-50757eb2/attempts/0001"
+      },
+      "new_state": "completed",
+      "new_status": "success_numerical",
+      "new": {
+        "input_sha256": "24727a5035a1142c0e661849ffe3278defb0850935e1ab33985c616e6efaa7b4",
+        "robot_sha256": "a25f447c8caf4aff6dc76196c3d57cc940f00e802367f48034f06a9973927c75",
+        "geometry_sha256": "896ab9f55c5d8081b843358bd85cde2daae1f432564593f86218bf61733ce4fa",
+        "planner_seed": 3438572441,
+        "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c",
+        "frontend_path_sha256": "ec8924fd98847996f8cb005800127799b51b84ff502b5242e6eb6de71c38bcf2",
+        "objective_value": 3.4326331424761474,
+        "cold_e2e_seconds": 3.118647184688598,
+        "minimum_sampled_clearance_m": 0.011180158824956266,
+        "validation_passed": true,
+        "status_basis": "saved_candidate_independently_validated_within_budget",
+        "raw_status": "success_validated_numerical"
+      },
+      "frontend_paths_identical": true
+    },
+    {
+      "problem_id": "dev-route_choice-000-p00",
+      "scene_id": "dev-route_choice-000",
+      "cluster_id": "dev-route_choice-000",
+      "category": "route_choice",
+      "objective": "minimum_distance",
+      "replica_seed": 0,
+      "old_attempt": {
+        "attempts": [
+          "0001"
+        ],
+        "terminal_attempts": [
+          "0001"
+        ],
+        "selected_attempt": "0001",
+        "state": "completed",
+        "receipt_sha256": "a67d7b464e039193e5c266c4f148ae9cf18a653e0d235a272e625540a8227f4f",
+        "attempt_path": "benchmarks/generic_motion_v1/results/rigor_checks/dev_nto_incumbent/control/dev-route_choice-000-p00/jobs/dev-route_choice-000-p00-NTO_REFINED-minimum_distance-c79a3596/attempts/0001"
+      },
+      "old_state": "completed",
+      "old_status": "success_numerical",
+      "old": {
+        "input_sha256": "2bbb09b49786783803c481eafbeb0c9f30276b8dde08c841db9ba47cbcd23343",
+        "robot_sha256": "a25f447c8caf4aff6dc76196c3d57cc940f00e802367f48034f06a9973927c75",
+        "geometry_sha256": "896ab9f55c5d8081b843358bd85cde2daae1f432564593f86218bf61733ce4fa",
+        "planner_seed": 234160451,
+        "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c",
+        "frontend_path_sha256": "bd26723acd8261db8a11d54b6814406bc7b01f591bd89581f284dd75b03f3c49",
+        "objective_value": 3.036416335558628,
+        "cold_e2e_seconds": 1.9666097182780504,
+        "minimum_sampled_clearance_m": 0.0190250265843331,
+        "validation_passed": true,
+        "status_basis": "saved_candidate_independently_validated_within_budget",
+        "raw_status": "success_validated_numerical"
+      },
+      "new_attempt": {
+        "attempts": [
+          "0001"
+        ],
+        "terminal_attempts": [
+          "0001"
+        ],
+        "selected_attempt": "0001",
+        "state": "completed",
+        "receipt_sha256": "81ddb94c0865b1f437610a53f31ab96d72242876c249fcd810e721607413a936",
+        "attempt_path": "benchmarks/generic_motion_v1/results/rigor_checks/dev_nto_incumbent/dev_seed0/jobs/dev-route_choice-000-p00-NTO_REFINED-minimum_distance-c79a3596/attempts/0001"
+      },
+      "new_state": "completed",
+      "new_status": "success_numerical",
+      "new": {
+        "input_sha256": "2bbb09b49786783803c481eafbeb0c9f30276b8dde08c841db9ba47cbcd23343",
+        "robot_sha256": "a25f447c8caf4aff6dc76196c3d57cc940f00e802367f48034f06a9973927c75",
+        "geometry_sha256": "896ab9f55c5d8081b843358bd85cde2daae1f432564593f86218bf61733ce4fa",
+        "planner_seed": 234160451,
+        "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c",
+        "frontend_path_sha256": "bd26723acd8261db8a11d54b6814406bc7b01f591bd89581f284dd75b03f3c49",
+        "objective_value": 3.036416335558628,
+        "cold_e2e_seconds": 1.967537506017834,
+        "minimum_sampled_clearance_m": 0.0190250265843331,
+        "validation_passed": true,
+        "status_basis": "saved_candidate_independently_validated_within_budget",
+        "raw_status": "success_validated_numerical"
+      },
+      "frontend_paths_identical": true
+    },
+    {
+      "problem_id": "dev-route_choice-000-p00",
+      "scene_id": "dev-route_choice-000",
+      "cluster_id": "dev-route_choice-000",
+      "category": "route_choice",
+      "objective": "minimum_time",
+      "replica_seed": 0,
+      "old_attempt": {
+        "attempts": [
+          "0001"
+        ],
+        "terminal_attempts": [
+          "0001"
+        ],
+        "selected_attempt": "0001",
+        "state": "completed",
+        "receipt_sha256": "f116f275ce33bcf5965b27338f524ad608f186b8bc0e76332579e1f1790f5e6a",
+        "attempt_path": "benchmarks/generic_motion_v1/results/rigor_checks/dev_nto_incumbent/control/dev-route_choice-000-p00/jobs/dev-route_choice-000-p00-NTO_REFINED-minimum_time-23d94c6f/attempts/0001"
+      },
+      "old_state": "completed",
+      "old_status": "success_numerical",
+      "old": {
+        "input_sha256": "2bbb09b49786783803c481eafbeb0c9f30276b8dde08c841db9ba47cbcd23343",
+        "robot_sha256": "a25f447c8caf4aff6dc76196c3d57cc940f00e802367f48034f06a9973927c75",
+        "geometry_sha256": "896ab9f55c5d8081b843358bd85cde2daae1f432564593f86218bf61733ce4fa",
+        "planner_seed": 234160451,
+        "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c",
+        "frontend_path_sha256": "bd26723acd8261db8a11d54b6814406bc7b01f591bd89581f284dd75b03f3c49",
+        "objective_value": 3.5118174326123914,
+        "cold_e2e_seconds": 2.817753708921373,
+        "minimum_sampled_clearance_m": 0.019025026584333037,
+        "validation_passed": true,
+        "status_basis": "saved_candidate_independently_validated_within_budget",
+        "raw_status": "success_validated_numerical"
+      },
+      "new_attempt": {
+        "attempts": [
+          "0001"
+        ],
+        "terminal_attempts": [
+          "0001"
+        ],
+        "selected_attempt": "0001",
+        "state": "completed",
+        "receipt_sha256": "23cddf522d24b556b0f6ed22b084636d6b140ee83f8b1acfac8e16c1d5822794",
+        "attempt_path": "benchmarks/generic_motion_v1/results/rigor_checks/dev_nto_incumbent/dev_seed0/jobs/dev-route_choice-000-p00-NTO_REFINED-minimum_time-23d94c6f/attempts/0001"
+      },
+      "new_state": "completed",
+      "new_status": "success_numerical",
+      "new": {
+        "input_sha256": "2bbb09b49786783803c481eafbeb0c9f30276b8dde08c841db9ba47cbcd23343",
+        "robot_sha256": "a25f447c8caf4aff6dc76196c3d57cc940f00e802367f48034f06a9973927c75",
+        "geometry_sha256": "896ab9f55c5d8081b843358bd85cde2daae1f432564593f86218bf61733ce4fa",
+        "planner_seed": 234160451,
+        "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c",
+        "frontend_path_sha256": "bd26723acd8261db8a11d54b6814406bc7b01f591bd89581f284dd75b03f3c49",
+        "objective_value": 3.5118174326123914,
+        "cold_e2e_seconds": 2.8181427642703056,
+        "minimum_sampled_clearance_m": 0.019025026584333037,
+        "validation_passed": true,
+        "status_basis": "saved_candidate_independently_validated_within_budget",
+        "raw_status": "success_validated_numerical"
+      },
+      "frontend_paths_identical": true
+    },
+    {
+      "problem_id": "dev-route_choice-001-p00",
+      "scene_id": "dev-route_choice-001",
+      "cluster_id": "dev-route_choice-001",
+      "category": "route_choice",
+      "objective": "minimum_distance",
+      "replica_seed": 0,
+      "old_attempt": {
+        "attempts": [
+          "0001"
+        ],
+        "terminal_attempts": [
+          "0001"
+        ],
+        "selected_attempt": "0001",
+        "state": "completed",
+        "receipt_sha256": "47e7e8c14ecd65b200ad84d076f5583006597898e1ff79fa52068c28885c483f",
+        "attempt_path": "benchmarks/generic_motion_v1/results/rigor_checks/dev_nto_incumbent/control/dev-route_choice-001-p00/jobs/dev-route_choice-001-p00-NTO_REFINED-minimum_distance-95213f8e/attempts/0001"
+      },
+      "old_state": "completed",
+      "old_status": "success_numerical",
+      "old": {
+        "input_sha256": "f9119cf20378f20ceb1e6b0f3e6f0628ffade18de075eb2b896303569d15d5a0",
+        "robot_sha256": "a25f447c8caf4aff6dc76196c3d57cc940f00e802367f48034f06a9973927c75",
+        "geometry_sha256": "896ab9f55c5d8081b843358bd85cde2daae1f432564593f86218bf61733ce4fa",
+        "planner_seed": 120307751,
+        "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c",
+        "frontend_path_sha256": "1400ed1998c629b43a30343a96143c3f954f91f79f7dabf0ab96b3b850ccb154",
+        "objective_value": 2.2833471586397835,
+        "cold_e2e_seconds": 1.6662678397260606,
+        "minimum_sampled_clearance_m": 0.0190250265843335,
+        "validation_passed": true,
+        "status_basis": "saved_candidate_independently_validated_within_budget",
+        "raw_status": "success_validated_numerical"
+      },
+      "new_attempt": {
+        "attempts": [
+          "0001"
+        ],
+        "terminal_attempts": [
+          "0001"
+        ],
+        "selected_attempt": "0001",
+        "state": "completed",
+        "receipt_sha256": "8ec8735af58b0f04459e75a53cee67812fa5ac67497ea77d1ac34b7e7319c952",
+        "attempt_path": "benchmarks/generic_motion_v1/results/rigor_checks/dev_nto_incumbent/dev_seed0/jobs/dev-route_choice-001-p00-NTO_REFINED-minimum_distance-95213f8e/attempts/0001"
+      },
+      "new_state": "completed",
+      "new_status": "success_numerical",
+      "new": {
+        "input_sha256": "f9119cf20378f20ceb1e6b0f3e6f0628ffade18de075eb2b896303569d15d5a0",
+        "robot_sha256": "a25f447c8caf4aff6dc76196c3d57cc940f00e802367f48034f06a9973927c75",
+        "geometry_sha256": "896ab9f55c5d8081b843358bd85cde2daae1f432564593f86218bf61733ce4fa",
+        "planner_seed": 120307751,
+        "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c",
+        "frontend_path_sha256": "1400ed1998c629b43a30343a96143c3f954f91f79f7dabf0ab96b3b850ccb154",
+        "objective_value": 2.2833471586397835,
+        "cold_e2e_seconds": 1.6659340490587056,
+        "minimum_sampled_clearance_m": 0.0190250265843335,
+        "validation_passed": true,
+        "status_basis": "saved_candidate_independently_validated_within_budget",
+        "raw_status": "success_validated_numerical"
+      },
+      "frontend_paths_identical": true
+    },
+    {
+      "problem_id": "dev-route_choice-001-p00",
+      "scene_id": "dev-route_choice-001",
+      "cluster_id": "dev-route_choice-001",
+      "category": "route_choice",
+      "objective": "minimum_time",
+      "replica_seed": 0,
+      "old_attempt": {
+        "attempts": [
+          "0001"
+        ],
+        "terminal_attempts": [
+          "0001"
+        ],
+        "selected_attempt": "0001",
+        "state": "completed",
+        "receipt_sha256": "3d2b94f8f19fdaa66f5abc5375f650d3291339f4d495c9dc5e508c9dd90aeb56",
+        "attempt_path": "benchmarks/generic_motion_v1/results/rigor_checks/dev_nto_incumbent/control/dev-route_choice-001-p00/jobs/dev-route_choice-001-p00-NTO_REFINED-minimum_time-1d57921f/attempts/0001"
+      },
+      "old_state": "completed",
+      "old_status": "success_numerical",
+      "old": {
+        "input_sha256": "f9119cf20378f20ceb1e6b0f3e6f0628ffade18de075eb2b896303569d15d5a0",
+        "robot_sha256": "a25f447c8caf4aff6dc76196c3d57cc940f00e802367f48034f06a9973927c75",
+        "geometry_sha256": "896ab9f55c5d8081b843358bd85cde2daae1f432564593f86218bf61733ce4fa",
+        "planner_seed": 120307751,
+        "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c",
+        "frontend_path_sha256": "1400ed1998c629b43a30343a96143c3f954f91f79f7dabf0ab96b3b850ccb154",
+        "objective_value": 2.464454348092381,
+        "cold_e2e_seconds": 2.5683924639597535,
+        "minimum_sampled_clearance_m": 0.019025026584333506,
+        "validation_passed": true,
+        "status_basis": "saved_candidate_independently_validated_within_budget",
+        "raw_status": "success_validated_numerical"
+      },
+      "new_attempt": {
+        "attempts": [
+          "0001"
+        ],
+        "terminal_attempts": [
+          "0001"
+        ],
+        "selected_attempt": "0001",
+        "state": "completed",
+        "receipt_sha256": "9217112c4b4762ca6d7397ddb5da0524c810cae3d7a9d3a82e744aa5d37d0dcf",
+        "attempt_path": "benchmarks/generic_motion_v1/results/rigor_checks/dev_nto_incumbent/dev_seed0/jobs/dev-route_choice-001-p00-NTO_REFINED-minimum_time-1d57921f/attempts/0001"
+      },
+      "new_state": "completed",
+      "new_status": "success_numerical",
+      "new": {
+        "input_sha256": "f9119cf20378f20ceb1e6b0f3e6f0628ffade18de075eb2b896303569d15d5a0",
+        "robot_sha256": "a25f447c8caf4aff6dc76196c3d57cc940f00e802367f48034f06a9973927c75",
+        "geometry_sha256": "896ab9f55c5d8081b843358bd85cde2daae1f432564593f86218bf61733ce4fa",
+        "planner_seed": 120307751,
+        "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c",
+        "frontend_path_sha256": "1400ed1998c629b43a30343a96143c3f954f91f79f7dabf0ab96b3b850ccb154",
+        "objective_value": 2.464454348092381,
+        "cold_e2e_seconds": 2.5674464819021523,
+        "minimum_sampled_clearance_m": 0.019025026584333506,
+        "validation_passed": true,
+        "status_basis": "saved_candidate_independently_validated_within_budget",
+        "raw_status": "success_validated_numerical"
+      },
+      "frontend_paths_identical": true
+    },
+    {
+      "problem_id": "dev-route_choice-002-p00",
+      "scene_id": "dev-route_choice-002",
+      "cluster_id": "dev-route_choice-002",
+      "category": "route_choice",
+      "objective": "minimum_distance",
+      "replica_seed": 0,
+      "old_attempt": {
+        "attempts": [
+          "0001"
+        ],
+        "terminal_attempts": [
+          "0001"
+        ],
+        "selected_attempt": "0001",
+        "state": "completed",
+        "receipt_sha256": "34c3f81ec49d994d5506249a9345bf3f732aa9b2c94676519e67cf0c2f48d908",
+        "attempt_path": "benchmarks/generic_motion_v1/results/rigor_checks/dev_nto_incumbent/control/dev-route_choice-002-p00/jobs/dev-route_choice-002-p00-NTO_REFINED-minimum_distance-f47f8514/attempts/0001"
+      },
+      "old_state": "completed",
+      "old_status": "timeout",
+      "old": {
+        "input_sha256": "cecc7bcf3dfabc723b1a31ab8238d7aba6857ac0dd3274a28d53bef66f9e990f",
+        "robot_sha256": "a25f447c8caf4aff6dc76196c3d57cc940f00e802367f48034f06a9973927c75",
+        "geometry_sha256": "896ab9f55c5d8081b843358bd85cde2daae1f432564593f86218bf61733ce4fa",
+        "planner_seed": 1018884758,
+        "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c",
+        "frontend_path_sha256": "7f2f1a7f3aa77027aee364ab4b05930e76d3c4c94b4e5eca1346e79ec3fa38ce",
+        "objective_value": null,
+        "cold_e2e_seconds": 60.213615600951016,
+        "minimum_sampled_clearance_m": null,
+        "validation_passed": null,
+        "status_basis": "raw_status",
+        "raw_status": "timeout"
+      },
+      "new_attempt": {
+        "attempts": [
+          "0001"
+        ],
+        "terminal_attempts": [
+          "0001"
+        ],
+        "selected_attempt": "0001",
+        "state": "completed",
+        "receipt_sha256": "f56980a0458bbda967f769eeffd664e444092c0bb7e8a8c8e5cca5dfeef0db7f",
+        "attempt_path": "benchmarks/generic_motion_v1/results/rigor_checks/dev_nto_incumbent/dev_seed0/jobs/dev-route_choice-002-p00-NTO_REFINED-minimum_distance-f47f8514/attempts/0001"
+      },
+      "new_state": "completed",
+      "new_status": "timeout",
+      "new": {
+        "input_sha256": "cecc7bcf3dfabc723b1a31ab8238d7aba6857ac0dd3274a28d53bef66f9e990f",
+        "robot_sha256": "a25f447c8caf4aff6dc76196c3d57cc940f00e802367f48034f06a9973927c75",
+        "geometry_sha256": "896ab9f55c5d8081b843358bd85cde2daae1f432564593f86218bf61733ce4fa",
+        "planner_seed": 1018884758,
+        "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c",
+        "frontend_path_sha256": "7f2f1a7f3aa77027aee364ab4b05930e76d3c4c94b4e5eca1346e79ec3fa38ce",
+        "objective_value": null,
+        "cold_e2e_seconds": 60.213905221782625,
+        "minimum_sampled_clearance_m": null,
+        "validation_passed": null,
+        "status_basis": "raw_status",
+        "raw_status": "timeout"
+      },
+      "frontend_paths_identical": true
+    },
+    {
+      "problem_id": "dev-route_choice-002-p00",
+      "scene_id": "dev-route_choice-002",
+      "cluster_id": "dev-route_choice-002",
+      "category": "route_choice",
+      "objective": "minimum_time",
+      "replica_seed": 0,
+      "old_attempt": {
+        "attempts": [
+          "0001"
+        ],
+        "terminal_attempts": [
+          "0001"
+        ],
+        "selected_attempt": "0001",
+        "state": "completed",
+        "receipt_sha256": "17d682ca22e2678045be7aa821d21574000d9a0b45f9c5b53b4b81b17439535a",
+        "attempt_path": "benchmarks/generic_motion_v1/results/rigor_checks/dev_nto_incumbent/control/dev-route_choice-002-p00/jobs/dev-route_choice-002-p00-NTO_REFINED-minimum_time-64e4b344/attempts/0001"
+      },
+      "old_state": "completed",
+      "old_status": "timeout",
+      "old": {
+        "input_sha256": "cecc7bcf3dfabc723b1a31ab8238d7aba6857ac0dd3274a28d53bef66f9e990f",
+        "robot_sha256": "a25f447c8caf4aff6dc76196c3d57cc940f00e802367f48034f06a9973927c75",
+        "geometry_sha256": "896ab9f55c5d8081b843358bd85cde2daae1f432564593f86218bf61733ce4fa",
+        "planner_seed": 1018884758,
+        "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c",
+        "frontend_path_sha256": "7f2f1a7f3aa77027aee364ab4b05930e76d3c4c94b4e5eca1346e79ec3fa38ce",
+        "objective_value": null,
+        "cold_e2e_seconds": 60.21358042489737,
+        "minimum_sampled_clearance_m": null,
+        "validation_passed": null,
+        "status_basis": "raw_status",
+        "raw_status": "timeout"
+      },
+      "new_attempt": {
+        "attempts": [
+          "0001"
+        ],
+        "terminal_attempts": [
+          "0001"
+        ],
+        "selected_attempt": "0001",
+        "state": "completed",
+        "receipt_sha256": "ca30add3077af9eabd57d648d93463676b76bc0c0cc3d9a48924c2067e616cbe",
+        "attempt_path": "benchmarks/generic_motion_v1/results/rigor_checks/dev_nto_incumbent/dev_seed0/jobs/dev-route_choice-002-p00-NTO_REFINED-minimum_time-64e4b344/attempts/0001"
+      },
+      "new_state": "completed",
+      "new_status": "timeout",
+      "new": {
+        "input_sha256": "cecc7bcf3dfabc723b1a31ab8238d7aba6857ac0dd3274a28d53bef66f9e990f",
+        "robot_sha256": "a25f447c8caf4aff6dc76196c3d57cc940f00e802367f48034f06a9973927c75",
+        "geometry_sha256": "896ab9f55c5d8081b843358bd85cde2daae1f432564593f86218bf61733ce4fa",
+        "planner_seed": 1018884758,
+        "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c",
+        "frontend_path_sha256": "7f2f1a7f3aa77027aee364ab4b05930e76d3c4c94b4e5eca1346e79ec3fa38ce",
+        "objective_value": null,
+        "cold_e2e_seconds": 60.21376889385283,
+        "minimum_sampled_clearance_m": null,
+        "validation_passed": null,
+        "status_basis": "raw_status",
+        "raw_status": "timeout"
+      },
+      "frontend_paths_identical": true
+    },
+    {
+      "problem_id": "dev-sparse_clutter-000-p00",
+      "scene_id": "dev-sparse_clutter-000",
+      "cluster_id": "dev-sparse_clutter-000",
+      "category": "sparse_clutter",
+      "objective": "minimum_distance",
+      "replica_seed": 0,
+      "old_attempt": {
+        "attempts": [
+          "0001"
+        ],
+        "terminal_attempts": [
+          "0001"
+        ],
+        "selected_attempt": "0001",
+        "state": "completed",
+        "receipt_sha256": "ed36379cfa286c66c82485da8ac27c30cc01382f1b7a48457c97fdd5bcb6af07",
+        "attempt_path": "benchmarks/generic_motion_v1/results/rigor_checks/dev_nto_incumbent/control/dev-sparse_clutter-000-p00/jobs/dev-sparse_clutter-000-p00-NTO_REFINED-minimum_distance-6e219b78/attempts/0001"
+      },
+      "old_state": "completed",
+      "old_status": "solver_failure",
+      "old": {
+        "input_sha256": "2fc41fb867732dbb4d481d56c9d801750792e8263847345071434a6450931bdb",
+        "robot_sha256": "a25f447c8caf4aff6dc76196c3d57cc940f00e802367f48034f06a9973927c75",
+        "geometry_sha256": "896ab9f55c5d8081b843358bd85cde2daae1f432564593f86218bf61733ce4fa",
+        "planner_seed": 83574274,
+        "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c",
+        "frontend_path_sha256": "6f439b7a2145b71f5876ad08a0ff2e10f56ce90285dcf9c47ec08d228869e9b2",
+        "objective_value": null,
+        "cold_e2e_seconds": 55.94116590125486,
+        "minimum_sampled_clearance_m": -0.08666822455846918,
+        "validation_passed": false,
+        "status_basis": "saved_output_evidence_rejected",
+        "raw_status": "solver_failed"
+      },
+      "new_attempt": {
+        "attempts": [
+          "0001"
+        ],
+        "terminal_attempts": [
+          "0001"
+        ],
+        "selected_attempt": "0001",
+        "state": "completed",
+        "receipt_sha256": "e7d412cfe2e277d06bcd4013e1678cd1d224d86cddcd882ebb73abff7406c422",
+        "attempt_path": "benchmarks/generic_motion_v1/results/rigor_checks/dev_nto_incumbent/dev_seed0/jobs/dev-sparse_clutter-000-p00-NTO_REFINED-minimum_distance-6e219b78/attempts/0001"
+      },
+      "new_state": "completed",
+      "new_status": "solver_failure",
+      "new": {
+        "input_sha256": "2fc41fb867732dbb4d481d56c9d801750792e8263847345071434a6450931bdb",
+        "robot_sha256": "a25f447c8caf4aff6dc76196c3d57cc940f00e802367f48034f06a9973927c75",
+        "geometry_sha256": "896ab9f55c5d8081b843358bd85cde2daae1f432564593f86218bf61733ce4fa",
+        "planner_seed": 83574274,
+        "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c",
+        "frontend_path_sha256": "6f439b7a2145b71f5876ad08a0ff2e10f56ce90285dcf9c47ec08d228869e9b2",
+        "objective_value": null,
+        "cold_e2e_seconds": 57.152542273979634,
+        "minimum_sampled_clearance_m": -0.08666822455846918,
+        "validation_passed": false,
+        "status_basis": "saved_output_evidence_rejected",
+        "raw_status": "solver_failed"
+      },
+      "frontend_paths_identical": true
+    },
+    {
+      "problem_id": "dev-sparse_clutter-000-p00",
+      "scene_id": "dev-sparse_clutter-000",
+      "cluster_id": "dev-sparse_clutter-000",
+      "category": "sparse_clutter",
+      "objective": "minimum_time",
+      "replica_seed": 0,
+      "old_attempt": {
+        "attempts": [
+          "0001"
+        ],
+        "terminal_attempts": [
+          "0001"
+        ],
+        "selected_attempt": "0001",
+        "state": "completed",
+        "receipt_sha256": "fd2b77d7610958c1cf82b65b644ec80852b98ea93f742a956e1ecdb8d4864894",
+        "attempt_path": "benchmarks/generic_motion_v1/results/rigor_checks/dev_nto_incumbent/control/dev-sparse_clutter-000-p00/jobs/dev-sparse_clutter-000-p00-NTO_REFINED-minimum_time-903afc99/attempts/0001"
+      },
+      "old_state": "completed",
+      "old_status": "validation_failed",
+      "old": {
+        "input_sha256": "2fc41fb867732dbb4d481d56c9d801750792e8263847345071434a6450931bdb",
+        "robot_sha256": "a25f447c8caf4aff6dc76196c3d57cc940f00e802367f48034f06a9973927c75",
+        "geometry_sha256": "896ab9f55c5d8081b843358bd85cde2daae1f432564593f86218bf61733ce4fa",
+        "planner_seed": 83574274,
+        "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c",
+        "frontend_path_sha256": "6f439b7a2145b71f5876ad08a0ff2e10f56ce90285dcf9c47ec08d228869e9b2",
+        "objective_value": null,
+        "cold_e2e_seconds": 51.26585814496502,
+        "minimum_sampled_clearance_m": -0.0015191277310525608,
+        "validation_passed": false,
+        "status_basis": "raw_status",
+        "raw_status": "collision_failed"
+      },
+      "new_attempt": {
+        "attempts": [
+          "0001"
+        ],
+        "terminal_attempts": [
+          "0001"
+        ],
+        "selected_attempt": "0001",
+        "state": "completed",
+        "receipt_sha256": "b548a6f559c94fa403f1f5676da0e1963d71a02b65d07b1a722dc8be8c84776d",
+        "attempt_path": "benchmarks/generic_motion_v1/results/rigor_checks/dev_nto_incumbent/dev_seed0/jobs/dev-sparse_clutter-000-p00-NTO_REFINED-minimum_time-903afc99/attempts/0001"
+      },
+      "new_state": "completed",
+      "new_status": "success_numerical",
+      "new": {
+        "input_sha256": "2fc41fb867732dbb4d481d56c9d801750792e8263847345071434a6450931bdb",
+        "robot_sha256": "a25f447c8caf4aff6dc76196c3d57cc940f00e802367f48034f06a9973927c75",
+        "geometry_sha256": "896ab9f55c5d8081b843358bd85cde2daae1f432564593f86218bf61733ce4fa",
+        "planner_seed": 83574274,
+        "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c",
+        "frontend_path_sha256": "6f439b7a2145b71f5876ad08a0ff2e10f56ce90285dcf9c47ec08d228869e9b2",
+        "objective_value": 4.008496928423765,
+        "cold_e2e_seconds": 24.947894376702607,
+        "minimum_sampled_clearance_m": 0.00040361679265392696,
+        "validation_passed": true,
+        "status_basis": "saved_candidate_independently_validated_within_budget",
+        "raw_status": "success_validated_numerical"
+      },
+      "frontend_paths_identical": true
+    },
+    {
+      "problem_id": "dev-sparse_clutter-001-p00",
+      "scene_id": "dev-sparse_clutter-001",
+      "cluster_id": "dev-sparse_clutter-001",
+      "category": "sparse_clutter",
+      "objective": "minimum_distance",
+      "replica_seed": 0,
+      "old_attempt": {
+        "attempts": [
+          "0001"
+        ],
+        "terminal_attempts": [
+          "0001"
+        ],
+        "selected_attempt": "0001",
+        "state": "completed",
+        "receipt_sha256": "f6618e48524e8751304fd779de3c79b53b8e5e03e6985b3c79fa4402fc01012f",
+        "attempt_path": "benchmarks/generic_motion_v1/results/rigor_checks/dev_nto_incumbent/control/dev-sparse_clutter-001-p00/jobs/dev-sparse_clutter-001-p00-NTO_REFINED-minimum_distance-d91fbe02/attempts/0001"
+      },
+      "old_state": "completed",
+      "old_status": "success_numerical",
+      "old": {
+        "input_sha256": "af909ae00cef8b60cd2147ab66ff11fa850f7b7abca2ffe17e2327234c7cc0c6",
+        "robot_sha256": "a25f447c8caf4aff6dc76196c3d57cc940f00e802367f48034f06a9973927c75",
+        "geometry_sha256": "896ab9f55c5d8081b843358bd85cde2daae1f432564593f86218bf61733ce4fa",
+        "planner_seed": 1986237786,
+        "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c",
+        "frontend_path_sha256": "ff9f47b719d2217b53f59c55e8bd1e2e540b047aa27c0d7a153a6eca9eec0481",
+        "objective_value": 4.50091028367126,
+        "cold_e2e_seconds": 4.520144823938608,
+        "minimum_sampled_clearance_m": 0.00016629627329063645,
+        "validation_passed": true,
+        "status_basis": "saved_candidate_independently_validated_within_budget_despite_solver_nonconvergence",
+        "raw_status": "solver_failed"
+      },
+      "new_attempt": {
+        "attempts": [
+          "0001"
+        ],
+        "terminal_attempts": [
+          "0001"
+        ],
+        "selected_attempt": "0001",
+        "state": "completed",
+        "receipt_sha256": "fd8371063fe439f7010a0a065f1aa9f637af66117e22b11188b2d7748663cbf0",
+        "attempt_path": "benchmarks/generic_motion_v1/results/rigor_checks/dev_nto_incumbent/dev_seed0/jobs/dev-sparse_clutter-001-p00-NTO_REFINED-minimum_distance-d91fbe02/attempts/0001"
+      },
+      "new_state": "completed",
+      "new_status": "success_numerical",
+      "new": {
+        "input_sha256": "af909ae00cef8b60cd2147ab66ff11fa850f7b7abca2ffe17e2327234c7cc0c6",
+        "robot_sha256": "a25f447c8caf4aff6dc76196c3d57cc940f00e802367f48034f06a9973927c75",
+        "geometry_sha256": "896ab9f55c5d8081b843358bd85cde2daae1f432564593f86218bf61733ce4fa",
+        "planner_seed": 1986237786,
+        "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c",
+        "frontend_path_sha256": "ff9f47b719d2217b53f59c55e8bd1e2e540b047aa27c0d7a153a6eca9eec0481",
+        "objective_value": 4.500953328652523,
+        "cold_e2e_seconds": 2.9674897929653525,
+        "minimum_sampled_clearance_m": 0.00016629627329063645,
+        "validation_passed": true,
+        "status_basis": "saved_candidate_independently_validated_within_budget_despite_solver_nonconvergence",
+        "raw_status": "solver_failed"
+      },
+      "frontend_paths_identical": true
+    },
+    {
+      "problem_id": "dev-sparse_clutter-001-p00",
+      "scene_id": "dev-sparse_clutter-001",
+      "cluster_id": "dev-sparse_clutter-001",
+      "category": "sparse_clutter",
+      "objective": "minimum_time",
+      "replica_seed": 0,
+      "old_attempt": {
+        "attempts": [
+          "0001"
+        ],
+        "terminal_attempts": [
+          "0001"
+        ],
+        "selected_attempt": "0001",
+        "state": "completed",
+        "receipt_sha256": "36d6165fb9803ee9a4b7c4a1772d879dad206ce2252997736bd7ff0e7970549d",
+        "attempt_path": "benchmarks/generic_motion_v1/results/rigor_checks/dev_nto_incumbent/control/dev-sparse_clutter-001-p00/jobs/dev-sparse_clutter-001-p00-NTO_REFINED-minimum_time-2326149f/attempts/0001"
+      },
+      "old_state": "completed",
+      "old_status": "solver_failure",
+      "old": {
+        "input_sha256": "af909ae00cef8b60cd2147ab66ff11fa850f7b7abca2ffe17e2327234c7cc0c6",
+        "robot_sha256": "a25f447c8caf4aff6dc76196c3d57cc940f00e802367f48034f06a9973927c75",
+        "geometry_sha256": "896ab9f55c5d8081b843358bd85cde2daae1f432564593f86218bf61733ce4fa",
+        "planner_seed": 1986237786,
+        "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c",
+        "frontend_path_sha256": "ff9f47b719d2217b53f59c55e8bd1e2e540b047aa27c0d7a153a6eca9eec0481",
+        "objective_value": null,
+        "cold_e2e_seconds": 9.726760293822736,
+        "minimum_sampled_clearance_m": 0.0009435869811557362,
+        "validation_passed": false,
+        "status_basis": "saved_output_evidence_rejected",
+        "raw_status": "solver_failed"
+      },
+      "new_attempt": {
+        "attempts": [
+          "0001"
+        ],
+        "terminal_attempts": [
+          "0001"
+        ],
+        "selected_attempt": "0001",
+        "state": "completed",
+        "receipt_sha256": "f3186192dfae25867d4ebfe851c59048fd4eb98789944bc3dbd34b70197e3008",
+        "attempt_path": "benchmarks/generic_motion_v1/results/rigor_checks/dev_nto_incumbent/dev_seed0/jobs/dev-sparse_clutter-001-p00-NTO_REFINED-minimum_time-2326149f/attempts/0001"
+      },
+      "new_state": "completed",
+      "new_status": "solver_failure",
+      "new": {
+        "input_sha256": "af909ae00cef8b60cd2147ab66ff11fa850f7b7abca2ffe17e2327234c7cc0c6",
+        "robot_sha256": "a25f447c8caf4aff6dc76196c3d57cc940f00e802367f48034f06a9973927c75",
+        "geometry_sha256": "896ab9f55c5d8081b843358bd85cde2daae1f432564593f86218bf61733ce4fa",
+        "planner_seed": 1986237786,
+        "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c",
+        "frontend_path_sha256": "ff9f47b719d2217b53f59c55e8bd1e2e540b047aa27c0d7a153a6eca9eec0481",
+        "objective_value": null,
+        "cold_e2e_seconds": 9.728531897999346,
+        "minimum_sampled_clearance_m": 0.0009435869811557362,
+        "validation_passed": false,
+        "status_basis": "saved_output_evidence_rejected",
+        "raw_status": "solver_failed"
+      },
+      "frontend_paths_identical": true
+    },
+    {
+      "problem_id": "dev-sparse_clutter-002-p00",
+      "scene_id": "dev-sparse_clutter-002",
+      "cluster_id": "dev-sparse_clutter-002",
+      "category": "sparse_clutter",
+      "objective": "minimum_distance",
+      "replica_seed": 0,
+      "old_attempt": {
+        "attempts": [
+          "0001"
+        ],
+        "terminal_attempts": [
+          "0001"
+        ],
+        "selected_attempt": "0001",
+        "state": "completed",
+        "receipt_sha256": "2e244d63969358d1c287f3b8aeb487dd443a26308821df45012bdc69d830218e",
+        "attempt_path": "benchmarks/generic_motion_v1/results/rigor_checks/dev_nto_incumbent/control/dev-sparse_clutter-002-p00/jobs/dev-sparse_clutter-002-p00-NTO_REFINED-minimum_distance-9b1f1736/attempts/0001"
+      },
+      "old_state": "completed",
+      "old_status": "no_solution_within_budget",
+      "old": {
+        "input_sha256": "808e2dae7c9fa8ccaab341aac1143eea57433120ef61ba7d352d1c5bd90eb568",
+        "robot_sha256": "a25f447c8caf4aff6dc76196c3d57cc940f00e802367f48034f06a9973927c75",
+        "geometry_sha256": "896ab9f55c5d8081b843358bd85cde2daae1f432564593f86218bf61733ce4fa",
+        "planner_seed": 2703830856,
+        "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c",
+        "frontend_path_sha256": "073e55289022d1b6850342af8dafb9a479f9b13a4099ed78292ca63108e68190",
+        "objective_value": null,
+        "cold_e2e_seconds": 12.630536369979382,
+        "minimum_sampled_clearance_m": null,
+        "validation_passed": null,
+        "status_basis": "raw_status",
+        "raw_status": "frontend_failed"
+      },
+      "new_attempt": {
+        "attempts": [
+          "0001"
+        ],
+        "terminal_attempts": [
+          "0001"
+        ],
+        "selected_attempt": "0001",
+        "state": "completed",
+        "receipt_sha256": "4b071d66a6bd6219acde9da2aa803dc509a29b994912045f48f4430dca11966a",
+        "attempt_path": "benchmarks/generic_motion_v1/results/rigor_checks/dev_nto_incumbent/dev_seed0/jobs/dev-sparse_clutter-002-p00-NTO_REFINED-minimum_distance-9b1f1736/attempts/0001"
+      },
+      "new_state": "completed",
+      "new_status": "no_solution_within_budget",
+      "new": {
+        "input_sha256": "808e2dae7c9fa8ccaab341aac1143eea57433120ef61ba7d352d1c5bd90eb568",
+        "robot_sha256": "a25f447c8caf4aff6dc76196c3d57cc940f00e802367f48034f06a9973927c75",
+        "geometry_sha256": "896ab9f55c5d8081b843358bd85cde2daae1f432564593f86218bf61733ce4fa",
+        "planner_seed": 2703830856,
+        "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c",
+        "frontend_path_sha256": "073e55289022d1b6850342af8dafb9a479f9b13a4099ed78292ca63108e68190",
+        "objective_value": null,
+        "cold_e2e_seconds": 12.58261655177921,
+        "minimum_sampled_clearance_m": null,
+        "validation_passed": null,
+        "status_basis": "raw_status",
+        "raw_status": "frontend_failed"
+      },
+      "frontend_paths_identical": true
+    },
+    {
+      "problem_id": "dev-sparse_clutter-002-p00",
+      "scene_id": "dev-sparse_clutter-002",
+      "cluster_id": "dev-sparse_clutter-002",
+      "category": "sparse_clutter",
+      "objective": "minimum_time",
+      "replica_seed": 0,
+      "old_attempt": {
+        "attempts": [
+          "0001"
+        ],
+        "terminal_attempts": [
+          "0001"
+        ],
+        "selected_attempt": "0001",
+        "state": "completed",
+        "receipt_sha256": "d882d1e48cc75a7a49dcab32372146c282c8186fc1482d16684f38ebfa47051f",
+        "attempt_path": "benchmarks/generic_motion_v1/results/rigor_checks/dev_nto_incumbent/control/dev-sparse_clutter-002-p00/jobs/dev-sparse_clutter-002-p00-NTO_REFINED-minimum_time-d4c97a27/attempts/0001"
+      },
+      "old_state": "completed",
+      "old_status": "no_solution_within_budget",
+      "old": {
+        "input_sha256": "808e2dae7c9fa8ccaab341aac1143eea57433120ef61ba7d352d1c5bd90eb568",
+        "robot_sha256": "a25f447c8caf4aff6dc76196c3d57cc940f00e802367f48034f06a9973927c75",
+        "geometry_sha256": "896ab9f55c5d8081b843358bd85cde2daae1f432564593f86218bf61733ce4fa",
+        "planner_seed": 2703830856,
+        "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c",
+        "frontend_path_sha256": "073e55289022d1b6850342af8dafb9a479f9b13a4099ed78292ca63108e68190",
+        "objective_value": null,
+        "cold_e2e_seconds": 12.586857218760997,
+        "minimum_sampled_clearance_m": null,
+        "validation_passed": null,
+        "status_basis": "raw_status",
+        "raw_status": "frontend_failed"
+      },
+      "new_attempt": {
+        "attempts": [
+          "0001"
+        ],
+        "terminal_attempts": [
+          "0001"
+        ],
+        "selected_attempt": "0001",
+        "state": "completed",
+        "receipt_sha256": "47094693713b8c5a59ae375d607e23600bd2fce3f9ee3559cf13e541d60d6681",
+        "attempt_path": "benchmarks/generic_motion_v1/results/rigor_checks/dev_nto_incumbent/dev_seed0/jobs/dev-sparse_clutter-002-p00-NTO_REFINED-minimum_time-d4c97a27/attempts/0001"
+      },
+      "new_state": "completed",
+      "new_status": "no_solution_within_budget",
+      "new": {
+        "input_sha256": "808e2dae7c9fa8ccaab341aac1143eea57433120ef61ba7d352d1c5bd90eb568",
+        "robot_sha256": "a25f447c8caf4aff6dc76196c3d57cc940f00e802367f48034f06a9973927c75",
+        "geometry_sha256": "896ab9f55c5d8081b843358bd85cde2daae1f432564593f86218bf61733ce4fa",
+        "planner_seed": 2703830856,
+        "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c",
+        "frontend_path_sha256": "073e55289022d1b6850342af8dafb9a479f9b13a4099ed78292ca63108e68190",
+        "objective_value": null,
+        "cold_e2e_seconds": 12.63550878316164,
+        "minimum_sampled_clearance_m": null,
+        "validation_passed": null,
+        "status_basis": "raw_status",
+        "raw_status": "frontend_failed"
+      },
+      "frontend_paths_identical": true
+    }
+  ],
+  "errors": [],
+  "integrity_passed": true
+}

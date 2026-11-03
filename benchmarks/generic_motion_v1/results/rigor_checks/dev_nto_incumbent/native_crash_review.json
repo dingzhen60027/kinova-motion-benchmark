@@ -1,0 +1,74 @@
+{
+  "scope": "Read-only review of one sealed DEV diagnostic attempt; no planner or GPU run and no result-status modification.",
+  "collected_utc": "2026-11-03T07:28:53.034738+00:00",
+  "problem_id": "dev-dense_clutter-001-p01",
+  "method": "NTO_REFINED",
+  "objective": "minimum_time",
+  "attempt": "benchmarks/generic_motion_v1/results/rigor_checks/dev_nto_incumbent/dev_seed0/jobs/dev-dense_clutter-001-p01-NTO_REFINED-minimum_time-4e4af77e/attempts/0001",
+  "process": {
+    "exit_code": -11,
+    "signal_number": 11,
+    "signal_name": "SIGSEGV",
+    "timed_out": true,
+    "timeout_seconds": 60.0,
+    "cold_e2e_seconds": 60.26372197829187,
+    "saved_result_status": "infrastructure_error",
+    "saved_result_error_category": "native_process_signal",
+    "status_before_external_stop": "running"
+  },
+  "worker_binding": {
+    "cli_log": "benchmarks/generic_motion_v1/reports/cli_commands.jsonl",
+    "line_at_collection": 64477,
+    "event": {
+      "argv": [
+        "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/bin/python",
+        "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/__main__.py",
+        "_worker",
+        "--attempt",
+        "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/rigor_checks/dev_nto_incumbent/dev_seed0/jobs/dev-dense_clutter-001-p01-NTO_REFINED-minimum_time-4e4af77e/attempts/0001"
+      ],
+      "cwd": "/home/eric/wjg/wd/csdecomp",
+      "pid": 251095,
+      "started_utc": "2026-11-03T07:25:21.820534+00:00",
+      "event": "start"
+    },
+    "note": "CLI log is append-only during active runs; the exact event and original line number are retained here, not a hash of a changing entire log."
+  },
+  "kernel_log": {
+    "collection_argv": [
+      "journalctl",
+      "-k",
+      "--no-pager",
+      "--since",
+      "2026-11-03 15:25:55",
+      "--until",
+      "2026-11-03 15:26:30"
+    ],
+    "filter": "python[251095]: segfault and libdrake.so",
+    "matching_line": "Nov 03 15:26:21 eric-server kernel: python[251095]: segfault at 6135d35e8930 ip 00007dac1f19cc31 sp 00007ffdfe0beaf0 error 6 in libdrake.so[7dac1ca00000+4d0e000] likely on CPU 10 (core 20, socket 0)",
+    "timestamp_timezone": "Host Asia/Shanghai; kernel journal line has one-second display resolution"
+  },
+  "receipt_check": {
+    "receipt_sha256": "b262dc28131d7cb7f68c859a250613daa991df00b1edce2fe420872c22f91e14",
+    "algorithm": "SHA-256",
+    "listed_files_checked": 23,
+    "mismatches": [],
+    "result": "all receipt-listed files match"
+  },
+  "source_sha256": {
+    "benchmarks/generic_motion_v1/results/rigor_checks/dev_nto_incumbent/dev_seed0/jobs/dev-dense_clutter-001-p01-NTO_REFINED-minimum_time-4e4af77e/attempts/0001/process.json": "accbcc6a94c28642100239a35677e88c152efc20488091114a2de4b5fec07dca",
+    "benchmarks/generic_motion_v1/results/rigor_checks/dev_nto_incumbent/dev_seed0/jobs/dev-dense_clutter-001-p01-NTO_REFINED-minimum_time-4e4af77e/attempts/0001/result.json": "69214ad210c8db38c5d6ef9249e8ea7427e2c948538c8531b24f88d24d34d106",
+    "benchmarks/generic_motion_v1/results/rigor_checks/dev_nto_incumbent/dev_seed0/jobs/dev-dense_clutter-001-p01-NTO_REFINED-minimum_time-4e4af77e/attempts/0001/result_before_external_stop.json": "4bb39e9e857961f90aa60d32c34a6a09cbc38b7fe0c239a2fc578c85fdf39190",
+    "benchmarks/generic_motion_v1/results/rigor_checks/dev_nto_incumbent/dev_seed0/jobs/dev-dense_clutter-001-p01-NTO_REFINED-minimum_time-4e4af77e/attempts/0001/phase.json": "ed1ec7c697e2a2d9a90a0b25100705cefc965eeffc8c666d9f962aa9b95210c0",
+    "benchmarks/generic_motion_v1/results/rigor_checks/dev_nto_incumbent/dev_seed0/jobs/dev-dense_clutter-001-p01-NTO_REFINED-minimum_time-4e4af77e/attempts/0001/nto_refinement.json": "7f8bd93bd1cee5cdec19a4a952c80383777fff9aa66369fbf50c45eda9e6a409",
+    "benchmarks/generic_motion_v1/results/rigor_checks/dev_nto_incumbent/dev_seed0/jobs/dev-dense_clutter-001-p01-NTO_REFINED-minimum_time-4e4af77e/attempts/0001/refinement/round_00/ipopt.log": "643878feea31418c6e3b6c7c3a14fd98c7ea3e60cf9727165aa5b6af478ee6e1",
+    "benchmarks/generic_motion_v1/results/rigor_checks/dev_nto_incumbent/dev_seed0/jobs/dev-dense_clutter-001-p01-NTO_REFINED-minimum_time-4e4af77e/attempts/0001/stderr.log": "ace6258e0a63870c4f03bc433b7939e703a2930e1b658f47cea6da62f077056b"
+  },
+  "watchdog_observation": "batch.execute sets timed_out after process.wait raises TimeoutExpired, then attempts SIGTERM and after two seconds SIGKILL if needed. A final exit code of -11 is distinct from -15 or -9; the result classifier retains an infrastructure error.",
+  "evidence_limit": "The worker PID, timing window and kernel message identify a SIGSEGV in libdrake.so. The saved evidence does not determine whether the fault preceded, coincided with, or was triggered by the deadline signal; the kernel message has second-level timestamp resolution. No causal conclusion or status change is made.",
+  "collection_commands": [
+    "journalctl -k --no-pager --since '2026-11-03 15:25:55' --until '2026-11-03 15:26:30'",
+    "rg -n '251095' benchmarks/generic_motion_v1/reports/cli_commands.jsonl",
+    "Verify every path and SHA-256 in the attempt receipt.json; the receipt digest and checked count are recorded above."
+  ]
+}
