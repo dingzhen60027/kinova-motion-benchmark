@@ -1,0 +1,380 @@
+........................................................................ [  5%]
+........................................................................ [ 10%]
+........................................................................ [ 15%]
+..........................................................FF............ [ 21%]
+.........FFF.FF......................................................... [ 26%]
+........................................................................ [ 31%]
+........................................................................ [ 36%]
+........................................................................ [ 42%]
+........................................................................ [ 47%]
+........................................................................ [ 52%]
+........................................................................ [ 57%]
+........................................................................ [ 63%]
+............................................F...FFF.FF.................. [ 68%]
+........................................................................ [ 73%]
+........................................................................ [ 78%]
+........................................................................ [ 84%]
+........................................................................ [ 89%]
+........................................................................ [ 94%]
+........................................................................ [ 99%]
+.                                                                        [100%]
+=================================== FAILURES ===================================
+______ test_complete_six_method_pairings_and_no_drm_denominator_for_ompl _______
+
+extended_run = <function extended_run.<locals>.make at 0x7b975f1ac550>
+tmp_path = PosixPath('/tmp/pytest-of-eric/pytest-584/test_complete_six_method_pairi0')
+
+    def test_complete_six_method_pairings_and_no_drm_denominator_for_ompl(extended_run, tmp_path):
+        run = extended_run()
+        result = extended.analyze([run], tmp_path / "metrics")
+        assert result["complete"] and result["comparable"]
+        assert result["requested_jobs"] == 6
+        all_groups = [g for g in result["groups"] if g["scope"] == "all"]
+        assert len(all_groups) == 6
+        assert len([p for p in result["paired_comparisons"] if p["scope"] == "all"]) == 15
+        for group in all_groups:
+            independent = group["label"] in extended.INDEPENDENT
+            for key in extended.CONDITIONAL_DRM_FIELDS:
+                assert group[key]["applicable"] is (not independent)
+>               assert group[key]["denominator"] == (None if independent else 1)
+E               assert 0.0 == 1
+
+benchmarks/generic_motion_v1/tests/test_extended_metrics.py:50: AssertionError
+_______ test_all_legal_failures_count_invalid_inputs_do_not_dilute_rate ________
+
+extended_run = <function extended_run.<locals>.make at 0x7b975e472a70>
+tmp_path = PosixPath('/tmp/pytest-of-eric/pytest-584/test_all_legal_failures_count_0')
+
+    def test_all_legal_failures_count_invalid_inputs_do_not_dilute_rate(extended_run, tmp_path):
+        cases = [_case("ok"), _case("fail"), _case("invalid", valid="invalid_endpoint")]
+        outcomes = {("fail", label): dict(status="planner_timeout") for label in extended.LABELS}
+        run = extended_run(cases=cases, outcomes=outcomes)
+        result = extended.analyze([run], tmp_path / "metrics")
+        for group in (g for g in result["groups"] if g["scope"] == "all"):
+            assert group["requested_jobs"] == 3
+            assert group["legal_jobs"] == 2
+            assert group["invalid_jobs"] == 1
+>           assert group["valid_success"]["estimate"] == .5
+E           assert 0.0 == 0.5
+
+benchmarks/generic_motion_v1/tests/test_extended_metrics.py:65: AssertionError
+_ test_native_convergence_is_separate_from_common_validation_and_cost[True-CONVERGED-success_validated_numerical-True] _
+
+extended_run = <function extended_run.<locals>.make at 0x7b975e472c20>
+tmp_path = PosixPath('/tmp/pytest-of-eric/pytest-584/test_native_convergence_is_sep0')
+converged = True, termination = 'CONVERGED'
+status = 'success_validated_numerical', success = True
+
+    @pytest.mark.parametrize('converged,termination,status,success',[
+        (True,'CONVERGED','success_validated_numerical',True),
+        (False,'INTERNAL_TIME_LIMIT','success_validated_numerical',True),
+        (False,'SCO_ITERATION_LIMIT','success_validated_numerical',True),
+        (False,'INTERNAL_TIME_LIMIT','collision_failed',False),
+        (None,'CONVERGED','success_validated_numerical',True),
+    ])
+    def test_native_convergence_is_separate_from_common_validation_and_cost(
+            extended_run,tmp_path,converged,termination,status,success):
+        run=extended_run(outcomes={('p0','TrajOpt'):dict(status=status,cost=3.)})
+        path=_attempt(run,'TrajOpt')/'candidate.json'
+        candidate=_read(path)
+        candidate.update(solver_converged=converged,termination=termination,
+                         native_status='native-status',solver_status='solver-status',cost=999.,solver_objective=-123.)
+        _write(path,candidate)
+        report=extended.analyze([run],tmp_path/'metrics')
+        row=next(row for row in report['rows'] if row['label']=='TrajOpt')
+        assert row['candidate_native_status']=='native-status'
+        assert row['candidate_solver_status']=='solver-status'
+        assert row['candidate_termination']==termination
+        assert row['reported_termination']==termination and row['termination_source']=='termination'
+>       assert row['cost']==(3. if success else None)
+E       assert None == 3.0
+
+benchmarks/generic_motion_v1/tests/test_extended_metrics.py:205: AssertionError
+_ test_native_convergence_is_separate_from_common_validation_and_cost[False-INTERNAL_TIME_LIMIT-success_validated_numerical-True] _
+
+extended_run = <function extended_run.<locals>.make at 0x7b975e473010>
+tmp_path = PosixPath('/tmp/pytest-of-eric/pytest-584/test_native_convergence_is_sep1')
+converged = False, termination = 'INTERNAL_TIME_LIMIT'
+status = 'success_validated_numerical', success = True
+
+    @pytest.mark.parametrize('converged,termination,status,success',[
+        (True,'CONVERGED','success_validated_numerical',True),
+        (False,'INTERNAL_TIME_LIMIT','success_validated_numerical',True),
+        (False,'SCO_ITERATION_LIMIT','success_validated_numerical',True),
+        (False,'INTERNAL_TIME_LIMIT','collision_failed',False),
+        (None,'CONVERGED','success_validated_numerical',True),
+    ])
+    def test_native_convergence_is_separate_from_common_validation_and_cost(
+            extended_run,tmp_path,converged,termination,status,success):
+        run=extended_run(outcomes={('p0','TrajOpt'):dict(status=status,cost=3.)})
+        path=_attempt(run,'TrajOpt')/'candidate.json'
+        candidate=_read(path)
+        candidate.update(solver_converged=converged,termination=termination,
+                         native_status='native-status',solver_status='solver-status',cost=999.,solver_objective=-123.)
+        _write(path,candidate)
+        report=extended.analyze([run],tmp_path/'metrics')
+        row=next(row for row in report['rows'] if row['label']=='TrajOpt')
+        assert row['candidate_native_status']=='native-status'
+        assert row['candidate_solver_status']=='solver-status'
+        assert row['candidate_termination']==termination
+        assert row['reported_termination']==termination and row['termination_source']=='termination'
+>       assert row['cost']==(3. if success else None)
+E       assert None == 3.0
+
+benchmarks/generic_motion_v1/tests/test_extended_metrics.py:205: AssertionError
+_ test_native_convergence_is_separate_from_common_validation_and_cost[False-SCO_ITERATION_LIMIT-success_validated_numerical-True] _
+
+extended_run = <function extended_run.<locals>.make at 0x7b975e4737f0>
+tmp_path = PosixPath('/tmp/pytest-of-eric/pytest-584/test_native_convergence_is_sep2')
+converged = False, termination = 'SCO_ITERATION_LIMIT'
+status = 'success_validated_numerical', success = True
+
+    @pytest.mark.parametrize('converged,termination,status,success',[
+        (True,'CONVERGED','success_validated_numerical',True),
+        (False,'INTERNAL_TIME_LIMIT','success_validated_numerical',True),
+        (False,'SCO_ITERATION_LIMIT','success_validated_numerical',True),
+        (False,'INTERNAL_TIME_LIMIT','collision_failed',False),
+        (None,'CONVERGED','success_validated_numerical',True),
+    ])
+    def test_native_convergence_is_separate_from_common_validation_and_cost(
+            extended_run,tmp_path,converged,termination,status,success):
+        run=extended_run(outcomes={('p0','TrajOpt'):dict(status=status,cost=3.)})
+        path=_attempt(run,'TrajOpt')/'candidate.json'
+        candidate=_read(path)
+        candidate.update(solver_converged=converged,termination=termination,
+                         native_status='native-status',solver_status='solver-status',cost=999.,solver_objective=-123.)
+        _write(path,candidate)
+        report=extended.analyze([run],tmp_path/'metrics')
+        row=next(row for row in report['rows'] if row['label']=='TrajOpt')
+        assert row['candidate_native_status']=='native-status'
+        assert row['candidate_solver_status']=='solver-status'
+        assert row['candidate_termination']==termination
+        assert row['reported_termination']==termination and row['termination_source']=='termination'
+>       assert row['cost']==(3. if success else None)
+E       assert None == 3.0
+
+benchmarks/generic_motion_v1/tests/test_extended_metrics.py:205: AssertionError
+_ test_native_convergence_is_separate_from_common_validation_and_cost[None-CONVERGED-success_validated_numerical-True] _
+
+extended_run = <function extended_run.<locals>.make at 0x7b975e472ef0>
+tmp_path = PosixPath('/tmp/pytest-of-eric/pytest-584/test_native_convergence_is_sep4')
+converged = None, termination = 'CONVERGED'
+status = 'success_validated_numerical', success = True
+
+    @pytest.mark.parametrize('converged,termination,status,success',[
+        (True,'CONVERGED','success_validated_numerical',True),
+        (False,'INTERNAL_TIME_LIMIT','success_validated_numerical',True),
+        (False,'SCO_ITERATION_LIMIT','success_validated_numerical',True),
+        (False,'INTERNAL_TIME_LIMIT','collision_failed',False),
+        (None,'CONVERGED','success_validated_numerical',True),
+    ])
+    def test_native_convergence_is_separate_from_common_validation_and_cost(
+            extended_run,tmp_path,converged,termination,status,success):
+        run=extended_run(outcomes={('p0','TrajOpt'):dict(status=status,cost=3.)})
+        path=_attempt(run,'TrajOpt')/'candidate.json'
+        candidate=_read(path)
+        candidate.update(solver_converged=converged,termination=termination,
+                         native_status='native-status',solver_status='solver-status',cost=999.,solver_objective=-123.)
+        _write(path,candidate)
+        report=extended.analyze([run],tmp_path/'metrics')
+        row=next(row for row in report['rows'] if row['label']=='TrajOpt')
+        assert row['candidate_native_status']=='native-status'
+        assert row['candidate_solver_status']=='solver-status'
+        assert row['candidate_termination']==termination
+        assert row['reported_termination']==termination and row['termination_source']=='termination'
+>       assert row['cost']==(3. if success else None)
+E       assert None == 3.0
+
+benchmarks/generic_motion_v1/tests/test_extended_metrics.py:205: AssertionError
+_ test_missing_convergence_does_not_mean_converged_when_solver_success_is_true _
+
+extended_run = <function extended_run.<locals>.make at 0x7b975e473ac0>
+tmp_path = PosixPath('/tmp/pytest-of-eric/pytest-584/test_missing_convergence_does_0')
+
+    def test_missing_convergence_does_not_mean_converged_when_solver_success_is_true(extended_run,tmp_path):
+        run=extended_run()
+        report=extended.analyze([run],tmp_path/'metrics')
+        for group in report['groups']:
+            assert group['converged_successes']==0
+            assert group['unknown_convergence']==1
+>           assert group['validated_unknown_convergence']==1
+E           assert 0 == 1
+
+benchmarks/generic_motion_v1/tests/test_extended_metrics.py:220: AssertionError
+__ test_stage_aggregation_excludes_initialized_zeros_and_retains_raw_evidence __
+
+make_run = <function make_run.<locals>.make at 0x7b975d658ee0>
+
+    def test_stage_aggregation_excludes_initialized_zeros_and_retains_raw_evidence(make_run):
+        measured = dict(model_setup_seconds=.1, eizo_inflation_seconds=.2,
+                        trajectory_optimization_seconds=2., validation_seconds=1.,
+                        collision_recovery_seconds=0.)
+        initialized = dict(measured, trajectory_optimization_seconds=0., validation_seconds=0.)
+        run = make_run("stage-accounting", [_case("ok"), _case("unsupported"), _case("failed")],
+            methods=(("LGCS", "minimum_distance"),), outcomes={
+                ("ok", "LGCS"): dict(timing=measured),
+                ("unsupported", "LGCS"): dict(status="unsupported", timing=initialized),
+                ("failed", "LGCS"): dict(status="solver_failed", timing=measured),
+            })
+        attempt = run / "jobs/unsupported-LGCS/attempts/0001"
+        result = _read(attempt / "result.json")
+        result.update(failed_stage="trajectory_optimization", exception="license rejected")
+        _write(attempt / "result.json", result)
+        (attempt / "candidate.json").unlink()
+        (attempt / "validation.json").unlink()
+        rows, _ = study.load_rows([run])
+        unsupported = next(row for row in rows if row["case_id"] == "unsupported")
+        assert unsupported["timing"] == initialized
+        assert unsupported["completed_stage_seconds"] == {"model_setup_seconds": .1}
+        grouped = study.group_metrics(rows)
+        assert grouped["legal_jobs"] == 3
+        assert grouped["statistics"]["cold_e2e_seconds"]["all_legal"]["count"] == 3
+        assert grouped["complete_backend_timing_jobs"] == 2
+        assert grouped["incomplete_backend_timing_jobs"] == 1
+        for name in ("eizo_inflation_seconds", "trajectory_optimization_seconds",
+                     "validation_seconds", "collision_recovery_seconds"):
+            assert grouped["stage_seconds"][name]["all_legal"]["count"] == 2
+>           assert grouped["stage_seconds"][name]["failed_legal"]["count"] == 1
+E           assert 2 == 1
+
+benchmarks/generic_motion_v1/tests/test_study_metrics.py:176: AssertionError
+_______ test_invalid_inputs_never_dilute_legal_latency[invalid_endpoint] _______
+
+make_run = <function make_run.<locals>.make at 0x7b975d654f70>
+invalid_status = 'invalid_endpoint'
+
+    @pytest.mark.parametrize("invalid_status", [
+        "invalid_endpoint", "invalid_scene_geometry", "model_consistency_failed"])
+    def test_invalid_inputs_never_dilute_legal_latency(make_run, invalid_status):
+        run = make_run("latency", [_case("ok"), _case("timeout"), _case("bad", valid=invalid_status)],
+            methods=DISTANCE[:1], outcomes={
+                ("ok", "LSCS"): {"cold": 5., "timing": {"optimization_seconds": 2.}},
+                ("timeout", "LSCS"): {"status": "timeout", "cold": 60.1, "timing": {}},
+                ("bad", "LSCS"): {"cold": .001, "timing": {"optimization_seconds": .001}},
+            })
+        rows, _ = study.load_rows([run])
+        result = study.group_metrics(rows)
+        assert (result["requested_jobs"], result["legal_jobs"], result["invalid_jobs"]) == (3, 2, 1)
+>       assert result["valid_success"]["estimate"] == .5
+E       assert 0.0 == 0.5
+
+benchmarks/generic_motion_v1/tests/test_study_metrics.py:225: AssertionError
+____ test_invalid_inputs_never_dilute_legal_latency[invalid_scene_geometry] ____
+
+make_run = <function make_run.<locals>.make at 0x7b975cfa1a20>
+invalid_status = 'invalid_scene_geometry'
+
+    @pytest.mark.parametrize("invalid_status", [
+        "invalid_endpoint", "invalid_scene_geometry", "model_consistency_failed"])
+    def test_invalid_inputs_never_dilute_legal_latency(make_run, invalid_status):
+        run = make_run("latency", [_case("ok"), _case("timeout"), _case("bad", valid=invalid_status)],
+            methods=DISTANCE[:1], outcomes={
+                ("ok", "LSCS"): {"cold": 5., "timing": {"optimization_seconds": 2.}},
+                ("timeout", "LSCS"): {"status": "timeout", "cold": 60.1, "timing": {}},
+                ("bad", "LSCS"): {"cold": .001, "timing": {"optimization_seconds": .001}},
+            })
+        rows, _ = study.load_rows([run])
+        result = study.group_metrics(rows)
+        assert (result["requested_jobs"], result["legal_jobs"], result["invalid_jobs"]) == (3, 2, 1)
+>       assert result["valid_success"]["estimate"] == .5
+E       assert 0.0 == 0.5
+
+benchmarks/generic_motion_v1/tests/test_study_metrics.py:225: AssertionError
+___ test_invalid_inputs_never_dilute_legal_latency[model_consistency_failed] ___
+
+make_run = <function make_run.<locals>.make at 0x7b975cfa1510>
+invalid_status = 'model_consistency_failed'
+
+    @pytest.mark.parametrize("invalid_status", [
+        "invalid_endpoint", "invalid_scene_geometry", "model_consistency_failed"])
+    def test_invalid_inputs_never_dilute_legal_latency(make_run, invalid_status):
+        run = make_run("latency", [_case("ok"), _case("timeout"), _case("bad", valid=invalid_status)],
+            methods=DISTANCE[:1], outcomes={
+                ("ok", "LSCS"): {"cold": 5., "timing": {"optimization_seconds": 2.}},
+                ("timeout", "LSCS"): {"status": "timeout", "cold": 60.1, "timing": {}},
+                ("bad", "LSCS"): {"cold": .001, "timing": {"optimization_seconds": .001}},
+            })
+        rows, _ = study.load_rows([run])
+        result = study.group_metrics(rows)
+        assert (result["requested_jobs"], result["legal_jobs"], result["invalid_jobs"]) == (3, 2, 1)
+>       assert result["valid_success"]["estimate"] == .5
+E       assert 0.0 == 0.5
+
+benchmarks/generic_motion_v1/tests/test_study_metrics.py:225: AssertionError
+_______ test_resolved_pair_subset_is_symmetric_without_changing_primary ________
+
+make_run = <function make_run.<locals>.make at 0x7b975cfa0310>
+
+    def test_resolved_pair_subset_is_symmetric_without_changing_primary(make_run):
+        cases = [_case(f"p{i}") for i in range(4)]
+        outcomes = {
+            ("p0", "LGCS"): {"status": "unsupported"},
+            ("p1", "LSCS"): {"status": "infrastructure_error"},
+            ("p3", "LGCS"): {"status": "solver_failed"},
+        }
+        rows, _ = study.load_rows([make_run("resolved", cases, DISTANCE, outcomes)])
+        pair = study.pair_metrics(rows)[0]  # Alphabetical order: LGCS - LSCS.
+        assert (pair["method_a"], pair["method_b"]) == ("LGCS", "LSCS")
+        assert pair["paired_legal_jobs"] == pair["valid_success_difference"]["denominator"] == 4
+>       assert pair["valid_success_difference"]["estimate"] == -.25
+E       assert 0.0 == -0.25
+
+benchmarks/generic_motion_v1/tests/test_study_metrics.py:262: AssertionError
+___________ test_cost_and_latency_use_the_same_common_success_cases ____________
+
+make_run = <function make_run.<locals>.make at 0x7b975cfa1000>
+
+    def test_cost_and_latency_use_the_same_common_success_cases(make_run):
+        cases = [_case(f"p{i}") for i in range(3)]
+        outcomes = {
+            ("p0", "LSCS"): {"cost": 4., "cold": 10.},
+            ("p0", "LGCS"): {"cost": 3., "cold": 14.},
+            ("p1", "LSCS"): {"cost": 100., "cold": 1.},
+            ("p1", "LGCS"): {"status": "solver_failed", "cost": .01, "cold": 50., "validation_passed": True},
+            ("p2", "LSCS"): {"status": "solver_failed", "cost": .01, "cold": 40.},
+            ("p2", "LGCS"): {"cost": 50., "cold": 2.},
+        }
+        rows, _ = study.load_rows([make_run("paired", cases, DISTANCE, outcomes)])
+        pair = study.pair_metrics(rows)[0]
+>       assert pair["common_success_cost_difference"]["estimate"] == -1.
+E       assert None == -1.0
+
+benchmarks/generic_motion_v1/tests/test_study_metrics.py:283: AssertionError
+=============================== warnings summary ===============================
+benchmarks/generic_motion_v1/tests/test_model_consistency.py: 58 warnings
+benchmarks/generic_motion_v1/tests/test_model_qualification.py: 29 warnings
+benchmarks/generic_motion_v1/tests/test_native_drm_query.py: 29 warnings
+benchmarks/generic_motion_v1/tests/test_nto_collision_constraint.py: 145 warnings
+benchmarks/generic_motion_v1/tests/test_nto_failed_candidates.py: 29 warnings
+benchmarks/generic_motion_v1/tests/test_paper_nto.py: 29 warnings
+benchmarks/generic_motion_v1/tests/test_paper_nto_refined.py: 116 warnings
+benchmarks/generic_motion_v1/tests/test_reporting.py: 29 warnings
+benchmarks/generic_motion_v1/tests/test_trajopt_baseline.py: 29 warnings
+  /home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/lib/python3.10/site-packages/csdecomp/drake_csd_bridge.py:62: DrakeDeprecationWarning: (Deprecated.)
+  
+  Deprecated:
+      Use is_floating_base_body() instead. This will be removed from
+      Drake on or after 2026-06-01.
+    if all_drake_bodies[-1].is_floating():
+
+benchmarks/generic_motion_v1/tests/test_paper_lgcs.py::test_graph_solution_matches_exhaustive_corridor_oracle
+benchmarks/generic_motion_v1/tests/test_paper_lgcs_scip.py::test_graph_solution_matches_all_simple_corridor_paths
+  /home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/lib/python3.10/site-packages/numpy/_core/_methods.py:52: RuntimeWarning: invalid value encountered in reduce
+    return umr_sum(a, axis, dtype, out, keepdims, initial, where)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED benchmarks/generic_motion_v1/tests/test_extended_metrics.py::test_complete_six_method_pairings_and_no_drm_denominator_for_ompl
+FAILED benchmarks/generic_motion_v1/tests/test_extended_metrics.py::test_all_legal_failures_count_invalid_inputs_do_not_dilute_rate
+FAILED benchmarks/generic_motion_v1/tests/test_extended_metrics.py::test_native_convergence_is_separate_from_common_validation_and_cost[True-CONVERGED-success_validated_numerical-True]
+FAILED benchmarks/generic_motion_v1/tests/test_extended_metrics.py::test_native_convergence_is_separate_from_common_validation_and_cost[False-INTERNAL_TIME_LIMIT-success_validated_numerical-True]
+FAILED benchmarks/generic_motion_v1/tests/test_extended_metrics.py::test_native_convergence_is_separate_from_common_validation_and_cost[False-SCO_ITERATION_LIMIT-success_validated_numerical-True]
+FAILED benchmarks/generic_motion_v1/tests/test_extended_metrics.py::test_native_convergence_is_separate_from_common_validation_and_cost[None-CONVERGED-success_validated_numerical-True]
+FAILED benchmarks/generic_motion_v1/tests/test_extended_metrics.py::test_missing_convergence_does_not_mean_converged_when_solver_success_is_true
+FAILED benchmarks/generic_motion_v1/tests/test_study_metrics.py::test_stage_aggregation_excludes_initialized_zeros_and_retains_raw_evidence
+FAILED benchmarks/generic_motion_v1/tests/test_study_metrics.py::test_invalid_inputs_never_dilute_legal_latency[invalid_endpoint]
+FAILED benchmarks/generic_motion_v1/tests/test_study_metrics.py::test_invalid_inputs_never_dilute_legal_latency[invalid_scene_geometry]
+FAILED benchmarks/generic_motion_v1/tests/test_study_metrics.py::test_invalid_inputs_never_dilute_legal_latency[model_consistency_failed]
+FAILED benchmarks/generic_motion_v1/tests/test_study_metrics.py::test_resolved_pair_subset_is_symmetric_without_changing_primary
+FAILED benchmarks/generic_motion_v1/tests/test_study_metrics.py::test_cost_and_latency_use_the_same_common_success_cases
+13 failed, 1356 passed, 495 warnings in 32.34s

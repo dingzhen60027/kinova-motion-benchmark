@@ -1,0 +1,63 @@
+{
+  "scope": "Same problem, planner seed, unchanged profile; fresh serial GPU call, not a replacement attempt",
+  "original_process": {
+    "argv": [
+      "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/bin/python",
+      "-m",
+      "benchmarks.generic_motion_v1",
+      "_worker",
+      "--attempt",
+      "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/rigor_checks/dev_nto_incumbent/dev_seed0/jobs/dev-dense_clutter-001-p01-NTO_REFINED-minimum_time-4e4af77e/attempts/0001"
+    ],
+    "exit_code": -11,
+    "timeout_seconds": 60.0,
+    "timed_out": true,
+    "cold_e2e_seconds": 60.26372197829187,
+    "sampled_gpu_peak_mib": 196.0,
+    "gpu_peak_scope": "Per-process nvidia-smi samples at approximately 0.2 s; not an exact allocator high-water mark.",
+    "includes": "fresh process, imports, CUDA context, model/map load, warm-up, online planning, validation and output"
+  },
+  "recheck_process": {
+    "argv": [
+      "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/bin/python",
+      "-m",
+      "benchmarks.generic_motion_v1",
+      "_worker",
+      "--attempt",
+      "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/rigor_checks/strict_check_20261105/native_gpu_recheck/jobs/dev-dense_clutter-001-p01-NTO_REFINED-minimum_time-4e4af77e/attempts/0001"
+    ],
+    "exit_code": -15,
+    "timeout_seconds": 60.0,
+    "timed_out": true,
+    "cold_e2e_seconds": 60.11364920483902,
+    "sampled_gpu_peak_mib": 204.0,
+    "gpu_peak_scope": "Per-process nvidia-smi samples at approximately 0.2 s; not an exact allocator high-water mark.",
+    "includes": "fresh process, imports, CUDA context, model/map load, warm-up, online planning, validation and output"
+  },
+  "raw_status": "timeout",
+  "files": {
+    "input.json": {
+      "original_sha256": "d0b009e8a55a435665af61f96d492f4844f2d14829dcf170589a3fd722e1f37e",
+      "recheck_sha256": "d0b009e8a55a435665af61f96d492f4844f2d14829dcf170589a3fd722e1f37e"
+    },
+    "evaluation.json": {
+      "original_sha256": "24fc44a359047d41e0981c04ac1a76d8e7b7a78909121e3715762607e959c319",
+      "recheck_sha256": "24fc44a359047d41e0981c04ac1a76d8e7b7a78909121e3715762607e959c319"
+    },
+    "path.npy": {
+      "original_sha256": "3dd188b91f306d0879be6121aea3a8604c90ed200335bde83ea7ac9bc8436774",
+      "recheck_sha256": "3dd188b91f306d0879be6121aea3a8604c90ed200335bde83ea7ac9bc8436774"
+    },
+    "refinement/round_00/nto_initial.npz": {
+      "original_sha256": "029bf5c2a34fe822397133ac6d31a637776c06952de3eecc8cb4f1b25d745264",
+      "recheck_sha256": "029bf5c2a34fe822397133ac6d31a637776c06952de3eecc8cb4f1b25d745264"
+    },
+    "refinement/round_00/nto_parameters.json": {
+      "original_sha256": "1cad493a38b3c1a103a197608a83e06bfbf0c662f53ebc819093f344012ef13d",
+      "recheck_sha256": "950276d0d5f44051879fa117b34244a1da701364d983fe868e6715187f7a2139"
+    }
+  },
+  "conclusion": "The original SIGSEGV was not reproduced in this run. Its root cause remains unresolved; preserve the original infrastructure error.",
+  "frontend_path_arrays_identical": true,
+  "initial_spline_arrays_identical": true
+}

@@ -1,0 +1,466 @@
+{
+  "scope": "Correctness diagnostics; no new formal-test optimization, score replacement or best-of selection",
+  "source_commit": "08e0542a586ff0727b636a96d308a6abb1b077dc",
+  "checks": {
+    "dataset/review.json": true,
+    "dataset/review.json:check.py": true,
+    "dataset/review.json:check_metadata.py": true,
+    "dataset/review.json:g0_reference_check.json": true,
+    "dataset/review.json:metadata_check.json": true,
+    "dataset/review.json:metadata_check.log": true,
+    "dataset/review.json:model_audit_after_fix/audit.json": true,
+    "dataset/review.json:model_audit_after_fix/model_inventory.json": true,
+    "dataset/review.json:model_audit_after_fix/raw_samples.npz": true,
+    "dataset/review.json:model_audit_after_fix.log": true,
+    "dataset/review.json:model_audit_readonly_tests.log": true,
+    "dataset/review.json:model_audit_tests.log": true,
+    "dataset/review.json:regression_tests.log": true,
+    "dataset/review.json:run/clearances.npz": true,
+    "dataset/review.json:run/summary.json": true,
+    "dataset/review.json:run.log": true,
+    "statistics/verification.json": true,
+    "statistics/verification.json:check_paired.py": true,
+    "statistics/verification.json:check_statistics.py": true,
+    "statistics/verification.json:cli_probe_sources.json": true,
+    "statistics/verification.json:control_summary_after.json": true,
+    "statistics/verification.json:control_summary_after.log": true,
+    "statistics/verification.json:control_summary_before.json": true,
+    "statistics/verification.json:control_summary_before.log": true,
+    "statistics/verification.json:control_summary_final.json": true,
+    "statistics/verification.json:control_summary_final.log": true,
+    "statistics/verification.json:incumbent_dev_after.json": true,
+    "statistics/verification.json:incumbent_dev_after.log": true,
+    "statistics/verification.json:legacy_cli_before.json": true,
+    "statistics/verification.json:legacy_cli_before.stderr": true,
+    "statistics/verification.json:legacy_cli_dev_after.json": true,
+    "statistics/verification.json:legacy_cli_dev_after.stderr": true,
+    "statistics/verification.json:legacy_cli_dev_before.json": true,
+    "statistics/verification.json:legacy_cli_dev_before.stderr": true,
+    "statistics/verification.json:paired.json": true,
+    "statistics/verification.json:paired.log": true,
+    "statistics/verification.json:regression.log": true,
+    "statistics/verification.json:regression_final.log": true,
+    "statistics/verification.json:results_before.json": true,
+    "statistics/verification.json:results_before.log": true,
+    "statistics/integration_verification.json": true,
+    "statistics/integration_verification.json:integration_regression.log": true,
+    "statistics/integration_verification.json:study_integration.json": true,
+    "statistics/integration_verification.json:study_integration.log": true,
+    "statistics/integration_verification.json:check_study_integration.py": true,
+    "core/summary.json": true,
+    "revalidated_outputs/summary.json": true,
+    "core/regression_final.json": true,
+    "core/regression_lifecycle.json": true,
+    "completed_run_resume_changes_no_attempt": true,
+    "native_recheck_same_frontend_and_initial_spline": true,
+    "frozen_inputs_unchanged": true,
+    "historical_primary_indexes_unchanged": true,
+    "online_smoke": true,
+    "native_gpu_recheck": true,
+    "lifecycle_smoke": true
+  },
+  "checked_scopes_passed": true,
+  "protected_input_files": 11,
+  "runs": [
+    {
+      "run": "online_smoke",
+      "integrity": {
+        "integrity_passed": true,
+        "complete": true,
+        "completed_jobs": 14,
+        "planned_jobs": 14,
+        "errors": [],
+        "unsealed_attempts": []
+      },
+      "inventory": [
+        {
+          "run": "benchmarks/generic_motion_v1/results/rigor_checks/strict_check_20261105/online_smoke",
+          "split": "smoke",
+          "planned_jobs": 14,
+          "actual_attempts": 14,
+          "actual_legal_attempts": 14,
+          "lifecycle": {
+            "terminal": 14
+          },
+          "status_counts": {
+            "success_numerical": 9,
+            "solver_failure": 1,
+            "timeout": 1,
+            "validation_failed": 3
+          },
+          "method_objectives": [
+            {
+              "method": "CHOMP",
+              "objective": "minimum_distance"
+            },
+            {
+              "method": "EI_ZO",
+              "objective": "minimum_distance"
+            },
+            {
+              "method": "EI_ZO",
+              "objective": "minimum_time"
+            },
+            {
+              "method": "LGCS",
+              "objective": "minimum_distance"
+            },
+            {
+              "method": "NTO",
+              "objective": "minimum_distance"
+            },
+            {
+              "method": "NTO",
+              "objective": "minimum_time"
+            },
+            {
+              "method": "NTO_PAPER",
+              "objective": "minimum_distance"
+            },
+            {
+              "method": "NTO_PAPER",
+              "objective": "minimum_time"
+            },
+            {
+              "method": "NTO_REFINED",
+              "objective": "minimum_distance"
+            },
+            {
+              "method": "NTO_REFINED",
+              "objective": "minimum_time"
+            },
+            {
+              "method": "RRTCONNECT",
+              "objective": "minimum_distance"
+            },
+            {
+              "method": "RRTSTAR",
+              "objective": "minimum_distance"
+            },
+            {
+              "method": "STOMP",
+              "objective": "minimum_distance"
+            },
+            {
+              "method": "TRAJOPT",
+              "objective": "minimum_distance"
+            }
+          ],
+          "replica_seeds": [
+            0
+          ],
+          "source_commit": "24ecd9282311a86e60e8bb9f31b3b6272d724734",
+          "source_fingerprint": "ee62af694864ffdf914c3e5b0e2ec6634d0cf059749dbe9dc24a5a81429de23b",
+          "config_hashes": [
+            "d57d94513e57d3d267222213a8492a171edd8caa2ab55de90005dc55ca254650"
+          ],
+          "budget_seconds": 60.0,
+          "manifest_sha256": "c4a2a43638161e17810a7f6b7da787c7abeb746e4a3af3b1818449cf62fd9b12"
+        }
+      ],
+      "status_counts": {
+        "success_numerical": 9,
+        "solver_failure": 1,
+        "timeout": 1,
+        "validation_failed": 3
+      },
+      "outcomes": [
+        {
+          "method": "EI_ZO",
+          "objective": "minimum_distance",
+          "problem_id": "smoke-bottleneck-000-p00",
+          "status": "success_numerical",
+          "objective_value": 7.202973630957703,
+          "objective_unit": "rad",
+          "cold_e2e_seconds": 5.022891166154295,
+          "attempt_path": "benchmarks/generic_motion_v1/results/rigor_checks/strict_check_20261105/online_smoke/jobs/smoke-bottleneck-000-p00-EI_ZO-minimum_distance-0fe69a89/attempts/0001"
+        },
+        {
+          "method": "LGCS",
+          "objective": "minimum_distance",
+          "problem_id": "smoke-bottleneck-000-p00",
+          "status": "success_numerical",
+          "objective_value": 7.202976309979395,
+          "objective_unit": "rad",
+          "cold_e2e_seconds": 34.63383745402098,
+          "attempt_path": "benchmarks/generic_motion_v1/results/rigor_checks/strict_check_20261105/online_smoke/jobs/smoke-bottleneck-000-p00-LGCS-minimum_distance-7e8be86c/attempts/0001"
+        },
+        {
+          "method": "NTO_PAPER",
+          "objective": "minimum_distance",
+          "problem_id": "smoke-bottleneck-000-p00",
+          "status": "solver_failure",
+          "objective_value": null,
+          "objective_unit": "rad",
+          "cold_e2e_seconds": 10.429778832010925,
+          "attempt_path": "benchmarks/generic_motion_v1/results/rigor_checks/strict_check_20261105/online_smoke/jobs/smoke-bottleneck-000-p00-NTO_PAPER-minimum_distance-670914e4/attempts/0001"
+        },
+        {
+          "method": "NTO_REFINED",
+          "objective": "minimum_distance",
+          "problem_id": "smoke-bottleneck-000-p00",
+          "status": "timeout",
+          "objective_value": null,
+          "objective_unit": "rad",
+          "cold_e2e_seconds": 60.113597811199725,
+          "attempt_path": "benchmarks/generic_motion_v1/results/rigor_checks/strict_check_20261105/online_smoke/jobs/smoke-bottleneck-000-p00-NTO_REFINED-minimum_distance-d4727f2e/attempts/0001"
+        },
+        {
+          "method": "NTO",
+          "objective": "minimum_distance",
+          "problem_id": "smoke-bottleneck-000-p00",
+          "status": "validation_failed",
+          "objective_value": null,
+          "objective_unit": "rad",
+          "cold_e2e_seconds": 14.24094684701413,
+          "attempt_path": "benchmarks/generic_motion_v1/results/rigor_checks/strict_check_20261105/online_smoke/jobs/smoke-bottleneck-000-p00-NTO-minimum_distance-c7731762/attempts/0001"
+        },
+        {
+          "method": "RRTCONNECT",
+          "objective": "minimum_distance",
+          "problem_id": "smoke-bottleneck-000-p00",
+          "status": "success_numerical",
+          "objective_value": 8.011569773425993,
+          "objective_unit": "rad",
+          "cold_e2e_seconds": 1.7662941790185869,
+          "attempt_path": "benchmarks/generic_motion_v1/results/rigor_checks/strict_check_20261105/online_smoke/jobs/smoke-bottleneck-000-p00-RRTCONNECT-minimum_distance-d8b71f4f/attempts/0001"
+        },
+        {
+          "method": "RRTSTAR",
+          "objective": "minimum_distance",
+          "problem_id": "smoke-bottleneck-000-p00",
+          "status": "success_numerical",
+          "objective_value": 5.356876671116721,
+          "objective_unit": "rad",
+          "cold_e2e_seconds": 55.406101882923394,
+          "attempt_path": "benchmarks/generic_motion_v1/results/rigor_checks/strict_check_20261105/online_smoke/jobs/smoke-bottleneck-000-p00-RRTSTAR-minimum_distance-6165a08f/attempts/0001"
+        },
+        {
+          "method": "CHOMP",
+          "objective": "minimum_distance",
+          "problem_id": "smoke-bottleneck-000-p00",
+          "status": "success_numerical",
+          "objective_value": 8.257911008860502,
+          "objective_unit": "rad",
+          "cold_e2e_seconds": 10.63253900501877,
+          "attempt_path": "benchmarks/generic_motion_v1/results/rigor_checks/strict_check_20261105/online_smoke/jobs/smoke-bottleneck-000-p00-CHOMP-minimum_distance-dd448abb/attempts/0001"
+        },
+        {
+          "method": "STOMP",
+          "objective": "minimum_distance",
+          "problem_id": "smoke-bottleneck-000-p00",
+          "status": "success_numerical",
+          "objective_value": 8.678108459342061,
+          "objective_unit": "rad",
+          "cold_e2e_seconds": 5.974362414330244,
+          "attempt_path": "benchmarks/generic_motion_v1/results/rigor_checks/strict_check_20261105/online_smoke/jobs/smoke-bottleneck-000-p00-STOMP-minimum_distance-d409ccd3/attempts/0001"
+        },
+        {
+          "method": "TRAJOPT",
+          "objective": "minimum_distance",
+          "problem_id": "smoke-bottleneck-000-p00",
+          "status": "success_numerical",
+          "objective_value": 7.814310658223222,
+          "objective_unit": "rad",
+          "cold_e2e_seconds": 5.070818366017193,
+          "attempt_path": "benchmarks/generic_motion_v1/results/rigor_checks/strict_check_20261105/online_smoke/jobs/smoke-bottleneck-000-p00-TRAJOPT-minimum_distance-dcdca8e8/attempts/0001"
+        },
+        {
+          "method": "EI_ZO",
+          "objective": "minimum_time",
+          "problem_id": "smoke-bottleneck-000-p00",
+          "status": "success_numerical",
+          "objective_value": 5.872210014066253,
+          "objective_unit": "s",
+          "cold_e2e_seconds": 3.218255015090108,
+          "attempt_path": "benchmarks/generic_motion_v1/results/rigor_checks/strict_check_20261105/online_smoke/jobs/smoke-bottleneck-000-p00-EI_ZO-minimum_time-5130e1f4/attempts/0001"
+        },
+        {
+          "method": "NTO_PAPER",
+          "objective": "minimum_time",
+          "problem_id": "smoke-bottleneck-000-p00",
+          "status": "validation_failed",
+          "objective_value": null,
+          "objective_unit": "s",
+          "cold_e2e_seconds": 14.584996923338622,
+          "attempt_path": "benchmarks/generic_motion_v1/results/rigor_checks/strict_check_20261105/online_smoke/jobs/smoke-bottleneck-000-p00-NTO_PAPER-minimum_time-8b155276/attempts/0001"
+        },
+        {
+          "method": "NTO_REFINED",
+          "objective": "minimum_time",
+          "problem_id": "smoke-bottleneck-000-p00",
+          "status": "success_numerical",
+          "objective_value": 4.6634923763613925,
+          "objective_unit": "s",
+          "cold_e2e_seconds": 4.62252147635445,
+          "attempt_path": "benchmarks/generic_motion_v1/results/rigor_checks/strict_check_20261105/online_smoke/jobs/smoke-bottleneck-000-p00-NTO_REFINED-minimum_time-633cc65e/attempts/0001"
+        },
+        {
+          "method": "NTO",
+          "objective": "minimum_time",
+          "problem_id": "smoke-bottleneck-000-p00",
+          "status": "validation_failed",
+          "objective_value": null,
+          "objective_unit": "s",
+          "cold_e2e_seconds": 3.8191771069541574,
+          "attempt_path": "benchmarks/generic_motion_v1/results/rigor_checks/strict_check_20261105/online_smoke/jobs/smoke-bottleneck-000-p00-NTO-minimum_time-bffddce6/attempts/0001"
+        }
+      ]
+    },
+    {
+      "run": "native_gpu_recheck",
+      "integrity": {
+        "integrity_passed": true,
+        "complete": true,
+        "completed_jobs": 1,
+        "planned_jobs": 1,
+        "errors": [],
+        "unsealed_attempts": []
+      },
+      "inventory": [
+        {
+          "run": "benchmarks/generic_motion_v1/results/rigor_checks/strict_check_20261105/native_gpu_recheck",
+          "split": "dev",
+          "planned_jobs": 1,
+          "actual_attempts": 1,
+          "actual_legal_attempts": 1,
+          "lifecycle": {
+            "terminal": 1
+          },
+          "status_counts": {
+            "timeout": 1
+          },
+          "method_objectives": [
+            {
+              "method": "NTO_REFINED",
+              "objective": "minimum_time"
+            }
+          ],
+          "replica_seeds": [
+            0
+          ],
+          "source_commit": "08e0542a586ff0727b636a96d308a6abb1b077dc",
+          "source_fingerprint": "01539d4138afcb18b0fc2f54041e51b89e629ee3e8d893c6af78a8d73b192ede",
+          "config_hashes": [
+            "e99c721da57125b2d2624d84b49970b220da0413ae1a1e4f4a8bbc664562a799"
+          ],
+          "budget_seconds": 60.0,
+          "manifest_sha256": "396fd792fd4726d3c0ea03bb6ea15b8c1b67e094d797c042a677e66982edc034"
+        }
+      ],
+      "status_counts": {
+        "timeout": 1
+      },
+      "outcomes": [
+        {
+          "method": "NTO_REFINED",
+          "objective": "minimum_time",
+          "problem_id": "dev-dense_clutter-001-p01",
+          "status": "timeout",
+          "objective_value": null,
+          "objective_unit": "s",
+          "cold_e2e_seconds": 60.11364920483902,
+          "attempt_path": "benchmarks/generic_motion_v1/results/rigor_checks/strict_check_20261105/native_gpu_recheck/jobs/dev-dense_clutter-001-p01-NTO_REFINED-minimum_time-4e4af77e/attempts/0001"
+        }
+      ]
+    },
+    {
+      "run": "lifecycle_smoke",
+      "integrity": {
+        "integrity_passed": true,
+        "complete": true,
+        "completed_jobs": 2,
+        "planned_jobs": 2,
+        "errors": [],
+        "unsealed_attempts": []
+      },
+      "inventory": [
+        {
+          "run": "benchmarks/generic_motion_v1/results/rigor_checks/strict_check_20261105/lifecycle_smoke",
+          "split": "smoke",
+          "planned_jobs": 2,
+          "actual_attempts": 2,
+          "actual_legal_attempts": 2,
+          "lifecycle": {
+            "terminal": 2
+          },
+          "status_counts": {
+            "success_numerical": 2
+          },
+          "method_objectives": [
+            {
+              "method": "EI_ZO",
+              "objective": "minimum_distance"
+            },
+            {
+              "method": "EI_ZO",
+              "objective": "minimum_time"
+            }
+          ],
+          "replica_seeds": [
+            0
+          ],
+          "source_commit": "08e0542a586ff0727b636a96d308a6abb1b077dc",
+          "source_fingerprint": "01539d4138afcb18b0fc2f54041e51b89e629ee3e8d893c6af78a8d73b192ede",
+          "config_hashes": [
+            "d57d94513e57d3d267222213a8492a171edd8caa2ab55de90005dc55ca254650"
+          ],
+          "budget_seconds": 60.0,
+          "manifest_sha256": "8898b4d849660d0cae157b576e8c6851ead3f8ab619cc7449e00609b4031d871"
+        }
+      ],
+      "status_counts": {
+        "success_numerical": 2
+      },
+      "outcomes": [
+        {
+          "method": "EI_ZO",
+          "objective": "minimum_distance",
+          "problem_id": "smoke-bottleneck-000-p00",
+          "status": "success_numerical",
+          "objective_value": 7.202973630957703,
+          "objective_unit": "rad",
+          "cold_e2e_seconds": 5.072266693226993,
+          "attempt_path": "benchmarks/generic_motion_v1/results/rigor_checks/strict_check_20261105/lifecycle_smoke/jobs/smoke-bottleneck-000-p00-EI_ZO-minimum_distance-0fe69a89/attempts/0001"
+        },
+        {
+          "method": "EI_ZO",
+          "objective": "minimum_time",
+          "problem_id": "smoke-bottleneck-000-p00",
+          "status": "success_numerical",
+          "objective_value": 5.872210014066253,
+          "objective_unit": "s",
+          "cold_e2e_seconds": 3.16947382921353,
+          "attempt_path": "benchmarks/generic_motion_v1/results/rigor_checks/strict_check_20261105/lifecycle_smoke/jobs/smoke-bottleneck-000-p00-EI_ZO-minimum_time-5130e1f4/attempts/0001"
+        }
+      ]
+    }
+  ],
+  "evidence_sha256": {
+    "dataset/review.json": "65efe47ef9d181d3e5a0471b2e6ddd483a0e2e8d9eaf556dcbbdcebb3b4f15cf",
+    "statistics/verification.json": "8a4e86eb93bb642b671202e6f0c62a630389e5f7b57985712a4023de442de49c",
+    "statistics/integration_verification.json": "07c0c0ff29483accc085ea08ade06d72a8fe8a9920899092a5b597ffb3d79b63",
+    "core/summary.json": "ca9e1e11f8c4093fd9c2f33dbefd12a3d89d20c2fb5591b1c2ead81d76cff0cb",
+    "revalidated_outputs/summary.json": "aa878fb03159ed5912682460b077ab8c79d5a59130aac1212bd61de6524eddc5",
+    "core/regression_final.json": "468ca72b4e81d942d7b7d7c8c77f20179989c62e2509516db315941334848cac",
+    "core/regression_lifecycle.json": "ddfe85210e8a70466d98cf9b3ed7ed074cc943753dbf0fc0d25a6a3bfed667a3",
+    "core/resume_idempotence.json": "bf1f82a5139e61264f3b1363ba944c1e90389df3f3e0234fa535b89c9c095f0a",
+    "native_gpu_recheck/comparison.json": "4489a3a2e1caf65f3c627616f819f5e24c495d573b5718b95e00385a2e2900a2",
+    "online_smoke/run_manifest.json": "c4a2a43638161e17810a7f6b7da787c7abeb746e4a3af3b1818449cf62fd9b12",
+    "native_gpu_recheck/run_manifest.json": "396fd792fd4726d3c0ea03bb6ea15b8c1b67e094d797c042a677e66982edc034",
+    "lifecycle_smoke/run_manifest.json": "8898b4d849660d0cae157b576e8c6851ead3f8ab619cc7449e00609b4031d871"
+  },
+  "fixes": [
+    "Per-run summaries use receipt-verified numerical acceptance rather than solver convergence.",
+    "Summaries, verification and resume preserve the first terminal attempt; later interruptions cannot rerun a finished job.",
+    "Model audit writes new evidence and never replaces the canonical robot inventory.",
+    "Historical control summaries verify their original source/config bytes without requiring current execution sources."
+  ],
+  "unresolved": [
+    "Historical libdrake SIGSEGV root cause remains unknown. Fresh reruns cannot erase that original infrastructure error.",
+    "Collision validation is finite numerical sampling, not a mathematical continuous certificate.",
+    "Formal test has historical exposure and only seed 0; dev seeds are 0, 1, 2."
+  ],
+  "conclusion": "Use the recorded validated scopes; this audit does not establish universal absence of bugs.",
+  "script_sha256": "49ef065669cfdc0813647c0f05f6e899874c490d5be7f28c03bc45c1f63182dd"
+}

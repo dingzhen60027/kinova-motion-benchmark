@@ -1,0 +1,42 @@
+{
+  "passed": true,
+  "fixes": [
+    "study_metrics now uses selected raw status to preserve unsupported-dependency classification after normalized status unification; the already-loaded manifest is passed to the common reader.",
+    "Synthetic accounting fixtures explicitly substitute acceptance in tests only; no existing assertions were removed."
+  ],
+  "tests": {
+    "passed": 221,
+    "log": "integration_regression.log",
+    "added_full_acceptance_cases": [
+      "study.analyze valid nonconverged candidate",
+      "study.analyze first-terminal failure with later valid output",
+      "extended.analyze all six methods with valid nonconverged candidate",
+      "extended.analyze all six methods first-terminal failure with later valid output",
+      "study.load_rows unsupported raw reason remains visible after normalization"
+    ]
+  },
+  "actual_evidence": {
+    "study_rows": 2520,
+    "extended_rows": 1080,
+    "paired_method_comparisons": 15,
+    "paired_jobs_per_comparison": 180,
+    "status_and_cost_match_primary_csv": true,
+    "no_geometry_query": true,
+    "no_planning": true
+  },
+  "raw_primary_indexes_unchanged": {
+    "records_sha256": "2cb418255861d5daa850b2756425b08f5beaf76aa9fe99d21686c2ebbf31662c",
+    "summary_sha256": "20d2b4cb081b5fbf22020f2e574c3c1eb8d15455726fb1f3d47c47a81efb60b1"
+  },
+  "evidence_sha256": {
+    "integration_regression.log": "c7307d3cb5aed6d9ce4eff082662c59a87e5e8b1475c357fde265d07b842176b",
+    "study_integration.json": "758d83d6d382053e79669dd3b6780a323e034c6518ca600a962cc43426a3a668",
+    "study_integration.log": "758d83d6d382053e79669dd3b6780a323e034c6518ca600a962cc43426a3a668",
+    "check_study_integration.py": "47bd18ab99d841c8a177604449312f457dde9dd4d189f7b70911404953b56c2c"
+  },
+  "source_sha256": {
+    "benchmarks/generic_motion_v1/runners/study_metrics.py": "e59da789396bd5ae8d056ef9bb90a4d5fb88629e0bd3c606e216c40d3629a83e",
+    "benchmarks/generic_motion_v1/tests/test_study_metrics.py": "ad80a0fcc7e84a590f7b65742ec7f6170d171bd39c058eff345134212816d259",
+    "benchmarks/generic_motion_v1/tests/test_run_summary_acceptance.py": "abd99e9b9c3e3193726502d0404aff565d41a317c26dc881a0799d9dec10b5b6"
+  }
+}

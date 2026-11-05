@@ -1,0 +1,107 @@
+{
+  "passed": true,
+  "primary_indexes_unchanged": {
+    "records.csv": true,
+    "summary.csv": true,
+    "selection.json": true
+  },
+  "primary_records_sha256": "2cb418255861d5daa850b2756425b08f5beaf76aa9fe99d21686c2ebbf31662c",
+  "primary_summary_sha256": "20d2b4cb081b5fbf22020f2e574c3c1eb8d15455726fb1f3d47c47a81efb60b1",
+  "current_commit": "4c3c915532f849116c8a28c0bf62b275f5a6b433",
+  "fixes": [
+    "Legacy module summary now shares receipt-verified saved-output acceptance and first-terminal selection with primary records; normalized status classes are exposed while raw selected status remains separately recorded.",
+    "Read-only historical incumbent control summary verifies original Git/snapshot source and original Git config bytes; current runtime/config equality remains mandatory only for new execution/resume."
+  ],
+  "actual_cli_dev_before_after": [
+    {
+      "method": "NTO_PAPER",
+      "objective": "minimum_distance",
+      "old_legacy_success": 39,
+      "fixed_legacy_success": 44
+    },
+    {
+      "method": "NTO_PAPER",
+      "objective": "minimum_time",
+      "old_legacy_success": 101,
+      "fixed_legacy_success": 101
+    },
+    {
+      "method": "NTO_REFINED",
+      "objective": "minimum_distance",
+      "old_legacy_success": 95,
+      "fixed_legacy_success": 99
+    },
+    {
+      "method": "NTO_REFINED",
+      "objective": "minimum_time",
+      "old_legacy_success": 109,
+      "fixed_legacy_success": 109
+    },
+    {
+      "method": "NTO",
+      "objective": "minimum_distance",
+      "old_legacy_success": 44,
+      "fixed_legacy_success": 44
+    },
+    {
+      "method": "NTO",
+      "objective": "minimum_time",
+      "old_legacy_success": 107,
+      "fixed_legacy_success": 107
+    }
+  ],
+  "related_tests": {
+    "passed": 138,
+    "log": "regression_final.log"
+  },
+  "verification_scope": {
+    "primary_attempts": 9216,
+    "numerical_successes": 6296,
+    "valid_nonconverged": 42,
+    "paired_outcome_rows": 5804,
+    "paired_metric_rows": 6382,
+    "incumbent_dev_new_calls": 120,
+    "control_calls": 24,
+    "control_matched_pairs": 24
+  },
+  "control_historical_rows_unchanged": true,
+  "incumbent_historical_rows_unchanged": true,
+  "commands": [
+    "bash local/python.sh results/rigor_checks/strict_check_20261105/statistics/check_statistics.py --output NEW_JSON",
+    "bash local/python.sh results/rigor_checks/strict_check_20261105/statistics/check_paired.py --output NEW_JSON",
+    "bash local/python.sh -m benchmarks.generic_motion_v1 summarize --run results/baseline_dev --output NEW_DIRECTORY",
+    "bash local/python.sh results/rigor_checks/dev_nto_incumbent/control_summary.py --output NEW_JSON",
+    "bash local/python.sh results/rigor_checks/dev_nto_incumbent/summarize.py --output NEW_JSON"
+  ],
+  "limitations": [
+    "All collision checks in this subtask are saved numerical evidence consistency checks; no CUDA or fresh geometry queries.",
+    "No formal test reoptimization, input replacement or baseline score change.",
+    "Primary main test currently has replica seed 0 only; dev has seeds 0, 1, 2.",
+    "Legacy per-run rates include pending legal jobs in denominator, explicitly documented; primary CSV rates use finished legal jobs plus pending coverage. All primary audited cohorts are complete, so this does not change their rates."
+  ],
+  "evidence_sha256": {
+    "check_paired.py": "573f2523694ccd0f1ea68a6bec472b1af1f9a50d93b2501af7613ae9fc4fdd5e",
+    "check_statistics.py": "e8d7da8eca479831c1c1f38f8370a65e1c4786ae2a9009906eb96a856510914b",
+    "cli_probe_sources.json": "3ba718d9f710ff5faee7729834eef2b0bbf0a2cc0ab170ca2827e69adaad1c07",
+    "control_summary_after.json": "1b7fec86eddf5579738c343c8f173e87787ceb9c70806a8134abf0e55ef24acd",
+    "control_summary_after.log": "fd0fd3dc4133a78946caaa742b138836ebca86c17a1477a6cc5850aba9a75c41",
+    "control_summary_before.json": "62bebca2e6d25dd27ab3dec6982937e33942c50e90b0b034e9be14fb7f2f4267",
+    "control_summary_before.log": "63b149a99e027e771fc8b49441c473f3731119c9302c4de2cb713f3921d76537",
+    "control_summary_final.json": "39485dda17dbd742c56494b48bce71b3a1466b919ef8f07c7416ab14dbdc67c0",
+    "control_summary_final.log": "d8131b335fb3a428453ab1150e510921e7336a870e4a1d24b0bb2e9414c33dde",
+    "incumbent_dev_after.json": "5d4ff491202fc714199506adf235fef6db966e0c10f06f1bbbe42475ab2cb7c4",
+    "incumbent_dev_after.log": "beb741bd31ebc5a4c223087fc9ed36a92df26412a02de6fc896a36c4ca5a14c0",
+    "legacy_cli_before.json": "3ada5c15f55bf8e7d2a8d2432eeabbf0dc95fc09cbbb8782cde08f63f3237003",
+    "legacy_cli_before.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "legacy_cli_dev_after.json": "24c151a63a8e11ea0aa4989446dc3cbce0e465061d7a7a0c1d703e4bf5744485",
+    "legacy_cli_dev_after.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "legacy_cli_dev_before.json": "004653915eec10a23f92c9457a240c1c5c7d827cfd0af547eb6a6be67bc46d66",
+    "legacy_cli_dev_before.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "paired.json": "7fc9bacae8dda1a3a092a8588d3afe890f2a7005ec60e052d6c5ad2db1976c22",
+    "paired.log": "7fc9bacae8dda1a3a092a8588d3afe890f2a7005ec60e052d6c5ad2db1976c22",
+    "regression.log": "09c78cfee38afe3ac0206315af361acdcd794ab2f6cda6adbef81cf7a2d13d19",
+    "regression_final.log": "8b9b1b2c2129740ac7bebff2fc7e8ca35bca826534c10bebe83bfe2c98d02e07",
+    "results_before.json": "92ba8b49c049b19006b156b2e0c7052fecbe5a493fb08dd6bedad3c0bfcd5ed1",
+    "results_before.log": "90a31f31284e84640539f5c4de79af0cd7b724808a76957bcaee1b8084c28371"
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "scope": "Read-only address-level inspection of historical native SIGSEGV using current installed binary; no inferred stack or solver root cause",
+  "original_attempt": "benchmarks/generic_motion_v1/results/rigor_checks/dev_nto_incumbent/dev_seed0/jobs/dev-dense_clutter-001-p01-NTO_REFINED-minimum_time-4e4af77e/attempts/0001",
+  "original_receipt_sha256": "b262dc28131d7cb7f68c859a250613daa991df00b1edce2fe420872c22f91e14",
+  "kernel_line": "Nov 03 15:26:21 eric-server kernel: python[251095]: segfault at 6135d35e8930 ip 00007dac1f19cc31 sp 00007ffdfe0beaf0 error 6 in libdrake.so[7dac1ca00000+4d0e000] likely on CPU 10 (core 20, socket 0)",
+  "ip": "0x7dac1f19cc31",
+  "kernel_mapping_base": "0x7dac1ca00000",
+  "relative_address": "0x279cc31",
+  "current_library": ".conda/envs/csdecomp/lib/python3.10/site-packages/pydrake/lib/libdrake.so",
+  "current_library_sha256": "6e06e85a0385cf0ac62483c76a4d959f3465883c8bab5739e84280d4005be80f",
+  "original_library_sha256": "not recorded in the original attempt; binary identity cannot be proven from version alone",
+  "observations": [
+    "ELF executable LOAD starts at virtual address zero, consistent with subtracting the displayed mapping base.",
+    "Current binary at relative address0x279cc31 contains a memory write instruction: mov %edx,(%rax,%rsi,4).",
+    "Current binary lacks source/debug symbols. addr2line reports a nearest SPRAL export with a large offset; this does not establish the containing function.",
+    "Original saved IPOPT log states linear solver spral."
+  ],
+  "limitations": [
+    "No original core dump or full call stack is available.",
+    "No conclusion about whether SIGTERM caused the historical SIGSEGV.",
+    "The installed binary hash was collected now; the original runtime did not seal it."
+  ],
+  "collection": [
+    {
+      "argv": [
+        "readelf",
+        "-l",
+        ".conda/envs/csdecomp/lib/python3.10/site-packages/pydrake/lib/libdrake.so"
+      ],
+      "exit_code": 0,
+      "stdout": "\nElf \u6587\u4ef6\u7c7b\u578b\u4e3a DYN (\u5171\u4eab\u76ee\u6807\u6587\u4ef6)\nEntry point 0x0\nThere are 12 program headers, starting at offset 64\n\n\u7a0b\u5e8f\u5934\uff1a\n  Type           Offset             VirtAddr           PhysAddr\n                 FileSiz            MemSiz              Flags  Align\n  PHDR           0x0000000000000040 0x0000000000000040 0x0000000000000040\n                 0x00000000000002a0 0x00000000000002a0  R      0x8\n  LOAD           0x0000000000000000 0x0000000000000000 0x0000000000000000\n                 0x0000000004d0d070 0x0000000004d0d070  R E    0x1000\n  GNU_STACK      0x0000000000000000 0x0000000000000000 0x0000000000000000\n                 0x0000000000000000 0x0000000000000000  RW     0x10\n  GNU_EH_FRAME   0x0000000004c1ed9c 0x0000000004c1ed9c 0x0000000004c1ed9c\n                 0x00000000000ee2d4 0x00000000000ee2d4  R      0x4\n  LOAD           0x0000000004d0dfc0 0x0000000004d0efc0 0x0000000004d0efc0\n                 0x00000000001780c8 0x000000000018993c  RW     0x1000\n  TLS            0x0000000004d0dfc0 0x0000000004d0efc0 0x0000000004d0efc0\n                 0x000000000000002c 0x0000000000008830  R      0x10\n  GNU_RELRO      0x0000000004d0dfc0 0x0000000004d0efc0 0x0000000004d0efc0\n                 0x0000000000165040 0x0000000000165040  RW     0x20\n  LOAD           0x0000000004e87000 0x0000000004e99000 0x0000000004e99000\n                 0x0000000000b79530 0x0000000000b79530  RW     0x1000\n  NOTE           0x0000000005a00508 0x0000000005a12508 0x0000000005a12508\n                 0x0000000000000024 0x0000000000000024  R      0x4\n  LOAD           0x0000000005a01000 0x0000000005a13000 0x0000000005a13000\n                 0x00000000009d1ff8 0x00000000009d1ff8  RW     0x1000\n  DYNAMIC        0x00000000063d3000 0x00000000063e5000 0x00000000063e5000\n                 0x00000000000002d0 0x00000000000002d0  RW     0x8\n  LOAD           0x00000000063d3000 0x00000000063e5000 0x00000000063e5000\n                 0x00000000009d22f0 0x00000000009d22f0  RW     0x1000\n\n Section to Segment mapping:\n  \u6bb5\u8282...\n   00     \n   01     .gnu.hash .gnu.version .gnu.version_d .gnu.version_r .rela.dyn .rela.plt .init .plt .text .fini .rodata .gcc_except_table .eh_frame .eh_frame_hdr \n   02     \n   03     .eh_frame_hdr \n   04     .tdata .data.rel.ro.local .fini_array .init_array .data.rel.ro .got .got.plt .tm_clone_table .data .bss \n   05     .tdata .tbss \n   06     .tdata .data.rel.ro.local .fini_array .init_array .data.rel.ro .got .got.plt \n   07     .dynsym .note.gnu.build-id \n   08     .note.gnu.build-id \n   09     \n   10     .dynamic \n   11     .dynamic .dynstr \n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "readelf",
+        "-n",
+        ".conda/envs/csdecomp/lib/python3.10/site-packages/pydrake/lib/libdrake.so"
+      ],
+      "exit_code": 0,
+      "stdout": "\nDisplaying notes found in: .gnu.build.attributes\n  \u6240\u6709\u8005            Data size \tDescription\n  GA$<version>3a1      0x00000010\tOPEN\n    Applies to region from 0x1023aa0 to 0x41ee8ad\n\nDisplaying notes found in: .note.gnu.gold-version\n  \u6240\u6709\u8005            Data size \tDescription\n  GNU                  0x00000009\tNT_GNU_GOLD_VERSION (gold version)\n    Version: gold 1.16\n\nDisplaying notes found in: .note.gnu.build-id\n  \u6240\u6709\u8005            Data size \tDescription\n  GNU                  0x00000014\tNT_GNU_BUILD_ID (unique build ID bitstring)\n    Build ID: fa3fe11c21b2ea0f488cfcaa4bdd888f666072fb\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "addr2line",
+        "-Cf",
+        "-e",
+        ".conda/envs/csdecomp/lib/python3.10/site-packages/pydrake/lib/libdrake.so",
+        "0x279cc31"
+      ],
+      "exit_code": 0,
+      "stdout": "drake_vendor_spral_ssids_contrib_free_dbl\n??:?\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "objdump",
+        "-d",
+        "--start-address=0x279cbf4",
+        "--stop-address=0x279cc3b",
+        ".conda/envs/csdecomp/lib/python3.10/site-packages/pydrake/lib/libdrake.so"
+      ],
+      "exit_code": 0,
+      "stdout": "\n.conda/envs/csdecomp/lib/python3.10/site-packages/pydrake/lib/libdrake.so\uff1a     \u6587\u4ef6\u683c\u5f0f elf64-x86-64\n\n\nDisassembly of section .text:\n\n000000000279cbf4 <drake_vendor_spral_ssids_contrib_free_dbl@@Base+0x54809>:\n 279cbf4:\t39 4d c8             \tcmp    %ecx,-0x38(%rbp)\n 279cbf7:\t0f 9f c0             \tsetg   %al\n 279cbfa:\t0f b6 c0             \tmovzbl %al,%eax\n 279cbfd:\t85 c0                \ttest   %eax,%eax\n 279cbff:\t75 39                \tjne    279cc3a <drake_vendor_spral_ssids_contrib_free_dbl@@Base+0x5484f>\n 279cc01:\t8b 45 c8             \tmov    -0x38(%rbp),%eax\n 279cc04:\t48 98                \tcltq   \n 279cc06:\t48 8d 50 ff          \tlea    -0x1(%rax),%rdx\n 279cc0a:\t48 8b 85 a0 fb ff ff \tmov    -0x460(%rbp),%rax\n 279cc11:\t8b 04 90             \tmov    (%rax,%rdx,4),%eax\n 279cc14:\t89 45 c4             \tmov    %eax,-0x3c(%rbp)\n 279cc17:\t48 8b 85 e0 fe ff ff \tmov    -0x120(%rbp),%rax\n 279cc1e:\t48 8b b5 e8 fe ff ff \tmov    -0x118(%rbp),%rsi\n 279cc25:\t8b 55 c4             \tmov    -0x3c(%rbp),%edx\n 279cc28:\t48 63 d2             \tmovslq %edx,%rdx\n 279cc2b:\t48 01 d6             \tadd    %rdx,%rsi\n 279cc2e:\t8b 55 c8             \tmov    -0x38(%rbp),%edx\n 279cc31:\t89 14 b0             \tmov    %edx,(%rax,%rsi,4)\n 279cc34:\t83 45 c8 01          \taddl   $0x1,-0x38(%rbp)\n 279cc38:\teb ba                \tjmp    279cbf4 <drake_vendor_spral_ssids_contrib_free_dbl@@Base+0x54809>\n 279cc3a:\t90                   \tnop\n",
+      "stderr": ""
+    }
+  ]
+}

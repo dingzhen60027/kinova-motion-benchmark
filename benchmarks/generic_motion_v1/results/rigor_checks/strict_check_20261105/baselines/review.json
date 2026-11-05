@@ -1,0 +1,229 @@
+{
+  "reviewed_commit": "4c3c915532f849116c8a28c0bf62b275f5a6b433",
+  "scope": "Read-only baseline/validator review and CPU fixture/native solver regression; no GPU planning, no test tuning, no historical evidence edits",
+  "source_hashes": {
+    "benchmarks/generic_motion_v1/runners/validate.py": "98cb9244d0d73831082894275d0b15c7732c9ac1c27755feeff8e3b31883521c",
+    "benchmarks/generic_motion_v1/runners/csdecomp_baseline.py": "5702c8550f45b2b4cfe005e730b7a7f7af55f4c88ff646be3f3acb82b2729f5d",
+    "benchmarks/generic_motion_v1/runners/paper_nto.py": "7375ea668c54f9778c3eb21ab65b5bb6786bda9df6941597614a18d01afa7a83",
+    "benchmarks/generic_motion_v1/runners/paper_nto_refined.py": "77b4de3af39e5ee56cbe932bc839de107126cee8994ddc1594498d43aa10d602",
+    "benchmarks/generic_motion_v1/runners/nto_collision_constraint.py": "874dad10b4b3c6ea2f2be6b299f212099b37e98b6713f2b2cf194489b8b43a22",
+    "benchmarks/generic_motion_v1/runners/ompl_baselines.py": "f717d659e92f1e376efbccb07423a0b2949bc3174eb113607a65ffb1772c19ab",
+    "benchmarks/generic_motion_v1/runners/chomp_stomp.py": "b815f2b9e339ce8806bac7a60892dec4cfc17f21b0e2217eb8bb4e365efd1b47",
+    "benchmarks/generic_motion_v1/runners/trajopt_baseline.py": "063eb6923c52a94eba2b89265b6bbedb9eba2c73cf1b24628716cdbf86377388",
+    "benchmarks/generic_motion_v1/runners/canonical_distance.py": "0c7af835ebf6b916761b61e0af3ba1109fd6ecd744d1b3ecd4780e3d7dec4335",
+    "benchmarks/generic_motion_v1/runners/methods.py": "49a2c068142cb4e9e6a753ee99bfd5057325fea4a9a4a68734a2f0da199b7ac9",
+    "benchmarks/generic_motion_v1/batch.py": "a1e361848b300522062f66dd3649b7f9cd3b8553f5b33d7d040253c936e007a0"
+  },
+  "new_confirmed_runtime_bugs": [],
+  "checks": [
+    {
+      "component": "common validator",
+      "observation": "Finite Nx7 candidate shape/type, requested objective, frozen motion limits, clamped spline knot multiplicity/continuity, finite duration, fixed endpoints, control-hull joint/derivative bounds, both CUDA and independent positive clearance above contact band, step cap and region controls checked. Distance order-2 B-spline has exact control polygon PWL length; time duration comes from physical knots/durations."
+    },
+    {
+      "component": "native EI-ZO + LSCS/SCSTO",
+      "observation": "Actual CSDecomp CudaEdgeInflator and EditRegionsCuda retained. Actual scsplanning get_points / biconvex invoked. Collision witnesses, region correction, anchor handoff, reinflation and corridor connectivity repairs remain enabled. Final common validation required; native solver return alone does not establish success."
+    },
+    {
+      "component": "NTO profiles",
+      "observation": "Drake KTO, separate physical duration, correct fixed endpoints and objective, canonical registered sphere/primitive pair identity checks, native-first distance bindings and narrow exactly matched assertion recovery. Published/refined/legacy are configurations of the same NTO family, with explicit solvers, iteration limits and collocation differences."
+    },
+    {
+      "component": "NTO refined early_accept_validated",
+      "observation": "Default false. If enabled, only returns after common full validator passes and deadline remains; validates again in runner. Lower 0.5mm optimization guard can be bypassed, but common final collision/model/motion protocol remains active. Early acceptance can sacrifice final optimized objective, so it is an explicit stopping-policy adaptation."
+    },
+    {
+      "component": "OMPL",
+      "observation": "Official OMPL 2.0.1 RRTConnect/RRTstar, bounded RealVector(7), Euclidean-radian objective, exact native goal only, one fresh process per seed, injected canonical collision state and 0.01rad motion callbacks, native bounded vertex reduction and common final validator. RRTConnect stops at first exact solution; RRTstar continues within configured search budget."
+    },
+    {
+      "component": "CHOMP",
+      "observation": "Explicit adaptation using acceleration-metric covariant updates and exact discrete C-space arc-integrated signed-clearance potential; native objective differs from evaluated PWL length. It is not presented as original workspace-body-point CHOMP implementation."
+    },
+    {
+      "component": "STOMP",
+      "observation": "Official unmodified ros-industrial C++ optimizer core with local canonical task callbacks, PCG64 correlated noise, exact fixed endpoints and limits; evaluated PWL length differs from native smoothness-plus-collision cost."
+    },
+    {
+      "component": "TrajOpt",
+      "observation": "Author BasicTrustRegionSQP and BPMPD core retained; local signed-distance collocation, trust-region policy and native quadratic difference cost disclosed; evaluated PWL length distinct. No claim of OpenRAVE swept-volume collision semantics."
+    },
+    {
+      "component": "native crash",
+      "observation": "Two CPU-only GDB replays of the old saved first NTO solve completed: original-watchdog mode ended on the deliberate SIGTERM with no SIGSEGV; solver-limit-only mode returned IPOPT CPU-time exceeded (686 iterations, 29.728 seconds in IPOPT) with finite saved raw variables and no verified feasible trajectory. Both assert the original initial spline/path arrays exactly match; CUDA is forbidden. The historical SIGSEGV is not reproduced and its root cause remains unresolved. Original failure evidence/status unchanged."
+    }
+  ],
+  "cpu_regression": {
+    "tests": 356,
+    "failures_or_errors": 0,
+    "observed_result": "356 passed, 348 warnings in 8.23s",
+    "stdout_sha256": "89df0627a76e0e325a8a47906beda8ed3c2694bbc39ea5b6aa1b62c964f16c25",
+    "junit_sha256": "ad93f9c828b9e86429d95b5e0fec5f7a3870138167b45548928b144980933091",
+    "real_native_backends_exercised": [
+      "SNOPT",
+      "IPOPT",
+      "OMPL RRTConnect/RRTstar on CPU fixtures",
+      "native STOMP",
+      "author TrajOpt/BPMPD on CPU fixtures"
+    ],
+    "coverage": "input contract, common validator, corridor/handoff, narrow Drake fallback and native recovery, all NTO profiles/early option, candidate evidence acceptance, OMPL, CHOMP/STOMP, TrajOpt"
+  },
+  "limitations": [
+    "Passing this finite suite does not prove absence of all bugs.",
+    "Collision validation is finite numerical sampling, not continuous mathematical certification.",
+    "Existing native libdrake SIGSEGV remains an unresolved infrastructure issue until an actionable stack or reproduction is observed.",
+    "No new timing or leaderboard claim follows from CPU fixture tests."
+  ],
+  "native_crash_replays": {
+    "replay_original_watchdog": {
+      "driver": {
+        "command": [
+          "gdb",
+          "--batch",
+          "--quiet",
+          "-ex",
+          "set pagination off",
+          "-ex",
+          "handle SIGTERM nostop noprint pass",
+          "-ex",
+          "run",
+          "-ex",
+          "thread apply all bt",
+          "--args",
+          "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/bin/python",
+          "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/rigor_checks/strict_check_20261105/baselines/replay_nto_native_cpu.py",
+          "--worker",
+          "--source",
+          "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/rigor_checks/dev_nto_incumbent/dev_seed0/jobs/dev-dense_clutter-001-p01-NTO_REFINED-minimum_time-4e4af77e/attempts/0001",
+          "--output",
+          "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/rigor_checks/strict_check_20261105/baselines/replay_original_watchdog"
+        ],
+        "completion": null,
+        "gdb_exit_code": 0,
+        "gdb_log_sha256": "cbc46154b3e5d5ce5dcc416d6934d316a5691069f1364796fb829ebb016c61b6",
+        "git_commit": "4c3c915532f849116c8a28c0bf62b275f5a6b433",
+        "gpu_queries_forbidden": true,
+        "limitation": "A non-reproduced crash does not establish absence of the original fault",
+        "mode": "original_watchdog",
+        "native_sigsegv_observed": false,
+        "runtime_source_sha256": {
+          "benchmarks/generic_motion_v1/model.py": "5b152e3e5ca484e5378856de11747c45826653df8a1183582fe90e0958fc5116",
+          "benchmarks/generic_motion_v1/runners/nto_collision_constraint.py": "874dad10b4b3c6ea2f2be6b299f212099b37e98b6713f2b2cf194489b8b43a22",
+          "benchmarks/generic_motion_v1/runners/paper_nto.py": "7375ea668c54f9778c3eb21ab65b5bb6786bda9df6941597614a18d01afa7a83"
+        },
+        "scope": "CPU-only forensic experiment, not a benchmark query; no score modification",
+        "script_sha256": "7e1f7b83edfe9b6a17f1bcb489859ddb6d7076b7a23ab0ad217c2980053c49dc",
+        "signal_events": [
+          {
+            "monotonic": 3698322.103299949,
+            "signal": "SIGTERM"
+          }
+        ],
+        "source": "benchmarks/generic_motion_v1/results/rigor_checks/dev_nto_incumbent/dev_seed0/jobs/dev-dense_clutter-001-p01-NTO_REFINED-minimum_time-4e4af77e/attempts/0001",
+        "source_receipt": {
+          "errors": [],
+          "files_checked": 23,
+          "receipt_sha256": "b262dc28131d7cb7f68c859a250613daa991df00b1edce2fe420872c22f91e14"
+        },
+        "thread_environment": {
+          "CUDA_VISIBLE_DEVICES": "",
+          "MKL_NUM_THREADS": "1",
+          "OMP_NUM_THREADS": "4",
+          "OPENBLAS_NUM_THREADS": "1"
+        },
+        "wall_seconds": 31.284224156755954
+      },
+      "exact_saved_initial_spline": true,
+      "gpu_queries_forbidden": true,
+      "original_remaining_seconds": 29.816848622169346,
+      "artifact_sha256": {
+        "replay_original_watchdog/driver.json": "0731585437cc98366a2422d86ff08c1dea8a46f88a3b73c82a45fce7f4112928",
+        "replay_original_watchdog/gdb.log": "cbc46154b3e5d5ce5dcc416d6934d316a5691069f1364796fb829ebb016c61b6",
+        "replay_original_watchdog/ipopt.log": "fe43d17ba1fac897d384a1295996d715d9b592f41237b075557eb909825e0905",
+        "replay_original_watchdog/nto_collision_backend.json": "7058e2ac15c28d151ee09fbe96da49412672dd7d316e68f0b4988ffb54469fad",
+        "replay_original_watchdog/nto_initial.npz": "029bf5c2a34fe822397133ac6d31a637776c06952de3eecc8cb4f1b25d745264",
+        "replay_original_watchdog/nto_parameters.json": "8a492658e5ec182241a51206a41753bf6cc39214f2e03c58e95534df1aec44ec",
+        "replay_original_watchdog/ready.json": "7901664670e49a2fa9624f06d5bd81f1a49eb8c08e79ee4d62992689cd3556cf"
+      }
+    },
+    "replay_solver_limit_only": {
+      "driver": {
+        "command": [
+          "gdb",
+          "--batch",
+          "--quiet",
+          "-ex",
+          "set pagination off",
+          "-ex",
+          "handle SIGTERM nostop noprint pass",
+          "-ex",
+          "run",
+          "-ex",
+          "thread apply all bt",
+          "--args",
+          "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/bin/python",
+          "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/rigor_checks/strict_check_20261105/baselines/replay_nto_native_cpu.py",
+          "--worker",
+          "--source",
+          "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/rigor_checks/dev_nto_incumbent/dev_seed0/jobs/dev-dense_clutter-001-p01-NTO_REFINED-minimum_time-4e4af77e/attempts/0001",
+          "--output",
+          "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/rigor_checks/strict_check_20261105/baselines/replay_solver_limit_only"
+        ],
+        "completion": {
+          "solver_status": "SolutionResult.kSolverSpecificError",
+          "solver_success": false,
+          "status": "returned",
+          "wall_seconds": 29.91626101313159
+        },
+        "gdb_exit_code": 0,
+        "gdb_log_sha256": "552851eb5937aa28da62469e9a13cb537a3add8d2635b59ab439bde36e3b49e9",
+        "git_commit": "4c3c915532f849116c8a28c0bf62b275f5a6b433",
+        "gpu_queries_forbidden": true,
+        "limitation": "A non-reproduced crash does not establish absence of the original fault",
+        "mode": "solver_limit_only",
+        "native_sigsegv_observed": false,
+        "runtime_source_sha256": {
+          "benchmarks/generic_motion_v1/model.py": "5b152e3e5ca484e5378856de11747c45826653df8a1183582fe90e0958fc5116",
+          "benchmarks/generic_motion_v1/runners/nto_collision_constraint.py": "874dad10b4b3c6ea2f2be6b299f212099b37e98b6713f2b2cf194489b8b43a22",
+          "benchmarks/generic_motion_v1/runners/paper_nto.py": "7375ea668c54f9778c3eb21ab65b5bb6786bda9df6941597614a18d01afa7a83"
+        },
+        "scope": "CPU-only forensic experiment, not a benchmark query; no score modification",
+        "script_sha256": "7e1f7b83edfe9b6a17f1bcb489859ddb6d7076b7a23ab0ad217c2980053c49dc",
+        "signal_events": [],
+        "source": "benchmarks/generic_motion_v1/results/rigor_checks/dev_nto_incumbent/dev_seed0/jobs/dev-dense_clutter-001-p01-NTO_REFINED-minimum_time-4e4af77e/attempts/0001",
+        "source_receipt": {
+          "errors": [],
+          "files_checked": 23,
+          "receipt_sha256": "b262dc28131d7cb7f68c859a250613daa991df00b1edce2fe420872c22f91e14"
+        },
+        "thread_environment": {
+          "CUDA_VISIBLE_DEVICES": "",
+          "MKL_NUM_THREADS": "1",
+          "OMP_NUM_THREADS": "4",
+          "OPENBLAS_NUM_THREADS": "1"
+        },
+        "wall_seconds": 31.418545650783926
+      },
+      "exact_saved_initial_spline": true,
+      "gpu_queries_forbidden": true,
+      "original_remaining_seconds": 29.816848622169346,
+      "artifact_sha256": {
+        "replay_solver_limit_only/completion.json": "8415eb6b9c73561cf8e085cbb750843e794f5809c19cdef38b879e8173cf460b",
+        "replay_solver_limit_only/driver.json": "76b919ee9fd65969ea482664ebc344d96c85d3a23abc90a537b5dc01db200f9a",
+        "replay_solver_limit_only/gdb.log": "552851eb5937aa28da62469e9a13cb537a3add8d2635b59ab439bde36e3b49e9",
+        "replay_solver_limit_only/ipopt.log": "7a62221a51269dc0a99096c59be4e0eda8175e3767d63b4463f307f95ba75b9d",
+        "replay_solver_limit_only/nto_collision_backend.json": "e73833001f1442e6e649c1393454e506c3426f4d04b2f431a567b47aa2b28a9a",
+        "replay_solver_limit_only/nto_initial.npz": "029bf5c2a34fe822397133ac6d31a637776c06952de3eecc8cb4f1b25d745264",
+        "replay_solver_limit_only/nto_parameters.json": "74910c121029c423d5e7f6240924035d13f20462c3e1bb18c5c5fc96b74310a7",
+        "replay_solver_limit_only/nto_solver_raw.npz": "6cf9f4cb14a98d37ef5868d337d3e1e049266a3823c3b9f57656a15bd7b29766",
+        "replay_solver_limit_only/nto_solver_result.json": "8f40e8bf0976021a70fd3d3252476dac85e650c063a71d4ddc4d8b2657d0a16c",
+        "replay_solver_limit_only/ready.json": "95921058ccccdb8712e3b82108ebd0932577e7a8fde67bd48218f8418143df64"
+      }
+    }
+  },
+  "native_fault_address_evidence_sha256": "0594403c0e58f604ab37018a0cc1dce6e3db1f5ccb1ca59ba459eb9d3b5ecbb5",
+  "replay_commands": [
+    "bash local/python.sh benchmarks/generic_motion_v1/results/rigor_checks/strict_check_20261105/baselines/replay_nto_native_cpu.py --mode original_watchdog --output /tmp/nto-cpu-replay-original_watchdog",
+    "bash local/python.sh benchmarks/generic_motion_v1/results/rigor_checks/strict_check_20261105/baselines/replay_nto_native_cpu.py --mode solver_limit_only --output /tmp/nto-cpu-replay-solver_limit_only"
+  ]
+}

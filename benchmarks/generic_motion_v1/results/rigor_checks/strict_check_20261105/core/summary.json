@@ -1,0 +1,79 @@
+{
+  "started_utc": "2026-11-05T04:05:16.571186+00:00",
+  "source_commit": "4c3c915532f849116c8a28c0bf62b275f5a6b433",
+  "scope": "Correctness checks only; serial GPU use; no performance comparison or score replacement",
+  "commands": [
+    {
+      "name": "pip_check",
+      "command": [
+        "bash",
+        "local/python.sh",
+        "-m",
+        "pip",
+        "check"
+      ],
+      "returncode": 0,
+      "seconds": 0.28493798803538084,
+      "log": "pip_check.log",
+      "log_sha256": "9261363b733079a641c2e4cc9bc46ffa1d8336945a87f807b6cf68847dbc9b09"
+    },
+    {
+      "name": "dataset_index",
+      "command": [
+        "bash",
+        "local/python.sh",
+        "scripts/benchmark.py",
+        "check"
+      ],
+      "returncode": 0,
+      "seconds": 64.68326599523425,
+      "log": "dataset_index.log",
+      "log_sha256": "4b8a6e4aeaa1449cbf4ab700263a2098b3e74fd35d9027c88a4873fa19ee9a2a"
+    },
+    {
+      "name": "regression",
+      "command": [
+        "bash",
+        "local/python.sh",
+        "-m",
+        "pytest",
+        "-q"
+      ],
+      "returncode": 0,
+      "seconds": 32.621999512892216,
+      "log": "regression.log",
+      "log_sha256": "88631e7520cf6ef49ff27f04741c0402b69483532bed365bbf35fb98382fdcc4"
+    },
+    {
+      "name": "upstream",
+      "command": [
+        "bash",
+        "local/python.sh",
+        "-m",
+        "pytest",
+        "-q",
+        "--import-mode=prepend",
+        "csdecomp/tests/csdecomp_test.py",
+        "csdecomp/tests/drake_dep_test.py"
+      ],
+      "returncode": 0,
+      "seconds": 0.8221452268771827,
+      "log": "upstream.log",
+      "log_sha256": "5d8667d9275ac743f87e6a53f70bd18edea65897ebe873637674e64feafa8401"
+    },
+    {
+      "name": "health",
+      "command": [
+        "bash",
+        "local/python.sh",
+        "-c",
+        "import json; from pathlib import Path; from benchmarks.generic_motion_v1.health import check; r=check(Path('/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/rigor_checks/strict_check_20261105/core/health.json')); print(json.dumps(r, default=str)); raise SystemExit(0 if r[\"passed\"] else 1)"
+      ],
+      "returncode": 0,
+      "seconds": 4.18545903917402,
+      "log": "health.log",
+      "log_sha256": "13b25fe95d35cbe60990c63354fc46ae4b7da4f592343a13a6c146b4acd1e6da"
+    }
+  ],
+  "passed": true
+}

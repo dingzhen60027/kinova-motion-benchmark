@@ -87,6 +87,20 @@ Smoke/dev/test contain 8,540 recorded calls, including explicit invalid inputs. 
 
 Cost comparisons use paired common-success problems, accompanied by full-denominator success rates and uncertainty clustered by physical scene. Do not pool historical cohorts or compare only each method's own success subset. The later runtime passed 1,330 regression tests and three upstream tests; 28 further planner calls recorded 10 successes and 18 classified failures/timeouts as separate functional diagnostics. NTO's collisions between constraint points remain validation failures even when the solver reports convergence.
 
+### Correctness checks
+
+The [November 2026 checks](results/rigor_checks/strict_check_20261105/verification.json) preserve the frozen inputs and published CSVs. They independently recompute all endpoint proposals and direct-line samples, cross-check all 926 accepted endpoints in a separately constructed Drake scene, and check conservative obstacle coverage. All 9,216 primary calls and paired statistics were reconciled against their saved evidence. The lowest-clearance successful DEV output for each of the 14 method–track combinations also passed fresh CUDA/Drake validation.
+
+Run summaries now share numerical acceptance with the primary CSV reader, retain the first terminal attempt, and preserve raw solver status. Verification and resume use the same terminal rule; later interrupted attempts cannot rerun completed jobs. Model audits write to a new evidence directory and cannot replace the canonical robot inventory. The final regression passed **1,387 tests**, plus three upstream tests; intermediate failures and subsequent passing regressions remain recorded.
+
+A fresh all-method smoke query recorded **9 numerical successes, 3 validation failures, 1 solver failure and 1 timeout**. These are functional checks, excluded from the published score. Two CPU replays and a same-input GPU replay (60-second timeout, identical frontend/initial spline) did not reproduce the historical native `libdrake` SIGSEGV; its root cause remains unresolved. All attempts remain recorded. Finite tests and collision samples do not establish universal absence of bugs or continuous collision freedom.
+
+```bash
+# Read-only verification of this delivery; write a new JSON destination.
+bash local/python.sh results/rigor_checks/strict_check_20261105/verify_delivery.py \
+  --output runs/correctness-check.json
+```
+
 ### NTO profiles and failure analysis
 
 Use `NTO_REFINED` as the strengthened NTO comparison profile. `NTO_PAPER` preserves the published-parameter reconstruction, and `NTO` preserves the historical adaptation. These are three configurations of one method family. The reconstruction uses local Drake code; the author's NTO implementation is unavailable in the supplied upstream repository.

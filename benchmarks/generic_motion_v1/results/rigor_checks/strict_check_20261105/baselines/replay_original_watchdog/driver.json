@@ -1,0 +1,57 @@
+{
+  "command": [
+    "gdb",
+    "--batch",
+    "--quiet",
+    "-ex",
+    "set pagination off",
+    "-ex",
+    "handle SIGTERM nostop noprint pass",
+    "-ex",
+    "run",
+    "-ex",
+    "thread apply all bt",
+    "--args",
+    "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/bin/python",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/rigor_checks/strict_check_20261105/baselines/replay_nto_native_cpu.py",
+    "--worker",
+    "--source",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/rigor_checks/dev_nto_incumbent/dev_seed0/jobs/dev-dense_clutter-001-p01-NTO_REFINED-minimum_time-4e4af77e/attempts/0001",
+    "--output",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/rigor_checks/strict_check_20261105/baselines/replay_original_watchdog"
+  ],
+  "completion": null,
+  "gdb_exit_code": 0,
+  "gdb_log_sha256": "cbc46154b3e5d5ce5dcc416d6934d316a5691069f1364796fb829ebb016c61b6",
+  "git_commit": "4c3c915532f849116c8a28c0bf62b275f5a6b433",
+  "gpu_queries_forbidden": true,
+  "limitation": "A non-reproduced crash does not establish absence of the original fault",
+  "mode": "original_watchdog",
+  "native_sigsegv_observed": false,
+  "runtime_source_sha256": {
+    "benchmarks/generic_motion_v1/model.py": "5b152e3e5ca484e5378856de11747c45826653df8a1183582fe90e0958fc5116",
+    "benchmarks/generic_motion_v1/runners/nto_collision_constraint.py": "874dad10b4b3c6ea2f2be6b299f212099b37e98b6713f2b2cf194489b8b43a22",
+    "benchmarks/generic_motion_v1/runners/paper_nto.py": "7375ea668c54f9778c3eb21ab65b5bb6786bda9df6941597614a18d01afa7a83"
+  },
+  "scope": "CPU-only forensic experiment, not a benchmark query; no score modification",
+  "script_sha256": "7e1f7b83edfe9b6a17f1bcb489859ddb6d7076b7a23ab0ad217c2980053c49dc",
+  "signal_events": [
+    {
+      "monotonic": 3698322.103299949,
+      "signal": "SIGTERM"
+    }
+  ],
+  "source": "benchmarks/generic_motion_v1/results/rigor_checks/dev_nto_incumbent/dev_seed0/jobs/dev-dense_clutter-001-p01-NTO_REFINED-minimum_time-4e4af77e/attempts/0001",
+  "source_receipt": {
+    "errors": [],
+    "files_checked": 23,
+    "receipt_sha256": "b262dc28131d7cb7f68c859a250613daa991df00b1edce2fe420872c22f91e14"
+  },
+  "thread_environment": {
+    "CUDA_VISIBLE_DEVICES": "",
+    "MKL_NUM_THREADS": "1",
+    "OMP_NUM_THREADS": "4",
+    "OPENBLAS_NUM_THREADS": "1"
+  },
+  "wall_seconds": 31.284224156755954
+}
