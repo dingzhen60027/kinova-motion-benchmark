@@ -56,6 +56,8 @@ def main():
         p.add_argument("--run", type=Path, required=True)
         if cmd == "resume":
             p.add_argument("--max-jobs", type=int)
+        if cmd == "summarize":
+            p.add_argument("--output", type=Path, help="Derived summary directory; defaults to RUN/summary")
     p = commands.add_parser("replay")
     p.add_argument("--attempt", type=Path, required=True)
     p.add_argument("--output", type=Path)
@@ -100,7 +102,7 @@ def main():
         result = verify(args.run)
     elif args.command == "summarize":
         from .runners.summarize import summarize
-        result = summarize(args.run)
+        result = summarize(args.run, output=args.output)
     elif args.command == "replay":
         from .runners.replay import replay
         result = replay(args.attempt, output=args.output)

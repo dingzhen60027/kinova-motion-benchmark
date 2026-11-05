@@ -42,7 +42,8 @@ def _require_model_audit(model):
     # A subsequent qualification can certify stricter guards without replacing
     # the original receipt used to generate already-frozen datasets.
     failures = []
-    for path in (HERE / "reports/qualification/model_audit_current.json",
+    for path in (HERE / "reports/model_audit/current.json",
+                 HERE / "reports/qualification/model_audit_current.json",
                  HERE / "reports/model_audit/audit.json"):
         if not path.exists():
             continue
@@ -54,8 +55,30 @@ def _require_model_audit(model):
                     receipt["model"]["collision_geometry_sha256"] != model.collision_geometry_sha256 or
                     receipt["model_source_sha256"] != file_sha256(HERE / "model.py")):
                 raise ValueError("Current model differs from the passing G0 audit")
+            if path == HERE / "reports/model_audit/current.json":
+                # A compact pointer permits new qualifications without changing
+                # historical receipt bytes or duplicating the complete model.
+                # Bind both the actual successful audit and its raw samples.
+                bound = {}
+                for field, hash_key in (("audit_file", "audit_sha256"),
+                                        ("raw_file", "raw_samples_sha256")):
+                    relative = Path(receipt[field])
+                    target = (HERE / relative).resolve()
+                    if relative.is_absolute() or not target.is_relative_to(HERE.resolve()):
+                        raise ValueError("G0 evidence reference escapes benchmark root")
+                    if not target.is_file() or file_sha256(target) != receipt[hash_key]:
+                        raise ValueError("G0 evidence is missing or changed")
+                    bound[field] = target
+                audit = json.loads(bound["audit_file"].read_text())
+                if (audit.get("passed") is not True or
+                        audit["model_source_sha256"] != receipt["model_source_sha256"] or
+                        audit["raw_samples_sha256"] != receipt["raw_samples_sha256"] or
+                        audit["workspace"] != receipt["workspace"] or
+                        any(audit["model"][key] != receipt["model"][key]
+                            for key in ("robot_sha256", "collision_geometry_sha256"))):
+                    raise ValueError("G0 evidence does not match its reference")
             return dict(receipt, _receipt_file=str(path.relative_to(HERE)), _receipt_sha256=file_sha256(path))
-        except (ValueError, KeyError, TypeError) as exc:
+        except (OSError, ValueError, KeyError, TypeError) as exc:
             failures.append(f"{path.name}: {exc}")
     raise RuntimeError("No passing G0 receipt matches the current model; " + "; ".join(failures))
 

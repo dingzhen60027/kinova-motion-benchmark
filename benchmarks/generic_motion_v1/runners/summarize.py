@@ -11,7 +11,7 @@ import numpy as np
 from ..batch import verify as _verify_run
 from ..common import resolve_case
 
-SUCCESS = 'success_validated_numerical'
+SUCCESS = 'success_numerical'
 PENDING = {'pending', 'running', 'not_started', 'retry_pending'}
 HERE = Path(__file__).resolve().parents[1]
 
@@ -70,10 +70,23 @@ def _legal(case):
     return status in {'valid_input', 'valid', 'passed', 'success_validated_numerical', 'audited_valid'}
 
 
-def _latest_attempt(run_dir, job_id):
+def _selected_attempt(run_dir, job_id):
+    """First terminal outcome; later work cannot replace a completed query."""
     directory = run_dir / 'jobs' / job_id / 'attempts'
     attempts = sorted(p for p in directory.glob('[0-9][0-9][0-9][0-9]') if p.is_dir()) if directory.exists() else []
+    for attempt in attempts:
+        receipt = _read(attempt / 'receipt.json')
+        if receipt is not None and not receipt.get('retry_pending'):
+            return attempt
+    # No completed outcome exists; expose the latest interruption/running state.
     return attempts[-1] if attempts else None
+
+
+def _accepted_attempt(run_dir, manifest, job, attempt, case_cache):
+    # Lazy import avoids the results -> _cluster_ratio import cycle. Both public
+    # summary entrypoints must use the same receipt, budget, array and status rule.
+    from .results import attempt_row
+    return attempt_row(run_dir, manifest, job, attempt, verify_files=True, case_cache=case_cache)
 
 
 def _select(*values):
@@ -84,9 +97,9 @@ def _finite_select(*values):
     return next((x for x in values if _number(x)), None)
 
 
-def _row(run_dir, job, case_cache=None):
+def _row(run_dir, job, case_cache=None, manifest=None):
     case = resolve_case(job, case_cache)
-    attempt = _latest_attempt(run_dir, job['job_id'])
+    attempt = _selected_attempt(run_dir, job['job_id'])
     receipt = _read(attempt / 'receipt.json') if attempt else None
     sealed = receipt is not None
     retry_pending = bool(receipt.get('retry_pending')) if sealed else False
@@ -106,6 +119,11 @@ def _row(run_dir, job, case_cache=None):
     # completed job either.
     status = ('pending' if attempt is None else 'running' if not sealed else
               'retry_pending' if retry_pending else _select(last_attempt_status, 'pending'))
+    accepted = None
+    if sealed and not retry_pending:
+        manifest = _read(run_dir / 'run_manifest.json') if manifest is None else manifest
+        accepted = _accepted_attempt(run_dir, manifest, job, attempt, case_cache)
+        status = accepted['status']
     drm = _select(result.get('drm_success'), result.get('frontend_success'), result.get('frontend', {}).get('drm_success'), result.get('frontend', {}).get('success'))
     if result.get('roadmap_used') is False or job.get('roadmap_used') is False:
         drm = None
@@ -140,8 +158,9 @@ def _row(run_dir, job, case_cache=None):
                     result.get('frontend_native_success', drm) is not None else None,
                 frontend_validation_status=result.get('frontend_validation_status'),
                 cold_e2e_seconds=cold, warm_query_seconds=warm, sampled_gpu_peak_mib=gpu,
-                cost=_select(validation.get('cost'), metrics.get('cost'), result.get('cost')) if status == SUCCESS else None,
-                cost_unit=_select(validation.get('cost_unit'), metrics.get('cost_unit'), result.get('cost_unit')),
+                cost=accepted['objective_value'] if status == SUCCESS else None,
+                cost_unit=accepted.get('objective_unit') if accepted else
+                    _select(validation.get('cost_unit'), metrics.get('cost_unit'), result.get('cost_unit')),
                 minimum_sampled_clearance_m=_finite_select(validation.get('minimum_sampled_clearance_m'), metrics.get('minimum_sampled_clearance_m')),
                 normalized_path_length=_finite_select(validation.get('normalized_path_length'), metrics.get('normalized_path_length')),
                 region_count=_finite_select(result.get('region_count'), result.get('regions_count'), metrics.get('regions'), validation.get('regions')),
@@ -235,7 +254,7 @@ def summarize(run_dir, output=None):
     if len(ids) != len(set(ids)):
         raise ValueError('Duplicate job_id in frozen run manifest.')
     case_cache = {}
-    rows = [_row(run_dir, job, case_cache) for job in manifest['jobs']]
+    rows = [_row(run_dir, job, case_cache, manifest) for job in manifest['jobs']]
     groups = []
     for method, objective in sorted({(r['method'], r['objective']) for r in rows}):
         pool = [r for r in rows if r['method'] == method and r['objective'] == objective]
@@ -268,7 +287,9 @@ def summarize(run_dir, output=None):
                   main_denominator='All numerically legal planned jobs, including failures, timeouts and pending jobs. Invalid inputs are separately counted.',
                   uncertainty='Scene-level cluster bootstrap. All open_control IDs share one physical-world cluster. Seed repetitions are not independent environments.',
                   numerical_validation='Finite collision sampling, not a continuous safety certificate.',
-                  timing_definition='cold_e2e is external process wall time including initialization and validation; warm_query is the recorded already-initialized online query. Offline roadmaps are listed once separately; missing durations remain null.',
+                  attempt_policy='First terminal attempt per job; later terminal attempts cannot replace it. Latest attempt is shown only when no terminal outcome exists.',
+                  acceptance='Same receipt-bound saved-output acceptance and normalized status classes as records.csv; solver convergence is separate from independently validated feasibility.',
+                  timing_definition='cold_e2e is external process wall time including initialization and validation; warm_query is derived within that cold call and is not an independently timed warm run. Offline roadmaps are listed once separately; missing durations remain null.',
                   gpu_memory_definition='Sampled process memory, not an exact allocator peak. Polling may miss short peaks.',
                   offline_roadmaps=offline,
                   unresolved_offline_roadmap_ids=sorted(str(x) for x in used_roadmaps - {r['roadmap_id'] for r in offline}),

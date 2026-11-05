@@ -111,7 +111,7 @@ def load_rows(runs):
             protocol_fingerprints.add(hashlib.sha256(json.dumps(job['evaluation_config'],sort_keys=True).encode()).hexdigest())
             if len(protocol_fingerprints)>1:
                 raise ValueError('Different evaluation configurations cannot be pooled')
-            row = _row(run, job, case_cache)
+            row = _row(run, job, case_cache, manifest)
             key = (row['case_id'], row['roadmap_id'], row['method_seed'], row['method'], row['objective'])
             if key in identities:
                 raise ValueError('Duplicate study observation; do not recount reused 6000-node runs')
@@ -137,7 +137,7 @@ def load_rows(runs):
                 robot_sha256=case['robot_sha256'], geometry_sha256=case['collision_geometry_sha256'],
                 input_sha256=case['problem_sha256'],
                 objective_reference=objective_reference(case, row['objective']),
-                dependency_unsupported=row['status']=='unsupported',
+                dependency_unsupported=row['last_attempt_status']=='unsupported',
                 infrastructure_failed=row['status']=='infrastructure_error',
                 failure_stage=result.get('failed_stage', result.get('final_stage')),
                 exception=result.get('exception'),

@@ -15,6 +15,19 @@ def accounting_fixtures_are_not_sealed_experiments(monkeypatch):
     # exercise the real integrity verifier and corruption rejection.
     monkeypatch.setattr('benchmarks.generic_motion_v1.runners.summarize._verify_run',
                         lambda *a, **k: dict(integrity_passed=True, fixture_only=True))
+    def synthetic_acceptance(run, manifest, job, attempt, cache):
+        # These fixtures deliberately lack real robot arrays and receipts. The
+        # full saved-output acceptance is covered with real sealed fixtures in
+        # test_valid_output and test_run_summary_acceptance instead.
+        from benchmarks.generic_motion_v1.runners.results import STATUS
+        result = json.loads((attempt / 'result.json').read_text())
+        path = attempt / 'validation.json'
+        validation = json.loads(path.read_text()) if path.exists() else {}
+        metrics = result.get('metrics', {})
+        status = STATUS[result['status']]
+        return dict(status=status, objective_value=validation.get('cost', metrics.get('cost')),
+                    objective_unit=validation.get('cost_unit', metrics.get('cost_unit')))
+    monkeypatch.setattr('benchmarks.generic_motion_v1.runners.summarize._accepted_attempt', synthetic_acceptance)
 
 
 def _write(path, value):
@@ -184,7 +197,7 @@ def test_interrupted_attempt_awaiting_retry_is_not_finished(tmp_path):
     _write(second / 'receipt.json', dict(status='success_validated_numerical', files={}))
     report = summarize(tmp_path)
     assert report['complete'] and report['planned_jobs'] == report['finished_jobs'] == 1
-    assert report['status_counts'] == {'success_validated_numerical': 1}
+    assert report['status_counts'] == {'success_numerical': 1}
 
 
 def test_unsealed_terminal_result_is_running_and_excluded_from_paired_time(tmp_path):
@@ -195,7 +208,7 @@ def test_unsealed_terminal_result_is_running_and_excluded_from_paired_time(tmp_p
     _write(tmp_path / 'run_manifest.json', dict(jobs=jobs))
     report = summarize(tmp_path)
     assert not report['complete'] and report['finished_jobs'] == 1
-    assert report['status_counts'] == {'running': 1, 'success_validated_numerical': 1}
+    assert report['status_counts'] == {'running': 1, 'success_numerical': 1}
     group = next(g for g in report['groups'] if g['method'] == 'EI_ZO' and g['family'] == 'all')
     assert group['success_cost']['count'] == 0 and group['unconditional_success']['numerator'] == 0
     comparison = report['paired_comparisons'][0]
@@ -210,7 +223,7 @@ def test_non_attempt_directory_cannot_replace_numbered_attempt(tmp_path):
     (tmp_path / 'jobs/j/attempts/z-not-an-attempt').mkdir()
     _write(tmp_path / 'run_manifest.json', dict(jobs=[job]))
     report = summarize(tmp_path)
-    assert report['complete'] and report['status_counts'] == {'frontend_failed': 1}
+    assert report['complete'] and report['status_counts'] == {'no_solution_within_budget': 1}
 
 
 def test_recorded_metrics_are_stratified_without_filling_missing_or_pending_values(tmp_path):

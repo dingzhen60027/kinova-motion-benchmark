@@ -10,11 +10,67 @@ import argparse
 from collections import defaultdict
 from datetime import datetime,timezone
 import json
+import hashlib
 from pathlib import Path
+import subprocess
 import sys
 
 import control_driver as ctl
 import summarize as sm
+
+
+def historical_configuration(plan,enabled):
+    """Bind original overrides and fully resolved job settings, never defaults today."""
+    commit=enabled['source_code_commit']
+    if plan['enabled_source_commit']!=commit:
+        raise ValueError('Plan and enabled source commits differ')
+    path=Path(plan['control_config'])
+    if path.is_absolute() or '..' in path.parts:
+        raise ValueError('Historical control configuration must be a repository path')
+    payload=subprocess.check_output(['git','show',f'{commit}:{path.as_posix()}'],cwd=ctl.ROOT)
+    if hashlib.sha256(payload).hexdigest()!=plan['control_config_sha256']:
+        raise ValueError('Historical control configuration hash differs from plan')
+    overrides=json.loads(payload)
+    config=ctl.base_config(enabled['jobs'][0])
+    def contains(actual,expected):
+        return (isinstance(actual,dict) and all(k in actual and contains(actual[k],v) for k,v in expected.items())
+                if isinstance(expected,dict) else actual==expected)
+    if not isinstance(overrides,dict) or not contains(config,overrides):
+        raise ValueError('Resolved control configuration differs from original overrides')
+    return config
+
+
+def verify_saved_plan(plan, enabled):
+    """Replay geometry-only selection without requiring the old working tree.
+
+    Running or resuming experiments still calls control_driver.assert_sources.
+    This reader verifies historical source bindings with batch.verify instead.
+    """
+    scenes=defaultdict(lambda:defaultdict(list))
+    for line in ctl.DATA.read_text().splitlines():
+        case=json.loads(line)
+        if case['family'] in ctl.FAMILIES:
+            if case['split']!='dev' or case['validation_status']!='valid_input':
+                raise ValueError('Geometry-selected family has an invalid input')
+            scenes[case['family']][case['scene_id']].append(case['problem_id'])
+    selected=[];lookup=ctl.enabled_lookup(enabled)
+    config=historical_configuration(plan,enabled)
+    for family in ctl.FAMILIES:
+        if len(scenes[family])<3:raise ValueError(f'Insufficient scenes for {family}')
+        for scene in sorted(scenes[family])[:3]:
+            problem=min(scenes[family][scene]);jobs=[]
+            for objective in ('minimum_distance','minimum_time'):
+                job=lookup.get((problem,objective,0))
+                if (job is None or job['scene_id']!=scene or job['family']!=family
+                        or ctl.base_config(job)!=config):
+                    raise ValueError('Selected enabled job or configuration differs')
+                jobs.append({key:job[source] for key,source in (
+                    ('objective','objective'),('enabled_job_id','job_id'),
+                    ('method_seed','method_seed'),('roadmap_id','roadmap_id'),('case_ref','case_ref'))})
+            selected.append(dict(family=family,scene_id=scene,problem_id=problem,jobs=jobs))
+    if (plan['problems']!=selected or len(selected)!=12
+            or len({p['scene_id'] for p in selected})!=12):
+        raise ValueError('Plan does not match geometry-only selection')
 
 
 def main():
@@ -23,15 +79,20 @@ def main():
     args=parser.parse_args();out=args.output.resolve()
     if out.exists():parser.error('Output already exists; choose a fresh filename')
     plan=sm.read(ctl.PLAN);enabled=sm.read(ctl.ENABLED/'run_manifest.json')
-    errors=[];rows=[]
+    errors=[];rows=[];run_integrity=[]
+    from benchmarks.generic_motion_v1.batch import verify
+    def check_history(run):
+        result=verify(run,allow_unsealed=True)
+        run_integrity.append(dict(run=str(run.relative_to(ctl.ROOT)),**result))
+        if result['integrity_passed'] is not True:
+            raise ValueError('Historical run integrity failed: '+json.dumps(result['errors']))
     if (sm.sha(ctl.ENABLED/'run_manifest.json')!=plan['enabled_manifest_sha256']
-            or sm.sha(ctl.DATA)!=plan['dev_manifest_sha256'] or sm.sha(ctl.CONFIG)!=plan['control_config_sha256']):
+            or sm.sha(ctl.DATA)!=plan['dev_manifest_sha256']):
         errors.append('Plan-bound manifest, inputs, or control configuration changed')
     try:
-        ctl.assert_sources(enabled)
-        if plan['problems']!=ctl.plan_create()['problems']:
-            errors.append('Plan does not match geometry-only selection')
-    except (OSError, ValueError, KeyError) as e:
+        check_history(ctl.ENABLED)
+        verify_saved_plan(plan,enabled)
+    except (OSError, ValueError, KeyError,subprocess.CalledProcessError) as e:
         errors.append(f'Provenance or selection verification failed: {e}')
     lookup=ctl.enabled_lookup(enabled)
     for problem in plan['problems']:
@@ -39,6 +100,7 @@ def main():
         if (run/'run_manifest.json').is_file():
             try:
                 cm=sm.read(run/'run_manifest.json')
+                check_history(run)
                 ctl.control_verify(plan,problem,enabled,cm)
                 controljobs={j['objective']:j for j in cm['jobs']}
             except (OSError, ValueError, KeyError, TypeError) as e:
@@ -86,7 +148,8 @@ def main():
         'old_label':'control: early_accept_validated=false','new_label':'enabled: early_accept_validated=true',
         'plan':str(ctl.PLAN.relative_to(ctl.ROOT)),'plan_sha256':sm.sha(ctl.PLAN),
         'enabled_manifest_sha256':sm.sha(ctl.ENABLED/'run_manifest.json'),
-        'source_identity':'Every prepared control manifest is checked for exact equality of source and roadmap hashes to enabled manifest; each receipt and request is verified.',
+        'source_identity':'Historical Git/source-snapshot provenance is checked by batch.verify; every prepared control manifest must retain exact equality of source and roadmap hashes to enabled manifest; each receipt and request is verified. Current working-tree source equality is required only by execution/resume, not this retrospective reader.',
+        'historical_run_integrity':run_integrity,
         'selection_timing':plan['selection_timing'], 'scene_grouping':'Each chosen case comes from a distinct obstacle scene; do not pool two tracks as independent scenes.',
         'frontends':{'both_available':len(compared),'matched':len(compared)-len(different),'different':different,
                      'note':'Null when either frontend path is absent. Differences do not erase end-to-end results but prevent claiming an identical-initial-path pair.'},

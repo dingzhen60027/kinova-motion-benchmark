@@ -1,0 +1,57 @@
+{
+  "passed": true,
+  "original_inputs_unchanged": true,
+  "facts": {
+    "registered": 490,
+    "valid": 463,
+    "generation_failed": 27,
+    "scenes": 109,
+    "input_endpoints_rerun": 926,
+    "proposals_cpu_rechecked": 146816,
+    "straight_line_cpu_rechecked": 61011,
+    "shared_random_layouts": [],
+    "shared_individual_endpoints": [],
+    "original_witnesses_revalidated": 418
+  },
+  "actual_bug_fixed": "model.audit previously overwrote canonical configs/robot.json and accepted existing evidence output directories",
+  "fix": "New output directory; current inventory saved locally; canonical inventory read-only and compared; current G0 pointer binds a new successful audit and raw samples",
+  "tests": {
+    "passed": 137,
+    "log": "regression_tests.log"
+  },
+  "limitations": [
+    "Fresh full dataset recomputation is CPU-only and compares saved CUDA results; new GPU queries are the separate G0 probe suite",
+    "Finite trajectory sampling cannot certify continuous collision freedom",
+    "dev has no open_control and a different distance-stratum ratio from test",
+    "Source primitive cover is conservative and changes clearances; compare methods against frozen voxel geometry",
+    "Test has historical evaluation exposure"
+  ],
+  "commands": [
+    "bash local/python.sh benchmarks/generic_motion_v1/results/rigor_checks/strict_check_20261105/dataset/check.py --output <new-directory>",
+    "bash local/python.sh benchmarks/generic_motion_v1/results/rigor_checks/strict_check_20261105/dataset/check_metadata.py --output <new-json>",
+    "bash local/python.sh -m benchmarks.generic_motion_v1.model --out <new-audit-directory>",
+    "bash local/python.sh -m pytest -q benchmarks/generic_motion_v1/tests/test_model_audit_readonly.py benchmarks/generic_motion_v1/tests/test_model_audit_reference.py benchmarks/generic_motion_v1/tests/test_model_consistency.py benchmarks/generic_motion_v1/tests/test_model_qualification.py benchmarks/generic_motion_v1/tests/test_generator.py benchmarks/generic_motion_v1/tests/test_generator_integrity.py benchmarks/generic_motion_v1/tests/test_dataset.py"
+  ],
+  "evidence_sha256": {
+    "check.py": "f054d4f9d60f69c0cce9536eeaef45e54159fb71796578f20ad3739278bbc6c4",
+    "check_metadata.py": "7c847696a6537cf7e7c733488ea742abbcc06f8e03455ae23ce15e5c230c1e84",
+    "g0_reference_check.json": "1dd63297eb37031f05bf97e35c4ebe3a3def35a3e53670b72edc51cc3246432b",
+    "metadata_check.json": "5981d99e36e1b4254d8d6ca21239b2c01b6a7847635a071e9149c17126bb1501",
+    "metadata_check.log": "5981d99e36e1b4254d8d6ca21239b2c01b6a7847635a071e9149c17126bb1501",
+    "model_audit_after_fix/audit.json": "6a461a54630d0d15f30735c48ab3e767cc86b0da0b9824de5f4be8b4197c3aa3",
+    "model_audit_after_fix/model_inventory.json": "af89a0de7988658a88a5696d5aae37ca4321fdc6f8a5bf2db5cb87c079807ce2",
+    "model_audit_after_fix/raw_samples.npz": "d2fd72cc9787ea8fa7474bc2c617345e6143543923bd2784e61c5a82d07104ca",
+    "model_audit_after_fix.log": "4995dc7f8a87bcc2200d7e318a0cc20acbfba74351932be37ffca2035377cb6a",
+    "model_audit_readonly_tests.log": "fac8aaadc73a18f429accef33900b10cfd78bd95c7687ad6e7c91bc437aa1b8d",
+    "model_audit_tests.log": "698315a8d5097c1956ada27f43ede75c8c5a928b91659079876276bd700d8581",
+    "regression_tests.log": "525f828573b54a8417910a481b5570a1ba77721254b5866e1b180baa21bccc34",
+    "run/clearances.npz": "94347f8bad9c97dfb623b2eab0266de2c2e5235e5d8c308e65997a50a6e93820",
+    "run/summary.json": "f7e58a5653a73e2cabf69db6707f7980aff16e5cc34579416d298c3ed4a0299a",
+    "run.log": "458f948a193284b9ba699d4e7af7cbd38b0db35cdcc0bf8d7891f9239c598017"
+  },
+  "source_sha256": {
+    "benchmarks/generic_motion_v1/model.py": "7f319740c7f0c91add5ed8454873a16a75bba6ee56e0da3a8f18fa8f55a64a94",
+    "benchmarks/generic_motion_v1/generator/manifest.py": "b21506f0ae2e32361deb67e034b82c8c4ec91f7dfe75d111a06aae1a56ded02a",
+    "benchmarks/generic_motion_v1/reports/model_audit/current.json": "f1aa2c5c64d3db312706191e2fe5c8226dc1c361cfc64fb71c0052bc947b9f38"
+  }
+}

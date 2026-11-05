@@ -46,6 +46,18 @@ def make_run(tmp_path, monkeypatch):
     # fixtures and the returned marker explicitly identifies the substitution.
     monkeypatch.setattr(study, "verify", lambda *a, **k: dict(
         integrity_passed=True, complete=True, fixture_only=True))
+    def accounting_acceptance(run,manifest,job,attempt,cache):
+        # This fixture has no trajectory coefficients, collision arrays or
+        # sealed process evidence. Mock acceptance only for these synthetic
+        # statistical inputs; production never exempts fixture markers. Real
+        # acceptance integration is tested in test_run_summary_acceptance.
+        from benchmarks.generic_motion_v1.runners.results import STATUS
+        result=_read(attempt/'result.json');validation_path=attempt/'validation.json'
+        validation=_read(validation_path) if validation_path.exists() else {}
+        return dict(status=STATUS[result['status']],
+                    objective_value=validation.get('cost'),objective_unit=validation.get('cost_unit'))
+    monkeypatch.setattr('benchmarks.generic_motion_v1.runners.summarize._accepted_attempt',
+                        accounting_acceptance)
 
     def make(name, cases=None, methods=METHODS, outcomes=None, config=None, sources=None):
         root = tmp_path / name

@@ -335,15 +335,46 @@ class Model:
 
 
 def audit(out=None, seed=861730, random_count=512):
-    """Real G0 audit. Persist raw states, boundary probes and all differences."""
-    out = Path(out or HERE / 'reports/model_audit')
-    out.mkdir(parents=True, exist_ok=True)
+    """Real G0 audit in a new evidence directory; canonical inputs stay read-only.
+
+    A missing or different canonical inventory is a failed audit. The freshly
+    constructed inventory is saved for inspection, never installed implicitly.
+    """
+    out = Path(out or HERE / 'reports/model_audit').resolve()
+    # Refuse even an existing empty directory: a typo must not overwrite prior
+    # audit evidence or place generated files inside a canonical input folder.
+    out.mkdir(parents=True, exist_ok=False)
     model = Model()
+    inventory_path = out / 'model_inventory.json'
+    inventory_path.write_text(json.dumps(model.inventory, indent=2, allow_nan=False) + '\n')
+    canonical = HERE / 'configs/robot.json'
+    comparison = dict(canonical_file='configs/robot.json',
+                      observed_inventory_file=inventory_path.name,
+                      observed_inventory_sha256=sha256(inventory_path),
+                      canonical_sha256_before=sha256(canonical) if canonical.is_file() else None,
+                      canonical_matches=False)
+    errors = []
+    try:
+        frozen = json.loads(canonical.read_text())
+        comparison['canonical_matches'] = frozen == model.inventory
+        if not comparison['canonical_matches']:
+            errors.append('canonical_inventory_mismatch')
+    except (OSError, ValueError) as exc:
+        errors.append('canonical_inventory_missing_or_unreadable')
+        comparison['read_error'] = dict(type=type(exc).__name__, message=str(exc))
+    if errors:
+        report = dict(seed=seed, rng='numpy.random.PCG64', status='failed', passed=False,
+                      model=model.inventory, model_source_sha256=sha256(__file__),
+                      inventory_comparison=comparison, errors=errors,
+                      bootstrap_policy='Inspect the saved model_inventory.json and explicitly initialize a reviewed canonical inventory; this audit never writes configs/robot.json.')
+        (out / 'audit.json').write_text(json.dumps(report, indent=2, allow_nan=False) + '\n')
+        return report
     rng = np.random.Generator(np.random.PCG64(seed))
     states = rng.uniform(model.lower + 0.01, model.upper - 0.01, (random_count, 7))
     edge_endpoints = rng.uniform(model.lower + 0.01, model.upper - 0.01, (16, 2, 7))
     edge_states = np.vstack([np.linspace(a, b, 33) for a, b in edge_endpoints])
-    report = dict(seed=seed, rng='numpy.random.PCG64', status='running', model=model.inventory)
+    report = dict(seed=seed, rng='numpy.random.PCG64', status='running', model=model.inventory,
+                  inventory_comparison=comparison, errors=errors)
     raw = dict(random_states=states, edge_endpoints=edge_endpoints, edge_states=edge_states)
     def check(name, q):
         tic = time.perf_counter()
@@ -457,13 +488,17 @@ def audit(out=None, seed=861730, random_count=512):
                               moving_collision_geometry_min=bounds[:, 0].min(axis=0).tolist(),
                               moving_collision_geometry_max=bounds[:, 1].max(axis=0).tolist(),
                               note='Workspace samples audit the obstacle ROI; they do not prove reachability of every point.')
-    report['passed'] = all(report[name]['outside_contact_band'] == 0 for name in ('base_random', 'base_edges', 'voxel_random', 'voxel_edges', 'boundary'))
+    comparison['canonical_sha256_after'] = sha256(canonical) if canonical.is_file() else None
+    comparison['canonical_unchanged'] = comparison['canonical_sha256_before'] == comparison['canonical_sha256_after']
+    if not comparison['canonical_unchanged']:
+        errors.append('canonical_inventory_changed_during_audit')
+    report['passed'] = (not errors and all(report[name]['outside_contact_band'] == 0
+                        for name in ('base_random', 'base_edges', 'voxel_random', 'voxel_edges', 'boundary')))
     report['status'] = 'passed_with_explicit_contact_band' if report['passed'] else 'failed'
     np.savez_compressed(out / 'raw_samples.npz', **raw)
     report['raw_samples_sha256'] = sha256(out / 'raw_samples.npz')
     report['model_source_sha256'] = sha256(__file__)
     (out / 'audit.json').write_text(json.dumps(report, indent=2, allow_nan=False) + '\n')
-    (HERE / 'configs/robot.json').write_text(json.dumps(model.inventory, indent=2, allow_nan=False) + '\n')
     return report
 
 
@@ -473,5 +508,5 @@ if __name__ == '__main__':
     parser.add_argument('--seed', type=int, default=861730)
     args = parser.parse_args()
     result = audit(args.out, args.seed)
-    print(json.dumps({k: result[k] for k in ('status', 'passed', 'base_random', 'base_edges', 'voxel_random', 'voxel_edges', 'upstream_model_difference', 'workspace')}, indent=2))
+    print(json.dumps({k: result[k] for k in ('status', 'passed', 'inventory_comparison', 'errors', 'base_random', 'base_edges', 'voxel_random', 'voxel_edges', 'upstream_model_difference', 'workspace') if k in result}, indent=2))
     raise SystemExit(0 if result['passed'] else 1)
