@@ -242,6 +242,31 @@ def _git_source_errors(commit, sources):
     return errors
 
 
+def _attempt_receipt(attempt):
+    """Read lifecycle metadata without treating malformed evidence as pending."""
+    path = Path(attempt) / "receipt.json"
+    if not path.exists():
+        return None
+    receipt = read(path)
+    if not isinstance(receipt, dict):
+        raise ValueError("Attempt receipt must be a JSON object")
+    if "retry_pending" in receipt and type(receipt["retry_pending"]) is not bool:
+        raise ValueError("Receipt retry_pending must be a boolean")
+    if not isinstance(receipt.get("status"), str) or receipt["status"] not in TERMINAL_STATUSES:
+        raise ValueError("Receipt must contain a recognized terminal status")
+    return receipt
+
+
+def _first_terminal_attempt(attempts):
+    """Select the first sealed outcome, checking every receipt fail closed."""
+    first = None
+    for attempt in sorted(attempts):
+        receipt = _attempt_receipt(attempt)
+        if receipt is not None and not receipt.get("retry_pending") and first is None:
+            first = attempt
+    return first
+
+
 def verify(run, current_sources=False, allow_unsealed=False):
     run = Path(run)
     errors = []
@@ -353,7 +378,7 @@ def verify(run, current_sources=False, allow_unsealed=False):
                     errors.append("unsealed attempt: " + str(attempt))
                 continue
             try:
-                receipt = read(attempt / "receipt.json")
+                receipt = _attempt_receipt(attempt)
                 files = receipt["files"]
                 if not isinstance(files, dict) or "result.json" not in files:
                     raise ValueError("Receipt must include result.json")
@@ -403,12 +428,11 @@ def verify(run, current_sources=False, allow_unsealed=False):
             except (OSError, ValueError, TypeError, KeyError) as exc:
                 errors.append(f"invalid attempt receipt {attempt}: {exc}")
         attempts = sorted(path.glob("[0-9][0-9][0-9][0-9]"))
-        if attempts and (attempts[-1] / "receipt.json").exists():
-            try:
-                if not read(attempts[-1] / "receipt.json").get("retry_pending"):
-                    complete += 1
-            except (OSError, ValueError, TypeError):
-                pass
+        try:
+            if _first_terminal_attempt(attempts) is not None:
+                complete += 1
+        except (OSError, ValueError, TypeError, KeyError) as exc:
+            errors.append(f"invalid attempt lifecycle {path}: {exc}")
     return dict(integrity_passed=not errors, complete=not errors and complete == len(manifest["jobs"]),
                 completed_jobs=complete, planned_jobs=len(manifest["jobs"]), errors=errors, unsealed_attempts=unsealed)
 
@@ -561,11 +585,12 @@ def _resume_locked(run, max_jobs=None):
     check = verify(run, allow_unsealed=True)
     if not check["integrity_passed"]:
         raise ValueError(json.dumps(check))
-    if check["complete"]:
+    if check["complete"] and not check["unsealed_attempts"]:
         return check
-    compatible = verify(run, current_sources=True, allow_unsealed=True)
-    if not compatible["integrity_passed"]:
-        raise ValueError(json.dumps(compatible))
+    if not check["complete"]:
+        compatible = verify(run, current_sources=True, allow_unsealed=True)
+        if not compatible["integrity_passed"]:
+            raise ValueError(json.dumps(compatible))
     # Preserve a coordinator/host interruption as a sealed failed attempt,
     # then retry in a new numbered directory with the same frozen inputs.
     for name in check["unsealed_attempts"]:
@@ -578,13 +603,18 @@ def _resume_locked(run, max_jobs=None):
             previous_partial_status=prior.get("status") if prior else None))
         files = {str(p.relative_to(interrupted)): sha(p) for p in sorted(interrupted.rglob("*")) if p.is_file()}
         write(interrupted / "receipt.json", dict(status="infrastructure_error", retry_pending=True, files=files))
+    # Already completed historical jobs may have a later interrupted attempt.
+    # Seal that evidence without requiring today's source or launching a worker.
+    if check["complete"]:
+        result = verify(run)
+        write(run / "verification.json", result)
+        return result
     manifest = read(run / "run_manifest.json")
     completed = 0
     for job in manifest["jobs"]:
         attempts = sorted((run / "jobs" / job["job_id"] / "attempts").glob("[0-9][0-9][0-9][0-9]"))
-        if attempts and (attempts[-1] / "receipt.json").exists():
-            if not read(attempts[-1] / "receipt.json").get("retry_pending"):
-                continue
+        if _first_terminal_attempt(attempts) is not None:
+            continue
         if max_jobs is not None and completed >= max_jobs:
             break
         if code_inventory() != manifest["source_hashes"]:
