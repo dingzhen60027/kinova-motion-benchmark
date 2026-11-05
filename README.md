@@ -84,6 +84,12 @@ The refined NTO row uses the completed METIS/MC64 retest: **1,220 registered cal
 
 The three NTO rows are configurations of one method family. `NTO_REFINED` is the strengthened comparison profile; the other two preserve the published-parameter reconstruction and historical configuration. [Configuration differences and verified failure causes →](benchmarks/generic_motion_v1/README.md#nto-profiles-and-failure-analysis)
 
+## Simulation
+
+Execute saved time trajectories in **MuJoCo 3.3.7**, with gravity, source-model inertia, torque limits, contact and independent collision checks. The simulator reuses the existing problems and exact trajectory coefficients; execution results stay separate from planning scores. [Install and run](local/README.md#optional-mujoco-simulation) · [Execution protocol](benchmarks/generic_motion_v1/README.md#mujoco-execution) · [Demo video](benchmarks/generic_motion_v1/results/mujoco_smoke/demo/render/rollout.mp4)
+
+![MuJoCo execution of a saved Kinova trajectory](benchmarks/generic_motion_v1/results/mujoco_smoke/demo/render/overview.png)
+
 ## Project structure
 
 ```text

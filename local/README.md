@@ -129,6 +129,60 @@ Source/build evidence is retained under [native/](../benchmarks/generic_motion_v
 
 `local/setup.sh` reinstalls Python dependencies and runs upstream examples; `local/setup_research.sh` is the earlier Forest/FR3 helper. Neither is required when reusing this checkout, and neither installs the complete current native stack.
 
+## Optional MuJoCo simulation
+
+Reuse the project Conda environment above. This adds physical execution checks to saved trajectories; it does not replace the planning benchmark.
+
+**1. Install the optional pinned packages.** Skip installation if this checkout already has them.
+
+```bash
+bash local/python.sh -m pip install -r local/requirements-mujoco.txt
+bash local/python.sh -m pip check
+bash local/python.sh -c 'import sys, mujoco; print(sys.executable); print(mujoco.__version__)'
+```
+
+Expect `No broken requirements found`, the selected Conda Python and MuJoCo `3.3.7`. The [optional lock](requirements-mujoco.txt) records the eight packages installed for this layer; the existing project environment and planner dependencies remain in use.
+
+**2. Execute one saved time trajectory.** Use a new output directory.
+
+```bash
+bash local/python.sh scripts/simulate.py run \
+  --attempt results/nto_metis_smoke/jobs/smoke-bottleneck-000-p00-NTO_REFINED-minimum_time-633cc65e/attempts/0001 \
+  --output runs/mujoco-one
+bash local/python.sh scripts/simulate.py verify --run runs/mujoco-one
+```
+
+`result.json` contains execution checks; `rollout.npz` saves actual states, reference states, torque and contact evidence. `execution_success_numerical` means the declared numerical execution checks passed. A completed execution can also fail these checks; it is retained with its evidence.
+
+**3. Execute a completed planning cohort, then resume or summarize it.**
+
+```bash
+bash local/python.sh scripts/simulate.py batch \
+  --source-run results/baseline_smoke --methods EI_ZO \
+  --output runs/mujoco-smoke
+bash local/python.sh scripts/simulate.py resume --run runs/mujoco-smoke
+bash local/python.sh scripts/simulate.py verify --run runs/mujoco-smoke
+bash local/python.sh scripts/simulate.py summarize --run runs/mujoco-smoke
+```
+
+Only time-track jobs are selected. The first terminal planning attempt is preserved, including planning failures; completed simulation jobs are verified and never rerun. An unfinished cohort requires unchanged simulator source. Results are written to that cohort's `records.csv` and `summary.json`.
+
+**4. Render or view the simulated motion.** Rendering requires an available `ffmpeg` executable and working OpenGL/EGL; headless rendering has been tested on the recorded NVIDIA host.
+
+```bash
+ffmpeg -version
+bash local/python.sh scripts/simulate.py render \
+  --run runs/mujoco-one --output runs/mujoco-one/render
+```
+
+Open the generated `overview.png` or `rollout.mp4`. For a local desktop window:
+
+```bash
+MUJOCO_GL=glfw bash local/python.sh scripts/simulate.py view --run runs/mujoco-one
+```
+
+The desktop viewer command has not been exercised on this host. It replays the saved simulated states; the physical execution happens in `run` or `batch`. Add `--collision-debug` to render/view to inspect collision geometry. [Model, controller and validation details](../benchmarks/generic_motion_v1/README.md#mujoco-execution).
+
 ## Troubleshooting
 
 | Symptom | Check |

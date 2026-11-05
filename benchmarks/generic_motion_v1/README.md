@@ -252,6 +252,28 @@ The second command checks the installed upstream package with its required impor
 
 To add a planner, implement an adapter in [runners/](runners/), declare its identity/objectives in [methods.py](runners/methods.py), and connect [worker dispatch](batch.py). Reuse the frozen inputs, validator and result contracts; add a targeted test and configuration.
 
+## MuJoCo execution
+
+The optional [MuJoCo installation and commands](../../local/README.md#optional-mujoco-simulation) execute existing saved planning results. They reuse the fixed scene, endpoints and robot; no new problem set or planning scores are created. A [recorded demo](results/mujoco_smoke/demo/result.json), [image](results/mujoco_smoke/demo/render/overview.png) and [video](results/mujoco_smoke/demo/render/rollout.mp4) are available.
+
+| Component | Execution protocol |
+|---|---|
+| Reference | Original `candidate.json` / `candidate.npz`; piecewise Bezier or B-spline coefficients evaluated analytically for position, velocity and acceleration in physical seconds. No interpolation of a downsampled animation. |
+| Physics | MuJoCo `mj_step1` / `mj_step2` with `implicitfast`, gravity and the canonical source masses/inertias. State is initialized once; a computed-torque PD controller drives ideal torque motors, clipped to the source URDF effort limits. |
+| Geometry | Same primitive robot geometry, fixed equipment, collision pairs and conservative 0.04 m voxel spheres as planning. Illustration meshes are visual only. Export checks compare poses, mass matrices, gravity forces and collisions with the canonical Drake model. |
+| Actual-state validation | Every recorded integration state is checked for tracking, endpoint error, position/velocity/acceleration limits, actual torque limits and penetration. Independent Drake clearance rechecks actual simulated joint positions. Checker disagreements and integration warnings fail the relevant checks. |
+| Time and outputs | Default integration step 2 ms; original trajectory duration is unchanged, followed by a separately identified 0.5 s goal hold. Planning computation, simulation wall time and physical trajectory/hold times are distinct. Save exact configuration, source hashes, states, reference derivatives, actual/requested torque, contact and failure evidence. |
+
+Settings and explicit numerical tolerances are in [mujoco.json](../../configs/mujoco.json). They describe simulated execution and do not relax the existing planning validator. The original trajectory coefficients, planning attempts and main baseline CSVs remain unchanged.
+
+Only numerically accepted **time-track** trajectories are executed. An original planning failure is recorded as `no_validated_reference`; an untimed path is `unsupported_untimed_path`. Executing a path-only planner requires a separately declared common time-parameterization protocol, which this layer does not invent. `batch` retains the first terminal source attempt, writes execution `records.csv` / `summary.json`, and supports `resume`, `verify` and `summarize`. A completed failure is a completed record, not a success or a reason to retry.
+
+The [smoke execution records](results/mujoco_smoke/records.csv) contain 20 registered calls across EI-ZO and refined NTO: 10 had validated timed references, of which **8 passed execution and 2 exceeded acceleration limits**; 4 inputs were invalid and 6 had no validated reference. A separately selected dense-clutter dev reference also exceeded acceleration limits. These are functional checks, not a full simulation leaderboard. The [failure diagnosis](results/mujoco_smoke/tracking_failure_diagnosis.json) and [step-size comparison](results/mujoco_smoke/convergence.json) retain the original failures: tracking near piecewise acceleration jumps depends on the integration step. No coefficients, tolerances or planning scores were changed to obtain a pass. Disabling torque control produced gravity-driven motion, contact and a recorded execution failure.
+
+On this host, the [distance probe](results/mujoco_smoke/model_sparse/native_distance_probe.json) returned zero for some separated box pairs. Accordingly, execution uses actual MuJoCo contacts plus independent canonical Drake clearance, rather than treating `mj_geomDistance == 0` as contact. A related distance-query problem is discussed in [MuJoCo issue #3383](https://github.com/google-deepmind/mujoco/issues/3383), for different versions and convex meshes. The [66-state model cross-check](results/mujoco_smoke/model_sparse/crosscheck.json) recorded no penetration-sign disagreement or unexpected contact pairs. Integration follows the [MuJoCo simulation interface](https://mujoco.readthedocs.io/en/3.3.7/programming/simulation.html).
+
+This is a rigid-body execution model with an exact-model controller, ideal torque motors, fixed fingers and uncalibrated contact/friction. The source URDF effort limits and inertias are used verbatim; motor electronics, flexibility, sensor error and hardware identification are not modeled. Numerical integration/collision samples are not a continuous safety proof or real-robot validation. Headless rendering is tested; the desktop `view` command is provided but has not been exercised on this host.
+
 ## Upstream citation
 
 This Kinova dataset does not reproduce the private Franka/FR3 inputs or KUKA hardware trials. For the original algorithm, cite [Werner et al., RSS 2025](https://www.roboticsproceedings.org/rss21/p045.html):
