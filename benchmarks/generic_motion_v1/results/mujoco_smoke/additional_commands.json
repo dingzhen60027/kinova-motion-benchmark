@@ -1,0 +1,44 @@
+[
+  {
+    "command": [
+      "bash",
+      "local/python.sh",
+      "scripts/simulate.py",
+      "run",
+      "--attempt",
+      "benchmarks/generic_motion_v1/results/baseline_dev/jobs/dev-dense_clutter-000-p02-EI_ZO-minimum_time-c0a722b6/attempts/0001",
+      "--output",
+      "results/mujoco_smoke/dense"
+    ],
+    "exit_code": 0
+  },
+  {
+    "command": [
+      "bash",
+      "local/python.sh",
+      "scripts/simulate.py",
+      "run",
+      "--attempt",
+      "results/nto_metis_smoke/jobs/smoke-bottleneck-000-p00-NTO_REFINED-minimum_time-633cc65e/attempts/0001",
+      "--output",
+      "results/mujoco_smoke/uncontrolled",
+      "--disable-control"
+    ],
+    "exit_code": 0
+  },
+  {
+    "command": [
+      "bash",
+      "local/python.sh",
+      "scripts/simulate.py",
+      "run",
+      "--attempt",
+      "results/nto_metis_smoke/jobs/smoke-bottleneck-000-p00-NTO_REFINED-minimum_time-633cc65e/attempts/0001",
+      "--output",
+      "results/mujoco_smoke/half_step",
+      "--config",
+      "results/mujoco_smoke/half_step.json"
+    ],
+    "exit_code": 0
+  }
+]

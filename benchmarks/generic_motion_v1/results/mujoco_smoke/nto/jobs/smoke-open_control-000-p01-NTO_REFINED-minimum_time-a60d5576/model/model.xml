@@ -1,0 +1,303 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mujoco model="kinova_motion_benchmark">
+  <compiler angle="radian" inertiafromgeom="false" fusestatic="false" autolimits="true" strippath="false" />
+  <option timestep="0.002" gravity="0 0 -9.8100000000000005" integrator="implicitfast" cone="elliptic" iterations="100" tolerance="1e-10" />
+  <size memory="128M" />
+  <visual>
+    <global offwidth="1280" offheight="720" />
+    <quality offsamples="4" shadowsize="2048" />
+    <headlight ambient="0.35 0.35 0.35" diffuse="0.65 0.65 0.65" />
+  </visual>
+  <default>
+    <geom contype="0" conaffinity="0" margin="0" gap="0" />
+    <joint damping="0" armature="0" frictionloss="0" />
+  </default>
+  <asset>
+    <texture name="neutral_sky" type="skybox" builtin="gradient" rgb1="0.80 0.84 0.88" rgb2="0.96 0.97 0.98" width="512" height="3072" />
+    <mesh name="mesh_000" file="../../../../../../../../csdecomp/tests/test_assets/kinova/kortex_description/arms/gen3/7dof/meshes/base_link.obj" scale="1 1 1" />
+    <mesh name="mesh_001" file="../../../../../../../../csdecomp/tests/test_assets/kinova/kortex_description/arms/gen3/7dof/meshes/shoulder_link.obj" scale="1 1 1" />
+    <mesh name="mesh_002" file="../../../../../../../../csdecomp/tests/test_assets/kinova/kortex_description/arms/gen3/7dof/meshes/half_arm_1_link.obj" scale="1 1 1" />
+    <mesh name="mesh_003" file="../../../../../../../../csdecomp/tests/test_assets/kinova/kortex_description/arms/gen3/7dof/meshes/half_arm_2_link.obj" scale="1 1 1" />
+    <mesh name="mesh_004" file="../../../../../../../../csdecomp/tests/test_assets/kinova/kortex_description/arms/gen3/7dof/meshes/forearm_link.obj" scale="1 1 1" />
+    <mesh name="mesh_005" file="../../../../../../../../csdecomp/tests/test_assets/kinova/kortex_description/arms/gen3/7dof/meshes/spherical_wrist_1_link.obj" scale="1 1 1" />
+    <mesh name="mesh_006" file="../../../../../../../../csdecomp/tests/test_assets/kinova/kortex_description/arms/gen3/7dof/meshes/spherical_wrist_2_link.obj" scale="1 1 1" />
+    <mesh name="mesh_007" file="../../../../../../../../csdecomp/tests/test_assets/kinova/kortex_description/arms/gen3/7dof/meshes/bracelet_with_vision_link.obj" scale="1 1 1" />
+    <mesh name="mesh_008" file="../../../../../../../../csdecomp/tests/test_assets/robotiq/meshes/robotiq_85_base_link_fine.obj" scale="1 1 1" />
+    <mesh name="mesh_009" file="../../../../../../../../csdecomp/tests/test_assets/robotiq/meshes/outer_knuckle_fine.obj" scale="1 1 1" />
+    <mesh name="mesh_010" file="../../../../../../../../csdecomp/tests/test_assets/robotiq/meshes/outer_finger_fine.obj" scale="1 1 1" />
+    <mesh name="mesh_011" file="../../../../../../../../csdecomp/tests/test_assets/robotiq/meshes/inner_knuckle_fine.obj" scale="1 1 1" />
+    <mesh name="mesh_012" file="../../../../../../../../csdecomp/tests/test_assets/robotiq/meshes/inner_finger_fine.obj" scale="1 1 1" />
+    <mesh name="mesh_013" file="../../../../../../../../csdecomp/tests/test_assets/table.obj" scale="1 1 1" />
+  </asset>
+  <worldbody>
+    <light name="key_light" pos="1 -1 3" dir="-0.3 0.3 -1" directional="true" />
+    <camera name="overview" pos="2.2 -2.4 1.9" xyaxes="0.737 0.676 0 -0.307 0.335 0.891" />
+    <geom name="visual_floor" type="plane" size="3 3 .05" pos="0 0 -0.73" rgba="0.86 0.88 0.90 1" group="2" />
+    <body name="body_1_kinova_base_link" pos="0 0 0" quat="1 0 0 0">
+      <inertial mass="1.7565702999999999" pos="-0.00075876000000000003 -0.00019207 0.096053509999999995" diaginertia="0.002051211286713559 0.0055148538314474336 0.0056245148818390095" quat="0.020036934169269587 -0.70062358283851511 -0.019157617710036996 -0.71299235768926361" />
+      <body name="body_2_kinova_shoulder_link" pos="0 0 0.15643000000000001" quat="3.6732051033465744e-06 -0.99999999999325395 -0 -0">
+        <inertial mass="1.4699014500000001" pos="-2.5219999999999999e-05 -0.0075953499999999998 -0.088650770000000004" diaginertia="0.0014498221502453181 0.0043268697617677319 0.0044736980879869484" quat="0.49193096841311812 0.50778156070191904 -0.50888828616672188 0.49111558835935126" />
+        <joint name="kinova_joint_1" type="hinge" axis="0 0 1" pos="0 0 0" limited="true" range="-3.0999999046325684 3.0999999046325684" />
+        <body name="body_3_kinova_half_arm_1_link" pos="0 0.0053749999999999996 -0.12837999999999997" quat="0.70710548251123628 0.70710807985947366 0 0">
+          <inertial mass="1.2357745" pos="-4.5330000000000001e-05 -0.12951715999999999 -0.01354356" diaginertia="0.00095806757079161661 0.0115878999779871 0.011756072451221287" quat="0.70640813801938207 0.032195015277050716 -0.031585318740777607 0.70636632930183163" />
+          <joint name="kinova_joint_2" type="hinge" axis="0 0 1" pos="0 0 0" limited="true" range="-2.2400000095367432 2.2400000095367432" />
+          <body name="body_4_kinova_half_arm_2_link" pos="0 -0.21037999999999996 -0.0063749999999999996" quat="0.70710548251123628 -0.70710807985947377 -0 -0">
+            <inertial mass="1.2357745" pos="-4.5330000000000001e-05 -0.0036144800000000002 -0.14407154" diaginertia="0.0010450716046572573 0.010098725998088972 0.010179912397253773" quat="0.49818037405168214 0.50170947949241385 -0.50546551619410429 0.49457913930513175" />
+            <joint name="kinova_joint_3" type="hinge" axis="0 0 1" pos="0 0 0" limited="true" range="-3.0999999046325684 3.0999999046325684" />
+            <body name="body_5_kinova_forearm_link" pos="0 0.0063749999999999987 -0.21037499999999998" quat="0.70710548251123617 0.70710807985947377 0 0">
+              <inertial mass="0.89954802" pos="-0.00030187999999999998 -0.104938 -0.01559665" diaginertia="0.0005373369642320871 0.0088984774235368151 0.0090554456122310927" quat="0.70594603732619388 0.021754625696935974 -0.04036875434740067 0.70677952171569702" />
+              <joint name="kinova_joint_4" type="hinge" axis="0 0 1" pos="0 0 0" limited="true" range="-2.5699999332427979 2.5699999332427979" />
+              <body name="body_6_kinova_spherical_wrist_1_link" pos="0 -0.20842499999999994 -0.006374999999999997" quat="0.70710548251123617 -0.70710807985947377 -0 -0">
+                <inertial mass="0.70588351000000005" pos="-0.00035363000000000001 -0.0065944300000000001 -0.075603429999999999" diaginertia="0.00037939134801385425 0.0014550727466396444 0.0014671259053465006" quat="0.56114764923344707 0.42634796700754496 -0.60930827042077751 0.36343384320279049" />
+                <joint name="kinova_joint_5" type="hinge" axis="0 0 1" pos="0 0 0" limited="true" range="-3.0999999046325684 3.0999999046325684" />
+                <body name="body_7_kinova_spherical_wrist_2_link" pos="0 0.00017505000000000279 -0.10592505000000006" quat="0.70710548251123617 0.70710807985947388 0 0">
+                  <inertial mass="0.70583923999999998" pos="-0.00035546999999999998 -0.061594240000000001 -0.0085017100000000009" diaginertia="0.00033540679471911593 0.001871874930415479 0.001924968274865406" quat="0.70374250129194571 0.054433789606924868 -0.1004501542321635 0.7012084005052418" />
+                  <joint name="kinova_joint_6" type="hinge" axis="0 0 1" pos="0 0 0" limited="true" range="-2.0899999141693115 2.0899999141693115" />
+                  <body name="body_9_kinova_force_torque_link" pos="0 -0.10592505000000001 -0.00017505000000000244" quat="0.70710548251123617 -0.70710807985947399 -0 -0">
+                    <inertial mass="0.050000000000000003" pos="-0 -0 -0" diaginertia="0.00026928535261782613 0.00048880247866680225 0.00056702216871537157" quat="0.11479318076377436 0.7009381326080748 -0.69786359977163304 0.092166458214570951" />
+                    <joint name="kinova_joint_7" type="hinge" axis="0 0 1" pos="0 0 0" limited="true" range="-3.0999999046325684 3.0999999046325684" />
+                    <body name="body_8_kinova_bracelet_link" pos="0 1.6256122439809351e-20 -0.030999999999999996" quat="1 0 0 0">
+                      <inertial mass="0.43504642999999998" pos="-0.00027419 -0.011701359999999999 -0.034375019999999999" diaginertia="0.00026928535261782613 0.00048880247866680215 0.00056702216871537157" quat="0.11479318076377433 0.7009381326080748 -0.69786359977163304 0.092166458214570965" />
+                      <body name="body_10_kinova_end_effector_link" pos="0 6.6418776414052192e-19 -0.061525000000000052" quat="3.6732051033465727e-06 -0.99999999999325384 -0 -0">
+                        <body name="body_11_kinova_camera_link" pos="0 0.056389999999999968 -0.0030500000000000206" quat="2.6099806001878015e-30 1.6155445744325867e-15 1.6155442461450421e-15 -1" />
+                        <body name="body_12_kinova_camera_depth_frame" pos="0.0275 0.065999999999999975 -0.0030500000000000106" quat="2.6099806001878015e-30 1.6155445744325867e-15 1.6155442461450421e-15 -1" />
+                        <body name="body_13_kinova_camera_color_frame" pos="0 0.056389999999999968 -0.0030500000000000206" quat="2.6099806001878015e-30 1.6155445744325867e-15 1.6155442461450421e-15 -1" />
+                        <body name="body_15_kinova_april_tag_frame" pos="0 -1.0920006061616121e-18 0.0050000000000000209" quat="1.6155445744325867e-15 3.6717907671672264e-36 1 0" />
+                        <body name="body_16_robotiq_robotiq_85_base_link" pos="0 0 0" quat="1 0 0 0">
+                          <inertial mass="0.30914999999999998" pos="0.00021986999999999999 -2.3545999999999998e-10 0.030162999999999999" diaginertia="0.00019910205576589558 0.0002897579442150883 0.00030737000001901642" quat="0.49486708524253409 0.49485077759345841 0.50509701753585512 -0.50508046758421765" />
+                          <body name="body_17_robotiq_left_outer_knuckle" pos="0.030601144426053901 9.8122334034230996e-19 0.06279201626953948" quat="1 0 0 0">
+                            <inertial mass="0.0068483884943439603" pos="0.0178331863169983 3.6891517722428597e-11 0.0021442477325703999" diaginertia="2.4595123216989143e-07 1.2869141660074249e-06 1.3889233257419005e-06" quat="0.7053225460285143 0.70532256696776685 0.050200509772130211 -0.050200512033969504" />
+                            <body name="body_18_robotiq_left_outer_finger" pos="0.031691044226654308 -1.4820950992811976e-18 -0.0019339637572459998" quat="1 0 0 0">
+                              <inertial mass="0.027309398557094699" pos="0.0013145159917429599 2.88942057994543e-15 0.021540416318041301" diaginertia="2.2266449113336877e-06 6.9133328065107974e-06 8.5397196937163374e-06" quat="1.040942427709947e-13 0.72832418754301775 -1.5676662393618744e-14 -0.68523271801615171" />
+                              <geom name="canonical_collision_011" group="3" rgba="0.12 0.45 0.8 .22" pos="0.0014472736505653163 1.0560007729365495e-12 0.023715879300101127" quat="1 0 0 0" type="box" size="0.0084360000000000008 0.014500000000000001 0.030704499999999999" />
+                              <geom name="visual_011" group="2" rgba="0.10000000000000001 0.10000000000000001 0.10000000000000001 1" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="mesh_010" />
+                            </body>
+                            <geom name="canonical_collision_010" group="3" rgba="0.12 0.45 0.8 .22" pos="0.015403199009290235 5.3123998255966143e-13 0.0033105993640952496" quat="1 0 0 0" type="box" size="0.023886000000000001 0.012999999999999999 0.012213" />
+                            <geom name="visual_010" group="2" rgba="0.10000000000000001 0.10000000000000001 0.10000000000000001 1" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="mesh_009" />
+                          </body>
+                          <body name="body_19_robotiq_left_inner_knuckle" pos="0.0127000000001501 2.0957232808336814e-19 0.069307499999963759" quat="1 0 0 0">
+                            <inertial mass="0.0110930853895903" pos="0.017097546626628001 -3.9380852438953502e-10 0.022491843820186801" diaginertia="1.8810790535511381e-06 3.9654879052439201e-06 5.5935286821943419e-06" quat="2.491218034880649e-09 0.89587032938746003 2.5520897659646875e-09 -0.44431560058499414" />
+                            <body name="body_20_robotiq_left_inner_finger" pos="0.034585310861294002 6.2105370489201752e-19 0.045497019381797572" quat="1 0 0 0">
+                              <inertial mass="0.0072425534616574498" pos="0.0060275613594574003 -6.29183141465421e-15 0.0066992569313324103" diaginertia="3.6962091121963333e-07 1.5857731661547601e-06 1.7006448083839496e-06" quat="0.419120335430681 0.41912033542901805 0.56950693097675997 -0.56950693097430583" />
+                              <geom name="canonical_collision_012" group="3" rgba="0.12 0.45 0.8 .22" pos="0.0080497572193814378 -2.3713496444255355e-13 0.015742626507538951" quat="1 0 0 0" type="box" size="0.016851499999999998 0.012 0.029257499999999999" />
+                              <geom name="visual_013" group="2" rgba="0.10000000000000001 0.10000000000000001 0.10000000000000001 1" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="mesh_012" />
+                            </body>
+                            <geom name="visual_012" group="2" rgba="0.10000000000000001 0.10000000000000001 0.10000000000000001 1" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="mesh_011" />
+                          </body>
+                          <body name="body_21_robotiq_right_inner_knuckle" pos="-0.012699999999849901 1.2731347783269757e-18 0.069307500000036146" quat="1.6155445744325867e-15 -2.145517748851258e-36 0 1">
+                            <inertial mass="0.0110930853895903" pos="0.016860618677377599 3.93808471820465e-10 0.022669995079343402" diaginertia="1.8810790535511322e-06 3.9654879052439218e-06 5.5935286821943462e-06" quat="0.44900933486760386 -2.0015985632157291e-09 -0.8935270657354214 -3.0817911738051164e-09" />
+                            <body name="body_22_robotiq_right_inner_finger" pos="0.034106047545740599 1.9676485734705545e-19 0.045857387854168812" quat="1 0 0 0">
+                              <inertial mass="0.0072425534616574402" pos="0.0060275622881203802 -6.4728450948017604e-15 0.0066992560957810799" diaginertia="3.6962091121963238e-07 1.5857731661547593e-06 1.7006448083839399e-06" quat="0.41912037490371379 0.41912037490204401 0.56950690192716302 -0.56950690192469577" />
+                              <geom name="canonical_collision_013" group="3" rgba="0.12 0.45 0.8 .22" pos="0.0080497572193814378 -2.3713496444255355e-13 0.015742626507538951" quat="1 0 0 0" type="box" size="0.016851499999999998 0.012 0.029257499999999999" />
+                              <geom name="visual_015" group="2" rgba="0.10000000000000001 0.10000000000000001 0.10000000000000001 1" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="mesh_012" />
+                            </body>
+                            <geom name="visual_014" group="2" rgba="0.10000000000000001 0.10000000000000001 0.10000000000000001 1" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="mesh_011" />
+                          </body>
+                          <body name="body_23_robotiq_right_outer_knuckle" pos="-0.0306011444258893 9.8122334034230996e-19 0.06279201626953948" quat="1.6155445744325867e-15 -2.145517748851258e-36 0 1">
+                            <inertial mass="0.0068483884940135197" pos="0.017809707405163799 3.6049321142402403e-11 0.00233123458346721" diaginertia="2.4595123201895424e-07 1.2869141659339948e-06 1.3889233255831207e-06" quat="0.7050494861676263 0.70504950707881253 0.05389997390337898 -0.053899976214323499" />
+                            <body name="body_24_robotiq_right_outer_finger" pos="0.031709590936724603 -2.0789763346278827e-18 -0.0016013564954687628" quat="1 0 0 0">
+                              <inertial mass="0.027309398557094699" pos="0.0010884426963900899 -2.6114883508449999e-15 0.0215530225245502" diaginertia="2.2266449113336899e-06 6.913332806510811e-06 8.5397196937163458e-06" quat="3.1402274037632027e-14 0.72471940261609968 1.3576720870968124e-13 -0.68904411141215316" />
+                              <geom name="canonical_collision_015" group="3" rgba="0.12 0.45 0.8 .22" pos="0.0014472736505653163 1.0560007729365495e-12 0.023715879300101127" quat="1 0 0 0" type="box" size="0.0084360000000000008 0.014500000000000001 0.030704499999999999" />
+                              <geom name="visual_017" group="2" rgba="0.10000000000000001 0.10000000000000001 0.10000000000000001 1" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="mesh_010" />
+                            </body>
+                            <geom name="canonical_collision_014" group="3" rgba="0.12 0.45 0.8 .22" pos="0.015403199009290235 5.3123998255966143e-13 0.0033105993640952496" quat="1 0 0 0" type="box" size="0.023886000000000001 0.012999999999999999 0.012213" />
+                            <geom name="visual_016" group="2" rgba="0.10000000000000001 0.10000000000000001 0.10000000000000001 1" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="mesh_009" />
+                          </body>
+                          <geom name="canonical_collision_009" group="3" rgba="0.12 0.45 0.8 .22" pos="0 1.7427101428602043e-12 0.047443750551989516" quat="1 0 0 0" type="box" size="0.043443500000000003 0.0385 0.051443999999999997" />
+                          <geom name="visual_009" group="2" rgba="0.10000000000000001 0.10000000000000001 0.10000000000000001 1" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="mesh_008" />
+                        </body>
+                      </body>
+                      <geom name="canonical_collision_007" group="3" rgba="0.12 0.45 0.8 .22" pos="0 -0.018585439771413803 -0.033462498802691698" quat="1 0 0 0" type="box" size="0.0465 0.057085499999999997 0.031962499999999998" />
+                      <geom name="visual_007" group="2" rgba="0.75294000000000005 0.75294000000000005 0.75294000000000005 1" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="mesh_007" />
+                    </body>
+                    <geom name="canonical_collision_008" group="3" rgba="0.12 0.45 0.8 .22" pos="0 0 -0.029999999999999999" quat="1 0 0 0" type="box" size="0.0465 0.040000000000000001 0.0155" />
+                    <geom name="visual_008" group="2" rgba="0.10000000000000001 0.10000000000000001 0.10000000000000001 1" pos="0 0 -0.027" quat="1 0 0 0" type="cylinder" size="0.034000000000000002 0.0155" />
+                  </body>
+                  <geom name="canonical_collision_006" group="3" rgba="0.12 0.45 0.8 .22" pos="0 -0.041660889983177185 -0.0092510804533958435" quat="1 0 0 0" type="box" size="0.035999999999999997 0.077739000000000003 0.045075999999999998" />
+                  <geom name="visual_006" group="2" rgba="0.84706000000000004 0.85489999999999999 0.85097999999999996 1" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="mesh_006" />
+                </body>
+                <geom name="canonical_collision_005" group="3" rgba="0.12 0.45 0.8 .22" pos="8.0838799476623535e-07 -0.0090232398360967636 -0.071751841576769948" quat="1 0 0 0" type="box" size="0.035999000000000003 0.045023000000000001 0.070251999999999995" />
+                <geom name="visual_005" group="2" rgba="0.84706000000000004 0.85489999999999999 0.85097999999999996 1" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="mesh_005" />
+              </body>
+              <geom name="canonical_collision_004" group="3" rgba="0.12 0.45 0.8 .22" pos="0 -0.087449999526143074 -0.013647809624671936" quat="1 0 0 0" type="box" size="0.047 0.13444999999999999 0.043292999999999998" />
+              <geom name="visual_004" group="2" rgba="0.84706000000000004 0.85489999999999999 0.85097999999999996 1" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="mesh_004" />
+            </body>
+            <geom name="canonical_collision_003" group="3" rgba="0.12 0.45 0.8 .22" pos="0 -0.0015020743012428284 -0.12937500525731593" quat="1 0 0 0" type="box" size="0.047 0.048500500000000002 0.128" />
+            <geom name="visual_003" group="2" rgba="0.75294000000000005 0.75294000000000005 0.75294000000000005 1" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="mesh_003" />
+          </body>
+          <geom name="canonical_collision_002" group="3" rgba="0.12 0.45 0.8 .22" pos="0 -0.089400002732872963 -0.007876858115196228" quat="1 0 0 0" type="box" size="0.047 0.13639999999999999 0.048501000000000002" />
+          <geom name="visual_002" group="2" rgba="0.75294000000000005 0.75294000000000005 0.75294000000000005 1" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="mesh_002" />
+        </body>
+        <geom name="canonical_collision_001" group="3" rgba="0.12 0.45 0.8 .22" pos="0 -0.0012972410768270493 -0.088375006220303476" quat="1 0 0 0" type="box" size="0.047358499999999998 0.048354000000000001 0.086999999999999994" />
+        <geom name="visual_001" group="2" rgba="0.84706000000000004 0.85489999999999999 0.85097999999999996 1" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="mesh_001" />
+      </body>
+      <body name="body_14_kinova_real_sense_depth_frame" pos="0.49474937233110822 0.71505456117612098 0.863611740374018" quat="0.094670276037541509 -0.11795534855006512 -0.7585899418777885 0.63377075876476163" />
+      <geom name="canonical_collision_000" group="3" rgba="0.12 0.45 0.8 .22" pos="0.00019369274377822876 7.8367069363594055e-05 0.085424996927939367" quat="1 0 0 0" type="box" size="0.047246000000000003 0.047078500000000002 0.086425000000000002" />
+      <geom name="visual_000" group="2" rgba="1 1 1 1" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="mesh_000" />
+    </body>
+    <body name="body_25_table_table_body" pos="0.40000000000000002 0 0" quat="1 0 0 0">
+      <geom name="canonical_collision_016" group="3" rgba="0.12 0.45 0.8 .22" pos="0 0 -0.10000000000000001" quat="1 0 0 0" type="box" size="1.25 1.25 0.10000000000000001" />
+      <geom name="visual_018" group="2" rgba="0.65000000000000002 0.68000000000000005 0.71999999999999997 1" pos="0 0 0" quat="1 0 0 0" type="mesh" mesh="mesh_013" />
+    </body>
+    <body name="body_26_cam_tripod_0_camera_tripod_link" pos="0.59999999999999998 0.66000000000000003 0" quat="1 0 0 0">
+      <geom name="canonical_collision_017" group="3" rgba="0.12 0.45 0.8 .22" pos="0 0 0.5" quat="1 0 0 0" type="box" size="0.029999999999999999 0.029999999999999999 0.5" />
+      <geom name="fixed_collision_visual_017" group="2" rgba="0.40 0.44 0.48 0.65" contype="0" conaffinity="0" pos="0 0 0.5" quat="1 0 0 0" type="box" size="0.029999999999999999 0.029999999999999999 0.5" />
+    </body>
+    <body name="body_27_cam_tripod_1_camera_tripod_link" pos="0.54000000000000004 -1.04 0" quat="1 0 0 0">
+      <geom name="canonical_collision_018" group="3" rgba="0.12 0.45 0.8 .22" pos="0 0 0.5" quat="1 0 0 0" type="box" size="0.029999999999999999 0.029999999999999999 0.5" />
+      <geom name="fixed_collision_visual_018" group="2" rgba="0.40 0.44 0.48 0.65" contype="0" conaffinity="0" pos="0 0 0.5" quat="1 0 0 0" type="box" size="0.029999999999999999 0.029999999999999999 0.5" />
+    </body>
+    <body name="body_28_box_to_protect_pete_box_link" pos="-0.5 0 0" quat="1 0 0 0">
+      <geom name="canonical_collision_019" group="3" rgba="0.12 0.45 0.8 .22" pos="0 0 0" quat="1 0 0 0" type="box" size="0.025000000000000001 1.5 1" />
+      <geom name="fixed_collision_visual_019" group="2" rgba="0.40 0.44 0.48 0.65" contype="0" conaffinity="0" pos="0 0 0" quat="1 0 0 0" type="box" size="0.025000000000000001 1.5 1" />
+    </body>
+  </worldbody>
+  <contact>
+    <pair name="canonical_pair_000000" geom1="canonical_collision_000" geom2="canonical_collision_002" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000001" geom1="canonical_collision_000" geom2="canonical_collision_003" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000002" geom1="canonical_collision_000" geom2="canonical_collision_004" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000003" geom1="canonical_collision_000" geom2="canonical_collision_005" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000004" geom1="canonical_collision_000" geom2="canonical_collision_006" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000005" geom1="canonical_collision_000" geom2="canonical_collision_007" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000006" geom1="canonical_collision_000" geom2="canonical_collision_008" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000007" geom1="canonical_collision_000" geom2="canonical_collision_009" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000008" geom1="canonical_collision_000" geom2="canonical_collision_010" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000009" geom1="canonical_collision_000" geom2="canonical_collision_011" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000010" geom1="canonical_collision_000" geom2="canonical_collision_012" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000011" geom1="canonical_collision_000" geom2="canonical_collision_013" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000012" geom1="canonical_collision_000" geom2="canonical_collision_014" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000013" geom1="canonical_collision_000" geom2="canonical_collision_015" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000014" geom1="canonical_collision_001" geom2="canonical_collision_003" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000015" geom1="canonical_collision_001" geom2="canonical_collision_004" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000016" geom1="canonical_collision_001" geom2="canonical_collision_005" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000017" geom1="canonical_collision_001" geom2="canonical_collision_006" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000018" geom1="canonical_collision_001" geom2="canonical_collision_007" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000019" geom1="canonical_collision_001" geom2="canonical_collision_008" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000020" geom1="canonical_collision_001" geom2="canonical_collision_009" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000021" geom1="canonical_collision_001" geom2="canonical_collision_010" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000022" geom1="canonical_collision_001" geom2="canonical_collision_011" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000023" geom1="canonical_collision_001" geom2="canonical_collision_012" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000024" geom1="canonical_collision_001" geom2="canonical_collision_013" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000025" geom1="canonical_collision_001" geom2="canonical_collision_014" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000026" geom1="canonical_collision_001" geom2="canonical_collision_015" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000027" geom1="canonical_collision_001" geom2="canonical_collision_016" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000028" geom1="canonical_collision_001" geom2="canonical_collision_017" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000029" geom1="canonical_collision_001" geom2="canonical_collision_018" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000030" geom1="canonical_collision_001" geom2="canonical_collision_019" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000031" geom1="canonical_collision_002" geom2="canonical_collision_004" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000032" geom1="canonical_collision_002" geom2="canonical_collision_005" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000033" geom1="canonical_collision_002" geom2="canonical_collision_006" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000034" geom1="canonical_collision_002" geom2="canonical_collision_007" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000035" geom1="canonical_collision_002" geom2="canonical_collision_008" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000036" geom1="canonical_collision_002" geom2="canonical_collision_009" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000037" geom1="canonical_collision_002" geom2="canonical_collision_010" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000038" geom1="canonical_collision_002" geom2="canonical_collision_011" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000039" geom1="canonical_collision_002" geom2="canonical_collision_012" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000040" geom1="canonical_collision_002" geom2="canonical_collision_013" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000041" geom1="canonical_collision_002" geom2="canonical_collision_014" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000042" geom1="canonical_collision_002" geom2="canonical_collision_015" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000043" geom1="canonical_collision_002" geom2="canonical_collision_016" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000044" geom1="canonical_collision_002" geom2="canonical_collision_017" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000045" geom1="canonical_collision_002" geom2="canonical_collision_018" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000046" geom1="canonical_collision_002" geom2="canonical_collision_019" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000047" geom1="canonical_collision_003" geom2="canonical_collision_005" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000048" geom1="canonical_collision_003" geom2="canonical_collision_006" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000049" geom1="canonical_collision_003" geom2="canonical_collision_007" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000050" geom1="canonical_collision_003" geom2="canonical_collision_008" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000051" geom1="canonical_collision_003" geom2="canonical_collision_009" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000052" geom1="canonical_collision_003" geom2="canonical_collision_010" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000053" geom1="canonical_collision_003" geom2="canonical_collision_011" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000054" geom1="canonical_collision_003" geom2="canonical_collision_012" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000055" geom1="canonical_collision_003" geom2="canonical_collision_013" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000056" geom1="canonical_collision_003" geom2="canonical_collision_014" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000057" geom1="canonical_collision_003" geom2="canonical_collision_015" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000058" geom1="canonical_collision_003" geom2="canonical_collision_016" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000059" geom1="canonical_collision_003" geom2="canonical_collision_017" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000060" geom1="canonical_collision_003" geom2="canonical_collision_018" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000061" geom1="canonical_collision_003" geom2="canonical_collision_019" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000062" geom1="canonical_collision_004" geom2="canonical_collision_006" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000063" geom1="canonical_collision_004" geom2="canonical_collision_007" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000064" geom1="canonical_collision_004" geom2="canonical_collision_008" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000065" geom1="canonical_collision_004" geom2="canonical_collision_009" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000066" geom1="canonical_collision_004" geom2="canonical_collision_010" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000067" geom1="canonical_collision_004" geom2="canonical_collision_011" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000068" geom1="canonical_collision_004" geom2="canonical_collision_012" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000069" geom1="canonical_collision_004" geom2="canonical_collision_013" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000070" geom1="canonical_collision_004" geom2="canonical_collision_014" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000071" geom1="canonical_collision_004" geom2="canonical_collision_015" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000072" geom1="canonical_collision_004" geom2="canonical_collision_016" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000073" geom1="canonical_collision_004" geom2="canonical_collision_017" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000074" geom1="canonical_collision_004" geom2="canonical_collision_018" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000075" geom1="canonical_collision_004" geom2="canonical_collision_019" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000076" geom1="canonical_collision_005" geom2="canonical_collision_007" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000077" geom1="canonical_collision_005" geom2="canonical_collision_008" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000078" geom1="canonical_collision_005" geom2="canonical_collision_009" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000079" geom1="canonical_collision_005" geom2="canonical_collision_010" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000080" geom1="canonical_collision_005" geom2="canonical_collision_011" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000081" geom1="canonical_collision_005" geom2="canonical_collision_012" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000082" geom1="canonical_collision_005" geom2="canonical_collision_013" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000083" geom1="canonical_collision_005" geom2="canonical_collision_014" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000084" geom1="canonical_collision_005" geom2="canonical_collision_015" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000085" geom1="canonical_collision_005" geom2="canonical_collision_016" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000086" geom1="canonical_collision_005" geom2="canonical_collision_017" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000087" geom1="canonical_collision_005" geom2="canonical_collision_018" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000088" geom1="canonical_collision_005" geom2="canonical_collision_019" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000089" geom1="canonical_collision_006" geom2="canonical_collision_007" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000090" geom1="canonical_collision_006" geom2="canonical_collision_009" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000091" geom1="canonical_collision_006" geom2="canonical_collision_010" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000092" geom1="canonical_collision_006" geom2="canonical_collision_011" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000093" geom1="canonical_collision_006" geom2="canonical_collision_012" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000094" geom1="canonical_collision_006" geom2="canonical_collision_013" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000095" geom1="canonical_collision_006" geom2="canonical_collision_014" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000096" geom1="canonical_collision_006" geom2="canonical_collision_015" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000097" geom1="canonical_collision_006" geom2="canonical_collision_016" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000098" geom1="canonical_collision_006" geom2="canonical_collision_017" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000099" geom1="canonical_collision_006" geom2="canonical_collision_018" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000100" geom1="canonical_collision_006" geom2="canonical_collision_019" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000101" geom1="canonical_collision_007" geom2="canonical_collision_016" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000102" geom1="canonical_collision_007" geom2="canonical_collision_017" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000103" geom1="canonical_collision_007" geom2="canonical_collision_018" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000104" geom1="canonical_collision_007" geom2="canonical_collision_019" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000105" geom1="canonical_collision_008" geom2="canonical_collision_016" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000106" geom1="canonical_collision_008" geom2="canonical_collision_017" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000107" geom1="canonical_collision_008" geom2="canonical_collision_018" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000108" geom1="canonical_collision_008" geom2="canonical_collision_019" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000109" geom1="canonical_collision_009" geom2="canonical_collision_016" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000110" geom1="canonical_collision_009" geom2="canonical_collision_017" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000111" geom1="canonical_collision_009" geom2="canonical_collision_018" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000112" geom1="canonical_collision_009" geom2="canonical_collision_019" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000113" geom1="canonical_collision_010" geom2="canonical_collision_016" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000114" geom1="canonical_collision_010" geom2="canonical_collision_017" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000115" geom1="canonical_collision_010" geom2="canonical_collision_018" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000116" geom1="canonical_collision_010" geom2="canonical_collision_019" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000117" geom1="canonical_collision_011" geom2="canonical_collision_016" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000118" geom1="canonical_collision_011" geom2="canonical_collision_017" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000119" geom1="canonical_collision_011" geom2="canonical_collision_018" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000120" geom1="canonical_collision_011" geom2="canonical_collision_019" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000121" geom1="canonical_collision_012" geom2="canonical_collision_016" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000122" geom1="canonical_collision_012" geom2="canonical_collision_017" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000123" geom1="canonical_collision_012" geom2="canonical_collision_018" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000124" geom1="canonical_collision_012" geom2="canonical_collision_019" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000125" geom1="canonical_collision_013" geom2="canonical_collision_016" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000126" geom1="canonical_collision_013" geom2="canonical_collision_017" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000127" geom1="canonical_collision_013" geom2="canonical_collision_018" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000128" geom1="canonical_collision_013" geom2="canonical_collision_019" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000129" geom1="canonical_collision_014" geom2="canonical_collision_016" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000130" geom1="canonical_collision_014" geom2="canonical_collision_017" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000131" geom1="canonical_collision_014" geom2="canonical_collision_018" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000132" geom1="canonical_collision_014" geom2="canonical_collision_019" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000133" geom1="canonical_collision_015" geom2="canonical_collision_016" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000134" geom1="canonical_collision_015" geom2="canonical_collision_017" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000135" geom1="canonical_collision_015" geom2="canonical_collision_018" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+    <pair name="canonical_pair_000136" geom1="canonical_collision_015" geom2="canonical_collision_019" condim="3" friction="0.5 0.5 0.0050000000000000001 0.0001 0.0001" solref="0.02 1" margin="0" gap="0" />
+  </contact>
+  <actuator>
+    <motor name="torque_kinova_joint_1" joint="kinova_joint_1" gear="1" ctrllimited="true" ctrlrange="-9 9" forcelimited="true" forcerange="-9 9" />
+    <motor name="torque_kinova_joint_2" joint="kinova_joint_2" gear="1" ctrllimited="true" ctrlrange="-39 39" forcelimited="true" forcerange="-39 39" />
+    <motor name="torque_kinova_joint_3" joint="kinova_joint_3" gear="1" ctrllimited="true" ctrlrange="-39 39" forcelimited="true" forcerange="-39 39" />
+    <motor name="torque_kinova_joint_4" joint="kinova_joint_4" gear="1" ctrllimited="true" ctrlrange="-39 39" forcelimited="true" forcerange="-39 39" />
+    <motor name="torque_kinova_joint_5" joint="kinova_joint_5" gear="1" ctrllimited="true" ctrlrange="-9 9" forcelimited="true" forcerange="-9 9" />
+    <motor name="torque_kinova_joint_6" joint="kinova_joint_6" gear="1" ctrllimited="true" ctrlrange="-9 9" forcelimited="true" forcerange="-9 9" />
+    <motor name="torque_kinova_joint_7" joint="kinova_joint_7" gear="1" ctrllimited="true" ctrlrange="-9 9" forcelimited="true" forcerange="-9 9" />
+  </actuator>
+</mujoco>

@@ -1,0 +1,691 @@
+{
+  "version": "1",
+  "pip_version": "26.2.1",
+  "install": [
+    {
+      "download_info": {
+        "url": "https://pypi.tuna.tsinghua.edu.cn/packages/3e/59/d22fef0352a7e7a8e79f5580611a62015c47a37838fa7ae887caba81df92/mujoco-3.3.7-cp310-cp310-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl",
+        "archive_info": {
+          "hashes": {
+            "sha256": "771923e71faa19749fed8dae1329b70b77d1cd9cef699d0e0ad984e00ee05c0a"
+          },
+          "hash": "sha256=771923e71faa19749fed8dae1329b70b77d1cd9cef699d0e0ad984e00ee05c0a"
+        }
+      },
+      "is_direct": false,
+      "is_yanked": false,
+      "requested": true,
+      "metadata": {
+        "metadata_version": "2.4",
+        "name": "mujoco",
+        "version": "3.3.7",
+        "dynamic": [
+          "description",
+          "description-content-type",
+          "license-file"
+        ],
+        "summary": "MuJoCo Physics Simulator",
+        "description_content_type": "text/markdown",
+        "author_email": "Google DeepMind <mujoco@deepmind.com>",
+        "license_expression": "Apache-2.0",
+        "license_file": [
+          "LICENSE",
+          "LICENSES_THIRD_PARTY.md"
+        ],
+        "classifier": [
+          "Development Status :: 5 - Production/Stable",
+          "Intended Audience :: Developers",
+          "Intended Audience :: Science/Research",
+          "Natural Language :: English",
+          "Programming Language :: Python :: 3",
+          "Programming Language :: Python :: 3.9",
+          "Programming Language :: Python :: 3.10",
+          "Programming Language :: Python :: 3.11",
+          "Programming Language :: Python :: 3.12",
+          "Topic :: Scientific/Engineering"
+        ],
+        "requires_dist": [
+          "absl-py",
+          "etils[epath]",
+          "glfw",
+          "numpy",
+          "pyopengl",
+          "usd-core; extra == \"usd\"",
+          "pillow; extra == \"usd\""
+        ],
+        "requires_python": ">=3.9",
+        "project_url": [
+          "Homepage, https://github.com/google-deepmind/mujoco",
+          "Documentation, https://mujoco.readthedocs.io/en/3.3.7",
+          "Repository, https://github.com/google-deepmind/mujoco",
+          "Changelog, https://mujoco.readthedocs.io/en/3.3.7/changelog.html"
+        ],
+        "provides_extra": [
+          "usd"
+        ],
+        "description": "# MuJoCo Python Bindings\n\n[![PyPI Python Version][pypi-versions-badge]][pypi]\n[![PyPI version][pypi-badge]][pypi]\n\n[pypi-versions-badge]: https://img.shields.io/pypi/pyversions/mujoco\n[pypi-badge]: https://badge.fury.io/py/mujoco.svg\n[pypi]: https://pypi.org/project/mujoco/\n\nThis package is the canonical Python bindings for the\n[MuJoCo physics engine](https://github.com/google-deepmind/mujoco).\nThese bindings are developed and maintained by Google DeepMind, and is kept\nup-to-date with the latest developments in MuJoCo itself.\n\nThe `mujoco` package provides direct access to raw MuJoCo C API functions,\nstructs, constants, and enumerations. Structs are provided as Python classes,\nwith Pythonic initialization and deletion semantics.\n\nIt is not the aim of this package to provide fully fledged\nscene/environment/game authoring API, as there are already a number of existing\npackages that do this well. However, this package does provide a number of\nlower-level components outside of MuJoCo itself that are likely to be useful to\nmost users who access MuJoCo through Python. For example, the `egl`, `glfw`, and\n`osmesa` subpackages contain utilities for setting up OpenGL rendering contexts.\n\n## Installation\n\nThe recommended way to install this package is via [PyPI](https://pypi.org/project/mujoco/):\n\n```sh\npip install mujoco\n```\n\nA copy of the MuJoCo library is provided as part of the package and does **not**\nneed to be downloaded or installed separately.\n\n### Source\n\n**IMPORTANT:** Building from source is only necessary if you are modifying the\nPython bindings (or are trying to run on exceptionally old Linux systems).\nIf that's not the case, then we recommend installing the prebuilt binaries from\nPyPI.\n\nIf you need to build the Python bindings from source, please consult\n[the documentation](https://mujoco.readthedocs.io/en/latest/python.html#building-from-source).\n\n## Usage\n\nOnce installed, the package can be imported via `import mujoco`. Please consult\nour [documentation](https://mujoco.readthedocs.io/en/stable/python.html) for\nfurther detail on the package's API.\n\nWe recommend going through the tutorial notebook which covers the basics of\nMuJoCo using Python:\n[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/google-deepmind/mujoco/blob/main/python/tutorial.ipynb)\n\n## Versioning\n\nThe `major.minor.micro` portion of the version number matches the version of\nMuJoCo that the bindings provide. Optionally, if we release updates to the\nPython bindings themselves that target the same version of MuJoCo, a `.postN`\nsuffix is added, for example `2.1.2.post2` represents the second update to the\nbindings for MuJoCo 2.1.2.\n\n## License and Disclaimer\n\nCopyright 2022 DeepMind Technologies Limited\n\nMuJoCo and its Python bindings are licensed under the Apache License,\nVersion 2.0. You may obtain a copy of the License at\nhttps://www.apache.org/licenses/LICENSE-2.0.\n\nThis is not an officially supported Google product.\n\n## Third-party licenses\n\nPre-built [wheels](https://packaging.python.org/en/latest/specifications/\nbinary-distribution-format/#binary-distribution-format) contain binaries that\nincorporate third-party open source software, which are redistributed under the\nfollowing licenses.\n\n### Abseil C++ Common Libraries\n\n```\nCopyright 2016 Google Inc.\nCopyright 2017 The Abseil Authors.\n\nLicensed under the Apache License, Version 2.0 (the \"License\");\nyou may not use this file except in compliance with the License.\nYou may obtain a copy of the License at\n\n     https://www.apache.org/licenses/LICENSE-2.0\n\nUnless required by applicable law or agreed to in writing, software\ndistributed under the License is distributed on an \"AS IS\" BASIS,\nWITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\nSee the License for the specific language governing permissions and\nlimitations under the License.\n```\n\n### cereal\n\n```\nCopyright (c) 2013-2022, Randolph Voorhies, Shane Grant\nAll rights reserved.\n\nRedistribution and use in source and binary forms, with or without\nmodification, are permitted provided that the following conditions are met:\n    * Redistributions of source code must retain the above copyright\n      notice, this list of conditions and the following disclaimer.\n    * Redistributions in binary form must reproduce the above copyright\n      notice, this list of conditions and the following disclaimer in the\n      documentation and/or other materials provided with the distribution.\n    * Neither the name of the copyright holder nor the\n      names of its contributors may be used to endorse or promote products\n      derived from this software without specific prior written permission.\n\nTHIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\" AND\nANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED\nWARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE\nDISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY\nDIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES\n(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;\nLOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND\nON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT\n(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS\nSOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n```\n\n### Collisions\n\n```\nCopyright (c) 2015 Svetoslav Kolev\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in\nall copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN\nTHE SOFTWARE.\n```\n\n### Eigen\n\nWe build with the `EIGEN_MPL2_ONLY` preprocessor macro set.\n\n```\nEigen is primarily MPL2 licensed. See COPYING.MPL2 and these links:\n  http://www.mozilla.org/MPL/2.0/\n  http://www.mozilla.org/MPL/2.0/FAQ.html\n\nSome files contain third-party code under BSD or LGPL licenses, whence the other\nCOPYING.* files here.\n\nAll the LGPL code is either LGPL 2.1-only, or LGPL 2.1-or-later.\nFor this reason, the COPYING.LGPL file contains the LGPL 2.1 text.\n\nIf you want to guarantee that the Eigen code that you are #including is licensed\nunder the MPL2 and possibly more permissive licenses (like BSD), #define this\npreprocessor symbol:\n  EIGEN_MPL2_ONLY\nFor example, with most compilers, you could add this to your project CXXFLAGS:\n  -DEIGEN_MPL2_ONLY\nThis will cause a compilation error to be generated if you #include any code that is\nLGPL licensed.\n\n\nMozilla Public License Version 2.0\n==================================\n\n1. Definitions\n--------------\n\n1.1. \"Contributor\"\n    means each individual or legal entity that creates, contributes to\n    the creation of, or owns Covered Software.\n\n1.2. \"Contributor Version\"\n    means the combination of the Contributions of others (if any) used\n    by a Contributor and that particular Contributor's Contribution.\n\n1.3. \"Contribution\"\n    means Covered Software of a particular Contributor.\n\n1.4. \"Covered Software\"\n    means Source Code Form to which the initial Contributor has attached\n    the notice in Exhibit A, the Executable Form of such Source Code\n    Form, and Modifications of such Source Code Form, in each case\n    including portions thereof.\n\n1.5. \"Incompatible With Secondary Licenses\"\n    means\n\n    (a) that the initial Contributor has attached the notice described\n        in Exhibit B to the Covered Software; or\n\n    (b) that the Covered Software was made available under the terms of\n        version 1.1 or earlier of the License, but not also under the\n        terms of a Secondary License.\n\n1.6. \"Executable Form\"\n    means any form of the work other than Source Code Form.\n\n1.7. \"Larger Work\"\n    means a work that combines Covered Software with other material, in\n    a separate file or files, that is not Covered Software.\n\n1.8. \"License\"\n    means this document.\n\n1.9. \"Licensable\"\n    means having the right to grant, to the maximum extent possible,\n    whether at the time of the initial grant or subsequently, any and\n    all of the rights conveyed by this License.\n\n1.10. \"Modifications\"\n    means any of the following:\n\n    (a) any file in Source Code Form that results from an addition to,\n        deletion from, or modification of the contents of Covered\n        Software; or\n\n    (b) any new file in Source Code Form that contains any Covered\n        Software.\n\n1.11. \"Patent Claims\" of a Contributor\n    means any patent claim(s), including without limitation, method,\n    process, and apparatus claims, in any patent Licensable by such\n    Contributor that would be infringed, but for the grant of the\n    License, by the making, using, selling, offering for sale, having\n    made, import, or transfer of either its Contributions or its\n    Contributor Version.\n\n1.12. \"Secondary License\"\n    means either the GNU General Public License, Version 2.0, the GNU\n    Lesser General Public License, Version 2.1, the GNU Affero General\n    Public License, Version 3.0, or any later versions of those\n    licenses.\n\n1.13. \"Source Code Form\"\n    means the form of the work preferred for making modifications.\n\n1.14. \"You\" (or \"Your\")\n    means an individual or a legal entity exercising rights under this\n    License. For legal entities, \"You\" includes any entity that\n    controls, is controlled by, or is under common control with You. For\n    purposes of this definition, \"control\" means (a) the power, direct\n    or indirect, to cause the direction or management of such entity,\n    whether by contract or otherwise, or (b) ownership of more than\n    fifty percent (50%) of the outstanding shares or beneficial\n    ownership of such entity.\n\n2. License Grants and Conditions\n--------------------------------\n\n2.1. Grants\n\nEach Contributor hereby grants You a world-wide, royalty-free,\nnon-exclusive license:\n\n(a) under intellectual property rights (other than patent or trademark)\n    Licensable by such Contributor to use, reproduce, make available,\n    modify, display, perform, distribute, and otherwise exploit its\n    Contributions, either on an unmodified basis, with Modifications, or\n    as part of a Larger Work; and\n\n(b) under Patent Claims of such Contributor to make, use, sell, offer\n    for sale, have made, import, and otherwise transfer either its\n    Contributions or its Contributor Version.\n\n2.2. Effective Date\n\nThe licenses granted in Section 2.1 with respect to any Contribution\nbecome effective for each Contribution on the date the Contributor first\ndistributes such Contribution.\n\n2.3. Limitations on Grant Scope\n\nThe licenses granted in this Section 2 are the only rights granted under\nthis License. No additional rights or licenses will be implied from the\ndistribution or licensing of Covered Software under this License.\nNotwithstanding Section 2.1(b) above, no patent license is granted by a\nContributor:\n\n(a) for any code that a Contributor has removed from Covered Software;\n    or\n\n(b) for infringements caused by: (i) Your and any other third party's\n    modifications of Covered Software, or (ii) the combination of its\n    Contributions with other software (except as part of its Contributor\n    Version); or\n\n(c) under Patent Claims infringed by Covered Software in the absence of\n    its Contributions.\n\nThis License does not grant any rights in the trademarks, service marks,\nor logos of any Contributor (except as may be necessary to comply with\nthe notice requirements in Section 3.4).\n\n2.4. Subsequent Licenses\n\nNo Contributor makes additional grants as a result of Your choice to\ndistribute the Covered Software under a subsequent version of this\nLicense (see Section 10.2) or under the terms of a Secondary License (if\npermitted under the terms of Section 3.3).\n\n2.5. Representation\n\nEach Contributor represents that the Contributor believes its\nContributions are its original creation(s) or it has sufficient rights\nto grant the rights to its Contributions conveyed by this License.\n\n2.6. Fair Use\n\nThis License is not intended to limit any rights You have under\napplicable copyright doctrines of fair use, fair dealing, or other\nequivalents.\n\n2.7. Conditions\n\nSections 3.1, 3.2, 3.3, and 3.4 are conditions of the licenses granted\nin Section 2.1.\n\n3. Responsibilities\n-------------------\n\n3.1. Distribution of Source Form\n\nAll distribution of Covered Software in Source Code Form, including any\nModifications that You create or to which You contribute, must be under\nthe terms of this License. You must inform recipients that the Source\nCode Form of the Covered Software is governed by the terms of this\nLicense, and how they can obtain a copy of this License. You may not\nattempt to alter or restrict the recipients' rights in the Source Code\nForm.\n\n3.2. Distribution of Executable Form\n\nIf You distribute Covered Software in Executable Form then:\n\n(a) such Covered Software must also be made available in Source Code\n    Form, as described in Section 3.1, and You must inform recipients of\n    the Executable Form how they can obtain a copy of such Source Code\n    Form by reasonable means in a timely manner, at a charge no more\n    than the cost of distribution to the recipient; and\n\n(b) You may distribute such Executable Form under the terms of this\n    License, or sublicense it under different terms, provided that the\n    license for the Executable Form does not attempt to limit or alter\n    the recipients' rights in the Source Code Form under this License.\n\n3.3. Distribution of a Larger Work\n\nYou may create and distribute a Larger Work under terms of Your choice,\nprovided that You also comply with the requirements of this License for\nthe Covered Software. If the Larger Work is a combination of Covered\nSoftware with a work governed by one or more Secondary Licenses, and the\nCovered Software is not Incompatible With Secondary Licenses, this\nLicense permits You to additionally distribute such Covered Software\nunder the terms of such Secondary License(s), so that the recipient of\nthe Larger Work may, at their option, further distribute the Covered\nSoftware under the terms of either this License or such Secondary\nLicense(s).\n\n3.4. Notices\n\nYou may not remove or alter the substance of any license notices\n(including copyright notices, patent notices, disclaimers of warranty,\nor limitations of liability) contained within the Source Code Form of\nthe Covered Software, except that You may alter any license notices to\nthe extent required to remedy known factual inaccuracies.\n\n3.5. Application of Additional Terms\n\nYou may choose to offer, and to charge a fee for, warranty, support,\nindemnity or liability obligations to one or more recipients of Covered\nSoftware. However, You may do so only on Your own behalf, and not on\nbehalf of any Contributor. You must make it absolutely clear that any\nsuch warranty, support, indemnity, or liability obligation is offered by\nYou alone, and You hereby agree to indemnify every Contributor for any\nliability incurred by such Contributor as a result of warranty, support,\nindemnity or liability terms You offer. You may include additional\ndisclaimers of warranty and limitations of liability specific to any\njurisdiction.\n\n4. Inability to Comply Due to Statute or Regulation\n---------------------------------------------------\n\nIf it is impossible for You to comply with any of the terms of this\nLicense with respect to some or all of the Covered Software due to\nstatute, judicial order, or regulation then You must: (a) comply with\nthe terms of this License to the maximum extent possible; and (b)\ndescribe the limitations and the code they affect. Such description must\nbe placed in a text file included with all distributions of the Covered\nSoftware under this License. Except to the extent prohibited by statute\nor regulation, such description must be sufficiently detailed for a\nrecipient of ordinary skill to be able to understand it.\n\n5. Termination\n--------------\n\n5.1. The rights granted under this License will terminate automatically\nif You fail to comply with any of its terms. However, if You become\ncompliant, then the rights granted under this License from a particular\nContributor are reinstated (a) provisionally, unless and until such\nContributor explicitly and finally terminates Your grants, and (b) on an\nongoing basis, if such Contributor fails to notify You of the\nnon-compliance by some reasonable means prior to 60 days after You have\ncome back into compliance. Moreover, Your grants from a particular\nContributor are reinstated on an ongoing basis if such Contributor\nnotifies You of the non-compliance by some reasonable means, this is the\nfirst time You have received notice of non-compliance with this License\nfrom such Contributor, and You become compliant prior to 30 days after\nYour receipt of the notice.\n\n5.2. If You initiate litigation against any entity by asserting a patent\ninfringement claim (excluding declaratory judgment actions,\ncounter-claims, and cross-claims) alleging that a Contributor Version\ndirectly or indirectly infringes any patent, then the rights granted to\nYou by any and all Contributors for the Covered Software under Section\n2.1 of this License shall terminate.\n\n5.3. In the event of termination under Sections 5.1 or 5.2 above, all\nend user license agreements (excluding distributors and resellers) which\nhave been validly granted by You or Your distributors under this License\nprior to termination shall survive termination.\n\n************************************************************************\n*                                                                      *\n*  6. Disclaimer of Warranty                                           *\n*  -------------------------                                           *\n*                                                                      *\n*  Covered Software is provided under this License on an \"as is\"       *\n*  basis, without warranty of any kind, either expressed, implied, or  *\n*  statutory, including, without limitation, warranties that the       *\n*  Covered Software is free of defects, merchantable, fit for a        *\n*  particular purpose or non-infringing. The entire risk as to the     *\n*  quality and performance of the Covered Software is with You.        *\n*  Should any Covered Software prove defective in any respect, You     *\n*  (not any Contributor) assume the cost of any necessary servicing,   *\n*  repair, or correction. This disclaimer of warranty constitutes an   *\n*  essential part of this License. No use of any Covered Software is   *\n*  authorized under this License except under this disclaimer.         *\n*                                                                      *\n************************************************************************\n\n************************************************************************\n*                                                                      *\n*  7. Limitation of Liability                                          *\n*  --------------------------                                          *\n*                                                                      *\n*  Under no circumstances and under no legal theory, whether tort      *\n*  (including negligence), contract, or otherwise, shall any           *\n*  Contributor, or anyone who distributes Covered Software as          *\n*  permitted above, be liable to You for any direct, indirect,         *\n*  special, incidental, or consequential damages of any character      *\n*  including, without limitation, damages for lost profits, loss of    *\n*  goodwill, work stoppage, computer failure or malfunction, or any    *\n*  and all other commercial damages or losses, even if such party      *\n*  shall have been informed of the possibility of such damages. This   *\n*  limitation of liability shall not apply to liability for death or   *\n*  personal injury resulting from such party's negligence to the       *\n*  extent applicable law prohibits such limitation. Some               *\n*  jurisdictions do not allow the exclusion or limitation of           *\n*  incidental or consequential damages, so this exclusion and          *\n*  limitation may not apply to You.                                    *\n*                                                                      *\n************************************************************************\n\n8. Litigation\n-------------\n\nAny litigation relating to this License may be brought only in the\ncourts of a jurisdiction where the defendant maintains its principal\nplace of business and such litigation shall be governed by laws of that\njurisdiction, without reference to its conflict-of-law provisions.\nNothing in this Section shall prevent a party's ability to bring\ncross-claims or counter-claims.\n\n9. Miscellaneous\n----------------\n\nThis License represents the complete agreement concerning the subject\nmatter hereof. If any provision of this License is held to be\nunenforceable, such provision shall be reformed only to the extent\nnecessary to make it enforceable. Any law or regulation which provides\nthat the language of a contract shall be construed against the drafter\nshall not be used to construe this License against a Contributor.\n\n10. Versions of the License\n---------------------------\n\n10.1. New Versions\n\nMozilla Foundation is the license steward. Except as provided in Section\n10.3, no one other than the license steward has the right to modify or\npublish new versions of this License. Each version will be given a\ndistinguishing version number.\n\n10.2. Effect of New Versions\n\nYou may distribute the Covered Software under the terms of the version\nof the License under which You originally received the Covered Software,\nor under the terms of any subsequent version published by the license\nsteward.\n\n10.3. Modified Versions\n\nIf you create software not governed by this License, and you want to\ncreate a new license for such software, you may create and use a\nmodified version of this License if you rename the license and remove\nany references to the name of the license steward (except to note that\nsuch modified license differs from this License).\n\n10.4. Distributing Source Code Form that is Incompatible With Secondary\nLicenses\n\nIf You choose to distribute Source Code Form that is Incompatible With\nSecondary Licenses under the terms of this version of the License, the\nnotice described in Exhibit B of this License must be attached.\n\nExhibit A - Source Code Form License Notice\n-------------------------------------------\n\n  This Source Code Form is subject to the terms of the Mozilla Public\n  License, v. 2.0. If a copy of the MPL was not distributed with this\n  file, You can obtain one at https://mozilla.org/MPL/2.0/.\n\nIf it is not possible or desirable to put the notice in a particular\nfile, then You may include the notice in a location (such as a LICENSE\nfile in a relevant directory) where a recipient would be likely to look\nfor such a notice.\n\nYou may add additional accurate notices of copyright ownership.\n\nExhibit B - \"Incompatible With Secondary Licenses\" Notice\n---------------------------------------------------------\n\n  This Source Code Form is \"Incompatible With Secondary Licenses\", as\n  defined by the Mozilla Public License, v. 2.0.\n```\n\n### {fmt}\n\n```\nCopyright (c) 2012 - present, Victor Zverovich and {fmt} contributors\n\nPermission is hereby granted, free of charge, to any person obtaining\na copy of this software and associated documentation files (the\n\"Software\"), to deal in the Software without restriction, including\nwithout limitation the rights to use, copy, modify, merge, publish,\ndistribute, sublicense, and/or sell copies of the Software, and to\npermit persons to whom the Software is furnished to do so, subject to\nthe following conditions:\n\nThe above copyright notice and this permission notice shall be\nincluded in all copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND,\nEXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF\nMERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND\nNONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE\nLIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION\nOF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION\nWITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n\n--- Optional exception to the license ---\n\nAs an exception, if, as a result of your compiling your source code, portions\nof this Software are embedded into a machine-executable object form of such\nsource code, you may redistribute such embedded portions in such object form\nwithout including the above copyright and permission notices.\n```\n\n### GLAD\n\n```\nThe glad generated code itself is CC0. The source files for the generated code\nare under various licenses from Khronos.\n\n--------------------------------------------------------------------------------\n\nCopyright 2013-2020 The Khronos Group Inc.\n\nPermission is hereby granted, free of charge, to any person obtaining a\ncopy of this software and/or associated documentation files (the\n\"Materials\"), to deal in the Materials without restriction, including\nwithout limitation the rights to use, copy, modify, merge, publish,\ndistribute, sublicense, and/or sell copies of the Materials, and to\npermit persons to whom the Materials are furnished to do so, subject to\nthe following conditions:\n\nThe above copyright notice and this permission notice shall be included\nin all copies or substantial portions of the Materials.\n\nTHE MATERIALS ARE PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND,\nEXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF\nMERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.\nIN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY\nCLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,\nTORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE\nMATERIALS OR THE USE OR OTHER DEALINGS IN THE MATERIALS.\n```\n\n### GLFW\n\n```\nCopyright (c) 2002-2006 Marcus Geelnard\n\nCopyright (c) 2006-2019 Camilla Löwy\n\nThis software is provided 'as-is', without any express or implied\nwarranty. In no event will the authors be held liable for any damages\narising from the use of this software.\n\nPermission is granted to anyone to use this software for any purpose,\nincluding commercial applications, and to alter it and redistribute it\nfreely, subject to the following restrictions:\n\n1. The origin of this software must not be misrepresented; you must not\n   claim that you wrote the original software. If you use this software\n   in a product, an acknowledgment in the product documentation would\n   be appreciated but is not required.\n\n2. Altered source versions must be plainly marked as such, and must not\n   be misrepresented as being the original software.\n\n3. This notice may not be removed or altered from any source\n   distribution.\n```\n\n### libccd\n\n```\nCopyright (c)2010-2012 Daniel Fiser <danfis@danfis.cz>,\nIntelligent and Mobile Robotics Group, Department of Cybernetics,\nFaculty of Electrical Engineering, Czech Technical University in Prague.\nAll rights reserved.\n\n\nThis work was supported by SYMBRION and REPLICATOR projects.\nThe SYMBRION project is funded by European Commission within the work\n\"Future and Emergent Technologies Proactive\" under grant agreement no.\n216342.\nThe REPLICATOR project is funded within the work programme \"Cognitive\nSystems, Interaction, Robotics\" under grant agreement no. 216240.\nhttp://www.symbrion.eu/\nhttp://www.replicators.eu/\n\n\nRedistribution and use in source and binary forms, with or without\nmodification, are permitted provided that the following conditions are met:\n\n - Redistributions of source code must retain the above copyright notice,\n   this list of conditions and the following disclaimer.\n\n - Redistributions in binary form must reproduce the above copyright\n   notice, this list of conditions and the following disclaimer in the\n   documentation and/or other materials provided with the distribution.\n\n - Neither the name of the University nor the names of its contributors\n   may be used to endorse or promote products derived from this software\n   without specific prior written permission.\n\nTHIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\"\nAND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE\nIMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE\nARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE\nLIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR\nCONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF\nSUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS\nINTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN\nCONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)\nARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE\nPOSSIBILITY OF SUCH DAMAGE.\n```\n\n### LLVM runtime libraries (`compiler_rt`, `libc++`, `libc++abi`, `libunwind`)\n\n```\nThe LLVM Project is under the Apache License v2.0 with LLVM Exceptions.\nYou may obtain a copy of the Apache 2.0 License at\n\n     https://www.apache.org/licenses/LICENSE-2.0\n\n---- LLVM Exceptions to the Apache 2.0 License ----\n\nAs an exception, if, as a result of your compiling your source code, portions\nof this Software are embedded into an Object form of such source code, you\nmay redistribute such embedded portions in such Object form without complying\nwith the conditions of Sections 4(a), 4(b) and 4(d) of the License.\n\nIn addition, if you combine or link compiled forms of this Software with\nsoftware that is licensed under the GPLv2 (\"Combined Software\") and if a\ncourt of competent jurisdiction determines that the patent provision (Section\n3), the indemnity provision (Section 9) or other Section of the License\nconflicts with the conditions of the GPLv2, you may retroactively and\nprospectively choose to deem waived or otherwise exclude such Section(s) of\nthe License, but only in their entirety and only with respect to the Combined\nSoftware.\n```\n\n### LodePNG\n\n```\nCopyright (c) 2005-2018 Lode Vandevenne\n\nThis software is provided 'as-is', without any express or implied\nwarranty. In no event will the authors be held liable for any damages\narising from the use of this software.\n\nPermission is granted to anyone to use this software for any purpose,\nincluding commercial applications, and to alter it and redistribute it\nfreely, subject to the following restrictions:\n\n    1. The origin of this software must not be misrepresented; you must not\n    claim that you wrote the original software. If you use this software\n    in a product, an acknowledgment in the product documentation would be\n    appreciated but is not required.\n\n    2. Altered source versions must be plainly marked as such, and must not be\n    misrepresented as being the original software.\n\n    3. This notice may not be removed or altered from any source\n    distribution.\n```\n\n### MarchingCubeCpp\n\n```\nThe MIT License (MIT)\n\nCopyright (c) 2020 Axel Paris\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in\nall copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN\nTHE SOFTWARE.\n```\n\n### OpenGL Mathematics\n\n```\nThe MIT License\n\nCopyright (c) 2005 - G-Truc Creation\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in\nall copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN\nTHE SOFTWARE.\n```\n\n### pybind11\n\n```\nCopyright (c) 2016 Wenzel Jakob <wenzel.jakob@epfl.ch>, All rights reserved.\n\nRedistribution and use in source and binary forms, with or without\nmodification, are permitted provided that the following conditions are met:\n\n1. Redistributions of source code must retain the above copyright notice, this\n   list of conditions and the following disclaimer.\n\n2. Redistributions in binary form must reproduce the above copyright notice,\n   this list of conditions and the following disclaimer in the documentation\n   and/or other materials provided with the distribution.\n\n3. Neither the name of the copyright holder nor the names of its contributors\n   may be used to endorse or promote products derived from this software\n   without specific prior written permission.\n\nTHIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\" AND\nANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED\nWARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE\nDISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE\nFOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL\nDAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR\nSERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER\nCAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,\nOR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE\nOF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n\nPlease also refer to the file .github/CONTRIBUTING.md, which clarifies licensing of\nexternal contributions to this project including patches, pull requests, etc.\n```\n\n### Qhull\n\n```\n                    Qhull, Copyright (c) 1993-2020\n\n                            C.B. Barber\n                           Arlington, MA\n\n                               and\n\n       The National Science and Technology Research Center for\n        Computation and Visualization of Geometric Structures\n                        (The Geometry Center)\n                       University of Minnesota\n\n                       email: qhull@qhull.org\n\nThis software includes Qhull from C.B. Barber and The Geometry Center.\nFiles derived from Qhull 1.0 are copyrighted by the Geometry Center.  The\nremaining files are copyrighted by C.B. Barber.  Qhull is free software\nand may be obtained via http from www.qhull.org.  It may be freely copied,\nmodified, and redistributed under the following conditions:\n\n1. All copyright notices must remain intact in all files.\n\n2. A copy of this text file must be distributed along with any copies\n   of Qhull that you redistribute; this includes copies that you have\n   modified, or copies of programs or other software products that\n   include Qhull.\n\n3. If you modify Qhull, you must include a notice giving the\n   name of the person performing the modification, the date of\n   modification, and the reason for such modification.\n\n4. When distributing modified versions of Qhull, or other software\n   products that include Qhull, you must provide notice that the original\n   source code may be obtained as noted above.\n\n5. There is no warranty or other guarantee of fitness for Qhull, it is\n   provided solely \"as is\".  Bug reports or fixes may be sent to\n   qhull_bug@qhull.org; the authors may or may not act on them as\n   they desire.\n```\n\n### TinyOBJLoader\n\n```\nThe MIT License (MIT)\n\nCopyright (c) 2012-2019 Syoyo Fujita and many contributors.\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in\nall copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN\nTHE SOFTWARE.\n```\n\n### TinyXML2\n\n```\nThis software is provided 'as-is', without any express or implied\nwarranty. In no event will the authors be held liable for any\ndamages arising from the use of this software.\n\nPermission is granted to anyone to use this software for any\npurpose, including commercial applications, and to alter it and\nredistribute it freely, subject to the following restrictions:\n\n1. The origin of this software must not be misrepresented; you must\nnot claim that you wrote the original software. If you use this\nsoftware in a product, an acknowledgment in the product documentation\nwould be appreciated but is not required.\n\n2. Altered source versions must be plainly marked as such, and\nmust not be misrepresented as being the original software.\n\n3. This notice may not be removed or altered from any source\ndistribution.\n```\n\n### TriangleMeshDistance\n\n```\nMIT License\n\nCopyright (c) 2021 Jose Antonio Fernandez Fernandez\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n```\n"
+      }
+    },
+    {
+      "download_info": {
+        "url": "https://pypi.tuna.tsinghua.edu.cn/packages/b3/7d/01e62f59e4166af1be6238d9f2b7f3453630c51b8044b412d05b5606532a/absl_py-2.5.1-py3-none-any.whl",
+        "archive_info": {
+          "hashes": {
+            "sha256": "721200f2f0e9960f2ca9dc3a2a706b201f5f75d812c158f059cbbe29eeafbdb8"
+          },
+          "hash": "sha256=721200f2f0e9960f2ca9dc3a2a706b201f5f75d812c158f059cbbe29eeafbdb8"
+        }
+      },
+      "is_direct": false,
+      "is_yanked": false,
+      "requested": false,
+      "metadata": {
+        "metadata_version": "2.5",
+        "name": "absl-py",
+        "version": "2.5.1",
+        "summary": "Abseil Python Common Libraries, see https://github.com/abseil/abseil-py.",
+        "description_content_type": "text/markdown",
+        "author": "The Abseil Authors",
+        "license_expression": "Apache-2.0",
+        "license_file": [
+          "AUTHORS",
+          "LICENSE"
+        ],
+        "classifier": [
+          "Intended Audience :: Developers",
+          "License :: OSI Approved :: Apache Software License",
+          "Operating System :: OS Independent",
+          "Programming Language :: Python",
+          "Programming Language :: Python :: 3",
+          "Programming Language :: Python :: 3.10",
+          "Programming Language :: Python :: 3.11",
+          "Programming Language :: Python :: 3.12",
+          "Programming Language :: Python :: 3.13",
+          "Programming Language :: Python :: 3.14",
+          "Topic :: Software Development :: Libraries :: Python Modules"
+        ],
+        "requires_python": ">=3.10",
+        "project_url": [
+          "Changelog, https://github.com/abseil/abseil-py/blob/main/CHANGELOG.md",
+          "Documentation, https://abseil.io/docs/python/",
+          "Issues, https://github.com/abseil/abseil-py/issues",
+          "Source, https://github.com/abseil/abseil-py"
+        ],
+        "description": "[![Package version](https://img.shields.io/pypi/v/absl-py)](https://pypi.org/project/absl-py)\n[![Supported Python versions](https://img.shields.io/pypi/pyversions/absl-py.svg?style=flat-square)](https://pypi.org/project/absl-py)\n[![License](https://img.shields.io/github/license/abseil/abseil-py)](https://github.com/abseil/abseil-py/blob/main/LICENSE)\n[![Build Status](https://github.com/abseil/abseil-py/actions/workflows/test.yml/badge.svg?branch=main)](https://github.com/abseil/abseil-py/actions)\n[![Overall downloads](https://pepy.tech/badge/absl-py)](https://pepy.tech/project/absl-py)\n[![Last month downloads](https://pepy.tech/badge/absl-py/month)](https://pepy.tech/project/absl-py)\n\n# Abseil Python Common Libraries\n\nThis repository is a collection of Python library code for building Python\napplications. The code is collected from Google's own Python code base, and has\nbeen extensively tested and used in production.\n\n## Features\n\n* Simple application startup\n* Distributed commandline flags system\n* Custom logging module with additional features\n* Testing utilities\n\n## Getting Started\n\n### Installation\n\nTo install the package, simply run:\n\n```bash\npip install absl-py\n```\n\nOr install from source:\n\n```bash\npip install .\n```\n\n### Running Tests\n\nTo run Abseil tests, you can clone the git repo and run\n[bazel](https://bazel.build/):\n\n```bash\ngit clone https://github.com/abseil/abseil-py.git\ncd abseil-py\nbazel test absl/...\n```\n\nPlease also validate the type annotations against the latest mypy:\n\n```bash\npip install mypy\nmypy absl\n```\n\n### Example Code\n\nPlease refer to\n[smoke_tests/sample_app.py](https://github.com/abseil/abseil-py/blob/main/smoke_tests/sample_app.py)\nas an example to get started.\n\n## Documentation\n\nSee the [Abseil Python Developer Guide](https://abseil.io/docs/python/).\n\n## Future Releases\n\nThe current repository includes an initial set of libraries for early adoption.\nMore components and interoperability with Abseil C++ Common Libraries\nwill come in future releases.\n\n## License\n\nThe Abseil Python library is licensed under the terms of the Apache\nlicense. See [LICENSE](LICENSE) for more information.\n"
+      }
+    },
+    {
+      "download_info": {
+        "url": "https://pypi.tuna.tsinghua.edu.cn/packages/e7/98/87b5946356095738cb90a6df7b35ff69ac5750f6e783d5fbcc5cb3b6cbd7/etils-1.13.0-py3-none-any.whl",
+        "archive_info": {
+          "hashes": {
+            "sha256": "d9cd4f40fbe77ad6613b7348a18132cc511237b6c076dbb89105c0b520a4c6bb"
+          },
+          "hash": "sha256=d9cd4f40fbe77ad6613b7348a18132cc511237b6c076dbb89105c0b520a4c6bb"
+        }
+      },
+      "is_direct": false,
+      "is_yanked": false,
+      "requested": false,
+      "metadata": {
+        "metadata_version": "2.4",
+        "name": "etils",
+        "version": "1.13.0",
+        "summary": "Collection of common python utils",
+        "description_content_type": "text/markdown",
+        "keywords": [
+          "utils",
+          "jax",
+          "tensorflow",
+          "tf",
+          "machine learning",
+          "deep learning"
+        ],
+        "author_email": "Conchylicultor <etils@google.com>",
+        "license_file": [
+          "LICENSE"
+        ],
+        "classifier": [
+          "Programming Language :: Python :: 3",
+          "Programming Language :: Python :: 3 :: Only",
+          "License :: OSI Approved :: Apache Software License",
+          "Intended Audience :: Developers",
+          "Intended Audience :: Science/Research",
+          "Topic :: Software Development :: Libraries :: Python Modules"
+        ],
+        "requires_dist": [
+          "etils[array-types] ; extra == \"all\"",
+          "etils[eapp] ; extra == \"all\"",
+          "etils[ecolab] ; extra == \"all\"",
+          "etils[edc] ; extra == \"all\"",
+          "etils[enp] ; extra == \"all\"",
+          "etils[epath] ; extra == \"all\"",
+          "etils[epath-gcs] ; extra == \"all\"",
+          "etils[epath-s3] ; extra == \"all\"",
+          "etils[epy] ; extra == \"all\"",
+          "etils[etqdm] ; extra == \"all\"",
+          "etils[etree] ; extra == \"all\"",
+          "etils[etree-dm] ; extra == \"all\"",
+          "etils[etree-jax] ; extra == \"all\"",
+          "etils[etree-tf] ; extra == \"all\"",
+          "etils[enp] ; extra == \"array-types\"",
+          "pytest ; extra == \"dev\"",
+          "pytest-subtests ; extra == \"dev\"",
+          "pytest-xdist ; extra == \"dev\"",
+          "pyink ; extra == \"dev\"",
+          "pylint>=2.6.0 ; extra == \"dev\"",
+          "chex ; extra == \"dev\"",
+          "fiddle ; extra == \"dev\"",
+          "torch ; extra == \"dev\"",
+          "optree ; extra == \"dev\"",
+          "tensorflow_datasets ; extra == \"dev\"",
+          "pydantic ; extra == \"dev\"",
+          "sphinx-apitree[ext] ; extra == \"docs\"",
+          "etils[dev, all] ; extra == \"docs\"",
+          "absl-py ; extra == \"eapp\"",
+          "simple_parsing ; extra == \"eapp\"",
+          "etils[epy] ; extra == \"eapp\"",
+          "jupyter ; extra == \"ecolab\"",
+          "numpy ; extra == \"ecolab\"",
+          "mediapy ; extra == \"ecolab\"",
+          "packaging ; extra == \"ecolab\"",
+          "protobuf ; extra == \"ecolab\"",
+          "etils[enp] ; extra == \"ecolab\"",
+          "etils[epy] ; extra == \"ecolab\"",
+          "etils[etree] ; extra == \"ecolab\"",
+          "etils[epy] ; extra == \"edc\"",
+          "numpy ; extra == \"enp\"",
+          "einops ; extra == \"enp\"",
+          "etils[epy] ; extra == \"enp\"",
+          "fsspec ; extra == \"epath\"",
+          "importlib_resources ; extra == \"epath\"",
+          "typing_extensions ; extra == \"epath\"",
+          "zipp ; extra == \"epath\"",
+          "etils[epy] ; extra == \"epath\"",
+          "gcsfs ; extra == \"epath-gcs\"",
+          "etils[epath] ; extra == \"epath-gcs\"",
+          "s3fs ; extra == \"epath-s3\"",
+          "etils[epath] ; extra == \"epath-s3\"",
+          "typing_extensions ; extra == \"epy\"",
+          "absl-py ; extra == \"etqdm\"",
+          "tqdm ; extra == \"etqdm\"",
+          "etils[epy] ; extra == \"etqdm\"",
+          "etils[array-types] ; extra == \"etree\"",
+          "etils[epy] ; extra == \"etree\"",
+          "etils[enp] ; extra == \"etree\"",
+          "etils[etqdm] ; extra == \"etree\"",
+          "dm-tree ; extra == \"etree-dm\"",
+          "etils[etree] ; extra == \"etree-dm\"",
+          "jax[cpu] ; extra == \"etree-jax\"",
+          "etils[etree] ; extra == \"etree-jax\"",
+          "tensorflow ; extra == \"etree-tf\"",
+          "etils[etree] ; extra == \"etree-tf\"",
+          "etils[ecolab] ; extra == \"lazy-imports\""
+        ],
+        "requires_python": ">=3.10",
+        "project_url": [
+          "changelog, https://github.com/google/etils/blob/main/CHANGELOG.md",
+          "documentation, https://etils.readthedocs.io",
+          "homepage, https://github.com/google/etils",
+          "repository, https://github.com/google/etils"
+        ],
+        "provides_extra": [
+          "all",
+          "array-types",
+          "dev",
+          "docs",
+          "eapp",
+          "ecolab",
+          "edc",
+          "enp",
+          "epath",
+          "epath-gcs",
+          "epath-no-tf",
+          "epath-s3",
+          "epy",
+          "etqdm",
+          "etree",
+          "etree-dm",
+          "etree-jax",
+          "etree-tf",
+          "lazy-imports"
+        ],
+        "description": "# Etils\n\n[![Unittests](https://github.com/google/etils/actions/workflows/pytest_and_autopublish.yml/badge.svg)](https://github.com/google/etils/actions/workflows/pytest_and_autopublish.yml)\n[![PyPI version](https://badge.fury.io/py/etils.svg)](https://badge.fury.io/py/etils)\n[![Documentation Status](https://readthedocs.org/projects/etils/badge/?version=latest)](https://etils.readthedocs.io/en/latest/?badge=latest)\n\netils (eclectic utils) is an open-source collection of utils for python.\n\nEach top-level submodule is a **self-contained independent** module (with its\nown `BUILD` rule), meant to be imported individually. To avoid collisions with\nother modules/variables, module names are prefixed by `e` (arbitrary\nconvention):\n\n```python\nfrom etils import epath  # Path utils\nfrom etils import epy  # Python utils\nfrom etils import ejax  # Jax utils\n...\n```\n\nBecauses each module is independent, only the minimal required libraries are\nimported (for example, importing `epy` won't suffer the cost of importing TF,\njax,...)\n\n## Documentation\n\n* [`etils.epath`](https://etils.readthedocs.io/en/latest/epath.html): pathlib-like API for `gs://`, `s3://`,...\n* [`etils.etree`](https://etils.readthedocs.io/en/latest/etree.html): Tree utils for `tf.nest`, `jax.tree_utils`, DeepMind `tree`.\n* [`etils.enp`](https://etils.readthedocs.io/en/latest/enp.html): Numpy utils.\n* [`etils.ecolab`](https://etils.readthedocs.io/en/latest/ecolab.html): Colab utils.\n* [`etils.array_types`](https://etils.readthedocs.io/en/latest/array_types.html): Typing annotations for jax, numpy,... arrays\n* [`etils.edc`](https://etils.readthedocs.io/en/latest/edc.html): Dataclasses utils.\n* [`etils.epy`](https://etils.readthedocs.io/en/latest/epy.html): Collection of generic python utils.\n* [`etils.eapp`](https://etils.readthedocs.io/en/latest/eapp.html): Absl flags/app utils.\n*  [API design guide](https://etils.readthedocs.io/en/latest/api-design.html).\n\n## Installation\n\nBecause each module is independent and require different dependencies, you\ncan select which modules deps to install:\n\n```sh\npip install etils[array_types,epath,epy]\n```\n\n*This is not an official Google product.*\n\n"
+      }
+    },
+    {
+      "download_info": {
+        "url": "https://pypi.tuna.tsinghua.edu.cn/packages/6c/c0/a98505f18594f1bce828bb159cec0fcf9860562f1a2c85913409fc8f3d9e/fsspec-2026.9.0-py3-none-any.whl",
+        "archive_info": {
+          "hashes": {
+            "sha256": "8dd6e646e99ea382bd85f97a45e6b526a442d79423a7dc673f1e2756d05fcb5f"
+          },
+          "hash": "sha256=8dd6e646e99ea382bd85f97a45e6b526a442d79423a7dc673f1e2756d05fcb5f"
+        }
+      },
+      "is_direct": false,
+      "is_yanked": false,
+      "requested": false,
+      "metadata": {
+        "metadata_version": "2.5",
+        "name": "fsspec",
+        "version": "2026.9.0",
+        "summary": "File-system specification",
+        "description_content_type": "text/markdown",
+        "keywords": [
+          "file"
+        ],
+        "maintainer_email": "Martin Durant <mdurant@anaconda.com>",
+        "license_expression": "BSD-3-Clause",
+        "license_file": [
+          "LICENSE"
+        ],
+        "classifier": [
+          "Development Status :: 4 - Beta",
+          "Intended Audience :: Developers",
+          "Operating System :: OS Independent",
+          "Programming Language :: Python :: 3.10",
+          "Programming Language :: Python :: 3.11",
+          "Programming Language :: Python :: 3.12",
+          "Programming Language :: Python :: 3.13",
+          "Programming Language :: Python :: 3.14"
+        ],
+        "requires_dist": [
+          "adlfs; extra == 'abfs'",
+          "adlfs; extra == 'adl'",
+          "pyarrow>=1; extra == 'arrow'",
+          "dask; extra == 'dask'",
+          "distributed; extra == 'dask'",
+          "pre-commit; extra == 'dev'",
+          "ruff>=0.5; extra == 'dev'",
+          "numpydoc; extra == 'doc'",
+          "sphinx; extra == 'doc'",
+          "sphinx-design; extra == 'doc'",
+          "sphinx-rtd-theme; extra == 'doc'",
+          "yarl; extra == 'doc'",
+          "dropbox; extra == 'dropbox'",
+          "dropboxdrivefs; extra == 'dropbox'",
+          "requests; extra == 'dropbox'",
+          "adlfs; extra == 'full'",
+          "aiohttp!=4.0.0a0,!=4.0.0a1; extra == 'full'",
+          "dask; extra == 'full'",
+          "distributed; extra == 'full'",
+          "dropbox; extra == 'full'",
+          "dropboxdrivefs; extra == 'full'",
+          "fusepy; extra == 'full'",
+          "gcsfs>=2026.4.0; extra == 'full'",
+          "libarchive-c; extra == 'full'",
+          "ocifs; extra == 'full'",
+          "panel; extra == 'full'",
+          "paramiko; extra == 'full'",
+          "pyarrow>=1; extra == 'full'",
+          "pygit2; extra == 'full'",
+          "requests; extra == 'full'",
+          "s3fs>=2026.6.0; extra == 'full'",
+          "smbprotocol; extra == 'full'",
+          "tqdm; extra == 'full'",
+          "fusepy; extra == 'fuse'",
+          "gcsfs>=2026.4.0; extra == 'gcs'",
+          "pygit2; extra == 'git'",
+          "requests; extra == 'github'",
+          "gcsfs>=2026.4.0; extra == 'gs'",
+          "panel; extra == 'gui'",
+          "pyarrow>=1; extra == 'hdfs'",
+          "aiohttp!=4.0.0a0,!=4.0.0a1; extra == 'http'",
+          "libarchive-c; extra == 'libarchive'",
+          "ocifs; extra == 'oci'",
+          "s3fs>=2026.6.0; extra == 's3'",
+          "paramiko; extra == 'sftp'",
+          "smbprotocol; extra == 'smb'",
+          "paramiko; extra == 'ssh'",
+          "aiohttp!=4.0.0a0,!=4.0.0a1; extra == 'test'",
+          "numpy; extra == 'test'",
+          "pytest; extra == 'test'",
+          "pytest-asyncio!=0.22.0; extra == 'test'",
+          "pytest-benchmark; extra == 'test'",
+          "pytest-cov; extra == 'test'",
+          "pytest-mock; extra == 'test'",
+          "pytest-recording; extra == 'test'",
+          "pytest-rerunfailures; extra == 'test'",
+          "requests; extra == 'test'",
+          "aiobotocore<3.0.0,>=2.5.4; extra == 'test-downstream'",
+          "dask[dataframe,test]; extra == 'test-downstream'",
+          "moto[server]<5,>4; extra == 'test-downstream'",
+          "pytest-timeout; extra == 'test-downstream'",
+          "xarray; extra == 'test-downstream'",
+          "zarr; extra == 'test-downstream'",
+          "adlfs; extra == 'test-full'",
+          "aiohttp!=4.0.0a0,!=4.0.0a1; extra == 'test-full'",
+          "backports-zstd; (python_version < '3.14') and extra == 'test-full'",
+          "cloudpickle; extra == 'test-full'",
+          "dask; extra == 'test-full'",
+          "distributed; extra == 'test-full'",
+          "dropbox; extra == 'test-full'",
+          "dropboxdrivefs; extra == 'test-full'",
+          "fastparquet; extra == 'test-full'",
+          "fusepy; extra == 'test-full'",
+          "gcsfs>=2026.4.0; extra == 'test-full'",
+          "jinja2; extra == 'test-full'",
+          "kerchunk; extra == 'test-full'",
+          "libarchive-c; extra == 'test-full'",
+          "lz4; extra == 'test-full'",
+          "notebook; extra == 'test-full'",
+          "numpy; extra == 'test-full'",
+          "ocifs; extra == 'test-full'",
+          "pandas<3.0.0; extra == 'test-full'",
+          "panel; extra == 'test-full'",
+          "paramiko; extra == 'test-full'",
+          "pyarrow>=1; extra == 'test-full'",
+          "pyftpdlib; extra == 'test-full'",
+          "pygit2; extra == 'test-full'",
+          "pytest; extra == 'test-full'",
+          "pytest-asyncio!=0.22.0; extra == 'test-full'",
+          "pytest-benchmark; extra == 'test-full'",
+          "pytest-cov; extra == 'test-full'",
+          "pytest-mock; extra == 'test-full'",
+          "pytest-recording; extra == 'test-full'",
+          "pytest-rerunfailures; extra == 'test-full'",
+          "python-snappy; extra == 'test-full'",
+          "requests; extra == 'test-full'",
+          "s3fs>=2026.6.0; extra == 'test-full'",
+          "smbprotocol; extra == 'test-full'",
+          "tqdm; extra == 'test-full'",
+          "urllib3; extra == 'test-full'",
+          "zarr<3.2.0; extra == 'test-full'",
+          "zstandard; (python_version < '3.14') and extra == 'test-full'",
+          "tqdm; extra == 'tqdm'"
+        ],
+        "requires_python": ">=3.10",
+        "project_url": [
+          "Changelog, https://filesystem-spec.readthedocs.io/en/latest/changelog.html",
+          "Documentation, https://filesystem-spec.readthedocs.io/en/latest/",
+          "Homepage, https://github.com/fsspec/filesystem_spec"
+        ],
+        "provides_extra": [
+          "abfs",
+          "adl",
+          "arrow",
+          "dask",
+          "dev",
+          "doc",
+          "dropbox",
+          "entrypoints",
+          "full",
+          "fuse",
+          "gcs",
+          "git",
+          "github",
+          "gs",
+          "gui",
+          "hdfs",
+          "http",
+          "libarchive",
+          "oci",
+          "s3",
+          "sftp",
+          "smb",
+          "ssh",
+          "test",
+          "test-downstream",
+          "test-full",
+          "tqdm"
+        ],
+        "description": "# filesystem_spec\n\n[![PyPI version](https://badge.fury.io/py/fsspec.svg)](https://pypi.python.org/pypi/fsspec/)\n[![Anaconda-Server Badge](https://anaconda.org/conda-forge/fsspec/badges/version.svg)](https://anaconda.org/conda-forge/fsspec)\n![Build](https://github.com/fsspec/filesystem_spec/workflows/CI/badge.svg)\n[![Docs](https://readthedocs.org/projects/filesystem-spec/badge/?version=latest)](https://filesystem-spec.readthedocs.io/en/latest/?badge=latest)\n\nA specification for pythonic filesystems.\n\n## Install\n\n```bash\npip install fsspec\n```\n\nwould install the base fsspec. Various optionally supported features might require specification of custom\nextra require, e.g. `pip install fsspec[ssh]` will install dependencies for `ssh` backends support.\nUse `pip install fsspec[full]` for installation of all known extra dependencies.\n\nUp-to-date package also provided through conda-forge distribution:\n\n```bash\nconda install -c conda-forge fsspec\n```\n\n\n## Purpose\n\nTo produce a template or specification for a file-system interface, that specific implementations should follow,\nso that applications making use of them can rely on a common behaviour and not have to worry about the specific\ninternal implementation decisions with any given backend. Many such implementations are included in this package,\nor in sister projects such as `s3fs` and `gcsfs`.\n\nIn addition, if this is well-designed, then additional functionality, such as a key-value store or FUSE\nmounting of the file-system implementation may be available for all implementations \"for free\".\n\n## Documentation\n\nPlease refer to [RTD](https://filesystem-spec.readthedocs.io/en/latest/?badge=latest)\n\n## Develop\n\nfsspec uses GitHub Actions for CI. Environment files can be found\nin the \"ci/\" directory. Note that the main environment is called \"py38\",\nbut it is expected that the version of python installed be adjustable at\nCI runtime. For local use, pick a version suitable for you.\n\n```bash\n# For a new environment (mamba / conda).\nmamba create -n fsspec -c conda-forge  python=3.10 -y\nconda activate fsspec\n\n# Standard dev install with docs and tests.\npip install -e \".[dev,doc,test]\"\n\n# Full tests except for downstream\npip install s3fs\npip uninstall s3fs\npip install -e .[dev,doc,test_full]\npip install s3fs --no-deps\npytest -v\n\n# Downstream tests.\nsh install_s3fs.sh\n# Windows powershell.\ninstall_s3fs.sh\n```\n\n### Testing\n\nTests can be run in the dev environment, if activated, via ``pytest fsspec``.\n\nThe full fsspec suite requires a system-level docker, docker-compose, and fuse\ninstallation. If only making changes to one backend implementation, it is\nnot generally necessary to run all tests locally.\n\nIt is expected that contributors ensure that any change to fsspec does not\ncause issues or regressions for either other fsspec-related packages such\nas gcsfs and s3fs, nor for downstream users of fsspec. The \"downstream\" CI\nrun and corresponding environment file run a set of tests from the dask\ntest suite, and very minimal tests against pandas and zarr from the\ntest_downstream.py module in this repo.\n\n### Code Formatting\n\nfsspec uses [Black](https://black.readthedocs.io/en/stable) to ensure\na consistent code format throughout the project.\nRun ``black fsspec`` from the root of the filesystem_spec repository to\nauto-format your code. Additionally, many editors have plugins that will apply\n``black`` as you edit files. ``black`` is included in the ``tox`` environments.\n\nOptionally, you may wish to setup [pre-commit hooks](https://pre-commit.com) to\nautomatically run ``black`` when you make a git commit.\nRun ``pre-commit install --install-hooks`` from the root of the\nfilesystem_spec repository to setup pre-commit hooks. ``black`` will now be run\nbefore you commit, reformatting any changed files. You can format without\ncommitting via ``pre-commit run`` or skip these checks with ``git commit\n--no-verify``.\n\n## Support\n\nWork on this repository is supported in part by:\n\n\"Anaconda, Inc. - Advancing AI through open source.\"\n\n<a href=\"https://anaconda.com/\"><img src=\"https://camo.githubusercontent.com/b8555ef2222598ed37ce38ac86955febbd25de7619931bb7dd3c58432181d3b6/68747470733a2f2f626565776172652e6f72672f636f6d6d756e6974792f6d656d626572732f616e61636f6e64612f616e61636f6e64612d6c617267652e706e67\" alt=\"anaconda logo\" width=\"40%\"/></a>\n"
+      }
+    },
+    {
+      "download_info": {
+        "url": "https://pypi.tuna.tsinghua.edu.cn/packages/cc/b2/ee7afd7e84bc1a8a490710c3c0a7ad472b57f17909549dc7400d17f19c8b/glfw-2.11.0-py2.py3-none-manylinux_2_28_x86_64.whl",
+        "archive_info": {
+          "hashes": {
+            "sha256": "76484fae4a4ef0f778a05e02422ecbe6960ae23039087fe2e0ad9742ab8c7bbe"
+          },
+          "hash": "sha256=76484fae4a4ef0f778a05e02422ecbe6960ae23039087fe2e0ad9742ab8c7bbe"
+        }
+      },
+      "is_direct": false,
+      "is_yanked": false,
+      "requested": false,
+      "metadata": {
+        "metadata_version": "2.4",
+        "name": "glfw",
+        "version": "2.11.0",
+        "dynamic": [
+          "author",
+          "author-email",
+          "classifier",
+          "description",
+          "home-page",
+          "license",
+          "license-file",
+          "provides-extra",
+          "summary"
+        ],
+        "summary": "A ctypes-based wrapper for GLFW3.",
+        "home_page": "https://github.com/FlorianRhiem/pyGLFW",
+        "author": "Florian Rhiem",
+        "author_email": "florian.rhiem@gmail.com",
+        "license": "MIT",
+        "license_file": [
+          "LICENSE.txt"
+        ],
+        "classifier": [
+          "Development Status :: 5 - Production/Stable",
+          "Environment :: MacOS X",
+          "Environment :: X11 Applications",
+          "Intended Audience :: Developers",
+          "License :: OSI Approved :: MIT License",
+          "Programming Language :: Python :: 2",
+          "Programming Language :: Python :: 3",
+          "Topic :: Multimedia :: Graphics",
+          "Topic :: Scientific/Engineering :: Visualization"
+        ],
+        "requires_dist": [
+          "glfw_preview; extra == \"preview\""
+        ],
+        "provides_extra": [
+          "preview"
+        ],
+        "description": "pyGLFW\n======\n\nThis module provides Python bindings for `GLFW <http://www.glfw.org/>`__\n(on GitHub: `glfw/glfw <http://github.com/glfw/glfw>`__). It is a\n``ctypes`` wrapper which keeps very close to the original GLFW API,\nexcept for:\n\n-  function names use the pythonic ``words_with_underscores`` notation\n   instead of ``camelCase``\n-  ``GLFW_`` and ``glfw`` prefixes have been removed, as their function\n   is replaced by the module namespace\n   (you can use ``from glfw.GLFW import *`` if you prefer the naming\n   convention used by the GLFW C API)\n-  structs have been replaced with Python sequences and namedtuples\n-  functions like ``glfwGetMonitors`` return a list instead of a pointer\n   and an object count\n-  Gamma ramps use floats between 0.0 and 1.0 instead of unsigned shorts\n   (use ``glfw.NORMALIZE_GAMMA_RAMPS=False`` to disable this)\n-  GLFW errors are reported as ``glfw.GLFWError`` warnings if no error\n   callback is set (use ``glfw.ERROR_REPORTING=False`` to disable this,\n   set it to 'warn' instead to issue warnings, set it to 'log' to log it\n   using the 'glfw' logger or set it to a dict to define the behavior for\n   specific error codes)\n-  instead of a sequence for ``GLFWimage`` structs, PIL/pillow ``Image``\n   objects can be used\n\nInstallation\n------------\n\npyGLFW can be installed using pip:\n\n.. code:: sh\n\n    pip install glfw\n\nWindows\n~~~~~~~\n\nThe GLFW shared library and Visual C++ runtime are included in the Python wheels.\n\nTo use a different GLFW library, you can set ``PYGLFW_LIBRARY`` to its location.\n\nmacOS\n~~~~~\n\nThe GLFW shared library for 64-bit is included in the Python wheels for macOS.\n\nIf you are using a 32-bit Python installation or otherwise cannot use the\nlibrary downloaded with the wheel, you can build and install it yourself by\n`compiling GLFW from source <http://www.glfw.org/docs/latest/compile.html>`__\n(use ``-DBUILD_SHARED_LIBS=ON``).\n\npyGLFW will search for the library in a list of search paths (including those\nin ``DYLD_LIBRARY_PATH``). If you want to use a specific library, you can set\nthe ``PYGLFW_LIBRARY`` environment variable to its path.\n\nLinux\n~~~~~\n\nThe GLFW shared library is included in the Python wheels for Linux. Although\npyGLFW will try to detect whether the GLFW library for Wayland or X11 should\nbe used, you can set the ``PYGLFW_LIBRARY_VARIANT`` variable to ``wayland`` or\n``x11`` to select either variant of the library.\n\nIf you cannot use these on your system, you can install the GLFW shared\nlibrary using a package management system (e.g. ``apt install libglfw3``\non Debian or Ubuntu) or you can build and install it yourself by\n`compiling GLFW from source <http://www.glfw.org/docs/latest/compile.html>`__\n(use ``-DBUILD_SHARED_LIBS=ON``).\n\npyGLFW will search for the library in a list of search paths (including those\nin ``LD_LIBRARY_PATH``). If you want to use a specific library, you can set\nthe ``PYGLFW_LIBRARY`` environment variable to its path.\n\ncx_Freeze / PyInstaller\n~~~~~~~~~~~~~~~~~~~~~~~\n\npyGLFW will search for the GLFW library in the current working directory, the directory\nof the executable and in the package on non-Windows platforms if running in an\nexecutable frozen with cx_Freeze or PyInstaller, unless the ``PYGLFW_LIBRARY``\nenvironment variable is set.\n\nDevelopment Version\n~~~~~~~~~~~~~~~~~~~\n\nIf you are using the development version of GLFW and would like to use wrappers\nfor currently unreleased macros and functions, you can instead install:\n\n.. code:: sh\n\n    pip install glfw[preview]\n\nor set the ``PYGLFW_PREVIEW`` environment variable.\n\nNote, however, that there will be a slight delay between the development\nversion of GLFW and the wrappers provided by this package.\n\nExample Code\n------------\n\nThe example from the `GLFW\ndocumentation <http://www.glfw.org/documentation.html>`__ ported to\npyGLFW:\n\n.. code:: python\n\n    import glfw\n\n    def main():\n        # Initialize the library\n        if not glfw.init():\n            return\n        # Create a windowed mode window and its OpenGL context\n        window = glfw.create_window(640, 480, \"Hello World\", None, None)\n        if not window:\n            glfw.terminate()\n            return\n\n        # Make the window's context current\n        glfw.make_context_current(window)\n\n        # Loop until the user closes the window\n        while not glfw.window_should_close(window):\n            # Render here, e.g. using pyOpenGL\n\n            # Swap front and back buffers\n            glfw.swap_buffers(window)\n\n            # Poll for and process events\n            glfw.poll_events()\n\n        glfw.terminate()\n\n    if __name__ == \"__main__\":\n        main()\n"
+      }
+    },
+    {
+      "download_info": {
+        "url": "https://pypi.tuna.tsinghua.edu.cn/packages/8a/db/55a262f3606bebcae07cc14095338471ad7c0bbcaa37707e6f0ee49725b7/importlib_resources-7.1.0-py3-none-any.whl",
+        "archive_info": {
+          "hashes": {
+            "sha256": "1bd7b48b4088eddb2cd16382150bb515af0bd2c70128194392725f82ad2c96a1"
+          },
+          "hash": "sha256=1bd7b48b4088eddb2cd16382150bb515af0bd2c70128194392725f82ad2c96a1"
+        }
+      },
+      "is_direct": false,
+      "is_yanked": false,
+      "requested": false,
+      "metadata": {
+        "metadata_version": "2.4",
+        "name": "importlib_resources",
+        "version": "7.1.0",
+        "dynamic": [
+          "license-file"
+        ],
+        "summary": "Read resources from Python packages",
+        "description_content_type": "text/x-rst",
+        "author_email": "Barry Warsaw <barry@python.org>",
+        "maintainer_email": "\"Jason R. Coombs\" <jaraco@jaraco.com>",
+        "license_expression": "Apache-2.0",
+        "license_file": [
+          "LICENSE"
+        ],
+        "classifier": [
+          "Development Status :: 5 - Production/Stable",
+          "Intended Audience :: Developers",
+          "Programming Language :: Python :: 3",
+          "Programming Language :: Python :: 3 :: Only"
+        ],
+        "requires_dist": [
+          "zipp>=3.1.0; python_version < \"3.10\"",
+          "pytest!=8.1.*,>=6; extra == \"test\"",
+          "zipp>=3.17; extra == \"test\"",
+          "jaraco.test>=5.4; extra == \"test\"",
+          "sphinx>=3.5; extra == \"doc\"",
+          "jaraco.packaging>=9.3; extra == \"doc\"",
+          "rst.linker>=1.9; extra == \"doc\"",
+          "furo; extra == \"doc\"",
+          "sphinx-lint; extra == \"doc\"",
+          "jaraco.tidelift>=1.4; extra == \"doc\"",
+          "pytest-checkdocs>=2.14; extra == \"check\"",
+          "pytest-ruff>=0.2.1; sys_platform != \"cygwin\" and extra == \"check\"",
+          "pytest-cov; extra == \"cover\"",
+          "pytest-enabler>=3.4; extra == \"enabler\"",
+          "pytest-mypy>=1.0.1; platform_python_implementation != \"PyPy\" and extra == \"type\""
+        ],
+        "requires_python": ">=3.10",
+        "project_url": [
+          "Source, https://github.com/python/importlib_resources"
+        ],
+        "provides_extra": [
+          "test",
+          "doc",
+          "check",
+          "cover",
+          "enabler",
+          "type"
+        ],
+        "description": ".. image:: https://img.shields.io/pypi/v/importlib_resources.svg\n   :target: https://pypi.org/project/importlib_resources\n\n.. image:: https://img.shields.io/pypi/pyversions/importlib_resources.svg\n\n.. image:: https://github.com/python/importlib_resources/actions/workflows/main.yml/badge.svg\n   :target: https://github.com/python/importlib_resources/actions?query=workflow%3A%22tests%22\n   :alt: tests\n\n.. image:: https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json\n    :target: https://github.com/astral-sh/ruff\n    :alt: Ruff\n\n.. image:: https://readthedocs.org/projects/importlib-resources/badge/?version=latest\n   :target: https://importlib-resources.readthedocs.io/en/latest/?badge=latest\n\n.. image:: https://img.shields.io/badge/skeleton-2025-informational\n   :target: https://blog.jaraco.com/skeleton\n\n.. image:: https://tidelift.com/badges/package/pypi/importlib-resources\n   :target: https://tidelift.com/subscription/pkg/pypi-importlib-resources?utm_source=pypi-importlib-resources&utm_medium=readme\n\n``importlib_resources`` is a backport of Python standard library\n`importlib.resources\n<https://docs.python.org/3/library/importlib.html#module-importlib.resources>`_\nmodule for older Pythons.\n\nThe key goal of this module is to replace parts of `pkg_resources\n<https://setuptools.readthedocs.io/en/latest/pkg_resources.html>`_ with a\nsolution in Python's stdlib that relies on well-defined APIs.  This makes\nreading resources included in packages easier, with more stable and consistent\nsemantics.\n\nCompatibility\n=============\n\nNew features are introduced in this third-party library and later merged\ninto CPython. The following table indicates which versions of this library\nwere contributed to different versions in the standard library:\n\n.. list-table::\n   :header-rows: 1\n\n   * - importlib_resources\n     - stdlib\n   * - 6.0\n     - 3.13\n   * - 5.12\n     - 3.12\n   * - 5.7\n     - 3.11\n   * - 5.0\n     - 3.10\n   * - 1.3\n     - 3.9\n   * - 0.5 (?)\n     - 3.7\n\nFor Enterprise\n==============\n\nAvailable as part of the Tidelift Subscription.\n\nThis project and the maintainers of thousands of other packages are working with Tidelift to deliver one enterprise subscription that covers all of the open source you use.\n\n`Learn more <https://tidelift.com/subscription/pkg/pypi-importlib-resources?utm_source=pypi-importlib-resources&utm_medium=referral&utm_campaign=github>`_.\n"
+      }
+    },
+    {
+      "download_info": {
+        "url": "https://pypi.tuna.tsinghua.edu.cn/packages/de/e4/1ba6f44e491c4eece978685230dde56b14d51a0365bc1b774ddaa94d14cd/pyopengl-3.1.10-py3-none-any.whl",
+        "archive_info": {
+          "hashes": {
+            "sha256": "794a943daced39300879e4e47bd94525280685f42dbb5a998d336cfff151d74f"
+          },
+          "hash": "sha256=794a943daced39300879e4e47bd94525280685f42dbb5a998d336cfff151d74f"
+        }
+      },
+      "is_direct": false,
+      "is_yanked": false,
+      "requested": false,
+      "metadata": {
+        "metadata_version": "2.4",
+        "name": "PyOpenGL",
+        "version": "3.1.10",
+        "summary": "Standard OpenGL bindings for Python",
+        "description_content_type": "text/x-rst",
+        "keywords": [
+          "Graphics",
+          "3D",
+          "OpenGL",
+          "GLU",
+          "GLUT",
+          "GLE",
+          "GLX",
+          "EXT",
+          "ARB",
+          "Mesa",
+          "ctypes"
+        ],
+        "author_email": "\"Mike C. Fletcher\" <mcfletch@vrplumber.com>",
+        "classifier": [
+          "License :: OSI Approved :: BSD License",
+          "Programming Language :: Python",
+          "Programming Language :: Python :: 2",
+          "Programming Language :: Python :: 3",
+          "Topic :: Multimedia :: Graphics :: 3D Rendering",
+          "Topic :: Software Development :: Libraries :: Python Modules",
+          "Intended Audience :: Developers"
+        ],
+        "project_url": [
+          "Homepage, https://mcfletch.github.io/pyopengl/",
+          "Download, https://pypi.org/project/PyOpenGL/",
+          "Source, https://github.com/mcfletch/pyopengl",
+          "Documentation, https://mcfletch.github.io/pyopengl/documentation/index.html"
+        ],
+        "description": "PyOpenGL and PyOpenGL_Accelerate\n=================================\n\nPyOpenGL is normally distributed via PyPI using standard pip::\n\n    $ pip install PyOpenGL PyOpenGL_accelerate\n\nYou can install this repository by branching/cloning and running\n``pip``::\n\n    $ cd pyopengl\n    $ pip install -e .\n    $ cd accelerate\n    $ pip install -e .\n\nNote that to compile PyOpenGL_accelerate you will need to have \na functioning Python extension-compiling environment.\n\nLearning PyOpenGL\n-----------------\n\nIf you are new to PyOpenGL, you likely want to start with the OpenGLContext `tutorial page`_.\nThose tutorials require OpenGLContext, (which is a big wrapper including a whole\nscenegraph engine, VRML97 parser, lots of demos, etc) you can install that with::\n\n    $ pip2.7 install \"OpenGLContext-full==3.1.1\"\n\nOr you can clone it (including the tutorial sources) with::\n\n    $ git clone https://github.com/mcfletch/openglcontext.git\n\nor (for GitHub usage)::\n\n    $ git clone https://github.com/mcfletch/pyopengl.git\n    \nThe `documentation pages`_ are useful for looking up the parameters and semantics of \nPyOpenGL calls.\n\n.. _`tutorial page`: http://pyopengl.sourceforge.net/context/tutorials/index.html\n.. _`documentation pages`: https://mcfletch.github.io/pyopengl/documentation/index.html\n\n\nRunning Tests\n--------------\n\nYou can run the PyOpenGL test suite from a source-code checkout, you will need:\n\n* git (for the checkout)\n* GLUT (FreeGLUT)\n* GLExtrusion library (libgle)\n* GLU (normally available on any OpenGL-capable machine)\n* tox (`pip install tox`)\n\nRunning the test suite from a top-level checkout looks like::\n\n    $ tox\n\nThe result being a lot of tests being run in a matrix of environments.\nAll of the environment will pull in pygame, some will also pull in \nnumpy. Some will have accelerate, and some will not.\n\n.. image:: https://travis-ci.org/mcfletch/pyopengl.svg?branch=master\n    :target: https://travis-ci.org/mcfletch/pyopengl\n    :alt: Travis Tests\n\n.. image:: https://ci.appveyor.com/api/projects/status/github/mcfletch/pyopengl\n    :target: https://ci.appveyor.com/project/MikeCFletcher/pyopengl\n    :alt: Appveyor Build\n\n.. image:: https://img.shields.io/pypi/v/pyopengl.svg\n    :target: https://pypi.python.org/pypi/pyopengl\n    :alt: Latest PyPI Version\n\n.. image:: https://img.shields.io/pypi/dm/pyopengl.svg\n    :target: https://pypi.python.org/pypi/pyopengl\n    :alt: Monthly download counter\n"
+      }
+    },
+    {
+      "download_info": {
+        "url": "https://pypi.tuna.tsinghua.edu.cn/packages/b8/44/7bd2007260da11cccca29ba2d4c345f1287aa663db38ee7cefeabf6386a5/zipp-4.1.2-py3-none-any.whl",
+        "archive_info": {
+          "hashes": {
+            "sha256": "b30cb6cd253122169c47de245ca24a86bac2a5d3802ba15bf7ba6414eb9e144d"
+          },
+          "hash": "sha256=b30cb6cd253122169c47de245ca24a86bac2a5d3802ba15bf7ba6414eb9e144d"
+        }
+      },
+      "is_direct": false,
+      "is_yanked": false,
+      "requested": false,
+      "metadata": {
+        "metadata_version": "2.4",
+        "name": "zipp",
+        "version": "4.1.2",
+        "dynamic": [
+          "license-file"
+        ],
+        "summary": "Backport of pathlib-compatible object wrapper for zip files",
+        "description_content_type": "text/x-rst",
+        "author_email": "\"Jason R. Coombs\" <jaraco@jaraco.com>",
+        "license_expression": "MIT",
+        "license_file": [
+          "LICENSE"
+        ],
+        "classifier": [
+          "Development Status :: 5 - Production/Stable",
+          "Intended Audience :: Developers",
+          "Programming Language :: Python :: 3",
+          "Programming Language :: Python :: 3 :: Only"
+        ],
+        "requires_dist": [
+          "pytest!=8.1.*,>=6; extra == \"test\"",
+          "jaraco.itertools; extra == \"test\"",
+          "jaraco.functools; extra == \"test\"",
+          "more_itertools; extra == \"test\"",
+          "big-O; extra == \"test\"",
+          "pytest-ignore-flaky; extra == \"test\"",
+          "jaraco.test; extra == \"test\"",
+          "sphinx>=3.5; extra == \"doc\"",
+          "jaraco.packaging>=9.3; extra == \"doc\"",
+          "rst.linker>=1.9; extra == \"doc\"",
+          "furo; extra == \"doc\"",
+          "sphinx-lint; extra == \"doc\"",
+          "jaraco.tidelift>=1.4; extra == \"doc\"",
+          "pytest-checkdocs>=2.14; extra == \"check\"",
+          "pytest-ruff>=0.2.1; sys_platform != \"cygwin\" and extra == \"check\"",
+          "pytest-cov; extra == \"cover\"",
+          "pytest-enabler>=3.4; extra == \"enabler\"",
+          "pytest-mypy>=1.0.1; platform_python_implementation != \"PyPy\" and extra == \"type\""
+        ],
+        "requires_python": ">=3.10",
+        "project_url": [
+          "Source, https://github.com/jaraco/zipp"
+        ],
+        "provides_extra": [
+          "test",
+          "doc",
+          "check",
+          "cover",
+          "enabler",
+          "type"
+        ],
+        "description": ".. image:: https://img.shields.io/pypi/v/zipp.svg\n   :target: https://pypi.org/project/zipp\n\n.. image:: https://img.shields.io/pypi/pyversions/zipp.svg\n\n.. image:: https://github.com/jaraco/zipp/actions/workflows/main.yml/badge.svg\n   :target: https://github.com/jaraco/zipp/actions?query=workflow%3A%22tests%22\n   :alt: tests\n\n.. image:: https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json\n    :target: https://github.com/astral-sh/ruff\n    :alt: Ruff\n\n.. image:: https://readthedocs.org/projects/zipp/badge/?version=latest\n..    :target: https://zipp.readthedocs.io/en/latest/?badge=latest\n\n.. image:: https://img.shields.io/badge/skeleton-2026-informational\n   :target: https://blog.jaraco.com/skeleton\n\n.. image:: https://tidelift.com/badges/package/pypi/zipp\n   :target: https://tidelift.com/subscription/pkg/pypi-zipp?utm_source=pypi-zipp&utm_medium=readme\n\n\nA pathlib-compatible Zipfile object wrapper. Official backport of the standard library\n`Path object <https://docs.python.org/3.8/library/zipfile.html#path-objects>`_.\n\n\nCompatibility\n=============\n\nNew features are introduced in this third-party library and later merged\ninto CPython. The following table indicates which versions of this library\nwere contributed to different versions in the standard library:\n\n.. list-table::\n   :header-rows: 1\n\n   * - zipp\n     - stdlib\n   * - 3.21\n     - 3.15\n   * - 3.18\n     - 3.13\n   * - 3.16\n     - 3.12\n   * - 3.5\n     - 3.11\n   * - 3.2\n     - 3.10\n   * - 3.3 ??\n     - 3.9\n   * - 1.0\n     - 3.8\n\n\nUsage\n=====\n\nUse ``zipp.Path`` in place of ``zipfile.Path`` on any Python.\n\nFor Enterprise\n==============\n\nAvailable as part of the Tidelift Subscription.\n\nThis project and the maintainers of thousands of other packages are working with Tidelift to deliver one enterprise subscription that covers all of the open source you use.\n\n`Learn more <https://tidelift.com/subscription/pkg/pypi-zipp?utm_source=pypi-zipp&utm_medium=referral&utm_campaign=github>`_.\n"
+      }
+    }
+  ],
+  "environment": {
+    "implementation_name": "cpython",
+    "implementation_version": "3.10.22",
+    "os_name": "posix",
+    "platform_machine": "x86_64",
+    "platform_release": "6.8.0-48-generic",
+    "platform_system": "Linux",
+    "platform_version": "#48~22.04.1-Ubuntu SMP PREEMPT_DYNAMIC Mon Oct  7 11:24:13 UTC 2",
+    "python_full_version": "3.10.22",
+    "platform_python_implementation": "CPython",
+    "python_version": "3.10",
+    "sys_platform": "linux"
+  }
+}

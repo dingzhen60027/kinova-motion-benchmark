@@ -1,0 +1,393 @@
+{
+  "cases": [
+    {
+      "conclusion": "Peak occurs at the first saved integration state after an original C1 Bezier segment acceleration jump. Exact reference derivatives and current-time qacc agree; no one-frame timing bug was found. Discrete tracking feedback produces actual acceleration above the source reference bound. Preserve execution_failed and the separate original planning success.",
+      "controller": "computed_torque_pd",
+      "dynamics_timing_residuals": {
+        "forward_velocity_difference_vs_saved_qacc_max_abs_rad_s2": 1.3744561044859438e-13,
+        "saved_qacc_vs_current_feedback_max_abs_rad_s2": 8.93729534823251e-14,
+        "semiimplicit_position_difference_vs_next_velocity_max_abs_rad_s": 1.758593271006248e-13
+      },
+      "execution_directory": "benchmarks/generic_motion_v1/results/mujoco_smoke/eizo/jobs/smoke-sparse_clutter-000-p01-EI_ZO-minimum_time-3890080e",
+      "kd_s": 40.0,
+      "kp_s2": 400.0,
+      "nearest_internal_boundary": {
+        "first_saved_time_after_boundary_s": 4.795999999999694,
+        "left_acceleration_rad_s2": [
+          -7.250408997848965e-10,
+          -0.23942475658229276,
+          0.5229923624718982,
+          -0.385592186076635,
+          -0.02273815847091985,
+          -0.03905290101808528,
+          0.9999916666936182
+        ],
+        "peak_joint_acceleration_jump_rad_s2": -0.9772598274082226,
+        "peak_offset_s": 0.0005807191937110545,
+        "right_acceleration_rad_s2": [
+          6.322385235774699e-10,
+          -0.4934530665288679,
+          -0.6859202380499844,
+          0.3385948176582896,
+          -0.9999979858791425,
+          -0.6416964912452915,
+          0.90979867368724
+        ],
+        "time_s": 4.795419280805983
+      },
+      "original_execution_checks": {
+        "acceleration_limits": false,
+        "actual_effort_limits": true,
+        "collision_checker_agreement": true,
+        "contact_free": true,
+        "endpoint": true,
+        "independent_collision_free": true,
+        "integration_complete": true,
+        "joint_limits": true,
+        "tracking": true,
+        "velocity_limits": true
+      },
+      "original_execution_status": "execution_failed",
+      "original_planning_status": "success_validated_numerical",
+      "peak": {
+        "acceleration_excess_rad_s2": 0.022787900355697,
+        "acceleration_limit_rad_s2": 1.0,
+        "actual_acceleration_rad_s2": -1.022787900355697,
+        "index": 2398,
+        "joint_one_based": 5,
+        "neighborhood": [
+          {
+            "actual_acceleration_rad_s2": -0.021880619877724605,
+            "index": 2393,
+            "position_error_rad": -1.4511462945177023e-06,
+            "reference_acceleration_rad_s2": -0.021857073602539058,
+            "time_s": 4.785999999999695,
+            "velocity_error_rad_s": 1.5100119824751346e-05
+          },
+          {
+            "actual_acceleration_rad_s2": -0.02206563192891986,
+            "index": 2394,
+            "position_error_rad": -1.4646313140076472e-06,
+            "reference_acceleration_rad_s2": -0.022041975092012677,
+            "time_s": 4.787999999999695,
+            "velocity_error_rad_s": 1.5237734062978348e-05
+          },
+          {
+            "actual_acceleration_rad_s2": -0.02225181490117456,
+            "index": 2395,
+            "position_error_rad": -1.47821057056019e-06,
+            "reference_acceleration_rad_s2": -0.022228047248436078,
+            "time_s": 4.7899999999996945,
+            "velocity_error_rad_s": 1.537629702386134e-05
+          },
+          {
+            "actual_acceleration_rad_s2": -0.022439173725439243,
+            "index": 2396,
+            "position_error_rad": -1.4918845058220498e-06,
+            "reference_acceleration_rad_s2": -0.02241529500264193,
+            "time_s": 4.791999999999694,
+            "velocity_error_rad_s": 1.551581312830841e-05
+          },
+          {
+            "actual_acceleration_rad_s2": -0.022627713343087663,
+            "index": 2397,
+            "position_error_rad": -1.5056535625501688e-06,
+            "reference_acceleration_rad_s2": -0.022603723295825395,
+            "time_s": 4.793999999999694,
+            "velocity_error_rad_s": 1.56562868069976e-05
+          },
+          {
+            "actual_acceleration_rad_s2": -1.022787900355697,
+            "index": 2398,
+            "position_error_rad": -1.354738282222101e-06,
+            "reference_acceleration_rad_s2": -0.9999979858791002,
+            "time_s": 4.795999999999694,
+            "velocity_error_rad_s": 0.0005832952447372142
+          },
+          {
+            "actual_acceleration_rad_s2": -1.0205948811274448,
+            "index": 2399,
+            "position_error_rad": -2.2793034219481534e-06,
+            "reference_acceleration_rad_s2": -0.9999979858651545,
+            "time_s": 4.797999999999694,
+            "velocity_error_rad_s": 0.0005377154157769626
+          },
+          {
+            "actual_acceleration_rad_s2": -1.0185443482897603,
+            "index": 2400,
+            "position_error_rad": -3.286256142986943e-06,
+            "reference_acceleration_rad_s2": -0.9999979857405413,
+            "time_s": 4.799999999999693,
+            "velocity_error_rad_s": 0.0004965216251603399
+          },
+          {
+            "actual_acceleration_rad_s2": -1.0166281835507005,
+            "index": 2401,
+            "position_error_rad": -4.36739431441957e-06,
+            "reference_acceleration_rad_s2": -0.9999979852889199,
+            "time_s": 4.801999999999693,
+            "velocity_error_rad_s": 0.0004594288996888629
+          },
+          {
+            "actual_acceleration_rad_s2": -1.0148387029492199,
+            "index": 2402,
+            "position_error_rad": -5.5150532791703455e-06,
+            "reference_acceleration_rad_s2": -0.9999979841731126,
+            "time_s": 4.803999999999693,
+            "velocity_error_rad_s": 0.0004261685021943462
+          },
+          {
+            "actual_acceleration_rad_s2": -1.0131686343927693,
+            "index": 2403,
+            "position_error_rad": -6.72207511936973e-06,
+            "reference_acceleration_rad_s2": -0.9999979819351058,
+            "time_s": 4.805999999999693,
+            "velocity_error_rad_s": 0.0003964870626353978
+          }
+        ],
+        "position_feedback_rad_s2": 0.0005418953128888404,
+        "reference_acceleration_rad_s2": -0.9999979858791002,
+        "time_s": 4.795999999999694,
+        "velocity_feedback_rad_s2": -0.023331809789488567
+      },
+      "post_endpoint_hold_max_abs_acceleration_rad_s2": 0.06424026372441176,
+      "problem_id": "smoke-sparse_clutter-000-p01",
+      "recomputed_exact_reference_vs_saved_max_abs_residual": {
+        "acceleration_rad_s2": 0.0,
+        "position_rad": 0.0,
+        "velocity_rad_s": 0.0
+      },
+      "source_attempt": "benchmarks/generic_motion_v1/results/baseline_smoke/jobs/smoke-sparse_clutter-000-p01-EI_ZO-minimum_time-3890080e/attempts/0001",
+      "source_bezier_degree": 6,
+      "source_derivative_control_max_abs_acceleration_rad_s2": 0.9999979858791425,
+      "source_files_sha256": {
+        "benchmarks/generic_motion_v1/results/baseline_smoke/jobs/smoke-sparse_clutter-000-p01-EI_ZO-minimum_time-3890080e/attempts/0001/candidate.json": "a7285a58b209a534c511b5d565555236cc85a8f1cd1ed191b728361363bb9694",
+        "benchmarks/generic_motion_v1/results/baseline_smoke/jobs/smoke-sparse_clutter-000-p01-EI_ZO-minimum_time-3890080e/attempts/0001/candidate.npz": "ecf8744d54dbf1ed5c9116058042d4e5f8a57e6065c2ad854ca619b9f9de690b",
+        "benchmarks/generic_motion_v1/results/baseline_smoke/jobs/smoke-sparse_clutter-000-p01-EI_ZO-minimum_time-3890080e/attempts/0001/input.json": "5bf915cc5596cc7ff7eae39c73523e7e26b847ad45a0dd295ad9e011a4bda4b8",
+        "benchmarks/generic_motion_v1/results/baseline_smoke/jobs/smoke-sparse_clutter-000-p01-EI_ZO-minimum_time-3890080e/attempts/0001/receipt.json": "c409bfff93825596ccbdb8a3ae85639c7a0fdea5a8304a2d105bbdd041f8cd7e",
+        "benchmarks/generic_motion_v1/results/baseline_smoke/jobs/smoke-sparse_clutter-000-p01-EI_ZO-minimum_time-3890080e/attempts/0001/validation.json": "cd9d6da59dfb8e7fdc13f20e38bd00db79a719d8a4724cb01918ed20560dab08",
+        "benchmarks/generic_motion_v1/results/mujoco_smoke/eizo/jobs/smoke-sparse_clutter-000-p01-EI_ZO-minimum_time-3890080e/config.json": "38bcd5af2f83387e3d798698f8a2dbbf0916ebbbad5fdf0aa6b4202553f6e112",
+        "benchmarks/generic_motion_v1/results/mujoco_smoke/eizo/jobs/smoke-sparse_clutter-000-p01-EI_ZO-minimum_time-3890080e/model/model.xml": "bdf00cda82472af5f21b4a09dde9263546dc5e40653cdf298666f753d4f1d4cd",
+        "benchmarks/generic_motion_v1/results/mujoco_smoke/eizo/jobs/smoke-sparse_clutter-000-p01-EI_ZO-minimum_time-3890080e/model/model_metadata.json": "87a761c135e51f43694e1d8b5187479fd6e262b06320514297667da0a7938654",
+        "benchmarks/generic_motion_v1/results/mujoco_smoke/eizo/jobs/smoke-sparse_clutter-000-p01-EI_ZO-minimum_time-3890080e/reference.json": "4774c3a2412e69dd7d0232912456ce2a0aa788b8a0c71b06bb4bea6a95ba049a",
+        "benchmarks/generic_motion_v1/results/mujoco_smoke/eizo/jobs/smoke-sparse_clutter-000-p01-EI_ZO-minimum_time-3890080e/result.json": "5dd722b535fae6f3852490701d8fcb676426e0030b2d730cb82f156419f7b1d4",
+        "benchmarks/generic_motion_v1/results/mujoco_smoke/eizo/jobs/smoke-sparse_clutter-000-p01-EI_ZO-minimum_time-3890080e/rollout.npz": "5bb29b0cf1ee5c5b56d17959089f2cf8aa4429e8acf6bc4cfd27c7bab7bcc698"
+      },
+      "source_position_continuity_max_abs_residual_rad": 4.440892098500626e-16,
+      "source_reference_duration_s": 6.334407730842983,
+      "source_reference_unchanged": true,
+      "source_segment_boundaries_s": [
+        0.0,
+        3.837330952219619,
+        4.795419280805983,
+        6.334407730842983
+      ],
+      "source_segment_durations_s": [
+        3.837330952219619,
+        0.958088328586364,
+        1.5389884500370004
+      ],
+      "source_segments": 3,
+      "source_velocity_continuity_max_abs_residual_rad_s": 5.440092820663267e-15,
+      "timestep_s": 0.002
+    },
+    {
+      "conclusion": "Peak occurs at the first saved integration state after an original C1 Bezier segment acceleration jump. Exact reference derivatives and current-time qacc agree; no one-frame timing bug was found. Discrete tracking feedback produces actual acceleration above the source reference bound. Preserve execution_failed and the separate original planning success.",
+      "controller": "computed_torque_pd",
+      "dynamics_timing_residuals": {
+        "forward_velocity_difference_vs_saved_qacc_max_abs_rad_s2": 1.375566327510569e-13,
+        "saved_qacc_vs_current_feedback_max_abs_rad_s2": 6.372680161348399e-14,
+        "semiimplicit_position_difference_vs_next_velocity_max_abs_rad_s": 2.0439205883349132e-13
+      },
+      "execution_directory": "benchmarks/generic_motion_v1/results/mujoco_smoke/eizo/jobs/smoke-bottleneck-000-p00-EI_ZO-minimum_time-5130e1f4",
+      "kd_s": 40.0,
+      "kp_s2": 400.0,
+      "nearest_internal_boundary": {
+        "first_saved_time_after_boundary_s": 1.6720000000000013,
+        "left_acceleration_rad_s2": [
+          4.677719565045344e-10,
+          0.8364524640648539,
+          -0.5472319726927979,
+          -0.012297307948284857,
+          0.9466599575356693,
+          -0.15282499609323225,
+          -0.8988891792423814
+        ],
+        "peak_joint_acceleration_jump_rad_s2": -1.9466599436610874,
+        "peak_offset_s": 0.001339335946016762,
+        "right_acceleration_rad_s2": [
+          -5.308275837237154e-10,
+          0.8767251133883455,
+          -0.5841586153388075,
+          0.3779028152380405,
+          -0.999999986125418,
+          -0.1398821487358476,
+          -0.902569966495097
+        ],
+        "time_s": 1.6706606640539845
+      },
+      "original_execution_checks": {
+        "acceleration_limits": false,
+        "actual_effort_limits": true,
+        "collision_checker_agreement": true,
+        "contact_free": true,
+        "endpoint": true,
+        "independent_collision_free": true,
+        "integration_complete": true,
+        "joint_limits": true,
+        "tracking": true,
+        "velocity_limits": true
+      },
+      "original_execution_status": "execution_failed",
+      "original_planning_status": "success_validated_numerical",
+      "peak": {
+        "acceleration_excess_rad_s2": 0.10504648391769811,
+        "acceleration_limit_rad_s2": 1.0,
+        "actual_acceleration_rad_s2": -1.105046483917698,
+        "index": 836,
+        "joint_one_based": 5,
+        "neighborhood": [
+          {
+            "actual_acceleration_rad_s2": 0.945813715548029,
+            "index": 831,
+            "position_error_rad": 9.323764076984986e-05,
+            "reference_acceleration_rad_s2": 0.945870186274452,
+            "time_s": 1.6620000000000013,
+            "velocity_error_rad_s": -0.0009309646395380122
+          },
+          {
+            "actual_acceleration_rad_s2": 0.9459993969354574,
+            "index": 832,
+            "position_error_rad": 9.32671019879816e-05,
+            "reference_acceleration_rad_s2": 0.9460557012722312,
+            "time_s": 1.6640000000000013,
+            "velocity_error_rad_s": -0.0009312634114606588
+          },
+          {
+            "actual_acceleration_rad_s2": 0.9461831906624811,
+            "index": 833,
+            "position_error_rad": 9.329633861865361e-05,
+            "reference_acceleration_rad_s2": 0.9462393276858275,
+            "time_s": 1.6660000000000013,
+            "velocity_error_rad_s": -0.0009315599606030123
+          },
+          {
+            "actual_acceleration_rad_s2": 0.9463651052474704,
+            "index": 834,
+            "position_error_rad": 9.332535132777764e-05,
+            "reference_acceleration_rad_s2": 0.9464210740333892,
+            "time_s": 1.6680000000000013,
+            "velocity_error_rad_s": -0.0009318542936298524
+          },
+          {
+            "actual_acceleration_rad_s2": 0.9465451492452939,
+            "index": 835,
+            "position_error_rad": 9.335414078570636e-05,
+            "reference_acceleration_rad_s2": 0.9466009488698985,
+            "time_s": 1.6700000000000013,
+            "velocity_error_rad_s": -0.0009321464172418192
+          },
+          {
+            "actual_acceleration_rad_s2": -1.105046483917698,
+            "index": 836,
+            "position_error_rad": 9.512873597583571e-05,
+            "reference_acceleration_rad_s2": -0.9999999861404597,
+            "time_s": 1.6720000000000013,
+            "velocity_error_rad_s": 0.0016748750846725668
+          },
+          {
+            "actual_acceleration_rad_s2": -1.0970145898010752,
+            "index": 837,
+            "position_error_rad": 9.605830018144523e-05,
+            "reference_acceleration_rad_s2": -0.999999986162883,
+            "time_s": 1.6740000000000013,
+            "velocity_error_rad_s": 0.0014647820891402485
+          },
+          {
+            "actual_acceleration_rad_s2": -1.089470023849643,
+            "index": 838,
+            "position_error_rad": 9.659980597231943e-05,
+            "reference_acceleration_rad_s2": -0.9999999861852606,
+            "time_s": 1.6760000000000013,
+            "velocity_error_rad_s": 0.0012707528818861613
+          },
+          {
+            "actual_acceleration_rad_s2": -1.0823858711163528,
+            "index": 839,
+            "position_error_rad": 9.678343161390046e-05,
+            "reference_acceleration_rad_s2": -0.9999999862075918,
+            "time_s": 1.6780000000000013,
+            "velocity_error_rad_s": 0.0010918128065799948
+          },
+          {
+            "actual_acceleration_rad_s2": -1.0757366331870082,
+            "index": 840,
+            "position_error_rad": 9.663751371435936e-05,
+            "reference_acceleration_rad_s2": -0.9999999862298778,
+            "time_s": 1.6800000000000013,
+            "velocity_error_rad_s": 0.0009270410367846482
+          },
+          {
+            "actual_acceleration_rad_s2": -1.0694981556592624,
+            "index": 841,
+            "position_error_rad": 9.618864922855686e-05,
+            "reference_acceleration_rad_s2": -0.9999999862521175,
+            "time_s": 1.6820000000000013,
+            "velocity_error_rad_s": 0.0007755677428930019
+          }
+        ],
+        "position_feedback_rad_s2": -0.038051494390334284,
+        "reference_acceleration_rad_s2": -0.9999999861404597,
+        "time_s": 1.6720000000000013,
+        "velocity_feedback_rad_s2": -0.06699500338690267
+      },
+      "post_endpoint_hold_max_abs_acceleration_rad_s2": 0.0722845315744016,
+      "problem_id": "smoke-bottleneck-000-p00",
+      "recomputed_exact_reference_vs_saved_max_abs_residual": {
+        "acceleration_rad_s2": 0.0,
+        "position_rad": 0.0,
+        "velocity_rad_s": 0.0
+      },
+      "source_attempt": "benchmarks/generic_motion_v1/results/baseline_smoke/jobs/smoke-bottleneck-000-p00-EI_ZO-minimum_time-5130e1f4/attempts/0001",
+      "source_bezier_degree": 6,
+      "source_derivative_control_max_abs_acceleration_rad_s2": 0.9999999999998274,
+      "source_files_sha256": {
+        "benchmarks/generic_motion_v1/results/baseline_smoke/jobs/smoke-bottleneck-000-p00-EI_ZO-minimum_time-5130e1f4/attempts/0001/candidate.json": "a7285a58b209a534c511b5d565555236cc85a8f1cd1ed191b728361363bb9694",
+        "benchmarks/generic_motion_v1/results/baseline_smoke/jobs/smoke-bottleneck-000-p00-EI_ZO-minimum_time-5130e1f4/attempts/0001/candidate.npz": "548c7ec4c8dcca798c7141f45a99f1b8ad3c31291a4cda2140c2b190fd5a280e",
+        "benchmarks/generic_motion_v1/results/baseline_smoke/jobs/smoke-bottleneck-000-p00-EI_ZO-minimum_time-5130e1f4/attempts/0001/input.json": "4a78f88ea519f571e384bceb1133f1fe222e0a58d09dd15f56c2bcd36e1472d1",
+        "benchmarks/generic_motion_v1/results/baseline_smoke/jobs/smoke-bottleneck-000-p00-EI_ZO-minimum_time-5130e1f4/attempts/0001/receipt.json": "789c1c759aba06ff2e3969cfecf1e08e6dfb63739a87fe198ca7be1376de1126",
+        "benchmarks/generic_motion_v1/results/baseline_smoke/jobs/smoke-bottleneck-000-p00-EI_ZO-minimum_time-5130e1f4/attempts/0001/validation.json": "cffc52f0a398fc514f251d0e7927e75550f2058bfbb14b1c48a3c350984108d1",
+        "benchmarks/generic_motion_v1/results/mujoco_smoke/eizo/jobs/smoke-bottleneck-000-p00-EI_ZO-minimum_time-5130e1f4/config.json": "38bcd5af2f83387e3d798698f8a2dbbf0916ebbbad5fdf0aa6b4202553f6e112",
+        "benchmarks/generic_motion_v1/results/mujoco_smoke/eizo/jobs/smoke-bottleneck-000-p00-EI_ZO-minimum_time-5130e1f4/model/model.xml": "a40c95552c5559dffeebb937e843ce0b1e4c9998e3199e4c43e6ab7166ad3b3c",
+        "benchmarks/generic_motion_v1/results/mujoco_smoke/eizo/jobs/smoke-bottleneck-000-p00-EI_ZO-minimum_time-5130e1f4/model/model_metadata.json": "9492f119a215947b42a5f143d11f9d1878d2d2af07cd0946e51a5df5b9a2ded9",
+        "benchmarks/generic_motion_v1/results/mujoco_smoke/eizo/jobs/smoke-bottleneck-000-p00-EI_ZO-minimum_time-5130e1f4/reference.json": "0fee394ab391510678ea2de4ae74c9f5e63eaf0e86af690af2f82a30c3b30940",
+        "benchmarks/generic_motion_v1/results/mujoco_smoke/eizo/jobs/smoke-bottleneck-000-p00-EI_ZO-minimum_time-5130e1f4/result.json": "20ae8ebffbf42854563d6525871fd2d61e539f89357547638ad148cc70f21445",
+        "benchmarks/generic_motion_v1/results/mujoco_smoke/eizo/jobs/smoke-bottleneck-000-p00-EI_ZO-minimum_time-5130e1f4/rollout.npz": "d83ebbd8c640ec213ba55a1fd5a0427d8e6c5a9be7739664c67eb038fd0903ef"
+      },
+      "source_position_continuity_max_abs_residual_rad": 2.7212365694140317e-10,
+      "source_reference_duration_s": 5.872210014066253,
+      "source_reference_unchanged": true,
+      "source_segment_boundaries_s": [
+        0.0,
+        1.6706606640539845,
+        3.4921684086959788,
+        4.205521763084497,
+        5.872210014066253
+      ],
+      "source_segment_durations_s": [
+        1.6706606640539845,
+        1.8215077446419943,
+        0.7133533543885182,
+        1.666688250981756
+      ],
+      "source_segments": 4,
+      "source_velocity_continuity_max_abs_residual_rad_s": 8.715250743307479e-15,
+      "timestep_s": 0.002
+    }
+  ],
+  "diagnostic_script_sha256": "1e9d92b08ba66ab760296dee70c5bb21495f46b7ade8f17a0cab913b5a9b9bf0",
+  "recommended_separate_sensitivity_check": "Keep source trajectory, original assets, gains and thresholds fixed; compare 2, 1, 0.5 and optionally 0.25 ms. Boundary/grid phase can make individual peaks nonmonotonic. Preserve the original 2 ms failures regardless of smaller-step results.",
+  "recompute_command": "bash local/python.sh results/mujoco_smoke/diagnose_tracking.py",
+  "schema": "mujoco_saved_tracking_failure_diagnosis_v1",
+  "scope": "Read-only recalculation of saved executions and original coefficients; no new integration and no result/receipt modifications."
+}

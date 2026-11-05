@@ -1,0 +1,18 @@
+{
+  "cwd": "/home/eric/wjg/wd/csdecomp",
+  "commands": [
+    "bash local/python.sh -m pip check",
+    "bash local/python.sh scripts/simulate.py run --attempt results/nto_metis_smoke/jobs/smoke-bottleneck-000-p00-NTO_REFINED-minimum_time-633cc65e/attempts/0001 --output results/mujoco_smoke/demo --render",
+    "bash local/python.sh scripts/simulate.py batch --source-run results/baseline_smoke --methods EI_ZO --output results/mujoco_smoke/eizo",
+    "bash local/python.sh scripts/simulate.py batch --source-run results/nto_metis_smoke --methods NTO_REFINED --output results/mujoco_smoke/nto",
+    "bash local/python.sh -m pytest -q benchmarks/generic_motion_v1/tests",
+    "bash local/python.sh scripts/benchmark.py check",
+    "bash local/python.sh results/mujoco_smoke/diagnose_tracking.py",
+    "bash local/python.sh scripts/simulate.py render --run results/mujoco_smoke/uncontrolled --output results/mujoco_smoke/uncontrolled/render",
+    "bash local/python.sh scripts/simulate.py run --attempt results/nto_metis_smoke/jobs/smoke-bottleneck-000-p00-NTO_REFINED-minimum_time-633cc65e/attempts/0001 --output results/mujoco_smoke/reproducibility"
+  ],
+  "additional_commands": "additional_commands.json",
+  "step_sensitivity_commands": "convergence_commands.json",
+  "verification_and_resume_commands": "verification_commands.json",
+  "scope": "Commands actually executed; existing output directories are immutable. Use fresh output paths to rerun."
+}
