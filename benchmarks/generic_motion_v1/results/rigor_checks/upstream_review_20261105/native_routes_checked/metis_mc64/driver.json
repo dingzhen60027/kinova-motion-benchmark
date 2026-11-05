@@ -1,0 +1,34 @@
+{
+  "command": [
+    "gdb",
+    "--batch",
+    "--quiet",
+    "-x",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/rigor_checks/upstream_review_20261105/native_routes_checked/metis_mc64/gdb_commands.txt",
+    "--args",
+    "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/bin/python",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/rigor_checks/upstream_review_20261105/native_route_probe.py",
+    "--worker",
+    "--mode",
+    "metis_mc64",
+    "--output",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/rigor_checks/upstream_review_20261105/native_routes_checked/metis_mc64"
+  ],
+  "completion": {
+    "exception": "AttributeError(\"'ProbeSolver' object has no attribute 'available'\")",
+    "status": "python_exception",
+    "traceback": "Traceback (most recent call last):\n  File \"/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/rigor_checks/upstream_review_20261105/native_route_probe.py\", line 102, in worker\n    candidate = module.paper_nto(path, model, case, cfg, out, started+30., _profile=profile)\n  File \"/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/runners/paper_nto.py\", line 285, in paper_nto\n    solver_available=bool(solver.available()), solver_enabled=bool(solver.enabled()),\nAttributeError: 'ProbeSolver' object has no attribute 'available'\n",
+    "wall_seconds": 0.17695734975859523
+  },
+  "exit_code": 1,
+  "mode": "metis_mc64",
+  "native_sigsegv_observed": false,
+  "route": null,
+  "runtime_source_sha256": {
+    "benchmarks/generic_motion_v1/model.py": "7f319740c7f0c91add5ed8454873a16a75bba6ee56e0da3a8f18fa8f55a64a94",
+    "benchmarks/generic_motion_v1/runners/nto_collision_constraint.py": "874dad10b4b3c6ea2f2be6b299f212099b37e98b6713f2b2cf194489b8b43a22",
+    "benchmarks/generic_motion_v1/runners/paper_nto.py": "318c14fe6d6264f231f99c607c9e66db396778cf28dc89980d4f393701143b9e"
+  },
+  "seconds": 1.6162511971779168,
+  "transcription": null
+}

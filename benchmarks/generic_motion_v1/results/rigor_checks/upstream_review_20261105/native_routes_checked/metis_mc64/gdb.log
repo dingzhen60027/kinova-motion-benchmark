@@ -1,0 +1,22 @@
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/lib/python3.10/site-packages/csdecomp/drake_csd_bridge.py:62: DrakeDeprecationWarning: (Deprecated.)
+
+Deprecated:
+    Use is_floating_base_body() instead. This will be removed from
+    Drake on or after 2026-06-01.
+  if all_drake_bodies[-1].is_floating():
+Traceback (most recent call last):
+  File "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/rigor_checks/upstream_review_20261105/native_route_probe.py", line 188, in <module>
+    worker(args)
+  File "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/rigor_checks/upstream_review_20261105/native_route_probe.py", line 102, in worker
+    candidate = module.paper_nto(path, model, case, cfg, out, started+30., _profile=profile)
+  File "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/runners/paper_nto.py", line 285, in paper_nto
+    solver_available=bool(solver.available()), solver_enabled=bool(solver.enabled()),
+AttributeError: 'ProbeSolver' object has no attribute 'available'
+[Inferior 1 (process 438790) exited with code 01]
+Traceback (most recent call last):
+  File "<string>", line 3, in <module>
+FileNotFoundError: [Errno 2] 没有那个文件或目录: '/proc/0/maps'
+/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/rigor_checks/upstream_review_20261105/native_routes_checked/metis_mc64/gdb_commands.txt:24: Error in sourced command file:
+Error while executing Python code.

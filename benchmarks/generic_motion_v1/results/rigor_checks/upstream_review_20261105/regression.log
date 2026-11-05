@@ -1,0 +1,125 @@
+........................................................................ [  5%]
+.....................F.................................................. [ 10%]
+........................................................................ [ 15%]
+........................................................................ [ 20%]
+........................................................................ [ 25%]
+........................................................................ [ 30%]
+........................................................................ [ 35%]
+........................................................................ [ 40%]
+........................................................................ [ 46%]
+........................................................................ [ 51%]
+........................................................................ [ 56%]
+........................................................................ [ 61%]
+........................................................................ [ 66%]
+........................................................................ [ 71%]
+........................................................................ [ 76%]
+........................................................................ [ 81%]
+........................................................................ [ 86%]
+........................................................................ [ 92%]
+........................................................................ [ 97%]
+........................................                                 [100%]
+=================================== FAILURES ===================================
+______ test_unavailable_solver_is_explicitly_unsupported_and_saves_probe _______
+
+tmp_path = PosixPath('/tmp/pytest-of-eric/pytest-591/test_unavailable_solver_is_exp0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7b437b3bc670>
+
+    def test_unavailable_solver_is_explicitly_unsupported_and_saves_probe(tmp_path,monkeypatch):
+        import pydrake.all as drake
+        class Unavailable:
+            def available(self):return False
+            def enabled(self):return False
+            def Solve(self,*args):raise AssertionError('Unavailable solver must never run')
+        monkeypatch.setattr(drake,'IpoptSolver',Unavailable)
+        with pytest.raises(ImportError,match='unavailable'):
+>           dependency_audit(tmp_path,'NTO')
+
+benchmarks/generic_motion_v1/tests/test_baseline_qualification.py:186: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+out = PosixPath('/tmp/pytest-of-eric/pytest-591/test_unavailable_solver_is_exp0')
+method = 'NTO', objective = 'minimum_distance', config = None
+
+    def dependency_audit(out,method='EI_ZO',objective='minimum_distance',config=None):
+        """Inspect installed actual optimizer code and execute an open-source solve."""
+        if method in INDEPENDENT:
+            from .ompl_baselines import dependency_probe
+            return dependency_probe(out)
+        if method == 'STOMP':
+            from .chomp_stomp import dependency_probe
+            return dependency_probe(out)
+        if method == 'CHOMP':
+            from .chomp_stomp import acceleration_metric
+            _, metric, inverse = acceleration_metric(8)
+            error = float(np.max(np.abs(metric @ inverse-np.eye(6))))
+            record = dict(method=method, probe_success=error < 1e-9, inverse_residual=error,
+                          implementation='Covariant descent with canonical-geometry C-space line-integral cost')
+            write(out/'chomp_dependencies.json',record)
+            if not record['probe_success']:
+                raise RuntimeError('CHOMP metric probe failed')
+            return record
+        if method == 'TRAJOPT':
+            from .trajopt_baseline import dependency_probe, settings, DEFAULT_BUILD
+            record = dependency_probe(settings(config or {}).get('build_dir', DEFAULT_BUILD))
+            write(out/'trajopt_dependencies.json',record)
+            if not record.get('available'):
+                raise ImportError('TrajOpt author core unavailable: '+str(record.get('status')))
+            return record
+        if method in ('NTO_PAPER', 'NTO_REFINED'):
+            from .paper_nto import dependency_probe
+            record = dependency_probe(out, objective, config=config)
+            if method == 'NTO_REFINED':
+                from .paper_nto_refined import PROFILE
+                record.update(method=method, profile=PROFILE['name'],
+                    fidelity='Drake NTO with published solvers/orders and explicit positive-clearance collocation refinement')
+                write(out/'paper_nto_dependencies.json',record)
+            return record
+        if method == 'LGCS':
+            from .paper_lgcs import dependency_probe
+            return dependency_probe(out, backend=(config or {}).get('lgcs', {}).get('solver', 'gurobi'))
+        if method not in ('EI_ZO','NTO'):
+            raise ValueError('Unsupported baseline method')
+        from pydrake.all import ClarabelSolver,IpoptSolver,MathematicalProgram
+        import csdecomp
+        modules=[csdecomp]
+        if method=='EI_ZO':
+            import scsplanning,pybezier
+            modules.extend([scsplanning,pybezier,importlib.import_module('scsplanning.polygonal'),
+                 importlib.import_module('scsplanning.base_program')])
+        program=MathematicalProgram();x=program.NewContinuousVariables(1)
+        program.AddBoundingBoxConstraint(1.,2.,x);program.AddLinearCost(x[0])
+        solver=ClarabelSolver() if method=='EI_ZO' else IpoptSolver()
+        name='clarabel' if method=='EI_ZO' else 'ipopt'
+        if method == 'NTO':
+            from .ipopt_options import settings as ipopt_settings
+            for key,value in ipopt_settings(config).items():
+>               program.SetSolverOption(solver.solver_id(),key,value)
+E               AttributeError: 'Unavailable' object has no attribute 'solver_id'
+
+benchmarks/generic_motion_v1/runners/csdecomp_baseline.py:375: AttributeError
+=============================== warnings summary ===============================
+benchmarks/generic_motion_v1/tests/test_model_consistency.py: 58 warnings
+benchmarks/generic_motion_v1/tests/test_model_qualification.py: 29 warnings
+benchmarks/generic_motion_v1/tests/test_native_drm_query.py: 29 warnings
+benchmarks/generic_motion_v1/tests/test_nto_collision_constraint.py: 145 warnings
+benchmarks/generic_motion_v1/tests/test_nto_failed_candidates.py: 29 warnings
+benchmarks/generic_motion_v1/tests/test_paper_nto.py: 29 warnings
+benchmarks/generic_motion_v1/tests/test_paper_nto_refined.py: 116 warnings
+benchmarks/generic_motion_v1/tests/test_reporting.py: 29 warnings
+benchmarks/generic_motion_v1/tests/test_trajopt_baseline.py: 29 warnings
+  /home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/lib/python3.10/site-packages/csdecomp/drake_csd_bridge.py:62: DrakeDeprecationWarning: (Deprecated.)
+  
+  Deprecated:
+      Use is_floating_base_body() instead. This will be removed from
+      Drake on or after 2026-06-01.
+    if all_drake_bodies[-1].is_floating():
+
+benchmarks/generic_motion_v1/tests/test_paper_lgcs.py::test_graph_solution_matches_exhaustive_corridor_oracle
+benchmarks/generic_motion_v1/tests/test_paper_lgcs_scip.py::test_graph_solution_matches_all_simple_corridor_paths
+  /home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/lib/python3.10/site-packages/numpy/_core/_methods.py:52: RuntimeWarning: invalid value encountered in reduce
+    return umr_sum(a, axis, dtype, out, keepdims, initial, where)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED benchmarks/generic_motion_v1/tests/test_baseline_qualification.py::test_unavailable_solver_is_explicitly_unsupported_and_saves_probe
+1 failed, 1407 passed, 495 warnings in 31.89s

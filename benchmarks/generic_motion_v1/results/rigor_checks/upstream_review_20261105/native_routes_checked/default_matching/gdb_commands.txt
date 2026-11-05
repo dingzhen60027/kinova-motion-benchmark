@@ -1,0 +1,25 @@
+set pagination off
+handle SIGSTOP stop noprint nopass
+run
+python
+import gdb,json
+inferior=gdb.selected_inferior()
+lines=open('/proc/%d/maps' % inferior.pid).read().splitlines()
+entries=[line.split() for line in lines if line.split()[-1].endswith('/pydrake/lib/libdrake.so')]
+assert entries, 'libdrake map absent'
+base=min(int(x[0].split('-')[0],16)-int(x[2],16) for x in entries)
+class EntryCounter(gdb.Breakpoint):
+    def __init__(self, address):
+        super(EntryCounter,self).__init__('*0x%x' % address, internal=True)
+        self.count=0
+    def stop(self):
+        self.count+=1
+        return False
+counter=EntryCounter(base+41531499)
+record={'loaded_library_base':hex(base),'entry_offset':hex(41531499),'breakpoint':hex(base+41531499),'library_maps':[' '.join(x) for x in entries]}
+gdb.execute('continue')
+record['entry_count']=counter.count
+record['inferior_exited']=not gdb.selected_inferior().is_valid() or gdb.selected_inferior().pid==0
+open('/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/rigor_checks/upstream_review_20261105/native_routes_checked/default_matching/gdb_route.json','w').write(json.dumps(record,indent=2)+'\n')
+end
+thread apply all bt

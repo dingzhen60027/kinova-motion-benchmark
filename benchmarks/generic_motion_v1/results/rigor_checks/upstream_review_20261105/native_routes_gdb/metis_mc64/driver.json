@@ -1,0 +1,59 @@
+{
+  "command": [
+    "gdb",
+    "--batch",
+    "--quiet",
+    "-x",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/rigor_checks/upstream_review_20261105/native_routes_gdb/metis_mc64/gdb_commands.txt",
+    "--args",
+    "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/bin/python",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/rigor_checks/upstream_review_20261105/native_route_probe.py",
+    "--worker",
+    "--mode",
+    "metis_mc64",
+    "--output",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/results/rigor_checks/upstream_review_20261105/native_routes_gdb/metis_mc64"
+  ],
+  "completion": {
+    "solver_status": "SolutionResult.kIterationLimit",
+    "solver_success": false,
+    "status": "returned",
+    "wall_seconds": 0.7654532976448536
+  },
+  "exit_code": 0,
+  "mode": "metis_mc64",
+  "native_sigsegv_observed": false,
+  "route": {
+    "breakpoint": "0x7fffebf9b86b",
+    "entry_count": 0,
+    "entry_offset": "0x279b86b",
+    "inferior_exited": true,
+    "library_maps": [
+      "7fffe9800000-7fffee50e000 r-xp 00000000 103:04 83521237 /home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/lib/python3.10/site-packages/pydrake/lib/libdrake.so",
+      "7fffee50e000-7fffee674000 r--p 04d0d000 103:04 83521237 /home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/lib/python3.10/site-packages/pydrake/lib/libdrake.so",
+      "7fffee674000-7fffee688000 rw-p 04e73000 103:04 83521237 /home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/lib/python3.10/site-packages/pydrake/lib/libdrake.so",
+      "7fffee699000-7ffff05b8000 rw-p 04e87000 103:04 83521237 /home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/lib/python3.10/site-packages/pydrake/lib/libdrake.so"
+    ],
+    "loaded_library_base": "0x7fffe9800000"
+  },
+  "runtime_source_sha256": {
+    "benchmarks/generic_motion_v1/model.py": "7f319740c7f0c91add5ed8454873a16a75bba6ee56e0da3a8f18fa8f55a64a94",
+    "benchmarks/generic_motion_v1/runners/nto_collision_constraint.py": "874dad10b4b3c6ea2f2be6b299f212099b37e98b6713f2b2cf194489b8b43a22",
+    "benchmarks/generic_motion_v1/runners/paper_nto.py": "318c14fe6d6264f231f99c607c9e66db396778cf28dc89980d4f393701143b9e"
+  },
+  "seconds": 2.2672195839695632,
+  "transcription": {
+    "constraints": 192,
+    "decision_variables": 113,
+    "explicitly_set_solver_options": {
+      "file_print_level": 7,
+      "max_iter": 20,
+      "print_user_options": "yes",
+      "spral_order": "metis",
+      "spral_scaling": "mc64"
+    },
+    "initial_sha256": "fadba7b9b5771adc4fedddafedbdfae7110594205c832ee99416b1ca80a56deb",
+    "mathematical_model_unchanged": true,
+    "sha256": "c8185c172a691b36c63ff52db7bc790b8f32998a734761a04974de707d02374c"
+  }
+}

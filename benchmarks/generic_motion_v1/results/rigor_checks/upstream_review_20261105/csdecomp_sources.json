@@ -1,0 +1,3949 @@
+{
+  "schema_version": 1,
+  "captured_utc": "2026-11-05T06:05:09.704706+00:00",
+  "local_head": "99db3efc2ae412f6cebbbf8da9601c19d431ec73",
+  "official_repository": "https://github.com/wernerpe/csdecomp",
+  "official_head": {
+    "sha": "7661a97bb7c4931be73d2bc4f8c45c3094ff476e",
+    "message": "Update examples: add csdecomp as pip dep, fix README, fix BUILD formatting\n\nCo-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>",
+    "date": "2026-03-20T02:28:29Z",
+    "url": "https://github.com/wernerpe/csdecomp/commit/7661a97bb7c4931be73d2bc4f8c45c3094ff476e"
+  },
+  "official_tree_truncated": false,
+  "official_tags": [
+    {
+      "name": "v0.1.2",
+      "zipball_url": "https://api.github.com/repos/wernerpe/csdecomp/zipball/refs/tags/v0.1.2",
+      "tarball_url": "https://api.github.com/repos/wernerpe/csdecomp/tarball/refs/tags/v0.1.2",
+      "commit": {
+        "sha": "0c26beafd99aa1eb5da39e79f9b9f6df1b404eb5",
+        "url": "https://api.github.com/repos/wernerpe/csdecomp/commits/0c26beafd99aa1eb5da39e79f9b9f6df1b404eb5"
+      },
+      "node_id": "REF_kwDON7ECrbByZWZzL3RhZ3MvdjAuMS4y"
+    },
+    {
+      "name": "v0.1.1",
+      "zipball_url": "https://api.github.com/repos/wernerpe/csdecomp/zipball/refs/tags/v0.1.1",
+      "tarball_url": "https://api.github.com/repos/wernerpe/csdecomp/tarball/refs/tags/v0.1.1",
+      "commit": {
+        "sha": "0e0ebbca898d820054beaff38c61ca8c45f405b0",
+        "url": "https://api.github.com/repos/wernerpe/csdecomp/commits/0e0ebbca898d820054beaff38c61ca8c45f405b0"
+      },
+      "node_id": "REF_kwDON7ECrbByZWZzL3RhZ3MvdjAuMS4x"
+    },
+    {
+      "name": "v0.1.0",
+      "zipball_url": "https://api.github.com/repos/wernerpe/csdecomp/zipball/refs/tags/v0.1.0",
+      "tarball_url": "https://api.github.com/repos/wernerpe/csdecomp/tarball/refs/tags/v0.1.0",
+      "commit": {
+        "sha": "7144d26879ea429327221c58e9d09c6e6ff08d2d",
+        "url": "https://api.github.com/repos/wernerpe/csdecomp/commits/7144d26879ea429327221c58e9d09c6e6ff08d2d"
+      },
+      "node_id": "REF_kwDON7ECrbByZWZzL3RhZ3MvdjAuMS4w"
+    }
+  ],
+  "issues": [
+    {
+      "number": 9,
+      "title": "Modernize for PyPI: package rename, CI/CD, uv examples",
+      "state": "closed",
+      "html_url": "https://github.com/wernerpe/csdecomp/pull/9",
+      "body": "## Summary\n- Reorganize source files by function (pybind, geometry, planning, plant, utils)\n- Rename package `pycsdecomp` \u2192 `csdecomp` (import name matches PyPI distribution)\n- Add CI workflow (lint + build on every push) and wheel build workflow (Python 3.10/3.11/3.12, manylinux_2_28)\n- Modernize examples: Poetry \u2192 uv, add Bazel test targets so `bazel test //...` covers everything\n- Fix bug in `plan_DRM.py` (missing `plant_context` argument)\n- Clean up stale files, update all documentation\n\n## Test plan\n- [x] `bazel test //...` passes locally (44 tests including 3 new example tests)\n- [x] CI green on `pypi` branch (lint + build)\n- [ ] Trigger `build-wheels.yml` after merge to verify wheel builds for all Python versions\n- [ ] Test wheel install + `import csdecomp` from built artifacts\n\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)",
+      "created_at": "2026-03-19T17:02:48Z",
+      "updated_at": "2026-03-19T17:13:44Z",
+      "closed_at": "2026-03-19T17:13:44Z",
+      "comments": 0,
+      "pull_request": {
+        "url": "https://api.github.com/repos/wernerpe/csdecomp/pulls/9",
+        "html_url": "https://github.com/wernerpe/csdecomp/pull/9",
+        "diff_url": "https://github.com/wernerpe/csdecomp/pull/9.diff",
+        "patch_url": "https://github.com/wernerpe/csdecomp/pull/9.patch",
+        "merged_at": "2026-03-19T17:13:43Z"
+      }
+    },
+    {
+      "number": 8,
+      "title": "Switch Numpy2, add cuda region editing, update examples",
+      "state": "closed",
+      "html_url": "https://github.com/wernerpe/csdecomp/pull/8",
+      "body": "* switch to numpy2\r\n* add code for parallel region editing\r\n* update examples to include kinova_mintime_planning with demonstrates how to use our proposed motion planning pipeline",
+      "created_at": "2025-06-29T22:00:10Z",
+      "updated_at": "2025-06-29T22:01:02Z",
+      "closed_at": "2025-06-29T22:00:51Z",
+      "comments": 0,
+      "pull_request": {
+        "url": "https://api.github.com/repos/wernerpe/csdecomp/pulls/8",
+        "html_url": "https://github.com/wernerpe/csdecomp/pull/8",
+        "diff_url": "https://github.com/wernerpe/csdecomp/pull/8.diff",
+        "patch_url": "https://github.com/wernerpe/csdecomp/pull/8.patch",
+        "merged_at": "2025-06-29T22:00:51Z"
+      }
+    },
+    {
+      "number": 7,
+      "title": "Conflict with \"libcupti.so\" when dealing with multiple cuda installations.",
+      "state": "open",
+      "html_url": "https://github.com/wernerpe/csdecomp/issues/7",
+      "body": "Error in cc_import: cc_import rule 'libcupti.so' in package '' conflicts with existing cc_import rule, defined at...\n\n\ncurrent fix: specify toolkit path in module.bazel like so\n\ncuda.local_toolchain(\n    name = \"local_cuda\",\n    toolkit_path = \"/usr/local/cuda-12.6\",  <- add this \n)",
+      "created_at": "2025-04-16T17:37:59Z",
+      "updated_at": "2025-04-16T17:37:59Z",
+      "closed_at": null,
+      "comments": 0,
+      "pull_request": null
+    },
+    {
+      "number": 6,
+      "title": "Fix drm planner bug",
+      "state": "closed",
+      "html_url": "https://github.com/wernerpe/csdecomp/pull/6",
+      "body": "All bazel tests passed. ",
+      "created_at": "2025-03-12T18:48:46Z",
+      "updated_at": "2025-03-12T20:16:32Z",
+      "closed_at": "2025-03-12T20:16:32Z",
+      "comments": 0,
+      "pull_request": {
+        "url": "https://api.github.com/repos/wernerpe/csdecomp/pulls/6",
+        "html_url": "https://github.com/wernerpe/csdecomp/pull/6",
+        "diff_url": "https://github.com/wernerpe/csdecomp/pull/6.diff",
+        "patch_url": "https://github.com/wernerpe/csdecomp/pull/6.patch",
+        "merged_at": "2025-03-12T20:16:31Z"
+      }
+    },
+    {
+      "number": 5,
+      "title": "Adds error check in finalize scene",
+      "state": "closed",
+      "html_url": "https://github.com/wernerpe/csdecomp/pull/5",
+      "body": null,
+      "created_at": "2025-03-11T19:30:26Z",
+      "updated_at": "2025-03-11T19:31:03Z",
+      "closed_at": "2025-03-11T19:30:54Z",
+      "comments": 0,
+      "pull_request": {
+        "url": "https://api.github.com/repos/wernerpe/csdecomp/pulls/5",
+        "html_url": "https://github.com/wernerpe/csdecomp/pull/5",
+        "diff_url": "https://github.com/wernerpe/csdecomp/pull/5.diff",
+        "patch_url": "https://github.com/wernerpe/csdecomp/pull/5.patch",
+        "merged_at": "2025-03-11T19:30:54Z"
+      }
+    },
+    {
+      "number": 4,
+      "title": "Adds testing for drake csd bridge",
+      "state": "closed",
+      "html_url": "https://github.com/wernerpe/csdecomp/pull/4",
+      "body": null,
+      "created_at": "2025-03-10T21:42:19Z",
+      "updated_at": "2025-03-11T19:31:16Z",
+      "closed_at": "2025-03-10T21:42:52Z",
+      "comments": 0,
+      "pull_request": {
+        "url": "https://api.github.com/repos/wernerpe/csdecomp/pulls/4",
+        "html_url": "https://github.com/wernerpe/csdecomp/pull/4",
+        "diff_url": "https://github.com/wernerpe/csdecomp/pull/4.diff",
+        "patch_url": "https://github.com/wernerpe/csdecomp/pull/4.patch",
+        "merged_at": "2025-03-10T21:42:52Z"
+      }
+    },
+    {
+      "number": 3,
+      "title": "Implements converting drake plants with locked joints",
+      "state": "closed",
+      "html_url": "https://github.com/wernerpe/csdecomp/pull/3",
+      "body": null,
+      "created_at": "2025-03-10T17:56:03Z",
+      "updated_at": "2025-03-11T19:31:27Z",
+      "closed_at": "2025-03-10T17:56:22Z",
+      "comments": 0,
+      "pull_request": {
+        "url": "https://api.github.com/repos/wernerpe/csdecomp/pulls/3",
+        "html_url": "https://github.com/wernerpe/csdecomp/pull/3",
+        "diff_url": "https://github.com/wernerpe/csdecomp/pull/3.diff",
+        "patch_url": "https://github.com/wernerpe/csdecomp/pull/3.patch",
+        "merged_at": "2025-03-10T17:56:22Z"
+      }
+    },
+    {
+      "number": 2,
+      "title": "Removes system python dependency for cpp unit tests",
+      "state": "closed",
+      "html_url": "https://github.com/wernerpe/csdecomp/pull/2",
+      "body": "Switching to calling matplotlib_cpp with the bazel internal python by default.",
+      "created_at": "2025-02-28T19:09:34Z",
+      "updated_at": "2025-02-28T19:16:47Z",
+      "closed_at": "2025-02-28T19:16:21Z",
+      "comments": 0,
+      "pull_request": {
+        "url": "https://api.github.com/repos/wernerpe/csdecomp/pulls/2",
+        "html_url": "https://github.com/wernerpe/csdecomp/pull/2",
+        "diff_url": "https://github.com/wernerpe/csdecomp/pull/2.diff",
+        "patch_url": "https://github.com/wernerpe/csdecomp/pull/2.patch",
+        "merged_at": "2025-02-28T19:16:21Z"
+      }
+    },
+    {
+      "number": 1,
+      "title": "First draft of CPP docs",
+      "state": "closed",
+      "html_url": "https://github.com/wernerpe/csdecomp/pull/1",
+      "body": "Adds doxygen-based documentation to the codebase.",
+      "created_at": "2025-02-18T20:48:59Z",
+      "updated_at": "2025-02-18T20:51:21Z",
+      "closed_at": "2025-02-18T20:49:48Z",
+      "comments": 0,
+      "pull_request": {
+        "url": "https://api.github.com/repos/wernerpe/csdecomp/pulls/1",
+        "html_url": "https://github.com/wernerpe/csdecomp/pull/1",
+        "diff_url": "https://github.com/wernerpe/csdecomp/pull/1.diff",
+        "patch_url": "https://github.com/wernerpe/csdecomp/pull/1.patch",
+        "merged_at": "2025-02-18T20:49:48Z"
+      }
+    }
+  ],
+  "pull_requests": [
+    {
+      "number": 9,
+      "title": "Modernize for PyPI: package rename, CI/CD, uv examples",
+      "url": "https://github.com/wernerpe/csdecomp/pull/9",
+      "merge_commit_sha": "727551346637fbf7e65e12bf9d40cfefa430ffd7",
+      "body": "## Summary\n- Reorganize source files by function (pybind, geometry, planning, plant, utils)\n- Rename package `pycsdecomp` \u2192 `csdecomp` (import name matches PyPI distribution)\n- Add CI workflow (lint + build on every push) and wheel build workflow (Python 3.10/3.11/3.12, manylinux_2_28)\n- Modernize examples: Poetry \u2192 uv, add Bazel test targets so `bazel test //...` covers everything\n- Fix bug in `plan_DRM.py` (missing `plant_context` argument)\n- Clean up stale files, update all documentation\n\n## Test plan\n- [x] `bazel test //...` passes locally (44 tests including 3 new example tests)\n- [x] CI green on `pypi` branch (lint + build)\n- [ ] Trigger `build-wheels.yml` after merge to verify wheel builds for all Python versions\n- [ ] Test wheel install + `import csdecomp` from built artifacts\n\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)",
+      "files": [
+        {
+          "filename": ".bazelrc",
+          "status": "modified",
+          "sha": "60ad589faed267dcea82e55c8eae75b14ea390ed",
+          "additions": 3,
+          "deletions": 1,
+          "upstream_patch_sha256": "5d1b22146a8248c6cd370d32bf5ce60708940da1086a52e8ac51aa6f63bc50de",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": ".claude/settings.local.json",
+          "status": "added",
+          "sha": "31fd3bfc667b963ab3257d9290bd5423ee4199a2",
+          "additions": 45,
+          "deletions": 0,
+          "upstream_patch_sha256": "2a41cb3df4996eeb78fff903c28a418168460c55c6209b5f823417d5dafa7d79",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": ".github/workflows/build-wheels.yml",
+          "status": "added",
+          "sha": "6738e6a03a9a91da6c7163b7f27c86bfabc6059f",
+          "additions": 87,
+          "deletions": 0,
+          "upstream_patch_sha256": "3e885d4cdf35e5b510b53f3174270fd4f8620e114a8ac5dbf5780599f0ded4be",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": ".github/workflows/ci.yml",
+          "status": "added",
+          "sha": "349084fc1f5117a8f590dd3d4169f3765795bf5e",
+          "additions": 64,
+          "deletions": 0,
+          "upstream_patch_sha256": "235fc19ef1697aa4535a86683eee8a803876ddd87267f6ce9eea7fa770cf73ed",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": ".gitignore",
+          "status": "modified",
+          "sha": "7999d4a981f176d9e4e40db924625657775ec5ac",
+          "additions": 2,
+          "deletions": 0,
+          "upstream_patch_sha256": "19c3ae464ec2560a7b12e735e1be7c89f043d77dcf8572cd7f16d60bb22bd3e6",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": ".vscode/launch.json",
+          "status": "removed",
+          "sha": "a54c1b3a4d4f34ca562fd3ac4bbac07b887ff8b8",
+          "additions": 0,
+          "deletions": 285,
+          "upstream_patch_sha256": "ce2d860610f87dabb8edcc1b2b7b84f0ad57ac5b89639f6610933e2c3db94c87",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": ".vscode/settings.json",
+          "status": "removed",
+          "sha": "8efd3c34ec7d6cc90c2f7a342cc5d62e6285b4fe",
+          "additions": 0,
+          "deletions": 97,
+          "upstream_patch_sha256": "eec4852095fa1b044259c00c8d1f11a05cabc5a841a88af15f791c7418f2f8a2",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": ".vscode/tasks.json",
+          "status": "removed",
+          "sha": "c776f6fdf953c48f51ed9ee370275fbc7f4b2af9",
+          "additions": 0,
+          "deletions": 241,
+          "upstream_patch_sha256": "1e643f72f580357a16582126fd10c9cae4c477bf15ee9c76a5c69446c342b406",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "README.md",
+          "status": "modified",
+          "sha": "b61efeed2b367937db4c46b92e8a7cc789e03c4e",
+          "additions": 75,
+          "deletions": 66,
+          "upstream_patch_sha256": "6109b5c237eeb376c65d5be1adbf92fd70d94fa7692b660ac52755ec38d67fae",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "VERSION",
+          "status": "added",
+          "sha": "6e8bf73aa550d4c57f6f35830f1bcdc7a4a62f38",
+          "additions": 1,
+          "deletions": 0,
+          "upstream_patch_sha256": "d72b1abb1846e0bcb10c0da9582062a6cd9119e63507659e8dc2caa55cb60d95",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/docs/mainpage.dox",
+          "status": "modified",
+          "sha": "263263e7ef0c5b82cb7d8d8a24412e0bf7d2b383",
+          "additions": 14,
+          "deletions": 17,
+          "upstream_patch_sha256": "75094793d5b1a2f7fab5e3f8fc4104e21a9f8f0661b70581aafd7121bdd775bb",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/docs/source/index.rst",
+          "status": "modified",
+          "sha": "e0ecb3d60db27449858791d4774162fcb79ff7b9",
+          "additions": 1,
+          "deletions": 1,
+          "upstream_patch_sha256": "4c0bf16caf8dd967234395aa49436e0795d29b5cd6d5da1f4de762ce6c8e414a",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/cpp/BUILD",
+          "status": "removed",
+          "sha": "852b82bef78763273ee90a038d71838b94646e17",
+          "additions": 0,
+          "deletions": 169,
+          "upstream_patch_sha256": "292fabcb287a8d1858760cbe87b2e345d2309c899d656da0a532f85207031ddd",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/cpp/linesegment_aabb_checker.h",
+          "status": "removed",
+          "sha": "19ca01ead847a6560ae0e4e9501b0de80f94e64c",
+          "additions": 0,
+          "deletions": 58,
+          "upstream_patch_sha256": "a967f5a7390c7aa7ba6e77f880f61f3a368866d570fd5d63a80bc30400f22f8a",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/cpp/tests/BUILD",
+          "status": "removed",
+          "sha": "a245dc8ef0919302e388fb0e885693a70ccf2b64",
+          "additions": 0,
+          "deletions": 149,
+          "upstream_patch_sha256": "85ca41c1d795490c89a357cf7927ce0d51e1f0f1c9651f02aebb93c6d14128d2",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/cuda/tests/BUILD",
+          "status": "removed",
+          "sha": "1d318b26d3354499e439ce00096139407eed2f1e",
+          "additions": 0,
+          "deletions": 305,
+          "upstream_patch_sha256": "fd6d24534edb0e03f778abe18dbfabcb52156fb547a9c71f3fe1da105dff4154",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/geometry/BUILD",
+          "status": "added",
+          "sha": "cb0c07755dd53c1b4a1838a3e752df97c84a248f",
+          "additions": 83,
+          "deletions": 0,
+          "upstream_patch_sha256": "b7104c82bec3f07d54fa680a9423a3ac1325db8f6464b437ab0b1f577681b1e6",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/geometry/cuda_distance_field.cu",
+          "status": "renamed",
+          "sha": "8b67b155741db78f162937e4788f849a77f0979c",
+          "additions": 2,
+          "deletions": 2,
+          "upstream_patch_sha256": "53685025a279698c8ba7f2552c33991546d377f7b0a23d8866b7ecafce89682c",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/geometry/cuda_distance_field.h",
+          "status": "renamed",
+          "sha": "0ae7a32c2006a68f40279a0baa84a743297260c6",
+          "additions": 0,
+          "deletions": 0
+        },
+        {
+          "filename": "csdecomp/src/geometry/cuda_geometry_utilities.h",
+          "status": "renamed",
+          "sha": "74382a24b9226434247e4cbb22de304f09943442",
+          "additions": 0,
+          "deletions": 0
+        },
+        {
+          "filename": "csdecomp/src/geometry/cuda_hit_and_run_sampling.cu",
+          "status": "renamed",
+          "sha": "8466257666375a985edc296f33e4c890da797404",
+          "additions": 3,
+          "deletions": 3,
+          "upstream_patch_sha256": "7021bc6fd485e995f64aedf1f10be17b98e25576eb6718c9135e281e9e319e59",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/geometry/cuda_hit_and_run_sampling.h",
+          "status": "renamed",
+          "sha": "750653039713dff36f3aa6cd6a7ae189d56d90e9",
+          "additions": 1,
+          "deletions": 1,
+          "upstream_patch_sha256": "8c0382fdbc640e5060cd24cf2e103167be5a4a96d4921fa5698432fb485ac351",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/geometry/distance_aabb_linesegment.cpp",
+          "status": "renamed",
+          "sha": "42bcc1be503022b23ee3452a375402da5d4ce90a",
+          "additions": 1,
+          "deletions": 1,
+          "upstream_patch_sha256": "c968ddd6fd6f680c58c1702aadf1275d9a75b23853633f3c20502e2a1497966b",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/geometry/distance_aabb_linesegment.h",
+          "status": "renamed",
+          "sha": "4eb5cb2de59619870ed89aca7f24b09ebf233003",
+          "additions": 0,
+          "deletions": 0
+        },
+        {
+          "filename": "csdecomp/src/geometry/hpolyhedron.cpp",
+          "status": "renamed",
+          "sha": "febbd52bfc43b0d4f887f8f111484ce223516703",
+          "additions": 1,
+          "deletions": 1,
+          "upstream_patch_sha256": "6d89b203fd35d2d3f49141c239f17d15f0090cd295577dc42043ae928fbddcf5",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/geometry/hpolyhedron.h",
+          "status": "renamed",
+          "sha": "1fa57d7388be5e622b882602b111b5227c458c90",
+          "additions": 0,
+          "deletions": 0
+        },
+        {
+          "filename": "csdecomp/src/geometry/linesegment_aabb_checker.cpp",
+          "status": "renamed",
+          "sha": "1899aa4fe6c76eef72b0e18c8fd87a0cbb61e798",
+          "additions": 78,
+          "deletions": 1,
+          "upstream_patch_sha256": "d8216c822d2c98911287c8f30ba640ab26225251469557a4cac15dd208ecc911",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/geometry/linesegment_aabb_checker.h",
+          "status": "added",
+          "sha": "188b1c951d97a2703f31fa581a989b0df9c29d6d",
+          "additions": 132,
+          "deletions": 0,
+          "upstream_patch_sha256": "a899344bbb1c764dc23e1e512f0e9a03e52736fb5c923891152f372f42e3f650",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/geometry/tests/BUILD",
+          "status": "added",
+          "sha": "ef8873c43c5aad3135b8a5f0f0d8bddd0855ea44",
+          "additions": 91,
+          "deletions": 0,
+          "upstream_patch_sha256": "40b29ba3164f2c16927c99830e1ccc088ee1e5c1c4036d22b8432515f5b1be55",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/geometry/tests/cuda_distance_field_test.cpp",
+          "status": "renamed",
+          "sha": "0bd8ebd843cc5bf402e1abcfa820ad5f5800c67e",
+          "additions": 1,
+          "deletions": 1,
+          "upstream_patch_sha256": "a6a46ca706adf8695f1a39d9241b5ffed16d60604a81843b2b204db328dbf2d7",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/geometry/tests/cuda_hit_and_run_sampling_test.cpp",
+          "status": "renamed",
+          "sha": "78c001324a6416a2a6cae9723106c81344b7641d",
+          "additions": 2,
+          "deletions": 2,
+          "upstream_patch_sha256": "5e574388ce1f30ba550daf00901d04e83d136dd7d95826cb79728dde6438e113",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/geometry/tests/distance_aabb_linesegment_test.cpp",
+          "status": "renamed",
+          "sha": "00f0583d7adbd8c33b4c5094cece9008ce761bd4",
+          "additions": 1,
+          "deletions": 1,
+          "upstream_patch_sha256": "eaa75a118228802dafc43789ba8dd325ef3ba5965712088c4e68beafb2c95e02",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/geometry/tests/hpolyhedron_test.cpp",
+          "status": "renamed",
+          "sha": "8d2672bdf824ffb9861a6b776fa72270504723e4",
+          "additions": 1,
+          "deletions": 1,
+          "upstream_patch_sha256": "7b9ba85babebc2fc79c21c3917a3898af1af89b6f3cb07dfd4f71668747f34e2",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/geometry/tests/linesegment_aabb_checker_test.cpp",
+          "status": "renamed",
+          "sha": "c990d349ea78192687ab22de5185cd17b25f1b58",
+          "additions": 1,
+          "deletions": 1,
+          "upstream_patch_sha256": "56930a9fc8319c9ac40ffbf39866b3afa9842ef2ee3037f47ed82be0841fb636",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/geometry/tests/omp_test.cpp",
+          "status": "added",
+          "sha": "2e9d57234d6153bbb438d9e367b3bebbf1af2f14",
+          "additions": 54,
+          "deletions": 0,
+          "upstream_patch_sha256": "b51a149b72f208c2955d4086e35756b763fb57bbb236f43252ebfe42359f1651",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/planning/BUILD",
+          "status": "renamed",
+          "sha": "65dcbab09e941a523c4646a334fad347ebbc4397",
+          "additions": 67,
+          "deletions": 58,
+          "upstream_patch_sha256": "46b5f4f6244b275c1dfa55fefdff643b15a0c3663109c6b80ed999cd754bfc33",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/planning/bezier_curve.cpp",
+          "status": "added",
+          "sha": "8840e5c1a05f36e991b473a35ed3e2768b883732",
+          "additions": 772,
+          "deletions": 0,
+          "upstream_patch_sha256": "988a030401808f90ae9442ab3bb0cf5fd5f264746a7395e75ffcc0414405c0f7",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/planning/bezier_curve.h",
+          "status": "added",
+          "sha": "e32d27eb4391c057b2b3db2012bf1085b90aeb1a",
+          "additions": 542,
+          "deletions": 0,
+          "upstream_patch_sha256": "cb7c644217357dd802e2afc9d569ec99964e78f3dc7aa21d5aecd212b8d58e58",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/planning/cuda_edge_inflation_zero_order.cu",
+          "status": "renamed",
+          "sha": "d61052d2a3f711bc611524a87ce7212f1142dc66",
+          "additions": 7,
+          "deletions": 6,
+          "upstream_patch_sha256": "8eac5db04bf3d8d0cf684560e87e60056ef7bf8559ab8f0d2df5cb30285c7050",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/planning/cuda_edge_inflation_zero_order.h",
+          "status": "renamed",
+          "sha": "8f39483cd12b4172a5ef867a9b11fdbf744ccbdd",
+          "additions": 5,
+          "deletions": 4,
+          "upstream_patch_sha256": "d27c52caffe74e56ed0d845cc665eefef8e814655ce7f3c68314c1278f6d1a47",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/planning/cuda_edit_regions.cu",
+          "status": "renamed",
+          "sha": "cb329fed511d3d44e365aa3760e958c7916e0ad6",
+          "additions": 4,
+          "deletions": 4,
+          "upstream_patch_sha256": "dc8aba7f22b7d6c115e1ae25a0d7561f30bf737eec9f7596cc5e5e21540d2701",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/planning/cuda_edit_regions.h",
+          "status": "renamed",
+          "sha": "2ec3f16c1272c6cf3ec2374936742bfb0a135986",
+          "additions": 4,
+          "deletions": 4,
+          "upstream_patch_sha256": "37683cc1662ed72ab0e9babe6299bbba02edf778dc206410011c759ef2b5a6eb",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/planning/cuda_polytope_builder.cu",
+          "status": "renamed",
+          "sha": "a0864904140734ed14f0efc0f67fb365037d75b2",
+          "additions": 2,
+          "deletions": 2,
+          "upstream_patch_sha256": "3f934f5143d3c6a8b40eabdbcda1149c6d0f1098c03d490ee9efd85e0daf2688",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/planning/cuda_polytope_builder.h",
+          "status": "renamed",
+          "sha": "c4a9aa92002e6948111b3e145413a37769182bec",
+          "additions": 4,
+          "deletions": 4,
+          "upstream_patch_sha256": "fc6958d5f609de019fe6ded1542c57d18be3f47b357a9f384fb14a210e5c0eaf",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/planning/cuda_set_builder_utils.cu",
+          "status": "renamed",
+          "sha": "4eb614f5042fb51db485eb733f8b42110f377b3d",
+          "additions": 2,
+          "deletions": 2,
+          "upstream_patch_sha256": "cb783ddac0e346dd0fc72e7a50d731f0a7f578dad4874b5fa29bda1826b7ed4d",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/planning/cuda_set_builder_utils.h",
+          "status": "renamed",
+          "sha": "446fd3c4b70f620d73ce1293a3ff25a4c72738cc",
+          "additions": 2,
+          "deletions": 2,
+          "upstream_patch_sha256": "332886d53625cb8f5c24f7c74a2edd3901dacfc06dd42f2113cb292994f94d56",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/planning/cuda_visibility_graph.cu",
+          "status": "renamed",
+          "sha": "e3cd9f7e502a1df75e74194a9383d66dfba9c029",
+          "additions": 4,
+          "deletions": 4,
+          "upstream_patch_sha256": "2a00aa440c56c8636ca4b22e75929fd76db137c26f6d3ecd92f14fd9e5113040",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/planning/cuda_visibility_graph.h",
+          "status": "renamed",
+          "sha": "18d41a5c78c7407283f7eeb5382301d07dd6a113",
+          "additions": 1,
+          "deletions": 1,
+          "upstream_patch_sha256": "318be1fec269279f6e3f5842a09bf30f7deac15d0241558b71aa0f389a7ea2a5",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/planning/drm_cuda_utils.cu",
+          "status": "renamed",
+          "sha": "9b14706150e1b035e058b6c645f26b9b01ecea51",
+          "additions": 1,
+          "deletions": 1,
+          "upstream_patch_sha256": "4a027cc2d3e8846ed51c4952c256b73305a8f831460c01182723119196540997",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/planning/drm_cuda_utils.h",
+          "status": "renamed",
+          "sha": "385a13902d706c80a16f0893d6b1c88a443f28e7",
+          "additions": 0,
+          "deletions": 0
+        },
+        {
+          "filename": "csdecomp/src/planning/drm_planner.cpp",
+          "status": "renamed",
+          "sha": "c016b2520bd696f3e042350cd5775312171b1ac6",
+          "additions": 89,
+          "deletions": 20,
+          "upstream_patch_sha256": "dd59ffa0ee0227c9d635b6ecbd01cd682ddb3f9142ccfe4aee14497b140cf6a0",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/planning/drm_planner.h",
+          "status": "renamed",
+          "sha": "1eafc7445b60fe9192efd6fc185b6ec60b81918b",
+          "additions": 15,
+          "deletions": 2,
+          "upstream_patch_sha256": "08d47365e06515c25b5564722161617240c1000135b320b08ff15ba6c0e8bb79",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/planning/roadmap.cpp",
+          "status": "renamed",
+          "sha": "4c9d5b35303204b229ba91a86b6b9e0b2be0bcf6",
+          "additions": 1,
+          "deletions": 1,
+          "upstream_patch_sha256": "f9347040af070f7acff58bbf397108177126e157ce5ad330fa6f13776f93c829",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/planning/roadmap.h",
+          "status": "renamed",
+          "sha": "13544641eece9fc19ff7082a5680c42d2177038d",
+          "additions": 0,
+          "deletions": 0
+        },
+        {
+          "filename": "csdecomp/src/planning/roadmap_builder.cpp",
+          "status": "renamed",
+          "sha": "f09e644db620495a91dfc509e5065dfe6debb1f8",
+          "additions": 56,
+          "deletions": 30,
+          "upstream_patch_sha256": "c4b4857d02f67f6999b926495c281ea911234072fefea1dea2d57bffb5f0acd4",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/planning/roadmap_builder.h",
+          "status": "renamed",
+          "sha": "00b9a3bf315a5f5427af1ff3f2c6eff285e65485",
+          "additions": 4,
+          "deletions": 4,
+          "upstream_patch_sha256": "033ad0800e68cd58148a20d33109325608b59dbd764816f773f16f354eeab78c",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/planning/tests/BUILD",
+          "status": "added",
+          "sha": "efda7cafb248fb093f5364b10372d913bf9a002e",
+          "additions": 229,
+          "deletions": 0,
+          "upstream_patch_sha256": "1fcce7f7b2bcfed0c7abf4eb1635ce6b150b16c153162d4dabe040c0ab857315",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/planning/tests/bezier_curve_test.cpp",
+          "status": "added",
+          "sha": "f1b0965181bf3e81ddb3ab2134587e6da57d5cf9",
+          "additions": 871,
+          "deletions": 0,
+          "upstream_patch_sha256": "1db3b33fe00a2c4daab4d3cbc2ccb51a7964985a130509708d0fb11d5510ef9a",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/planning/tests/build_roadmap_test.cpp",
+          "status": "renamed",
+          "sha": "dd8959873eb56d98e39da6389a4c1f7ec67535f5",
+          "additions": 5,
+          "deletions": 5,
+          "upstream_patch_sha256": "e28ce6e3a41f564e5262269a73882693df9e5320b7dcdd1af639cc04a5a5b567",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/planning/tests/cuda_edit_regions_test.cpp",
+          "status": "renamed",
+          "sha": "b549e8cea6fbf0efff65b852858e01c535bab2cb",
+          "additions": 4,
+          "deletions": 4,
+          "upstream_patch_sha256": "6b9bc3261e583bb64b9eda84b50a4f05e0e51bc63d9ac986a954fc98dd15ec01",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/planning/tests/cuda_set_builder_utils_test.cpp",
+          "status": "renamed",
+          "sha": "58d0e808f970de11a6990e0e9ff529f57143789e",
+          "additions": 2,
+          "deletions": 2,
+          "upstream_patch_sha256": "f753787ca4f8d39c228f96a2b69d4060e30b6bf012dacaf030acd20434fc2d79",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/planning/tests/cuda_visibility_graph_test.cpp",
+          "status": "renamed",
+          "sha": "40e4bbf39be0fc9b02f610f757e7f74bdd88d7a7",
+          "additions": 6,
+          "deletions": 6,
+          "upstream_patch_sha256": "a1b35356781f8873c8daf12511316328090e2efc29e2134b34cd14dcfbf333fd",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/planning/tests/edge_inflation_zero_order_test.cpp",
+          "status": "renamed",
+          "sha": "dca96a0fc487a5c153ed3ed694b302ec60190492",
+          "additions": 5,
+          "deletions": 5,
+          "upstream_patch_sha256": "643c5fef5ee5afa979fb557654ce9d768dfacaf07fe49e9fd716737c7486ddde",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/planning/tests/polytope_builder_test.cpp",
+          "status": "renamed",
+          "sha": "5c81d740b59e3b170871fbac05bac947a549f7b6",
+          "additions": 7,
+          "deletions": 7,
+          "upstream_patch_sha256": "eb4592c61eaba7f9341ec654a9fdf3d43186d992e5123767e3d4aa82d2b76476",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/plant/BUILD",
+          "status": "added",
+          "sha": "f5d7bca4a09d493aa41d991f4de3cdb144d9f0f0",
+          "additions": 114,
+          "deletions": 0,
+          "upstream_patch_sha256": "be17ab02c2b8f8e1c297fbab3c6b96a2fd22b6536ae098ee91af721a3fb379e9",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/plant/collision_checker.cpp",
+          "status": "renamed",
+          "sha": "cb9c4748ab5442012100b4924e9c179a5d0d0ab1",
+          "additions": 11,
+          "deletions": 4,
+          "upstream_patch_sha256": "b473c1e0856e51ac90e6f36dbcd14ea7c17c226825a3123e925f14318f12f691",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/plant/collision_checker.h",
+          "status": "renamed",
+          "sha": "7a88615ce6c1a56d6fbdcca3c4ea2095472749ed",
+          "additions": 2,
+          "deletions": 2,
+          "upstream_patch_sha256": "9f36e378f14713d6d6ee9e554e8770b2b11393d61358935d770bf5bee5d9997b",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/plant/collision_geometry.h",
+          "status": "renamed",
+          "sha": "a78dd85fa720b5661df1a80c4536166de6b70891",
+          "additions": 0,
+          "deletions": 0
+        },
+        {
+          "filename": "csdecomp/src/plant/cuda_collision_checker.cu",
+          "status": "renamed",
+          "sha": "e38f25954a35ccb97bc14e7cface9d888d6a8bb4",
+          "additions": 4,
+          "deletions": 4,
+          "upstream_patch_sha256": "cfc99dda549d35db4caee5cfc90fa3718ff8261d06e0df74ba19742f96f422c7",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/plant/cuda_collision_checker.h",
+          "status": "renamed",
+          "sha": "e25184b06430d9784267d71d049ebff87464e180",
+          "additions": 26,
+          "deletions": 6,
+          "upstream_patch_sha256": "f943da255520e5e54c69195ac002bb988c30e14c0d32ad5fcc2a658d934219a9",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/plant/cuda_forward_kinematics.cu",
+          "status": "renamed",
+          "sha": "9a7b238fb731ea738993ea9882a84d71497a0af7",
+          "additions": 2,
+          "deletions": 2,
+          "upstream_patch_sha256": "ce7dabca26d47104a59b5692b301812ef14d2e9f2c2f274b2d705567fbfba00c",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/plant/cuda_forward_kinematics.h",
+          "status": "renamed",
+          "sha": "97f073eefa0e6aeba739d4e3ba8825789be85091",
+          "additions": 1,
+          "deletions": 1,
+          "upstream_patch_sha256": "e72f63127ddc61b799fce461dd263f1d416f2fa0ae0d9dc4eff539209311f867",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/plant/kinematic_tree.cpp",
+          "status": "renamed",
+          "sha": "91d5d46f52673fcfb9c14a9900083829ef903377",
+          "additions": 1,
+          "deletions": 1,
+          "upstream_patch_sha256": "733c92128c596c6066a9a0eb401332cf2a7c1a6459a8b6013230611c8e786819",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/plant/kinematic_tree.h",
+          "status": "renamed",
+          "sha": "cea35b5edfefb0d20222df77c714e4d664124c69",
+          "additions": 1,
+          "deletions": 1,
+          "upstream_patch_sha256": "0d4b335b351c7c4d93e613da7c6fc95a83ef8eb41b76e2a71a12a382ac1e27fc",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/plant/minimal_kinematic_tree.cpp",
+          "status": "renamed",
+          "sha": "0edc5ce826e23ed4ba5cbddeafe2aa74cbc87361",
+          "additions": 1,
+          "deletions": 1,
+          "upstream_patch_sha256": "ea00246d9ff41eba454c47a7202d9874b77e2ec6af42321fb6200009f79bb2eb",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/plant/minimal_kinematic_tree.h",
+          "status": "renamed",
+          "sha": "babfa1f17b08e66ee76582277f41716230324276",
+          "additions": 0,
+          "deletions": 0
+        },
+        {
+          "filename": "csdecomp/src/plant/minimal_plant.h",
+          "status": "renamed",
+          "sha": "fa4a7013bd982ab0353690cf7770a49951bae022",
+          "additions": 4,
+          "deletions": 4,
+          "upstream_patch_sha256": "6f7a069896e2edbf02b50923df1a3b784ebfb87cf3ea93d5b85766726308f45f",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/plant/tests/BUILD",
+          "status": "added",
+          "sha": "c5e7f8dd2da20bb91e50cecb4c5f59d9ec48b0c0",
+          "additions": 89,
+          "deletions": 0,
+          "upstream_patch_sha256": "885396cdd4514085fac96d8d1d384d62b300d699c5b1d7c1cc7059be067c37d5",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/plant/tests/collision_checker_test.cpp",
+          "status": "renamed",
+          "sha": "7d13214870cb078f2fb23ca98cf0f0bfd3151a0d",
+          "additions": 3,
+          "deletions": 3,
+          "upstream_patch_sha256": "2f71801527dc4e2c37c1f9165fc2fa2c09b560fd80e183dd94ae36e5a54250eb",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/plant/tests/cuda_collision_checker_test.cpp",
+          "status": "renamed",
+          "sha": "c256c17461f7ad2edaf38ff6ef0b65f744bc3932",
+          "additions": 4,
+          "deletions": 4,
+          "upstream_patch_sha256": "23881e87d0b12f3e9f6f7db97b73af7927a366898875a8d37e0998caf8c7b47c",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/plant/tests/cuda_forward_kinematics_test.cpp",
+          "status": "renamed",
+          "sha": "610c1f2db3642545c129f03448be31eac83489a9",
+          "additions": 4,
+          "deletions": 4,
+          "upstream_patch_sha256": "6dafbc87edb7bce9ee2fac029c0c1551fa918c41a1522b761d2e7861c3a902ca",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/plant/tests/kinematic_tree_test.cpp",
+          "status": "renamed",
+          "sha": "e08ee9515bd6d2a75f8d33f6a949e333290c10bf",
+          "additions": 2,
+          "deletions": 2,
+          "upstream_patch_sha256": "e1828a9aaaeaaf339dea85582f9c4fb85861a44412974820c2cbf46135fe6766",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/plant/tests/minimal_kinematic_tree_test.cpp",
+          "status": "renamed",
+          "sha": "92126a0c2eec289f3e4a4f16aaa9dc2f4b598f54",
+          "additions": 3,
+          "deletions": 3,
+          "upstream_patch_sha256": "2209d1e97ef4f6d8ffc266fef8c05250cba8a4fa200035317826a0b6c7536a61",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/plant/tests/urdf_parser_test.cpp",
+          "status": "renamed",
+          "sha": "ac308e1f1c0281b82aca659d32466bee08d2c4c6",
+          "additions": 2,
+          "deletions": 2,
+          "upstream_patch_sha256": "d3031ba88e2deda0e78e6cda640d7cc2b6fb296510d23bb2ecdad306971ea110",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/plant/urdf_parser.cpp",
+          "status": "renamed",
+          "sha": "707c8215c1f128728f76f18c8602f6f0c0484294",
+          "additions": 17,
+          "deletions": 5,
+          "upstream_patch_sha256": "80b12063ccec6c921be8e80fc6a594b766d4ea2406297702926f3de2a36e7cba",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/plant/urdf_parser.h",
+          "status": "renamed",
+          "sha": "bd45a189db541de94a77ac8cc80acb0940c8504e",
+          "additions": 14,
+          "deletions": 3,
+          "upstream_patch_sha256": "ba1ddf43cc62452607855479e55c67aae04ae26b1bc6f4b48dbeb7c3de4484a7",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/pybind/csdecomp/BUILD",
+          "status": "renamed",
+          "sha": "c80f01a62ddbd6374acb06a86c6de48711bee1cd",
+          "additions": 42,
+          "deletions": 48,
+          "upstream_patch_sha256": "e7ea07c7596c8b637bebe5d7d08d4e530c6c68e0a65208a3af7a5d5d5788ab13",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/pybind/csdecomp/__init__.py",
+          "status": "renamed",
+          "sha": "d52b5efef37e06307b59d8060a332cd3ee68b573",
+          "additions": 0,
+          "deletions": 0
+        },
+        {
+          "filename": "csdecomp/src/pybind/csdecomp/collision_checker_bindings.h",
+          "status": "renamed",
+          "sha": "2652bd1182e07797c3505f926ddcabfe7177a640",
+          "additions": 1,
+          "deletions": 1,
+          "upstream_patch_sha256": "b49cb1a61eeb48a5cd5440d2c57d8baa18601b1e1d6961fcdfdbe4eb32c7abd5",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/pybind/csdecomp/cpp_utils_bindings.h",
+          "status": "added",
+          "sha": "9eb09ba7cbc8a88edf7dad070e7a98785e954288",
+          "additions": 428,
+          "deletions": 0,
+          "upstream_patch_sha256": "6c2244258e6d8c0816007458710dc1b40ffc35efcfdfeac076a9e1497c7d5a7b",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/pybind/csdecomp/cuda_bindings.h",
+          "status": "renamed",
+          "sha": "412610618d6d261af27587b3d3b000bc260609c0",
+          "additions": 6,
+          "deletions": 5,
+          "upstream_patch_sha256": "6a14c430e917d26a2f125d377bca60d7ed9dce7c651b6544d92b466ff8af21f4",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/pybind/csdecomp/drake_csd_bridge.py",
+          "status": "renamed",
+          "sha": "dcee8477e4f8b3bf50a80893ea29299de1e25f60",
+          "additions": 2,
+          "deletions": 2,
+          "upstream_patch_sha256": "559fe70905f86280b3991e7258a7ed17e463bf15fb0cd3ef0cb57fca67e5d2c2",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/pybind/csdecomp/drm_bindings.h",
+          "status": "renamed",
+          "sha": "02adffcbe806fe1cb46c7ac187e0192b556aeb77",
+          "additions": 1,
+          "deletions": 1,
+          "upstream_patch_sha256": "06133d31cf635b4d5b4a880c88d42e6a40de085b478b4c2e0460c6023e6a16e0",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/pybind/csdecomp/generate_stubs.py",
+          "status": "renamed",
+          "sha": "2e2c6838da95d970cdaa03f02dd8d5488cf00ee1",
+          "additions": 2,
+          "deletions": 2,
+          "upstream_patch_sha256": "e753698acd3e4c869bf549339cb0fa33bf0068a54e822ebda137c567e8435931",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/pybind/csdecomp/hpolyhedron_bindings.h",
+          "status": "renamed",
+          "sha": "06fe4bce083251599182640cf090cac72152835f",
+          "additions": 1,
+          "deletions": 1,
+          "upstream_patch_sha256": "0d8cd933fb813e8bd9008afab1ed223d2cbe848a9665a68458a0bc5f8fe64559",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/pybind/csdecomp/plant_bindings.h",
+          "status": "renamed",
+          "sha": "4e3145f971a8da3294ff5d0b03c924052a91120e",
+          "additions": 29,
+          "deletions": 1,
+          "upstream_patch_sha256": "805db79fe95bb0807f024b3899ce52c53260542c10ffc80b05cd1f76fca0251e",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/pybind/csdecomp/py.typed",
+          "status": "renamed",
+          "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+          "additions": 0,
+          "deletions": 0
+        },
+        {
+          "filename": "csdecomp/src/pybind/csdecomp/pycsdecomp_bindings.cpp",
+          "status": "renamed",
+          "sha": "27665e4ac411e92b2c8dd9ca6a1085d7ec415b79",
+          "additions": 0,
+          "deletions": 0
+        },
+        {
+          "filename": "csdecomp/src/pybind/csdecomp/voxel_wrapper.h",
+          "status": "renamed",
+          "sha": "abfeebe7ad68a92b5095af69816fb4a41a5796e7",
+          "additions": 1,
+          "deletions": 1,
+          "upstream_patch_sha256": "ae9aeb0d2e58f4faf5fa7464fa2b56a2e2204cfac216a3a9a10498431bc9181d",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/pybind/pycsdecomp/cpp_utils_bindings.h",
+          "status": "removed",
+          "sha": "9fcd6d155d51f3fe8bcebcb2b8859b56e39d65f8",
+          "additions": 0,
+          "deletions": 96,
+          "upstream_patch_sha256": "8629edfa0e8ea15d1c8e8663fb98bbd42e8ef837e7c934adb2328422a3020163",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/utils/BUILD",
+          "status": "added",
+          "sha": "5028625284b3699d927695e247b661185ee6520f",
+          "additions": 14,
+          "deletions": 0,
+          "upstream_patch_sha256": "2dab37391415d3d24cc8a22d1016a728cd69e2d7c45d3c0eb3e945fbad15aad7",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/utils/cuda_utilities.h",
+          "status": "renamed",
+          "sha": "54cf49548721355c9bd00b74e220394b3a95180f",
+          "additions": 0,
+          "deletions": 0
+        },
+        {
+          "filename": "csdecomp/tests/BUILD",
+          "status": "modified",
+          "sha": "0ae7b087337dac5df7e392e56458b5e0bbcbe187",
+          "additions": 5,
+          "deletions": 5,
+          "upstream_patch_sha256": "cb46834c34fc8d8867398c767a4a5590ceb18709b6bab4cc1681b3a2b5cba512",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/tests/csdecomp_test.py",
+          "status": "renamed",
+          "sha": "bfb35120f58ad4191ea476066edb0716ee3fad5f",
+          "additions": 1,
+          "deletions": 1,
+          "upstream_patch_sha256": "a1bf116929d0a5f22ede44546dd8549bfadde3893d8fce7b4f93275c01722b2b",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/tests/plotting_utils.h",
+          "status": "modified",
+          "sha": "40fcfdb35421e258856cca17189a0272d8049bd1",
+          "additions": 1,
+          "deletions": 1,
+          "upstream_patch_sha256": "f3b6c9c846d03df32a86929c56fa781589b9782906e35d858dfb15d0ee088858",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/third_party/pybind11.BUILD",
+          "status": "removed",
+          "sha": "5908ce1dcd0227872257ae36a0426bf494d1f7e8",
+          "additions": 0,
+          "deletions": 38,
+          "upstream_patch_sha256": "d8fc8609263b0e3748ed756bed9c45350d47b7b3d156d45f769fa88c6d20cf4c",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/third_party/python/requirements.in",
+          "status": "modified",
+          "sha": "047e5ff61ad97c361117431a654bedb1da77fddc",
+          "additions": 3,
+          "deletions": 2,
+          "upstream_patch_sha256": "3a9e9c293058b57bcb7fd13d7ae32d1cba0f8e8e77a09e50e0622ede4f4d857b",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/third_party/python/requirements.txt",
+          "status": "modified",
+          "sha": "e6efb3eb3a3dde9c0912e19d087d3685b0e7ea78",
+          "additions": 19,
+          "deletions": 7,
+          "upstream_patch_sha256": "ec18617748281dea3cf66660da96964b7cbb37145d62096903dff38defd1351b",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "docs/csdecomp_overview.png",
+          "status": "added",
+          "sha": "7d1b6ee420a8879323a5ecee748bc061530e8c18",
+          "additions": 0,
+          "deletions": 0
+        },
+        {
+          "filename": "examples/BUILD",
+          "status": "added",
+          "sha": "0b64debdf04dcce0a5ee48eb815fb03303bea373",
+          "additions": 39,
+          "deletions": 0,
+          "upstream_patch_sha256": "41eb34ffaeac828ad7db2d1a2301df26d11f56ae64325404694f13c42c612ee3",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "examples/build_DRM.py",
+          "status": "modified",
+          "sha": "93a9dafaf4395a07156e41b61b8369bebda5c779",
+          "additions": 6,
+          "deletions": 9,
+          "upstream_patch_sha256": "bc6851c51d677454875584c55a93458abf31189d6dcd8a70c765f47bd09dd98d",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "examples/dev_install.sh",
+          "status": "added",
+          "sha": "a6f504a44609e3632c1213e95e70999c3cd49366",
+          "additions": 43,
+          "deletions": 0,
+          "upstream_patch_sha256": "7cfd38f4f009dc28f0b95f76935c7c31ff8ad04b636900793d77fad0c1a320a8",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "examples/drake_csd_bridge.ipynb",
+          "status": "modified",
+          "sha": "435ea2519d4318fe8ee314ceaf597220a01433c4",
+          "additions": 3,
+          "deletions": 20,
+          "upstream_patch_sha256": "eb4e63bb63f4368e5755c11661ce8bc15bcc3d2454b51a453efef4baa0685e64",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "examples/kinova.ipynb",
+          "status": "modified",
+          "sha": "90465b31fda46e119c9294421b16bfd8c24dfe60",
+          "additions": 11,
+          "deletions": 309,
+          "upstream_patch_sha256": "66656e37389016a29d8cabab4cf50d6236d9de499255394e399825a85782b831",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "examples/kinova_mintime_planning.py",
+          "status": "modified",
+          "sha": "c8db15c98ea812ccbe6bffa39432c171eb5bc684",
+          "additions": 1,
+          "deletions": 1,
+          "upstream_patch_sha256": "dd5ef6d52ab5a6cd652e6b2a40920ab1807dd3627e4779547fec8d8fa2e631f2",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "examples/minimal_test.py",
+          "status": "modified",
+          "sha": "af7d349c45c7191bdb943fc83dfd4b3961b9372d",
+          "additions": 1,
+          "deletions": 1,
+          "upstream_patch_sha256": "93a91388db30a1b0fa50a9558b1bce76e09a45995b6e23e71e1167cd2903a91d",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "examples/pyproject.toml",
+          "status": "modified",
+          "sha": "531e0c465ad068424e21cb58191bb4b548dbf4c9",
+          "additions": 19,
+          "deletions": 17,
+          "upstream_patch_sha256": "a723bc8455d6262cb030a8e81c8bb18fb73807888ac8b1f7543ecc7e5f2a8b05",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "examples/test_drake_bridge.py",
+          "status": "added",
+          "sha": "49b24e8f8d844247e210f8d3db9eac3cbb6b367f",
+          "additions": 101,
+          "deletions": 0,
+          "upstream_patch_sha256": "aa6e4e12abc7d23dfed41a66446903f0206b5c9c9a1e6d2a7a5f0da3f40c5337",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "examples/test_eizo.py",
+          "status": "added",
+          "sha": "68fb341c8f3616a3e89afa98182e13e0c3ecb007",
+          "additions": 90,
+          "deletions": 0,
+          "upstream_patch_sha256": "ee99dda3e0df803daf0681d7d92d56735cd2a91024b09bcae764a79e9065a0bc",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "examples/utils.py",
+          "status": "modified",
+          "sha": "4e1b22ae097f4dfb3078eb8ff396371b2aed58ab",
+          "additions": 2,
+          "deletions": 2,
+          "upstream_patch_sha256": "400d930b290ae00421fe5ee1e9630b597995b254bce731947b00a40bb76c75bf",
+          "upstream_patch_excerpt_retained": false
+        }
+      ],
+      "reviews": [],
+      "comments": [],
+      "files_listing_complete": true
+    },
+    {
+      "number": 8,
+      "title": "Switch Numpy2, add cuda region editing, update examples",
+      "url": "https://github.com/wernerpe/csdecomp/pull/8",
+      "merge_commit_sha": "08283d0775fc173e147a6b98613279fefa44e49d",
+      "body": "* switch to numpy2\r\n* add code for parallel region editing\r\n* update examples to include kinova_mintime_planning with demonstrates how to use our proposed motion planning pipeline",
+      "files": [
+        {
+          "filename": ".vscode/launch.json",
+          "status": "modified",
+          "sha": "a54c1b3a4d4f34ca562fd3ac4bbac07b887ff8b8",
+          "additions": 42,
+          "deletions": 0,
+          "upstream_patch_sha256": "56f5bb86edea9ed54d595da825aa7326f87de19755e93c5cfc28ebb5b4e92440",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": ".vscode/settings.json",
+          "status": "modified",
+          "sha": "8efd3c34ec7d6cc90c2f7a342cc5d62e6285b4fe",
+          "additions": 4,
+          "deletions": 1,
+          "upstream_patch_sha256": "957f49f9124eb5dfc89d8018ac9485e9ee93716dffd8495ed60d09ac8a9cf75b",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": ".vscode/tasks.json",
+          "status": "modified",
+          "sha": "c776f6fdf953c48f51ed9ee370275fbc7f4b2af9",
+          "additions": 30,
+          "deletions": 0,
+          "upstream_patch_sha256": "1cc67c5ca6fd8a2b2dfbacdea4ec0ff1095cbf5874484e94b51544c9b37ec5b2",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "MODULE.bazel",
+          "status": "modified",
+          "sha": "39aafa2d1526befaf30a782a64150d8ec5921b9a",
+          "additions": 1,
+          "deletions": 1,
+          "upstream_patch_sha256": "6427b46fcf11de6a185d68b1e87e358c2ee1cc1326f51c7d57150741e0ee8e69",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "README.md",
+          "status": "modified",
+          "sha": "44295b8fd6a1d2fcff93deea5c38b119531340b8",
+          "additions": 4,
+          "deletions": 5,
+          "upstream_patch_sha256": "9638a88ccad5d7ea70fab6199bbce3c9a7fcf3d1d9aa11ea190bdee364c3255c",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "WORKSPACE",
+          "status": "modified",
+          "sha": "7d143ab3df316c5b46858a929ffc8edc9134c4f3",
+          "additions": 0,
+          "deletions": 15,
+          "upstream_patch_sha256": "71da0fdfd73344f4e14680119d6214390fbaed56a2a130fbebe9799677f6c031",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/cpp/BUILD",
+          "status": "modified",
+          "sha": "852b82bef78763273ee90a038d71838b94646e17",
+          "additions": 22,
+          "deletions": 0,
+          "upstream_patch_sha256": "9f1edd7428153510bee371a5541a17d76ecaa526997593fa97887d563207bf80",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/cpp/collision_geometry.h",
+          "status": "modified",
+          "sha": "a78dd85fa720b5661df1a80c4536166de6b70891",
+          "additions": 2,
+          "deletions": 1,
+          "upstream_patch_sha256": "82014ee5f2c03179b249b123f3245a29b35af3efa8bd6598481a2a6fdf6ad02a",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/cpp/distance_aabb_linesegment.cpp",
+          "status": "added",
+          "sha": "4af300e8f533ecf6e2cb04a8b6de76efcc44efd1",
+          "additions": 88,
+          "deletions": 0,
+          "upstream_patch_sha256": "1120c32e3e941082b9c460eed9fb1a3c6fd98e3de6a8cea813dc795fd9cbc92e",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/cpp/distance_aabb_linesegment.h",
+          "status": "added",
+          "sha": "4eb5cb2de59619870ed89aca7f24b09ebf233003",
+          "additions": 16,
+          "deletions": 0,
+          "upstream_patch_sha256": "c521901283eebbfa9bb3a4b9bd43c5f3863ea46400a2b80607c6908fa77c1420",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/cpp/hpolyhedron.cpp",
+          "status": "modified",
+          "sha": "1c39109f093db58d65720d28312816c7a1a7ff1a",
+          "additions": 5,
+          "deletions": 3,
+          "upstream_patch_sha256": "091e8f9f1f33dae04b00c37e14d0d6bea78656ac922034eefdf71875df9e38c5",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/cpp/hpolyhedron.h",
+          "status": "modified",
+          "sha": "1fa57d7388be5e622b882602b111b5227c458c90",
+          "additions": 4,
+          "deletions": 2,
+          "upstream_patch_sha256": "9a9375f13d868cca2fa7a3aba441ce0abc463ccc782e68eb425b7d4ee800c0d4",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/cpp/linesegment_aabb_checker.cpp",
+          "status": "added",
+          "sha": "dbf283fbb7755373ad9b1c88610007d87633859c",
+          "additions": 149,
+          "deletions": 0,
+          "upstream_patch_sha256": "613d9f6fcd6555adafa5f79e7f42bac7b112139e5e2169add09fec7d4b03f0fe",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/cpp/linesegment_aabb_checker.h",
+          "status": "added",
+          "sha": "19ca01ead847a6560ae0e4e9501b0de80f94e64c",
+          "additions": 58,
+          "deletions": 0,
+          "upstream_patch_sha256": "d7767f8ec602a8330c1fcb798f93e1526f057ebbef0c45ad65e263231f0b6623",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/cpp/minimal_plant.h",
+          "status": "modified",
+          "sha": "d698336e6463c109206e09e5259a1eb807b46a36",
+          "additions": 2,
+          "deletions": 9,
+          "upstream_patch_sha256": "02ca762ee6e5b7ea3a5bcab700750fe2777a07d8625a90562d7ee8ebce6e8eb0",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/cpp/tests/BUILD",
+          "status": "modified",
+          "sha": "a245dc8ef0919302e388fb0e885693a70ccf2b64",
+          "additions": 28,
+          "deletions": 0,
+          "upstream_patch_sha256": "1839fd94378a936341c6d288021523a22d173d8de31aadfeaa244fd476350f2f",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/cpp/tests/distance_aabb_linesegment_test.cpp",
+          "status": "added",
+          "sha": "d24d37b99642ae93cc3cb4233f11311c89f31207",
+          "additions": 147,
+          "deletions": 0,
+          "upstream_patch_sha256": "23523dcbfb81fd5d697574e7bd5b899e4bec49570b6ca0a6123f6008565e6689",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/cpp/tests/linesegment_aabb_checker_test.cpp",
+          "status": "added",
+          "sha": "11f0e9d2d287ff0508f73c185b7e3ccd707c4503",
+          "additions": 392,
+          "deletions": 0,
+          "upstream_patch_sha256": "a0d251862e1e91499e7fc8f9ce33bf1a8000e820ab5300d138420a25c36e950d",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/cpp/urdf_parser.cpp",
+          "status": "modified",
+          "sha": "acd64ab9c42a045cc65be69da9b1f436805be5cf",
+          "additions": 1,
+          "deletions": 3,
+          "upstream_patch_sha256": "d291a5f9ecdd45dce9ee1338d1cf94db4eb04ec260c71232475352fabaa290c6",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/cuda/BUILD",
+          "status": "modified",
+          "sha": "4cde4b126eb37b87247e634789e118f7aac19c02",
+          "additions": 13,
+          "deletions": 0,
+          "upstream_patch_sha256": "4420b7b6b1513467f6e107f1c552387ac76d154a4073453ffa17e12ffa5cda2f",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/cuda/cuda_edit_regions.cu",
+          "status": "added",
+          "sha": "548af43ca77f555e014d0143aa6b140920d48c2b",
+          "additions": 302,
+          "deletions": 0,
+          "upstream_patch_sha256": "c78d87e70e100853431b9839cf0e5dbe7fc1d35a8fe087bbd6c5a6657d21d8ca",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/cuda/cuda_edit_regions.h",
+          "status": "added",
+          "sha": "b6e980f0cccb59006fcd2cb0f258ca2bb35ab81f",
+          "additions": 68,
+          "deletions": 0,
+          "upstream_patch_sha256": "9b2f3976d1d95bdd3313b672125cc248d8989281d8be074348be3e03ce9f05a2",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/cuda/cuda_utilities.h",
+          "status": "modified",
+          "sha": "54cf49548721355c9bd00b74e220394b3a95180f",
+          "additions": 4,
+          "deletions": 2,
+          "upstream_patch_sha256": "7726c008f6318f1e9852de298f017635177a0cf238023576a83511011e3b4a8f",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/cuda/tests/BUILD",
+          "status": "modified",
+          "sha": "1d318b26d3354499e439ce00096139407eed2f1e",
+          "additions": 37,
+          "deletions": 0,
+          "upstream_patch_sha256": "59c24f10af854b8dfd4db7a2957c6d0bd4d234a2c2e41d75a5cd01210ad63049",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/cuda/tests/cuda_edit_regions_test.cpp",
+          "status": "added",
+          "sha": "7abffd04e5a42fe0e3d4448b0dc4b39ebd90c7fa",
+          "additions": 225,
+          "deletions": 0,
+          "upstream_patch_sha256": "727c9094b9e8b013224deaa97562d7fa8dfc4be6fecfcbceec91f7fe7b5db50c",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/pybind/pycsdecomp/BUILD",
+          "status": "modified",
+          "sha": "5ace85b17cc7c0badec33e0f7326b35baf96b1be",
+          "additions": 16,
+          "deletions": 1,
+          "upstream_patch_sha256": "a269914561c094b94cbfb0b0f4d5114170d8c0e003751e8b4321111cf2d9fec0",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/pybind/pycsdecomp/cpp_utils_bindings.h",
+          "status": "added",
+          "sha": "9fcd6d155d51f3fe8bcebcb2b8859b56e39d65f8",
+          "additions": 96,
+          "deletions": 0,
+          "upstream_patch_sha256": "3b968c2bd2967ed7d9f74e2de57ba6074129ef49d61b723462dc36c46ac52247",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/pybind/pycsdecomp/cuda_bindings.h",
+          "status": "modified",
+          "sha": "3b6d50eeaa162ef9618bcc4d9ab9e4106f7e414f",
+          "additions": 53,
+          "deletions": 0,
+          "upstream_patch_sha256": "60dda921fc9064264de160756723caf523dc5e01364d310dc5a9d813011b9617",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/pybind/pycsdecomp/pycsdecomp_bindings.cpp",
+          "status": "modified",
+          "sha": "27665e4ac411e92b2c8dd9ca6a1085d7ec415b79",
+          "additions": 2,
+          "deletions": 0,
+          "upstream_patch_sha256": "c6d71c4af2d80b6bd9244b77986b54452893e635b529be8a35bb039d5857cd07",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/tests/BUILD",
+          "status": "modified",
+          "sha": "ecb16904068cda8a9428c277c23bace433a1455b",
+          "additions": 10,
+          "deletions": 0,
+          "upstream_patch_sha256": "f35e2866b1a320e91354ac140e29ed2c3667f01fed3fb91e20711742933da435",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/tests/drake_dep_test.py",
+          "status": "added",
+          "sha": "41b686061255487c0d6ebd094795b03cb75af787",
+          "additions": 18,
+          "deletions": 0,
+          "upstream_patch_sha256": "579e27e6c5ae5242283d36e04a71f2e06b7c110c3e9e725171cc59a160ee3db1",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/third_party/python/requirements.in",
+          "status": "modified",
+          "sha": "9d42f598e42ec7ebbef0fb6c641fbacbc1c60a37",
+          "additions": 4,
+          "deletions": 4,
+          "upstream_patch_sha256": "2fe324323364fc8abd33a5ca790156a9e10c9f690d603e7a2aafab004266a70a",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/third_party/python/requirements.txt",
+          "status": "modified",
+          "sha": "1fa6198da280c112ce522573b3c5d6eb876fb5cf",
+          "additions": 187,
+          "deletions": 84,
+          "upstream_patch_sha256": "f213b23bb63bc043c4a56da33ed1a91fd8c301274ee153b2599af42928908796",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "examples/Readme.md",
+          "status": "added",
+          "sha": "534489945265e81f124b60321b5c25c1c4f77673",
+          "additions": 24,
+          "deletions": 0,
+          "upstream_patch_sha256": "5d7d762163ae87c46a3e104f9580f5b8150adeacf16773c3ce6e58d1681aadd6",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "examples/drake_csd_bridge.ipynb",
+          "status": "renamed",
+          "sha": "50cef4580d33602ed9ea53f51f429d157a395079",
+          "additions": 0,
+          "deletions": 7,
+          "upstream_patch_sha256": "e2cb21f0fa3e966c0a78064ac25272be7cf8b80f62c9a599fc81cd759c553af0",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "examples/kinova.ipynb",
+          "status": "modified",
+          "sha": "1aef89d4ea241635e20bf4db7bb7fbe2f4c000d5",
+          "additions": 185,
+          "deletions": 8,
+          "upstream_patch_sha256": "55b6a4e998bad89d81b510f4a50088b50ef702507808f4c4865e660f5a79930f",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "examples/kinova_mintime_planning.py",
+          "status": "renamed",
+          "sha": "0c5df5fb69c79a60ebdc3f29c7f2e3bb175612b0",
+          "additions": 76,
+          "deletions": 5,
+          "upstream_patch_sha256": "a74b9f4572931274d626ca5719770e51288e5e44638b78583e6c7cb12fe496b2",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "examples/planning_utils.py",
+          "status": "added",
+          "sha": "a656c7624d4af583d78d0d326e891ce69a02daba",
+          "additions": 257,
+          "deletions": 0,
+          "upstream_patch_sha256": "b3a88fd0308dbba1f2c554daee3c4473aea2e1843b3b96ecefe4891ead277f14",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "examples/poetry.toml",
+          "status": "added",
+          "sha": "efa46ec0ec02bc3c1cba02f3c7a7e88def85f056",
+          "additions": 2,
+          "deletions": 0,
+          "upstream_patch_sha256": "28735d063d6b333123c233dddfac3836c622e92f4bfb74f0c7260904a7ec9a0a",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "examples/pyproject.toml",
+          "status": "modified",
+          "sha": "ea394aa1319fcdc7b76104f778c97f2e55a027ad",
+          "additions": 6,
+          "deletions": 4,
+          "upstream_patch_sha256": "423eb5500af13853b656fa7d18ca1b0d3e285cd000fc0a586d3e0f0fc9069f3a",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "examples/utils.py",
+          "status": "modified",
+          "sha": "e89a29bbe8a056e3f2e6010fdfd5bd84e7453e84",
+          "additions": 3,
+          "deletions": 1,
+          "upstream_patch_sha256": "517369d18832fab2518fdbd63d34f18a7a058d226ab5a0489dc12794a05c64d7",
+          "upstream_patch_excerpt_retained": false
+        }
+      ],
+      "reviews": [],
+      "comments": [],
+      "files_listing_complete": true
+    },
+    {
+      "number": 6,
+      "title": "Fix drm planner bug",
+      "url": "https://github.com/wernerpe/csdecomp/pull/6",
+      "merge_commit_sha": "ee94f8145bb32ef6c08b1e575218335b9daf533f",
+      "body": "All bazel tests passed. ",
+      "files": [
+        {
+          "filename": ".gitignore",
+          "status": "modified",
+          "sha": "b0b77cc0c0542443a81f2b4f7c64b0698abe7f42",
+          "additions": 1,
+          "deletions": 1,
+          "patch": "@@ -3,7 +3,7 @@ MODULE.bazel.*\n *.pyc\n *.pyo\n tmp/*\n-.vscode\n+.vscode/*\n *.egg-info*\n dist/*\n build/*"
+        },
+        {
+          "filename": "csdecomp/src/cpp/drm_planner.cpp",
+          "status": "modified",
+          "sha": "2b0695fa429a27022099beae9f1b9316d7eb09da",
+          "additions": 2,
+          "deletions": 0,
+          "patch": "@@ -478,6 +478,8 @@ int DrmPlanner::_plan(const Eigen::VectorXf& start_configuration,\n                         options_.try_shortcutting, root_p_voxels,\n                         online_voxel_radius, robot_joints_path)) {\n         return 1;\n+      } else {\n+        return 0;\n       }\n     } else {\n       return 0;"
+        }
+      ],
+      "reviews": [
+        {
+          "id": 2679644399,
+          "user": {
+            "login": "wernerpe",
+            "id": 48765554,
+            "node_id": "MDQ6VXNlcjQ4NzY1NTU0",
+            "avatar_url": "https://avatars.githubusercontent.com/u/48765554?u=9ac9f1df0a933e3d864c437bd0d982806d29e9d1&v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/wernerpe",
+            "html_url": "https://github.com/wernerpe",
+            "followers_url": "https://api.github.com/users/wernerpe/followers",
+            "following_url": "https://api.github.com/users/wernerpe/following{/other_user}",
+            "gists_url": "https://api.github.com/users/wernerpe/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/wernerpe/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/wernerpe/subscriptions",
+            "organizations_url": "https://api.github.com/users/wernerpe/orgs",
+            "repos_url": "https://api.github.com/users/wernerpe/repos",
+            "events_url": "https://api.github.com/users/wernerpe/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/wernerpe/received_events",
+            "type": "User",
+            "user_view_type": "public",
+            "site_admin": false
+          },
+          "body": "",
+          "state": "COMMENTED",
+          "path": null,
+          "line": null,
+          "created_at": null,
+          "submitted_at": "2025-03-12T19:20:58Z",
+          "html_url": "https://github.com/wernerpe/csdecomp/pull/6#pullrequestreview-2679644399"
+        },
+        {
+          "id": 2679647491,
+          "user": {
+            "login": "wernerpe",
+            "id": 48765554,
+            "node_id": "MDQ6VXNlcjQ4NzY1NTU0",
+            "avatar_url": "https://avatars.githubusercontent.com/u/48765554?u=9ac9f1df0a933e3d864c437bd0d982806d29e9d1&v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/wernerpe",
+            "html_url": "https://github.com/wernerpe",
+            "followers_url": "https://api.github.com/users/wernerpe/followers",
+            "following_url": "https://api.github.com/users/wernerpe/following{/other_user}",
+            "gists_url": "https://api.github.com/users/wernerpe/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/wernerpe/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/wernerpe/subscriptions",
+            "organizations_url": "https://api.github.com/users/wernerpe/orgs",
+            "repos_url": "https://api.github.com/users/wernerpe/repos",
+            "events_url": "https://api.github.com/users/wernerpe/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/wernerpe/received_events",
+            "type": "User",
+            "user_view_type": "public",
+            "site_admin": false
+          },
+          "body": "",
+          "state": "CHANGES_REQUESTED",
+          "path": null,
+          "line": null,
+          "created_at": null,
+          "submitted_at": "2025-03-12T19:22:38Z",
+          "html_url": "https://github.com/wernerpe/csdecomp/pull/6#pullrequestreview-2679647491"
+        },
+        {
+          "id": 2679727278,
+          "user": {
+            "login": "ersolog",
+            "id": 55168903,
+            "node_id": "MDQ6VXNlcjU1MTY4OTAz",
+            "avatar_url": "https://avatars.githubusercontent.com/u/55168903?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/ersolog",
+            "html_url": "https://github.com/ersolog",
+            "followers_url": "https://api.github.com/users/ersolog/followers",
+            "following_url": "https://api.github.com/users/ersolog/following{/other_user}",
+            "gists_url": "https://api.github.com/users/ersolog/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/ersolog/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/ersolog/subscriptions",
+            "organizations_url": "https://api.github.com/users/ersolog/orgs",
+            "repos_url": "https://api.github.com/users/ersolog/repos",
+            "events_url": "https://api.github.com/users/ersolog/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/ersolog/received_events",
+            "type": "User",
+            "user_view_type": "public",
+            "site_admin": false
+          },
+          "body": "",
+          "state": "COMMENTED",
+          "path": null,
+          "line": null,
+          "created_at": null,
+          "submitted_at": "2025-03-12T19:59:40Z",
+          "html_url": "https://github.com/wernerpe/csdecomp/pull/6#pullrequestreview-2679727278"
+        }
+      ],
+      "comments": [
+        {
+          "id": 1992159359,
+          "user": {
+            "login": "wernerpe",
+            "id": 48765554,
+            "node_id": "MDQ6VXNlcjQ4NzY1NTU0",
+            "avatar_url": "https://avatars.githubusercontent.com/u/48765554?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/wernerpe",
+            "html_url": "https://github.com/wernerpe",
+            "followers_url": "https://api.github.com/users/wernerpe/followers",
+            "following_url": "https://api.github.com/users/wernerpe/following{/other_user}",
+            "gists_url": "https://api.github.com/users/wernerpe/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/wernerpe/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/wernerpe/subscriptions",
+            "organizations_url": "https://api.github.com/users/wernerpe/orgs",
+            "repos_url": "https://api.github.com/users/wernerpe/repos",
+            "events_url": "https://api.github.com/users/wernerpe/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/wernerpe/received_events",
+            "type": "User",
+            "user_view_type": "public",
+            "site_admin": false
+          },
+          "body": "I think we should undo this change.",
+          "state": null,
+          "path": "csdecomp/src/cpp/tests/build_roadmap_test.cpp",
+          "line": null,
+          "created_at": "2025-03-12T19:20:48Z",
+          "submitted_at": null,
+          "html_url": "https://github.com/wernerpe/csdecomp/pull/6#discussion_r1992159359"
+        },
+        {
+          "id": 1992161187,
+          "user": {
+            "login": "wernerpe",
+            "id": 48765554,
+            "node_id": "MDQ6VXNlcjQ4NzY1NTU0",
+            "avatar_url": "https://avatars.githubusercontent.com/u/48765554?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/wernerpe",
+            "html_url": "https://github.com/wernerpe",
+            "followers_url": "https://api.github.com/users/wernerpe/followers",
+            "following_url": "https://api.github.com/users/wernerpe/following{/other_user}",
+            "gists_url": "https://api.github.com/users/wernerpe/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/wernerpe/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/wernerpe/subscriptions",
+            "organizations_url": "https://api.github.com/users/wernerpe/orgs",
+            "repos_url": "https://api.github.com/users/wernerpe/repos",
+            "events_url": "https://api.github.com/users/wernerpe/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/wernerpe/received_events",
+            "type": "User",
+            "user_view_type": "public",
+            "site_admin": false
+          },
+          "body": "please fix",
+          "state": null,
+          "path": "csdecomp/src/cpp/tests/build_roadmap_test.cpp",
+          "line": null,
+          "created_at": "2025-03-12T19:22:22Z",
+          "submitted_at": null,
+          "html_url": "https://github.com/wernerpe/csdecomp/pull/6#discussion_r1992161187"
+        },
+        {
+          "id": 1992208309,
+          "user": {
+            "login": "ersolog",
+            "id": 55168903,
+            "node_id": "MDQ6VXNlcjU1MTY4OTAz",
+            "avatar_url": "https://avatars.githubusercontent.com/u/55168903?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/ersolog",
+            "html_url": "https://github.com/ersolog",
+            "followers_url": "https://api.github.com/users/ersolog/followers",
+            "following_url": "https://api.github.com/users/ersolog/following{/other_user}",
+            "gists_url": "https://api.github.com/users/ersolog/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/ersolog/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/ersolog/subscriptions",
+            "organizations_url": "https://api.github.com/users/ersolog/orgs",
+            "repos_url": "https://api.github.com/users/ersolog/repos",
+            "events_url": "https://api.github.com/users/ersolog/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/ersolog/received_events",
+            "type": "User",
+            "user_view_type": "public",
+            "site_admin": false
+          },
+          "body": "fixed! and all bazel tests still run/pass",
+          "state": null,
+          "path": "csdecomp/src/cpp/tests/build_roadmap_test.cpp",
+          "line": null,
+          "created_at": "2025-03-12T19:59:40Z",
+          "submitted_at": null,
+          "html_url": "https://github.com/wernerpe/csdecomp/pull/6#discussion_r1992208309"
+        }
+      ],
+      "files_listing_complete": true
+    },
+    {
+      "number": 5,
+      "title": "Adds error check in finalize scene",
+      "url": "https://github.com/wernerpe/csdecomp/pull/5",
+      "merge_commit_sha": "3f1d3a88a8dcd1ae1e8118becb72cb15e43c856d",
+      "body": null,
+      "files": [
+        {
+          "filename": "csdecomp/src/cpp/urdf_parser.cpp",
+          "status": "modified",
+          "sha": "d3044ab381e59281421d39620738916dc9403f54",
+          "additions": 6,
+          "deletions": 0,
+          "patch": "@@ -522,6 +522,12 @@ void URDFParser::finalizeScene() {\n       }\n       int prev_joint_idx =\n           kinematic_tree_.getLink(prev_joint.parent_link).parent_joint;\n+      if (prev_joint_idx == -1) {\n+        throw std::runtime_error(\n+            fmt::format(\"The kinematic tree appears to be disconnected. The \"\n+                        \"link {} as parent joint index -1.\",\n+                        kinematic_tree_.getLink(prev_joint.parent_link).name));\n+      }\n       prev_joint = kinematic_tree_.getJoint(prev_joint_idx);\n     }\n   }"
+        },
+        {
+          "filename": "examples/using_drake_csd_bridge.ipynb",
+          "status": "modified",
+          "sha": "5cec9c09c8363c2efb94f6b3fe42e6210952b99a",
+          "additions": 7,
+          "deletions": 0,
+          "patch": "@@ -140,6 +140,13 @@\n     \"    print(f\\\"Collision-free {res_csd[idx]}\\\")\\n\",\n     \"    time.sleep(2)\"\n    ]\n+  },\n+  {\n+   \"cell_type\": \"code\",\n+   \"execution_count\": null,\n+   \"metadata\": {},\n+   \"outputs\": [],\n+   \"source\": []\n   }\n  ],\n  \"metadata\": {"
+        }
+      ],
+      "reviews": [],
+      "comments": [],
+      "files_listing_complete": true
+    },
+    {
+      "number": 4,
+      "title": "Adds testing for drake csd bridge",
+      "url": "https://github.com/wernerpe/csdecomp/pull/4",
+      "merge_commit_sha": "e112946ab39937d04ce7a648ac34dff119fedf0b",
+      "body": null,
+      "files": [
+        {
+          "filename": "csdecomp/src/pybind/pycsdecomp/drake_csd_bridge.py",
+          "status": "modified",
+          "sha": "e139c1ac5aef7216b71286f0dae264075f9c484a",
+          "additions": 2,
+          "deletions": 1,
+          "upstream_patch_sha256": "c5fb04a55414e9ff1f83b01627424cba30a79004ed49a6a700072e98253694ee",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/tests/BUILD",
+          "status": "modified",
+          "sha": "17d0997533d5a5188342087c31266d9a40156811",
+          "additions": 6,
+          "deletions": 0,
+          "upstream_patch_sha256": "4dec2beff2df0c2beab27af611cc88d5b9c745aa665e7489308b04dd678b3b84",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/tests/pycsdecomp_test.py",
+          "status": "modified",
+          "sha": "cb0e878bd4ae10448534bfcc73a7fd6629963d53",
+          "additions": 61,
+          "deletions": 10,
+          "upstream_patch_sha256": "7cbea4133a79a81b2059e84c501061f5b1fa2d1a34a1bed00b2f27d2ecba9212",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/tests/test_assets/BUILD",
+          "status": "modified",
+          "sha": "e4c9c7b2c1cd42ed8ad839c78cf509ce7b3106c8",
+          "additions": 3,
+          "deletions": 1,
+          "upstream_patch_sha256": "1c262ede1a85e0c00303026bce508efaee78c0bb35cfbf86afad436aab792fa1",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/third_party/python/requirements.in",
+          "status": "modified",
+          "sha": "f7d9e0e1c36239f65b81f37d0c11c552c1bf14b1",
+          "additions": 3,
+          "deletions": 1,
+          "upstream_patch_sha256": "2b24f4dd7870d9a728e7f62b1508508f5978f18940f6da61f6d1551563cfb035",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/third_party/python/requirements.txt",
+          "status": "modified",
+          "sha": "8f299e45fd050961fbe36a8c9ee4ccfd1d063357",
+          "additions": 63,
+          "deletions": 2,
+          "upstream_patch_sha256": "0aa8398505331cebc7251525d81e868784f5f9fd4e0c31006cc265fb721d9cce",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "examples/pyproject.toml",
+          "status": "modified",
+          "sha": "652d05cb66fc5855fd0e7d15e3d3f86082f71fb4",
+          "additions": 1,
+          "deletions": 1,
+          "upstream_patch_sha256": "f66855e6a67b139816c4455aae6653db684e7ba7429c043ac3fddd4078bae72f",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "examples/using_drake_csd_bridge.ipynb",
+          "status": "modified",
+          "sha": "50cef4580d33602ed9ea53f51f429d157a395079",
+          "additions": 1,
+          "deletions": 0,
+          "upstream_patch_sha256": "64ce37d106aa65040d1d0e6949bc0b14488a9a9238e51c5e10c0ac2d30aeb38c",
+          "upstream_patch_excerpt_retained": false
+        }
+      ],
+      "reviews": [],
+      "comments": [],
+      "files_listing_complete": true
+    },
+    {
+      "number": 3,
+      "title": "Implements converting drake plants with locked joints",
+      "url": "https://github.com/wernerpe/csdecomp/pull/3",
+      "merge_commit_sha": "0aba23ce14523202b0c1453a04c55b13509befe3",
+      "body": null,
+      "files": [
+        {
+          "filename": "csdecomp/src/pybind/pycsdecomp/drake_csd_bridge.py",
+          "status": "modified",
+          "sha": "77f0e689be48aa8741e974c859a651542d9b68a4",
+          "additions": 55,
+          "deletions": 10,
+          "patch": "@@ -7,7 +7,7 @@\n from typing import Union\n import pycsdecomp as csd\n import numpy as np\n-\n+from scipy.spatial.transform import Rotation\n \n def set_joint_type_by_drake_name(drake_joint_type_name: str)->csd.JointType:\n     if drake_joint_type_name == 'weld':\n@@ -44,13 +44,14 @@ def get_compound_name(model_name, body_name):\n     else:\n         return f\"{model_name}::{body_name}\"\n     \n-def convert_drake_plant_to_csd_plant(drake_plant : MultibodyPlant,\n-                                     inspector : SceneGraphInspector)\\\n-                                    ->csd.Plant:    \n+def convert_drake_plant_to_csd_plant(drake_plant: MultibodyPlant,\n+                                     plant_context: Context,\n+                                     inspector: SceneGraphInspector\n+                                     )->csd.Plant:\n     csd_KT = csd.KinematicTree()\n     model_instance_indices = [ModelInstanceIndex(i) \\\n-                              for i in range(\n-                                  drake_plant.num_model_instances())]\n+                                for i in range(\n+                                    drake_plant.num_model_instances())]\n     all_drake_bodies = []\n     csd_links = []\n     for miidx in model_instance_indices:\n@@ -59,7 +60,7 @@ def convert_drake_plant_to_csd_plant(drake_plant : MultibodyPlant,\n             all_drake_bodies.append(drake_plant.get_body(bid))\n             if all_drake_bodies[-1].is_floating():\n                 raise NotImplementedError('floating bases not \\\n-                                          supported yet.')\n+                                            supported yet.')\n             csd_link = csd.Link()\n             #will be set later when processing the joints\n             csd_link.parent_joint = -1\n@@ -74,11 +75,12 @@ def convert_drake_plant_to_csd_plant(drake_plant : MultibodyPlant,\n     joint_idx = drake_plant.GetJointIndices()\n     csd_joints = []\n     all_drake_joints = []\n+    assoc_model_names = []\n     for jid in joint_idx:\n         joint = drake_plant.get_joint(jid)\n         lower = joint.position_lower_limits()\n         upper = joint.position_upper_limits()\n-        \n+\n         all_drake_joints.append(joint)\n         local_parent_id = all_drake_bodies.index(joint.parent_body())\n         local_child_id = all_drake_bodies.index(joint.child_body())\n@@ -88,8 +90,8 @@ def convert_drake_plant_to_csd_plant(drake_plant : MultibodyPlant,\n         csd_joint.name = joint.name()\n         csd_joint.type = set_joint_type_by_drake_name(joint.type_name())\n         if csd_joint.type != csd.JointType.FIXED:\n-            csd_joint.position_lower_limit = lower\n-            csd_joint.position_upper_limit = upper\n+            csd_joint.position_lower_limit = lower[0]\n+            csd_joint.position_upper_limit = upper[0]\n             \n         csd_joint.parent_link = csd_KT.get_link_index(\n             csd_links[local_parent_id].name)\n@@ -107,6 +109,49 @@ def convert_drake_plant_to_csd_plant(drake_plant : MultibodyPlant,\n         csd_joints.append(csd_joint)\n         csd_links[local_parent_id].child_joints.append(len(csd_joints)-1)\n         csd_links[local_child_id].parent_joint = len(csd_joints)-1\n+        model_name_link = csd_links[local_child_id].name.split('::')[0]\n+        assoc_model_names.append(model_name_link)\n+\n+    #itentify locked joints, switch them to csd.JointType.FIXED and correct the transform\n+    for idx, (dj, csdj, mn) in enumerate(zip(all_drake_joints, csd_joints, assoc_model_names)):\n+        if csdj.type == csd.JointType.FIXED:\n+            continue\n+        if dj.is_locked(plant_context):\n+            print(\"Locked joint found:\")\n+            print(f\"Joint {dj} csd Joint {csdj.name}\")\n+            #compute value of locked joint \n+            print(drake_plant.GetPositionNames())\n+            partial_name = mn+\"_\"+dj.name()\n+            idx_lookup = 0\n+            for pn in drake_plant.GetPositionNames():\n+                if partial_name in pn:\n+                    break\n+                idx_lookup+=1\n+            locked_joint_val = drake_plant.GetPositions(plant_context)[idx_lookup]\n+            print(f\"Joint {dj.name} is locked at displacement {locked_joint_val}\")\n+            fixed_joint = csd.Joint()\n+            fixed_joint.name = csdj.name\n+            fixed_joint.X_PL_J = csdj.X_PL_J\n+            fixed_joint.axis = csdj.axis\n+            fixed_joint.parent_link = csdj.parent_link\n+            fixed_joint.child_link = csdj.child_link\n+            fixed_joint.type = csd.JointType.FIXED\n+\n+            #now we correct the transform\n+            if csdj.type == csd.JointType.REVOLUTE:\n+                rot = Rotation.from_rotvec(locked_joint_val * np.array(csdj.axis)).as_matrix()\n+                X_J_L = np.eye(4)\n+                X_J_L[:3, :3] = rot\n+            elif csdj.type == csd.JointType.PRISMATIC:\n+                X_J_L = np.eye(4)\n+                X_J_L[:3, 3] = np.array(csdj.axis) * locked_joint_val\n+            else:\n+                raise NotImplementedError(f\"\"\"\"Converting locked drake joint type {dj.type_name()} not supported.\n+    Csd joint: {csdj.name} {csdj.type}\"\"\")\n+            fixed_joint.X_PL_J = csdj.X_PL_J@X_J_L \n+            #substitute the joint in the list\n+            csd_joints[idx] = fixed_joint\n+\n     for j in csd_joints:\n         csd_KT.add_joint(j)\n "
+        }
+      ],
+      "reviews": [],
+      "comments": [],
+      "files_listing_complete": true
+    },
+    {
+      "number": 2,
+      "title": "Removes system python dependency for cpp unit tests",
+      "url": "https://github.com/wernerpe/csdecomp/pull/2",
+      "merge_commit_sha": "9f04f89cf6f64c25cc7df5d4ca0fd0f6ac2e8937",
+      "body": "Switching to calling matplotlib_cpp with the bazel internal python by default.",
+      "files": [
+        {
+          "filename": ".vscode/launch.json",
+          "status": "added",
+          "sha": "005fd23e3468a623fd00c5a51473711a60d4139c",
+          "additions": 243,
+          "deletions": 0,
+          "upstream_patch_sha256": "b8adb2f77ed9889ef3f0e7495260dca8da1f185b449d31761e1d102193efb0c5",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": ".vscode/settings.json",
+          "status": "added",
+          "sha": "5ceaae3b93dc8c88dea13e20ae147eb7a2bfd916",
+          "additions": 94,
+          "deletions": 0,
+          "upstream_patch_sha256": "8a9802d9aab4517689611effe40134019124b696a2c3af00d500b6d775ff7485",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": ".vscode/tasks.json",
+          "status": "added",
+          "sha": "19be8f05b60fe0eed45e609bc3aaea591c6bb05c",
+          "additions": 211,
+          "deletions": 0,
+          "upstream_patch_sha256": "2f961294e92d70b278caf924369d58416bbcefae21a8a30b2cc5aabbada7951a",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "BUILD",
+          "status": "modified",
+          "sha": "741b1c7488cab2c9e1d299ac7671f00d8cf552f7",
+          "additions": 8,
+          "deletions": 0,
+          "upstream_patch_sha256": "ca9a6baba85cc2e907a0c1d9707167ea2706edc2db4965467f8a0b92e19637c2",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "MODULE.bazel",
+          "status": "modified",
+          "sha": "66bfeedffb8c38d9aadd390fbc32eae19853c57f",
+          "additions": 8,
+          "deletions": 0,
+          "upstream_patch_sha256": "5870cc7d159a649ee93cdbbd8bb36ca84cada8a8bdf6e7cee1eb1509a764b998",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "README.md",
+          "status": "modified",
+          "sha": "0b22d7060660887ef9368dfee7799410d7562a09",
+          "additions": 18,
+          "deletions": 9,
+          "upstream_patch_sha256": "f518878f8e43cd1b0a0b22e7fcbd77d04d91fc8dffe967ad388f3a743d4e5d8d",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "WORKSPACE",
+          "status": "modified",
+          "sha": "df1ac573257a65ec688cbd8a4b4e13198396e4ea",
+          "additions": 0,
+          "deletions": 8,
+          "upstream_patch_sha256": "bfa82549552965ce2ed5ac2b07dac862ba38cb03cb04279a6ad8d5e38d62109c",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/cpp/kinematic_tree.cpp",
+          "status": "modified",
+          "sha": "06a40890a863081e89149d3e1979d13d22a85d48",
+          "additions": 3,
+          "deletions": 3,
+          "upstream_patch_sha256": "449bd4253ab8204ef3367a1f11301381683b254ca8d7fc827c8bf4f9ee6a8b20",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/cpp/kinematic_tree.h",
+          "status": "modified",
+          "sha": "f5db0545bd94df4d6838cf2f1fbac7f0f61fa20c",
+          "additions": 3,
+          "deletions": 3,
+          "upstream_patch_sha256": "369151ccb8257ca1707752b864cfbe9aead89cb1babd661a7e3cff87d46dc017",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/cpp/minimal_plant.h",
+          "status": "modified",
+          "sha": "df658f927e9a8b6114448ea71c134184f193c72e",
+          "additions": 1,
+          "deletions": 2,
+          "upstream_patch_sha256": "b39408daab592e792f78733ec46d45e037840c5b4ed1175216aa402b3c84d5de",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/cpp/tests/BUILD",
+          "status": "modified",
+          "sha": "238aa76d23ef909a120734025cc9dfbbc5b91cc3",
+          "additions": 26,
+          "deletions": 2,
+          "upstream_patch_sha256": "9d6ae53ed54cbf34529965dcf6c2ecba7e4131a0b3107642bbfcabdec921c5d3",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/cuda/cuda_set_builder_utils.cu",
+          "status": "modified",
+          "sha": "ad0680b778d03f5e0baddfd434426fb5bdfe661a",
+          "additions": 2,
+          "deletions": 2,
+          "upstream_patch_sha256": "7d1d37acbfb63290a22340801c7b2e7603796036611071a75fb184b5964a3c44",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/cuda/cuda_set_builder_utils.h",
+          "status": "modified",
+          "sha": "704d4be81c477f9171549ba1cef8cdd090853b26",
+          "additions": 2,
+          "deletions": 2,
+          "upstream_patch_sha256": "afabfa1692b28f0b95a08859f31abd9464e3e3af8c5d3e39b91020ad18a088f6",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/cuda/tests/BUILD",
+          "status": "modified",
+          "sha": "0861367e95b86e9190bfba0afe7e548add76d930",
+          "additions": 117,
+          "deletions": 11,
+          "upstream_patch_sha256": "46160fd9a2a5d0063c2c7702f9d8a6726823e9528f53c1ec96c885b99b99b56a",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/pybind/pycsdecomp/BUILD",
+          "status": "modified",
+          "sha": "5b6ee12f9b2e38f8ab0f086e1288bf95ba37a0fd",
+          "additions": 16,
+          "deletions": 12,
+          "upstream_patch_sha256": "ad6edad7af1b3446e4363865f7a2ebd1483b8efabef310639bba44b9a11e536d",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/pybind/pycsdecomp/generate_stubs.py",
+          "status": "modified",
+          "sha": "0b049657dae4dd20d5a1fc8e7a51945d93e13c76",
+          "additions": 1,
+          "deletions": 0,
+          "upstream_patch_sha256": "bfbe053d7dc27000141778ddf1574655d03f1fadbc1f357c12783ad028016db3",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/tests/BUILD",
+          "status": "modified",
+          "sha": "8a2ece0255582a0e958c108cd3c4d812d33beef7",
+          "additions": 34,
+          "deletions": 6,
+          "upstream_patch_sha256": "6d0b1a17a185505bea12c2cfb7ee083440c5c25f8ce134d715c6ec54f1e458cf",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/tests/plotting_utils.h",
+          "status": "modified",
+          "sha": "8dfbcc6f3cd5954a63c5e19a9b4434aaa5f40694",
+          "additions": 2,
+          "deletions": 0,
+          "upstream_patch_sha256": "0903cef1f48f8ae3c31a8bf77f082beb1f39b5923240f87c3ac3e7b31a82fa00",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/tests/test_matplotlib.cpp",
+          "status": "added",
+          "sha": "1d90ead02e6767d053c9a05af9c1eacc0dfd751b",
+          "additions": 45,
+          "deletions": 0,
+          "upstream_patch_sha256": "ed29d4f241ed3634d973abdaa47b4976ca74c461c10e3fa3b2be02bd04a0e6fe",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/third_party/BUILD",
+          "status": "modified",
+          "sha": "0d035d44a6f3c11ecd876e03105c9efa67dbbb76",
+          "additions": 26,
+          "deletions": 0,
+          "upstream_patch_sha256": "2617f06195b754cf45ed312bfde1fa28be0d2f9659d5d21076451e6e8f82ea8d",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/third_party/matplotlib_cpp.BUILD",
+          "status": "removed",
+          "sha": "f4182cacd82d74ab0dac86b2a7ee7f4a8f8bb36b",
+          "additions": 0,
+          "deletions": 9,
+          "upstream_patch_sha256": "574c0bf5092232834b6fd902cff5d9b72fe05fcd7f73da4d9a0dea2331e8b4c0",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/third_party/matplotlibcpp.h",
+          "status": "added",
+          "sha": "c4e70465fd8a082c79c1dcaf155ca921f0b85e7b",
+          "additions": 3044,
+          "deletions": 0
+        },
+        {
+          "filename": "csdecomp/third_party/python/BUILD",
+          "status": "added",
+          "sha": "a601db4ecb99361038cac365599643b37d8d4922",
+          "additions": 22,
+          "deletions": 0,
+          "upstream_patch_sha256": "9f865010cc7228dd2267aa6b03cc06ee1193266fd42e5516e49c9f26e0e3a56e",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/third_party/python/README.md",
+          "status": "added",
+          "sha": "b183aaaa2f1b8e265becc4fe64767f6929dde9c0",
+          "additions": 26,
+          "deletions": 0,
+          "upstream_patch_sha256": "eb0e40340012fbe9e35e8b964a0f14bd9b132ba82e44a8e94ac7b665d8a6c98f",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/third_party/python/hello_world.py",
+          "status": "added",
+          "sha": "ad5080c7121372dfe6f1aaef5e301c0292b52d6f",
+          "additions": 11,
+          "deletions": 0,
+          "upstream_patch_sha256": "820c123bc436141dfaf7675c6f623f8d2d6242229ee30c401b5d0e86b63dda3e",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/third_party/python/requirements.in",
+          "status": "added",
+          "sha": "b03d482eae1422bfffced7fa2266e880b09f8959",
+          "additions": 4,
+          "deletions": 0,
+          "upstream_patch_sha256": "435570138b89bc0faaeadf40ae4f6436604fa634d8f78d7a889a654b83a95164",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/third_party/python/requirements.txt",
+          "status": "added",
+          "sha": "f41f9668d3be7970dbe61a79618da88f4bb686bd",
+          "additions": 402,
+          "deletions": 0,
+          "upstream_patch_sha256": "9054fb55b445dab0c1a5bac12bf1df92a302cdf7a70f5201f3fe593ec970b57f",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "setup.sh",
+          "status": "added",
+          "sha": "7d84c99bdbcbb112b5a2f7d0d67539f3d4fe88f4",
+          "additions": 2,
+          "deletions": 0,
+          "upstream_patch_sha256": "58308233ee3681ec40231790084dd9162401bede162c038ba0299e17f93fcd14",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "tools/cc_with_system_python.bzl",
+          "status": "renamed",
+          "sha": "c5b2894be36860f371d3b28341289090500d9288",
+          "additions": 19,
+          "deletions": 2,
+          "upstream_patch_sha256": "f8cca0d364d40d524f9e86351755a9bccf6fbc25fef71159958dc97133d99edf",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "tools/embedded_py.bzl",
+          "status": "added",
+          "sha": "3ace33556e8dc84653013c2d60bdc485619b7f67",
+          "additions": 101,
+          "deletions": 0,
+          "upstream_patch_sha256": "663397b47375d855a26856984667bf42a71048e9a31adf9a54d673dce2f41567",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "tools/my_python_version.bzl",
+          "status": "modified",
+          "sha": "e74ac80bf65d104e85d9f575993dc6d032c0c6c4",
+          "additions": 9,
+          "deletions": 1,
+          "upstream_patch_sha256": "2b336af6330d32c0f6888e731d157e7828da1b88ea98e7c984a31e07e277a60a",
+          "upstream_patch_excerpt_retained": false
+        }
+      ],
+      "reviews": [],
+      "comments": [],
+      "files_listing_complete": true
+    },
+    {
+      "number": 1,
+      "title": "First draft of CPP docs",
+      "url": "https://github.com/wernerpe/csdecomp/pull/1",
+      "merge_commit_sha": "b7df2b3b70dba9348781345b2aab6c70447d77c6",
+      "body": "Adds doxygen-based documentation to the codebase.",
+      "files": [
+        {
+          "filename": "csdecomp/docs/Doxyfile",
+          "status": "added",
+          "sha": "91752fdf57c687e251a3806b9a869389cd08f927",
+          "additions": 10,
+          "deletions": 0,
+          "upstream_patch_sha256": "f935c758900e6f295d7a0cc4abaa83b3b86cac0fb1f6521a80816a683fa73c3a",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/docs/gen_py_doc.py",
+          "status": "added",
+          "sha": "398118e03351d5269578143ef67f9207878432cb",
+          "additions": 18,
+          "deletions": 0,
+          "upstream_patch_sha256": "8dde6e235410966e0c9914c49d1859d5ae57420445df428ddd35e78224a0e2af",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/docs/mainpage.dox",
+          "status": "added",
+          "sha": "021d62f79a100ffecf318bc4831cec436a112e0d",
+          "additions": 80,
+          "deletions": 0,
+          "upstream_patch_sha256": "fc0939187f760a9ca8dd95bd014483df81595a39980b751814b6c7c602ce449b",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/docs/source/conf.py",
+          "status": "added",
+          "sha": "2f62fd546e7ce9b5000e038b72ecab97e7a5dcea",
+          "additions": 45,
+          "deletions": 0,
+          "upstream_patch_sha256": "aa7bd6c72a4e3270a6668cfc9bb8ff6ad83a95043695b87d9ef0ebb8c595cd36",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/docs/source/index.rst",
+          "status": "added",
+          "sha": "cf9ae5e25cd5c39d73d734a357506864dd09c5bb",
+          "additions": 33,
+          "deletions": 0,
+          "upstream_patch_sha256": "abc24c151f6221d66cb18b2bf5f5d8476c6bda7aac44c9110dfc672b29b09d18",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/pybind/pycsdecomp/BUILD",
+          "status": "modified",
+          "sha": "f738028b31a23186ba11d15db714e6c8a20932ad",
+          "additions": 1,
+          "deletions": 26,
+          "upstream_patch_sha256": "c76dfbca6888b3af5290a6520e526ebceac993633ecb0fcbde35f2402c7cf6ed",
+          "upstream_patch_excerpt_retained": false
+        },
+        {
+          "filename": "csdecomp/src/pybind/pycsdecomp/pycsdecomp_bindings.cpp",
+          "status": "modified",
+          "sha": "dfe5e52d1080844dcaf2241169d4382047017b33",
+          "additions": 7,
+          "deletions": 0,
+          "upstream_patch_sha256": "5e8265c133b7be27890012b149ca548eded6f4681aedb564a45166ef600d6a94",
+          "upstream_patch_excerpt_retained": false
+        }
+      ],
+      "reviews": [],
+      "comments": [],
+      "files_listing_complete": true
+    }
+  ],
+  "official_local_comparisons": [
+    {
+      "path": "MODULE.bazel",
+      "upstream_git_blob_sha1": "39aafa2d1526befaf30a782a64150d8ec5921b9a",
+      "local_sha256": "bc0de73c407f25b2d13742c5405bf795abfc0de36669c98d3f0c6acdc9b7cc37",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/docs/Doxyfile",
+      "upstream_git_blob_sha1": "91752fdf57c687e251a3806b9a869389cd08f927",
+      "local_sha256": "bd1d280f7d7d59f75b06cdaa96126865a9970b11d2cc1927ab815b4b5845d433",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/docs/gen_py_doc.py",
+      "upstream_git_blob_sha1": "398118e03351d5269578143ef67f9207878432cb",
+      "local_sha256": "1b268b7d85a32b388d8771037a9d14a6b8f05bdac5ad7518ff31f7aefb767144",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/docs/mainpage.dox",
+      "upstream_git_blob_sha1": "263263e7ef0c5b82cb7d8d8a24412e0bf7d2b383",
+      "local_sha256": "c5d4e9fb67c0d1b94a73834b9bc2d2d1bc86efa567c3b61bcc2868840ecad529",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/docs/source/conf.py",
+      "upstream_git_blob_sha1": "2f62fd546e7ce9b5000e038b72ecab97e7a5dcea",
+      "local_sha256": "8a74cebfd1c79f8368d4b3927e909cc106d08efd80940353c97accc9f320397f",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/docs/source/index.rst",
+      "upstream_git_blob_sha1": "e0ecb3d60db27449858791d4774162fcb79ff7b9",
+      "local_sha256": "f1733d005a9fed1c6f6dea652f572981e031d82d1ec38afc67d357887527b879",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/src/geometry/BUILD",
+      "upstream_git_blob_sha1": "cb0c07755dd53c1b4a1838a3e752df97c84a248f",
+      "local_sha256": "f31216fd7699a34dcb0b643a70d603ca949bf46f05f178ad72da302ce7f35d28",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/src/geometry/cuda_distance_field.cu",
+      "upstream_git_blob_sha1": "8b67b155741db78f162937e4788f849a77f0979c",
+      "local_sha256": "e36c822f30562ba46d661334f26fdc51a47f57a3435a0ca50d78a50eabf9328f",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/src/geometry/cuda_distance_field.h",
+      "upstream_git_blob_sha1": "0ae7a32c2006a68f40279a0baa84a743297260c6",
+      "local_sha256": "cf80424b1ba2d524e0fe48f3b1d1520a61d8d7e0a246751deb5a76f318f752fb",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/src/geometry/cuda_geometry_utilities.h",
+      "upstream_git_blob_sha1": "74382a24b9226434247e4cbb22de304f09943442",
+      "local_sha256": "5efc4f947e249f156b7cc2e3919730fbb368a7c46db7a616a72368cf36f63fa9",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/src/geometry/cuda_hit_and_run_sampling.cu",
+      "upstream_git_blob_sha1": "8466257666375a985edc296f33e4c890da797404",
+      "local_sha256": "efc85d756923ef34ca9410a9b3ee9a30229886f1d9d17bb152a73441b7b6b6ea",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/src/geometry/cuda_hit_and_run_sampling.h",
+      "upstream_git_blob_sha1": "750653039713dff36f3aa6cd6a7ae189d56d90e9",
+      "local_sha256": "06947bda799f27c7577e0a9cc4b11ec3248fb8004c3862c52727dd7824469c55",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/src/geometry/distance_aabb_linesegment.cpp",
+      "upstream_git_blob_sha1": "42bcc1be503022b23ee3452a375402da5d4ce90a",
+      "local_sha256": "33d67834b26e2d55f1b04798f0bdb0742691dad0ed48b80d7ca6d1a45f959df4",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/src/geometry/distance_aabb_linesegment.h",
+      "upstream_git_blob_sha1": "4eb5cb2de59619870ed89aca7f24b09ebf233003",
+      "local_sha256": "b8195c2d6c5c10ffd45296e448ec63454ba17a4866dd0e4b231048ce4cb63164",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/src/geometry/hpolyhedron.cpp",
+      "upstream_git_blob_sha1": "febbd52bfc43b0d4f887f8f111484ce223516703",
+      "local_sha256": "ea07ce4a8e8204b2f461b8ec75f637c86bdb7c6c415a5588ba791346c755aaba",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/src/geometry/hpolyhedron.h",
+      "upstream_git_blob_sha1": "1fa57d7388be5e622b882602b111b5227c458c90",
+      "local_sha256": "2952446b423e1037f0a9cb5a238e4ba896f9415e3a54fc44616178697e7177e7",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/src/geometry/linesegment_aabb_checker.cpp",
+      "upstream_git_blob_sha1": "1899aa4fe6c76eef72b0e18c8fd87a0cbb61e798",
+      "local_sha256": "138b95ca69e6206de7ff7a095280cb0d42506a3edd75ee436ea386b138e8fb0c",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/src/geometry/linesegment_aabb_checker.h",
+      "upstream_git_blob_sha1": "188b1c951d97a2703f31fa581a989b0df9c29d6d",
+      "local_sha256": "3385ea9f516c9aae6a70c99ea2b929d8793733515c5a5fc55c1f2cb3b399f174",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/src/geometry/tests/BUILD",
+      "upstream_git_blob_sha1": "ef8873c43c5aad3135b8a5f0f0d8bddd0855ea44",
+      "local_sha256": "15b003157c4c9077dbc2e04762889569b371cb85492b385d5bbf1f2607f5b0a2",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/src/geometry/tests/cuda_distance_field_test.cpp",
+      "upstream_git_blob_sha1": "0bd8ebd843cc5bf402e1abcfa820ad5f5800c67e",
+      "local_sha256": "6103b0093da7f59b5590994eaf5d502b57e44fdcc50a252f9689cec4b9768633",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/src/geometry/tests/cuda_hit_and_run_sampling_test.cpp",
+      "upstream_git_blob_sha1": "78c001324a6416a2a6cae9723106c81344b7641d",
+      "local_sha256": "c034f23b56ae4a8bfff0abf8aea41de706e92a6cd2838f37cdd2ef7932bba352",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/src/geometry/tests/distance_aabb_linesegment_test.cpp",
+      "upstream_git_blob_sha1": "00f0583d7adbd8c33b4c5094cece9008ce761bd4",
+      "local_sha256": "c1d77586a1a67ef1ae85d70cab716158854fab4c1caf84efb96962d8bf709dae",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/src/geometry/tests/hpolyhedron_test.cpp",
+      "upstream_git_blob_sha1": "8d2672bdf824ffb9861a6b776fa72270504723e4",
+      "local_sha256": "a1731f4a380e0925bfb2465d19031b7eaf3716ffe544467adfec162f3c16e676",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/src/geometry/tests/linesegment_aabb_checker_test.cpp",
+      "upstream_git_blob_sha1": "c990d349ea78192687ab22de5185cd17b25f1b58",
+      "local_sha256": "0c3d6897bc9e7c5c84b18ff5e21ec9cc5f81c4f383bde9d89c294110355467aa",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/src/geometry/tests/omp_test.cpp",
+      "upstream_git_blob_sha1": "2e9d57234d6153bbb438d9e367b3bebbf1af2f14",
+      "local_sha256": "d2b68f33f567239203211d98fbfa44f532dd53651707550237a746fe9a9140ef",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/src/planning/BUILD",
+      "upstream_git_blob_sha1": "65dcbab09e941a523c4646a334fad347ebbc4397",
+      "local_sha256": "9ccfc7b3e0f8ed172380291ad942400e4ec4ff55066198a85a93946cdbfc00c6",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/src/planning/bezier_curve.cpp",
+      "upstream_git_blob_sha1": "8840e5c1a05f36e991b473a35ed3e2768b883732",
+      "local_sha256": "aa6a33c5736d44aa817d9295c8a037b89abb258666b6d15a69bbea00dbd7aa29",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/src/planning/bezier_curve.h",
+      "upstream_git_blob_sha1": "e32d27eb4391c057b2b3db2012bf1085b90aeb1a",
+      "local_sha256": "6044a23fc381e3a86169d030bc127d1d5ef1a137d48bd42a35ffce99f245653c",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/src/planning/cuda_edge_inflation_zero_order.cu",
+      "upstream_git_blob_sha1": "d61052d2a3f711bc611524a87ce7212f1142dc66",
+      "local_sha256": "d3a4370d21a44a967885324769c9ecb3b16d6e43cf22365e14ead98a83403f8a",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/src/planning/cuda_edge_inflation_zero_order.h",
+      "upstream_git_blob_sha1": "8f39483cd12b4172a5ef867a9b11fdbf744ccbdd",
+      "local_sha256": "7ed4b53c0ab0fb630d982b1da9763d1294c42efc577791409456cf7892267845",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/src/planning/cuda_edit_regions.cu",
+      "upstream_git_blob_sha1": "cb329fed511d3d44e365aa3760e958c7916e0ad6",
+      "local_sha256": "8a81084168fe653afb3f06b35b8210d37f965045d36a271949ff1f1133361f1a",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/src/planning/cuda_edit_regions.h",
+      "upstream_git_blob_sha1": "2ec3f16c1272c6cf3ec2374936742bfb0a135986",
+      "local_sha256": "3cd184062478ee9202f20b7c7009dbe92443c6298dceb657195bf591468c6100",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/src/planning/cuda_polytope_builder.cu",
+      "upstream_git_blob_sha1": "a0864904140734ed14f0efc0f67fb365037d75b2",
+      "local_sha256": "98d28657ee689e853e9f34b17e580a4f2a6cbcaa91b2b65773b4709fc91d189a",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/src/planning/cuda_polytope_builder.h",
+      "upstream_git_blob_sha1": "c4a9aa92002e6948111b3e145413a37769182bec",
+      "local_sha256": "059856843c3a489dd16ea418dc17aa12d0e37c8a22316bcfbd77799e28f9a669",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/src/planning/cuda_set_builder_utils.cu",
+      "upstream_git_blob_sha1": "4eb614f5042fb51db485eb733f8b42110f377b3d",
+      "local_sha256": "26e0ba5e82af61831fd8b60af255abd449eb387f39255941b5d075ef8928fcd5",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/src/planning/cuda_set_builder_utils.h",
+      "upstream_git_blob_sha1": "446fd3c4b70f620d73ce1293a3ff25a4c72738cc",
+      "local_sha256": "d4cd4d1e2756dfc23aae9ef3ed5ee14fe51643f973d3b38e4bba574a01ba1d4d",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/src/planning/cuda_visibility_graph.cu",
+      "upstream_git_blob_sha1": "e3cd9f7e502a1df75e74194a9383d66dfba9c029",
+      "local_sha256": "a3e157409394cf561435f6f51c4559b2b8ff1a701ad67f61efa3473b2d9c51b3",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/src/planning/cuda_visibility_graph.h",
+      "upstream_git_blob_sha1": "18d41a5c78c7407283f7eeb5382301d07dd6a113",
+      "local_sha256": "08651fed169694007151437f262e4e79103fdbf7056cfce6fc7e6376a27b7a12",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/src/planning/drm_cuda_utils.cu",
+      "upstream_git_blob_sha1": "9b14706150e1b035e058b6c645f26b9b01ecea51",
+      "local_sha256": "4881fa17dee49fd1bf49f7442a1114aa4bc7c852a79bbacec3dbff223323f6f1",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/src/planning/drm_cuda_utils.h",
+      "upstream_git_blob_sha1": "385a13902d706c80a16f0893d6b1c88a443f28e7",
+      "local_sha256": "c079680eec895177d65e326cfdc3f47af92463af1118686264b440fe2f3c90bd",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/src/planning/drm_planner.cpp",
+      "upstream_git_blob_sha1": "c016b2520bd696f3e042350cd5775312171b1ac6",
+      "local_sha256": "159300e72e24c2ed398c2c1453a94c10f1f34024f20b014c06e89825380658d6",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/src/planning/drm_planner.h",
+      "upstream_git_blob_sha1": "1eafc7445b60fe9192efd6fc185b6ec60b81918b",
+      "local_sha256": "ec305900bb6037ad3b06c01acd0ed91a0f2771efbedf580a77f6599948aa8465",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/src/planning/roadmap.cpp",
+      "upstream_git_blob_sha1": "4c9d5b35303204b229ba91a86b6b9e0b2be0bcf6",
+      "local_sha256": "4894ea1fb88fa09cebea1a63ac0094889324ff32dc819a293a0266879b022d12",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/src/planning/roadmap.h",
+      "upstream_git_blob_sha1": "13544641eece9fc19ff7082a5680c42d2177038d",
+      "local_sha256": "229096b102e72094b8c813c4cc11ff3e0ca3a60b396c15a5cdc20630925fe410",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/src/planning/roadmap_builder.cpp",
+      "upstream_git_blob_sha1": "f09e644db620495a91dfc509e5065dfe6debb1f8",
+      "local_sha256": "1b98793061f9b9b6e18f572f8603bb67664ebfdd887f784bc0ffa7d30bc7dc58",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/src/planning/roadmap_builder.h",
+      "upstream_git_blob_sha1": "00b9a3bf315a5f5427af1ff3f2c6eff285e65485",
+      "local_sha256": "cc398eb04f7922d48870b2defe1863bc4c84ea75711d7f98c11c917f52c69f63",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/src/planning/tests/BUILD",
+      "upstream_git_blob_sha1": "efda7cafb248fb093f5364b10372d913bf9a002e",
+      "local_sha256": "9535ee503944c3a60500895d7cfb95438e4eae5822c1fb11964f9225e5229552",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/src/planning/tests/bezier_curve_test.cpp",
+      "upstream_git_blob_sha1": "f1b0965181bf3e81ddb3ab2134587e6da57d5cf9",
+      "local_sha256": "9df09be313adf736ba03013f694e7de1d96bef5cc3092f75227c4a5b520355d4",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/src/planning/tests/build_roadmap_test.cpp",
+      "upstream_git_blob_sha1": "dd8959873eb56d98e39da6389a4c1f7ec67535f5",
+      "local_sha256": "e14aaa945e5a388dc41f1122c8b708ecbd897921a85466e46168490e3064587f",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/src/planning/tests/cuda_edit_regions_test.cpp",
+      "upstream_git_blob_sha1": "b549e8cea6fbf0efff65b852858e01c535bab2cb",
+      "local_sha256": "e075c47dad08d795856ccb094da57b32c662946071a9145e7d42a48334dd0b30",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/src/planning/tests/cuda_set_builder_utils_test.cpp",
+      "upstream_git_blob_sha1": "58d0e808f970de11a6990e0e9ff529f57143789e",
+      "local_sha256": "0442cbe69ac797bf333262432ac2b67dca033aa709cd862dfd5414f377951d23",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/src/planning/tests/cuda_visibility_graph_test.cpp",
+      "upstream_git_blob_sha1": "40e4bbf39be0fc9b02f610f757e7f74bdd88d7a7",
+      "local_sha256": "8d33cc3618682832183966c59b524f297fd08f4c5a79aaf5e302970df9519276",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/src/planning/tests/edge_inflation_zero_order_test.cpp",
+      "upstream_git_blob_sha1": "dca96a0fc487a5c153ed3ed694b302ec60190492",
+      "local_sha256": "cd8a7e277ed3db6b8152928a63a5a60d9311395f5c5b04d51b2476ae7702a559",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/src/planning/tests/polytope_builder_test.cpp",
+      "upstream_git_blob_sha1": "5c81d740b59e3b170871fbac05bac947a549f7b6",
+      "local_sha256": "a2fe25e51c3825786d61ab047fb234d05fdb9db3077613fa6af9528a58577e5c",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/src/plant/BUILD",
+      "upstream_git_blob_sha1": "f5d7bca4a09d493aa41d991f4de3cdb144d9f0f0",
+      "local_sha256": "8b0712c5fc584e07dae1874be28aad43e7f162d18334a167dcd3627c7f35e674",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/src/plant/collision_checker.cpp",
+      "upstream_git_blob_sha1": "cb9c4748ab5442012100b4924e9c179a5d0d0ab1",
+      "local_sha256": "16ec2d476ae9b1dcb1368c97c9395148b7060929eb2662c0d6368cdca8c47027",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/src/plant/collision_checker.h",
+      "upstream_git_blob_sha1": "7a88615ce6c1a56d6fbdcca3c4ea2095472749ed",
+      "local_sha256": "9f87ef2ebc29ba989185dfab085924c63d0da5cca8e2a415463073c1ff342eb1",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/src/plant/collision_geometry.h",
+      "upstream_git_blob_sha1": "a78dd85fa720b5661df1a80c4536166de6b70891",
+      "local_sha256": "428de17ca82ea7d4c55cd7b22fbdb6c3475e89d2ef847915f59147d1e965c7f5",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/src/plant/cuda_collision_checker.cu",
+      "upstream_git_blob_sha1": "e38f25954a35ccb97bc14e7cface9d888d6a8bb4",
+      "local_sha256": "67b975902ce59293523ea90eafe0f173f9b97c65d8616abbd9fd9531e013d8b7",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/src/plant/cuda_collision_checker.h",
+      "upstream_git_blob_sha1": "e25184b06430d9784267d71d049ebff87464e180",
+      "local_sha256": "2a56421d6dbc28e9c331baa68117ce2a8f1f03f9b402edc9aa9ab1288e2dec12",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/src/plant/cuda_forward_kinematics.cu",
+      "upstream_git_blob_sha1": "9a7b238fb731ea738993ea9882a84d71497a0af7",
+      "local_sha256": "3628a916556095bfd5772d702bb1ebaffe3fcaa214461f9ff59ff62b7c40ec28",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/src/plant/cuda_forward_kinematics.h",
+      "upstream_git_blob_sha1": "97f073eefa0e6aeba739d4e3ba8825789be85091",
+      "local_sha256": "82d4b90f9bef0b1e5a796a2a8470c6eaf7217c5686ad2adefeb223e66e92e541",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/src/plant/kinematic_tree.cpp",
+      "upstream_git_blob_sha1": "91d5d46f52673fcfb9c14a9900083829ef903377",
+      "local_sha256": "748313836a582facf692c002152b2d804ee0cf3958ae4b72c3cae743cf8ab30a",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/src/plant/kinematic_tree.h",
+      "upstream_git_blob_sha1": "cea35b5edfefb0d20222df77c714e4d664124c69",
+      "local_sha256": "812d8864a6151f0e99bf1a5bf99f6b9f355d7e743cc5e13e411cba5ca42b0620",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/src/plant/minimal_kinematic_tree.cpp",
+      "upstream_git_blob_sha1": "0edc5ce826e23ed4ba5cbddeafe2aa74cbc87361",
+      "local_sha256": "ace8860336e42e04025a0c31e7586439507d2966e93521f1e542764108268171",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/src/plant/minimal_kinematic_tree.h",
+      "upstream_git_blob_sha1": "babfa1f17b08e66ee76582277f41716230324276",
+      "local_sha256": "0383a915129a81056fa877c49ce6576465fe0463527e413d9f98d37e0a3caf4e",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/src/plant/minimal_plant.h",
+      "upstream_git_blob_sha1": "fa4a7013bd982ab0353690cf7770a49951bae022",
+      "local_sha256": "6c28997057706d90ef7db85cfa5e1b520d705e6e258452ada6f4ba7e7c9b1428",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/src/plant/tests/BUILD",
+      "upstream_git_blob_sha1": "c5e7f8dd2da20bb91e50cecb4c5f59d9ec48b0c0",
+      "local_sha256": "2b2e306634ca9ed69fda84faa6e0046f1f1081899c6119dfea992f97e0fe9780",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/src/plant/tests/collision_checker_test.cpp",
+      "upstream_git_blob_sha1": "7d13214870cb078f2fb23ca98cf0f0bfd3151a0d",
+      "local_sha256": "2505f735701f21f3b5237e1dbe710f4e9270322caeaedc1d384d9d4ede551ce5",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/src/plant/tests/cuda_collision_checker_test.cpp",
+      "upstream_git_blob_sha1": "c256c17461f7ad2edaf38ff6ef0b65f744bc3932",
+      "local_sha256": "a17ab874d4665dc32159e3d7b744244c44a09411d32f4625c04a155275e767c9",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/src/plant/tests/cuda_forward_kinematics_test.cpp",
+      "upstream_git_blob_sha1": "610c1f2db3642545c129f03448be31eac83489a9",
+      "local_sha256": "34b8b3c48ce6d1c50f079da9a8fbb26a6797434183f095b25644e80682b0ec80",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/src/plant/tests/kinematic_tree_test.cpp",
+      "upstream_git_blob_sha1": "e08ee9515bd6d2a75f8d33f6a949e333290c10bf",
+      "local_sha256": "692f0d69dc38295f1928f1e58c8751211bb39d25709c6b42e784b171fa562892",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/src/plant/tests/minimal_kinematic_tree_test.cpp",
+      "upstream_git_blob_sha1": "92126a0c2eec289f3e4a4f16aaa9dc2f4b598f54",
+      "local_sha256": "64960ea31fe4e8a778de5a7329b68572c188fb283b77aeb335d2e9c0dfbfbf72",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/src/plant/tests/urdf_parser_test.cpp",
+      "upstream_git_blob_sha1": "ac308e1f1c0281b82aca659d32466bee08d2c4c6",
+      "local_sha256": "c19beb1f10a60ed0b67b730502e339915941bbaaad82f9529ebcb4fca64e85f9",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/src/plant/urdf_parser.cpp",
+      "upstream_git_blob_sha1": "707c8215c1f128728f76f18c8602f6f0c0484294",
+      "local_sha256": "77024a5968a885fdb19eb306bfc10af436ce83c9557f686b05295942bed8e9af",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/src/plant/urdf_parser.h",
+      "upstream_git_blob_sha1": "bd45a189db541de94a77ac8cc80acb0940c8504e",
+      "local_sha256": "7dc79d77a315e1e1c7f06652cc89527bf125d6577c353fc271924f0fa916ff80",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/src/pybind/csdecomp/BUILD",
+      "upstream_git_blob_sha1": "831f3cced11beff591f801b8aa7880deffd63c99",
+      "local_sha256": "701fd56e247618d80ea8e22df2431651fe3f555b6e5a9eced3b62628cce4bfbf",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/src/pybind/csdecomp/PYPI_README.md",
+      "upstream_git_blob_sha1": "e344e2cc6f841048585c971a54f74d17a881c75e",
+      "local_sha256": "b5fd5ad9b793c8d61f9ce597cd6fb5be9a7899a2cfa9d74fe345547ebc8a6891",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/src/pybind/csdecomp/__init__.py",
+      "upstream_git_blob_sha1": "d52b5efef37e06307b59d8060a332cd3ee68b573",
+      "local_sha256": "2af061c48a4f67f923f8ae134d4252c0a7bb1dea76a310439d8066714a504c6d",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/src/pybind/csdecomp/collision_checker_bindings.h",
+      "upstream_git_blob_sha1": "2652bd1182e07797c3505f926ddcabfe7177a640",
+      "local_sha256": "f48a4f6169dc6e252404f3debca6bfb0916690ddb0a4f032587b5502ecf3c64f",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/src/pybind/csdecomp/cpp_utils_bindings.h",
+      "upstream_git_blob_sha1": "9eb09ba7cbc8a88edf7dad070e7a98785e954288",
+      "local_sha256": "0bb8de8e33603b206faf57bc94573b83452a20ac828e1769b5b8c444c6e1bf53",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/src/pybind/csdecomp/cuda_bindings.h",
+      "upstream_git_blob_sha1": "412610618d6d261af27587b3d3b000bc260609c0",
+      "local_sha256": "951a67c801ea2ed2dfb75661b5fc4acc53ac21607e16f67ad4887e360f1cc9e4",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/src/pybind/csdecomp/drake_csd_bridge.py",
+      "upstream_git_blob_sha1": "dcee8477e4f8b3bf50a80893ea29299de1e25f60",
+      "local_sha256": "77f9afae4388d7d71d60eac586cfb98d8138599d507c02525b63736f8dc9777d",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/src/pybind/csdecomp/drm_bindings.h",
+      "upstream_git_blob_sha1": "02adffcbe806fe1cb46c7ac187e0192b556aeb77",
+      "local_sha256": "edea91282e30b8bdfb489eaba9c1d017d98fd13bcb85c9be458bfaa3483a32b5",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/src/pybind/csdecomp/generate_stubs.py",
+      "upstream_git_blob_sha1": "2e2c6838da95d970cdaa03f02dd8d5488cf00ee1",
+      "local_sha256": "b3254f7610932ddd766cb10e39f192149507521a1fb3e4eaddc36469f620c42f",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/src/pybind/csdecomp/hpolyhedron_bindings.h",
+      "upstream_git_blob_sha1": "06fe4bce083251599182640cf090cac72152835f",
+      "local_sha256": "8624f83109051e0c00ae63f635c351df009f5da9080b16c51d45fb938477dad2",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/src/pybind/csdecomp/plant_bindings.h",
+      "upstream_git_blob_sha1": "4e3145f971a8da3294ff5d0b03c924052a91120e",
+      "local_sha256": "6223cff10a5346ac80e702c9483002cffd0ecf7c3d46896710264799882221ab",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/src/pybind/csdecomp/py.typed",
+      "upstream_git_blob_sha1": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "local_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/src/pybind/csdecomp/pycsdecomp_bindings.cpp",
+      "upstream_git_blob_sha1": "27665e4ac411e92b2c8dd9ca6a1085d7ec415b79",
+      "local_sha256": "53a8caaf2d7168bd8b9ca4a498c080fb2633c80ca60bfaa63f124edefc7a61c6",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/src/pybind/csdecomp/voxel_wrapper.h",
+      "upstream_git_blob_sha1": "abfeebe7ad68a92b5095af69816fb4a41a5796e7",
+      "local_sha256": "445ce9f26d944e3e10e0177a3855fc5881538767e5527fd027b41a9f7adabe7a",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/src/utils/BUILD",
+      "upstream_git_blob_sha1": "5028625284b3699d927695e247b661185ee6520f",
+      "local_sha256": "b81614c31c530c6bf054e6d89b368beff28f2ee09a872995ab55599a6d3eefc8",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/src/utils/cuda_utilities.h",
+      "upstream_git_blob_sha1": "54cf49548721355c9bd00b74e220394b3a95180f",
+      "local_sha256": "d8854492ce9222be4b09ce21e9ec58544bc955f33ef4a1e1bf19b931ab72ad93",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/tests/BUILD",
+      "upstream_git_blob_sha1": "0ae7b087337dac5df7e392e56458b5e0bbcbe187",
+      "local_sha256": "b9648cfb454ef73b6e408cfed9af1238fb72a696507c54a05ec84a2a2e433b18",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/tests/csdecomp_test.py",
+      "upstream_git_blob_sha1": "bfb35120f58ad4191ea476066edb0716ee3fad5f",
+      "local_sha256": "fdbd087fc6a617095ade276a5223210af0da23c03e8d7b88fd96298bd59c7443",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/tests/drake_dep_test.py",
+      "upstream_git_blob_sha1": "41b686061255487c0d6ebd094795b03cb75af787",
+      "local_sha256": "204d1b168cc9a7e270c3c02b79e5170731b160fce7d36b104376c69c5e73177e",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/tests/plotting_utils.h",
+      "upstream_git_blob_sha1": "40fcfdb35421e258856cca17189a0272d8049bd1",
+      "local_sha256": "79609aa6cffcfaf10312403f34139187d0a9feab8180405f9a03bccf86edb69d",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/tests/test_assets/2_branch_5dof.urdf",
+      "upstream_git_blob_sha1": "7f96fc5fe731f86c3dcad5f987092fcfb41be490",
+      "local_sha256": "d79419447454ad0e75ecc1e5dedb5548f30f0bdc7ef6613594dabe9a518be0a8",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/tests/test_assets/3dof_doublename_joint.urdf",
+      "upstream_git_blob_sha1": "a381011ccd83955cc03e9730b0a5b7e9b0eab35e",
+      "local_sha256": "ebe9e69f6d3e65dcd8fb8c57824be7a25c22ddf67cee42116fe67656900930c8",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/tests/test_assets/3dof_doublename_link.urdf",
+      "upstream_git_blob_sha1": "6aa676b363d9165b35021cac4f18188dd5fee158",
+      "local_sha256": "b6a86b45b471e63c51eed5a20d91c2f35917568453a202c868c5bf24a7de6a57",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/tests/test_assets/3dofrobot.urdf",
+      "upstream_git_blob_sha1": "92cd9935df22260b079a11f7f02064d2e31613d9",
+      "local_sha256": "4fd90ff67815eeacc72d9c208f111ca10d7a5b879e7b11fecaad6a3451e25455",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/tests/test_assets/3dofrobot_prismatic.urdf",
+      "upstream_git_blob_sha1": "aec12d7cf5f88182a17e79c6df66862a5ff924e5",
+      "local_sha256": "5385ebf0f9df2a169d388a5848037b248ab168a0b82cb694f1750e158208055d",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/tests/test_assets/3dofrobot_spheres.urdf",
+      "upstream_git_blob_sha1": "1f08a0d0b8c9aec6018dd520f1cfcf01a71d080a",
+      "local_sha256": "d47c9cca706897367f1aa22aeebd9e65890db9164fa842ffce9633d9d10ff733",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/tests/test_assets/BUILD",
+      "upstream_git_blob_sha1": "e4c9c7b2c1cd42ed8ad839c78cf509ce7b3106c8",
+      "local_sha256": "da18b99d2385715fb351278fb607e440c0076c2e0b1f57d2c8c46436f71d9b8e",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/tests/test_assets/box.urdf",
+      "upstream_git_blob_sha1": "c4ef70aff7634e52a1cfbe4707d92244bef39b2d",
+      "local_sha256": "34122a6fe2ff1f19908644992899336e68eaf9357f9a0760fe7530690d6882b0",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/tests/test_assets/camera_and_tripod.urdf",
+      "upstream_git_blob_sha1": "e60bb70d931cbadcbd51ad60c3d96476db00ab37",
+      "local_sha256": "1f369a575a6ae5f88ab98f45f692e8e679c6d5e398228ad0559e6ed5caa93b76",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/tests/test_assets/collapse_urdf.py",
+      "upstream_git_blob_sha1": "e2726d4a2e08e24e0544f32c76d6d075c1d68d27",
+      "local_sha256": "ac8b79fb63d65360c9f556cc524b6277c644135d97b2a7d08048df16fab8f04b",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/tests/test_assets/collapsed_robotiq.urdf",
+      "upstream_git_blob_sha1": "71a485718cf6bcef28076c31a7e0991b99127a7b",
+      "local_sha256": "939c57ee685eb15a16799e2e27c6c5dda01daba2b404c78e8e37575fdc3918a5",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/tests/test_assets/directives/kinova_sens_on_table.yml",
+      "upstream_git_blob_sha1": "1e7b438245dd62b8fccb16fc8f34d6cc46de8278",
+      "local_sha256": "5a6470a7ae8dad15a83e7ec2f589d7b78bad6e3e4c4a002912d07636bccdf272",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/tests/test_assets/directives/simple.yml",
+      "upstream_git_blob_sha1": "7f5b72f90f3e5358c32124f55b1115b035846599",
+      "local_sha256": "d38a455dd36ca2d4fb375fa97aad6f1e445d6feda97c879f065212ab18a86c46",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/tests/test_assets/directives/simple_kinova_sens_on_table.yml",
+      "upstream_git_blob_sha1": "175b48281069909507002d88a8246c3db291c370",
+      "local_sha256": "8b10acb874679a75800338e8d5801e076fd5783a7b9e449b9614fd6ba8c93f07",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/tests/test_assets/directives/simple_no_anchor_test.yml",
+      "upstream_git_blob_sha1": "e080cdd605d8bfd447014c7f0218c71432baa127",
+      "local_sha256": "ead93b8a8870014793974e114a65330383f71d501d66700a5239a763a65c8bb5",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/tests/test_assets/kinova.urdf",
+      "upstream_git_blob_sha1": "cb7063ecff423d24aedf090cc4e57c24c16e0821",
+      "local_sha256": "d8cb25de306ef519647b7a3196bdb0042744a6ce84fd1622597978255280e6be",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/tests/test_assets/kinova/kortex_description/LICENSE",
+      "upstream_git_blob_sha1": "0ae3390452bc4f9896ced1cc79091b0b05e6a68f",
+      "local_sha256": "058a2caf466a1ed75224fa843d879ab63f27853f33f3cd564f5596c4b101df8d",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/tests/test_assets/kinova/kortex_description/arms/gen3/7dof/meshes/base_link.STL",
+      "upstream_git_blob_sha1": "0a35a8ae68fa0b8d24507f2cd2a142a59b8fc91e",
+      "local_sha256": "3e38517e653d58f4160cfdcee34c9dea983d8b3ecb8f2c147444f58235335260",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/tests/test_assets/kinova/kortex_description/arms/gen3/7dof/meshes/base_link.obj",
+      "upstream_git_blob_sha1": "0f8b969a4c627fdc384fccf8468e819cc35aca60",
+      "local_sha256": "076fd2a5012ae4f486a6ad4205666158d94667fc63b5d7232bc541737f2f8bcb",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/tests/test_assets/kinova/kortex_description/arms/gen3/7dof/meshes/bracelet_no_vision_link.STL",
+      "upstream_git_blob_sha1": "326b1d797fe0725450391d05fbd46f1cdcd8a8ca",
+      "local_sha256": "5b2ec7dafbf6a3c9a2cac717d18132a8a1efd9fcb8f2c40d9c12c8ece7323ec8",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/tests/test_assets/kinova/kortex_description/arms/gen3/7dof/meshes/bracelet_with_vision_link.STL",
+      "upstream_git_blob_sha1": "146b69b50b2fd61546c3dc7a4860a037874f084e",
+      "local_sha256": "8bb05e420a88532b4eee3948a0047fb8e7f341c3e5cc971d54e97e2aaffcf878",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/tests/test_assets/kinova/kortex_description/arms/gen3/7dof/meshes/bracelet_with_vision_link.obj",
+      "upstream_git_blob_sha1": "3448383d21d3cfac0e8261761fff9fed3ed84679",
+      "local_sha256": "dee86ad30c1cacfa29255c2e5a3704f5504c0fc170e650e82890532db20013a9",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/tests/test_assets/kinova/kortex_description/arms/gen3/7dof/meshes/forearm_link.STL",
+      "upstream_git_blob_sha1": "ac791a3548a21d8ae1650b4b14d173605e6f85bb",
+      "local_sha256": "a00d96d2c7ec37e9fe4c5fb6d3fa2b4386dfd48fea5ac25632f4cb83b3505105",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/tests/test_assets/kinova/kortex_description/arms/gen3/7dof/meshes/forearm_link.obj",
+      "upstream_git_blob_sha1": "53929802d2577f528be02af878387e6a4ff2a398",
+      "local_sha256": "a8a772ddd4843bf54864d5dbc3e21451e0cd95add9c33dae20c5347bf5fc1b56",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/tests/test_assets/kinova/kortex_description/arms/gen3/7dof/meshes/half_arm_1_link.STL",
+      "upstream_git_blob_sha1": "1df304c0eb9e8630f3be09b39154c1955ad0771b",
+      "local_sha256": "8df461a71780d8e2d09104a507584424279d85173adf14867e359f7e58b3bba7",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/tests/test_assets/kinova/kortex_description/arms/gen3/7dof/meshes/half_arm_1_link.obj",
+      "upstream_git_blob_sha1": "64c8d8c873a688406ac2236144b462c499381e8f",
+      "local_sha256": "9075ffdce403f9a72227ce65666b4b6d5a1cb74d51cbdd35b8709b25a7190f04",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/tests/test_assets/kinova/kortex_description/arms/gen3/7dof/meshes/half_arm_2_link.STL",
+      "upstream_git_blob_sha1": "78bc722ab2d8ac217b57dc2b85860a9597c771ee",
+      "local_sha256": "8a9f38de21648804b3ab7076ec73726031f2ade7c95eb2541d070553e025407b",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/tests/test_assets/kinova/kortex_description/arms/gen3/7dof/meshes/half_arm_2_link.obj",
+      "upstream_git_blob_sha1": "3c778ac4349f2fabc013b6cb730623f698f73e28",
+      "local_sha256": "ae948a8046b6b00a22271b37466fbe1c890cc5f18fea461ea21a9f3af4367154",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/tests/test_assets/kinova/kortex_description/arms/gen3/7dof/meshes/shoulder_link.STL",
+      "upstream_git_blob_sha1": "69ecb7695c73980fa9e76563d5a66fca373db44a",
+      "local_sha256": "a98e232e5197f09e9cd520e7a450c21bcec74bc49e2a19ce7cf86c5dc25f2e18",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/tests/test_assets/kinova/kortex_description/arms/gen3/7dof/meshes/shoulder_link.obj",
+      "upstream_git_blob_sha1": "6e3121c9eb8161c3eb41cb804624bb195c223a2d",
+      "local_sha256": "c595339eae43036bcd53366ad5de3a7e5d16e37c86742ce8a519fc366468da08",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/tests/test_assets/kinova/kortex_description/arms/gen3/7dof/meshes/spherical_wrist_1_link.STL",
+      "upstream_git_blob_sha1": "3bbf04a6de017405f402d8b95c3b22d441389a57",
+      "local_sha256": "0b97a5e3b2de535344f8e8d4176d77f0cdb3455b235f35430fa0413208856e66",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/tests/test_assets/kinova/kortex_description/arms/gen3/7dof/meshes/spherical_wrist_1_link.obj",
+      "upstream_git_blob_sha1": "16afbc66276cd45c9bd144afdc98184f9d80655f",
+      "local_sha256": "51d4860009cafdd35755063c66802ae15cf8591c0c0b8d88ffbe28cd1cf2b1a3",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/tests/test_assets/kinova/kortex_description/arms/gen3/7dof/meshes/spherical_wrist_2_link.STL",
+      "upstream_git_blob_sha1": "14bbff58f2f200dd1e1b97ba5226da3f768b69e4",
+      "local_sha256": "12271fb7d0ee78fb5642424cf5078be20f0476061e74203db964b674031ce879",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/tests/test_assets/kinova/kortex_description/arms/gen3/7dof/meshes/spherical_wrist_2_link.obj",
+      "upstream_git_blob_sha1": "ffc5ac2cabd9f683612314a2a7c3800e673fe515",
+      "local_sha256": "71743fad04871cd276c7731dc9abf7e753d1b6ff5840d9d9658079b4f4ea3be8",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/tests/test_assets/kinova_sens.urdf",
+      "upstream_git_blob_sha1": "dfc6d58bcd253ffca9e1b5010c685326078c3534",
+      "local_sha256": "b3af6690f9fd3bf8d7f5de958638a5cb4adc1a014c5a187a7b158c10d93c3b96",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/tests/test_assets/movable_block.urdf",
+      "upstream_git_blob_sha1": "d901bdb91eecdcb1ad5ea43bab0c9186cde6dd51",
+      "local_sha256": "894da7562dc69dd704c7909b000611f48081711ed448a28842723a04b24d3aee",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/tests/test_assets/random_grid.voxels.txt",
+      "upstream_git_blob_sha1": "9787ec1900d0672fc3fc18baedfde74fb7fdf022",
+      "local_sha256": "3bbf27a50b74ae69cd5beb73c81a573b7808d50d3e5f25014c6e84bc357a5f64",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/tests/test_assets/reduced_kinova_sens.urdf",
+      "upstream_git_blob_sha1": "a80383f13510d96090c731139d0871eab96e0ac3",
+      "local_sha256": "f18c645e502464f38e720cadcf52e6cc8da55fd9548964ddca10c27373809a10",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/tests/test_assets/robotiq/meshes/inner_finger_coarse.STL",
+      "upstream_git_blob_sha1": "a5a811cafb861a9e8b5a7c2400cf725dc2aa94cf",
+      "local_sha256": "7dce7878f3de664fa85f034578a9236d81fe83d524525413d72c902bc2c54f15",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/tests/test_assets/robotiq/meshes/inner_finger_coarse.obj",
+      "upstream_git_blob_sha1": "58dbe1e41a4efba89ee34640399229816642e078",
+      "local_sha256": "aa3c0cbea2806beb127c6ddb899e33a12911a0f29f53e05f90ead7e3075b9fdb",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/tests/test_assets/robotiq/meshes/inner_finger_fine.STL",
+      "upstream_git_blob_sha1": "f5d68e3dac0bb5a452db1874ab9bf30b847cbfb0",
+      "local_sha256": "506c7ea141ee26b5295680c8dc197515b679ea65be929e7f9aafa700c049452a",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/tests/test_assets/robotiq/meshes/inner_finger_fine.obj",
+      "upstream_git_blob_sha1": "a65b25085cf2ba9d3322d36aed47928cc2a7eaa4",
+      "local_sha256": "f92328e1969c1748d56bf5b3c2301fa2217354601b0c4811a3f1dfdfac51d8c1",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/tests/test_assets/robotiq/meshes/inner_knuckle_coarse.STL",
+      "upstream_git_blob_sha1": "695c7003da3d209deba83177567a854e1ae5281f",
+      "local_sha256": "2f3963f6fd811037bcabf8d5d26a4c3c1ebad84eb5e1a2c6e30a01d8314cc3f9",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/tests/test_assets/robotiq/meshes/inner_knuckle_coarse.obj",
+      "upstream_git_blob_sha1": "38120d6fb0ba4f07be1448d753a4a400f23e2cac",
+      "local_sha256": "4d22fff2c54deb5d555559385cb1bf35e68b38d124c804a27c7fcab9ff2d865a",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/tests/test_assets/robotiq/meshes/inner_knuckle_fine.STL",
+      "upstream_git_blob_sha1": "9c1e562ea6fb2103471fbe934d6f15ab426c7813",
+      "local_sha256": "004c784d33333622de933954b6c4de9ae7ca653d695fda5dcac3cccb8e52a0f9",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/tests/test_assets/robotiq/meshes/inner_knuckle_fine.obj",
+      "upstream_git_blob_sha1": "9d43ccb9760639a25652a433371e22827f40e95a",
+      "local_sha256": "6eed0ac51372f2749fd741574cedc5a4ffa536443f7eb7190451773da038cef6",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/tests/test_assets/robotiq/meshes/outer_finger_coarse.STL",
+      "upstream_git_blob_sha1": "db2f98d74fd8423c670fc66413688492154c1142",
+      "local_sha256": "7af60bf4a05e186c91d5b72f032b47b941c2571b568c0cb08fa50dae94a7c177",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/tests/test_assets/robotiq/meshes/outer_finger_coarse.obj",
+      "upstream_git_blob_sha1": "60c00f72878ccc2ad149e72e10cbb1d65eaf645f",
+      "local_sha256": "9d6e52df5665a67382b375d6457d941698f72055dd83930b3b0a8417b3ba770f",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/tests/test_assets/robotiq/meshes/outer_finger_fine.STL",
+      "upstream_git_blob_sha1": "79f7f42eb897e8193fd1ad7d614fc313c6d6ed57",
+      "local_sha256": "7398f5002d489a54632c7a9b3dbd7de0671dc72656480f03fbe6579bf4ef1bdf",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/tests/test_assets/robotiq/meshes/outer_finger_fine.obj",
+      "upstream_git_blob_sha1": "4db387be7987b379129a793dc5fa134d156311e3",
+      "local_sha256": "72ba38f8516fbd757cac10d8fb4ac675bebc308b92fa3912d58e55b8d64053b0",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/tests/test_assets/robotiq/meshes/outer_knuckle_coarse.STL",
+      "upstream_git_blob_sha1": "8637ff987a6617b5a5213245d276d7ed311f2638",
+      "local_sha256": "9a54fa42b6234763c3db7c281a69cc0057dcdc1397065a2bba5980b38fc8729e",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/tests/test_assets/robotiq/meshes/outer_knuckle_coarse.obj",
+      "upstream_git_blob_sha1": "958404b8e7b482f1e9c01682f099cb58a67ffd01",
+      "local_sha256": "8430c9a694b09975cb83203242263bbdcb0fbe8f1c45ed11819aea406ee6951e",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/tests/test_assets/robotiq/meshes/outer_knuckle_fine.STL",
+      "upstream_git_blob_sha1": "5678c1155ad30a2ed8186804cbd964d4ef5676f3",
+      "local_sha256": "9f4c3205bd05c72a4e375776a11e1e5d0021899dfe424da92c1c28096c4e753a",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/tests/test_assets/robotiq/meshes/outer_knuckle_fine.obj",
+      "upstream_git_blob_sha1": "4f7f48b34863c3eaecb474f55b696e5ea1ccae0c",
+      "local_sha256": "668aa2d6a64337c3da3e491862322043841f6c23e6a445d6f3372c1e22838168",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/tests/test_assets/robotiq/meshes/robotiq_85_base_link_coarse.STL",
+      "upstream_git_blob_sha1": "dd70944842422a3a3fd8c3524fc9b3382563868f",
+      "local_sha256": "cb185fb74ab865edbc33bb520e63a45bce9684191b859efa6363e87ef53b8417",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/tests/test_assets/robotiq/meshes/robotiq_85_base_link_coarse.obj",
+      "upstream_git_blob_sha1": "7e84927762986f40b65b911b884d3be729b4b83a",
+      "local_sha256": "e0590666763b4896da119399cfeb254eeb4cbcf65600bc60477d977bada4d9a0",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/tests/test_assets/robotiq/meshes/robotiq_85_base_link_fine.STL",
+      "upstream_git_blob_sha1": "48bd3987194dac9c1b4946612b8e51559b4ac3b8",
+      "local_sha256": "4f36af0284cacdbd1e10dd9d92719e1282331bda73ab797e5e9da6dcfa226ee9",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/tests/test_assets/robotiq/meshes/robotiq_85_base_link_fine.obj",
+      "upstream_git_blob_sha1": "a80bfb761524a1c0f1853637ef5cbb367a42a79a",
+      "local_sha256": "41e7b14f84b4f1323475f833b4dcf4b8785a0287922426a99bfe66a395321bdc",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/tests/test_assets/robotiq_2f85_description_box_welded_fingers.urdf",
+      "upstream_git_blob_sha1": "f9c8e53e4149f673b52cd820a60438678812519f",
+      "local_sha256": "04be3723fd78bfbf487ec478ed2d2278207ab1b585a8f0f735fdea71c8b4f2e6",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/tests/test_assets/simple_robotiq.urdf",
+      "upstream_git_blob_sha1": "f9c8e53e4149f673b52cd820a60438678812519f",
+      "local_sha256": "04be3723fd78bfbf487ec478ed2d2278207ab1b585a8f0f735fdea71c8b4f2e6",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/tests/test_assets/table.obj",
+      "upstream_git_blob_sha1": "14c3b5e557ac2772fd7f43f178801ab422be33b7",
+      "local_sha256": "3e2f605cf4fbe58f0c4d3b23a5c9a7bba65781aad759e088d4d0d6fe9879107b",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/tests/test_assets/table.urdf",
+      "upstream_git_blob_sha1": "df244e2c0e665f9ecfa466597d5eb6baab5430c3",
+      "local_sha256": "af6db04235e8d67f550c2f97e734a4282d15da7a0ca543d24ef0267e9f97ea7c",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/tests/test_matplotlib.cpp",
+      "upstream_git_blob_sha1": "1d90ead02e6767d053c9a05af9c1eacc0dfd751b",
+      "local_sha256": "6f978347d942166071cb8d20fa4576ad30dac1518a5e40c5ec94a12c6394f3f3",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/third_party/BUILD",
+      "upstream_git_blob_sha1": "0d035d44a6f3c11ecd876e03105c9efa67dbbb76",
+      "local_sha256": "9c5b239aecb24fc69b60ca38dc313b70b52bfa91ca0fd82604a8e986a3b63147",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/third_party/cereal.BUILD",
+      "upstream_git_blob_sha1": "b570fd46beb3d44376783c1040325b40854df85e",
+      "local_sha256": "3da8975450f8faafc0d4b882007ef3641bb423e9dfbe3b2741a5987ecf7957c1",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/third_party/eigen.BUILD",
+      "upstream_git_blob_sha1": "362b0d302c47307f75215294d87fbd93a7049a35",
+      "local_sha256": "64fe04638d655018de68865196a373af380a25447ecd2b3ea87c488560844ca1",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/third_party/fmt.BUILD",
+      "upstream_git_blob_sha1": "ba0475f4c8a12b01149cccd749ac6a16dd275ae1",
+      "local_sha256": "8725cd9fa745cc01c41b2a2c00a73d47f56dc33083c6251c0b8ff29abe79f2d5",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/third_party/glpk.BUILD",
+      "upstream_git_blob_sha1": "9607fc7ac4f3d64820fa1d850b9e5f2acd0cfbb8",
+      "local_sha256": "70905e6fb80e0eac95eb46b9565b8d5a01a3a898cb698255990239053be4c31f",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/third_party/matplotlibcpp.h",
+      "upstream_git_blob_sha1": "c4e70465fd8a082c79c1dcaf155ca921f0b85e7b",
+      "local_sha256": "492c70a6f9a01db83b89fc30c7f142a0ca66cad327008425c6b1d25d5e466fa0",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/third_party/python/BUILD",
+      "upstream_git_blob_sha1": "a601db4ecb99361038cac365599643b37d8d4922",
+      "local_sha256": "2aab2d1a0950a7f01ba5b19e0a6c95ea924df415b529eaacbe649b0e6426c885",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/third_party/python/README.md",
+      "upstream_git_blob_sha1": "b183aaaa2f1b8e265becc4fe64767f6929dde9c0",
+      "local_sha256": "c3f1b3f336064d5a500d8a4403d007ddda11b97b47ae11430d1a97ce6433ae96",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/third_party/python/hello_world.py",
+      "upstream_git_blob_sha1": "ad5080c7121372dfe6f1aaef5e301c0292b52d6f",
+      "local_sha256": "20c87742666fc5e4a82cd82217405f1dce9b6e058f72c31216bb4641bb351634",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/third_party/python/requirements.in",
+      "upstream_git_blob_sha1": "047e5ff61ad97c361117431a654bedb1da77fddc",
+      "local_sha256": "9ae9a0a453091744be2d31f537e704d433610e2886612704fee27950ccfafb80",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/third_party/python/requirements.txt",
+      "upstream_git_blob_sha1": "e6efb3eb3a3dde9c0912e19d087d3685b0e7ea78",
+      "local_sha256": "4c5b9701e0f735850aa7a8c8f9413ed67d129b443b1fa229de9ff2cca12dd1c5",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/third_party/tinyxml2.BUILD",
+      "upstream_git_blob_sha1": "0af7e5c2e39ce96ce1a811468ac2a3e7573559f7",
+      "local_sha256": "3244d578faf83584e2bede05297f5ce6f2924bf0aa8cdde6a4785bcf59b56036",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "csdecomp/third_party/yaml-cpp.BUILD",
+      "upstream_git_blob_sha1": "8e91720062c6c63581cff64a876663befcf13e6f",
+      "local_sha256": "de1ae1485b6431613e1901b7e34f14830acd667c6f90ba6a1f9785012026ab31",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "examples/BUILD",
+      "upstream_git_blob_sha1": "0b64debdf04dcce0a5ee48eb815fb03303bea373",
+      "local_sha256": "13c3c59083409c5b885f88c383a84d8ee34dd470aa6916badc2f0fa282bbc39f",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "examples/Readme.md",
+      "upstream_git_blob_sha1": "534489945265e81f124b60321b5c25c1c4f77673",
+      "local_sha256": "f45cd9d3cd01650af33dc70855a7abf461e61663005acfb4a10b8f1b93a21def",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "examples/build_DRM.py",
+      "upstream_git_blob_sha1": "93a9dafaf4395a07156e41b61b8369bebda5c779",
+      "local_sha256": "bcf535024c0f9bdd19e7d2e540c9f81106b715d2401addca34af516153d8b20a",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "examples/dev_install.sh",
+      "upstream_git_blob_sha1": "a6f504a44609e3632c1213e95e70999c3cd49366",
+      "local_sha256": "6575ae93f7ec3215290a8a289ec591596ae7fe5e70af925c676034e07289e9b7",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "examples/drake_csd_bridge.ipynb",
+      "upstream_git_blob_sha1": "435ea2519d4318fe8ee314ceaf597220a01433c4",
+      "local_sha256": "87067cc3d9af22488e26fb69e539e3edd7adf6da37be4d77006aeab3c02197e6",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "examples/kinova.ipynb",
+      "upstream_git_blob_sha1": "90465b31fda46e119c9294421b16bfd8c24dfe60",
+      "local_sha256": "b9b56462acc0c804339718de16a8f77f303088a2de1de397802a6b156d91fe67",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "examples/kinova_mintime_planning.py",
+      "upstream_git_blob_sha1": "c8db15c98ea812ccbe6bffa39432c171eb5bc684",
+      "local_sha256": "ea7aa535c984bcb279dfd5e794d2954c977ef471876d9bc98cea8ee54f475c4c",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "examples/minimal_test.py",
+      "upstream_git_blob_sha1": "af7d349c45c7191bdb943fc83dfd4b3961b9372d",
+      "local_sha256": "166ebcd5ce9d00c52e5580a546169f718dd765cbd603453d7493e5debfbc77c1",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "examples/planning_utils.py",
+      "upstream_git_blob_sha1": "a656c7624d4af583d78d0d326e891ce69a02daba",
+      "local_sha256": "865bd010a56272db87e663cdebdbb138f663583f8824fa86a4d893ed1a16e595",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "examples/poetry.toml",
+      "upstream_git_blob_sha1": "efa46ec0ec02bc3c1cba02f3c7a7e88def85f056",
+      "local_sha256": "d90443f50f554a808fc49fb2a9187901ae79edac269a3680f73b38d4c709f5d1",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "examples/pyproject.toml",
+      "upstream_git_blob_sha1": "a50d34837e916130dfe1a6d23244bc447735b6fd",
+      "local_sha256": "cae10e788b7b7b8e29bbc27bf732e8904e86ca584ea38d4170ea6d8808b56797",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "examples/test_drake_bridge.py",
+      "upstream_git_blob_sha1": "49b24e8f8d844247e210f8d3db9eac3cbb6b367f",
+      "local_sha256": "10c0aad8463761535f8902351152dd94e7c763e0e40e7f66d4dba518f5807a06",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "examples/test_eizo.py",
+      "upstream_git_blob_sha1": "68fb341c8f3616a3e89afa98182e13e0c3ecb007",
+      "local_sha256": "76345e98f12caa25de818066d1db4f4a8a4013a3a28133af3b02bddda8f96e01",
+      "equal": true,
+      "local_exists": true
+    },
+    {
+      "path": "examples/utils.py",
+      "upstream_git_blob_sha1": "4e1b22ae097f4dfb3078eb8ff396371b2aed58ab",
+      "local_sha256": "518dc11f5038d1a59bd5bbf146d68985f4a93f43865b0bc89079b44e27375388",
+      "equal": true,
+      "local_exists": true
+    }
+  ],
+  "installed_csdecomp": {
+    "version": "0.1.2",
+    "dist_info": "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/lib/python3.10/site-packages/csdecomp-0.1.2.dist-info",
+    "direct_url": null,
+    "files": [
+      {
+        "path": "csdecomp.libs/libcudart-09529672.so.12.6.77",
+        "sha256": "90ab0564bc34ec72575ab8620c5f68170f405ee04544000d0f83810188fd9582",
+        "record_hash": "kKsFZLw07HJXWrhiDF9oFw9AXuBFRAAND4OBAYj9lYI"
+      },
+      {
+        "path": "csdecomp.libs/libgomp-e985bcbb.so.1.0.0",
+        "sha256": "a43904e4fa297301d4640dc1bb3c8a3480b406f99e498eba9b1914b68aab604a",
+        "record_hash": "pDkE5PopcwHUZA3BuzyKNIC0BvmeSY66mxkUtoqrYEo"
+      },
+      {
+        "path": "csdecomp/__init__.py",
+        "sha256": "2af061c48a4f67f923f8ae134d4252c0a7bb1dea76a310439d8066714a504c6d",
+        "record_hash": "KvBhxIpPZ_kj-K4TTUJSwKe7Hep2oxBDnYBmcUpQTG0"
+      },
+      {
+        "path": "csdecomp/drake_csd_bridge.py",
+        "sha256": "77f9afae4388d7d71d60eac586cfb98d8138599d507c02525b63736f8dc9777d",
+        "record_hash": "d_mvrkOI19cdYOrFhs-5jYE4WZ1QfAJSW2Nzb43Jd30"
+      },
+      {
+        "path": "csdecomp/py.typed",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "record_hash": "47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU"
+      },
+      {
+        "path": "csdecomp/pycsdecomp_bindings.pyi",
+        "sha256": "94bb5b5781d47b2591ad9230273036e5ac57c45a88610828e694bacbfc195e9c",
+        "record_hash": "lLtbV4HUeyWRrZIwJzA25axXxFqIYQgo5pS6y_wZXpw"
+      },
+      {
+        "path": "csdecomp/pycsdecomp_bindings.so",
+        "sha256": "0a048625a9d745ac409cff55791d360fe9e91ad1b8d7a3b82245a1a024c57738",
+        "record_hash": "CgSGJanXRaxAnP9VeR02D-npGtG416O4IkWhoCTFdzg"
+      }
+    ],
+    "official_wheel_url": "https://files.pythonhosted.org/packages/ed/6b/ef702dfb71db6ef479738d56a61f3b7ff7b2a81d19e6ccfa3b103710cf8d/csdecomp-0.1.2-cp310-none-manylinux_2_28_x86_64.whl",
+    "official_wheel_sha256": "c9cbfe54f4d43406950312edf01a03f2ef84b7dec79419233e298d6a40da1c52",
+    "download_sha256": "c9cbfe54f4d43406950312edf01a03f2ef84b7dec79419233e298d6a40da1c52",
+    "wheel_file_comparison": [
+      {
+        "path": "csdecomp.libs/libcudart-09529672.so.12.6.77",
+        "local_sha256": "90ab0564bc34ec72575ab8620c5f68170f405ee04544000d0f83810188fd9582",
+        "official_wheel_sha256": "90ab0564bc34ec72575ab8620c5f68170f405ee04544000d0f83810188fd9582",
+        "equal": true
+      },
+      {
+        "path": "csdecomp.libs/libgomp-e985bcbb.so.1.0.0",
+        "local_sha256": "a43904e4fa297301d4640dc1bb3c8a3480b406f99e498eba9b1914b68aab604a",
+        "official_wheel_sha256": "a43904e4fa297301d4640dc1bb3c8a3480b406f99e498eba9b1914b68aab604a",
+        "equal": true
+      },
+      {
+        "path": "csdecomp/__init__.py",
+        "local_sha256": "2af061c48a4f67f923f8ae134d4252c0a7bb1dea76a310439d8066714a504c6d",
+        "official_wheel_sha256": "2af061c48a4f67f923f8ae134d4252c0a7bb1dea76a310439d8066714a504c6d",
+        "equal": true
+      },
+      {
+        "path": "csdecomp/drake_csd_bridge.py",
+        "local_sha256": "77f9afae4388d7d71d60eac586cfb98d8138599d507c02525b63736f8dc9777d",
+        "official_wheel_sha256": "77f9afae4388d7d71d60eac586cfb98d8138599d507c02525b63736f8dc9777d",
+        "equal": true
+      },
+      {
+        "path": "csdecomp/py.typed",
+        "local_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "official_wheel_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "equal": true
+      },
+      {
+        "path": "csdecomp/pycsdecomp_bindings.pyi",
+        "local_sha256": "94bb5b5781d47b2591ad9230273036e5ac57c45a88610828e694bacbfc195e9c",
+        "official_wheel_sha256": "94bb5b5781d47b2591ad9230273036e5ac57c45a88610828e694bacbfc195e9c",
+        "equal": true
+      },
+      {
+        "path": "csdecomp/pycsdecomp_bindings.so",
+        "local_sha256": "0a048625a9d745ac409cff55791d360fe9e91ad1b8d7a3b82245a1a024c57738",
+        "official_wheel_sha256": "0a048625a9d745ac409cff55791d360fe9e91ad1b8d7a3b82245a1a024c57738",
+        "equal": true
+      }
+    ],
+    "all_files_identical": true
+  },
+  "version_comparison": {
+    "status": "ahead",
+    "ahead_by": 2,
+    "behind_by": 0,
+    "html_url": "https://github.com/wernerpe/csdecomp/compare/v0.1.2...7661a97bb7c4931be73d2bc4f8c45c3094ff476e",
+    "files": [
+      {
+        "sha": "74e388ad5342ffc7d879f686f5f88cec41e2d8e0",
+        "filename": "README.md",
+        "status": "modified",
+        "additions": 0,
+        "deletions": 1,
+        "changes": 1,
+        "blob_url": "https://github.com/wernerpe/csdecomp/blob/7661a97bb7c4931be73d2bc4f8c45c3094ff476e/README.md",
+        "raw_url": "https://github.com/wernerpe/csdecomp/raw/7661a97bb7c4931be73d2bc4f8c45c3094ff476e/README.md",
+        "contents_url": "https://api.github.com/repos/wernerpe/csdecomp/contents/README.md?ref=7661a97bb7c4931be73d2bc4f8c45c3094ff476e",
+        "patch": "@@ -59,7 +59,6 @@ The examples require [uv](https://docs.astral.sh/uv/getting-started/installation\n ```bash\n cd examples\n uv sync\n-uv pip install csdecomp\n uv run python minimal_test.py\n ```\n "
+      },
+      {
+        "sha": "831f3cced11beff591f801b8aa7880deffd63c99",
+        "filename": "csdecomp/src/pybind/csdecomp/BUILD",
+        "status": "modified",
+        "additions": 1,
+        "deletions": 1,
+        "changes": 2,
+        "blob_url": "https://github.com/wernerpe/csdecomp/blob/7661a97bb7c4931be73d2bc4f8c45c3094ff476e/csdecomp%2Fsrc%2Fpybind%2Fcsdecomp%2FBUILD",
+        "raw_url": "https://github.com/wernerpe/csdecomp/raw/7661a97bb7c4931be73d2bc4f8c45c3094ff476e/csdecomp%2Fsrc%2Fpybind%2Fcsdecomp%2FBUILD",
+        "contents_url": "https://api.github.com/repos/wernerpe/csdecomp/contents/csdecomp%2Fsrc%2Fpybind%2Fcsdecomp%2FBUILD?ref=7661a97bb7c4931be73d2bc4f8c45c3094ff476e",
+        "patch": "@@ -189,7 +189,6 @@ py_wheel(\n         \"Topic :: Scientific/Engineering :: Artificial Intelligence\",\n         \"Topic :: Scientific/Engineering :: Physics\",\n     ],\n-    summary = \"GPU-accelerated configuration space decomposition for robot motion planning\",\n     description_content_type = \"text/markdown\",\n     description_file = \"PYPI_README.md\",\n     distribution = \"csdecomp\",\n@@ -205,6 +204,7 @@ py_wheel(\n     strip_path_prefixes = [\n         \"csdecomp/src/pybind/csdecomp\",\n     ],\n+    summary = \"GPU-accelerated configuration space decomposition for robot motion planning\",\n     version = \"0.1.2\",\n     deps = [\n         \":csdecomp_package\","
+      }
+    ]
+  },
+  "comparison_summary": {
+    "official_tree_files_compared": 186,
+    "official_tree_bytes_all_identical": true,
+    "installed_package_and_bundled_libraries_identical_to_hash_verified_official_wheel": true,
+    "official_open_actual_issues": 1,
+    "official_closed_actual_issues": 0,
+    "official_merged_pull_requests": 8
+  },
+  "findings": [
+    {
+      "id": "CSD-ISSUE7",
+      "url": "https://github.com/wernerpe/csdecomp/issues/7",
+      "upstream_state": "open",
+      "classification": "build_toolchain_conflict",
+      "applicability": "Not a demonstrated runtime fault in this environment: installed official PyPI wheel is used, no Bazel rebuild initiated. The official workaround is explicit CUDA toolkit_path. Do not modify a working Conda environment to treat an unrelated native Drake crash.",
+      "local_evidence": [
+        "local/requirements.lock.txt",
+        "local/python.sh",
+        "environment.yml"
+      ]
+    },
+    {
+      "id": "CSD-PR6",
+      "url": "https://github.com/wernerpe/csdecomp/pull/6",
+      "classification": "already_fixed_upstream_and_local",
+      "description": "DRM _plan must return 0 when PlanStatePath fails instead of falling through. Exact merged return is present.",
+      "local_evidence": [
+        "csdecomp/src/planning/drm_planner.cpp:544"
+      ]
+    },
+    {
+      "id": "CSD-PR5",
+      "url": "https://github.com/wernerpe/csdecomp/pull/5",
+      "classification": "already_fixed_upstream_and_local",
+      "description": "Disconnected kinematic ancestry checked before indexing parent_joint -1.",
+      "local_evidence": [
+        "csdecomp/src/plant/urdf_parser.cpp:521"
+      ]
+    },
+    {
+      "id": "CSD-PR3",
+      "url": "https://github.com/wernerpe/csdecomp/pull/3",
+      "classification": "already_fixed_upstream_and_local",
+      "description": "Drake bridge receives plant_context and handles locked joints by converting them to fixed transforms. Benchmark supplies explicit context; canonical model checks exact joint order, count, limits, primitive inventory and collision pair identities.",
+      "local_evidence": [
+        "csdecomp/src/pybind/csdecomp/drake_csd_bridge.py:48",
+        "benchmarks/generic_motion_v1/model.py:67"
+      ]
+    },
+    {
+      "id": "CSD-PR9",
+      "url": "https://github.com/wernerpe/csdecomp/pull/9",
+      "classification": "already_in_reference_tree",
+      "description": "Package modernisation and missing plant_context example fix. Benchmark does not invoke a missing/obsolete plan_DRM.py example. Current Kinova example and canonical Model both provide plant_context; installed package is csdecomp.",
+      "local_evidence": [
+        "examples/kinova_mintime_planning.py:60",
+        "benchmarks/generic_motion_v1/model.py:67"
+      ]
+    },
+    {
+      "id": "CSD-CANONICAL-MODEL",
+      "classification": "existing_adaptation_handles_upstream_example_mismatch",
+      "description": "Upstream build_DRM.py uses simple_kinova_sens_on_table.yml while kinova_mintime_planning.py uses kinova_sens_on_table.yml. Existing benchmark builder and all runners use canonical Model based on full kinova_sens_on_table.yml; roadmap and manifest robot/geometry hashes are checked before planning. No model or radius change is justified.",
+      "local_evidence": [
+        "examples/build_DRM.py:21",
+        "examples/kinova_mintime_planning.py:21",
+        "benchmarks/generic_motion_v1/model.py:24",
+        "benchmarks/generic_motion_v1/roadmap.py:194",
+        "benchmarks/generic_motion_v1/runners/csdecomp_baseline.py:626"
+      ]
+    },
+    {
+      "id": "CSD-VOXELS-API",
+      "classification": "existing_contract_correct",
+      "description": "Native Voxels is float32 column-major 3 x N, configuration matrix is joints x states. Canonical Model validates finite Nx3 points, quantizes centers once to float32, passes transposed3xN points and transposed7xN states. Independent checker uses exactly those centers and fixed .04m radius.",
+      "local_evidence": [
+        "csdecomp/src/plant/collision_geometry.h:39",
+        "benchmarks/generic_motion_v1/model.py:213",
+        "benchmarks/generic_motion_v1/model.py:247"
+      ]
+    },
+    {
+      "id": "CSD-HOST-QUERY-REPAIRS",
+      "classification": "existing_sidecar_explicit_and_source_bound",
+      "description": "Default evaluation selects consistent_query portable host sidecar. Original official C++/CUDA source and installed wheel remain unchanged. Reviewed CPU source repairs include failure exit handling, endpoint-local edge exclusions, endpoint-inclusive steering, same-node reachability, query cache reconciliation and alternate bounded endpoint attachments; retained build receipt binds all native headers, source, binary and installed library hashes. Source correction guards reject unreviewed upstream drift.",
+      "local_evidence": [
+        "configs/evaluation.json:29",
+        "benchmarks/generic_motion_v1/runners/native_drm_query.py",
+        "benchmarks/generic_motion_v1/runners/native_drm_corrections.py",
+        "benchmarks/generic_motion_v1/native/build/drm_consistent_query_portable/build.json"
+      ]
+    },
+    {
+      "id": "CSD-SEED-LIFETIME",
+      "classification": "existing_contract_correct_in_reviewed_paths",
+      "description": "Builder uses saved PCG64 configurations via add_nodes_manual; scene/query RNGs are separate. Online EI-ZO sets native EizoOptions.seed from planner_seed and creates a per-query planner/inflator while canonical plant, minimal plant and voxel wrapper remain alive during native calls. No seed or borrowed-object-lifetime violation found by source review. This is not a proof of absence of native concurrency faults.",
+      "local_evidence": [
+        "benchmarks/generic_motion_v1/roadmap.py:217",
+        "benchmarks/generic_motion_v1/runners/csdecomp_baseline.py:737",
+        "benchmarks/generic_motion_v1/model.py:68"
+      ]
+    },
+    {
+      "id": "CSD-NATIVE-CRASH-SCOPE",
+      "classification": "no_matching_official_csdecomp_runtime_issue_found",
+      "description": "Complete issues(all states) and PR listing reviewed: 1 issue and 8 merged PRs at capture time, no matching libdrake SIGSEGV runtime report. Historical crash occurred in libdrake during NTO; official CSDecomp wheel identity cannot establish its root cause. Preserve infrastructure_error and investigate Drake/solver separately; do not claim a CSDecomp upgrade fixes it."
+    }
+  ],
+  "source_files_reviewed": {
+    "benchmarks/generic_motion_v1/model.py": "7f319740c7f0c91add5ed8454873a16a75bba6ee56e0da3a8f18fa8f55a64a94",
+    "benchmarks/generic_motion_v1/roadmap.py": "522a7999426b59419baf2cffb11e1d5083e32033af8964362a0b3df755c81478",
+    "benchmarks/generic_motion_v1/runners/csdecomp_baseline.py": "5702c8550f45b2b4cfe005e730b7a7f7af55f4c88ff646be3f3acb82b2729f5d",
+    "benchmarks/generic_motion_v1/runners/native_drm_query.py": "88635761066318a15cc5fe4c93418a5858413fe2d26b9b01f8d3efab7f3caa37",
+    "benchmarks/generic_motion_v1/runners/native_drm_corrections.py": "12395e34bf3d552248e0774b4c560611d0e40348110a1142f6fbdf89350c8f1c",
+    "configs/evaluation.json": "23ed2d50438e524f6e4d410dd5fc371064e5a77b131624edb25cadf2403b4842",
+    "local/python.sh": "752073bd343bbfc21e07592be7134fecf2ed8d1dc48b617bbb0ae6bbeff6b95c",
+    "environment.yml": "e20ddfee1d6f755683d4cb2a5c8a240c765ac04297ac517184d6fd8d2c2c42ac"
+  },
+  "new_runtime_bug_found_in_csdecomp_scope": false,
+  "changes_applied": "No runtime/environment/model changes by this sub-audit. Existing explicit host fixes already present; official source and installed wheel verified unchanged.",
+  "limitations": [
+    "No GPU calls performed by this sub-audit. Parent carries out integration regressions.",
+    "Source checks and finite regression tests cannot prove universal bug absence.",
+    "Official repository API state captured at a time, not a claim about unpublished author fixes."
+  ],
+  "cpu_regressions": {
+    "command": "bash local/python.sh -m pytest -q benchmarks/generic_motion_v1/tests/test_native_drm_query.py benchmarks/generic_motion_v1/tests/test_native_drm_corrections.py benchmarks/generic_motion_v1/tests/test_native_handoff.py --junitxml=benchmarks/generic_motion_v1/results/rigor_checks/upstream_review_20261105/csdecomp_cpu_tests.xml",
+    "returncode": 0,
+    "tests": 73,
+    "failures": 0,
+    "errors": 0,
+    "scope": "CPU source drift, wrapper protocol, and historical native float32 anchor handoff regression; no GPU planner",
+    "files": {
+      "csdecomp_cpu_tests.xml": "ed459432172372d2ad02fa95f8b3a030cb730b091acbf3cd71395bae8c23f15e",
+      "csdecomp_cpu_tests.log": "391d4927b3b2e38136f95cbf239dd414e0ef20dacd22223763a14185597dd871"
+    }
+  },
+  "review_comment_completeness": {
+    "issue_body_comments_total": 0,
+    "pr_review_count": 3,
+    "pr_inline_comments_count": 3,
+    "note": "All 8 PR review and inline comment endpoints checked, per_page100; no endpoint reached pagination limit.",
+    "pr_files_pagination_checked": true
+  },
+  "existing_sidecar_static_integrity": {
+    "profile": "consistent_query",
+    "selected_by_default_evaluation": {
+      "backend": "safe_native",
+      "build_dir": "benchmarks/generic_motion_v1/native/build/drm_consistent_query_portable"
+    },
+    "ready": true,
+    "source_matches_exact_reviewed_corrections": true,
+    "binary_matches_receipt": true,
+    "binding_matches_receipt": true,
+    "all_native_headers_match_receipt": true,
+    "installed_native_library_sha256": "0a048625a9d745ac409cff55791d360fe9e91ad1b8d7a3b82245a1a024c57738",
+    "installed_library_matches_receipt": true,
+    "no_runtime_native_module_load_or_gpu_query": true
+  }
+}

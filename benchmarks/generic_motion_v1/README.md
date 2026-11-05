@@ -95,10 +95,18 @@ Run summaries now share numerical acceptance with the primary CSV reader, retain
 
 A fresh all-method smoke query recorded **9 numerical successes, 3 validation failures, 1 solver failure and 1 timeout**. These are functional checks, excluded from the published score. Two CPU replays and a same-input GPU replay (60-second timeout, identical frontend/initial spline) did not reproduce the historical native `libdrake` SIGSEGV; its root cause remains unresolved. All attempts remain recorded. Finite tests and collision samples do not establish universal absence of bugs or continuous collision freedom.
 
+The subsequent [official-source and native-route checks](results/rigor_checks/upstream_review_20261105/verification.json) compare CSDecomp against its official repository, issues and wheel. The installed Drake 1.51.1 pins IPOPT 3.14.19; [IPOPT #848](https://github.com/coin-or/Ipopt/pull/848) fixes a later SPRAL memory-lifetime defect. Address-level inspection localizes the historical fault offset in the current binary to SPRAL's `mo_split` matching-order function; the original crash lacks a sealed binary hash or full stack, so #848 is not an established cause.
+
+**New NTO runs explicitly use `linear_solver=spral`, `spral_order=metis`, `spral_scaling=mc64`.** Setting only the order is insufficient: IPOPT's matching scaling can override it. A real GDB comparison on identical initial variables and constraints recorded 21 entries into `mo_split` with matching and zero with METIS/MC64. This configuration avoids that faulting path without changing the model, objectives, constraints, endpoints or budget. The Conda environment and native libraries remain unchanged. Effective options and the actual loaded library SHA are saved before solving. Historical scores retain their original configuration; new results are separate. The complete regression after this change passed **1,412 tests**.
+
+Nine subsequent GPU calls recorded four numerical successes, three validation failures, one solver failure and one timeout, with no native crash. The original crash query, `dev-dense_clutter-001-p01`, used its original early-return profile with only the linear-system settings changed: its identical saved frontend and initial spline produced a numerically valid **8.50 s trajectory in 41.83 s of computation**. This single-query diagnostic is not a new population score or proof of the underlying native defect's cause.
+
 ```bash
 # Read-only verification of this delivery; write a new JSON destination.
 bash local/python.sh results/rigor_checks/strict_check_20261105/verify_delivery.py \
   --output runs/correctness-check.json
+bash local/python.sh results/rigor_checks/upstream_review_20261105/verify.py \
+  --output runs/upstream-check.json
 ```
 
 ### NTO profiles and failure analysis

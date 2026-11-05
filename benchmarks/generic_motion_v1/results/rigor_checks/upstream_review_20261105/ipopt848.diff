@@ -1,0 +1,43 @@
+diff --git a/ChangeLog.md b/ChangeLog.md
+index e6313230e..88b1d37b7 100644
+--- a/ChangeLog.md
++++ b/ChangeLog.md
+@@ -13,6 +13,9 @@ More detailed information about incremental changes can be found in the
+   on macOS with clang when Ipopt or the other library was build with `-fvisibility=hidden`.
+ - Call MPI_Init() with NULL instead of dummy arguments to fix SIGSEGV with MPICH >= 4.3.1
+   [#846, by Shengqi Chen].
++- Fixed a use-after-free in Spral interface where attempting to solve a second system with
++  the same structurally singular matrix would end up trying to use an old numeric factorization
++  using data from an already freed symbolic factorization [#848, by Kevin Kofler].
+ 
+ ### 3.14.19 (2025-07-30)
+ 
+diff --git a/src/Algorithm/LinearSolvers/IpSpralSolverInterface.cpp b/src/Algorithm/LinearSolvers/IpSpralSolverInterface.cpp
+index 5ddb64f17..714c93ad9 100644
+--- a/src/Algorithm/LinearSolvers/IpSpralSolverInterface.cpp
++++ b/src/Algorithm/LinearSolvers/IpSpralSolverInterface.cpp
+@@ -532,6 +532,10 @@ ESymSolverStatus SpralSolverInterface::MultiSolve(
+ 
+       if( control_.ordering == 2 && control_.scaling == 3 && rescale_ )
+       {
++         // Fully invalidate the previous factorization. Otherwise, spral_ssids_analyse_ptr32 is going to
++         // free only the old akeep_, but does not see the old fkeep_ that shares some of its data.
++         spral_ssids_free(&akeep_, &fkeep_);
++
+          if( HaveIpData() )
+          {
+             IpData().TimingStats().LinearSystemSymbolicFactorization().Start();
+@@ -675,6 +679,13 @@ ESymSolverStatus SpralSolverInterface::MultiSolve(
+    }
+    else
+    {
++      if( !fkeep_ )
++      {
++         Jnlst().Printf(J_DETAILED, J_LINEAR_ALGEBRA, "In SpralSolverInterface::Factorization: "
++                                                      "Attempting to solve again after failed factorization of singular system\n");
++         return SYMSOLVER_SINGULAR;
++      }
++
+       if( HaveIpData() )
+       {
+          IpData().TimingStats().LinearSystemBackSolve().Start();
