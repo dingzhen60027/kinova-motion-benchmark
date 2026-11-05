@@ -2,7 +2,7 @@
 
 A benchmark for **7-DoF robot motion planning** with fixed start/goal configurations and static obstacles, built on [CSDecomp](https://github.com/wernerpe/csdecomp). Compare **path length** and **trajectory duration** using shared inputs, validation and evaluation scripts.
 
-[Environment](local/README.md) · [Benchmark guide](benchmarks/generic_motion_v1/README.md) · [Configuration](configs/evaluation.json) · [Results](benchmarks/generic_motion_v1/results/summary.csv)
+[Environment](local/README.md) · [Benchmark guide](benchmarks/generic_motion_v1/README.md) · [Configuration](configs/evaluation.json) · [Results](benchmarks/generic_motion_v1/results/nto_metis/comparison/summary.csv)
 
 ## Setup and quick start
 
@@ -70,7 +70,7 @@ Validated successes on **395 test problems, seed 0, 60 seconds/query**. Dev was 
 | DRM + EI-ZO + LSCS / SCSTO | 338 | 338 |
 | LGCS reconstruction | 327 | — |
 | NTO published-profile reconstruction | 113 | 269 |
-| NTO refined adaptation | 276 | 297 |
+| NTO refined adaptation | 276 | 302 |
 | NTO legacy adaptation (historical profile) | 123 | 265 |
 | OMPL RRTConnect | 362 | — |
 | OMPL RRT* | 316 | — |
@@ -78,7 +78,9 @@ Validated successes on **395 test problems, seed 0, 60 seconds/query**. Dev was 
 | STOMP official core | 336 | — |
 | TrajOpt adaptation | 313 | — |
 
-All methods share the final validator. Path length and execution duration are evaluated separately from computation time; cost comparisons use paired common-success problems. [Method definitions](benchmarks/generic_motion_v1/README.md#methods) · [Raw records](benchmarks/generic_motion_v1/results/records.csv) · [Selected comparisons](benchmarks/generic_motion_v1/results/selection.json)
+All methods share the final validator. Path length and execution duration are evaluated separately from computation time; cost comparisons use paired common-success problems. [Method definitions](benchmarks/generic_motion_v1/README.md#methods) · [Raw records](benchmarks/generic_motion_v1/results/nto_metis/comparison/records.csv) · [Selected comparisons](benchmarks/generic_motion_v1/results/nto_metis/comparison/selection.json)
+
+The refined NTO row uses the completed METIS/MC64 retest: **1,220 registered calls**, including smoke, dev and test, with zero native crashes. Other rows retain their existing runs. [Completion checks and matched before/after results](benchmarks/generic_motion_v1/results/nto_metis/comparison/verification.json) preserve the historical scores separately.
 
 The three NTO rows are configurations of one method family. `NTO_REFINED` is the strengthened comparison profile; the other two preserve the published-parameter reconstruction and historical configuration. [Configuration differences and verified failure causes →](benchmarks/generic_motion_v1/README.md#nto-profiles-and-failure-analysis)
 

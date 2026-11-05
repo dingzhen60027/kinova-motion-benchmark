@@ -1,0 +1,36 @@
+{
+  "scope": "Synthetic CPU accounting fixtures and real read-only pending-run progress; no GPU or planner calls",
+  "checks": [
+    {
+      "name": "fixtures",
+      "command": [
+        "bash",
+        "local/python.sh",
+        "-m",
+        "pytest",
+        "-q",
+        "results/nto_metis/test_complete.py"
+      ],
+      "cwd": "/home/eric/wjg/wd/csdecomp",
+      "exit_code": 0,
+      "seconds": 0.2803658447228372,
+      "log": "results/nto_metis/fixtures.log",
+      "log_sha256": "ba9c0f95a246eeefd91c454aff27dac63c228e2d212a2e5ec5b42a45abe68b50"
+    },
+    {
+      "name": "monitor_from_other_cwd",
+      "command": [
+        "bash",
+        "/home/eric/wjg/wd/csdecomp/local/python.sh",
+        "/home/eric/wjg/wd/csdecomp/results/nto_metis/complete.py",
+        "--output",
+        "results/nto_metis/monitor"
+      ],
+      "cwd": "/tmp",
+      "exit_code": 0,
+      "seconds": 4.103736467659473,
+      "log": "results/nto_metis/monitor_from_other_cwd.log",
+      "log_sha256": "2d741e772ec8d42025f4a3ac9d47e1994ee92d106d6150a131779e62a89b1b86"
+    }
+  ]
+}

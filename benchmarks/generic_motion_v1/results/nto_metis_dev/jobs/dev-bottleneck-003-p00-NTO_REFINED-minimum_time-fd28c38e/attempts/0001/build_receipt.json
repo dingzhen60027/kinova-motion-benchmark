@@ -1,0 +1,165 @@
+{
+  "binary": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/native/build/drm_consistent_query_portable/_drm_safe_query.cpython-310-x86_64-linux-gnu.so",
+  "binary_sha256": "61a162af7298cdeeddabbf03a4cd71f435a6e6d2abcf161f4de26535798c524e",
+  "binding_sha256": "80da27f3b326f13083f4354775505ce812a6698f8c9abb3a3b04612c61807b91",
+  "build_seconds": 5.901604170911014,
+  "compiled_binding": "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/native/build/drm_consistent_query_portable/drm_safe_query.cpp",
+  "compiled_binding_sha256": "0fbb2eb904d0947fe7180e61ba315c0aa9b8f2f4abd9c7e00e9e5c8a13980d86",
+  "compiler": "g++ (Ubuntu 9.5.0-1ubuntu1~22.04) 9.5.0\nCopyright (C) 2019 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+  "compiler_abi_macro": "1013",
+  "compiler_argv": [
+    "/usr/bin/g++",
+    "-std=c++17",
+    "-O2",
+    "-shared",
+    "-fPIC",
+    "-fvisibility=hidden",
+    "-Wl,-Bsymbolic",
+    "-D_GLIBCXX_USE_CXX11_ABI=1",
+    "-fabi-version=13",
+    "-DPYBIND11_BUILD_ABI=\"_cxxabi1013\"",
+    "-DFMT_HEADER_ONLY",
+    "-I/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/include/python3.10",
+    "-I/home/eric/wjg/wd/csdecomp/reproduction/vendor/paperdate_bazel_output/external/pybind11_bazel~~internal_configure_extension~pybind11/include",
+    "-I/home/eric/wjg/wd/csdecomp/reproduction/vendor/paperdate_bazel_output/external/eigen",
+    "-I/home/eric/wjg/wd/csdecomp/reproduction/vendor/paperdate_bazel_output/external/cereal/include",
+    "-I/home/eric/wjg/wd/csdecomp/reproduction/vendor/paperdate_bazel_output/external/fmt/include",
+    "-I/home/eric/wjg/wd/csdecomp/reproduction/vendor/paperdate_bazel_output/external/yaml-cpp/include",
+    "-I/home/eric/wjg/wd/csdecomp/csdecomp/src",
+    "-I/usr/local/cuda-12.8/include",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/native/build/drm_consistent_query_portable/drm_safe_query.cpp",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/native/build/drm_consistent_query_portable/drm_planner.cpp",
+    "-o",
+    "/home/eric/wjg/wd/csdecomp/benchmarks/generic_motion_v1/native/build/drm_consistent_query_portable/_drm_safe_query.cpython-310-x86_64-linux-gnu.so"
+  ],
+  "compiler_macros_sha256": "efb07baa367686caecc930fd0855a1e6bbda644cdc26950c3169b52e74475641",
+  "include_paths": [
+    "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/include/python3.10",
+    "/home/eric/wjg/wd/csdecomp/reproduction/vendor/paperdate_bazel_output/external/pybind11_bazel~~internal_configure_extension~pybind11/include",
+    "/home/eric/wjg/wd/csdecomp/reproduction/vendor/paperdate_bazel_output/external/eigen",
+    "/home/eric/wjg/wd/csdecomp/reproduction/vendor/paperdate_bazel_output/external/cereal/include",
+    "/home/eric/wjg/wd/csdecomp/reproduction/vendor/paperdate_bazel_output/external/fmt/include",
+    "/home/eric/wjg/wd/csdecomp/reproduction/vendor/paperdate_bazel_output/external/yaml-cpp/include",
+    "/home/eric/wjg/wd/csdecomp/csdecomp/src",
+    "/usr/local/cuda-12.8/include"
+  ],
+  "native_library": "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/lib/python3.10/site-packages/csdecomp/pycsdecomp_bindings.so",
+  "native_library_sha256": "0a048625a9d745ac409cff55791d360fe9e91ad1b8d7a3b82245a1a024c57738",
+  "native_linkage": "verified_runtime_global",
+  "original_installation_unchanged": true,
+  "patched_source_sha256": "457a19d872256d4d9aa9a950555c0cad635ba8d36c3857cf749f55fb28b4142f",
+  "patches": [
+    {
+      "after": "  if (closest_node < 0) return -1;  // Preserve exhausted-search failure.\n",
+      "before": "  assert(closest_node >= 0);\n"
+    },
+    {
+      "after": "  return false;  // An exhausted A* frontier is a search failure.\n",
+      "before": "  std::abort();  // Raise SIGABRT\n"
+    },
+    {
+      "after": "  attempts_to_leave_node.clear();\n  // Heuristic query-local vertex exclusions must not leak into later queries.\n  collision_set_ = geometry_invalid_nodes_;\n  collision_set_.insert(environment_collision_nodes_.begin(),\n                        environment_collision_nodes_.end());\n  // Endpoint tags belong to this query, not the persistent scene collision map.\n  for (auto it = forbidden_edge_set_.begin(); it != forbidden_edge_set_.end();) {\n    if ((*it)[0] < 0 || (*it)[1] < 0) it = forbidden_edge_set_.erase(it);\n    else ++it;\n  }\n",
+      "before": "  attempts_to_leave_node.clear();\n"
+    },
+    {
+      "after": "  // Endpoint-local rejection must not remove a valid intermediate vertex.\n  auto endpoint_candidate = [&](const Eigen::VectorXf& q,\n                                Eigen::VectorXf* closest, int endpoint_id) {\n    int32_t best = -1;\n    double distance = std::numeric_limits<double>::infinity();\n    for (const auto& entry : drm_.id_to_node_map) {\n      if (collision_set_.count(entry.first) ||\n          forbidden_edge_set_.count({endpoint_id, entry.first})) continue;\n      const double value = Distance(entry.second, q);\n      if (value < distance) { distance = value; best = entry.first; }\n    }\n    if (best >= 0) *closest = drm_.id_to_node_map.at(best);\n    return best;\n  };\n\n  // Get start node in roadmap.\n",
+      "before": "  // Get start node in roadmap.\n"
+    },
+    {
+      "after": "    start_id = endpoint_candidate(start_configuration, &closest_start_joint, -1);",
+      "before": "    start_id = GetClosestNonCollidingConfigurationInRoadMap(\n        start_configuration, &closest_start_joint);"
+    },
+    {
+      "after": "    forbidden_edge_set_.insert({-1, start_id});",
+      "before": "    collision_set_.insert(start_id);"
+    },
+    {
+      "after": "    target_id = endpoint_candidate(target_configuration, &closest_target_joint, -2);",
+      "before": "    target_id = GetClosestNonCollidingConfigurationInRoadMap(\n        target_configuration, &closest_target_joint);"
+    },
+    {
+      "after": "    forbidden_edge_set_.insert({-2, target_id});",
+      "before": "    collision_set_.insert(target_id);"
+    },
+    {
+      "after": "      int32_t node1 = reduced_node_id_path[ii - 1];\n      int32_t node2 = reduced_node_id_path[ii];\n      if (ii == reduced_node_id_path.size() - 1 && node2 == -1) node2 = -2;\n",
+      "before": "      auto it = std::find(node_id_path.begin(), node_id_path.end(),\n                          reduced_node_id_path[ii - 1]);\n      int32_t node1 = *it;\n      int32_t node2 = *(it + 1);\n      if (node2 == -1) {\n        // this indicates the target node.\n        node2 = -2;\n      }\n"
+    },
+    {
+      "after": "      // Endpoint-edge failure does not invalidate its roadmap vertex.\n      if (node1 >= 0 && node2 >= 0) {\n        ++attempts_to_leave_node[node1];\n        if (attempts_to_leave_node.at(node1) >=\n            options_.max_num_blocked_edges_before_discard_node) {\n          collision_set_.insert(node1);\n        }\n      }\n",
+      "before": "      if (attempts_to_leave_node.find(node1) == attempts_to_leave_node.end()) {\n        attempts_to_leave_node[node1] = 1;\n      } else {\n        attempts_to_leave_node.at(node1) += 1;\n      }\n\n      // insert node into collision set if too many outgoing edges are blocked.\n\n      if (attempts_to_leave_node.at(node1) >=\n          options_.max_num_blocked_edges_before_discard_node) {\n        collision_set_.insert(node1);\n      }\n"
+    },
+    {
+      "after": "  if (!drm_.id_to_node_map.count(start_node_id) ||\n      !drm_.id_to_node_map.count(target_node_id) ||\n      collision_set_.count(start_node_id) || collision_set_.count(target_node_id))\n    return false;\n  if (start_node_id == target_node_id) return true;\n\n  // Clear reachability flag for secondary target joints.\n",
+      "before": "  // Clear reachability flag for secondary target joints.\n"
+    },
+    {
+      "after": "  if (!current_configuration.allFinite() || !next_configuration.allFinite() ||\n      !std::isfinite(distance_between_configurations) ||\n      !std::isfinite(options_.online_edge_step_size) ||\n      options_.online_edge_step_size <= 0) return false;\n  const int intervals = std::max(1, static_cast<int>(\n      std::ceil(distance_between_configurations / options_.online_edge_step_size)));\n  Eigen::MatrixXf configurations(num_joints_, intervals + 1);\n  for (int ii = 0; ii <= intervals; ++ii) {\n    const float fraction = static_cast<float>(ii) / intervals;\n    configurations.col(ii) = (1.0f - fraction) * current_configuration +\n                             fraction * next_configuration;\n  }\n",
+      "before": "  int num_configurations_to_check =\n      distance_between_configurations / options_.online_edge_step_size + 1;\n  Eigen::MatrixXf configurations(num_joints_, num_configurations_to_check);\n  const Eigen::VectorXf edge_direction =\n      (next_configuration - current_configuration) /\n      distance_between_configurations;\n  for (int ii = 0; ii < num_configurations_to_check; ++ii) {\n    const Eigen::VectorXf intermediate_configuration =\n        current_configuration +\n        ii * options_.online_edge_step_size * edge_direction;\n    configurations.col(ii) = intermediate_configuration;\n  }\n"
+    },
+    {
+      "after": "  // Reconcile the broad-phase cache with this query's actual sphere centers\n  // and radius. This also detects colliding nodes missed by the quantized map.\n  // Cache edge hits are likewise only broad phase; native lazy checking below\n  // validates every edge before any path is returned.\n  environment_collision_nodes_.clear();\n  collision_set_ = geometry_invalid_nodes_;\n  forbidden_edge_set_.clear();\n  std::vector<int32_t> node_ids;\n  Eigen::MatrixXf node_configurations(num_joints_, drm_.id_to_node_map.size());\n  int node_column = 0;\n  for (const auto& entry : drm_.id_to_node_map) {\n    node_ids.push_back(entry.first);\n    node_configurations.col(node_column++) = entry.second;\n  }\n  if (!node_ids.empty()) {\n    const auto free_nodes = checkCollisionFreeVoxelsCuda(\n        &node_configurations, &root_p_voxels, online_voxel_radius, &mplant_,\n        inspector_.robot_geometry_ids);\n    for (size_t index = 0; index < node_ids.size(); ++index) {\n      if (!free_nodes.at(index)) {\n        environment_collision_nodes_.insert(node_ids[index]);\n        collision_set_.insert(node_ids[index]);\n      }\n    }\n  }\n\n  int success_flag{0};\n",
+      "before": "  int success_flag{0};\n"
+    },
+    {
+      "after": "      if (IsEdgeBlocked(node, next_node)) {\n",
+      "before": "      if (IsEdgeBlocked(next_node, node)) {\n"
+    },
+    {
+      "after": "  // The first two visible vertices can belong to different components.\n  // That does not establish failure of every endpoint attachment. Examine\n  // further candidates under the same per-endpoint steering-check limit.\n  bool endpoints_connected = CheckPathExists(start_id, target_id, {}, nullptr);\n  if (!endpoints_connected) {\n    auto ordered_candidates = [&](const Eigen::VectorXf& endpoint, int tag,\n                                  int already_visible) {\n      std::vector<std::pair<double, int32_t>> candidates;\n      for (const auto& entry : drm_.id_to_node_map) {\n        if (entry.first == already_visible || collision_set_.count(entry.first) ||\n            forbidden_edge_set_.count({tag, entry.first})) continue;\n        candidates.emplace_back(Distance(endpoint, entry.second), entry.first);\n      }\n      std::sort(candidates.begin(), candidates.end());\n      return candidates;\n    };\n    auto starts = ordered_candidates(start_configuration, -1, start_id);\n    auto goals = ordered_candidates(target_configuration, -2, target_id);\n    std::vector<int32_t> visible_starts{start_id}, visible_goals{target_id};\n    size_t start_cursor = 0, goal_cursor = 0;\n    size_t start_checks = steer_to_start_iterations + 1;\n    size_t goal_checks = steer_to_target_iterations + 1;\n    const size_t limit = options_.max_iterations_steering_to_node;\n    while (!endpoints_connected &&\n           ((start_checks < limit && start_cursor < starts.size()) ||\n            (goal_checks < limit && goal_cursor < goals.size()))) {\n      if (start_checks < limit && start_cursor < starts.size()) {\n        const int32_t candidate = starts[start_cursor++].second;\n        ++start_checks;\n        if (SteerFunctionIsSafe(start_configuration, drm_.id_to_node_map.at(candidate),\n                                root_p_voxels, online_voxel_radius)) {\n          visible_starts.push_back(candidate);\n          for (const auto goal : visible_goals) {\n            if (CheckPathExists(candidate, goal, {}, nullptr)) {\n              start_id = candidate; target_id = goal; endpoints_connected = true;\n              break;\n            }\n          }\n        } else {\n          forbidden_edge_set_.insert({-1, candidate});\n        }\n      }\n      if (!endpoints_connected && goal_checks < limit && goal_cursor < goals.size()) {\n        const int32_t candidate = goals[goal_cursor++].second;\n        ++goal_checks;\n        if (SteerFunctionIsSafe(target_configuration, drm_.id_to_node_map.at(candidate),\n                                root_p_voxels, online_voxel_radius)) {\n          visible_goals.push_back(candidate);\n          for (const auto start : visible_starts) {\n            if (CheckPathExists(start, candidate, {}, nullptr)) {\n              start_id = start; target_id = candidate; endpoints_connected = true;\n              break;\n            }\n          }\n        } else {\n          forbidden_edge_set_.insert({-2, candidate});\n        }\n      }\n    }\n  }\n\n  // Find path in roadmap from start node to target node.\n",
+      "before": "  // Find path in roadmap from start node to target node.\n"
+    },
+    {
+      "after": "  if (endpoints_connected) {\n",
+      "before": "  if (CheckPathExists(start_id, target_id, {}, nullptr)) {\n"
+    },
+    {
+      "after": "          \"[DRMPlanner] No route found through tested roadmap connections.\");\n",
+      "before": "          \"[DRMPlanner] No collision-free path exists in roadmap.\");\n"
+    }
+  ],
+  "profile": "consistent_query",
+  "pybind_abi": "_cxxabi1013",
+  "python": "3.10.22 | packaged by conda-forge | (main, Oct  6 2026, 23:02:24) [GCC 14.4.0]",
+  "returncode": 0,
+  "scope": "Native CPU DRM failure exits, endpoint-local rejected edges, zero-edge reachability and endpoint-inclusive steering; unchanged CUDA; exact online node-cache reconciliation and budgeted alternate endpoint attachments",
+  "source_commit": "e800d18608df5eb4d5483b7a0057fc3236598c73",
+  "source_files": {
+    "benchmarks/generic_motion_v1/native/drm_safe_query.cpp": "80da27f3b326f13083f4354775505ce812a6698f8c9abb3a3b04612c61807b91",
+    "csdecomp/src/geometry/cuda_distance_field.h": "cf80424b1ba2d524e0fe48f3b1d1520a61d8d7e0a246751deb5a76f318f752fb",
+    "csdecomp/src/geometry/cuda_geometry_utilities.h": "5efc4f947e249f156b7cc2e3919730fbb368a7c46db7a616a72368cf36f63fa9",
+    "csdecomp/src/geometry/cuda_hit_and_run_sampling.h": "06947bda799f27c7577e0a9cc4b11ec3248fb8004c3862c52727dd7824469c55",
+    "csdecomp/src/geometry/distance_aabb_linesegment.h": "b8195c2d6c5c10ffd45296e448ec63454ba17a4866dd0e4b231048ce4cb63164",
+    "csdecomp/src/geometry/hpolyhedron.h": "2952446b423e1037f0a9cb5a238e4ba896f9415e3a54fc44616178697e7177e7",
+    "csdecomp/src/geometry/linesegment_aabb_checker.h": "3385ea9f516c9aae6a70c99ea2b929d8793733515c5a5fc55c1f2cb3b399f174",
+    "csdecomp/src/planning/bezier_curve.h": "6044a23fc381e3a86169d030bc127d1d5ef1a137d48bd42a35ffce99f245653c",
+    "csdecomp/src/planning/cuda_edge_inflation_zero_order.h": "7ed4b53c0ab0fb630d982b1da9763d1294c42efc577791409456cf7892267845",
+    "csdecomp/src/planning/cuda_edit_regions.h": "3cd184062478ee9202f20b7c7009dbe92443c6298dceb657195bf591468c6100",
+    "csdecomp/src/planning/cuda_polytope_builder.h": "059856843c3a489dd16ea418dc17aa12d0e37c8a22316bcfbd77799e28f9a669",
+    "csdecomp/src/planning/cuda_set_builder_utils.h": "d4cd4d1e2756dfc23aae9ef3ed5ee14fe51643f973d3b38e4bba574a01ba1d4d",
+    "csdecomp/src/planning/cuda_visibility_graph.h": "08651fed169694007151437f262e4e79103fdbf7056cfce6fc7e6376a27b7a12",
+    "csdecomp/src/planning/drm_cuda_utils.h": "c079680eec895177d65e326cfdc3f47af92463af1118686264b440fe2f3c90bd",
+    "csdecomp/src/planning/drm_planner.cpp": "159300e72e24c2ed398c2c1453a94c10f1f34024f20b014c06e89825380658d6",
+    "csdecomp/src/planning/drm_planner.h": "ec305900bb6037ad3b06c01acd0ed91a0f2771efbedf580a77f6599948aa8465",
+    "csdecomp/src/planning/roadmap.h": "229096b102e72094b8c813c4cc11ff3e0ca3a60b396c15a5cdc20630925fe410",
+    "csdecomp/src/planning/roadmap_builder.h": "cc398eb04f7922d48870b2defe1863bc4c84ea75711d7f98c11c917f52c69f63",
+    "csdecomp/src/plant/collision_checker.h": "9f87ef2ebc29ba989185dfab085924c63d0da5cca8e2a415463073c1ff342eb1",
+    "csdecomp/src/plant/collision_geometry.h": "428de17ca82ea7d4c55cd7b22fbdb6c3475e89d2ef847915f59147d1e965c7f5",
+    "csdecomp/src/plant/cuda_collision_checker.h": "2a56421d6dbc28e9c331baa68117ce2a8f1f03f9b402edc9aa9ab1288e2dec12",
+    "csdecomp/src/plant/cuda_forward_kinematics.h": "82d4b90f9bef0b1e5a796a2a8470c6eaf7217c5686ad2adefeb223e66e92e541",
+    "csdecomp/src/plant/kinematic_tree.h": "812d8864a6151f0e99bf1a5bf99f6b9f355d7e743cc5e13e411cba5ca42b0620",
+    "csdecomp/src/plant/minimal_kinematic_tree.h": "0383a915129a81056fa877c49ce6576465fe0463527e413d9f98d37e0a3caf4e",
+    "csdecomp/src/plant/minimal_plant.h": "6c28997057706d90ef7db85cfa5e1b520d705e6e258452ada6f4ba7e7c9b1428",
+    "csdecomp/src/plant/urdf_parser.h": "7dc79d77a315e1e1c7f06652cc89527bf125d6577c353fc271924f0fa916ff80",
+    "csdecomp/src/pybind/csdecomp/collision_checker_bindings.h": "f48a4f6169dc6e252404f3debca6bfb0916690ddb0a4f032587b5502ecf3c64f",
+    "csdecomp/src/pybind/csdecomp/cpp_utils_bindings.h": "0bb8de8e33603b206faf57bc94573b83452a20ac828e1769b5b8c444c6e1bf53",
+    "csdecomp/src/pybind/csdecomp/cuda_bindings.h": "951a67c801ea2ed2dfb75661b5fc4acc53ac21607e16f67ad4887e360f1cc9e4",
+    "csdecomp/src/pybind/csdecomp/drm_bindings.h": "edea91282e30b8bdfb489eaba9c1d017d98fd13bcb85c9be458bfaa3483a32b5",
+    "csdecomp/src/pybind/csdecomp/hpolyhedron_bindings.h": "8624f83109051e0c00ae63f635c351df009f5da9080b16c51d45fb938477dad2",
+    "csdecomp/src/pybind/csdecomp/plant_bindings.h": "6223cff10a5346ac80e702c9483002cffd0ecf7c3d46896710264799882221ab",
+    "csdecomp/src/pybind/csdecomp/voxel_wrapper.h": "445ce9f26d944e3e10e0177a3855fc5881538767e5527fd027b41a9f7adabe7a",
+    "csdecomp/src/utils/cuda_utilities.h": "d8854492ce9222be4b09ce21e9ec58544bc955f33ef4a1e1bf19b931ab72ad93"
+  },
+  "status": "ready",
+  "upstream_source_sha256": "159300e72e24c2ed398c2c1453a94c10f1f34024f20b014c06e89825380658d6"
+}

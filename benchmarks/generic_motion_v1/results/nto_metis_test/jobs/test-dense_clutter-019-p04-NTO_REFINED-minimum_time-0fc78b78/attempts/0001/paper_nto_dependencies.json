@@ -1,0 +1,39 @@
+{
+  "available": true,
+  "enabled": true,
+  "fidelity": "Drake NTO with published solvers/orders and explicit positive-clearance collocation refinement",
+  "linear_system": {
+    "avoids_matching_order": true,
+    "constraints_changed": false,
+    "native_binary": {
+      "bytes": 114971376,
+      "drake_version": "1.51.1",
+      "library": "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/lib/python3.10/site-packages/pydrake/lib/libdrake.so",
+      "loaded_library_paths": [
+        "/home/eric/wjg/wd/csdecomp/.conda/envs/csdecomp/lib/python3.10/site-packages/pydrake/lib/libdrake.so"
+      ],
+      "loaded_matches_package": true,
+      "sha256": "6e06e85a0385cf0ac62483c76a4d959f3465883c8bab5739e84280d4005be80f"
+    },
+    "native_library_patched": false,
+    "options": {
+      "linear_solver": "spral",
+      "spral_order": "metis",
+      "spral_scaling": "mc64"
+    },
+    "policy": "explicit_SPRAL_order_and_scaling",
+    "sources": {
+      "drake_pin": "https://github.com/RobotLocomotion/drake/blob/v1.51.1/tools/workspace/ipopt_internal/repository.bzl",
+      "ipopt_interface": "https://github.com/coin-or/Ipopt/blob/releases/3.14.19/src/Algorithm/LinearSolvers/IpSpralSolverInterface.cpp",
+      "singular_factorization_fix": "https://github.com/coin-or/Ipopt/pull/848"
+    }
+  },
+  "method": "NTO_REFINED",
+  "objective": "minimum_time",
+  "probe_seconds": 0.0010289349593222141,
+  "probe_solution": 0.9999999900099921,
+  "probe_status": "SolutionResult.kSolutionFound",
+  "probe_success": true,
+  "profile": "rss2025_nto_numerical_refinement_v2",
+  "solver": "IPOPT"
+}

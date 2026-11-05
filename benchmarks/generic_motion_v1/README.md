@@ -73,15 +73,27 @@ CHOMP's C-space functional and TrajOpt's sampled collision constraints differ fr
 
 ## Results and evidence
 
-The published test table in the [project overview](../../README.md) uses `baseline_test`; dev results are in the linked summaries. Both cohorts use runtime commit `6c3144ff64`. **Dev: 60 problems × seeds 0, 1, 2. Test: 395 valid problems × seed 0 only. Test seeds 1 and 2 have not been run.** Manifests preserve source hashes and effective settings.
+The current table in the [project overview](../../README.md) uses the complete `NTO_REFINED` retest at runtime commit `f4446e54ec`, alongside the other methods' existing `baseline_dev` / `baseline_test` runs at `6c3144ff64`. **Dev: 60 problems × seeds 0, 1, 2. Test: 395 valid problems × seed 0 only. Test seeds 1 and 2 have not been run.** Manifests preserve source hashes and effective settings.
 
-Smoke/dev/test contain 8,540 recorded calls, including explicit invalid inputs. A separate shared-initial-region comparison adds 676 calls on 338 eligible problems. All 9,216 declared calls completed, with zero infrastructure errors. Test recorded 4,009 successes, 759 searches without a solution, 140 timeouts, 369 validation failures, 253 solver failures and 350 invalid-input calls (25 generation failures × 14 combinations).
+The NTO retest completed all **1,220 registered calls** (1,166 legal inputs and 54 invalid-input calls), with no native crashes or infrastructure errors. It uses the fixed METIS/MC64 solver policy and keeps experimental early return disabled. Counts below are independently validated successes:
+
+| Split and repetitions | Path | Time |
+|---|---:|---:|
+| Smoke: 8 legal problems × seed 0 | 4 / 8 | 4 / 8 |
+| Dev: 60 problems × seeds 0, 1, 2 | 99 / 180 | 116 / 180 |
+| Test: 395 problems × seed 0 | 276 / 395 | 302 / 395 |
+
+Both the complete-flow and fixed-frontend comparisons include all applicable existing baselines. All shared frontend path hashes agree. Test path outcomes and common-success costs exactly match the previous refined run; time has 14 newly successful and 9 formerly successful problems, for 297 → 302 successes. The [matched comparison](results/nto_metis/comparison/paired_before_after_summary.csv) records these as observations across source revisions, not a controlled single-factor ablation. `NTO_PAPER` and legacy `NTO` retain their historical runs.
+
+The historical smoke/dev/test cohorts contain 8,540 recorded calls, including explicit invalid inputs. A separate shared-initial-region comparison adds 676 calls on 338 eligible problems. All 9,216 declared historical calls completed, with zero infrastructure errors. Their original CSVs and evidence remain unchanged.
 
 | Evidence | Use |
 |---|---|
-| [records.csv](results/records.csv) | Actual attempts, including historical/diagnostic runs; filter by run identity |
-| [summary.csv](results/summary.csv) | Outcomes, latency, objectives and paired differences; filter by comparison identity |
-| [selection.json](results/selection.json) | Cohorts; main comparisons are `current_dev_repaired` and `current_test_repaired` |
+| [records.csv](results/nto_metis/comparison/records.csv) | Current NTO retest and the existing baseline controls; filter by run identity |
+| [summary.csv](results/nto_metis/comparison/summary.csv) | Outcomes, latency, objectives and paired differences; filter by comparison identity |
+| [selection.json](results/nto_metis/comparison/selection.json) | Complete-flow and fixed-frontend comparisons for dev/test |
+| [Retest verification](results/nto_metis/comparison/verification.json) | All 1,220 new calls, six new/control run checks and 1,003 recorded IPOPT parameter files |
+| [Historical summary](results/summary.csv) | Original comparison and diagnostic cohorts, retained unchanged |
 | [Completion checks](results/rigor_checks/completed_evaluation.json) | Run completion, receipts, input/protocol identity and metrics |
 | [Input/regression checks](results/rigor_checks/checks.json) | Model/input rechecks, test evidence and historical-result preservation |
 
@@ -123,7 +135,7 @@ Use `NTO_REFINED` as the strengthened NTO comparison profile. `NTO_PAPER` preser
 
 All profiles use the same model, inputs, 60-second full-flow budget and final validator. Path optimization uses order-2 splines, whose control-polygon length is the actual PWL length. Time optimization uses the same motion limits; Drake enforces derivative bounds through conservative spline control-hull constraints ([KTO documentation](https://drake.mit.edu/doxygen_cxx/classdrake_1_1planning_1_1trajectory__optimization_1_1_kinematic_trajectory_optimization.html)). SNOPT's major and total iteration limits are distinct ([solver documentation](https://ccom.ucsd.edu/~optimizers/docs/snopt/options.html)).
 
-The [receipt/count audit](results/rigor_checks/nto_profiles/counts.json) checks all 3,600 registered dev/test NTO calls and 99,387 sealed files. Counts agree with the published CSVs. On test, all six profile–track combinations share **338 identical validated frontend paths**; the remaining 57 problems have the same frontend failure (54 searches without a solution, 3 timeouts). Backend outcomes on those 338 paths are:
+The historical [receipt/count audit](results/rigor_checks/nto_profiles/counts.json) checks all 3,600 registered dev/test NTO calls and 99,387 sealed files. Counts agree with the original CSVs. On test, all six historical profile–track combinations share **338 identical validated frontend paths**; the remaining 57 problems have the same frontend failure (54 searches without a solution, 3 timeouts). Historical backend outcomes on those 338 paths are:
 
 | Profile / track | Numerically valid | Validation failed | Solver failed | Backend timeout |
 |---|---:|---:|---:|---:|
@@ -206,13 +218,15 @@ Omit `--methods` for all supported methods; `--track both` uses their supported 
 
 ```bash
 bash local/python.sh scripts/evaluate.py summarize \
-  --selection results/selection.json --output runs/published-summary
+  --selection results/nto_metis/comparison/selection.json --output runs/current-summary
 bash local/python.sh scripts/evaluate.py replay \
-  --attempt results/baseline_test/jobs/test-sparse_clutter-000-p00-EI_ZO-minimum_distance-3cafa806/attempts/0001 \
+  --attempt results/nto_metis_test/jobs/test-sparse_clutter-000-p01-NTO_REFINED-minimum_time-0ab9c422/attempts/0001 \
   --output runs/replay-example
 ```
 
 Replay writes `replay.html`. Use another trajectory's `attempt_path` from `records.csv` to inspect it. For new comparisons, adapt the existing selection schema to reference your run and retain distinct comparison identities. Summaries preserve failures, pending work, stage timings and scene-cluster paired statistics.
+
+For the completed NTO retest, `bash local/python.sh results/nto_metis/complete.py --output results/nto_metis/rebuilt-comparison` additionally enforces the full run matrix, source/configuration agreement, actual solver options and matched historical inputs before publishing. Use a new output path. Add `--coverage-only` to monitor completion without producing scores.
 
 ### Generate and build an offline roadmap
 

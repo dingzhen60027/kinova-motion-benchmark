@@ -1,0 +1,61 @@
+{
+  "status": "success_validated_numerical",
+  "problem_id": "test-open_control-000-p00",
+  "scene_id": "test-open_control-000",
+  "family": "open_control",
+  "objective": "minimum_time",
+  "method": "NTO_REFINED",
+  "method_seed": 1394876352,
+  "roadmap_id": "kinova7-full-n6000-s0-e258c5f9914c",
+  "frontend_success": true,
+  "frontend_native_success": true,
+  "roadmap_used": true,
+  "source_code_commit": "f4446e54ec46d979ee40b823663401bee719f97a",
+  "source_sha256": {
+    "runner": "977678141186d214816e8b5cc5dc0d960c3c9adcfb31e10d050bd3bb400e1fe7",
+    "validator": "98cb9244d0d73831082894275d0b15c7732c9ac1c27755feeff8e3b31883521c"
+  },
+  "timing": {
+    "model_setup_seconds": 0.014961548149585724,
+    "gpu_initialization_warmup_seconds": 0.12056643702089787,
+    "roadmap_load_seconds": 0.01535236369818449,
+    "online_collision_map_seconds": 2.34958715736866e-05,
+    "drm_path_seconds": 0.03161823796108365,
+    "drm_path_validation_seconds": 0.09728895174339414,
+    "trajectory_optimization_seconds": 0.2278975690715015,
+    "validation_seconds": 0.14242290705442429,
+    "cold_e2e_seconds": 1.0177285466343164,
+    "warm_query_seconds": 0.501002081669867
+  },
+  "metrics": {
+    "cost": 4.302194214402569,
+    "cost_unit": "s",
+    "path_length_rad": 4.080925031301098,
+    "normalized_path_length": 0.7370523069626979,
+    "minimum_sampled_clearance_m": 0.019025026584333152,
+    "duration_s": 4.302194214402569,
+    "regions": 0,
+    "facets": 0
+  },
+  "budget_seconds": 60.0,
+  "reproduction_fidelity": "Kinova; Drake KTO with SNOPT distance/IPOPT time, positive clearance and collision collocation refinement; not exact author FR3/hardware reproduction",
+  "seed_semantics": "EI-ZO EizoOptions.seed is passed to native cuRAND; DRM graph sampling uses separate saved PCG64 seed; optimizer initialization is deterministic fixed DRM path",
+  "roadmap_sha256": "bb780d13284769b0a97b6e891d2d90e2377e7494bb420fba32cc2f09355998a7",
+  "offline_roadmap_seconds": 45.87767210975289,
+  "frontend_validation_status": "success_validated_numerical",
+  "timing_scope": {
+    "cold": "worker function entry through final validation/failure; process startup measured separately by outer runner",
+    "warm": "same actual cold execution minus one-time model/dependency/GPU/roadmap setup; not a second timed solve",
+    "offline": "DRM construction is recorded separately and never added to query latency"
+  },
+  "gpu_memory": {
+    "sampled_peak_process_allocation_mib": 188,
+    "samples": 3,
+    "sampling_period_s": 0.2,
+    "method": "nvidia-smi process allocation; sampled peak, not CUDA allocator exact high water mark",
+    "error": null
+  },
+  "final_stage": "validation",
+  "cold_e2e_seconds": 1.4161322000436485,
+  "sampled_gpu_peak_mib": 188.0
+}

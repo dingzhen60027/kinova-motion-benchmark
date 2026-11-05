@@ -1,0 +1,375 @@
+
+         ==============================
+         S N O P T  7.4-1.2  (Feb 2015)
+         ==============================
+1
+ 
+ SNMEMA EXIT 100 -- finished successfully
+ SNMEMA INFO 104 -- memory requirements estimated
+
+ 
+ ===>  WARNING - Column     57 of the Jacobian is empty.
+1
+ 
+ Parameters
+ ==========
+
+ Files
+ -----
+ Solution file..........         0       Old basis file ........         0       Standard input.........         5
+ Insert file............         0       New basis file ........         0       (Printer)..............        10
+ Punch file.............         0       Backup basis file......         0       (Specs file)...........         0
+ Load file..............         0       Dump file..............         0       Standard output........         6
+
+ Frequencies
+ -----------
+ Print frequency........       100       Check frequency........        60       Save new basis map.....       100
+ Summary frequency......       100       Factorization frequency        50       Expand frequency.......     10000
+
+ QP subproblems
+ --------------
+ QPsolver Cholesky......
+ Scale tolerance........     0.900       Minor feasibility tol..  1.00E-06       Iteration limit........    100000
+ Scale option...........         0       Minor optimality  tol..  5.00E-07       Minor print level......         0
+ Crash tolerance........     0.100       Pivot tolerance........  3.25E-11       New superbasics........        99
+ Crash option...........         3       Elastic weight.........  1.00E+05
+
+ Partial pricing
+ ---------------
+ LP Partial price.......         1       Prtl price section ( A)        57       Prtl price section (-I)       165
+ QP Partial price.......         1       Prtl price section ( A)        57       Prtl price section (-I)       165
+
+ The SQP Method
+ --------------
+ Minimize...............                 Cold start.............                 Proximal Point method..         1
+ Nonlinear objectiv vars        56       Objective Row..........         1       Function precision.....  3.00E-13
+ Unbounded step size....  1.00E+20       Superbasics limit......        57       Difference interval....  5.48E-07
+ Unbounded objective....  1.00E+15       Reduced Hessian dim....        57       Central difference int.  6.70E-05
+ Major step limit.......  2.00E+00       Derivative linesearch..                 Derivative option......         1
+ Major iterations limit.      2000       Linesearch tolerance...   0.90000       Verify level...........         0
+ Minor iterations limit.       500       Penalty parameter......  0.00E+00       Major Print Level......         1
+ Time limit (secs)......      51.0       Major optimality tol...  1.00E-06
+
+ Hessian Approximation
+ ---------------------
+ Full-Memory Hessian....                 Hessian updates........  99999999       Hessian frequency......  99999999
+                                                                                 Hessian flush..........  99999999
+
+ Nonlinear constraints
+ ---------------------
+ Nonlinear constraints..       150       Major feasibility tol..  1.00E-06       Violation limit........  1.00E+01
+ Nonlinear Jacobian vars        56
+
+ Miscellaneous
+ -------------
+ LU factor tolerance....      3.99       LU singularity tol.....  3.25E-11       Timing level...........         0
+ LU update tolerance....      3.99       LU swap tolerance......  1.22E-04       Debug level............         0
+ LU partial  pivoting...                 eps (machine precision)  2.22E-16       System information.....        No
+                                                                                 Sticky parameters......        No
+1
+ 
+
+ 
+
+ Matrix statistics
+ -----------------
+               Total      Normal        Free       Fixed     Bounded
+ Rows            165         150           1          14           0
+ Columns          57           0           0           1          56
+
+ No. of matrix elements                 2114     Density      22.477
+ Biggest  constant element        1.0000E+00  (excluding fixed columns,
+ Smallest constant element        1.0000E+00   free rows, and RHS)
+
+ No. of objective coefficients             0
+
+ Nonlinear constraints     150     Linear constraints      15
+ Nonlinear variables        56     Linear variables         1
+ Jacobian  variables        56     Objective variables     56
+ Total constraints         165     Total variables         57
+1
+ 
+
+ 
+ The user has defined    2156   out of    2156   first  derivatives
+
+ Cheap test of user-supplied problem derivatives...
+
+ The constraint gradients seem to be OK.
+
+ -->  The largest discrepancy was    2.34E-03  in constraint    81
+ 
+
+ XXX  The objective  gradients seem to be incorrect.
+
+ Gradient projected in one direction  -3.59649425039E-02
+ Difference approximation              9.64418461430E-02
+1
+ 
+ Singular(m=n)  rank      165  n-rank       0  nsing        1
+ Singular(m=n)  rank      165  n-rank       0  nsing        1
+ 
+
+   Itns Major Minors    Step   nCon Feasible  Optimal  MeritFunction     L+U BSwap     nS condZHZ Penalty
+     35     0     35              1  7.2E-02  9.4E-03  7.9357794E+00     520           29 1.5E+07         _  r
+     37     1      2 2.1E-12      8  7.2E-02  4.8E-03  7.9360629E+00     510           28 6.7E+02 7.4E-03 _  r
+     38     1      1             14  7.2E-02  9.5E-03  7.9357794E+00     510           28 6.7E+02         _  r
+     38     1      0             21  7.2E-02  9.5E-03  7.9357794E+00     510           28 6.7E+02         _  r
+1
+ 
+ SNOPTA EXIT  40 -- terminated after numerical difficulties
+ SNOPTA INFO  41 -- current point cannot be improved
+
+ Problem name                 drake_pr
+ No. of iterations                  38   Objective            7.9357793852E+00
+ No. of major iterations             1   Linear    obj. term  0.0000000000E+00
+ Penalty parameter           7.044E-03   Nonlinear obj. term  7.9357793852E+00
+ User function calls (total)        29
+ No. of superbasics                 28   No. of basic nonlinears            26
+ No. of degenerate steps             1   Percentage                       2.63
+ Max x                       7 2.9E+00   Max pi                    165 1.0E+00
+ Max Primal infeas           0 0.0E+00   Max Dual infeas             8 9.5E-03
+ Nonlinear constraint violn    2.8E-01
+1
+ 
+ Name           drake_pr                 Objective Value      7.9357793852E+00
+
+ Status         Optimal Soln             Iteration     38    Superbasics    28
+
+ Objective               (Min)
+ RHS
+ Ranges
+ Bounds
+
+ Section 1 - Rows
+
+  Number  ...Row.. State  ...Activity...  Slack Activity  ..Lower Limit.  ..Upper Limit.  .Dual Activity    ..i
+ 
+      58  r      1    BS          .               .                None            None         -1.0          1
+      59  r      2    BS         0.08285        -0.91715           None          1.0              .           2
+      60  r      3    BS         0.08285        -0.91715           None          1.0              .           3
+      61  r      4    BS         0.08285        -0.91715           None          1.0              .           4
+      62  r      5    BS         0.08285        -0.91715           None          1.0              .           5
+      63  r      6    BS         0.08285        -0.91715           None          1.0              .           6
+      64  r      7    BS         0.08285        -0.91715           None          1.0              .           7
+      65  r      8    BS         0.08285        -0.91715           None          1.0              .           8
+      66  r      9    BS         0.08285        -0.91715           None          1.0              .           9
+      67  r     10    BS         0.08285        -0.91715           None          1.0              .          10
+      68  r     11    BS         0.08285        -0.91715           None          1.0              .          11
+      69  r     12    BS         0.08285        -0.91715           None          1.0              .          12
+      70  r     13    BS         0.08285        -0.91715           None          1.0              .          13
+      71  r     14    BS         0.08285        -0.91715           None          1.0              .          14
+      72  r     15    BS         0.08285        -0.91715           None          1.0              .          15
+      73  r     16    BS         0.08285        -0.91715           None          1.0              .          16
+      74  r     17    BS         0.08285        -0.91715           None          1.0              .          17
+      75  r     18    BS         0.08285        -0.91715           None          1.0              .          18
+      76  r     19    BS         0.08285        -0.91715           None          1.0              .          19
+      77  r     20    BS         0.08285        -0.91715           None          1.0              .          20
+      78  r     21    BS         0.08285        -0.91715           None          1.0              .          21
+      79  r     22 D  BS         1.00000        -0.00000           None          1.0              .          22
+      80  r     23    UL         1.27698         0.27698           None          1.0            -0.00114     23
+      81  r     24    UL         1.00000        -0.00000           None          1.0            -0.00013     24
+      82  r     25    BS         0.64759        -0.35241           None          1.0              .          25
+      83  r     26    BS         0.20079        -0.79921           None          1.0              .          26
+      84  r     27    BS         0.08285        -0.91715           None          1.0              .          27
+      85  r     28    BS         0.08285        -0.91715           None          1.0              .          28
+      86  r     29    BS         0.08285        -0.91715           None          1.0              .          29
+      87  r     30    BS         0.08285        -0.91715           None          1.0              .          30
+      88  r     31    BS         0.08285        -0.91715           None          1.0              .          31
+      89  r     32    BS         0.08285        -0.91715           None          1.0              .          32
+      90  r     33    BS         0.08285        -0.91715           None          1.0              .          33
+      91  r     34    BS         0.08285        -0.91715           None          1.0              .          34
+      92  r     35    BS         0.08285        -0.91715           None          1.0              .          35
+      93  r     36    BS         0.08285        -0.91715           None          1.0              .          36
+      94  r     37    BS         0.08285        -0.91715           None          1.0              .          37
+      95  r     38    BS         0.08285        -0.91715           None          1.0              .          38
+      96  r     39    BS         0.08285        -0.91715           None          1.0              .          39
+      97  r     40    BS         0.08285        -0.91715           None          1.0              .          40
+      98  r     41    BS         0.08286        -0.91714           None          1.0              .          41
+      99  r     42    BS         0.12273        -0.87727           None          1.0              .          42
+     100  r     43    BS         0.60423        -0.39577           None          1.0              .          43
+     101  r     44    UL         1.00000        -0.00000           None          1.0            -0.00007     44
+     102  r     45    UL         1.00000        -0.00000           None          1.0            -0.00029     45
+     103  r     46 D  BS         1.00000        -0.00000           None          1.0              .          46
+     104  r     47 D  BS         1.00000        -0.00000           None          1.0              .          47
+     105  r     48 D  BS         1.00000        -0.00000           None          1.0              .          48
+     106  r     49 D  BS         1.00000        -0.00000           None          1.0              .          49
+     107  r     50 D  BS         1.00000        -0.00000           None          1.0              .          50
+     108  r     51 D  BS         1.00000        -0.00000           None          1.0              .          51
+     109  r     52 D  BS         1.00000        -0.00000           None          1.0              .          52
+     110  r     53 D  BS         1.00000        -0.00000           None          1.0              .          53
+     111  r     54 D  BS         1.00000        -0.00000           None          1.0              .          54
+     112  r     55 D  BS         1.00000        -0.00000           None          1.0              .          55
+     113  r     56 D  BS         1.00000        -0.00000           None          1.0              .          56
+     114  r     57 D  BS         1.00000        -0.00000           None          1.0              .          57
+     115  r     58 D  BS         1.00000        -0.00000           None          1.0              .          58
+     116  r     59 D  BS         1.00000        -0.00000           None          1.0              .          59
+     117  r     60 D  BS         1.00000        -0.00000           None          1.0              .          60
+     118  r     61 D  BS         1.00000        -0.00000           None          1.0              .          61
+     119  r     62 D  BS         1.00000        -0.00000           None          1.0              .          62
+     120  r     63 D  BS         1.00000        -0.00000           None          1.0              .          63
+     121  r     64 D  BS         1.00000        -0.00000           None          1.0              .          64
+     122  r     65 D  BS         1.00000        -0.00000           None          1.0              .          65
+     123  r     66    UL         1.00000        -0.00000           None          1.0            -0.00000     66
+     124  r     67    BS         0.08285        -0.91715           None          1.0              .          67
+     125  r     68    BS         0.08285        -0.91715           None          1.0              .          68
+     126  r     69    BS         0.08285        -0.91715           None          1.0              .          69
+     127  r     70    BS         0.08285        -0.91715           None          1.0              .          70
+     128  r     71    BS         0.08285        -0.91715           None          1.0              .          71
+     129  r     72    BS         0.08285        -0.91715           None          1.0              .          72
+     130  r     73    BS         0.08285        -0.91715           None          1.0              .          73
+     131  r     74    BS         0.08285        -0.91715           None          1.0              .          74
+     132  r     75    BS         0.08285        -0.91715           None          1.0              .          75
+     133  r     76    BS         0.08285        -0.91715           None          1.0              .          76
+     134  r     77    BS         0.08285        -0.91715           None          1.0              .          77
+     135  r     78    BS         0.08285        -0.91715           None          1.0              .          78
+     136  r     79    BS         0.08285        -0.91715           None          1.0              .          79
+     137  r     80    BS         0.08285        -0.91715           None          1.0              .          80
+     138  r     81    BS         0.08285        -0.91715           None          1.0              .          81
+     139  r     82    BS         0.08285        -0.91715           None          1.0              .          82
+     140  r     83    BS         0.08285        -0.91715           None          1.0              .          83
+     141  r     84    BS         0.08285        -0.91715           None          1.0              .          84
+     142  r     85    BS         0.41640        -0.58360           None          1.0              .          85
+     143  r     86    UL         1.00000        -0.00000           None          1.0            -0.00037     86
+     144  r     87    BS         0.87008        -0.12992           None          1.0              .          87
+     145  r     88    BS         0.41609        -0.58391           None          1.0              .          88
+     146  r     89    BS         0.50936        -0.49064           None          1.0              .          89
+     147  r     90    BS         0.60012        -0.39988           None          1.0              .          90
+     148  r     91    BS         0.68574        -0.31426           None          1.0              .          91
+     149  r     92    BS         0.76400        -0.23600           None          1.0              .          92
+     150  r     93    BS         0.83305        -0.16695           None          1.0              .          93
+     151  r     94    BS         0.89141        -0.10859           None          1.0              .          94
+     152  r     95    BS         0.93793        -0.06207           None          1.0              .          95
+     153  r     96    BS         0.97182        -0.02818           None          1.0              .          96
+     154  r     97 D SBS         0.99257        -0.00743           None          1.0             0.00000     97
+     155  r     98    UL         1.00000         0.00000           None          1.0            -0.00087     98
+     156  r     99 D  BS         0.99419        -0.00581           None          1.0              .          99
+     157  r    100    BS         0.97550        -0.02450           None          1.0              .         100
+     158  r    101    BS         0.94453        -0.05547           None          1.0              .         101
+     159  r    102    BS         0.90212        -0.09788           None          1.0              .         102
+     160  r    103    BS         0.84933        -0.15067           None          1.0              .         103
+     161  r    104    BS         0.78741        -0.21259           None          1.0              .         104
+     162  r    105    BS         0.71781        -0.28219           None          1.0              .         105
+     163  r    106    BS         0.64215        -0.35785           None          1.0              .         106
+     164  r    107    BS         0.56221        -0.43779           None          1.0              .         107
+     165  r    108    BS         0.47991        -0.52009           None          1.0              .         108
+     166  r    109    BS         0.39728        -0.60272           None          1.0              .         109
+     167  r    110    BS         0.58031        -0.41969           None          1.0              .         110
+     168  r    111    BS         0.78068        -0.21932           None          1.0              .         111
+     169  r    112    BS         0.92560        -0.07440           None          1.0              .         112
+     170  r    113    UL         1.00000         0.00000           None          1.0            -0.00014    113
+     171  r    114    UL         1.00000         0.00000           None          1.0            -0.00044    114
+     172  r    115    BS         0.93075        -0.06925           None          1.0              .         115
+     173  r    116    BS         0.80446        -0.19554           None          1.0              .         116
+     174  r    117    BS         0.63860        -0.36140           None          1.0              .         117
+     175  r    118    BS         0.45427        -0.54573           None          1.0              .         118
+     176  r    119    BS         0.27466        -0.72534           None          1.0              .         119
+     177  r    120    BS         0.12401        -0.87599           None          1.0              .         120
+     178  r    121    BS         0.08288        -0.91712           None          1.0              .         121
+     179  r    122    BS         0.08285        -0.91715           None          1.0              .         122
+     180  r    123    BS         0.08285        -0.91715           None          1.0              .         123
+     181  r    124    BS         0.08285        -0.91715           None          1.0              .         124
+     182  r    125    BS         0.08285        -0.91715           None          1.0              .         125
+     183  r    126    BS         0.08532        -0.91468           None          1.0              .         126
+     184  r    127    BS         0.19530        -0.80470           None          1.0              .         127
+     185  r    128    BS         0.35016        -0.64984           None          1.0              .         128
+     186  r    129    BS         0.51008        -0.48992           None          1.0              .         129
+     187  r    130    BS         0.65480        -0.34520           None          1.0              .         130
+     188  r    131    BS         0.83592        -0.16408           None          1.0              .         131
+     189  r    132    UL         1.0              .                None          1.0            -0.05314    132
+     190  r    133    UL         1.00000         0.00000           None          1.0            -0.02165    133
+     191  r    134    BS         0.89632        -0.10368           None          1.0              .         134
+     192  r    135    BS         0.95181        -0.04819           None          1.0              .         135
+     193  r    136    BS         0.87948        -0.12052           None          1.0              .         136
+     194  r    137    BS         0.71206        -0.28794           None          1.0              .         137
+     195  r    138    BS         0.60832        -0.39168           None          1.0              .         138
+     196  r    139    BS         0.38786        -0.61214           None          1.0              .         139
+     197  r    140    BS         0.13789        -0.86211           None          1.0              .         140
+     198  r    141    BS         0.08327        -0.91673           None          1.0              .         141
+     199  r    142    BS         0.08285        -0.91715           None          1.0              .         142
+     200  r    143    BS         0.08285        -0.91715           None          1.0              .         143
+     201  r    144    BS         0.08285        -0.91715           None          1.0              .         144
+     202  r    145    BS         0.08285        -0.91715           None          1.0              .         145
+     203  r    146    BS         0.08285        -0.91715           None          1.0              .         146
+     204  r    147    BS         0.08285        -0.91715           None          1.0              .         147
+     205  r    148    BS         0.08285        -0.91715           None          1.0              .         148
+     206  r    149    BS         0.08285        -0.91715           None          1.0              .         149
+     207  r    150    BS         0.08285        -0.91715           None          1.0              .         150
+     208  r    151    BS         0.08285        -0.91715           None          1.0              .         151
+     209  r    152    EQ         2.77573          .              2.77573         2.77573         0.33340    152
+     210  r    153    EQ        -0.42087          .             -0.42087        -0.42087         0.27208    153
+     211  r    154    EQ        -2.21055          .             -2.21055        -2.21055        -0.66318    154
+     212  r    155    EQ         1.32683          .              1.32683         1.32683         0.46239    155
+     213  r    156    EQ        -0.81658          .             -0.81658        -0.81658         0.08377    156
+     214  r    157    EQ         1.17291          .              1.17291         1.17291         0.39266    157
+     215  r    158    EQ        -2.85950          .             -2.85950        -2.85950        -0.00293    158
+     216  r    159    EQ        -0.59429          .             -0.59429        -0.59429        -0.55379    159
+     217  r    160    EQ        -1.75808          .             -1.75808        -1.75808        -0.04659    160
+     218  r    161    EQ         2.75859          .              2.75859         2.75859         0.51799    161
+     219  r    162    EQ        -2.27691          .             -2.27691        -2.27691        -0.47229    162
+     220  r    163    EQ        -1.51841          .             -1.51841        -1.51841        -0.09508    163
+     221  r    164    EQ        -2.06258          .             -2.06258        -2.06258        -0.44032    164
+     222  r    165    EQ        -2.84949          .             -2.84949        -2.84949        -0.00099    165
+1
+ 
+ Section 2 - Columns
+
+  Number  .Column. State  ...Activity...  .Obj Gradient.  ..Lower Limit.  ..Upper Limit.  Reduced Gradnt    m+j
+ 
+       1  x      1    BS         2.77573         0.33412        -3.10000         3.10000          .         166
+       2  x      2    BS        -0.42087         0.27096        -2.24000         2.24000          .         167
+       3  x      3    BS        -2.21055        -0.66337        -3.10000         3.10000          .         168
+       4  x      4    BS         1.32683         0.46226        -2.57000         2.57000          .         169
+       5  x      5    BS        -0.81658         0.08375        -3.10000         3.10000          .         170
+       6  x      6    BS         1.17291         0.39265        -2.09000         2.09000          .         171
+       7  x      7    BS        -2.85950        -0.00293        -3.10000         3.10000          .         172
+       8  x      8 N SBS         2.01448         0.07207        -3.10000         3.10000        -0.00953    173
+       9  x      9    BS        -1.03823        -0.13512        -2.24000         2.24000        -0.00255    174
+      10  x     10 N SBS        -0.69915        -0.01372        -3.10000         3.10000         0.00652    175
+      11  x     11 N SBS         0.27362        -0.01790        -2.57000         2.57000        -0.00154    176
+      12  x     12 N SBS        -1.00741         0.00320        -3.10000         3.10000         0.00431    177
+      13  x     13 N SBS         0.27831        -0.00140        -2.09000         2.09000         0.00016    178
+      14  x     14    BS        -2.85282         0.00125        -3.10000         3.10000         0.00109    179
+      15  x     15    BS         1.82808         0.02575        -3.10000         3.10000         0.00083    180
+      16  x     16    BS        -1.10057        -0.04532        -2.24000         2.24000         0.00171    181
+      17  x     17 N SBS        -0.38844        -0.00459        -3.10000         3.10000        -0.00430    182
+      18  x     18 N SBS         0.06971        -0.01918        -2.57000         2.57000        -0.00425    183
+      19  x     19 N SBS        -1.04731        -0.00389        -3.10000         3.10000        -0.00449    184
+      20  x     20 N SBS         0.09877        -0.00034        -2.09000         2.09000        -0.00134    185
+      21  x     21 N SBS        -2.85205        -0.00410        -3.10000         3.10000        -0.00410    186
+      22  x     22    BS         1.82808         0.00014        -3.10000         3.10000        -0.00030    187
+      23  x     23 N SBS        -1.10057         0.00193        -2.24000         2.24000        -0.00164    188
+      24  x     24    BS        -0.38844         0.00579        -3.10000         3.10000         0.00402    189
+      25  x     25 N SBS         0.06971         0.00580        -2.57000         2.57000         0.00483    190
+      26  x     26 N SBS        -1.04731         0.00432        -3.10000         3.10000         0.00450    191
+      27  x     27 N SBS         0.09877         0.00219        -2.09000         2.09000         0.00130    192
+      28  x     28 N SBS        -2.85205         0.00410        -3.10000         3.10000         0.00413    193
+      29  x     29 A  FR         0.75747         0.00000        -3.10000         3.10000         0.00000    194
+      30  x     30    BS        -1.32966         0.10776        -2.24000         2.24000        -0.00017    195
+      31  x     31    BS         1.28629         0.05515        -3.10000         3.10000         0.00030    196
+      32  x     32 N SBS        -0.99818         0.02515        -2.57000         2.57000        -0.00021    197
+      33  x     33 N SBS        -1.26383        -0.00083        -3.10000         3.10000         0.00013    198
+      34  x     34 N SBS        -0.87525         0.02204        -2.09000         2.09000        -0.00001    199
+      35  x     35 N SBS        -2.84790         0.00029        -3.10000         3.10000         0.00003    200
+      36  x     36 A  FR         0.61987         0.00000        -3.10000         3.10000        -0.00000    201
+      37  x     37    BS        -1.39342         0.09899        -2.24000         2.24000         0.00009    202
+      38  x     38 N SBS         1.48397         0.07122        -3.10000         3.10000        -0.00013    203
+      39  x     39 N SBS        -1.14344         0.01488        -2.57000         2.57000         0.00009    204
+      40  x     40 N SBS        -1.29139         0.00692        -3.10000         3.10000        -0.00007    205
+      41  x     41 N  FR        -1.00745         0.02214        -2.09000         2.09000         0.00000    206
+      42  x     42 N SBS        -2.84745         0.00198        -3.10000         3.10000        -0.00001    207
+      43  x     43    BS         0.24523         0.11475        -3.10000         3.10000         0.00000    208
+      44  x     44    BS        -1.65284        -0.23065        -2.24000         2.24000         0.00001    209
+      45  x     45    BS         1.96043         0.02963        -3.10000         3.10000         0.00007    210
+      46  x     46 N SBS        -1.55183         0.00127        -2.57000         2.57000        -0.00001    211
+      47  x     47 N SBS        -1.37244         0.00160        -3.10000         3.10000         0.00002    212
+      48  x     48 N SBS        -1.38659         0.00305        -2.09000         2.09000         0.00001    213
+      49  x     49 N SBS        -2.84796         0.00041        -3.10000         3.10000         0.00000    214
+      50  x     50    BS        -0.59429        -0.54684        -3.10000         3.10000          .         215
+      51  x     51    BS        -1.75808        -0.06855        -2.24000         2.24000          .         216
+      52  x     52    BS         2.75859         0.51989        -3.10000         3.10000          .         217
+      53  x     53    BS        -2.27691        -0.47229        -2.57000         2.57000          .         218
+      54  x     54    BS        -1.51841        -0.09508        -3.10000         3.10000          .         219
+      55  x     55    BS        -2.06258        -0.44032        -2.09000         2.09000          .         220
+      56  x     56    BS        -2.84949        -0.00099        -3.10000         3.10000          .         221
+      57  x     57 A  EQ         1.0              .              1.0             1.0              .         222

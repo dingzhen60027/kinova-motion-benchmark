@@ -1,0 +1,328 @@
+{
+  "scope": "Read-only baseline inclusion review; no numerical trajectory/provenance rehash and no GPU/planner calls",
+  "logic": {
+    "export": "results.export adds every run path in the supplied selection to roots before discover/collect; summary uses that supplied selection.",
+    "global_selection": "The historical results/selection.json is not implicitly merged. Earlier extended_baselines runs are intentionally not substituted for current repaired baseline_dev/test.",
+    "controls": "make_selection uses every METHODS entry except the rerun methods. NTO_REFINED is supplied from new runs exactly once.",
+    "complete_flow": "All 10 methods and 14 supported method/objective combinations.",
+    "fixed_frontend": "RRTConnect/RRT* excluded because they do not use the shared DRM path; CHOMP/STOMP/TrajOpt remain included.",
+    "summary": "records contains all actual attempts in discovered runs; selected summaries use first terminal observations with fixed inputs/seeds and shared saved-output acceptance."
+  },
+  "expected_comparison_structure": [
+    {
+      "id": "current_dev_nto_metis",
+      "mode": "end_to_end",
+      "planned": 2520,
+      "method_objective_counts": [
+        {
+          "method": "CHOMP",
+          "objective": "minimum_distance",
+          "planned": 180
+        },
+        {
+          "method": "EI_ZO",
+          "objective": "minimum_distance",
+          "planned": 180
+        },
+        {
+          "method": "EI_ZO",
+          "objective": "minimum_time",
+          "planned": 180
+        },
+        {
+          "method": "LGCS",
+          "objective": "minimum_distance",
+          "planned": 180
+        },
+        {
+          "method": "NTO",
+          "objective": "minimum_distance",
+          "planned": 180
+        },
+        {
+          "method": "NTO",
+          "objective": "minimum_time",
+          "planned": 180
+        },
+        {
+          "method": "NTO_PAPER",
+          "objective": "minimum_distance",
+          "planned": 180
+        },
+        {
+          "method": "NTO_PAPER",
+          "objective": "minimum_time",
+          "planned": 180
+        },
+        {
+          "method": "NTO_REFINED",
+          "objective": "minimum_distance",
+          "planned": 180
+        },
+        {
+          "method": "NTO_REFINED",
+          "objective": "minimum_time",
+          "planned": 180
+        },
+        {
+          "method": "RRTCONNECT",
+          "objective": "minimum_distance",
+          "planned": 180
+        },
+        {
+          "method": "RRTSTAR",
+          "objective": "minimum_distance",
+          "planned": 180
+        },
+        {
+          "method": "STOMP",
+          "objective": "minimum_distance",
+          "planned": 180
+        },
+        {
+          "method": "TRAJOPT",
+          "objective": "minimum_distance",
+          "planned": 180
+        }
+      ],
+      "scope": "Selection structure only. Actual fixed_frontend eligibility is not yet established and can disable that entire split comparison."
+    },
+    {
+      "id": "current_dev_nto_metis_fixed_frontend",
+      "mode": "fixed_frontend",
+      "planned": 2160,
+      "method_objective_counts": [
+        {
+          "method": "CHOMP",
+          "objective": "minimum_distance",
+          "planned": 180
+        },
+        {
+          "method": "EI_ZO",
+          "objective": "minimum_distance",
+          "planned": 180
+        },
+        {
+          "method": "EI_ZO",
+          "objective": "minimum_time",
+          "planned": 180
+        },
+        {
+          "method": "LGCS",
+          "objective": "minimum_distance",
+          "planned": 180
+        },
+        {
+          "method": "NTO",
+          "objective": "minimum_distance",
+          "planned": 180
+        },
+        {
+          "method": "NTO",
+          "objective": "minimum_time",
+          "planned": 180
+        },
+        {
+          "method": "NTO_PAPER",
+          "objective": "minimum_distance",
+          "planned": 180
+        },
+        {
+          "method": "NTO_PAPER",
+          "objective": "minimum_time",
+          "planned": 180
+        },
+        {
+          "method": "NTO_REFINED",
+          "objective": "minimum_distance",
+          "planned": 180
+        },
+        {
+          "method": "NTO_REFINED",
+          "objective": "minimum_time",
+          "planned": 180
+        },
+        {
+          "method": "STOMP",
+          "objective": "minimum_distance",
+          "planned": 180
+        },
+        {
+          "method": "TRAJOPT",
+          "objective": "minimum_distance",
+          "planned": 180
+        }
+      ],
+      "scope": "Selection structure only. Actual fixed_frontend eligibility is not yet established and can disable that entire split comparison."
+    },
+    {
+      "id": "current_test_nto_metis",
+      "mode": "end_to_end",
+      "planned": 5880,
+      "method_objective_counts": [
+        {
+          "method": "CHOMP",
+          "objective": "minimum_distance",
+          "planned": 420
+        },
+        {
+          "method": "EI_ZO",
+          "objective": "minimum_distance",
+          "planned": 420
+        },
+        {
+          "method": "EI_ZO",
+          "objective": "minimum_time",
+          "planned": 420
+        },
+        {
+          "method": "LGCS",
+          "objective": "minimum_distance",
+          "planned": 420
+        },
+        {
+          "method": "NTO",
+          "objective": "minimum_distance",
+          "planned": 420
+        },
+        {
+          "method": "NTO",
+          "objective": "minimum_time",
+          "planned": 420
+        },
+        {
+          "method": "NTO_PAPER",
+          "objective": "minimum_distance",
+          "planned": 420
+        },
+        {
+          "method": "NTO_PAPER",
+          "objective": "minimum_time",
+          "planned": 420
+        },
+        {
+          "method": "NTO_REFINED",
+          "objective": "minimum_distance",
+          "planned": 420
+        },
+        {
+          "method": "NTO_REFINED",
+          "objective": "minimum_time",
+          "planned": 420
+        },
+        {
+          "method": "RRTCONNECT",
+          "objective": "minimum_distance",
+          "planned": 420
+        },
+        {
+          "method": "RRTSTAR",
+          "objective": "minimum_distance",
+          "planned": 420
+        },
+        {
+          "method": "STOMP",
+          "objective": "minimum_distance",
+          "planned": 420
+        },
+        {
+          "method": "TRAJOPT",
+          "objective": "minimum_distance",
+          "planned": 420
+        }
+      ],
+      "scope": "Selection structure only. Actual fixed_frontend eligibility is not yet established and can disable that entire split comparison."
+    },
+    {
+      "id": "current_test_nto_metis_fixed_frontend",
+      "mode": "fixed_frontend",
+      "planned": 5040,
+      "method_objective_counts": [
+        {
+          "method": "CHOMP",
+          "objective": "minimum_distance",
+          "planned": 420
+        },
+        {
+          "method": "EI_ZO",
+          "objective": "minimum_distance",
+          "planned": 420
+        },
+        {
+          "method": "EI_ZO",
+          "objective": "minimum_time",
+          "planned": 420
+        },
+        {
+          "method": "LGCS",
+          "objective": "minimum_distance",
+          "planned": 420
+        },
+        {
+          "method": "NTO",
+          "objective": "minimum_distance",
+          "planned": 420
+        },
+        {
+          "method": "NTO",
+          "objective": "minimum_time",
+          "planned": 420
+        },
+        {
+          "method": "NTO_PAPER",
+          "objective": "minimum_distance",
+          "planned": 420
+        },
+        {
+          "method": "NTO_PAPER",
+          "objective": "minimum_time",
+          "planned": 420
+        },
+        {
+          "method": "NTO_REFINED",
+          "objective": "minimum_distance",
+          "planned": 420
+        },
+        {
+          "method": "NTO_REFINED",
+          "objective": "minimum_time",
+          "planned": 420
+        },
+        {
+          "method": "STOMP",
+          "objective": "minimum_distance",
+          "planned": 420
+        },
+        {
+          "method": "TRAJOPT",
+          "objective": "minimum_distance",
+          "planned": 420
+        }
+      ],
+      "scope": "Selection structure only. Actual fixed_frontend eligibility is not yet established and can disable that entire split comparison."
+    }
+  ],
+  "tests": {
+    "command": [
+      "bash",
+      "local/python.sh",
+      "-m",
+      "pytest",
+      "-q",
+      "results/nto_metis/test_complete.py"
+    ],
+    "exit_code": 0,
+    "seconds": 0.3564023021608591,
+    "log": "results/nto_metis/inclusion_fixtures.log",
+    "log_sha256": "75ac9edf6bb424d27b23957e4995e412426637e363b93016e3268a50eeae5e57",
+    "tests_passed": 24
+  },
+  "limitations": [
+    "Full new test cohort is still running; no complete comparison scores or new/old frontend-path equality are claimed by this review.",
+    "The external-run fixture proves discovery/export orchestration with mocked attempt/statistic reading, not a new planner experiment."
+  ],
+  "helper_sha256": {
+    "complete.py": "5c8dfcaf094c90ed45e9fb9f6ec59cfb9a490ff14181364f7f49350c7534b80e",
+    "test_complete.py": "4ba814dd1b1f9609bc089f788a64f446ee3d03fe549fd49ba091712194d880d4"
+  }
+}

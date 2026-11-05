@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "attempt_policy": "first_terminal",
+  "comparisons": [
+    {
+      "id": "current_dev_nto_metis",
+      "mode": "end_to_end",
+      "compatibility_note": "New NTO runtime source freeze f4446e54ec46d979ee40b823663401bee719f97a; equivalent commits with identical bound runtime files retain their actual Git identities. Unchanged controls retain their original source/configuration. Resolved configuration differs only by explicit IPOPT linear_solver=spral, spral_order=metis and spral_scaling=mc64; early_accept_validated stays disabled. Frozen inputs, robot/collision geometry, numerical validation protocol, motion limits, 60-second cold deadline, paired seeds and DRM identities are checked before export. The exact reviewed validator source pair changes only the specific nonpositive B-spline-duration rejection message; its accepted candidate set is unchanged. Source changes additionally contain read-only model audit and evidence/accounting repairs; all rows use the common current saved-output acceptance. Old NTO profiles not rerun are explicitly historical configurations. No outcome-based substitution or best-of retry.",
+      "runs": [
+        {
+          "path": "benchmarks/generic_motion_v1/results/baseline_dev",
+          "methods": [
+            "EI_ZO",
+            "LGCS",
+            "NTO_PAPER",
+            "NTO",
+            "RRTCONNECT",
+            "RRTSTAR",
+            "CHOMP",
+            "STOMP",
+            "TRAJOPT"
+          ]
+        },
+        {
+          "path": "benchmarks/generic_motion_v1/results/nto_metis_dev",
+          "methods": [
+            "NTO_REFINED"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "current_dev_nto_metis_fixed_frontend",
+      "mode": "fixed_frontend",
+      "compatibility_note": "New NTO runtime source freeze f4446e54ec46d979ee40b823663401bee719f97a; equivalent commits with identical bound runtime files retain their actual Git identities. Unchanged controls retain their original source/configuration. Resolved configuration differs only by explicit IPOPT linear_solver=spral, spral_order=metis and spral_scaling=mc64; early_accept_validated stays disabled. Frozen inputs, robot/collision geometry, numerical validation protocol, motion limits, 60-second cold deadline, paired seeds and DRM identities are checked before export. The exact reviewed validator source pair changes only the specific nonpositive B-spline-duration rejection message; its accepted candidate set is unchanged. Source changes additionally contain read-only model audit and evidence/accounting repairs; all rows use the common current saved-output acceptance. Old NTO profiles not rerun are explicitly historical configurations. No outcome-based substitution or best-of retry.",
+      "runs": [
+        {
+          "path": "benchmarks/generic_motion_v1/results/baseline_dev",
+          "methods": [
+            "EI_ZO",
+            "LGCS",
+            "NTO_PAPER",
+            "NTO",
+            "CHOMP",
+            "STOMP",
+            "TRAJOPT"
+          ]
+        },
+        {
+          "path": "benchmarks/generic_motion_v1/results/nto_metis_dev",
+          "methods": [
+            "NTO_REFINED"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "current_test_nto_metis",
+      "mode": "end_to_end",
+      "compatibility_note": "New NTO runtime source freeze f4446e54ec46d979ee40b823663401bee719f97a; equivalent commits with identical bound runtime files retain their actual Git identities. Unchanged controls retain their original source/configuration. Resolved configuration differs only by explicit IPOPT linear_solver=spral, spral_order=metis and spral_scaling=mc64; early_accept_validated stays disabled. Frozen inputs, robot/collision geometry, numerical validation protocol, motion limits, 60-second cold deadline, paired seeds and DRM identities are checked before export. The exact reviewed validator source pair changes only the specific nonpositive B-spline-duration rejection message; its accepted candidate set is unchanged. Source changes additionally contain read-only model audit and evidence/accounting repairs; all rows use the common current saved-output acceptance. Old NTO profiles not rerun are explicitly historical configurations. No outcome-based substitution or best-of retry.",
+      "runs": [
+        {
+          "path": "benchmarks/generic_motion_v1/results/baseline_test",
+          "methods": [
+            "EI_ZO",
+            "LGCS",
+            "NTO_PAPER",
+            "NTO",
+            "RRTCONNECT",
+            "RRTSTAR",
+            "CHOMP",
+            "STOMP",
+            "TRAJOPT"
+          ]
+        },
+        {
+          "path": "benchmarks/generic_motion_v1/results/nto_metis_test",
+          "methods": [
+            "NTO_REFINED"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "current_test_nto_metis_fixed_frontend",
+      "mode": "fixed_frontend",
+      "compatibility_note": "New NTO runtime source freeze f4446e54ec46d979ee40b823663401bee719f97a; equivalent commits with identical bound runtime files retain their actual Git identities. Unchanged controls retain their original source/configuration. Resolved configuration differs only by explicit IPOPT linear_solver=spral, spral_order=metis and spral_scaling=mc64; early_accept_validated stays disabled. Frozen inputs, robot/collision geometry, numerical validation protocol, motion limits, 60-second cold deadline, paired seeds and DRM identities are checked before export. The exact reviewed validator source pair changes only the specific nonpositive B-spline-duration rejection message; its accepted candidate set is unchanged. Source changes additionally contain read-only model audit and evidence/accounting repairs; all rows use the common current saved-output acceptance. Old NTO profiles not rerun are explicitly historical configurations. No outcome-based substitution or best-of retry.",
+      "runs": [
+        {
+          "path": "benchmarks/generic_motion_v1/results/baseline_test",
+          "methods": [
+            "EI_ZO",
+            "LGCS",
+            "NTO_PAPER",
+            "NTO",
+            "CHOMP",
+            "STOMP",
+            "TRAJOPT"
+          ]
+        },
+        {
+          "path": "benchmarks/generic_motion_v1/results/nto_metis_test",
+          "methods": [
+            "NTO_REFINED"
+          ]
+        }
+      ]
+    }
+  ],
+  "figure_comparisons": [
+    "current_dev_nto_metis",
+    "current_test_nto_metis"
+  ]
+}

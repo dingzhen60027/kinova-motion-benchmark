@@ -1,0 +1,446 @@
+
+         ==============================
+         S N O P T  7.4-1.2  (Feb 2015)
+         ==============================
+1
+ 
+ SNMEMA EXIT 100 -- finished successfully
+ SNMEMA INFO 104 -- memory requirements estimated
+
+ 
+ ===>  WARNING - Column     22 of the Jacobian is empty.
+1
+ 
+ Parameters
+ ==========
+
+ Files
+ -----
+ Solution file..........         0       Old basis file ........         0       Standard input.........         5
+ Insert file............         0       New basis file ........         0       (Printer)..............        10
+ Punch file.............         0       Backup basis file......         0       (Specs file)...........         0
+ Load file..............         0       Dump file..............         0       Standard output........         6
+
+ Frequencies
+ -----------
+ Print frequency........       100       Check frequency........        60       Save new basis map.....       100
+ Summary frequency......       100       Factorization frequency        50       Expand frequency.......     10000
+
+ QP subproblems
+ --------------
+ QPsolver Cholesky......
+ Scale tolerance........     0.900       Minor feasibility tol..  1.00E-06       Iteration limit........    100000
+ Scale option...........         0       Minor optimality  tol..  5.00E-07       Minor print level......         0
+ Crash tolerance........     0.100       Pivot tolerance........  3.25E-11       New superbasics........        99
+ Crash option...........         3       Elastic weight.........  1.00E+05
+
+ Partial pricing
+ ---------------
+ LP Partial price.......         1       Prtl price section ( A)        22       Prtl price section (-I)       164
+ QP Partial price.......         1       Prtl price section ( A)        22       Prtl price section (-I)       164
+
+ The SQP Method
+ --------------
+ Minimize...............                 Cold start.............                 Proximal Point method..         1
+ Nonlinear objectiv vars        21       Objective Row..........         1       Function precision.....  3.00E-13
+ Unbounded step size....  1.00E+20       Superbasics limit......        22       Difference interval....  5.48E-07
+ Unbounded objective....  1.00E+15       Reduced Hessian dim....        22       Central difference int.  6.70E-05
+ Major step limit.......  2.00E+00       Derivative linesearch..                 Derivative option......         1
+ Major iterations limit.      2000       Linesearch tolerance...   0.90000       Verify level...........         0
+ Minor iterations limit.       500       Penalty parameter......  0.00E+00       Major Print Level......         1
+ Time limit (secs)......      58.2       Major optimality tol...  1.00E-06
+
+ Hessian Approximation
+ ---------------------
+ Full-Memory Hessian....                 Hessian updates........  99999999       Hessian frequency......  99999999
+                                                                                 Hessian flush..........  99999999
+
+ Nonlinear constraints
+ ---------------------
+ Nonlinear constraints..       149       Major feasibility tol..  1.00E-06       Violation limit........  1.00E+01
+ Nonlinear Jacobian vars        21
+
+ Miscellaneous
+ -------------
+ LU factor tolerance....      3.99       LU singularity tol.....  3.25E-11       Timing level...........         0
+ LU update tolerance....      3.99       LU swap tolerance......  1.22E-04       Debug level............         0
+ LU partial  pivoting...                 eps (machine precision)  2.22E-16       System information.....        No
+                                                                                 Sticky parameters......        No
+1
+ 
+
+ 
+
+ Matrix statistics
+ -----------------
+               Total      Normal        Free       Fixed     Bounded
+ Rows            164         149           1          14           0
+ Columns          22           0           0           1          21
+
+ No. of matrix elements                 2100     Density      58.204
+ Biggest  constant element        1.0000E+00  (excluding fixed columns,
+ Smallest constant element        1.0000E+00   free rows, and RHS)
+
+ No. of objective coefficients             0
+
+ Nonlinear constraints     149     Linear constraints      15
+ Nonlinear variables        21     Linear variables         1
+ Jacobian  variables        21     Objective variables     21
+ Total constraints         164     Total variables         22
+1
+ 
+
+ 
+ The user has defined    2107   out of    2107   first  derivatives
+
+ Cheap test of user-supplied problem derivatives...
+
+ The constraint gradients seem to be OK.
+
+ -->  The largest discrepancy was    0.00E+00  in constraint    24
+ 
+
+ The objective  gradients seem to be OK.
+
+ Gradient projected in one direction   8.88089816040E-02
+ Difference approximation              8.88092705499E-02
+1
+ 
+ 
+
+   Itns Major Minors    Step   nCon Feasible  Optimal  MeritFunction     L+U BSwap     nS condZHZ Penalty
+      7     0      7              1 (0.0E+00) 7.1E-01  6.0982442E+00     164            7 1.0E+00         _  r
+     10     1      3 1.0E+00      2 (0.0E+00) 5.8E-01  5.5692091E+00     172            5 1.0E+00         _  r
+     35     2     25 6.5E-01      3  4.2E+00  4.8E-02  1.7683301E+08     736            2 1.0E+00         _s  li
+ Singular(m=n)  rank      163  n-rank       1  nsing        1
+ Singular(m>n)  rank      163  n-rank       1  nsing        1
+ Singular(m=n)  rank      163  n-rank       1  nsing        1
+     92     3     57 1.0E+00      5  3.6E+00  6.3E-02  8.2312240E+07    1186     1      1 5.0E+06         _ M  i
+ Singular(m=n)  rank      161  n-rank       3  nsing        3
+ Singular(m>n)  rank      161  n-rank       3  nsing        3
+ Singular(m=n)  rank      161  n-rank       3  nsing        3
+    148     4     56 1.0E+00      7  5.7E-01  7.3E+03  2.9768252E+06     556     1      3 3.8E+06 4.9E+04 _ m
+    212     5     64 1.0E+00      8  3.8E+00  3.9E-02  8.4717157E+04     797     2      1 2.0E+07 5.6E+02 _    i
+    265     6     53 1.0E+00     10  3.8E+00  1.4E-01  1.1440112E+07    1165     1      1 2.2E+06 4.6E+04 _ m  i
+    279     7     14 1.2E-03     15  3.8E+00  5.0E-01  4.9209116E+07     792            1 3.2E+07 1.2E+05 _    i
+    303     8     24 2.8E-02     18  3.7E+00  2.1E-01  5.9650121E+07    1029                      1.7E+05 _ M  i
+    352     9     49 6.5E-02     20  3.8E+00  2.7E-01  5.5265770E+07    1819            2 1.7E+00 1.5E+05 _    i
+ Singular(m=n)  rank      162  n-rank       2  nsing        2
+ Singular(m>n)  rank      163  n-rank       1  nsing        1
+ Singular(m=n)  rank      163  n-rank       1  nsing        1
+    442    10     90 9.3E-01     23  3.5E+00  1.0E-02  6.2829357E+07    1009     2      2 4.6E+04 2.4E+05 _ m  i
+ Singular(m=n)  rank      161  n-rank       3  nsing        3
+ Singular(m>n)  rank      162  n-rank       2  nsing        2
+ Singular(m=n)  rank      162  n-rank       2  nsing        2
+    533    11     91 1.0E+00     24  3.4E+00  7.9E-02  3.3856032E+06    1338     2      1 1.8E+07 5.0E+03 _    i
+    551    12     18 3.9E-03     27  3.4E+00  4.5E-02  5.9656227E+07    1520            1 4.6E+06 1.3E+05 _    i
+    570    13     19 2.2E-02     35  3.4E+00  2.2E-01  5.9268878E+07    1425            1 1.5E+05 1.3E+05 _ M  i
+    602    14     32 3.8E-02     37  3.4E+00  9.9E-02  6.3935659E+07    1720            2 5.3E+02 1.5E+05 _    i
+    634    15     32 5.8E-02     40  3.4E+00  8.5E-02  5.8507383E+07    1705            1 1.6E+05 1.5E+05 _ m  i
+    747    16    113 2.0E-02     44  3.4E+00  4.3E-02  5.5298296E+07    1452            1 4.1E+05 1.5E+05 _ M  i
+    783    17     36 1.4E-02     46  3.5E+00  1.9E-01  5.3454244E+07    1478            2 1.8E+00 1.5E+05 _    i
+    818    18     35 4.5E-02     49  3.5E+00  6.8E-02  4.9490231E+07    1608            3 2.4E+03 1.5E+05 _ m  i
+    856    19     38 3.3E-02     55  3.5E+00  2.8E-01  5.5199336E+07    1342     3      2 2.1E+00 1.9E+05 _ m  i
+
+   Itns Major Minors    Step   nCon Feasible  Optimal  MeritFunction     L+U BSwap     nS condZHZ Penalty
+    939    20     83 4.8E-03     59  3.5E+00  2.7E-01  5.9206400E+07    1240            1 4.8E+04 2.2E+05 _ M  i
+    951    21     12 3.7E-03     65  3.5E+00  4.0E-01  6.0664422E+07    1116            2 1.5E+02 2.4E+05 _    i
+    962    22     11 1.2E-04     69  3.5E+00  4.1E-01  6.0705648E+07    1117            2 1.4E+03 2.3E+05 _    i
+    992    23     30 5.2E-02     75  3.6E+00  2.8E-01  5.8530250E+07    1202     2      1 3.3E+07 2.3E+05 _ M  i
+   1018    24     26 2.7E-03     79  3.6E+00  3.4E-01  5.9940810E+07    1338            2 7.0E+00 2.5E+05 _    i
+   1060    25     42 3.0E-03     82  3.6E+00  2.4E-01  5.9330285E+07    1612            3 8.2E+01 2.6E+05 _    i
+   1100    26     40 5.6E-05     86  3.6E+00  7.6E-01  6.1932950E+07    1539            3 6.4E+03 2.9E+05 _    i
+   1123    27     23 5.0E-03     90  3.6E+00  7.9E-01  6.6684520E+07    1360     3      3 3.2E+02 4.3E+05 _    i
+ Singular(m=n)  rank      162  n-rank       2  nsing        2
+ Singular(m>n)  rank      163  n-rank       1  nsing        1
+ Singular(m=n)  rank      163  n-rank       1  nsing        1
+   1192    28     69 1.0E+00     92  3.4E+00  2.5E-01  6.2666629E+07    1020     3      3 1.3E+01 5.4E+05 _ M  i
+   1246    29     54 1.0E+00     94  3.8E+00  4.0E-01  3.8733973E+07     984     3      4 9.4E+01 6.2E+04 _ m  i
+ Singular(m=n)  rank      162  n-rank       2  nsing        2
+ Singular(m>n)  rank      163  n-rank       1  nsing        1
+ Singular(m=n)  rank      163  n-rank       1  nsing        1
+   1283    30     37 5.8E-01     97  3.6E+00  1.7E-01  3.5424923E+07     717     4      4 1.6E+03 5.2E+04 _ m  i
+ Singular(m=n)  rank      163  n-rank       1  nsing        1
+   1369    31     86 1.0E+00     98  3.6E+00  5.6E-01  2.4588712E+07    1014     4      4 7.4E+00 5.2E+04 _    i
+   1385    32     16 2.7E-01    105  3.3E+00  5.0E-01  4.2146940E+07     905            4 4.5E+03 1.4E+05 _    i
+   1407    33     22 4.9E-02    107  3.4E+00  5.0E-01  4.3955097E+07     888     4      3 6.7E+00 1.7E+05 _    i
+ Singular(m=n)  rank      162  n-rank       2  nsing        2
+ Singular(m>n)  rank      163  n-rank       1  nsing        1
+ Singular(m=n)  rank      163  n-rank       1  nsing        1
+   1435    34     28 6.2E-01    112  3.0E+00  5.9E-01  3.4678565E+07     764     2      3 1.1E+02 2.1E+05 _ m  i
+   1514    35     79 1.0E+00    113  3.3E+00  8.9E-01  2.6611998E+07    1031     2      4 6.0E+01 7.9E+04 _    i
+ Singular(m=n)  rank      162  n-rank       2  nsing        2
+ Singular(m>n)  rank      163  n-rank       1  nsing        1
+ Singular(m=n)  rank      163  n-rank       1  nsing        1
+   1561    36     47 1.0E+00    114  3.6E+00  4.9E-01  2.2736379E+07    1293     3      3 2.6E+01 7.9E+04 _    i
+   1670    37    109 1.0E+00    116  3.8E+00  9.1E-01  3.7433774E+07    1390     3      3 1.9E+01 1.4E+05 _    i
+   1681    38     11 2.8E-01    120  3.8E+00  5.0E-01  3.8214612E+07    1067            3 3.5E+02 4.1E+05 _    i
+   1714    39     33 1.0E+00    122  3.8E+00  8.3E-01  3.7806164E+07    1044     3      4 2.6E+01 1.8E+05 _    i
+
+   Itns Major Minors    Step   nCon Feasible  Optimal  MeritFunction     L+U BSwap     nS condZHZ Penalty
+   1740    40     26 1.3E-01    131  3.8E+00  1.1E+00  3.7575696E+07    1035            3 1.6E+03 1.8E+05 _    i
+   1784    41     44 1.0E+00    133  3.8E+00  5.8E-01  3.7410945E+07    1192     3      3 1.6E+02 1.9E+05 _ m  i
+   1812    42     28 1.0E+00    135  3.8E+00  6.6E-01  3.5811900E+07    1050            4 1.1E+02 1.9E+05 _ m  i
+   1841    43     29 1.5E-01    138  3.8E+00  3.9E-01  3.6212749E+07    1042            4 4.5E+03 2.9E+05 _    i
+ Singular(m=n)  rank      163  n-rank       1  nsing        1
+   1890    44     49 9.0E-01    141  3.7E+00  3.9E-01  3.5127934E+07    1103     4      4 1.2E+02 3.0E+05 _ m  i
+   1930    45     40 5.0E-01    143  3.6E+00  7.7E-01  3.2024360E+07    1276            5 6.9E+01 3.0E+05 _    i
+   1998    46     68 5.9E-01    145  3.7E+00  4.5E-01  3.0343404E+07    1058     5      4 1.2E+03 3.0E+05 _    i
+   2031    47     33 1.0E+00    147  3.7E+00  2.9E-01  2.7496100E+07    1064            4 2.2E+03 3.0E+05 _ M  i
+   2061    48     30 1.0E+00    148  3.6E+00  4.3E-01  2.7319681E+07     896            5 3.7E+02 3.0E+05 _    i
+   2079    49     18 1.0E+00    149  3.6E+00  7.7E-01  2.7041092E+07     893            4 3.7E+03 3.0E+05 _    i
+ Singular(m=n)  rank      163  n-rank       1  nsing        1
+   2094    50     15 1.0E+00    151  3.6E+00  5.2E-01  2.6229924E+07     815     4      4 1.1E+04 3.0E+05 _ m  i
+ Singular(m=n)  rank      163  n-rank       1  nsing        1
+   2102    51      8 6.3E-01    153  3.6E+00  1.8E-01  2.6109855E+07     790     4      3 8.3E+01 3.1E+05 _    i
+   2112    52     10 6.0E-01    156  3.6E+00  8.9E-02  2.5894899E+07     808     3      4 2.0E+04 3.1E+05 _    i
+   2118    53      6 1.0E+00    158  3.6E+00  8.0E-02  2.5836022E+07     761     4      3 2.9E+01 3.5E+05 _ M  i
+   2126    54      8 1.0E+00    159  3.5E+00  9.0E-02  2.5796399E+07     788            4 1.3E+04 3.5E+05 _    i
+   2140    55     14 1.0E+00    160  3.6E+00  2.1E-01  2.5744169E+07     846            3 9.9E+01 3.5E+05 _    i
+   2146    56      6 1.0E+00    161  3.5E+00  2.0E-01  2.5686450E+07     782            4 9.0E+02 3.5E+05 _    i
+   2149    57      3 2.7E-01    165  3.5E+00  1.6E-01  2.5668463E+07     767            4 7.9E+01 3.5E+05 _    i
+   2155    58      6 2.6E-02    168  3.5E+00  6.6E-02  2.5667577E+07     767            3 4.2E+01 3.5E+05 _    i
+   2158    59      3 1.0E+00    169  3.5E+00  2.3E-01  2.5605969E+07     778            3 6.8E+01 3.5E+05 _    i
+
+   Itns Major Minors    Step   nCon Feasible  Optimal  MeritFunction     L+U BSwap     nS condZHZ Penalty
+   2159    60      1 1.0E+00    170  3.5E+00  3.2E-02  2.5585659E+07     784            3 1.5E+04 3.5E+05 _    i
+   2160    61      1 1.0E+00    172  3.5E+00  4.7E-02  2.5576280E+07     780            3 1.3E+03 3.6E+05 _    i
+   2161    62      1 1.0E+00    173  3.5E+00  3.1E-02  2.5575519E+07     790            3 6.6E+02 5.2E+05 _    i
+   2162    63      1 1.0E+00    174  3.5E+00  2.7E-02  2.5575324E+07     789            3 3.7E+02 3.8E+05 _    i
+   2164    64      2 1.0E+00    175  3.5E+00  1.8E-02  2.5574619E+07     797            2 7.4E+02 3.8E+05 _    i
+   2165    65      1 1.0E+00    176  3.5E+00  1.2E-02  2.5568644E+07     768            2 1.3E+03 3.8E+05 _    i
+   2166    66      1 1.0E+00    177  3.5E+00  9.8E-03  2.5568346E+07     768            2 7.2E+02 3.8E+05 _    i
+   2167    67      1 1.0E+00    178  3.5E+00  5.7E-03  2.5568177E+07     758            2 8.0E+02 3.8E+05 _    i
+   2168    68      1 1.0E+00    179  3.5E+00  6.6E-03  2.5568127E+07     766            2 1.8E+03 3.8E+05 _    i
+   2169    69      1 1.0E+00    180  3.5E+00  7.1E-03  2.5568107E+07     766            2 1.8E+04 3.8E+05 _    i
+   2170    70      1 1.0E+00    181  3.5E+00  3.0E-03  2.5568009E+07     768            2 5.3E+03 3.8E+05 _    i
+   2171    71      1 1.0E+00    182  3.5E+00  4.1E-03  2.5567980E+07     768            2 3.3E+03 3.8E+05 _    i
+   2172    72      1 1.0E+00    183  3.5E+00  1.9E-03  2.5567959E+07     765            2 3.0E+03 3.8E+05 _    i
+   2173    73      1 1.0E+00    184  3.5E+00  6.1E-04  2.5567955E+07     766            2 1.8E+03 3.8E+05 _    i
+   2174    74      1 1.0E+00    185  3.5E+00  6.3E-05  2.5567955E+07     766            2 1.8E+03 3.8E+05 _    i
+   2175    75      1 1.0E+00    186  3.5E+00  2.8E-06  2.5567955E+07     766            2 1.8E+03 3.8E+05 _    i
+   2179    76      4 1.0E+00    187  3.5E+00 (1.9E-08) 2.5567940E+12     766            2 1.8E+03 3.8E+05 _    i
+1
+ 
+ SNOPTA EXIT  10 -- the problem appears to be infeasible
+ SNOPTA INFO  13 -- nonlinear infeasibilities minimized
+
+ Problem name                 drake_pr
+ No. of iterations                2179   Objective            1.4820377613E+01
+ No. of major iterations            76   Linear    obj. term  0.0000000000E+00
+ Penalty parameter           3.790E+05   Nonlinear obj. term  1.4820377613E+01
+ Elastic weight                2.0E+10   Elastic   objective  2.5567939732E+12
+                                         Elastic infeas       1.2513542157E+02
+ User function calls (total)       188
+ No. of superbasics                  2   No. of basic nonlinears            21
+ No. of degenerate steps             0   Percentage                       0.00
+ Max x                       3 3.0E+00   Max pi                    151 1.1E+13
+ Max Primal infeas         164 1.4E+01   Max Dual infeas            11 3.1E+05
+ Nonlinear constraint violn    1.4E+01
+1
+ 
+ Name           drake_pr                 Objective Value      1.4820377613E+01
+
+ Status         Optimal Soln             Iteration   2179    Superbasics     2
+
+ Objective               (Min)
+ RHS
+ Ranges
+ Bounds
+
+ Section 1 - Rows
+
+  Number  ...Row.. State  ...Activity...  Slack Activity  ..Lower Limit.  ..Upper Limit.  .Dual Activity    ..i
+ 
+      23  r      1    BS          .               .                None            None         -1.0          1
+      24  r      2    BS         0.08254        -0.91746           None          1.0              .           2
+      25  r      3    BS         0.08254        -0.91746           None          1.0              .           3
+      26  r      4    BS         0.08254        -0.91746           None          1.0              .           4
+      27  r      5    BS         0.08254        -0.91746           None          1.0              .           5
+      28  r      6    BS         0.44174        -0.55826           None          1.0              .           6
+      29  r      7 I  BS         1.35261         0.35261           None          1.0       -2.043222E+10      7
+      30  r      8 I  BS         2.02217         1.02217           None          1.0       -2.043222E+10      8
+      31  r      9 I  BS         2.43488         1.43488           None          1.0       -2.043222E+10      9
+      32  r     10 I  BS         2.61220         1.61220           None          1.0       -2.043222E+10     10
+      33  r     11 I  BS         2.64400         1.64400           None          1.0       -2.043222E+10     11
+      34  r     12 I  BS         2.86853         1.86853           None          1.0       -2.043222E+10     12
+      35  r     13 I  BS         2.71565         1.71565           None          1.0       -2.043222E+10     13
+      36  r     14 I  BS         2.31695         1.31695           None          1.0       -2.043222E+10     14
+      37  r     15 I  BS         1.74625         0.74625           None          1.0       -2.043222E+10     15
+      38  r     16 I  BS         1.63190         0.63190           None          1.0       -2.043222E+10     16
+      39  r     17 I  BS         1.34149         0.34149           None          1.0       -2.043222E+10     17
+      40  r     18    BS         0.82597        -0.17403           None          1.0              .          18
+      41  r     19    BS         0.30756        -0.69244           None          1.0              .          19
+      42  r     20    BS         0.08255        -0.91745           None          1.0              .          20
+      43  r     21    BS         0.08254        -0.91746           None          1.0              .          21
+      44  r     22    BS         0.08254        -0.91746           None          1.0              .          22
+      45  r     23    BS         0.08254        -0.91746           None          1.0              .          23
+      46  r     24    BS         0.08254        -0.91746           None          1.0              .          24
+      47  r     25    BS         0.08254        -0.91746           None          1.0              .          25
+      48  r     26    BS         0.08254        -0.91746           None          1.0              .          26
+      49  r     27    BS         0.08254        -0.91746           None          1.0              .          27
+      50  r     28    BS         0.08254        -0.91746           None          1.0              .          28
+      51  r     29    BS         0.08254        -0.91746           None          1.0              .          29
+      52  r     30    BS         0.08254        -0.91746           None          1.0              .          30
+      53  r     31    BS         0.08254        -0.91746           None          1.0              .          31
+      54  r     32    BS         0.12121        -0.87879           None          1.0              .          32
+      55  r     33    BS         0.24418        -0.75582           None          1.0              .          33
+      56  r     34    BS         0.19794        -0.80206           None          1.0              .          34
+      57  r     35    BS         0.08259        -0.91741           None          1.0              .          35
+      58  r     36    BS         0.08254        -0.91746           None          1.0              .          36
+      59  r     37    BS         0.08254        -0.91746           None          1.0              .          37
+      60  r     38    BS         0.08254        -0.91746           None          1.0              .          38
+      61  r     39    BS         0.08254        -0.91746           None          1.0              .          39
+      62  r     40    BS         0.08254        -0.91746           None          1.0              .          40
+      63  r     41    BS         0.08254        -0.91746           None          1.0              .          41
+      64  r     42    BS         0.08254        -0.91746           None          1.0              .          42
+      65  r     43    BS         0.08254        -0.91746           None          1.0              .          43
+      66  r     44    BS         0.14214        -0.85786           None          1.0              .          44
+      67  r     45    BS         0.49829        -0.50171           None          1.0              .          45
+      68  r     46    BS         0.84430        -0.15570           None          1.0              .          46
+      69  r     47 I SBS         1.10394         0.10394           None          1.0       -2.043222E+10     47
+      70  r     48 I  BS         1.21391         0.21391           None          1.0       -2.043222E+10     48
+      71  r     49 I  BS         1.17532         0.17532           None          1.0       -2.043222E+10     49
+      72  r     50    UL         1.00000        -0.00000           None          1.0       -1.232888E+10     50
+      73  r     51    BS         0.72566        -0.27434           None          1.0              .          51
+      74  r     52    BS         0.42637        -0.57363           None          1.0              .          52
+      75  r     53    BS         0.17203        -0.82797           None          1.0              .          53
+      76  r     54    BS         0.08254        -0.91746           None          1.0              .          54
+      77  r     55    BS         0.08254        -0.91746           None          1.0              .          55
+      78  r     56    BS         0.08254        -0.91746           None          1.0              .          56
+      79  r     57    BS         0.08254        -0.91746           None          1.0              .          57
+      80  r     58    BS         0.08254        -0.91746           None          1.0              .          58
+      81  r     59    BS         0.08254        -0.91746           None          1.0              .          59
+      82  r     60    BS         0.08254        -0.91746           None          1.0              .          60
+      83  r     61    BS         0.08254        -0.91746           None          1.0              .          61
+      84  r     62    BS         0.08254        -0.91746           None          1.0              .          62
+      85  r     63    BS         0.08254        -0.91746           None          1.0              .          63
+      86  r     64    BS         0.08254        -0.91746           None          1.0              .          64
+      87  r     65    BS         0.08254        -0.91746           None          1.0              .          65
+      88  r     66    BS         0.08254        -0.91746           None          1.0              .          66
+      89  r     67    BS         0.08254        -0.91746           None          1.0              .          67
+      90  r     68   SBS         0.68502        -0.31498           None          1.0            -0.00002     68
+      91  r     69    BS         0.08254        -0.91746           None          1.0              .          69
+      92  r     70    BS         0.08254        -0.91746           None          1.0              .          70
+      93  r     71    BS         0.08254        -0.91746           None          1.0              .          71
+      94  r     72    BS         0.08254        -0.91746           None          1.0              .          72
+      95  r     73    BS         0.08254        -0.91746           None          1.0              .          73
+      96  r     74    BS         0.08254        -0.91746           None          1.0              .          74
+      97  r     75    BS         0.08254        -0.91746           None          1.0              .          75
+      98  r     76    BS         0.08254        -0.91746           None          1.0              .          76
+      99  r     77    BS         0.08254        -0.91746           None          1.0              .          77
+     100  r     78    BS         0.08254        -0.91746           None          1.0              .          78
+     101  r     79    BS         0.08254        -0.91746           None          1.0              .          79
+     102  r     80    BS         0.08254        -0.91746           None          1.0              .          80
+     103  r     81    BS         0.08254        -0.91746           None          1.0              .          81
+     104  r     82    UL         1.00000         0.00000           None          1.0       -3.055861E+09     82
+     105  r     83    UL         1.00000        -0.00000           None          1.0       -6.545664E+09     83
+     106  r     84    BS         0.08254        -0.91746           None          1.0              .          84
+     107  r     85    BS         0.08254        -0.91746           None          1.0              .          85
+     108  r     86    BS         0.08254        -0.91746           None          1.0              .          86
+     109  r     87    BS         0.08254        -0.91746           None          1.0              .          87
+     110  r     88    BS         0.08254        -0.91746           None          1.0              .          88
+     111  r     89    BS         0.08254        -0.91746           None          1.0              .          89
+     112  r     90    BS         0.08254        -0.91746           None          1.0              .          90
+     113  r     91    BS         0.31728        -0.68272           None          1.0              .          91
+     114  r     92 I  BS         1.68850         0.68850           None          1.0       -2.043222E+10     92
+     115  r     93 I  BS         1.62810         0.62810           None          1.0       -2.043222E+10     93
+     116  r     94    BS         0.41349        -0.58651           None          1.0              .          94
+     117  r     95    BS         0.08254        -0.91746           None          1.0              .          95
+     118  r     96    BS         0.08254        -0.91746           None          1.0              .          96
+     119  r     97    BS         0.08254        -0.91746           None          1.0              .          97
+     120  r     98    BS         0.08254        -0.91746           None          1.0              .          98
+     121  r     99    BS         0.08254        -0.91746           None          1.0              .          99
+     122  r    100    BS         0.08254        -0.91746           None          1.0              .         100
+     123  r    101    BS         0.08254        -0.91746           None          1.0              .         101
+     124  r    102    BS         0.08254        -0.91746           None          1.0              .         102
+     125  r    103    BS         0.08254        -0.91746           None          1.0              .         103
+     126  r    104    BS         0.08254        -0.91746           None          1.0              .         104
+     127  r    105    BS         0.21959        -0.78041           None          1.0              .         105
+     128  r    106    UL         1.00000         0.00000           None          1.0       -1.351448E+10    106
+     129  r    107    BS         0.24712        -0.75288           None          1.0              .         107
+     130  r    108    BS         0.21547        -0.78453           None          1.0              .         108
+     131  r    109    UL         1.00000        -0.00000           None          1.0       -8.939980E+09    109
+     132  r    110    BS         0.10337        -0.89663           None          1.0              .         110
+     133  r    111    BS         0.08254        -0.91746           None          1.0              .         111
+     134  r    112    BS         0.08254        -0.91746           None          1.0              .         112
+     135  r    113    BS         0.08254        -0.91746           None          1.0              .         113
+     136  r    114    BS         0.08254        -0.91746           None          1.0              .         114
+     137  r    115    BS         0.08254        -0.91746           None          1.0              .         115
+     138  r    116    BS         0.08254        -0.91746           None          1.0              .         116
+     139  r    117    BS         0.08254        -0.91746           None          1.0              .         117
+     140  r    118    BS         0.08254        -0.91746           None          1.0              .         118
+     141  r    119    BS         0.08254        -0.91746           None          1.0              .         119
+     142  r    120    BS         0.08254        -0.91746           None          1.0              .         120
+     143  r    121    BS         0.08254        -0.91746           None          1.0              .         121
+     144  r    122    BS         0.08254        -0.91746           None          1.0              .         122
+     145  r    123    BS         0.08254        -0.91746           None          1.0              .         123
+     146  r    124    BS         0.08254        -0.91746           None          1.0              .         124
+     147  r    125    BS         0.08254        -0.91746           None          1.0              .         125
+     148  r    126    BS         0.08254        -0.91746           None          1.0              .         126
+     149  r    127    BS         0.08254        -0.91746           None          1.0              .         127
+     150  r    128    BS         0.08254        -0.91746           None          1.0              .         128
+     151  r    129    BS         0.08254        -0.91746           None          1.0              .         129
+     152  r    130    BS         0.08254        -0.91746           None          1.0              .         130
+     153  r    131    BS         0.08254        -0.91746           None          1.0              .         131
+     154  r    132    BS         0.08254        -0.91746           None          1.0              .         132
+     155  r    133    BS         0.31078        -0.68922           None          1.0              .         133
+     156  r    134    BS         0.98896        -0.01104           None          1.0              .         134
+     157  r    135 I  BS         2.25701         1.25701           None          1.0       -2.043222E+10    135
+     158  r    136 I  BS         4.00875         3.00875           None          1.0       -2.043222E+10    136
+     159  r    137 I  BS         6.23481         5.23481           None          1.0       -2.043222E+10    137
+     160  r    138 I  BS         8.91847         7.91847           None          1.0       -2.043222E+10    138
+     161  r    139 I  BS        11.42186        10.42186           None          1.0       -2.043222E+10    139
+     162  r    140 I  BS        13.49486        12.49486           None          1.0       -2.043222E+10    140
+     163  r    141 I  BS        12.46396        11.46396           None          1.0       -2.043222E+10    141
+     164  r    142 I  BS        14.85261        13.85261           None          1.0       -2.043222E+10    142
+     165  r    143 I  BS        14.39560        13.39560           None          1.0       -2.043222E+10    143
+     166  r    144 I  BS        14.85020        13.85020           None          1.0       -2.043222E+10    144
+     167  r    145 I  BS        11.07025        10.07025           None          1.0       -2.043222E+10    145
+     168  r    146 I  BS         6.88406         5.88406           None          1.0       -2.043222E+10    146
+     169  r    147 I  BS         2.78656         1.78656           None          1.0       -2.043222E+10    147
+     170  r    148    BS         0.08254        -0.91746           None          1.0              .         148
+     171  r    149    BS         0.08254        -0.91746           None          1.0              .         149
+     172  r    150    BS         0.08254        -0.91746           None          1.0              .         150
+     173  r    151    EQ         1.12264          .              1.12264         1.12264   -2.843234E+12    151
+     174  r    152    EQ         0.58176          .              0.58176         0.58176    1.090944E+13    152
+     175  r    153    EQ        -2.95978          .             -2.95978        -2.95978    1.381477E+12    153
+     176  r    154    EQ        -0.32388          .             -0.32388        -0.32388   -4.747579E+11    154
+     177  r    155 A  EQ        -0.67048          .             -0.67048        -0.67048        -9.65416    155
+     178  r    156 A  EQ        -1.55675          .             -1.55675        -1.55675       -21.85696    156
+     179  r    157 A  EQ        -2.71951          .             -2.71951        -2.71951        -8.83882    157
+     180  r    158    EQ        -1.38116          .             -1.38116        -1.38116    4.186624E+12    158
+     181  r    159    EQ         0.81484          .              0.81484         0.81484   -6.484925E+12    159
+     182  r    160    EQ        -2.01297          .             -2.01297        -2.01297    1.154131E+12    160
+     183  r    161    EQ        -0.86293          .             -0.86293        -0.86293   -1.872371E+12    161
+     184  r    162    EQ         1.42531          .              1.42531         1.42531    1.495619E+12    162
+     185  r    163    EQ        -1.97851          .             -1.97851        -1.97851    2.302137E+12    163
+     186  r    164    EQ         0.60105          .              0.60105         0.60105    6.487310E+10    164
+1
+ 
+ Section 2 - Columns
+
+  Number  .Column. State  ...Activity...  .Obj Gradient.  ..Lower Limit.  ..Upper Limit.  Reduced Gradnt    m+j
+ 
+       1  x      1    BS         1.12264         0.33702        -3.10000         3.10000     -3789.10878    165
+       2  x      2    BS         0.58176         0.15515        -2.24000         2.24000     -7269.69641    166
+       3  x      3    BS        -2.95978        -0.66466        -3.10000         3.10000     -1161.79112    167
+       4  x      4    BS        -0.32388        -0.26535        -2.57000         2.57000        69.47799    168
+       5  x      5    BS        -0.67048        -0.25226        -3.10000         3.10000         9.40194    169
+       6  x      6    BS        -1.55675        -0.31086        -2.09000         2.09000        21.54608    170
+       7  x      7    BS        -2.71951        -0.43577        -3.10000         3.10000         8.40304    171
+       8  x      8    BS        -1.71242        -0.38872        -3.10000         3.10000      9451.59722    172
+       9  x      9    BS        -0.72337        -0.39518        -2.24000         2.24000   -136294.33919    173
+      10  x     10    BS         2.63135         1.38939        -3.10000         3.10000    -94334.27310    174
+      11  x     11 N  BS         1.90829         0.69780        -2.57000         2.57000   -306335.24575    175
+      12  x     12    BS         1.45157         0.25636        -3.10000         3.10000    -20162.64446    176
+      13  x     13    BS         1.05819         0.78472        -2.09000         2.09000    -28610.65339    177
+      14  x     14    BS         0.94618         0.48962        -3.10000         3.10000    -57386.97978    178
+      15  x     15    BS        -1.38116         0.05169        -3.10000         3.10000    -76574.12018    179
+      16  x     16    BS         0.81484         0.24003        -2.24000         2.24000    -92056.01876    180
+      17  x     17    BS        -2.01297        -0.72473        -3.10000         3.10000   -121259.68176    181
+      18  x     18    BS        -0.86293        -0.43244        -2.57000         2.57000   -155462.85480    182
+      19  x     19    BS         1.42531        -0.00410        -3.10000         3.10000    -22134.83979    183
+      20  x     20    BS        -1.97851        -0.47387        -2.09000         2.09000    -47340.56811    184
+      21  x     21    BS         0.60105        -0.05386        -3.10000         3.10000    -30186.71239    185
+      22  x     22 A  EQ         1.0              .              1.0             1.0              .         186

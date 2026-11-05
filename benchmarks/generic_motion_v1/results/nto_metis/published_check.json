@@ -1,0 +1,111 @@
+{
+  "passed": true,
+  "scope": "Independent CPU read-only published CSV/path/pair verification; no planner, GPU collision query or rehash of individual raw attempt arrays.",
+  "seconds": 1.1234890171326697,
+  "checks": {
+    "derived_output_hashes": 7,
+    "source_manifest_hashes": 6,
+    "published_links": 12,
+    "existing_referenced_artifact_paths": 62624,
+    "records": 9760,
+    "summary_rows": 10519,
+    "before_after_pairs": 1220,
+    "paired_summary_rows": 102,
+    "primary_tables_unchanged": true
+  },
+  "comparison_coverage": [
+    {
+      "comparison": "current_dev_nto_metis",
+      "mode": "end_to_end",
+      "declared": 2520,
+      "selected": 2520,
+      "methods": 10
+    },
+    {
+      "comparison": "current_dev_nto_metis_fixed_frontend",
+      "mode": "fixed_frontend",
+      "declared": 2160,
+      "selected": 1572,
+      "methods": 8
+    },
+    {
+      "comparison": "current_test_nto_metis",
+      "mode": "end_to_end",
+      "declared": 5880,
+      "selected": 5880,
+      "methods": 10
+    },
+    {
+      "comparison": "current_test_nto_metis_fixed_frontend",
+      "mode": "fixed_frontend",
+      "declared": 5040,
+      "selected": 4056,
+      "methods": 8
+    }
+  ],
+  "new_statuses": {
+    "solver_failure": 47,
+    "success_numerical": 801,
+    "no_solution_within_budget": 194,
+    "timeout": 117,
+    "validation_failed": 7,
+    "invalid_input": 54
+  },
+  "new_scores": [
+    {
+      "split": "smoke",
+      "objective": "minimum_distance",
+      "planned": 10,
+      "legal": 8,
+      "success_numerical": 4
+    },
+    {
+      "split": "smoke",
+      "objective": "minimum_time",
+      "planned": 10,
+      "legal": 8,
+      "success_numerical": 4
+    },
+    {
+      "split": "dev",
+      "objective": "minimum_distance",
+      "planned": 180,
+      "legal": 180,
+      "success_numerical": 99
+    },
+    {
+      "split": "dev",
+      "objective": "minimum_time",
+      "planned": 180,
+      "legal": 180,
+      "success_numerical": 116
+    },
+    {
+      "split": "test",
+      "objective": "minimum_distance",
+      "planned": 420,
+      "legal": 395,
+      "success_numerical": 276
+    },
+    {
+      "split": "test",
+      "objective": "minimum_time",
+      "planned": 420,
+      "legal": 395,
+      "success_numerical": 302
+    }
+  ],
+  "figures": {
+    "files": [
+      "time_breakdown.png",
+      "success_rate.png"
+    ],
+    "visual_inspection": "Original-resolution success-rate and time-breakdown images checked; labels, panel scopes and shown counts match CSV. No budget-cost progress curve is fabricated.",
+    "timing_scope": "Successful-query subsets only, explicitly labelled descriptive rather than paired speed ranking."
+  },
+  "limitations": [
+    "This pass checks saved evidence/accounting and publication paths; it does not rerun collision checks or native solvers.",
+    "Scene-cluster bootstrap confidence intervals were not independently recomputed in this lightweight pass.",
+    "Before/after results remain cross-source observational comparisons; unavailable historical native binary hashes are not inferred."
+  ]
+}
