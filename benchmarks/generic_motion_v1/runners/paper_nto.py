@@ -16,6 +16,7 @@ import numpy as np
 
 from ..roadmap import write
 from .validate import _numeric_array
+from .ipopt_options import settings as ipopt_settings, evidence as ipopt_evidence
 
 
 PROFILE = dict(
@@ -59,7 +60,7 @@ def _solver(objective):
     return SnoptSolver() if objective == "minimum_distance" else IpoptSolver()
 
 
-def dependency_probe(out, objective):
+def dependency_probe(out, objective, config=None):
     """Solve a real bounded LP using the solver needed by this objective."""
     from pydrake.all import MathematicalProgram
     out = Path(out)
@@ -69,6 +70,8 @@ def dependency_probe(out, objective):
                   available=bool(solver.available()), enabled=bool(solver.enabled()),
                   profile=PROFILE["name"],
                   fidelity="Published solver profile; declared Drake reconstruction on Kinova, not original FR3 experiment")
+    if objective == 'minimum_time':
+        record['linear_system'] = ipopt_evidence(config)
     write(out / "paper_nto_dependencies.json", record)
     if not record["available"] or not record["enabled"]:
         raise ImportError(f"{record['solver']} is unavailable or disabled")
@@ -76,6 +79,9 @@ def dependency_probe(out, objective):
     x = program.NewContinuousVariables(1)
     program.AddBoundingBoxConstraint(1.0, 2.0, x)
     program.AddLinearCost(x[0])
+    if objective == 'minimum_time':
+        for key, value in ipopt_settings(config).items():
+            program.SetSolverOption(solver.solver_id(), key, value)
     tic = time.perf_counter()
     result = solver.Solve(program)
     solution = float(result.GetSolution(x)[0])
@@ -238,6 +244,7 @@ def paper_nto(path, model, case, cfg, out, deadline, *, _profile=None,
         options = dict(max_iter=profile["maximum_iterations"], max_cpu_time=remaining,
                        tol=profile["solver_feasibility_tolerance"], print_level=0,
                        file_print_level=5, output_file=str((out / "ipopt.log").resolve()))
+        options.update(ipopt_settings(cfg))
         logging = dict(interface="IPOPT output_file", path=options["output_file"])
         reported_iteration_limits = None
     else:
@@ -292,6 +299,8 @@ def paper_nto(path, model, case, cfg, out, deadline, *, _profile=None,
                       refinement_warm_start=_initial_candidate is not None,
                       legacy_cfg_nto_used=False, construction_seconds=time.perf_counter() - started,
                       watchdog="Caller must enforce external wall-clock budget; IPOPT max_cpu_time is CPU time")
+    if timed:
+        parameters['linear_system'] = ipopt_evidence(cfg)
     write(out / "nto_parameters.json", parameters)
     if remaining <= 0:
         raise TimeoutError("Paper NTO construction exhausted online budget")

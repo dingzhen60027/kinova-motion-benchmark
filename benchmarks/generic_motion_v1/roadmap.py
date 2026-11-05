@@ -92,6 +92,10 @@ def load_config(config=None):
                     raise ValueError('nto_refined.early_accept_validated must be boolean')
                 answer[key] = dict(value)
                 continue
+            if key == 'ipopt':
+                from .runners.ipopt_options import settings
+                answer[key] = settings({'ipopt': value})
+                continue
             if key not in answer:
                 raise ValueError(f'Unknown evaluation setting {key}')
             if isinstance(answer[key], dict):
@@ -156,6 +160,10 @@ def load_config(config=None):
         if 'trajopt' in answer['extended_baselines']:
             from .runners.trajopt_baseline import settings
             settings(answer)
+    # Materialize the effective native linear-system policy in every new run.
+    # Read-only historical summaries use their stored configuration directly.
+    from .runners.ipopt_options import settings as ipopt_settings
+    answer['ipopt'] = ipopt_settings(answer)
     return answer
 
 

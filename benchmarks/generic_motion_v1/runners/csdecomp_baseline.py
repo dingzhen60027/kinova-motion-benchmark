@@ -346,7 +346,7 @@ def dependency_audit(out,method='EI_ZO',objective='minimum_distance',config=None
         return record
     if method in ('NTO_PAPER', 'NTO_REFINED'):
         from .paper_nto import dependency_probe
-        record = dependency_probe(out, objective)
+        record = dependency_probe(out, objective, config=config)
         if method == 'NTO_REFINED':
             from .paper_nto_refined import PROFILE
             record.update(method=method, profile=PROFILE['name'],
@@ -374,9 +374,16 @@ def dependency_audit(out,method='EI_ZO',objective='minimum_distance',config=None
                 ipopt=dict(available=IpoptSolver().available(),enabled=IpoptSolver().enabled()),
                 scsplanning_solver=('Clarabel' if 'ClarabelSolver' in inspect.getsource(modules[-1]) else 'inspect module receipt') if method=='EI_ZO' else None,
                 fidelity='Native CSDecomp; author SCSPlanning with Clarabel for EI_ZO or declared Drake KTO/Ipopt adaptation for NTO; not exact FR3 reproduction')
+    if method == 'NTO':
+        from .ipopt_options import evidence as ipopt_evidence
+        record['linear_system'] = ipopt_evidence(config)
     write(out/'dependencies.json',record)
     if not solver.available() or not solver.enabled():
         raise ImportError(f'{name} solver is unavailable or disabled')
+    if method == 'NTO':
+        from .ipopt_options import settings as ipopt_settings
+        for key,value in ipopt_settings(config).items():
+            program.SetSolverOption(solver.solver_id(),key,value)
     solution=solver.Solve(program)
     record[name].update(probe_success=bool(solution.is_success()),probe_solution=float(solution.GetSolution(x)[0]))
     write(out/'dependencies.json',record)
@@ -429,9 +436,12 @@ def _nto(path,model,case,cfg,out,deadline):
     solver=IpoptSolver()
     parameters=dict(max_iter=options['maximum_iterations'],max_cpu_time=remaining,tol=1e-6,
                     print_level=0,file_print_level=5,output_file=str((out/'ipopt.log').resolve()))
+    from .ipopt_options import settings as ipopt_settings, evidence as ipopt_evidence
+    parameters.update(ipopt_settings(cfg))
     for key,value in parameters.items():
         prog.SetSolverOption(solver.solver_id(),key,value)
     write(out/'nto_parameters.json',dict(parameters=parameters,collision_pairs=native.collision_pair_count,
+          linear_system=ipopt_evidence(cfg),
           collocation_locations=locations,clearance_m=options['clearance_m'],
           collision_backend='native_first_Drake_exact_issue21675_guarded_retry',
           collision_backend_evidence='nto_collision_backend.json',
