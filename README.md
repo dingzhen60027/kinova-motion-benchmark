@@ -49,6 +49,26 @@ bash local/python.sh scripts/evaluate.py verify --run runs/example
 
 Use a new output directory. Verification should report `integrity_passed: true` and `complete: true`; each planner outcome is recorded separately. To continue an interrupted run, use `resume --run runs/example`. [Batch evaluation, summaries and replay →](benchmarks/generic_motion_v1/README.md#commands)
 
+## Complete baseline experiment
+
+The formal entry uses `configs/evaluation.json`: **14 method–objective pairs, seeds 0/1/2, paired 6,000-node roadmaps, 60 seconds per query, one GPU worker at a time**. It checks the environment and frozen inputs, then runs Smoke → Dev → Test. All 463 legal problems are included: **19,446 calls**, with path and time results reported separately.
+
+```bash
+# 1. Check dependencies and execute all 14 combinations on a fixed smoke problem.
+bash local/python.sh scripts/run_baselines.py smoke-check
+
+# 2. Continue the full experiment in tmux; survives SSH disconnection.
+bash local/python.sh scripts/run_baselines.py start
+
+# 3. Inspect progress and logs.
+bash local/python.sh scripts/run_baselines.py status
+tail -f runs/baselines/console.log
+```
+
+The tmux session is `kinova-baselines`. After interruption, rerun `start` once that session has exited, or use `resume` for foreground execution. Completed successes **and failures** are skipped; interrupted attempts remain preserved. Infrastructure errors or changed inputs, code or dependencies stop the pipeline.
+
+`verify` checks the complete matrix and saved evidence; `summarize` writes `runs/baselines/analysis/{records,summary}.csv`, figures and artifact links. Both run automatically at completion. `matrix.csv` records every planned call and its reuse provenance; historical results without compatible sealed evidence are kept separate. Run data stays under `runs/baselines/` and is not committed to Git.
+
 ## Benchmark
 
 Kinova Gen3 with a fixed gripper, table/equipment and five obstacle categories: **sparse clutter, dense clutter, bottleneck, route choice, open control**.
@@ -63,7 +83,7 @@ Generation failures remain recorded. The valid test set covers 75 random layouts
 
 ## Baselines and results
 
-Validated successes on **395 test problems, seed 0, 60 seconds/query**. Dev was evaluated with three seeds; test seeds 1 and 2 remain unrun. Validation is numerical, not a continuous collision certificate.
+Historical validated successes on **395 test problems, seed 0, 60 seconds/query**. These rows predate the unified three-seed experiment above; they are not its final results. Validation is numerical, not a continuous collision certificate.
 
 | Method | Path | Time |
 |---|---:|---:|
