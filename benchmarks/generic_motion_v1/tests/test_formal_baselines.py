@@ -1,6 +1,7 @@
 """Formal coordinator regressions; GPU/solver execution is covered by smoke-check."""
 import csv
 import json
+import os
 from pathlib import Path
 from types import SimpleNamespace
 
@@ -115,6 +116,10 @@ def test_gpu_guard_allows_desktop_but_rejects_another_planner(monkeypatch):
     assert len(formal.gpu_idle())==1
     monkeypatch.setattr(formal,'subprocess',SimpleNamespace(run=lambda *a,**k:SimpleNamespace(
         stdout='123, python, 900 MiB\n')))
+    with pytest.raises(RuntimeError,match='GPU compute workload'):formal.gpu_idle()
+    monkeypatch.setattr(formal,'subprocess',SimpleNamespace(run=lambda *a,**k:SimpleNamespace(
+        stdout=f'{os.getpid()}, python, 188 MiB\n')))
+    assert formal.gpu_idle(allow_current_process=True)
     with pytest.raises(RuntimeError,match='GPU compute workload'):formal.gpu_idle()
 
 

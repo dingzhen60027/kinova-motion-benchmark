@@ -61,13 +61,14 @@ def locked(path):
             fcntl.flock(handle, fcntl.LOCK_UN)
 
 
-def gpu_idle():
+def gpu_idle(*, allow_current_process=False):
     result = subprocess.run(['nvidia-smi', '--query-compute-apps=pid,process_name,used_memory',
                              '--format=csv,noheader'], capture_output=True, text=True, timeout=15, check=True)
     # The desktop compositor is present on the recorded host. No other compute
     # workload is allowed to share the timed worker, even from another project.
     forbidden = [line for line in result.stdout.splitlines() if line.strip()
-                 and '/usr/libexec/gnome-remote-desktop-daemon' not in line]
+                 and '/usr/libexec/gnome-remote-desktop-daemon' not in line
+                 and not (allow_current_process and line.split(',',1)[0].strip()==str(os.getpid()))]
     if forbidden:
         raise RuntimeError('GPU compute workload already present: '+repr(forbidden))
     return result.stdout.splitlines()
@@ -144,7 +145,9 @@ def preflight(root, config):
     if read(out/'dataset.json')['result']!='passed':
         raise RuntimeError('Frozen dataset integrity check failed')
     with locked(BASE/'results/.gpu.lock'):
-        gpu_idle()
+        # health.check performs its native probes in this disposable child;
+        # its own idle CUDA context is expected until this process exits.
+        gpu_idle(allow_current_process=True)
         if not (out/'model/audit.json').exists():
             audit(out/'model')
         if not read(out/'model/audit.json')['passed']:
