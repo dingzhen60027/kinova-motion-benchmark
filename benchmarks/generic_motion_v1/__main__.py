@@ -6,6 +6,15 @@ from .common import BASE, ROOT, write
 from .runners.methods import METHODS
 
 
+def _command_ledger(argv):
+    """Keep worker invocation evidence with its attempt and immutable receipt."""
+    if '_worker' in argv and '--attempt' in argv:
+        index = argv.index('--attempt') + 1
+        if index < len(argv):
+            return Path(argv[index]).expanduser().resolve() / 'commands.jsonl'
+    return BASE / 'reports' / 'cli_commands.jsonl'
+
+
 def _guard_audit_output(output):
     if output is None:
         return
@@ -120,7 +129,7 @@ if __name__ == "__main__":
     import os
     import sys
     import time
-    ledger = BASE / "reports" / "cli_commands.jsonl"
+    ledger = _command_ledger(sys.argv)
     ledger.parent.mkdir(parents=True, exist_ok=True)
     started = time.perf_counter()
     record = dict(argv=[sys.executable, *sys.argv], cwd=os.getcwd(), pid=os.getpid(),

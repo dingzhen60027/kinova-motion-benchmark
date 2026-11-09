@@ -92,6 +92,23 @@ def test_infrastructure_failure_stops_before_next_job(tmp_path,monkeypatch):
         formal.finished(tmp_path,{},dict(job_id='job'),{})
 
 
+def test_saved_success_is_fully_verified_and_corruption_stops(tmp_path):
+    from benchmarks.generic_motion_v1.tests.test_results import make_run, make_attempt
+    run,manifest,job=make_run(tmp_path)
+    attempt=make_attempt(run,job)
+    assert formal.finished(run,manifest,job,{})['status']=='success_numerical'
+    with (attempt/'candidate.npz').open('ab') as stream:stream.write(b'corrupt')
+    with pytest.raises(RuntimeError,match='Systemic failure'):
+        formal.finished(run,manifest,job,{})
+
+
+def test_worker_command_log_is_inside_attempt(tmp_path):
+    from benchmarks.generic_motion_v1.__main__ import _command_ledger
+    attempt=tmp_path/'attempt'
+    assert _command_ledger(['module','_worker','--attempt',str(attempt)])==attempt/'commands.jsonl'
+    assert _command_ledger(['module','methods'])==formal.BASE/'reports/cli_commands.jsonl'
+
+
 def test_gpu_guard_allows_desktop_but_rejects_another_planner(monkeypatch):
     monkeypatch.setattr(formal,'subprocess',SimpleNamespace(run=lambda *a,**k:SimpleNamespace(
         stdout='1754, /usr/libexec/gnome-remote-desktop-daemon, 165 MiB\n')))

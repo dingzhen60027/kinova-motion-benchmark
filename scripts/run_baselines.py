@@ -217,7 +217,7 @@ def reusable_time_run(path, cfg, current, current_environment):
                 if str(p) not in native_cache:native_cache[str(p)]=sha(p)
                 if native_cache[str(p)]!=digest:raise ValueError('native dependency changed')
             if not solver['loaded_matches_package']:raise ValueError('solver library did not match package')
-            row=attempt_row(path,m,job,attempt,verify_files=False,case_cache=cache)
+            row=attempt_row(path,m,job,attempt,verify_files=True,case_cache=cache)
             if row['status']=='infrastructure_error':raise ValueError('historical infrastructure error')
             eligible[(case['problem_id'],job['replica_seed'],job['method'],job['objective'])]=dict(
                 job=job,source_run=relative(path),source_job=relative(path/'jobs'/job['job_id']),
@@ -333,7 +333,7 @@ def verify_context(root, *, full_environment=True):
 def finished(root, manifest, job, case_cache):
     attempt=batch._first_terminal_attempt(sorted((root/'jobs'/job['job_id']/'attempts').glob('[0-9][0-9][0-9][0-9]')))
     if attempt is None:return None
-    row=attempt_row(root,manifest,job,attempt,verify_files=False,case_cache=case_cache)
+    row=attempt_row(root,manifest,job,attempt,verify_files=True,case_cache=case_cache)
     if row['status'] in ('infrastructure_error','invalid_input'):
         raise RuntimeError('Systemic failure stops this experiment: '+str(attempt)+': '+str(row['failure_reason']))
     return row
@@ -480,7 +480,7 @@ def start(root, config, session):
 def main(argv=None):
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument('command',choices=['check','prepare','smoke-check','start','run','resume','status','verify','summarize'])
-    p.add_argument('--run',default='runs/baselines');p.add_argument('--config',default='configs/evaluation.json')
+    p.add_argument('--run',default='runs/end_to_end');p.add_argument('--config',default='configs/evaluation.json')
     p.add_argument('--session',default='kinova-baselines')
     args=p.parse_args(argv);root=location(args.run);config=location(args.config)
     # The launcher already pins BLAS; this entry also fixes OMP and GPU.

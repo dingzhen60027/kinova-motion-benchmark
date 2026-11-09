@@ -62,12 +62,12 @@ bash local/python.sh scripts/run_baselines.py start
 
 # 3. Inspect progress and logs.
 bash local/python.sh scripts/run_baselines.py status
-tail -f runs/baselines/console.log
+tail -f runs/end_to_end/console.log
 ```
 
 The tmux session is `kinova-baselines`. After interruption, rerun `start` once that session has exited, or use `resume` for foreground execution. Completed successes **and failures** are skipped; interrupted attempts remain preserved. Infrastructure errors or changed inputs, code or dependencies stop the pipeline.
 
-`verify` checks the complete matrix and saved evidence; `summarize` writes `runs/baselines/analysis/{records,summary}.csv`, figures and artifact links. Both run automatically at completion. `matrix.csv` records every planned call and its reuse provenance; historical results without compatible sealed evidence are kept separate. Run data stays under `runs/baselines/` and is not committed to Git.
+`verify` checks the complete matrix and saved evidence; `summarize` writes `runs/end_to_end/analysis/{records,summary}.csv`, figures and artifact links. Both run automatically at completion. `matrix.csv` records every planned call and its reuse provenance; historical results without compatible sealed evidence are kept separate. Run data stays under `runs/end_to_end/` and is not committed to Git.
 
 ## Benchmark
 
