@@ -89,7 +89,16 @@ def environment():
             raise FileNotFoundError(root)
         files.update(p.resolve() for p in root.rglob('*') if p.is_file() and
                      ('.so' in p.name or p.suffix == '.py' or p.name == 'build.json'))
-    versions = {d.metadata['Name'].lower(): d.version for d in importlib.metadata.distributions() if d.metadata['Name']}
+    # Optional solvers live in repository-local wheel directories. Preflight
+    # probes add these to sys.path; inventory must also work before any probe.
+    distributions = list(importlib.metadata.distributions())
+    distributions += list(importlib.metadata.distributions(path=[str(p) for p in roots]))
+    versions = {}
+    for d in distributions:
+        if not d.metadata['Name']:continue
+        name=d.metadata['Name'].lower()
+        if name in versions and versions[name]!=d.version:raise ValueError('Conflicting dependency versions: '+name)
+        versions[name]=d.version
     gpu = subprocess.check_output(['nvidia-smi', '--query-gpu=uuid,name,driver_version,memory.total',
                                    '--format=csv,noheader'], text=True).strip()
     return dict(python=sys.version, executable=str(Path(sys.executable).resolve()), prefix=sys.prefix,
