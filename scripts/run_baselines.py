@@ -337,6 +337,15 @@ def experiment_context(root):
         if sha(root/stage['name']/'run_manifest.json')!=stage['manifest_sha256']:raise ValueError('Original matrix changed')
     frozen=dict(experiment['frozen_files'])
     frozen.update(repair['frozen_files'])
+    if (root/'launcher_amendment.json').exists():
+        amendment=read(root/'launcher_amendment.json')
+        if sha(root/'launcher_amendment.json')!=read(root/'launcher_amendment_identity.json')['sha256']:
+            raise ValueError('Launcher amendment changed')
+        launcher=relative(Path(__file__))
+        if (amendment['repair_sha256']!=sha(root/'repair.json') or amendment['path']!=launcher
+                or amendment['previous_sha256']!=frozen[launcher]):
+            raise ValueError('Launcher amendment parent changed')
+        frozen[launcher]=amendment['sha256']
     return dict(experiment,source_commit=repair['source_commit'],source_hashes=repair['source_hashes'],
         stages=repair['stages'],frozen_files=frozen,reused_jobs=repair['retained_jobs'],new_jobs=repair['new_jobs'],
         selection_path='repair_selection.json',smoke_check_path='repair_smoke_check.json',repair=repair)
@@ -476,10 +485,49 @@ def repair_lgcs(root, config):
         return verify_context(root)
 
 
+def amend_launcher(root):
+    """Record a launcher-only correction without altering any worker sources."""
+    with locked(root/'.experiment.lock'):
+        if (root/'launcher_amendment.json').exists():return verify_context(root)
+        exp=experiment_context(root)
+        if 'repair' not in exp or code_inventory()!=exp['source_hashes']:
+            raise ValueError('Launcher amendment cannot change runtime sources')
+        launcher=relative(Path(__file__))
+        for name,digest in exp['frozen_files'].items():
+            if name!=launcher and sha(recorded_path(name))!=digest:raise ValueError('Frozen input changed: '+name)
+        prior=subprocess.check_output(['git','show',exp['source_commit']+':'+launcher],cwd=ROOT)
+        committed=subprocess.check_output(['git','show',head()+':'+launcher],cwd=ROOT)
+        if hashlib.sha256(prior).hexdigest()!=exp['frozen_files'][launcher] or hashlib.sha256(committed).hexdigest()!=sha(Path(__file__)):
+            raise ValueError('Launcher revision must be committed and match the original seal')
+        write(root/'launcher_amendment.json',dict(created_utc=now(),repair_sha256=sha(root/'repair.json'),
+            source_commit=head(),path=launcher,previous_sha256=exp['frozen_files'][launcher],sha256=sha(Path(__file__)),
+            reason='Verify retained observations against their original manifests; reuse the unchanged numerical validator and statistics. No worker, configuration, input or result edits.'))
+        write(root/'launcher_amendment_identity.json',dict(sha256=sha(root/'launcher_amendment.json')))
+        return verify_context(root)
+
+
+def observation_manifest(manifest, job, attempt, cache):
+    """A selection view is not the manifest that authorized a saved worker."""
+    if manifest.get('selection')!='explicit_lgcs_repair_retained':return manifest
+    path=attempt.resolve().parents[3]/'run_manifest.json'
+    expected=manifest['derived_from_manifests'].get(relative(path))
+    bindings=cache.setdefault('retained_manifest_bindings',{})
+    if str(path) not in bindings:
+        if expected is None or sha(path)!=expected:raise ValueError('Retained source manifest binding changed')
+        source=read(path)
+        bindings[str(path)]=(source,{j['job_id']:j for j in source['jobs']})
+    source,by_id=bindings[str(path)]
+    if (by_id.get(job['job_id'])!=job or job['method']=='LGCS'
+            or any(manifest[k]!=source[k] for k in ('source_hashes','source_code_commit','timeout_seconds'))):
+        raise ValueError('Retained observation differs from original request or source')
+    return source
+
+
 def finished(root, manifest, job, case_cache):
     attempt=batch._first_terminal_attempt(sorted((root/'jobs'/job['job_id']/'attempts').glob('[0-9][0-9][0-9][0-9]')))
     if attempt is None:return None
-    row=attempt_row(root,manifest,job,attempt,verify_files=True,case_cache=case_cache)
+    source=observation_manifest(manifest,job,attempt,case_cache)
+    row=attempt_row(root,source,job,attempt,verify_files=True,case_cache=case_cache)
     if row['status'] in ('infrastructure_error','invalid_input'):
         raise RuntimeError('Systemic failure stops this experiment: '+str(attempt)+': '+str(row['failure_reason']))
     return row
@@ -579,8 +627,43 @@ def summarize(root):
     result=verify(root)
     if not result['integrity_passed']:raise ValueError('Cannot summarize corrupt experiment')
     exp=experiment_context(root)
+    if 'repair' in exp:return summarize_repair(root,exp)
     return export(output=root/'analysis',roots=[root/s['name'] for s in exp['stages']],
                   selection=root/exp.get('selection_path','selection.json'))
+
+
+def summarize_repair(root, exp):
+    """Same statistics and plots; retained workers keep original provenance."""
+    from benchmarks.generic_motion_v1.runners import results
+    directories=[root/s['name'] for s in exp['stages']]
+    rows=[];inventory=[]
+    for stage,directory in zip(exp['stages'],directories):
+        if not stage.get('read_only'):
+            found,meta=results.collect([directory],verify_files=True)
+            rows.extend(found);inventory.extend(meta);continue
+        m=read(directory/'run_manifest.json');cache={};found=[]
+        for job in m['jobs']:
+            for attempt in sorted((directory/'jobs'/job['job_id']/'attempts').glob('[0-9][0-9][0-9][0-9]')):
+                source=observation_manifest(m,job,attempt,cache)
+                found.append(attempt_row(directory,source,job,attempt,verify_files=True,case_cache=cache))
+        rows.extend(found)
+        inventory.append(dict(run=relative(directory),split=stage['split'],planned_jobs=len(m['jobs']),
+            actual_attempts=len(found),source_commit=m['source_code_commit'],manifest_sha256=sha(directory/'run_manifest.json'),
+            original_manifests=m['derived_from_manifests'],status_counts=dict(Counter(r['status'] for r in found))))
+    selection_path=root/exp['selection_path'];selection=read(selection_path)
+    summary=results.summarize(rows,selection)
+    out=root/'analysis';out.mkdir(parents=True,exist_ok=True)
+    results._csv(out/'records.csv',rows,results.RECORD_FIELDS)
+    results._csv(out/'summary.csv',summary,results.SUMMARY_FIELDS)
+    write(out/'inventory.json',dict(actual_attempts=len(rows),runs=inventory,receipt_files_verified=True,
+        summary_selection=relative(selection_path),summary_selection_sha256=sha(selection_path),
+        repair_sha256=sha(root/'repair.json'),superseded_lgcs_attempts=len(exp['repair']['superseded_lgcs_attempts']),
+        attempt_policy='First terminal per declared job; all original LGCS attempts preserved but excluded. Retained observations validated against the exact original worker manifest.',
+        interval_policy=exp['statistics']))
+    results._index_links(out,directories)
+    figure_rows,figure_summary=results._figure_inputs(rows,summary,results._figure_comparisons(selection))
+    results._figures(out,figure_rows,figure_summary)
+    return dict(output=relative(out),runs=len(directories),actual_attempts=len(rows),summary_rows=len(summary))
 
 
 def smoke_rows(root, exp):
@@ -642,7 +725,7 @@ def start(root, config, session):
 
 def main(argv=None):
     p=argparse.ArgumentParser(description=__doc__)
-    p.add_argument('command',choices=['check','prepare','repair-lgcs','smoke-check','start','run','resume','status','verify','summarize'])
+    p.add_argument('command',choices=['check','prepare','repair-lgcs','amend-launcher','smoke-check','start','run','resume','status','verify','summarize'])
     p.add_argument('--run',default='runs/end_to_end');p.add_argument('--config',default='configs/evaluation.json')
     p.add_argument('--session',default='kinova-baselines')
     args=p.parse_args(argv);root=location(args.run);config=location(args.config)
@@ -652,6 +735,8 @@ def main(argv=None):
         if (root/'experiment.json').exists():raise ValueError('Prepared preflight is immutable; use verify')
         preflight(root,config);result=dict(passed=True)
     elif args.command=='prepare':result=prepare(root,config)
+    elif args.command=='amend-launcher':
+        amend_launcher(root);result=dict(passed=True,worker_sources_changed=False)
     elif args.command=='repair-lgcs':
         exp=repair_lgcs(root,config)
         result=dict(prepared=True,retained_jobs=exp['reused_jobs'],new_jobs=exp['new_jobs'],

@@ -219,3 +219,33 @@ def test_retained_stage_is_never_executed(tmp_path,monkeypatch):
     assert formal.execute_stage(tmp_path,dict(name='retained-smoke',read_only=True))['complete']
     monkeypatch.setattr(batch,'verify',lambda *a,**kw:dict(integrity_passed=True,complete=False))
     with pytest.raises(ValueError,match='Retained cohort'):formal.execute_stage(tmp_path,dict(name='retained-smoke',read_only=True))
+
+
+def test_retained_view_uses_original_worker_manifest_without_weakening_validator(tmp_path,monkeypatch):
+    from benchmarks.generic_motion_v1.tests.test_results import make_run,make_attempt
+    from benchmarks.generic_motion_v1.runners import results
+    run,manifest,job=make_run(tmp_path)
+    attempt=make_attempt(run,job)
+    view=tmp_path/'retained-smoke';view.mkdir()
+    copied=dict(manifest,selection='explicit_lgcs_repair_retained',
+                derived_from_manifests={formal.relative(run/'run_manifest.json'):formal.sha(run/'run_manifest.json')})
+    write(view/'run_manifest.json',copied)
+    (view/'jobs').mkdir();(view/'jobs'/job['job_id']).symlink_to(run/'jobs'/job['job_id'],target_is_directory=True)
+    assert formal.finished(view,copied,job,{})['status']=='success_numerical'
+    # The unmodified validator must still reject the selection-view manifest.
+    assert results.attempt_row(view,copied,job,attempt)['status']=='infrastructure_error'
+    # Exercise the actual summary selector and CSV writer using original
+    # receipts; the expensive source audit is covered by batch regressions.
+    monkeypatch.setattr(batch,'verify',lambda *a,**kw:dict(integrity_passed=True))
+    write(tmp_path/'repair.json',{})
+    write(tmp_path/'repair_selection.json',dict(comparisons=[dict(id='test',mode='end_to_end',runs=[str(view)])]))
+    exp=dict(stages=[dict(name=view.name,split='smoke',read_only=True)],selection_path='repair_selection.json',
+             repair=dict(superseded_lgcs_attempts=[]),statistics='paired numerical test')
+    result=formal.summarize_repair(tmp_path,exp)
+    assert result['actual_attempts']==1
+    row=next(csv.DictReader((tmp_path/'analysis/records.csv').open()))
+    assert row['status']=='success_numerical' and row['selected_comparisons']=='["test"]'
+    with (attempt/'candidate.npz').open('ab') as stream:stream.write(b'corrupt')
+    with pytest.raises(RuntimeError,match='Systemic failure'):formal.finished(view,copied,job,{})
+    copied['derived_from_manifests']={}
+    with pytest.raises(ValueError,match='source manifest binding'):formal.finished(view,copied,job,{})
