@@ -300,7 +300,10 @@ def second_route(model, roadmap_path, endpoints, regions, drm_options, *, seed,
             from .csdecomp_baseline import plan_query
             ok, path = plan_query(planner, model, endpoints, query_config, out)
     except RuntimeError as error:
-        if 'No collision-free path exists in roadmap' not in str(error):
+        from .failure_classification import KNOWN_DRM_NO_ROUTE, LEGACY_DRM_NO_ROUTE
+        # Both native backends report this ordinary optional-search outcome.
+        # Do not turn CUDA, map or other backend faults into a retained route.
+        if str(error) not in (KNOWN_DRM_NO_ROUTE, LEGACY_DRM_NO_ROUTE):
             raise
         metadata.update(status='native_no_alternate_path', exception=repr(error),
                         seconds=time.perf_counter()-started)

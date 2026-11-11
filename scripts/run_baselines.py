@@ -3,11 +3,13 @@
 from __future__ import annotations
 
 import argparse
+import ast
 from collections import Counter
 from contextlib import contextmanager
 import csv
 import datetime
 import fcntl
+import hashlib
 import importlib.metadata
 import json
 import os
@@ -31,6 +33,7 @@ SPLITS = ('smoke', 'dev', 'test')
 SMOKE_PROBLEM = 'smoke-bottleneck-000-p00'
 PAIRS = tuple((m, o) for m in METHODS for o in objectives(m))
 THREADS = {'OMP_NUM_THREADS': '4', 'OPENBLAS_NUM_THREADS': '1', 'MKL_NUM_THREADS': '1', 'CUDA_VISIBLE_DEVICES': '0'}
+LGCS_SOURCE = 'benchmarks/generic_motion_v1/runners/paper_lgcs.py'
 
 
 def now():
@@ -235,8 +238,7 @@ def reusable_time_run(path, cfg, current, current_environment):
 def prepare(root, config):
     root.mkdir(parents=True,exist_ok=True)
     if (root/'experiment.json').exists():
-        verify_context(root)
-        return read(root/'experiment.json')
+        return verify_context(root)
     # CUDA dependency probes run in a child process and release their context
     # before the timed workers start. The coordinator never owns a GPU context.
     with (root/'preflight.log').open('a') as log:
@@ -314,9 +316,25 @@ def prepare(root, config):
     return result
 
 
-def verify_context(root, *, full_environment=True):
+def experiment_context(root):
+    """An explicit repair supplements, never rewrites, the original seal."""
     experiment=read(root/'experiment.json')
     if sha(root/'experiment.json')!=read(root/'experiment_identity.json')['sha256']:raise ValueError('Experiment manifest changed')
+    if not (root/'repair.json').exists():return experiment
+    repair=read(root/'repair.json')
+    if sha(root/'repair.json')!=read(root/'repair_identity.json')['sha256']:raise ValueError('Repair declaration changed')
+    if repair['original_experiment_sha256']!=sha(root/'experiment.json'):raise ValueError('Repair parent changed')
+    for stage in experiment['stages']:
+        if sha(root/stage['name']/'run_manifest.json')!=stage['manifest_sha256']:raise ValueError('Original matrix changed')
+    frozen=dict(experiment['frozen_files'])
+    frozen.update(repair['frozen_files'])
+    return dict(experiment,source_commit=repair['source_commit'],source_hashes=repair['source_hashes'],
+        stages=repair['stages'],frozen_files=frozen,reused_jobs=repair['retained_jobs'],new_jobs=repair['new_jobs'],
+        selection_path='repair_selection.json',smoke_check_path='repair_smoke_check.json',repair=repair)
+
+
+def verify_context(root, *, full_environment=True):
+    experiment=experiment_context(root)
     if code_inventory()!=experiment['source_hashes']:raise ValueError('Runtime source changed; formal experiment stopped')
     for name,digest in experiment['frozen_files'].items():
         if sha(recorded_path(name))!=digest:raise ValueError('Frozen experiment input changed: '+name)
@@ -333,6 +351,122 @@ def verify_context(root, *, full_environment=True):
     return experiment
 
 
+def lgcs_change_scope(old_sources, current_sources, old_text, current_text):
+    """Only the LGCS-only optional route routine may differ for this repair."""
+    changed={p for p in set(old_sources)|set(current_sources) if old_sources.get(p)!=current_sources.get(p)}
+    if changed!={LGCS_SOURCE}:raise ValueError('Repair must change only the LGCS adapter runtime file')
+    trees=[ast.parse(text) for text in (old_text,current_text)]
+    for tree in trees:
+        functions=[n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name=='second_route']
+        if len(functions)!=1:raise ValueError('Missing unique LGCS second_route function')
+        tree.body.remove(functions[0])
+    if ast.dump(trees[0])!=ast.dump(trees[1]):raise ValueError('Change outside LGCS second_route')
+    # csdecomp_baseline imports paper_graph only under method == 'LGCS'.
+    # Its dependency probe has the same guard. Both callers are hash-identical.
+    return dict(changed_files=sorted(changed),changed_function='second_route',
+        affected_methods=['LGCS'],policy='Rerun the entire LGCS cohort, irrespective of previous outcome. Other methods cannot call the changed function; all their runtime files, inputs, configuration, validation, solver binaries and threads remain identical.')
+
+
+def repair_lgcs(root, config):
+    """One bounded cohort repair; uses ordinary batch manifests and receipts."""
+    with locked(root/'.experiment.lock'), locked(BASE/'results/.gpu.lock'):
+        gpu_idle()
+        if (root/'repair.json').exists():return verify_context(root)
+        original=experiment_context(root);current=code_inventory()
+        if batch._git_source_errors(head(),current):raise ValueError('Commit the runtime repair before preparation')
+        old_text=subprocess.check_output(['git','show',original['source_commit']+':'+LGCS_SOURCE],cwd=ROOT,text=True)
+        scope=lgcs_change_scope(original['source_hashes'],current,old_text,(ROOT/LGCS_SOURCE).read_text())
+        launcher=relative(Path(__file__))
+        # Verify every immutable original asset. Only the launcher is updated;
+        # its previous bytes must still match the original committed seal.
+        for name,digest in original['frozen_files'].items():
+            actual=(hashlib.sha256(subprocess.check_output(['git','show',original['source_commit']+':'+name],cwd=ROOT)).hexdigest()
+                    if name==launcher else sha(recorded_path(name)))
+            if actual!=digest:raise ValueError('Original frozen input changed: '+name)
+        env=read(root/'preflight/environment.json')
+        observed=environment()
+        if any(observed[k]!=env[k] for k in ('python','gpu','cpu','threads','packages','runtime_files')):
+            raise ValueError('Repair environment differs from original experiment')
+        if load_config(config)!=original['config']:raise ValueError('Repair configuration changed')
+        previous={};retained={};discarded=[];audit={};cache={}
+        from benchmarks.generic_motion_v1.runners.failure_classification import KNOWN_DRM_NO_ROUTE
+        for stage in original['stages']:
+            directory=root/stage['name'];m=read(directory/'run_manifest.json')
+            if sha(directory/'run_manifest.json')!=stage['manifest_sha256']:raise ValueError('Original stage changed')
+            audit[stage['name']]=batch.verify(directory)
+            if not audit[stage['name']]['integrity_passed']:raise ValueError('Original evidence failed verification')
+            for job in m['jobs']:
+                key=job['job_id']
+                if key in previous:raise ValueError('Duplicate original job')
+                previous[key]=(directory,m,job)
+                attempt=batch._first_terminal_attempt(sorted((directory/'jobs'/key/'attempts').glob('[0-9][0-9][0-9][0-9]')))
+                if attempt is None:continue
+                row=attempt_row(directory,m,job,attempt,verify_files=True,case_cache=cache)
+                if row['status'] in ('infrastructure_error','invalid_input'):
+                    raw=read(attempt/'result.json')
+                    if not (job['method']=='LGCS' and raw.get('failed_stage')=='alternate_drm_path'
+                            and raw.get('exception')==repr(RuntimeError(KNOWN_DRM_NO_ROUTE))):
+                        raise ValueError('Unrelated systemic failure: '+str(attempt))
+                evidence=dict(job_id=key,source_run=relative(directory),source_attempt=relative(attempt),
+                              receipt_sha256=sha(attempt/'receipt.json'),status=row['status'])
+                if job['method']=='LGCS':discarded.append(evidence)
+                else:retained[key]=evidence
+        stages=[];matrix=[]
+        for split in SPLITS:
+            group=[entry for entry in previous.values() if entry[1]['split']==split]
+            kept=[j for _,_,j in group if j['job_id'] in retained]
+            for kind,jobs in [('retained',kept),('continued',[j for _,_,j in group if j['job_id'] not in retained])]:
+                if not jobs:continue
+                target=root/(kind+'-'+split)
+                if not target.exists():
+                    if kind=='continued':
+                        batch.prepare(BASE/f'manifests/{split}.jsonl',
+                            [BASE/f'roadmaps/rss2025_n6000_s{s:03d}' for s in SEEDS],target,
+                            methods=list(METHODS),objectives=['minimum_distance','minimum_time'],timeout=60,
+                            config=original['config'],allow_test=True,snapshot_sources=False)
+                        m=read(target/'run_manifest.json');generated={j['job_id']:j for j in m['jobs']}
+                        if any(generated.get(j['job_id'])!=j for j in jobs):raise ValueError('Repair changed a frozen request')
+                    else:
+                        target.mkdir();m=dict(group[0][1])
+                        m['roadmap_files']={p:h for _,source,_ in group for p,h in source['roadmap_files'].items()}
+                    m.update(jobs=jobs,selection='explicit_lgcs_repair_'+kind,
+                             derived_from_manifests={relative(d/'run_manifest.json'):sha(d/'run_manifest.json') for d in {entry[0] for entry in group}})
+                    write(target/'run_manifest.json',m)
+                    write(target/'identity.json',dict(run_manifest_sha256=sha(target/'run_manifest.json')))
+                m=read(target/'run_manifest.json')
+                if m['jobs']!=jobs or m['source_hashes']!=(current if kind=='continued' else original['source_hashes']):
+                    raise ValueError('Partial repair preparation changed')
+                if kind=='retained':
+                    for job in jobs:
+                        link=target/'jobs'/job['job_id'];link.parent.mkdir(exist_ok=True)
+                        source=previous[job['job_id']][0]/'jobs'/job['job_id']
+                        if link.is_symlink():
+                            if link.resolve()!=source.resolve():raise ValueError('Retained evidence link changed')
+                        else:link.symlink_to(os.path.relpath(source,link.parent),target_is_directory=True)
+                check=batch.verify(target,current_sources=kind=='continued')
+                if not check['integrity_passed']:raise ValueError('Prepared repair failed: '+repr(check['errors']))
+                stages.append(dict(name=target.name,split=split,jobs=len(jobs),read_only=kind=='retained',
+                                   manifest_sha256=sha(target/'run_manifest.json')))
+                for job in jobs:
+                    old=retained.get(job['job_id'])
+                    matrix.append(dict(split=split,replica_seed=job['replica_seed'],problem_id=job['case_id'],
+                        method=job['method'],objective=job['objective'],stage=target.name,job_id=job['job_id'],
+                        source='retained' if old else 'new',source_attempt=old['source_attempt'] if old else ''))
+        if len(matrix)!=len(previous) or {r['job_id'] for r in matrix}!=set(previous):raise ValueError('Repair matrix incomplete')
+        with (root/'repair_matrix.csv').open('w',newline='') as handle:
+            writer=csv.DictWriter(handle,fieldnames=list(matrix[0]));writer.writeheader();writer.writerows(matrix)
+        write(root/'repair_selection.json',dict(comparisons=[dict(id='baselines_'+split,mode='end_to_end',
+            compatibility_note=scope['policy']+' See repair.json for byte hashes and the complete cohort selection.',
+            runs=[relative(root/s['name']) for s in stages if s['split']==split]) for split in SPLITS],figure_comparisons=['baselines_test']))
+        repair=dict(created_utc=now(),original_experiment_sha256=sha(root/'experiment.json'),source_commit=head(),
+            source_hashes=current,scope=scope,original_verification=audit,stages=stages,
+            retained_jobs=len(retained),new_jobs=len(previous)-len(retained),
+            superseded_lgcs_attempts=discarded,retained_evidence=list(retained.values()),
+            frozen_files={relative(p):sha(p) for p in (Path(__file__),root/'repair_matrix.csv',root/'repair_selection.json')})
+        write(root/'repair.json',repair);write(root/'repair_identity.json',dict(sha256=sha(root/'repair.json')))
+        return verify_context(root)
+
+
 def finished(root, manifest, job, case_cache):
     attempt=batch._first_terminal_attempt(sorted((root/'jobs'/job['job_id']/'attempts').glob('[0-9][0-9][0-9][0-9]')))
     if attempt is None:return None
@@ -344,6 +478,10 @@ def finished(root, manifest, job, case_cache):
 
 def execute_stage(root, stage, *, probe=False):
     directory=root/stage['name']
+    if stage.get('read_only'):
+        check=batch.verify(directory)
+        if not check['integrity_passed'] or not check['complete']:raise ValueError('Retained cohort is incomplete or changed')
+        return check
     # Reuse the existing interruption sealing and source/input verification.
     batch.resume(directory,max_jobs=0)
     m=read(directory/'run_manifest.json');cache={}
@@ -352,7 +490,7 @@ def execute_stage(root, stage, *, probe=False):
         if finished(directory,m,job,cache) is not None:completed.add(job['job_id'])
     with locked(BASE/'results/.gpu.lock'):
         for job in m['jobs']:
-            if probe and job['case_id']!=SMOKE_PROBLEM:continue
+            if probe and (job['case_id']!=SMOKE_PROBLEM or job['replica_seed']!=0):continue
             if job['job_id'] in completed:continue
             verify_context_fast(root)
             gpu_idle()
@@ -372,8 +510,7 @@ def execute_stage(root, stage, *, probe=False):
 
 def verify_context_fast(root):
     """Cheap inter-query guards; batch.execute also hashes runtime code each time."""
-    exp=read(root/'experiment.json')
-    if sha(root/'experiment.json')!=read(root/'experiment_identity.json')['sha256']:raise ValueError('Experiment manifest changed')
+    exp=experiment_context(root)
     for name in (relative(Path(__file__)),relative(location(exp['config_path'])),relative(ROOT/'local/python.sh')):
         if sha(recorded_path(name))!=exp['frozen_files'][name]:raise ValueError('Launcher or configuration changed')
     env=read(root/'preflight/environment.json')
@@ -384,7 +521,7 @@ def verify_context_fast(root):
 
 
 def status(root):
-    exp=read(root/'experiment.json');groups=[];total=0
+    exp=experiment_context(root);groups=[];total=0
     for stage in exp['stages']:
         directory=root/stage['name'];m=read(directory/'run_manifest.json');counts=Counter();by_method=Counter();complete=0
         for job in m['jobs']:
@@ -400,6 +537,7 @@ def status(root):
     pid=progress.get('coordinator_pid')
     return dict(planned=exp['planned_legal_jobs'],completed=total,remaining=exp['planned_legal_jobs']-total,
                 reused=exp['reused_jobs'],newly_completed=total-exp['reused_jobs'],progress=progress,stages=groups,
+                superseded_lgcs_attempts=len(exp.get('repair',{}).get('superseded_lgcs_attempts',[])),
                 coordinator_alive=bool(pid and Path(f'/proc/{pid}').exists()),
                 note='Receipt/result status view; use verify for full artifact and matrix validation.')
 
@@ -415,9 +553,14 @@ def verify(root):
         directory=root/stage['name'];checks[stage['name']]=batch.verify(directory,allow_unsealed=True)
         for j in read(directory/'run_manifest.json')['jobs']:
             key=(j['case_id'],j['replica_seed'],j['method'],j['objective']);duplicates |= key in actual;actual.add(key)
-    passed=not duplicates and expected==actual and all(c['integrity_passed'] for c in checks.values())
+    retired_checks={}
+    if 'repair' in exp:
+        for s in read(root/'experiment.json')['stages']:
+            retired_checks[s['name']]=batch.verify(root/s['name'])
+    passed=not duplicates and expected==actual and all(c['integrity_passed'] for c in list(checks.values())+list(retired_checks.values()))
     result=dict(integrity_passed=passed,complete=passed and all(c['complete'] for c in checks.values()),
-                planned=len(expected),missing=len(expected-actual),extra=len(actual-expected),duplicate=duplicates,stages=checks)
+                planned=len(expected),missing=len(expected-actual),extra=len(actual-expected),duplicate=duplicates,
+                stages=checks,preserved_original_stages=retired_checks)
     write(root/'verification.json',result)
     return result
 
@@ -426,8 +569,22 @@ def summarize(root):
     from benchmarks.generic_motion_v1.runners.results import export
     result=verify(root)
     if not result['integrity_passed']:raise ValueError('Cannot summarize corrupt experiment')
-    return export(output=root/'analysis',roots=[root/s['name'] for s in read(root/'experiment.json')['stages']],
-                  selection=root/'selection.json')
+    exp=experiment_context(root)
+    return export(output=root/'analysis',roots=[root/s['name'] for s in exp['stages']],
+                  selection=root/exp.get('selection_path','selection.json'))
+
+
+def smoke_rows(root, exp):
+    rows=[];cache={}
+    for stage in exp['stages']:
+        if stage['split']!='smoke':continue
+        directory=root/stage['name'];check=batch.verify(directory)
+        if not check['integrity_passed']:raise ValueError('Smoke artifacts failed verification')
+        manifest=read(directory/'run_manifest.json')
+        rows.extend(finished(directory,manifest,j,cache) for j in manifest['jobs']
+                    if j['case_id']==SMOKE_PROBLEM and j['replica_seed']==0)
+    if len(rows)!=14 or any(row is None for row in rows):raise ValueError('Smoke interface matrix is incomplete')
+    return rows
 
 
 def run(root, config, *, probe=False):
@@ -435,12 +592,10 @@ def run(root, config, *, probe=False):
         try:
             exp=prepare(root,config);verify_context(root)
             if probe:
-                stage=next(s for s in exp['stages'] if s['split']=='smoke' and s['seed']==0)
-                execute_stage(root,stage,probe=True)
-                m=read(root/stage['name']/'run_manifest.json');cache={}
-                rows=[finished(root/stage['name'],m,j,cache) for j in m['jobs'] if j['case_id']==SMOKE_PROBLEM]
-                if len(rows)!=14 or any(r is None for r in rows):raise RuntimeError('Incomplete smoke interface matrix')
-                write(root/'smoke_check.json',dict(passed=True,scope='Real end-to-end calls for all 14 pairs, fixed smoke problem, seed 0; ordinary algorithm failures retained.',
+                for stage in exp['stages']:
+                    if stage['split']=='smoke' and stage.get('seed',0)==0:execute_stage(root,stage,probe=True)
+                rows=smoke_rows(root,exp)
+                write(root/exp.get('smoke_check_path','smoke_check.json'),dict(passed=True,scope='Real end-to-end calls for all 14 pairs, fixed smoke problem, seed 0; ordinary algorithm failures retained.',
                       rows=[{k:r[k] for k in ('method','objective','status','failure_reason','cold_e2e_seconds','attempt_path')} for r in rows]))
                 write(root/'progress.json',dict(state='smoke_checked',updated_utc=now()))
                 return status(root)
@@ -459,14 +614,10 @@ def run(root, config, *, probe=False):
 def start(root, config, session):
     if not shutil.which('tmux'):raise RuntimeError('tmux is unavailable')
     prepare(root,config);exp=verify_context(root)
-    if not (root/'smoke_check.json').exists() or not read(root/'smoke_check.json')['passed']:
+    smoke_check=root/(exp or {}).get('smoke_check_path','smoke_check.json')
+    if not smoke_check.exists() or not read(smoke_check)['passed']:
         raise RuntimeError('Run smoke-check before detaching the complete experiment')
-    smoke=next(s for s in exp['stages'] if s['split']=='smoke' and s['seed']==0)
-    directory=root/smoke['name'];check=batch.verify(directory)
-    if not check['integrity_passed']:raise ValueError('Smoke artifacts failed verification')
-    manifest=read(directory/'run_manifest.json');cache={}
-    rows=[finished(directory,manifest,j,cache) for j in manifest['jobs'] if j['case_id']==SMOKE_PROBLEM]
-    if len(rows)!=14 or any(row is None for row in rows):raise ValueError('Smoke interface matrix is incomplete')
+    smoke_rows(root,exp)
     if subprocess.run(['tmux','has-session','-t','='+session],capture_output=True).returncode==0:
         raise RuntimeError('tmux session already exists: '+session)
     argv=['env']+[f'{k}={v}' for k,v in THREADS.items()]+['bash',str(ROOT/'local/python.sh'),str(Path(__file__).resolve()),
@@ -482,7 +633,7 @@ def start(root, config, session):
 
 def main(argv=None):
     p=argparse.ArgumentParser(description=__doc__)
-    p.add_argument('command',choices=['check','prepare','smoke-check','start','run','resume','status','verify','summarize'])
+    p.add_argument('command',choices=['check','prepare','repair-lgcs','smoke-check','start','run','resume','status','verify','summarize'])
     p.add_argument('--run',default='runs/end_to_end');p.add_argument('--config',default='configs/evaluation.json')
     p.add_argument('--session',default='kinova-baselines')
     args=p.parse_args(argv);root=location(args.run);config=location(args.config)
@@ -492,6 +643,10 @@ def main(argv=None):
         if (root/'experiment.json').exists():raise ValueError('Prepared preflight is immutable; use verify')
         preflight(root,config);result=dict(passed=True)
     elif args.command=='prepare':result=prepare(root,config)
+    elif args.command=='repair-lgcs':
+        exp=repair_lgcs(root,config)
+        result=dict(prepared=True,retained_jobs=exp['reused_jobs'],new_jobs=exp['new_jobs'],
+                    superseded_lgcs_attempts=len(exp['repair']['superseded_lgcs_attempts']))
     elif args.command=='smoke-check':result=run(root,config,probe=True)
     elif args.command in ('run','resume'):result=run(root,config)
     elif args.command=='start':result=start(root,config,args.session)

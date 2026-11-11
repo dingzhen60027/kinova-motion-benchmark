@@ -181,6 +181,47 @@ def test_no_eligible_region_does_not_call_native_planner(monkeypatch, tmp_path):
     assert not instances and not plans
 
 
+@pytest.mark.parametrize('safe_backend', [False, True])
+@pytest.mark.parametrize('message,ordinary', [
+    ('[DRMPlanner] No route found through tested roadmap connections.', True),
+    ('[DRMPlanner] No collision-free path exists in roadmap.', True),
+    ('CUDA error: illegal memory access', False),
+    ('Could not read roadmap', False),
+    ('[DRMPlanner] No collision-free path exists in roadmap. CUDA error', False),
+])
+def test_optional_no_route_retains_first_path_but_backend_faults_propagate(
+        monkeypatch, tmp_path, safe_backend, message, ordinary):
+    import sys
+    from benchmarks.generic_motion_v1.runners import csdecomp_baseline
+    _fake_native(monkeypatch)
+    source = tmp_path/'original.map'; source.write_bytes(b'unchanged')
+    endpoints = np.zeros((2, 7)); endpoints[1, 0] = 3.
+    low, high = np.full(7, -1.), np.ones(7)
+    low[0], high[0] = .5, 1.5
+    model = SimpleNamespace(csd_plant=object(), voxels=object(), voxel_radius=.04)
+    def unavailable(*args):
+        raise RuntimeError(message)
+    if safe_backend:
+        monkeypatch.setattr(csdecomp_baseline, 'plan_query', unavailable)
+    else:
+        monkeypatch.setattr(sys.modules['csdecomp'].DrmPlanner, 'Plan', unavailable)
+    def call():
+        return paper_lgcs.second_route(model, source, endpoints, [box(low, high)], {},
+            seed=9, out=tmp_path/'attempt', query_config={} if safe_backend else None,
+            validate_path=lambda *args: pytest.fail('No alternate candidate exists'))
+    if ordinary:
+        path, metadata = call()
+        assert path is None and metadata['status'] == 'native_no_alternate_path'
+        assert metadata['first_path_retained'] and not metadata['endpoints_changed']
+        assert metadata['exception'] == repr(RuntimeError(message))
+        assert json.loads((tmp_path/'attempt/alternate_path_search.json').read_text()) == metadata
+    else:
+        with pytest.raises(RuntimeError) as raised:
+            call()
+        assert str(raised.value) == message
+    assert source.read_bytes() == b'unchanged'
+
+
 def test_real_dependency_probe_executes_and_records(tmp_path):
     result = paper_lgcs.dependency_probe(tmp_path)
     assert result['solver_success'] and result['objective'] == 1.

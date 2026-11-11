@@ -69,6 +69,8 @@ The tmux session is `kinova-baselines`. After interruption, rerun `start` once t
 
 `verify` checks the complete matrix and saved evidence; `summarize` writes `runs/end_to_end/analysis/{records,summary}.csv`, figures and artifact links. Both run automatically at completion. `matrix.csv` records every planned call and its reuse provenance; historical results without compatible sealed evidence are kept separate. Run data stays under `runs/end_to_end/` and is not committed to Git.
 
+The LGCS optional-route error handling was repaired after an unavailable second route stopped the experiment. `repair-lgcs` preserves the original sealed runs, declares a complete LGCS rerun, and retains verified completed calls from unaffected methods. The continuation uses `repair_matrix.csv` and `repair_selection.json`; its scope and source hashes are recorded in `repair.json`. After repair preparation, the same `smoke-check`, `start`, `status`, `verify` and `summarize` commands apply. No previous LGCS outcome enters the repaired comparison, and no best-of retry is selected.
+
 ## Benchmark
 
 Kinova Gen3 with a fixed gripper, table/equipment and five obstacle categories: **sparse clutter, dense clutter, bottleneck, route choice, open control**.

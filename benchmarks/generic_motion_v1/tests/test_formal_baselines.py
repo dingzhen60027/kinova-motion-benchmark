@@ -147,3 +147,75 @@ def test_start_requires_actual_smoke_evidence(tmp_path,monkeypatch):
     monkeypatch.setattr(formal.shutil,'which',lambda _: '/usr/bin/tmux')
     with pytest.raises(RuntimeError,match='Run smoke-check'):
         formal.start(tmp_path,Path('config'),'kinova-baselines')
+
+
+def test_repair_reuse_proof_rejects_other_runtime_or_function_changes():
+    old={formal.LGCS_SOURCE:'old','validator.py':'same'}
+    new=dict(old);new[formal.LGCS_SOURCE]='new'
+    before='LIMIT = 1\ndef second_route():\n    return False\ndef solve():\n    return LIMIT\n'
+    after=before.replace('return False','return True')
+    assert formal.lgcs_change_scope(old,new,before,after)['affected_methods']==['LGCS']
+    with pytest.raises(ValueError,match='only the LGCS'):
+        formal.lgcs_change_scope(old,dict(new,**{'validator.py':'changed'}),before,after)
+    with pytest.raises(ValueError,match='outside LGCS'):
+        formal.lgcs_change_scope(old,new,before,after.replace('LIMIT = 1','LIMIT = 2'))
+
+
+def test_repair_keeps_original_evidence_reruns_all_lgcs_and_resumes_pending(tmp_path,monkeypatch):
+    output,config=minimal_experiment(tmp_path,monkeypatch)
+    env=dict(python='test',gpu='test',cpu='test',threads={},packages={},runtime_files={},runtime_stats={})
+    write(output/'preflight/environment.json',env)
+    original=formal.prepare(output,config)
+    frozen={p:p.read_bytes() for p in output.rglob('*.json')}
+    for index,stage in enumerate(original['stages']):
+        directory=output/stage['name'];m=read(directory/'run_manifest.json')
+        for method in ('LGCS','RRTCONNECT'):
+            job=next(j for j in m['jobs'] if j['method']==method)
+            attempt=directory/'jobs'/job['job_id']/'attempts/0001'
+            # Ordinary failures are retained too; the LGCS cohort is replaced
+            # in full, including successful and failed observations.
+            state='timeout' if method=='RRTCONNECT' else 'success_validated_numerical'
+            r=dict(status=state)
+            if index==0 and method=='LGCS':
+                from benchmarks.generic_motion_v1.runners.failure_classification import KNOWN_DRM_NO_ROUTE
+                r=dict(status='infrastructure_error',failed_stage='alternate_drm_path',exception=repr(RuntimeError(KNOWN_DRM_NO_ROUTE)))
+            write(attempt/'result.json',r);write(attempt/'receipt.json',dict(status=r['status'],files={}))
+    old_attempts={p:p.read_bytes() for p in output.glob('*-seed-*/jobs/*/attempts/*/*.json')}
+    monkeypatch.setattr(formal,'gpu_idle',lambda:[])
+    monkeypatch.setattr(formal,'environment',lambda:env)
+    monkeypatch.setattr(formal,'lgcs_change_scope',lambda *a:dict(policy='LGCS-only test proof'))
+    monkeypatch.setattr(formal.subprocess,'check_output',lambda args,**kw:
+        'old module' if kw.get('text') else (formal.ROOT/args[-1].split(':',1)[1]).read_bytes(),raising=False)
+    monkeypatch.setattr(formal,'attempt_row',lambda _r,_m,_j,a,**kw:dict(status=read(a/'result.json')['status']))
+    # This orchestration fixture uses small synthetic receipts. Real receipt
+    # corruption rejection has its own integration regression above.
+    monkeypatch.setattr(batch,'verify',lambda *a,**kw:dict(integrity_passed=True,complete=True,errors=[]))
+    repaired=formal.repair_lgcs(output,config)
+    assert repaired['reused_jobs']==9 and repaired['new_jobs']==117
+    assert len(repaired['repair']['superseded_lgcs_attempts'])==9
+    assert len(repaired['stages'])==6
+    jobs=[];kept=[]
+    for stage in repaired['stages']:
+        manifest=read(output/stage['name']/'run_manifest.json')
+        jobs.extend(manifest['jobs'])
+        if stage['read_only']:
+            kept.extend(manifest['jobs'])
+            assert all((output/stage['name']/'jobs'/j['job_id']).is_symlink() for j in manifest['jobs'])
+        else:
+            assert not any((output/stage['name']/'jobs').glob('*'))
+    assert len(jobs)==len({j['job_id'] for j in jobs})==126
+    assert {j['method'] for j in kept}=={'RRTCONNECT'}
+    assert all(p.read_bytes()==b for p,b in {**frozen,**old_attempts}.items())
+    assert formal.repair_lgcs(output,config)['stages']==repaired['stages']
+    # A tampered repair matrix must stop, never silently fall back to originals.
+    (output/'repair_matrix.csv').write_text('corrupt')
+    with pytest.raises(ValueError,match='Frozen experiment input changed'):
+        formal.verify_context(output)
+
+
+def test_retained_stage_is_never_executed(tmp_path,monkeypatch):
+    monkeypatch.setattr(batch,'resume',lambda *a,**kw:pytest.fail('Read-only cohort must not resume'))
+    monkeypatch.setattr(batch,'verify',lambda *a,**kw:dict(integrity_passed=True,complete=True))
+    assert formal.execute_stage(tmp_path,dict(name='retained-smoke',read_only=True))['complete']
+    monkeypatch.setattr(batch,'verify',lambda *a,**kw:dict(integrity_passed=True,complete=False))
+    with pytest.raises(ValueError,match='Retained cohort'):formal.execute_stage(tmp_path,dict(name='retained-smoke',read_only=True))
