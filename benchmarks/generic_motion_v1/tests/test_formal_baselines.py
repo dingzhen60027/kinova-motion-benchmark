@@ -14,6 +14,90 @@ from benchmarks.generic_motion_v1.roadmap import load_config
 from benchmarks.generic_motion_v1.runners.results import _figure_comparisons
 
 
+def scsto_failure(tmp_path, *, backend='fixed_points.py'):
+    """Sealed failed-Solve fixture, without importing or mocking a solver."""
+    from benchmarks.generic_motion_v1.tests.test_results import make_run
+    run,manifest,job=make_run(tmp_path,objective='minimum_time')
+    attempt=run/'jobs/job/attempts/0001';attempt.mkdir(parents=True)
+    package=tmp_path/'scsplanning';package.mkdir()
+    (package/'__init__.py').write_text('')
+    (package/'biconvex.py').write_text('def biconvex():\n    curve = point_program.solve(curve)\n')
+    guard=('def min_time_solver():\n    result = solver.Solve(prog)\n    assert result.is_success()\n'
+           if backend=='polygonal.py' else 'def solve():\n    result = self.solver.Solve(self)\n    assert result.is_success()\n')
+    (package/backend).write_text(guard)
+    worker=formal.ROOT/'benchmarks/generic_motion_v1/runners/csdecomp_baseline.py'
+    manifest['source_hashes']={formal.relative(worker):formal.sha(worker)}
+    write(run/'run_manifest.json',manifest)
+    lines=worker.read_text().splitlines()
+    index=next(i for i,s in enumerate(lines) if 'curve=biconvex(' in s)
+    trace=f'Traceback (most recent call last):\n  File "{worker}", line {index+1}, in run_case\n    {lines[index].strip()}\n'
+    trace+=f'  File "{package}/biconvex.py", line 2, in biconvex\n    curve = point_program.solve(curve)\n'
+    if backend=='polygonal.py':
+        (package/backend).write_text(guard+'def polygonal():\n    curve = min_time_solver(q_init, q_term, 0)\n')
+        trace+=f'  File "{package}/polygonal.py", line 5, in polygonal\n    curve = min_time_solver(q_init, q_term, 0)\n'
+    function='min_time_solver' if backend=='polygonal.py' else 'solve'
+    trace+=f'  File "{package}/{backend}", line 3, in {function}\n    assert result.is_success()\nAssertionError\n'
+    (attempt/'exception.txt').write_text(trace)
+    (attempt/'stderr.log').write_text('INFO:drake:Clarabel returns NumericalError\n')
+    write(attempt/'result.json',dict(status='infrastructure_error',exception='AssertionError()',
+          failed_stage='trajectory_optimization',error_category='unexpected_backend_exception'))
+    write(attempt/'input.json',dict(job['case'],_objective=job['objective']))
+    write(attempt/'request.json',job)
+    write(attempt/'process.json',dict(exit_code=0,timed_out=False,cold_e2e_seconds=2.,timeout_seconds=60.))
+    write(attempt/'runtime_sources.json',dict(before=manifest['source_hashes'],after=manifest['source_hashes'],unchanged=True))
+    write(attempt/'dependencies.json',dict(scsplanning_solver='Clarabel',modules={'scsplanning':{'path':str(package/'__init__.py')}}))
+    write(tmp_path/'preflight/environment.json',dict(runtime_files={str(p):formal.sha(p) for p in package.glob('*.py')}))
+    reseal_scsto(attempt)
+    return run,manifest,job,attempt,package
+
+
+def reseal_scsto(attempt):
+    write(attempt/'receipt.json',dict(status='infrastructure_error',files={
+        str(p.relative_to(attempt)):formal.sha(p) for p in attempt.rglob('*') if p.is_file() and p.name!='receipt.json'}))
+
+
+@pytest.mark.parametrize('backend',['fixed_points.py','fixed_velocities.py','polygonal.py'])
+def test_author_unsuccessful_solve_is_failure_not_success_or_retry(tmp_path,backend):
+    run,manifest,job,attempt,_=scsto_failure(tmp_path,backend=backend)
+    original={p:p.read_bytes() for p in attempt.iterdir()}
+    row=formal.finished(run,manifest,job,{})
+    assert row['status']=='solver_failure' and row['raw_status']=='infrastructure_error'
+    assert row['status_basis']=='sealed_scsto_clarabel_numerical_error'
+    assert row['objective_value'] is None and row['validation_passed'] is False
+    assert row['cold_e2e_seconds']==2.
+    assert all(p.read_bytes()==data for p,data in original.items())
+    assert list(attempt.parent.iterdir())==[attempt]
+
+
+@pytest.mark.parametrize('fault',[
+    'wrong_assert','wrong_stack','source_changed','missing_log','cuda_error','exit_signal','timeout',
+    'over_budget','request_changed','input_changed','runtime_changed','missing_seal','corrupt_log','other_error'])
+def test_scsto_review_never_hides_unrelated_faults(tmp_path,fault):
+    run,manifest,job,attempt,package=scsto_failure(tmp_path)
+    if fault=='wrong_assert':
+        (attempt/'exception.txt').write_text((attempt/'exception.txt').read_text().replace('assert result.is_success()','assert shapes_match'))
+    elif fault=='wrong_stack':
+        (attempt/'exception.txt').write_text((attempt/'exception.txt').read_text().replace('in solve','in arbitrary_function'))
+    elif fault=='source_changed':(package/'fixed_points.py').write_text('changed')
+    elif fault=='missing_log':(attempt/'stderr.log').write_text('')
+    elif fault=='cuda_error':
+        with (attempt/'stderr.log').open('a') as stream:stream.write('CUDA illegal memory access\n')
+    elif fault in ('exit_signal','timeout','over_budget'):
+        proc=read(attempt/'process.json')
+        proc.update({'exit_code':-11} if fault=='exit_signal' else {'timed_out':True} if fault=='timeout' else {'cold_e2e_seconds':61.})
+        write(attempt/'process.json',proc)
+    elif fault=='request_changed':write(attempt/'request.json',dict(job,method='NTO'))
+    elif fault=='input_changed':write(attempt/'input.json',dict(job['case'],q_start=[1.]*7,_objective=job['objective']))
+    elif fault=='runtime_changed':write(attempt/'runtime_sources.json',dict(unchanged=False))
+    elif fault=='other_error':write(attempt/'result.json',dict(read(attempt/'result.json'),error='Model mismatch'))
+    reseal_scsto(attempt)
+    if fault=='missing_seal':
+        receipt=read(attempt/'receipt.json');del receipt['files']['exception.txt'];write(attempt/'receipt.json',receipt)
+    if fault=='corrupt_log':(attempt/'stderr.log').write_text('tampered')
+    with pytest.raises(RuntimeError,match='Systemic failure'):
+        formal.finished(run,manifest,job,{})
+
+
 def minimal_experiment(tmp_path, monkeypatch):
     base=tmp_path/'inputs'
     for split in formal.SPLITS:
@@ -67,6 +151,33 @@ def test_interrupted_preparation_reuses_unexecuted_manifests(tmp_path,monkeypatc
     monkeypatch.setattr(batch,'prepare',original)
     exp=formal.prepare(output,config)
     assert exp['planned_legal_jobs']==126 and first.read_bytes()==before
+
+
+def test_launcher_update_is_append_only_idempotent_and_parent_checked(tmp_path,monkeypatch):
+    output,config=minimal_experiment(tmp_path,monkeypatch)
+    write(output/'preflight/environment.json',dict(threads={},runtime_files={}))
+    original=formal.prepare(output,config)
+    launcher=formal.relative(Path(formal.__file__))
+    digest=lambda b:formal.hashlib.sha256(b).hexdigest()
+    write(output/'repair.json',dict(original_experiment_sha256=formal.sha(output/'experiment.json'),
+        source_commit='original',source_hashes={},stages=original['stages'],retained_jobs=0,new_jobs=126,
+        frozen_files={launcher:digest(b'original')}))
+    write(output/'repair_identity.json',dict(sha256=formal.sha(output/'repair.json')))
+    write(output/'launcher_amendment.json',dict(repair_sha256=formal.sha(output/'repair.json'),
+        path=launcher,source_commit='prior',previous_sha256=digest(b'original'),sha256=digest(b'prior')))
+    write(output/'launcher_amendment_identity.json',dict(sha256=formal.sha(output/'launcher_amendment.json')))
+    sealed={p:p.read_bytes() for p in output.glob('*.json')}
+    monkeypatch.setattr(formal,'head',lambda:'updated')
+    sources={'prior':b'prior','updated':Path(formal.__file__).read_bytes()}
+    monkeypatch.setattr(formal.subprocess,'check_output',lambda args,**kw:sources[args[-1].split(':',1)[0]],raising=False)
+    assert formal.amend_launcher(output)['frozen_files'][launcher]==formal.sha(Path(formal.__file__))
+    update=output/'launcher_updates.jsonl';before=update.read_bytes()
+    formal.amend_launcher(output)
+    assert update.read_bytes()==before and len(formal.launcher_updates(output))==1
+    assert all(p.read_bytes()==b for p,b in sealed.items())
+    record=json.loads(before);record['parent_sha256']='tampered'
+    update.write_text(json.dumps(record)+'\n')
+    with pytest.raises(ValueError,match='Launcher update chain changed'):formal.experiment_context(output)
 
 
 def test_no_historical_reuse_without_hardware_thread_evidence(tmp_path,monkeypatch):

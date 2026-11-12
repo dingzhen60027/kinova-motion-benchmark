@@ -71,6 +71,8 @@ The tmux session is `kinova-baselines`. After interruption, rerun `start` once t
 
 The LGCS optional-route error handling was repaired after an unavailable second route stopped the experiment. `repair-lgcs` preserves the original sealed runs, declares a complete LGCS rerun, and retains verified completed calls from unaffected methods. The continuation uses `repair_matrix.csv` and `repair_selection.json`; its scope and source hashes are recorded in `repair.json`. After repair preparation, the same `smoke-check`, `start`, `status`, `verify` and `summarize` commands apply. No previous LGCS outcome enters the repaired comparison, and no best-of retry is selected.
 
+SCSTO's native `result.is_success()` assertion can report a Clarabel `NumericalError`. The formal coordinator recognizes this as `solver_failure` only after checking the sealed traceback, log, process, input and source evidence. It preserves the original raw status and failed attempt, without retrying or changing the algorithm. `status` lists these reviewed failures; the formal summary includes them in the failure counts. Unknown assertions and infrastructure faults still stop execution. Launcher-only corrections are recorded by `amend-launcher`; worker sources and numerical validation must remain unchanged.
+
 ## Benchmark
 
 Kinova Gen3 with a fixed gripper, table/equipment and five obstacle categories: **sparse clutter, dense clutter, bottleneck, route choice, open control**.

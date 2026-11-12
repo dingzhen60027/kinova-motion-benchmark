@@ -14,6 +14,7 @@ import importlib.metadata
 import json
 import os
 from pathlib import Path
+import re
 import shlex
 import shutil
 import subprocess
@@ -346,6 +347,17 @@ def experiment_context(root):
                 or amendment['previous_sha256']!=frozen[launcher]):
             raise ValueError('Launcher amendment parent changed')
         frozen[launcher]=amendment['sha256']
+        # Keep previous launcher seals intact. Each subsequent correction is
+        # chained to the preceding declaration and its committed source bytes.
+        parent=sha(root/'launcher_amendment.json')
+        for update in launcher_updates(root):
+            if (update['parent_sha256']!=parent or update['path']!=launcher
+                    or update['previous_sha256']!=frozen[launcher]):
+                raise ValueError('Launcher update chain changed')
+            committed=subprocess.check_output(['git','show',update['source_commit']+':'+launcher],cwd=ROOT)
+            if hashlib.sha256(committed).hexdigest()!=update['sha256']:
+                raise ValueError('Launcher update differs from committed source')
+            frozen[launcher]=update['sha256'];parent=declaration_sha(update)
     return dict(experiment,source_commit=repair['source_commit'],source_hashes=repair['source_hashes'],
         stages=repair['stages'],frozen_files=frozen,reused_jobs=repair['retained_jobs'],new_jobs=repair['new_jobs'],
         selection_path='repair_selection.json',smoke_check_path='repair_smoke_check.json',repair=repair)
@@ -485,24 +497,42 @@ def repair_lgcs(root, config):
         return verify_context(root)
 
 
+def declaration_sha(value):
+    return hashlib.sha256(json.dumps(value,sort_keys=True,separators=(',',':')).encode()).hexdigest()
+
+
+def launcher_updates(root):
+    path=root/'launcher_updates.jsonl'
+    return [json.loads(line) for line in path.read_text().splitlines()] if path.exists() else []
+
+
 def amend_launcher(root):
     """Record a launcher-only correction without altering any worker sources."""
     with locked(root/'.experiment.lock'):
-        if (root/'launcher_amendment.json').exists():return verify_context(root)
         exp=experiment_context(root)
         if 'repair' not in exp or code_inventory()!=exp['source_hashes']:
             raise ValueError('Launcher amendment cannot change runtime sources')
         launcher=relative(Path(__file__))
+        if exp['frozen_files'][launcher]==sha(Path(__file__)):return verify_context(root)
         for name,digest in exp['frozen_files'].items():
             if name!=launcher and sha(recorded_path(name))!=digest:raise ValueError('Frozen input changed: '+name)
-        prior=subprocess.check_output(['git','show',exp['source_commit']+':'+launcher],cwd=ROOT)
+        updates=launcher_updates(root)
+        previous=(updates[-1] if updates else read(root/'launcher_amendment.json')) if (root/'launcher_amendment.json').exists() else exp
+        prior=subprocess.check_output(['git','show',previous['source_commit']+':'+launcher],cwd=ROOT)
         committed=subprocess.check_output(['git','show',head()+':'+launcher],cwd=ROOT)
         if hashlib.sha256(prior).hexdigest()!=exp['frozen_files'][launcher] or hashlib.sha256(committed).hexdigest()!=sha(Path(__file__)):
             raise ValueError('Launcher revision must be committed and match the original seal')
-        write(root/'launcher_amendment.json',dict(created_utc=now(),repair_sha256=sha(root/'repair.json'),
+        amendment=dict(created_utc=now(),repair_sha256=sha(root/'repair.json'),
             source_commit=head(),path=launcher,previous_sha256=exp['frozen_files'][launcher],sha256=sha(Path(__file__)),
-            reason='Verify retained observations against their original manifests; reuse the unchanged numerical validator and statistics. No worker, configuration, input or result edits.'))
-        write(root/'launcher_amendment_identity.json',dict(sha256=sha(root/'launcher_amendment.json')))
+            reason='Coordinator-only evidence classification and resume correction; no worker, solver, configuration, input, validation or raw result edits.')
+        if (root/'launcher_amendment.json').exists():
+            amendment['parent_sha256']=declaration_sha(updates[-1]) if updates else sha(root/'launcher_amendment.json')
+            with (root/'launcher_updates.jsonl').open('a') as stream:
+                stream.write(json.dumps(amendment,sort_keys=True,separators=(',',':'))+'\n')
+                stream.flush();os.fsync(stream.fileno())
+        else:
+            write(root/'launcher_amendment.json',amendment)
+            write(root/'launcher_amendment_identity.json',dict(sha256=sha(root/'launcher_amendment.json')))
         return verify_context(root)
 
 
@@ -523,11 +553,70 @@ def observation_manifest(manifest, job, attempt, cache):
     return source
 
 
+def review_scsto_failure(row, experiment_root):
+    """Recognize an author's failed Solve assertion, never an arbitrary assert.
+
+    This is a derived failure label only. The original receipt, exception,
+    first-terminal selection, timing and failed solve are not rewritten/retried.
+    """
+    if (row.get('status')!='infrastructure_error' or row.get('receipt_integrity') is not True
+            or row.get('status_basis')!='recorded_exception_or_process_failure'
+            or row.get('failure_reason')!='AssertionError()' or row.get('input_valid') is not True
+            or row.get('method')!='EI_ZO' or row.get('objective')!='minimum_time'):
+        return row
+    attempt=recorded_path(row['attempt_path'])
+    try:
+        raw=read(attempt/'result.json');process=read(attempt/'process.json');receipt=read(attempt/'receipt.json')
+        required={'exception.txt','stderr.log','runtime_sources.json','request.json','input.json','dependencies.json','process.json','result.json'}
+        if not required<=receipt['files'].keys():return row
+        if any(sha(attempt/p)!=receipt['files'][p] for p in required):return row
+        if (raw.get('status')!='infrastructure_error' or raw.get('failed_stage')!='trajectory_optimization'
+                or raw.get('error_category')!='unexpected_backend_exception' or raw.get('exception')!='AssertionError()'
+                or raw.get('error') or process.get('exit_code')!=0 or process.get('timed_out') is not False):return row
+        if process['cold_e2e_seconds']>process['timeout_seconds']:return row
+        manifest=read(attempt.parents[3]/'run_manifest.json');job=read(attempt/'request.json')
+        if job not in manifest['jobs'] or (job['method'],job['objective'])!=('EI_ZO','minimum_time'):return row
+        if read(attempt/'input.json')!=dict(resolve_case(job),_objective=job['objective']):return row
+        runtime=read(attempt/'runtime_sources.json')
+        if not runtime['unchanged'] or any(runtime[k]!=manifest['source_hashes'] for k in ('before','after')):return row
+        dependency=read(attempt/'dependencies.json')
+        if dependency['scsplanning_solver']!='Clarabel':return row
+        package=Path(dependency['modules']['scsplanning']['path']).parent
+        env=read(experiment_root/'preflight/environment.json')
+        stderr=(attempt/'stderr.log').read_text()
+        if 'INFO:drake:Clarabel returns NumericalError' not in stderr:return row
+        if re.search(r'CUDA|Traceback|AssertionError|segmentation|illegal memory',stderr,re.I):return row
+        trace=(attempt/'exception.txt').read_text()
+        pattern=r'  File "([^"\n]+)", line (\d+), in (\w+)\n    ([^\n]+)\n'
+        frames=re.findall(pattern,trace)
+        if not re.fullmatch(r'Traceback \(most recent call last\):\n(?:'+pattern+r')+AssertionError\n',trace):return row
+        worker=ROOT/'benchmarks/generic_motion_v1/runners/csdecomp_baseline.py'
+        prefix=[(worker,'run_case'),(package/'biconvex.py','biconvex')]
+        allowed=[prefix+[(package/name,'solve')] for name in ('fixed_points.py','fixed_velocities.py')]
+        allowed.append(prefix+[(package/'polygonal.py','polygonal'),(package/'polygonal.py','min_time_solver')])
+        if [(Path(p),function) for p,_,function,_ in frames] not in allowed:return row
+        for name,lineno,function,source in frames:
+            p=Path(name);digest=manifest['source_hashes'].get(relative(p)) if p==worker else env['runtime_files'].get(str(p))
+            if not digest or sha(p)!=digest:return row
+            lines=p.read_text().splitlines();line=int(lineno)
+            if lines[line-1].strip()!=source.strip():return row
+        name,lineno,function,source=frames[-1]
+        if source.strip()!='assert result.is_success()':return row
+        previous=Path(name).read_text().splitlines()[int(lineno)-2].strip()
+        if previous not in ('result = self.solver.Solve(self)','result = solver.Solve(prog)'):return row
+    except (OSError,ValueError,TypeError,KeyError,IndexError):
+        return row
+    return dict(row,status='solver_failure',status_basis='sealed_scsto_clarabel_numerical_error',
+        failure_reason='Clarabel NumericalError at '+Path(name).name+':'+lineno+' (author result.is_success assertion); original evidence retained',
+        objective_value=None,path_length_rad=None,trajectory_duration_s=None,validation_passed=False)
+
+
 def finished(root, manifest, job, case_cache):
     attempt=batch._first_terminal_attempt(sorted((root/'jobs'/job['job_id']/'attempts').glob('[0-9][0-9][0-9][0-9]')))
     if attempt is None:return None
     source=observation_manifest(manifest,job,attempt,case_cache)
     row=attempt_row(root,source,job,attempt,verify_files=True,case_cache=case_cache)
+    row=review_scsto_failure(row,root.parent)
     if row['status'] in ('infrastructure_error','invalid_input'):
         raise RuntimeError('Systemic failure stops this experiment: '+str(attempt)+': '+str(row['failure_reason']))
     return row
@@ -578,7 +667,7 @@ def verify_context_fast(root):
 
 
 def status(root):
-    exp=experiment_context(root);groups=[];total=0
+    exp=experiment_context(root);groups=[];total=0;reviews=[];cache={}
     for stage in exp['stages']:
         directory=root/stage['name'];m=read(directory/'run_manifest.json');counts=Counter();by_method=Counter();complete=0
         for job in m['jobs']:
@@ -587,6 +676,11 @@ def status(root):
                 receipt=read(attempt/'receipt.json')
                 if sha(attempt/'result.json')!=receipt['files']['result.json']:raise ValueError('Result seal changed')
                 counts[receipt['status']]+=1;by_method[job['method']]+=1;complete+=1
+                if receipt['status']=='infrastructure_error':
+                    source=observation_manifest(m,job,attempt,cache)
+                    row=review_scsto_failure(attempt_row(directory,source,job,attempt,case_cache=cache),root)
+                    if row['status']=='solver_failure':
+                        reviews.append({k:row[k] for k in ('attempt_path','receipt_sha256','raw_status','status','status_basis','failure_reason')})
         total+=complete
         groups.append(dict(stage=stage['name'],completed=complete,remaining=len(m['jobs'])-complete,
                            raw_statuses=dict(counts),completed_by_method=dict(by_method)))
@@ -595,7 +689,7 @@ def status(root):
     return dict(planned=exp['planned_legal_jobs'],completed=total,remaining=exp['planned_legal_jobs']-total,
                 reused=exp['reused_jobs'],newly_completed=total-exp['reused_jobs'],progress=progress,stages=groups,
                 superseded_lgcs_attempts=len(exp.get('repair',{}).get('superseded_lgcs_attempts',[])),
-                coordinator_alive=bool(pid and Path(f'/proc/{pid}').exists()),
+                coordinator_alive=bool(pid and Path(f'/proc/{pid}').exists()),reviewed_solver_failures=reviews,
                 note='Receipt/result status view; use verify for full artifact and matrix validation.')
 
 
@@ -650,6 +744,7 @@ def summarize_repair(root, exp):
         inventory.append(dict(run=relative(directory),split=stage['split'],planned_jobs=len(m['jobs']),
             actual_attempts=len(found),source_commit=m['source_code_commit'],manifest_sha256=sha(directory/'run_manifest.json'),
             original_manifests=m['derived_from_manifests'],status_counts=dict(Counter(r['status'] for r in found))))
+    rows=[review_scsto_failure(row,root) for row in rows]
     selection_path=root/exp['selection_path'];selection=read(selection_path)
     summary=results.summarize(rows,selection)
     out=root/'analysis';out.mkdir(parents=True,exist_ok=True)
