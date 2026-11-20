@@ -8,7 +8,7 @@ from pathlib import Path
 import sys
 
 from .common import BASE, ROOT, read, resolve_case
-from .runners.methods import METHODS
+from .runners.methods import METHODS, SUPPORTED_METHODS
 
 ACTIVE_METHODS = tuple(METHODS)
 
@@ -77,13 +77,13 @@ def benchmark_main(argv=None):
 def evaluate_main(argv=None):
     p = argparse.ArgumentParser(description='Run the existing native/adapted baselines with one validator.')
     sub = p.add_subparsers(dest='command', required=True)
-    sub.add_parser('methods')
+    sub.add_parser('methods').add_argument('--include-candidates', action='store_true')
     sub.add_parser('check', help='Real environment, collision, solver and negative-case checks')
     for cmd in ('run', 'batch'):
         s = sub.add_parser(cmd)
         s.add_argument('--split', choices=['smoke', 'dev', 'test'], default='smoke' if cmd == 'run' else 'dev')
         s.add_argument('--problem', required=cmd == 'run')
-        s.add_argument('--methods', nargs='+', choices=ACTIVE_METHODS, default=list(ACTIVE_METHODS))
+        s.add_argument('--methods', nargs='+', choices=SUPPORTED_METHODS, default=list(ACTIVE_METHODS))
         s.add_argument('--track', choices=['path', 'time', 'both'], default='both')
         s.add_argument('--seeds', nargs='+', type=int,
                        help='Paired repetition indices: single run/smoke defaults to 0; dev/test batch defaults to 0 1 2')
@@ -105,7 +105,7 @@ def evaluate_main(argv=None):
     require_environment()
     if args.command == 'methods':
         from .runners.methods import catalog
-        emit([r for r in catalog() if r['method'] in ACTIVE_METHODS]); return
+        emit(catalog(include_candidates=args.include_candidates)); return
     if args.command == 'check':
         from .health import check
         result = check(ROOT / 'results/checks.json'); emit(result)

@@ -181,6 +181,19 @@ bash local/python.sh results/rigor_checks/check_nto_profile_geometry.py \
 bash local/python.sh results/rigor_checks/probe_nto_iterations.py --output runs/nto-dev-cap
 ```
 
+## Collision-guided joint timing search
+
+The project candidate `PHASE_SEARCH` accepts fixed joint endpoints and runs online. It first checks a straight motion. If it collides, the measured clearance gradient guides changes to individual joint departure times. Joints can also stretch their motion while a limiting joint sets the earliest arrival. An online waypoint and visibility search supports detours with joint reversals. OMPL RRTConnect can supply a seed when these proposal families are exhausted. A constrained projection shortens the path or reduces duration under the shared online clock. Each query logs the contributing stage in `phase_search.json`.
+
+The path track returns a polygon. The time track returns C1 piecewise-quadratic Bézier segments with bounded joint velocity, bounded acceleration and zero endpoint velocity. Its obstacle-free lower bound is the maximum of the seven rest-to-rest joint travel times. The common validator checks all returned candidates. Setting `phase_search.joint_clocks` to `false` in a copy of the evaluation configuration disables the clock proposals for a paired development ablation.
+
+```bash
+bash local/python.sh scripts/evaluate.py methods --include-candidates
+CUDA_VISIBLE_DEVICES=0 bash local/python.sh scripts/evaluate.py run --split smoke \
+  --problem smoke-sparse_clutter-000-p01 --methods PHASE_SEARCH --track both \
+  --seeds 0 --output runs/clock-example
+```
+
 ## Commands
 
 Each subcommand supports `--help`. Use a new output directory per experiment. `resume` preserves completed failures and does not rerun completed jobs. Commit runtime code changes before preparing new experiments; source-hash mismatches prevent incomplete historical runs from silently continuing with changed code. From another working directory, invoke `local/python.sh` by its absolute path.

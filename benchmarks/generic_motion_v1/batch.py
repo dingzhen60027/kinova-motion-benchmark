@@ -14,7 +14,7 @@ import time
 
 from .common import (BASE, ROOT, cases, code_inventory, head, read, sha, write,
                      case_reference, case_manifest_path, resolve_case, recorded_path)
-from .runners.methods import METHODS, INDEPENDENT, objectives as supported_objectives
+from .runners.methods import SUPPORTED_METHODS, INDEPENDENT, objectives as supported_objectives
 from .runners.failure_classification import (INFRASTRUCTURE_STATUSES, exception_needs_attention,
     handoff_failure_evidence, unexpected_process_exit)
 
@@ -56,7 +56,7 @@ def prepare(manifest, roadmaps, output, *, objectives, methods, selection="all",
     if mode=='fixed_initial_regions' and (set(methods)!={'EI_ZO','LGCS'} or objectives!=['minimum_distance'] or problem or selection!='all'):
         raise ValueError('Fixed initial regions requires both EI_ZO/LGCS path backends for the complete eligible cohort')
     _unique(objectives, "objectives", {"minimum_distance", "minimum_time"})
-    _unique(methods, "methods", set(METHODS))
+    _unique(methods, "methods", set(SUPPORTED_METHODS))
     roadmaps = [Path(p).resolve() for p in (roadmaps or [])]
     if roadmaps:
         _unique(roadmaps, "roadmaps")
@@ -150,7 +150,7 @@ def prepare(manifest, roadmaps, output, *, objectives, methods, selection="all",
                         roadmap_used=method not in INDEPENDENT, replica_seed=seed,
                         method_seed=int(pairing["method_seed"]),
                         solver_seed=int(pairing["solver_seed"]), solver_seed_used=False,
-                        solver_seed_note="Reserved solver_seed is unused. Native OMPL/STOMP RNG uses method_seed; local deterministic optimizers use the fixed DRM seed path.",
+                        solver_seed_note=("PCG64 proposals and optional native OMPL seed use method_seed" if method=="PHASE_SEARCH" else "Reserved solver_seed is unused. Native OMPL/STOMP RNG uses method_seed; local deterministic optimizers use the fixed DRM seed path."),
                         case_ref=case_reference(case, manifest, input_manifest_sha256)))
                     if shared is not None:
                         jobs[-1].update(execution_mode=mode,shared_initialization=shared,

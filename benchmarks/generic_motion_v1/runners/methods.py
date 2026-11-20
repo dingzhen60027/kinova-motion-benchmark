@@ -1,14 +1,21 @@
 """Declared method capabilities; objective support is never inferred from output."""
 
-INDEPENDENT = frozenset({'RRTCONNECT', 'RRTSTAR'})
+OMPL_METHODS = frozenset({'RRTCONNECT', 'RRTSTAR'})
+CANDIDATE = 'PHASE_SEARCH'
+INDEPENDENT = OMPL_METHODS | {CANDIDATE}
 LOCAL_EXTENSIONS = frozenset({'CHOMP', 'STOMP', 'TRAJOPT'})
-EXTENSIONS = INDEPENDENT | LOCAL_EXTENSIONS
+EXTENSIONS = OMPL_METHODS | LOCAL_EXTENSIONS
 METHODS = ('EI_ZO', 'LGCS', 'NTO_PAPER', 'NTO_REFINED', 'NTO',
            'RRTCONNECT', 'RRTSTAR', 'CHOMP', 'STOMP', 'TRAJOPT')
+
+SUPPORTED_METHODS = METHODS + (CANDIDATE,)
 
 # Stable stored IDs remain compatible with historical run evidence. Display
 # names describe implementation scope rather than silently renaming results.
 IMPLEMENTATIONS = {
+    CANDIDATE: dict(display_name='Collision-guided joint timing search',
+        implementation='Project joint clocks, online visibility search and constrained path/time projection with an optional OMPL seed',
+        distinction='Obstacle-guided clock proposals, independent geometry checks and quadratic trajectory output'),
     'EI_ZO': dict(display_name='DRM + EI-ZO + LSCS / SCSTO',
         implementation='native CSDecomp and author SCSPlanning; Clarabel solver adaptation',
         distinction='Collision feedback, native region editing and corridor repair retained'),
@@ -43,18 +50,20 @@ IMPLEMENTATIONS = {
 
 
 def objectives(method):
-    if method not in METHODS:
+    if method not in SUPPORTED_METHODS:
         raise ValueError(f'Unknown method: {method}')
     return ('minimum_distance',) if method in EXTENSIONS | {'LGCS'} else ('minimum_distance', 'minimum_time')
 
 
-def catalog():
+def catalog(include_candidates=False):
     return [dict(method=m, **IMPLEMENTATIONS[m], objectives=list(objectives(m)),
-                 initialization='fixed endpoints; independent native sampling' if m in INDEPENDENT
+                 initialization='fixed endpoints; direct and collision-guided clock search' if m == CANDIDATE
+                 else 'fixed endpoints; independent native sampling' if m in INDEPENDENT
                  else 'independently validated native DRM path',
                  roadmap_required=m not in INDEPENDENT,
                  quality_metric='validated Euclidean PWL length in rad' if m in EXTENSIONS else 'objective dependent',
                  native_objective=('smoothness plus collision penalty' if m in LOCAL_EXTENSIONS
                                    else 'first feasible path then simplification' if m == 'RRTCONNECT'
+                                   else 'PWL length or bounded rest-to-rest duration' if m == CANDIDATE
                                    else 'path length' if m == 'RRTSTAR' else 'see frozen method profile'))
-            for m in METHODS]
+            for m in (SUPPORTED_METHODS if include_candidates else METHODS)]

@@ -66,6 +66,11 @@ def load_config(config=None):
                 continue
             # Optional backends are explicit opt-ins. Do not add defaults to
             # historical configurations, whose resolved values are frozen.
+            if key == 'phase_search':
+                if not isinstance(value, dict) or set(value) != {'joint_clocks'} or not isinstance(value['joint_clocks'], bool):
+                    raise ValueError('phase_search.joint_clocks must be a boolean')
+                answer[key] = dict(value)
+                continue
             if key == 'lgcs':
                 if (not isinstance(value, dict) or set(value) != {'solver'} or
                         value['solver'] not in ('gurobi', 'scip')):

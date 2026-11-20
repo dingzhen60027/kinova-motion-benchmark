@@ -18,7 +18,7 @@ import numpy as np
 from ..roadmap import HERE, ROOT, load_config, sha, write
 from .validate import validate, sample_candidate, _numeric_array
 from .native_handoff import NativeHandoffError, native_region_with_anchors
-from .methods import METHODS, INDEPENDENT, LOCAL_EXTENSIONS, objectives as supported_objectives
+from .methods import SUPPORTED_METHODS, CANDIDATE, INDEPENDENT, LOCAL_EXTENSIONS, objectives as supported_objectives
 from .failure_classification import (HANDOFF_KIND, HANDOFF_SOURCE, KNOWN_DRM_NO_ROUTE,
     KNOWN_VALIDATION_REJECTIONS, handoff_failure_evidence, known_exception_category)
 
@@ -550,7 +550,7 @@ def run_case(case,roadmap_dir,out,objective='minimum_distance',seed=0,method='EI
     total wall-clock subprocess deadline and retain these incremental files.
     """
     start=time.perf_counter();out=Path(out);out.mkdir(parents=True,exist_ok=True)
-    if objective not in ('minimum_distance','minimum_time') or method not in METHODS:
+    if objective not in ('minimum_distance','minimum_time') or method not in SUPPORTED_METHODS:
         raise ValueError('Unknown objective or method')
     if objective not in supported_objectives(method):
         raise ValueError(f'{method} implements minimum_distance only')
@@ -586,13 +586,15 @@ def run_case(case,roadmap_dir,out,objective='minimum_distance',seed=0,method='EI
             'NTO':'Kinova adaptation; Drake KTO/IPOPT with locally strengthened initialization',
             'NTO_PAPER':'Kinova adaptation; reconstructed Drake KTO using published SNOPT distance/IPOPT time profile',
             'NTO_REFINED':'Kinova; Drake KTO with SNOPT distance/IPOPT time, positive clearance and collision collocation refinement',
+            CANDIDATE:'Project collision-guided joint timing search with optional native OMPL path seed',
             'RRTCONNECT':'Official native OMPL RRTConnect with canonical CSD state/motion callbacks',
             'RRTSTAR':'Official native OMPL RRTstar with canonical CSD state/motion callbacks',
             'CHOMP':'Covariant CHOMP descent with canonical-geometry C-space line-integral obstacle cost',
             'STOMP':'Unchanged official STOMP core with canonical signed-distance task cost',
             'TRAJOPT':'Author TrajOpt trust-region SQP and BPMPD core with canonical signed-distance collocation'
         }[method]+'; not exact author FR3/hardware reproduction',
-        seed_semantics=('method_seed seeds native OMPL sampling; roadmap identity only pairs the repetition' if method in INDEPENDENT
+        seed_semantics=('PCG64 joint clocks and via points, optional native OMPL seeded by method_seed' if method == CANDIDATE
+                        else 'method_seed seeds native OMPL sampling; roadmap identity only pairs the repetition' if method in INDEPENDENT
                         else 'method_seed seeds STOMP correlated PCG64 rollouts; deterministic fixed DRM initialization' if method == 'STOMP'
                         else 'deterministic optimizer from fixed validated DRM path; method_seed retained as pairing identity' if method in LOCAL_EXTENSIONS
                         else 'EI-ZO EizoOptions.seed is passed to native cuRAND; DRM graph sampling uses separate saved PCG64 seed; optimizer initialization is deterministic fixed DRM path'))
@@ -606,7 +608,8 @@ def run_case(case,roadmap_dir,out,objective='minimum_distance',seed=0,method='EI
     if method in INDEPENDENT:
         result.update(frontend_success=None, frontend_native_success=None,
                       offline_roadmap_seconds=None,
-                      initialization='Fixed endpoints; independent tree search; roadmap identifier is repetition pairing only')
+                      initialization=('Fixed endpoints; joint clock and geometric detour search' if method == CANDIDATE else
+                                      'Fixed endpoints; independent tree search; roadmap identifier is repetition pairing only'))
     phase='initializing';warm_started=None
     def stage(name):
         nonlocal phase
@@ -651,7 +654,10 @@ def run_case(case,roadmap_dir,out,objective='minimum_distance',seed=0,method='EI
             if not valid:
                 result['status']='invalid_endpoint';return result
             if method in INDEPENDENT:
-                from .ompl_baselines import solve
+                if method == CANDIDATE:
+                    from .phase_search import solve
+                else:
+                    from .ompl_baselines import solve
                 warm_started=time.perf_counter()
                 stage('sampling_planning');tic=time.perf_counter()
                 try:
