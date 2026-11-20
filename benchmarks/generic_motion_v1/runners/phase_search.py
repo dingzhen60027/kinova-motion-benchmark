@@ -414,7 +414,10 @@ def solve(model, case, cfg, out, deadline, seed, method):
     velocity = np.asarray(case["velocity_limits_rad_s"])
     acceleration = np.asarray(case["acceleration_limits_rad_s2"])
     timed = case["_objective"] == "minimum_time"
-    rng = np.random.Generator(np.random.PCG64(seed))
+    clock_rng, waypoint_rng, graph_rng = [
+        np.random.Generator(np.random.PCG64(stream))
+        for stream in np.random.SeedSequence(seed).spawn(3)
+    ]
     lower = (
         float(rest_times(goal - start, velocity, acceleration)[0].max())
         if timed
@@ -486,7 +489,7 @@ def solve(model, case, cfg, out, deadline, seed, method):
             goal,
             velocity,
             acceleration,
-            rng,
+            clock_rng,
             gradient,
             cfg,
             local_deadline,
@@ -514,7 +517,7 @@ def solve(model, case, cfg, out, deadline, seed, method):
             goal,
             frac,
             gradient,
-            rng,
+            waypoint_rng,
             velocity,
             acceleration,
             case["_objective"],
@@ -528,7 +531,7 @@ def solve(model, case, cfg, out, deadline, seed, method):
             deadline - PROFILE["validation_reserve_s"],
             time.perf_counter() + PROFILE["graph_budget_s"],
         )
-        path = visibility_path(model, start, goal, rng, graph_deadline, cfg)
+        path = visibility_path(model, start, goal, graph_rng, graph_deadline, cfg)
         origin = "visibility_graph"
     if path is None:
         from .ompl_baselines import solve as ompl_solve

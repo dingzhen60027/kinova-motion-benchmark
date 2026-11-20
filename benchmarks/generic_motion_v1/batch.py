@@ -14,7 +14,7 @@ import time
 
 from .common import (BASE, ROOT, cases, code_inventory, head, read, sha, write,
                      case_reference, case_manifest_path, resolve_case, recorded_path)
-from .runners.methods import SUPPORTED_METHODS, INDEPENDENT, objectives as supported_objectives
+from .runners.methods import CANDIDATE, SUPPORTED_METHODS, INDEPENDENT, objectives as supported_objectives
 from .runners.failure_classification import (INFRASTRUCTURE_STATUSES, exception_needs_attention,
     handoff_failure_evidence, unexpected_process_exit)
 
@@ -150,7 +150,7 @@ def prepare(manifest, roadmaps, output, *, objectives, methods, selection="all",
                         roadmap_used=method not in INDEPENDENT, replica_seed=seed,
                         method_seed=int(pairing["method_seed"]),
                         solver_seed=int(pairing["solver_seed"]), solver_seed_used=False,
-                        solver_seed_note=("PCG64 proposals and optional native OMPL seed use method_seed" if method=="PHASE_SEARCH" else "Reserved solver_seed is unused. Native OMPL/STOMP RNG uses method_seed; local deterministic optimizers use the fixed DRM seed path."),
+                        solver_seed_note=("PCG64 proposals and optional native OMPL seed use method_seed" if method==CANDIDATE else "Reserved solver_seed is unused. Native OMPL/STOMP RNG uses method_seed; local deterministic optimizers use the fixed DRM seed path."),
                         case_ref=case_reference(case, manifest, input_manifest_sha256)))
                     if shared is not None:
                         jobs[-1].update(execution_mode=mode,shared_initialization=shared,
@@ -613,13 +613,18 @@ def _resume_locked(run, max_jobs=None):
     completed = 0
     for job in manifest["jobs"]:
         attempts = sorted((run / "jobs" / job["job_id"] / "attempts").glob("[0-9][0-9][0-9][0-9]"))
-        if _first_terminal_attempt(attempts) is not None:
+        terminal = _first_terminal_attempt(attempts)
+        if terminal is not None:
+            if job["method"] == CANDIDATE and exception_needs_attention(read(terminal / "result.json")):
+                raise RuntimeError(f"Candidate infrastructure failure at {terminal}")
             continue
         if max_jobs is not None and completed >= max_jobs:
             break
         if code_inventory() != manifest["source_hashes"]:
             raise ValueError("Current source changed while resuming; use a new run")
-        execute(job, run, manifest["timeout_seconds"])
+        result = execute(job, run, manifest["timeout_seconds"])
+        if job["method"] == CANDIDATE and exception_needs_attention(result):
+            raise RuntimeError(f"Candidate infrastructure failure in {job['job_id']}")
         completed += 1
     result = verify(run)
     write(run / "verification.json", result)
