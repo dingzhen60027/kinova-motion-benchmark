@@ -99,8 +99,8 @@ def _assign_state(mujoco: Any, model: Any, data: Any,
 
 
 def render_rollout(model_xml: str | Path, arrays_npz: str | Path,
-                   output_dir: str | Path, fps: float = 30, width: int = 960,
-                   height: int = 720,
+                   output_dir: str | Path, fps: float = 30, width: int = 1280,
+                   height: int = 800,
                    camera: str | Mapping[str, Any] | None = None,
                    collision_debug: bool = False) -> dict[str, Any]:
     """Save actual-state playback as MP4 and a representative PNG.
@@ -126,6 +126,8 @@ def render_rollout(model_xml: str | Path, arrays_npz: str | Path,
         "model_xml": str(xml_path), "model_xml_sha256": _sha(xml_path),
         "arrays_npz": str(state_path), "arrays_npz_sha256": _sha(state_path),
         "fps": float(fps), "width": width, "height": height,
+        "render_sources_sha256": {name: _sha(Path(__file__).with_name(name))
+                                  for name in ('render.py', 'guidance.py', 'presentation.py')},
         "passed": False,
     }
     start = wall_time.perf_counter()
@@ -146,8 +148,24 @@ def render_rollout(model_xml: str | Path, arrays_npz: str | Path,
         model.vis.global_.offheight = max(height, model.vis.global_.offheight)
         data = mujoco.MjData(model)
         states = _states(state_path, model.nq, model.nv)
+        from .guidance import load_guide
+        guide = load_guide(mujoco, model, states, xml_path, state_path)
+        metadata['visual_guidance'] = guide.metadata if guide else None
         indices = _frame_indices(states["time"], fps)
         view, camera_metadata = _camera(mujoco, model, camera)
+        presentation = None
+        main_width, main_height = width, height
+        if guide:
+            from .presentation import Presentation, presentation_camera
+            if camera is None or camera == 'overview':
+                view = presentation_camera(mujoco, guide)
+                camera_metadata = dict(kind='free', preset='presentation',
+                    lookat=view.lookat.tolist(), distance=view.distance,
+                    azimuth=view.azimuth, elevation=view.elevation)
+            presentation = Presentation(mujoco, model, guide, view)
+            main_width, main_height, *_ = presentation.layout(width, height)
+            presentation.panels(width, height, states['time'][0])
+            metadata['composition'] = 'actual_motion_with_original_start_goal_pose_panels'
         scene_option = mujoco.MjvOption()
         # Exporter groups 3/4 are canonical collision primitives and conservative
         # obstacle voxels. Keep the mesh/source-shape visualization readable.
@@ -171,14 +189,18 @@ def render_rollout(model_xml: str | Path, arrays_npz: str | Path,
                    "+faststart", str(output / "rollout.mp4")]
         metadata["ffmpeg_command"] = command
         with (output / "ffmpeg.log").open("wb") as log:
-            with mujoco.Renderer(model, height=height, width=width) as renderer:
+            with mujoco.Renderer(model, height=main_height, width=main_width) as renderer:
                 process = subprocess.Popen(command, stdin=subprocess.PIPE, stdout=subprocess.DEVNULL, stderr=log)
                 try:
                     assert process.stdin is not None
                     for frame_index, state_index in enumerate(indices):
                         _assign_state(mujoco, model, data, states, int(state_index))
                         renderer.update_scene(data, camera=view, scene_option=scene_option)
+                        if guide:
+                            guide.decorate(renderer.scene, data, compact=True)
                         frame = np.ascontiguousarray(renderer.render(), dtype=np.uint8)
+                        if presentation:
+                            frame = presentation.compose(frame, width, height, data.time)
                         if frame.shape != (height, width, 3):
                             raise RuntimeError(f"Unexpected MuJoCo RGB shape: {frame.shape}")
                         if frame_index == len(indices)//2:
@@ -218,7 +240,7 @@ def render_rollout(model_xml: str | Path, arrays_npz: str | Path,
 def play_rollout(model_xml: str | Path, arrays_npz: str | Path,
                  speed: float = 1.0, loop: bool = False,
                  camera: str | Mapping[str, Any] | None = None,
-                 collision_debug: bool = False) -> dict[str, Any]:
+                 collision_debug: bool = False, paused: bool = False) -> dict[str, Any]:
     """Interactively replay saved actual states; this does not rerun dynamics.
 
     Space pauses/resumes, Home returns to the first recorded state, and Escape
@@ -232,19 +254,39 @@ def play_rollout(model_xml: str | Path, arrays_npz: str | Path,
     model = mujoco.MjModel.from_xml_path(str(Path(model_xml).resolve()))
     data = mujoco.MjData(model)
     states = _states(Path(arrays_npz).resolve(), model.nq, model.nv)
+    from .guidance import load_guide
+    guide = load_guide(mujoco, model, states, model_xml, arrays_npz)
     view, camera_metadata = _camera(mujoco, model, camera)
-    control = {"paused": False, "restart": False}
+    presentation = None
+    if guide:
+        from .presentation import Presentation, presentation_camera
+        if camera is None or camera == 'overview':
+            view = presentation_camera(mujoco, guide)
+            camera_metadata = dict(kind='free', preset='presentation',
+                lookat=view.lookat.tolist(), distance=view.distance,
+                azimuth=view.azimuth, elevation=view.elevation)
+        presentation = Presentation(mujoco, model, guide, view)
+        # Render endpoint panels before the GUI render thread reads the model.
+        presentation.thumbnails(286, 210)
+    control = {"paused": paused, "restart": False, "jump": None, "guides": False}
 
     def key_callback(keycode: int) -> None:
         if keycode == 32:
             control["paused"] = not control["paused"]
         elif keycode == 268:
             control["restart"] = True
+            control["paused"] = False
+        elif keycode in (49, 50):
+            control["jump"] = 0 if keycode == 49 else -1
+            control["paused"] = True
+        elif keycode == 71:
+            control["guides"] = not control["guides"]
 
     _assign_state(mujoco, model, data, states, 0)
     index = 0
     timestamp = float(states["time"][0])
-    with mujoco.viewer.launch_passive(model, data, key_callback=key_callback) as viewer:
+    with mujoco.viewer.launch_passive(model, data, key_callback=key_callback,
+                                     show_left_ui=False, show_right_ui=False) as viewer:
         with viewer.lock():
             viewer.opt.geomgroup[:] = [1, 1, 1, int(collision_debug), int(collision_debug), 0]
             if isinstance(view, str):
@@ -255,9 +297,14 @@ def play_rollout(model_xml: str | Path, arrays_npz: str | Path,
                 viewer.cam.lookat[:] = view.lookat
                 viewer.cam.distance, viewer.cam.azimuth, viewer.cam.elevation = view.distance, view.azimuth, view.elevation
         previous_wall = wall_time.perf_counter()
+        panel_wall = 0.
+        initial_layout = True
         while viewer.is_running():
             current_wall = wall_time.perf_counter()
-            if control["restart"]:
+            if control["jump"] is not None:
+                timestamp = float(states["time"][control["jump"]])
+                control["jump"] = None
+            elif control["restart"]:
                 timestamp = float(states["time"][0])
                 control["restart"] = False
             elif not control["paused"]:
@@ -271,8 +318,35 @@ def play_rollout(model_xml: str | Path, arrays_npz: str | Path,
             index = max(0, int(np.searchsorted(states["time"], timestamp, side="right"))-1)
             with viewer.lock():
                 _assign_state(mujoco, model, data, states, index)
+                if guide:
+                    viewer.user_scn.ngeom = 0
+                    guide.decorate(viewer.user_scn, data, control["guides"], compact=True)
+            if presentation and current_wall-panel_wall >= .1:
+                viewport = viewer.viewport
+                width, height = viewport.width, viewport.height
+                if width >= 640 and height >= 480:
+                    viewer.clear_texts()
+                    main_w, main_h, side_w, header, footer = presentation.layout(width, height)
+                    if initial_layout:
+                        # Center the scene in the unobscured main view, not behind the sidebar.
+                        with viewer.lock():
+                            shift = view.distance*np.tan(np.deg2rad(model.vis.global_.fovy/2))*side_w/height
+                            viewer.cam.lookat[:] += presentation.screen_right*shift
+                        initial_layout = False
+                    top, side, bottom = presentation.panels(width, height, timestamp, control['paused'], speed)
+                    viewer.set_images([
+                        (mujoco.MjrRect(viewport.left, viewport.bottom+height-header, width, header), np.asarray(top)),
+                        (mujoco.MjrRect(viewport.left+main_w, viewport.bottom+footer, side_w, main_h), np.asarray(side)),
+                        (mujoco.MjrRect(viewport.left, viewport.bottom, width, footer), np.asarray(bottom)),
+                    ])
+                else:
+                    viewer.clear_images()
+                    viewer.set_texts((mujoco.mjtFont.mjFONT_NORMAL, mujoco.mjtGridPos.mjGRID_TOPLEFT,
+                                      'Resize the window to at least 640 x 480', ''))
+                panel_wall = current_wall
             viewer.sync()
             wall_time.sleep(1/120)
     return {"kind": "saved_actual_state_playback", "dynamics_resimulated": False,
             "displayed_state_array": "qpos", "last_displayed_state_index": index,
-            "camera": camera_metadata, "collision_proxy_overlay": bool(collision_debug)}
+            "camera": camera_metadata, "collision_proxy_overlay": bool(collision_debug),
+            "visual_guidance": guide.metadata if guide else None}

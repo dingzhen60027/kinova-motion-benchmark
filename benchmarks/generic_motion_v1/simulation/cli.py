@@ -133,6 +133,10 @@ def main(argv=None):
     for name in ('render','view'):
         s=sub.add_parser(name); s.add_argument('--run',required=True)
         if name=='render':s.add_argument('--output',required=True)
+        if name=='view':
+            s.add_argument('--paused',action='store_true',help='Start at the recorded departure pose; SPACE plays')
+            s.add_argument('--loop',action='store_true',help='Repeat the saved recording')
+            s.add_argument('--speed',type=float,default=1.,help='Playback speed only; simulation times stay unchanged')
         s.add_argument('--collision-debug',action='store_true')
     args = parser.parse_args(argv)
     try:
@@ -154,7 +158,8 @@ def main(argv=None):
                                       camera='overview',collision_debug=args.collision_debug)
             else:
                 result=play_rollout(directory/'model/model.xml',directory/'rollout.npz',
-                                    camera='overview',collision_debug=args.collision_debug)
+                                    camera='overview',collision_debug=args.collision_debug,
+                                    paused=args.paused,loop=args.loop,speed=args.speed)
         # Per-step arrays and verbose pair maps remain in their evidence files.
         print(json.dumps({k:v for k,v in (result or {}).items() if k not in ('artifacts','simulation_source_hashes','render')},indent=2))
         return 1 if result and result.get('status')=='infrastructure_error' else 0

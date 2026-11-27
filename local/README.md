@@ -178,10 +178,10 @@ bash local/python.sh scripts/simulate.py render \
 Open the generated `overview.png` or `rollout.mp4`. For a local desktop window:
 
 ```bash
-MUJOCO_GL=glfw bash local/python.sh scripts/simulate.py view --run runs/mujoco-one
+MUJOCO_GL=glfw bash local/python.sh scripts/simulate.py view --run runs/mujoco-one --paused
 ```
 
-The desktop viewer command has not been exercised on this host. It replays the saved simulated states; the physical execution happens in `run` or `batch`. Add `--collision-debug` to render/view to inspect collision geometry. [Model, controller and validation details](../benchmarks/generic_motion_v1/README.md#mujoco-execution).
+The viewer replays saved simulated states; physical execution happens in `run` or `batch`. The main view shows actual motion, with blue **S** and green **G** endpoint markers and a TCP trace. Separate panels render the original start and goal robot poses. A timeline and execution-check results remain visible below the scene. Press **Space** to play/pause, **Home** to replay, **1/2** to inspect the first/last recorded state, and **G** to toggle optional endpoint outlines. `--speed 0.5` slows playback; `--loop` repeats it. The same composition is used in exported videos. Chinese captions use the system Noto Sans CJK font. Display colors, panels and controls do not alter the saved model, trajectory or execution results. Add `--collision-debug` to inspect collision geometry. [Model, controller and validation details](../benchmarks/generic_motion_v1/README.md#mujoco-execution).
 
 ## Troubleshooting
 

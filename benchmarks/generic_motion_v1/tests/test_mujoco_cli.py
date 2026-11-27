@@ -304,4 +304,7 @@ def test_visualization_checks_sealed_evidence_before_loading_states(tmp_path, ex
         assert len(calls) == 1
         args, kwargs = calls[0]
         assert args[:2] == (output / "model/model.xml", output / "rollout.npz")
-        assert kwargs == dict(camera="overview", collision_debug=True)
+        expected = dict(camera="overview", collision_debug=True)
+        if command == "view":
+            expected.update(paused=False, loop=False, speed=1.)
+        assert kwargs == expected

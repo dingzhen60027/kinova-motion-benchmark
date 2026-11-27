@@ -87,3 +87,55 @@ def test_failed_render_keeps_diagnostic_metadata(tmp_path):
     assert result["passed"] is False
     assert result["error_type"] == "ValueError"
     assert "Missing actual" in result["error"]
+
+
+def test_endpoint_guides_use_task_goal_not_attained_end_and_do_not_change_state(tmp_path):
+    mujoco = pytest.importorskip("mujoco")
+    from benchmarks.generic_motion_v1.common import sha
+    from benchmarks.generic_motion_v1.simulation.guidance import load_guide
+
+    xml = tmp_path / "model.xml"
+    xml.write_text('''<mujoco><worldbody><body pos="0 0 .3">
+        <joint type="hinge" axis="0 0 1"/>
+        <geom type="capsule" fromto="0 0 0 .5 0 0" size=".06"/>
+        </body></worldbody></mujoco>''')
+    source = tmp_path / 'attempt'
+    source.mkdir()
+    (source / 'input.json').write_text(json.dumps(dict(problem_id='test-goal', q_start=[0.], q_goal=[1.])))
+    (tmp_path / 'result.json').write_text(json.dumps(dict(source_attempt=str(source),
+        source_input_sha256=sha(source / 'input.json'), method='EI_ZO',
+        status='execution_failed', checks=dict(endpoint=False))))
+    (tmp_path / 'model_metadata.json').write_text(json.dumps(dict(xml_sha256=sha(xml),
+        tcp_body_id=1, tcp_local_transform=[[1, 0, 0, .5], [0, 1, 0, 0],
+        [0, 0, 1, 0], [0, 0, 0, 1]], joint_ids=[0], qpos_ids=[0])))
+    arrays = tmp_path / 'rollout.npz'
+    np.savez(arrays, time=[0., .1, .2], qpos=[[0.], [.2], [.4]])
+    model = mujoco.MjModel.from_xml_path(str(xml))
+    states = _states(arrays, model.nq, model.nv)
+    before = states['qpos'].copy()
+    guide = load_guide(mujoco, model, states, xml, arrays)
+    np.testing.assert_allclose(guide.goal_tcp, [.5*np.cos(1.), .5*np.sin(1.), .3])
+    np.testing.assert_allclose(guide.trace[-1], [.5*np.cos(.4), .5*np.sin(.4), .3])
+    assert not np.allclose(guide.goal_tcp, guide.trace[-1])
+    data = mujoco.MjData(model)
+    data.qpos[:] = .2
+    mujoco.mj_forward(model, data)
+    scene = mujoco.MjvScene(model, maxgeom=500)
+    guide.decorate(scene, data)
+    assert {'START [1]', 'GOAL [2]'} <= {g.label for g in scene.geoms[:scene.ngeom]}
+    assert all(g.objid == -1 for g in scene.geoms[:scene.ngeom])
+    np.testing.assert_array_equal(states['qpos'], before)
+    np.testing.assert_array_equal(data.qpos, [.2])
+    assert model.ngeom == 1 and model.npair == 0
+    assert 'END OF RECORDING' in guide.text(.2)[4]
+    assert 'CHECK FAILED: endpoint' in guide.text(.2)[6]
+    assert 'PAUSED' in guide.text(0, paused=True)[4]
+    if shutil.which('ffmpeg'):
+        result = render_rollout(xml, arrays, tmp_path / 'guided', fps=10, width=640, height=480)
+        assert result['passed'] and result['visual_guidance']['display_only']
+        assert result['composition'] == 'actual_motion_with_original_start_goal_pose_panels'
+        assert set(result['render_sources_sha256']) == {'render.py', 'guidance.py', 'presentation.py'}
+        assert sha(xml) == json.loads((tmp_path / 'model_metadata.json').read_text())['xml_sha256']
+    (source / 'input.json').write_text('{}')
+    with pytest.raises(ValueError, match='input hash changed'):
+        load_guide(mujoco, model, states, xml, arrays)
