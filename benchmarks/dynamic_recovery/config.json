@@ -1,0 +1,79 @@
+{
+  "benchmark": "kinova7_dynamic_recovery_v1",
+  "robot": {
+    "model": "benchmarks/generic_motion_v1/model.py canonical Kinova Gen3 with welded Robotiq 2F-85, table, tripods and wall",
+    "velocity_limit_rad_s": 1.0,
+    "acceleration_limit_rad_s2": 2.5,
+    "tool_offset_m": 0.14
+  },
+  "simulation": {
+    "physics_config": "configs/mujoco.json",
+    "cover_radius_m": 0.04
+  },
+  "protocol": {
+    "time_limit_s": 30.0,
+    "observation_period_s": 0.1,
+    "setup_timeout_s": 600.0,
+    "goal_position_tolerance_rad": 0.02,
+    "goal_velocity_tolerance_rad_s": 0.05,
+    "goal_dwell_s": 0.2,
+    "splice_tolerance": 1e-06,
+    "maximum_trajectory_duration_s": 60.0,
+    "maximum_trajectory_pieces": 4000,
+    "contact_band_m": 2e-06,
+    "independent_cutoff_m": 0.25
+  },
+  "supervisor": {
+    "rule": "Simplified ISO/TS 15066 speed and separation monitoring against moving obstacles: S_p = v_o (T_r + T_s) + v_r T_r + v_r T_s / 2 + C, with approach speeds along the closest-point normal and T_s the joint-space stopping time.",
+    "check_period_s": 0.01,
+    "reaction_time_s": 0.05,
+    "intrusion_distance_m": 0.02,
+    "moving_threshold_rad_s": 0.01,
+    "cutoff_m": 0.6
+  },
+  "metrics": {
+    "velocity_tolerance_rad_s": 0.02,
+    "acceleration_tolerance_rad_s2": 0.5,
+    "position_tolerance_rad": 1e-05
+  },
+  "generator": {
+    "seed": 20261127,
+    "attempts_per_task": 60,
+    "layout_proposals": 12,
+    "ik": {"attempts": 8, "position_tolerance_m": 0.002, "angle_tolerance_deg": 4.0},
+    "nominal": {"static_margin_m": 0.01, "speed_scale": 0.5, "acceleration_scale": 0.4, "path_step_rad": 0.005, "initial_lift_fraction": [0.3, 0.7],
+                "lift_m": 0.12,
+                "linear_steps": 8, "linear_deviation_m": 0.06},
+    "disturbance": {
+      "warning_min_s": 1.0, "initial_separation_m": 0.25, "goal_separation_m": 0.02,
+      "conflict_window_s": [1.0, 8.0], "probe_period_s": 0.02,
+      "transient_crossing": {"box_size_m": [0.08, 0.14], "sphere_radius_m": [0.05, 0.08], "speed_m_s": [0.25, 0.45],
+                             "half_travel_m": [0.55, 0.8], "pass_offset_s": [-0.2, 0.2], "tilt_deg": 20.0},
+      "persistent_blockage": {"footprint_m": [0.12, 0.2], "top_above_m": [0.03, 0.1], "travel_m": [0.5, 0.8],
+                              "speed_m_s": [0.4, 0.6], "lead_s": [1.0, 2.0]},
+      "entrance_blockage": {"thickness_m": 0.04, "overlap_m": 0.04, "standoff_m": 0.035, "speed_m_s": [0.3, 0.5],
+                            "lead_s": [0.5, 1.2], "dwell_s": [1.5, 3.0]},
+      "distractor": {"box_size_m": [0.08, 0.14], "speed_m_s": [0.25, 0.45], "half_travel_m": [0.45, 0.65],
+                     "offset_m": [0.3, 0.5], "separation_m": 0.15}
+    },
+    "witness": {"check_period_s": 0.01, "margin_m": 0.01, "rest_clearance_m": 0.02, "static_margin_m": 0.005,
+                "brake_delays_s": [0.15, 0.3, 0.05, 0.5, 0.8], "resume_step_s": 0.1, "latest_completion_s": 20.0,
+                "random_vias": 20, "via_sigma_rad": 0.35, "planned_detour_margin_m": 0.08, "planning_s": 4.0, "planned_detour_attempts": 2, "closed_loop_candidates": 3},
+    "workspaces": {
+      "shelf": {"bearing_deg": [-35, 35], "front_distance_m": [0.48, 0.56], "width_m": [0.56, 0.7], "depth_m": [0.3, 0.36],
+                "panel_m": 0.02, "plinth_m": [0.34, 0.37], "compartment_m": [0.27, 0.31], "inside_m": [0.12, 0.17], "pre_entry_m": 0.14},
+      "machine": {"bearing_deg": [-30, 30], "front_distance_m": [0.5, 0.58], "width_m": [0.5, 0.62], "depth_m": [0.3, 0.38],
+                  "panel_m": 0.02, "stand_m": [0.33, 0.4], "interior_m": [0.36, 0.44], "opening_width_m": [0.28, 0.34],
+                  "opening_height_m": [0.24, 0.3], "inside_m": [0.14, 0.2], "pre_entry_m": 0.22},
+      "workstation": {"bearing_deg": [-30, 30], "centre_distance_m": [0.45, 0.55], "bin_m": [[0.14, 0.2], [0.18, 0.24], [0.08, 0.14]],
+                      "fixture_m": [[0.12, 0.18], [0.12, 0.18], [0.1, 0.2]], "spread_deg": [35, 55],
+                      "clutter": [2, 4], "clutter_m": [0.05, 0.1], "clutter_height_m": [0.06, 0.18], "approach_height_m": [0.08, 0.12]},
+      "tote": {"side_bearing_deg": [70, 95], "radius_m": [0.4, 0.5], "size_m": [[0.18, 0.22], [0.2, 0.26], [0.08, 0.12]],
+               "approach_height_m": [0.1, 0.14]}
+    },
+    "families": {"shelf": ["transient_crossing", "persistent_blockage", "distractor"],
+                 "workstation": ["transient_crossing", "persistent_blockage", "distractor"],
+                 "machine": ["transient_crossing", "persistent_blockage", "entrance_blockage", "distractor"]},
+    "splits": {"smoke": 1, "dev": 5, "test": 20}
+  }
+}
