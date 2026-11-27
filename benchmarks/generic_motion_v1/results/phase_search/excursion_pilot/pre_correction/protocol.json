@@ -1,0 +1,40 @@
+{
+  "alternating": "slots 0,2,...,24 = guided slots 0..12; slots 1,3,...,23 = excursion slots 0..11",
+  "background": "same guided draws and clearance gradient as paired.py",
+  "cases": [
+    "dev-bottleneck-000-p01",
+    "dev-bottleneck-004-p00",
+    "dev-bottleneck-001-p02",
+    "dev-dense_clutter-000-p02",
+    "dev-dense_clutter-004-p01",
+    "dev-dense_clutter-002-p01",
+    "dev-route_choice-000-p02",
+    "dev-route_choice-004-p00",
+    "dev-route_choice-003-p02",
+    "dev-sparse_clutter-003-p01",
+    "dev-sparse_clutter-002-p02",
+    "dev-sparse_clutter-000-p00"
+  ],
+  "cohort": "pilot",
+  "comparisons": "Each arm at most 25 slots; first valid one-based index. Report success by case and scene; descriptive Dev evidence.",
+  "deadline": "max per-axis rest-to-rest minimum time",
+  "excursion": "14 single-axis edge probes, followed by 11 random feasible axis subsets and via values",
+  "proposals": 25,
+  "randomness_salt": 793187,
+  "replicate": 0,
+  "source_sha256": {
+    "benchmarks/generic_motion_v1/manifests/dev.jsonl": "32de21ac2474846ae3cdc9867a3f41585cf80e7d0d4531e26285de216ef56000",
+    "benchmarks/generic_motion_v1/runners/phase_refinement.py": "c7af203f844790cd30d521f5152814498c74cd187fcb2e8ebc7537c2307b7a96",
+    "benchmarks/generic_motion_v1/runners/phase_search.py": "6402c87a0d9e14681f08176c5e8d23727cf8746c9b09916e6daf37a589129264",
+    "benchmarks/generic_motion_v1/runners/validate.py": "98cb9244d0d73831082894275d0b15c7732c9ac1c27755feeff8e3b31883521c",
+    "configs/evaluation.json": "eb67dfb391a283d859883360436756b060fdcc17e16708e664e2e2d7eea325ee",
+    "experiments/joint_timing/cohort.py": "cf90e8b14757014c3660c6139841598b822f5d3ffc7bbbc95345f086140976e2",
+    "experiments/joint_timing/excursion_pilot.py": "9e7e5ac548262b781653385d35b78c2944f4bccdad5f919a6a66c74b2713522a",
+    "experiments/joint_timing/excursions.py": "80b231b5497588700ff496c0774753a89809805241a37d4ba522bfd457592667",
+    "experiments/joint_timing/paired.py": "2fba7ce820444c05ff4e79820d5deef7669970fc72b449c14b8fe7b4a9bc9ae0"
+  },
+  "strata": "Eligible preselected Dev queries with a blocked chord. No Test data.",
+  "timing": "Alternating outcomes replay saved independent proposals; does not measure integrated end-to-end time. Shared cached scene and gradient construction will differ from running two arms.",
+  "validation": "Same frozen 33-point screen, dense adaptive positions, derivative hulls, endpoint test, independent canonical Drake-vs-explicit-sphere check for every dense success. CPU only.",
+  "via_time": "physical time at which the unique critical-joint clock reaches the geometric chord witness"
+}

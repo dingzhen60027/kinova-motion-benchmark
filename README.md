@@ -2,7 +2,7 @@
 
 A benchmark for **7-DoF robot motion planning** with fixed start/goal configurations and static obstacles, built on [CSDecomp](https://github.com/wernerpe/csdecomp). Compare **path length** and **trajectory duration** using shared inputs, validation and evaluation scripts.
 
-[Environment](local/README.md) · [Benchmark guide](benchmarks/generic_motion_v1/README.md) · [Configuration](configs/evaluation.json) · [Results](benchmarks/generic_motion_v1/results/nto_metis/comparison/summary.csv)
+[Environment](local/README.md) · [Benchmark guide](benchmarks/generic_motion_v1/README.md) · [Configuration](configs/evaluation.json) · [Baseline results](benchmarks/generic_motion_v1/results/nto_metis/comparison/summary.csv) · [Joint timing experiments](experiments/joint_timing/README.md) · [Frozen test results](benchmarks/generic_motion_v1/results/phase_search/test-comparison/summary.json)
 
 ## Setup and quick start
 

@@ -1,0 +1,59 @@
+{
+  "analysis": "Pooled descriptive Dev analysis after pilot and disjoint 35-query follow-up. Paired observation is a query; percentile resampling unit is scene. No multiple-comparison correction.",
+  "inputs": {
+    "runs/phase_search/excursion_pilot/comparison.json": "d5c36fd62314b24c47a4a70646ba2f5bca41c44c46a7116945473a80c12e0b98",
+    "runs/phase_search/excursion_pilot/dev-remainder/comparison.json": "98d8ced8270419fd0d98dddcfc62ea4e4ff55f3e36db1e8755f71133339c038f"
+  },
+  "rows": 47,
+  "layouts": 19,
+  "comparisons": {
+    "guided": {
+      "excursion_only": 4,
+      "reference_only": 1,
+      "both": 11,
+      "estimate": 0.06382978723404255,
+      "numerator": 3.0,
+      "denominator": 47.0,
+      "independent_scene_clusters": 19,
+      "ci95": [
+        -0.023255813953488372,
+        0.1836868958109559
+      ],
+      "bootstrap_seed": 45827,
+      "bootstrap_replicates": 2000,
+      "method": "scene-level cluster bootstrap; resample scene clusters with all paired jobs intact"
+    },
+    "uniform_shift": {
+      "excursion_only": 4,
+      "reference_only": 1,
+      "both": 11,
+      "estimate": 0.06382978723404255,
+      "numerator": 3.0,
+      "denominator": 47.0,
+      "independent_scene_clusters": 19,
+      "ci95": [
+        -0.021739130434782608,
+        0.15555555555555556
+      ],
+      "bootstrap_seed": 45827,
+      "bootstrap_replicates": 2000,
+      "method": "scene-level cluster bootstrap; resample scene clusters with all paired jobs intact"
+    },
+    "alternating": {
+      "excursion_only": 5,
+      "reference_only": 1,
+      "both": 10,
+      "estimate": 0.0851063829787234,
+      "numerator": 4.0,
+      "denominator": 47.0,
+      "independent_scene_clusters": 19,
+      "ci95": [
+        -0.02127659574468085,
+        0.20835755813953477
+      ],
+      "bootstrap_seed": 45827,
+      "bootstrap_replicates": 2000,
+      "method": "scene-level cluster bootstrap; resample scene clusters with all paired jobs intact"
+    }
+  }
+}
