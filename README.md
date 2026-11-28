@@ -114,6 +114,10 @@ Execute saved time trajectories in **MuJoCo 3.3.7**, with gravity, source-model 
 
 ![MuJoCo execution of a saved Kinova trajectory](benchmarks/generic_motion_v1/results/mujoco_smoke/demo/render/overview.png)
 
+## Dynamic recovery benchmark
+
+A closed-loop benchmark for **online replanning from an in-motion state**: the robot is already executing a pick-and-place motion in a shelf, cluttered workstation or machine-opening workspace when an independently moving obstacle crosses its corridor, persistently blocks its route, or temporarily blocks a confined entrance. Methods replan while the MuJoCo simulation keeps running, with their measured computation time charged to the task, and are scored by safe task completion, completion time, collisions and clearance, constraint violations, latency and deadline misses, and external safety interventions. Every task has an independently validated feasible completion witness that methods never see. It reuses this repository's robot model, collision geometry, trajectory format and MuJoCo execution and runs on CPU. [Protocol, tasks and commands →](benchmarks/dynamic_recovery/README.md)
+
 ## Project structure
 
 ```text
