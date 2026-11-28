@@ -25,7 +25,17 @@ REGISTRY = {
     "nominal": "benchmarks.dynamic_recovery.policies:Nominal",
     "brake_wait": "benchmarks.dynamic_recovery.policies:BrakeWait",
     "brake_replan": "benchmarks.dynamic_recovery.policies:BrakeReplan",
+    "snapshot": "benchmarks.dynamic_recovery.snapshot:SnapshotReplan",
+    "mppi": "benchmarks.dynamic_recovery.mppi:MPPI",
+    "vpsto": "benchmarks.dynamic_recovery.vpsto:VPSTO",
+    "cc_vpsto": "benchmarks.dynamic_recovery.vpsto:CCVPSTO",
+    "fabrics": "benchmarks.dynamic_recovery.fabrics_bridge:FabricsBridge",
+    "r3": "benchmarks.dynamic_recovery.r3:R3",
 }
+# R3 ablations, one component switched off each (see ``r3.ABLATIONS``): ``r3-no_refuge`` and so on.
+REGISTRY.update({f"r3-{name}": f"benchmarks.dynamic_recovery.r3:R3_{name}" for name in (
+    "no_refuge", "no_escape", "no_retreat", "no_reroute", "no_ompl", "no_improve", "no_fallback", "no_accel",
+    "always_wait", "reroute_now", "timeout", "randomized", "cv_only", "clearance_only", "no_latency")})
 
 
 class Nominal:

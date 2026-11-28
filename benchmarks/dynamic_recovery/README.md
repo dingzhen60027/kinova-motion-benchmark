@@ -16,7 +16,7 @@ The benchmark measures **task completion under disturbance**, not isolated plann
 | Trajectory format | `simulation/reference.py`, `runners/validate.py` | Timed piecewise Bézier or clamped B-spline candidates and derivative control-hull bounds |
 | Physics and control | `simulation/mujoco_model.py`, `simulation/execution.py`, `configs/mujoco.json` | Canonical MuJoCo export extended with covers and mocap obstacles; computed-torque PD control at 500 Hz under URDF torque limits |
 | Time-optimal line motions | `runners/phase_search.py` (`line_curve`) | Phase-synchronized rest-to-rest motions for nominal plans, witnesses and reference behaviours |
-| Sampling-based planner | `runners/ompl_baselines.py` | OMPL 2.0.1 RRTConnect inside the `brake_replan` reference behaviour |
+| Sampling-based planner | `runners/ompl_baselines.py` | OMPL 2.0.1 RRTConnect inside `brake_replan`, `snapshot` and R³'s rerouting |
 
 No existing file of `generic_motion_v1` was changed, and its frozen inputs and results are untouched.
 
@@ -171,6 +171,62 @@ What the results show:
 - **Transient crossings:** none of the reference behaviours solves them, although every witness completes. Constant-velocity prediction reacts too late to accelerating obstacles, and stopping in place is not enough when the obstacle sweeps through the stopping position. This is the open problem the benchmark is built to measure.
 - **Latency:** no submission missed its deadline or was rejected; 95th-percentile call latency stayed below 20 ms except during OMPL replanning.
 
+## Methods: R³ and baselines
+
+Every method below is a registered entry of `policies.REGISTRY`. Each runs in its own process with only the public problem and observations, and its call latency is charged as for any method. Shared tools live in `recovery.py`: batched kinematics and a covering-sphere model checked against Drake, a conservative static distance field, obstacle predictions, monitor-aware margins, trajectory pieces and a static roadmap.
+
+| Name | Module | What it is |
+|---|---|---|
+| `r3` (proposed) | `r3.py` | **R³: Refuge, Rent, Reroute.** Latency-compensated splicing at `t + 0.15 s`. Three obstacle hypotheses: constant velocity after a short estimated-acceleration phase, stop, and hold. A portfolio of stays and resumptions through waiting places: brake in place, roadmap refuges, clearance-gradient escapes and retreats. Candidates are scored by margins against the monitor's protective distance, which is zero while the robot is at rest, without truncating at the horizon for obstacles at rest. A deterministic, 2-competitive rent-or-buy rule decides between waiting and rerouting around resting blockers. Reroutes come from a shortcut roadmap, or OMPL while waiting at rest. When nothing keeps the protective distance, a collision-first fallback scores candidates by a monitor-consistent rollout. Exact checks run before every submission. |
+| `snapshot` (B3) | `snapshot.py` | **Snapshot replanning.** Global replanning against the latest obstacle snapshot, inflated by 5 cm, with no motion prediction. It brakes on a predicted conflict, then plans to the goal from rest with OMPL RRT-Connect and simplification. A `backend="curobo"` slot is reserved for the GPU machine. |
+| `mppi` (B4) | `mppi.py` | **MPPI** (Williams et al., 2017). Joint space, 128 × 12 × 0.1 s piecewise-constant-acceleration rollouts, two iterations per call. Costs track the nominal route and reward progress along it. Static cost is measured relative to the route's own clearance, and obstacle separation uses constant-velocity prediction. It executes 0.2 s of the update, then a braking tail. |
+| `vpsto` (B5) | `vpsto.py` | **VP-STO** (Jankowski et al., 2023), re-implemented. Three via points on a clamped cubic B-spline from the current state to rest at the goal. The minimum duration is computed in closed form from the same derivative-hull bounds the benchmark checks. Optimization is full-covariance CMA-ES, receding-horizon, warm-started by re-sampling the previous solution. |
+| `cc_vpsto` (B5) | `vpsto.py` | **CC-VPSTO** (Brudermüller et al., 2024). VP-STO with a sampled chance constraint on collision under perturbed obstacle velocities. |
+| `fabrics` (B6) | `fabrics_bridge.py`, `fabrics_worker.py` | **Dynamic optimization fabrics** (Spahn et al., 2023), using the `fabrics` 0.10.0 package in its own environment over a JSON-lines bridge. The URDF is generated from the benchmark's own kinematics and agrees with it to within 2e-9 m. Collision geometry is 30 covering spheres. The fabric has a joint-space attractor to a carrot on the route, the 8 nearest static cover spheres, and moving obstacles as spheres with velocity and acceleration. Each call rolls the fabric out for 0.3 s, then appends a braking tail. |
+
+Fairness notes:
+- **Local methods are strengthened.** MPPI and fabrics are local controllers, so as deployed they get a global path: the nominal route. Both hand the motion back to the route near the goal or after 2 s without progress (`recovery.RouteHandoff`), and regain control if a moving obstacle conflicts.
+- **Same limits for everyone.** All methods may use the full joint limits; the nominal plan runs at 50% velocity and 40% acceleration. The MPC baselines move at full speed from the first call, so they can finish undisturbed tasks faster and can pass a crossing point before the obstacle arrives. R³ keeps the nominal plan while it stays safe.
+- **No tuning on `test`.** Baseline parameters were set on `dev` only, and `test` was not run.
+
+R³ ablations are registered as `r3-<name>`, one component switched off each: `no_refuge`, `no_escape`, `no_retreat`, `no_reroute`, `no_ompl`, `no_improve`, `no_fallback`, `no_accel`, `always_wait`, `reroute_now`, `timeout`, `randomized`, `cv_only`, `clearance_only` and `no_latency`.
+
+The fabrics environment is separate because `fabrics` needs numpy < 2. It takes about 0.8 GB, and the system pip installs into the venv's site-packages:
+
+```bash
+python3 -m venv --without-pip .fabrics.venv
+.venv/bin/pip install --target .fabrics.venv/lib/python3.10/site-packages fabrics==0.10.0
+```
+
+`FABRICS_PYTHON` can point to another interpreter. The planner is built once, in about 75 s, and is cached under `runs/dynamic_recovery/.fabrics_cache`.
+
+### Results on `dev`
+
+- **Run:** the 42 accepted `dev` tasks, 252 episodes (R³ and B3–B6), on the same Intel i9-14900HX (32 threads), CPU only, with 4 concurrent episodes. The reference rows are the 168-episode run above.
+- **Verification:** all 252 episodes passed integrity checks, and 12 replays (2 per method) were bit-identical.
+- **Test split:** deliberately not run. `dev` was used to develop R³ and to set the baselines' parameters, so these numbers support design decisions, not claims.
+
+| Method | Safe completion (95% CI) | Completion | Collision | Distractor (15) | Crossing (15) | Persistent (8) | Entrance (4) | Time ratio to witness | Max p95 latency |
+|---|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| `r3` | **90% (83–98)** | **100%** | **0%** | 100% | **73%** | **100%** | **100%** | 1.00 | 135 ms |
+| `vpsto` | 57% (47–68) | 69% | 31% | 100% | 27% | 62% | 0% | 0.83 | 89 ms |
+| `brake_replan` | 57% (50–64) | 64% | 36% | 100% | 0% | 62% | 100% | 1.00 | 17 ms |
+| `snapshot` | 50% (42–58) | 50% | 36% | 100% | 0% | 62% | 25% | 1.00 | 663 ms |
+| `brake_wait` | 45% (38–53) | 45% | 36% | 100% | 0% | 0% | 100% | 1.00 | 18 ms |
+| `mppi` | 40% (34–50) | 40% | 40% | 100% | 13% | 0% | 0% | 0.84 | 89 ms |
+| `cc_vpsto` | 40% (31–50) | 52% | 21% | 93% | 20% | 0% | 0% | 1.35 | 88 ms |
+| `nominal` | 36% (33–38) | 36% | 36% | 100% | 0% | 0% | 0% | 1.00 | — |
+| `fabrics` | 31% (23–38) | 31% | 40% | 87% | 0% | 0% | 0% | 1.13 | 66 ms |
+| witness (privileged) | 100% | 100% | 0% | 100% | 100% | 100% | 100% | 1.00 | — |
+
+What the results show:
+- **R³ never collided** and reached the goal in all 42 tasks. The four tasks it did not complete safely are crossings in which the monitor stopped it (five stops in total). By design, when R³ cannot keep the protective distance, it accepts a possible protective stop rather than risk a collision.
+- **Paired differences,** resampling layouts: R³'s safe-completion rate exceeds the best baselines, `vpsto` and `brake_replan`, by 33 points (95% CI +23 to +44 and +21 to +46). It is 10 points below the privileged witness (−18 to −2) and equal on completion.
+- **Transient crossings stay the open problem.** The MPC baselines solve a few, but they also move faster than the nominal (time ratios 0.83–0.84), which can carry them past a conflict point before the obstacle arrives (see Limitations). Stopping, or rerouting around a snapshot, never solves one.
+- **Persistent blockages:** waiting never completes them. R³'s rent-or-buy rule with roadmap and OMPL reroutes completes all 8, at a median 1.11× the witness's time (0.62–1.86×).
+- **Local reactive methods.** MPPI stalls behind every persistent blocker (8 timeouts) and runs into the guard door in all 4 entrance tasks. Fabrics stalls or collides in the disturbed families. 7 of its episodes exceed the executed-limit tolerance: velocity +0.02 rad/s, or acceleration +0.5 rad/s².
+- **Latency:** R³'s median 95th-percentile call latency was 47 ms. Its slower calls are OMPL attempts made while it waits at rest. No submission of R³ missed its deadline or was rejected.
+
 ## Commands
 
 ```bash
@@ -179,6 +235,7 @@ bash local/python.sh scripts/dynamic_recovery.py check
 bash local/python.sh scripts/dynamic_recovery.py run --split smoke --methods nominal brake_wait witness --output runs/dynamic_recovery/smoke
 bash local/python.sh scripts/dynamic_recovery.py verify --run runs/dynamic_recovery/smoke --replays 3
 bash local/python.sh scripts/dynamic_recovery.py summarize --run runs/dynamic_recovery/smoke
+bash local/python.sh scripts/dynamic_recovery.py run --split dev --methods r3 snapshot mppi vpsto cc_vpsto fabrics --output runs/dynamic_recovery/dev-methods --workers 4
 bash local/python.sh -m pytest -q benchmarks/dynamic_recovery/tests
 ```
 
@@ -197,7 +254,7 @@ class MyMethod:
         return dict(start_time_s=t + 0.05, trajectory=dict(kind="bezier", controls=..., durations=...))
 ```
 
-Register `"module:Class"` in `policies.REGISTRY`, or pass it to `harness.WorkerPlanner`. `trajectory.Plan.from_list(observation["plan"])` evaluates the commanded reference, and `braking`, `point_to_point` and `world.GeometryChecker` are available helpers.
+Register `"module:Class"` in `policies.REGISTRY`, or pass it to `harness.WorkerPlanner`. `trajectory.Plan.from_list(observation["plan"])` evaluates the commanded reference, and `braking`, `point_to_point` and `world.GeometryChecker` are available helpers. `recovery.py` adds the toolkit the bundled methods share: batched kinematics and covering spheres, the static distance field, obstacle predictions, monitor-aware margins, Bézier pieces (`Pieces`, `accel_pieces`), the static `Roadmap` and `validate`, which runs the benchmark's own submission check before you submit.
 
 The bundled `nominal`, `brake_wait` and `brake_replan` behaviours are reference compositions used to check that the benchmark separates behaviours. They are not proposed methods.
 
@@ -208,3 +265,4 @@ The bundled `nominal`, `brake_wait` and `brake_replan` behaviours are reference 
 - Obstacles are kinematic, observed perfectly and without delay.
 - Torque limits come from the canonical URDF and are not calibrated hardware data.
 - Latency is wall-clock time and depends on the machine; record hardware and keep concurrent episodes low for formal comparisons.
+- Disturbances are timed against the nominal motion, which runs at a 50% velocity override. A method that moves faster than the nominal before any conflict is predicted can reach the conflict point before the obstacle does, and so avoid some crossings without reacting to them. Compare time ratios and per-family results with this in mind; triggering disturbances on the robot's progress would remove the effect.
